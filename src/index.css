@@ -429,3 +429,13 @@
   }
 
 }
+
+
+.custom-popup .leaflet-popup-content-wrapper {
+  max-width: 100vw !important;  /* Allow to take full viewport width */
+  width: auto !important;
+}
+.custom-popup .leaflet-popup-content {
+  width: auto !important;
+  max-width: none !important;
+}

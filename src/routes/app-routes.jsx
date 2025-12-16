@@ -1,4 +1,5 @@
 
+import Map from "@/components/auth/Map";
 import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 
@@ -16,6 +17,7 @@ function AppRoutes() {
     <Routes>
       <Route path="/" element={<AuthRoute />}>
         <Route path="/" element={<Login />} />
+        <Route path="/map" element={<Map />} />
         
       </Route>
 
