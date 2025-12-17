@@ -62,11 +62,18 @@ export default function MapComponent() {
       center: [20, 0],
       zoom: 2,
       zoomSnap: 0.25,
-      maxBoundsViscosity: 0.5,
+      maxBoundsViscosity: 0.85,
       worldCopyJump: false,
       minZoom: 2,
       maxZoom: 18,
     });
+
+    // Lock vertical panning - allow only horizontal movement
+    const maxVerticalBounds = L.latLngBounds(
+      L.latLng(-50, -Infinity), // South, West
+      L.latLng(50, Infinity) // North, East
+    );
+    map.setMaxBounds(maxVerticalBounds);
 
     // Don't auto-pan - let user stay where they are
 
