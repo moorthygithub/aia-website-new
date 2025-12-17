@@ -47,6 +47,12 @@ function App() {
         >
           Map One{" "}
         </Button>
+        <Button
+          onClick={() => navigate("/maponenew")}
+          className=" bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg shadow-lg text-base"
+        >
+          Map New{" "}
+        </Button>
       </div>
       <Toaster richColors position="top-right" />
       <ScrollToTop />

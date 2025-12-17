@@ -1,3 +1,24 @@
+// Create wrapped marker positions for all markers
+const createWrappedMarkers = (
+  baseCoords,
+  icon,
+  popupHtml,
+  minWidth,
+  maxWidth
+) => {
+  const marker = L.marker(baseCoords, { icon });
+  marker.bindPopup(popupHtml, { minWidth, maxWidth });
+  marker.originalLng = baseCoords[1];
+
+  marker.on("mouseover", function () {
+    this.openPopup();
+  });
+  marker.on("mouseout", function () {
+    this.closePopup();
+  });
+
+  return marker;
+};
 import { useEffect } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -42,19 +63,37 @@ export default function MapComponent() {
       zoom: 2,
       zoomSnap: 0.25,
       maxBoundsViscosity: 0.5,
-      worldCopyJump: true,
+      worldCopyJump: false,
       minZoom: 2,
       maxZoom: 18,
     });
 
-    // Re-center map when zooming out
-    map.on("zoomend", function () {
-      if (map.getZoom() <= 3) {
-        map.panTo([20, 0], { animate: true, duration: 0.5 });
-      }
+    // Don't auto-pan - let user stay where they are
+
+    // Update marker positions for infinite wrapping
+    map.on("move", function () {
+      const mapCenterLng = map.getCenter().lng;
+
+      cluster.getLayers().forEach((marker) => {
+        const originalLng = marker.originalLng;
+        let newLng = originalLng;
+
+        // Adjust longitude to be closest to map center
+        while (newLng - mapCenterLng > 180) {
+          newLng -= 360;
+        }
+        while (newLng - mapCenterLng < -180) {
+          newLng += 360;
+        }
+
+        const currentLng = marker.getLatLng().lng;
+        if (Math.abs(newLng - currentLng) > 0.01) {
+          marker.setLatLng([marker.getLatLng().lat, newLng]);
+        }
+      });
     });
 
-    // Add tile layer with noWrap to prevent duplicates
+    // Add tile layer with wrapping enabled
     L.tileLayer(
       "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
       {
@@ -62,11 +101,8 @@ export default function MapComponent() {
         subdomains: "abcd",
         minZoom: 2,
         maxZoom: 20,
-        noWrap: true, // Prevents duplicate tiles
-        bounds: [
-          [-90, -180],
-          [90, 180],
-        ], // Restrict to valid world coordinates
+        noWrap: false, // Enable wrapping
+        continuousWorld: true,
       }
     ).addTo(map);
 
@@ -151,20 +187,13 @@ export default function MapComponent() {
         maxWidth = 360;
       }
 
-      const marker = L.marker(coords, { icon: brandPin });
-
-      marker.bindPopup(popupHtml, {
+      const marker = createWrappedMarkers(
+        coords,
+        brandPin,
+        popupHtml,
         minWidth,
-        maxWidth,
-      });
-
-      marker.on("mouseover", function () {
-        this.openPopup();
-      });
-      marker.on("mouseout", function () {
-        this.closePopup();
-      });
-
+        maxWidth
+      );
       cluster.addLayer(marker);
     }
 
@@ -188,24 +217,17 @@ export default function MapComponent() {
         maxWidth = 360;
       }
 
-      const m = L.marker(coords, { icon: brandPin });
-
-      m.bindPopup(popupHtml, {
+      const marker = createWrappedMarkers(
+        coords,
+        brandPin,
+        popupHtml,
         minWidth,
-        maxWidth,
-      });
-
-      m.on("mouseover", function () {
+        maxWidth
+      );
+      marker.on("click", function () {
         this.openPopup();
       });
-      m.on("mouseout", function () {
-        this.closePopup();
-      });
-      m.on("click", function () {
-        this.openPopup();
-      });
-
-      cluster.addLayer(m);
+      cluster.addLayer(marker);
     }
 
     // Load manifest and initialize
@@ -228,9 +250,7 @@ export default function MapComponent() {
           const bounds = cluster.getBounds();
           if (bounds.isValid()) {
             map.fitBounds(bounds.pad(0.25));
-
-            const restrictedBounds = bounds.pad(0.4);
-            map.setMaxBounds(restrictedBounds);
+            // Allow infinite wrapping - don't restrict bounds
           }
         }
       } catch (err) {
@@ -246,5 +266,9 @@ export default function MapComponent() {
     };
   }, []);
 
-  return <div id="map" style={{ height: "100vh", width: "100%" }} />;
+  return (
+    <>
+      <div id="map" style={{ height: "100vh", width: "100%" }} />
+    </>
+  );
 }
