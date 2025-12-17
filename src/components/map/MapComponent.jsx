@@ -9,6 +9,7 @@ import { titleFromSlug } from "@/utils/titleFromSlug";
 import COUNTRY_COORDS from "@/data/countryCoords";
 import INDIA_STATE_COORDS from "@/data/stateCoords";
 import "./map.css";
+import MapComponentGlobe from "./MapComponentGlobe";
 const MAX_PHOTOS = 6;
 
 export default function MapComponent() {
@@ -246,5 +247,9 @@ export default function MapComponent() {
     };
   }, []);
 
-  return <div id="map" style={{ height: "100vh", width: "100%" }} />;
+  return (
+    <>
+      <div id="map" style={{ height: "100vh", width: "100%" }} />;
+    </>
+  );
 }

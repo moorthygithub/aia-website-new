@@ -1,5 +1,6 @@
 import Map from "@/components/auth/Map";
 import MapComponent from "@/components/map/MapComponent";
+import Navbar from "@/components/navbar/Navabar";
 import { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 const Login = lazy(() => import("@/app/auth/login"));
@@ -16,6 +17,7 @@ function AppRoutes() {
         <Route path="/" element={<Login />} />
         <Route path="/map" element={<Map />} />
         <Route path="/mapone" element={<MapComponent />} />
+        <Route path="/navbar" element={<Navbar />} />
       </Route>
 
       <Route path="/" element={<ProtectedRoute />}></Route>

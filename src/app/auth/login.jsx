@@ -1,7 +1,3 @@
-
-
-
-
 import { HeroSlider } from "@/components/HeroSlider";
 import { ImageCarousel } from "@/components/ImageCarousel";
 import { DialogDrawerSection } from "@/components/DialogDrawerSection";
@@ -20,26 +16,29 @@ import Text_06 from "@/components/irisui/text-06";
 import Text_05 from "@/components/irisui/text-05";
 import CustomerJourney from "../customer-journey/CustomerJourney";
 import ChainLoop from "../chain-loop/ChainLoop";
+import Navabar from "@/components/navbar/Navabar";
+import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 const Login = () => {
-
-
-
-const texts = [
-  "Hello",
-  "Morphing",
-  "Text",
-  "Animation",
-  "React",
-  "Component",
-  "Smooth",
-  "Transition",
-  "Engaging",
-];
-
+  const texts = [
+    "Hello",
+    "Morphing",
+    "Text",
+    "Animation",
+    "React",
+    "Component",
+    "Smooth",
+    "Transition",
+    "Engaging",
+  ];
+  const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-gradient-to-b from-background via-secondary/20 to-background">
       {/* Hero Slider */}
+      <section className="mb-16">
+        <Button onClick={() => navigate("/navbar")}>Header Section</Button>{" "}
+      </section>
       <section className="mb-16">
         <HeroSlider />
       </section>
@@ -60,30 +59,30 @@ const texts = [
         <DialogDrawerSection />
       </section>
       <section className="mb-28 ">
-         <TextRewind text="Rewind" /> 
+        <TextRewind text="Rewind" />
       </section>
       <section className="mb-16 ">
-      <MorphingText texts={texts} />;
+        <MorphingText texts={texts} />;
       </section>
 
       <section className="mb-16 ">
-      <Text_03 text="Rewind" />;
+        <Text_03 text="Rewind" />;
       </section>
       <section className="mb-16 ">
-      <Text_02 text="Rewind" />;
+        <Text_02 text="Rewind" />;
       </section>
       <section className="mb-16 ">
-      <Text_06 text="Rewind" />;
+        <Text_06 text="Rewind" />;
       </section>
       <section className="mb-16 ">
-      <Text_05 text="Rewind" />;
+        <Text_05 text="Rewind" />;
       </section>
-     
+
       {/* FAQ Accordion */}
       <section className="mb-16">
         <FAQAccordion />
       </section>
-<FAQs/>
+      <FAQs />
       {/* Company Marquee */}
       <section>
         <CompanyMarquee />
