@@ -1,0 +1,525 @@
+{
+  "countries": {
+    "bangladesh": [
+      {
+        "name": "Md Zane Alam Mashuk",
+        "file": "md-zane-alam-mashuk.png",
+        "url": "https://aia.in.net/map/images/bangladesh/md-zane-alam-mashuk.png",
+        "course": "CAMS"
+      },
+      {
+        "name": "Ramprosad Das",
+        "file": "ramprosad-das.png",
+        "url": "https://aia.in.net/map/images/bangladesh/ramprosad-das.png",
+        "course": "CAMS"
+      }
+    ],
+    "canada": [
+      {
+        "name": "Hariharasudhan Narayanasami",
+        "file": "hariharasudhan-narayanasami.png",
+        "url": "https://aia.in.net/map/images/canada/hariharasudhan-narayanasami.png",
+        "course": "CAMS"
+      },
+      {
+        "name": "Rahul Munjal",
+        "file": "rahul-munjal.png",
+        "url": "https://aia.in.net/map/images/canada/rahul-munjal.png",
+        "course": "CIA"
+      }
+    ],
+    "germany": [
+      {
+        "name": "Jaspal Singh",
+        "file": "jaspal-singh.png",
+        "url": "https://aia.in.net/map/images/germany/jaspal-singh.png",
+        "course": "CIA"
+      },
+      {
+        "name": "Priyanka Pandey",
+        "file": "priyanka-pandey.jpg",
+        "url": "https://aia.in.net/map/images/germany/priyanka-pandey.jpg",
+        "course": "CFE"
+      }
+    ],
+    "ghana": [
+      {
+        "name": "Evans Essienyi",
+        "file": "evans-essienyi.png",
+        "url": "https://aia.in.net/map/images/ghana/evans-essienyi.png",
+        "course": "CAMS"
+      }
+    ],
+    "netherlands": [
+      {
+        "name": "Jeny Shah",
+        "file": "jeny-shah.jpg",
+        "url": "https://aia.in.net/map/images/netherlands/jeny-shah.jpg",
+        "course": "CFE"
+      }
+    ],
+    "nigeria": [
+      {
+        "name": "Nnamdi Ojebah",
+        "file": "nnamdi-ojebah.png",
+        "url": "https://aia.in.net/map/images/nigeria/nnamdi-ojebah.png",
+        "course": "CAMS"
+      }
+    ],
+    "qatar": [
+      {
+        "name": "Fathimath Shasna",
+        "file": "fathimath-shasna.png",
+        "url": "https://aia.in.net/map/images/qatar/fathimath-shasna.png",
+        "course": "CIA"
+      },
+      {
+        "name": "Stevin N Antony",
+        "file": "stevin-n-antony.png",
+        "url": "https://aia.in.net/map/images/qatar/stevin-n-antony.png",
+        "course": "CIA"
+      }
+    ],
+    "script": [],
+    "uae": [
+      {
+        "name": "Akash Premkumar",
+        "file": "akash-premkumar.jpg",
+        "url": "https://aia.in.net/map/images/uae/akash-premkumar.jpg",
+        "course": "CFE"
+      },
+      {
+        "name": "Marc Mikhael",
+        "file": "marc-mikhael.jpg",
+        "url": "https://aia.in.net/map/images/uae/marc-mikhael.jpg",
+        "course": "CFE"
+      },
+      {
+        "name": "Mohammad Shadab Hussain",
+        "file": "mohammad-shadab-hussain.png",
+        "url": "https://aia.in.net/map/images/uae/mohammad-shadab-hussain.png",
+        "course": "CIA"
+      },
+      {
+        "name": "Prathwi Shetty",
+        "file": "prathwi-shetty.jpg",
+        "url": "https://aia.in.net/map/images/uae/prathwi-shetty.jpg",
+        "course": "CFE"
+      },
+      {
+        "name": "Saad Kareem",
+        "file": "saad-kareem.jpg",
+        "url": "https://aia.in.net/map/images/uae/saad-kareem.jpg",
+        "course": "CFE"
+      },
+      {
+        "name": "Yogender Sharma",
+        "file": "yogender-sharma.png",
+        "url": "https://aia.in.net/map/images/uae/yogender-sharma.png",
+        "course": "CIA"
+      }
+    ],
+    "uk": [
+      {
+        "name": "Abhishek Uttam",
+        "file": "abhishek-uttam.jpg",
+        "url": "https://aia.in.net/map/images/uk/abhishek-uttam.jpg",
+        "course": "CFE"
+      }
+    ],
+    "usa": [
+      {
+        "name": "Alfred Tumbe Yennu",
+        "file": "alfred-tumbe-yennu.png",
+        "url": "https://aia.in.net/map/images/usa/alfred-tumbe-yennu.png",
+        "course": "CAMS"
+      },
+      {
+        "name": "Karthik Madhavan",
+        "file": "karthik-madhavan.jpg",
+        "url": "https://aia.in.net/map/images/usa/karthik-madhavan.jpg",
+        "course": "CFE"
+      },
+      {
+        "name": "Rupesh Chauhan",
+        "file": "rupesh-chauhan.jpg",
+        "url": "https://aia.in.net/map/images/usa/rupesh-chauhan.jpg",
+        "course": "CFE"
+      },
+      {
+        "name": "Venkat Sandeep",
+        "file": "venkat-sandeep.jpg",
+        "url": "https://aia.in.net/map/images/usa/venkat-sandeep.jpg",
+        "course": "CFE"
+      }
+    ]
+  },
+  "india": {
+    "andhra-pradesh": [
+      {
+        "name": "Anil Tenneti",
+        "file": "Anil Tenneti.jpg",
+        "url": "https://aia.in.net/map/images/india/andhra-pradesh/Anil%20Tenneti.jpg",
+        "course": "CFE"
+      },
+      {
+        "name": "Jagadish Prasad Das",
+        "file": "jagadish-prasad-das.png",
+        "url": "https://aia.in.net/map/images/india/andhra-pradesh/jagadish-prasad-das.png",
+        "course": "CIA"
+      },
+      {
+        "name": "K V Sai Nikhil",
+        "file": "K V Sai Nikhil.jpg",
+        "url": "https://aia.in.net/map/images/india/andhra-pradesh/K%20V%20Sai%20Nikhil.jpg",
+        "course": "CFE"
+      },
+      {
+        "name": "Manisha Ganga",
+        "file": "manisha-ganga.png",
+        "url": "https://aia.in.net/map/images/india/andhra-pradesh/manisha-ganga.png",
+        "course": "CIA"
+      },
+      {
+        "name": "Sourav Ghosh",
+        "file": "sourav-ghosh.jpg",
+        "url": "https://aia.in.net/map/images/india/andhra-pradesh/sourav-ghosh.jpg",
+        "course": "CFE"
+      },
+      {
+        "name": "Vijay Sagar Madhanu",
+        "file": "vijay-sagar-madhanu.png",
+        "url": "https://aia.in.net/map/images/india/andhra-pradesh/vijay-sagar-madhanu.png",
+        "course": "CIA"
+      }
+    ],
+    "bihar": [
+      {
+        "name": "Kumar Abhishek",
+        "file": "kumar-abhishek.jpg",
+        "url": "https://aia.in.net/map/images/india/bihar/kumar-abhishek.jpg",
+        "course": "CFE"
+      }
+    ],
+    "delhi": [
+      {
+        "name": "Akshit Madan",
+        "file": "akshit-madan.png",
+        "url": "https://aia.in.net/map/images/india/delhi/akshit-madan.png",
+        "course": "CIA"
+      },
+      {
+        "name": "Gursimran Singh",
+        "file": "gursimran-singh.png",
+        "url": "https://aia.in.net/map/images/india/delhi/gursimran-singh.png",
+        "course": "CIA"
+      },
+      {
+        "name": "Himanshu Arora",
+        "file": "himanshu-arora.png",
+        "url": "https://aia.in.net/map/images/india/delhi/himanshu-arora.png",
+        "course": "CIA"
+      },
+      {
+        "name": "Kirti Jain",
+        "file": "kirti-jain.png",
+        "url": "https://aia.in.net/map/images/india/delhi/kirti-jain.png",
+        "course": "CIA"
+      },
+      {
+        "name": "Neha Singh",
+        "file": "neha-singh.jpg",
+        "url": "https://aia.in.net/map/images/india/delhi/neha-singh.jpg",
+        "course": "CFE"
+      },
+      {
+        "name": "Yash Garg",
+        "file": "yash-garg.png",
+        "url": "https://aia.in.net/map/images/india/delhi/yash-garg.png",
+        "course": "CIA"
+      }
+    ],
+    "gujrat": [
+      {
+        "name": "Ca Mahendra Singh",
+        "file": "ca-mahendra-singh.jpg",
+        "url": "https://aia.in.net/map/images/india/gujrat/ca-mahendra-singh.jpg",
+        "course": "CFE"
+      },
+      {
+        "name": "Hetvi Lakhani",
+        "file": "hetvi-lakhani.jpg",
+        "url": "https://aia.in.net/map/images/india/gujrat/hetvi-lakhani.jpg",
+        "course": "CFE"
+      },
+      {
+        "name": "Rugved",
+        "file": "rugved.png",
+        "url": "https://aia.in.net/map/images/india/gujrat/rugved.png",
+        "course": "CIA"
+      }
+    ],
+    "haryana": [
+      {
+        "name": "Jaskaran Singh",
+        "file": "jaskaran-singh.png",
+        "url": "https://aia.in.net/map/images/india/haryana/jaskaran-singh.png",
+        "course": "CIA"
+      },
+      {
+        "name": "Kamalpreet Kaur",
+        "file": "kamalpreet-kaur.png",
+        "url": "https://aia.in.net/map/images/india/haryana/kamalpreet-kaur.png",
+        "course": "CIA"
+      },
+      {
+        "name": "Komal Aggarwal",
+        "file": "komal-aggarwal.png",
+        "url": "https://aia.in.net/map/images/india/haryana/komal-aggarwal.png",
+        "course": "CIA"
+      },
+      {
+        "name": "Lovish Sardana",
+        "file": "lovish-sardana.jpg",
+        "url": "https://aia.in.net/map/images/india/haryana/lovish-sardana.jpg",
+        "course": "CFE"
+      },
+      {
+        "name": "Rajni Kumari",
+        "file": "rajni-kumari.jpg",
+        "url": "https://aia.in.net/map/images/india/haryana/rajni-kumari.jpg",
+        "course": "CFE"
+      },
+      {
+        "name": "Vishesh Kumar",
+        "file": "vishesh-kumar.jpg",
+        "url": "https://aia.in.net/map/images/india/haryana/vishesh-kumar.jpg",
+        "course": "CFE"
+      }
+    ],
+    "himachal-pradesh": [
+      {
+        "name": "Manish Kumar",
+        "file": "manish-kumar.png",
+        "url": "https://aia.in.net/map/images/india/himachal-pradesh/manish-kumar.png",
+        "course": "CAMS"
+      }
+    ],
+    "karnataka": [
+      {
+        "name": "Ankita Bihari",
+        "file": "ankita-bihari.png",
+        "url": "https://aia.in.net/map/images/india/karnataka/ankita-bihari.png",
+        "course": "CIA"
+      },
+      {
+        "name": "Divyank Rawat",
+        "file": "divyank-rawat.png",
+        "url": "https://aia.in.net/map/images/india/karnataka/divyank-rawat.png",
+        "course": "CIA"
+      },
+      {
+        "name": "Donald Pinto",
+        "file": "donald-pinto.png",
+        "url": "https://aia.in.net/map/images/india/karnataka/donald-pinto.png",
+        "course": "CIA"
+      },
+      {
+        "name": "Somya Gaur",
+        "file": "somya-gaur.png",
+        "url": "https://aia.in.net/map/images/india/karnataka/somya-gaur.png",
+        "course": "CIA"
+      },
+      {
+        "name": "Sourav Sharma",
+        "file": "sourav-sharma.png",
+        "url": "https://aia.in.net/map/images/india/karnataka/sourav-sharma.png",
+        "course": "CIA"
+      },
+      {
+        "name": "Suraj Ramesh",
+        "file": "suraj-ramesh.png",
+        "url": "https://aia.in.net/map/images/india/karnataka/suraj-ramesh.png",
+        "course": "CIA"
+      }
+    ],
+    "kerala": [
+      {
+        "name": "Anup P",
+        "file": "anup-p.jpg",
+        "url": "https://aia.in.net/map/images/india/kerala/anup-p.jpg",
+        "course": "CFE"
+      },
+      {
+        "name": "Joyal Sijo",
+        "file": "joyal-sijo.png",
+        "url": "https://aia.in.net/map/images/india/kerala/joyal-sijo.png",
+        "course": "CIA"
+      }
+    ],
+    "kolkata": [
+      {
+        "name": "Abhishek Agarwal",
+        "file": "abhishek-agarwal.jpg",
+        "url": "https://aia.in.net/map/images/india/kolkata/abhishek-agarwal.jpg",
+        "course": "CFE"
+      },
+      {
+        "name": "Chinmoy Dey",
+        "file": "chinmoy-dey.jpg",
+        "url": "https://aia.in.net/map/images/india/kolkata/chinmoy-dey.jpg",
+        "course": "CFE"
+      },
+      {
+        "name": "Rajit Chatterjee",
+        "file": "rajit-chatterjee.png",
+        "url": "https://aia.in.net/map/images/india/kolkata/rajit-chatterjee.png",
+        "course": "CIA"
+      },
+      {
+        "name": "Sajal Kumar",
+        "file": "sajal-kumar.png",
+        "url": "https://aia.in.net/map/images/india/kolkata/sajal-kumar.png",
+        "course": "CIA"
+      },
+      {
+        "name": "Urmimala Das",
+        "file": "urmimala-das.png",
+        "url": "https://aia.in.net/map/images/india/kolkata/urmimala-das.png",
+        "course": "CIA"
+      }
+    ],
+    "madhya-pradesh": [
+      {
+        "name": "Ashish Nigam",
+        "file": "ashish-nigam.jpg",
+        "url": "https://aia.in.net/map/images/india/madhya-pradesh/ashish-nigam.jpg",
+        "course": "CFE"
+      },
+      {
+        "name": "Palash Duble",
+        "file": "palash-duble.jpg",
+        "url": "https://aia.in.net/map/images/india/madhya-pradesh/palash-duble.jpg",
+        "course": "CFE"
+      }
+    ],
+    "maharastra": [
+      {
+        "name": "Aradhana Upadhyay",
+        "file": "aradhana-upadhyay.png",
+        "url": "https://aia.in.net/map/images/india/maharastra/aradhana-upadhyay.png",
+        "course": "CIA"
+      },
+      {
+        "name": "Christy Abraham",
+        "file": "christy-abraham.png",
+        "url": "https://aia.in.net/map/images/india/maharastra/christy-abraham.png",
+        "course": "CIA"
+      },
+      {
+        "name": "Mayank Jain",
+        "file": "mayank-jain.png",
+        "url": "https://aia.in.net/map/images/india/maharastra/mayank-jain.png",
+        "course": "CIA"
+      },
+      {
+        "name": "Musham Panchakshar",
+        "file": "musham-panchakshar.png",
+        "url": "https://aia.in.net/map/images/india/maharastra/musham-panchakshar.png",
+        "course": "CIA"
+      },
+      {
+        "name": "Ranjan Kumar",
+        "file": "ranjan-kumar.png",
+        "url": "https://aia.in.net/map/images/india/maharastra/ranjan-kumar.png",
+        "course": "CIA"
+      },
+      {
+        "name": "Rohit Chawla",
+        "file": "rohit-chawla.png",
+        "url": "https://aia.in.net/map/images/india/maharastra/rohit-chawla.png",
+        "course": "CIA"
+      }
+    ],
+    "punjab": [
+      {
+        "name": "Gautam Behl",
+        "file": "gautam-behl.jpg",
+        "url": "https://aia.in.net/map/images/india/punjab/gautam-behl.jpg",
+        "course": "CFE"
+      }
+    ],
+    "rajasthan": [
+      {
+        "name": "Gunjan Agnani",
+        "file": "gunjan-agnani.jpg",
+        "url": "https://aia.in.net/map/images/india/rajasthan/gunjan-agnani.jpg",
+        "course": "CFE"
+      },
+      {
+        "name": "Taha Hita",
+        "file": "taha-hita.png",
+        "url": "https://aia.in.net/map/images/india/rajasthan/taha-hita.png",
+        "course": "CIA"
+      }
+    ],
+    "tamil-nadu": [
+      {
+        "name": "Ashika Jamal",
+        "file": "ashika-jamal.jpg",
+        "url": "https://aia.in.net/map/images/india/tamil-nadu/ashika-jamal.jpg",
+        "course": "CFE"
+      },
+      {
+        "name": "Kalpana Subramanian",
+        "file": "kalpana-subramanian.jpg",
+        "url": "https://aia.in.net/map/images/india/tamil-nadu/kalpana-subramanian.jpg",
+        "course": "CFE"
+      },
+      {
+        "name": "Piruthiviraj P",
+        "file": "piruthiviraj-p.jpg",
+        "url": "https://aia.in.net/map/images/india/tamil-nadu/piruthiviraj-p.jpg",
+        "course": "CFE"
+      },
+      {
+        "name": "Sarathkumar Rajendran",
+        "file": "sarathkumar-rajendran.png",
+        "url": "https://aia.in.net/map/images/india/tamil-nadu/sarathkumar-rajendran.png",
+        "course": "CIA"
+      },
+      {
+        "name": "Sateesh Kumar",
+        "file": "sateesh-kumar.png",
+        "url": "https://aia.in.net/map/images/india/tamil-nadu/sateesh-kumar.png",
+        "course": "CIA"
+      },
+      {
+        "name": "Srinath Padmanabhan",
+        "file": "srinath-padmanabhan.jpg",
+        "url": "https://aia.in.net/map/images/india/tamil-nadu/srinath-padmanabhan.jpg",
+        "course": "CFE"
+      }
+    ],
+    "uttar-pradesh": [
+      {
+        "name": "Ca Dheeraj Verma",
+        "file": "ca-dheeraj-verma.jpg",
+        "url": "https://aia.in.net/map/images/india/uttar-pradesh/ca-dheeraj-verma.jpg",
+        "course": ""
+      },
+      {
+        "name": "Disha Srivastava",
+        "file": "disha-srivastava.png",
+        "url": "https://aia.in.net/map/images/india/uttar-pradesh/disha-srivastava.png",
+        "course": "CAMS"
+      },
+      {
+        "name": "Pushkar Joshi",
+        "file": "pushkar-joshi.jpg",
+        "url": "https://aia.in.net/map/images/india/uttar-pradesh/pushkar-joshi.jpg",
+        "course": "CFE"
+      }
+    ]
+  }
+}
