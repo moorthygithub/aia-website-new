@@ -18,6 +18,8 @@ import Text_03 from "@/components/irisui/text-03";
 import Text_02 from "@/components/irisui/text-02";
 import Text_06 from "@/components/irisui/text-06";
 import Text_05 from "@/components/irisui/text-05";
+import CustomerJourney from "../customer-journey/CustomerJourney";
+import ChainLoop from "../chain-loop/ChainLoop";
 
 const Login = () => {
 
@@ -88,6 +90,12 @@ const texts = [
       </section>
       <section>
         <Testimonial />
+      </section>
+      <section>
+        <CustomerJourney />
+      </section>
+      <section>
+        <ChainLoop />
       </section>
     </div>
   );
