@@ -19,6 +19,8 @@ import ChainLoop from "../chain-loop/ChainLoop";
 import Navabar from "@/components/navbar/Navabar";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import SplitButtonDemo from "@/components/SplitButton/SplitButtonDemo";
+import Banner from "@/components/Banner/Banner";
 
 const Login = () => {
   const texts = [
@@ -35,12 +37,13 @@ const Login = () => {
   const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-gradient-to-b from-background via-secondary/20 to-background">
-      {/* Hero Slider */}
       <section className="mb-16">
         <Button onClick={() => navigate("/navbar")}>Header Section</Button>{" "}
       </section>
       <section className="mb-16">
+        <SplitButtonDemo />
         <HeroSlider />
+        <Banner />
       </section>
       <section className="mb-16">
         <HeroSection />
