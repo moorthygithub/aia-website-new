@@ -1,3 +1,24 @@
+// Create wrapped marker positions for all markers
+const createWrappedMarkers = (
+  baseCoords,
+  icon,
+  popupHtml,
+  minWidth,
+  maxWidth
+) => {
+  const marker = L.marker(baseCoords, { icon });
+  marker.bindPopup(popupHtml, { minWidth, maxWidth });
+  marker.originalLng = baseCoords[1];
+
+  marker.on("mouseover", function () {
+    this.openPopup();
+  });
+  marker.on("mouseout", function () {
+    this.closePopup();
+  });
+
+  return marker;
+};
 import { useEffect } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -17,6 +38,7 @@ export default function MapComponent() {
     if (container && container._leaflet_id) {
       container._leaflet_id = null;
     }
+    // Custom pin icon
 
     const makePin = () => {
       const svg = `
@@ -40,18 +62,45 @@ export default function MapComponent() {
       center: [20, 0],
       zoom: 2,
       zoomSnap: 0.25,
-      maxBoundsViscosity: 0.5,
+      maxBoundsViscosity: 0.85,
       worldCopyJump: false,
       minZoom: 2,
       maxZoom: 18,
     });
 
-    const verticalBounds = L.latLngBounds(
-      L.latLng(-70, -Infinity),
-      L.latLng(85, Infinity)
+    // Lock vertical panning - allow only horizontal movement
+    const maxVerticalBounds = L.latLngBounds(
+      L.latLng(-50, -Infinity), // South, West
+      L.latLng(50, Infinity) // North, East
     );
-    map.setMaxBounds(verticalBounds);
+    map.setMaxBounds(maxVerticalBounds);
 
+    // Don't auto-pan - let user stay where they are
+
+    // Update marker positions for infinite wrapping
+    map.on("move", function () {
+      const mapCenterLng = map.getCenter().lng;
+
+      cluster.getLayers().forEach((marker) => {
+        const originalLng = marker.originalLng;
+        let newLng = originalLng;
+
+        // Adjust longitude to be closest to map center
+        while (newLng - mapCenterLng > 180) {
+          newLng -= 360;
+        }
+        while (newLng - mapCenterLng < -180) {
+          newLng += 360;
+        }
+
+        const currentLng = marker.getLatLng().lng;
+        if (Math.abs(newLng - currentLng) > 0.01) {
+          marker.setLatLng([marker.getLatLng().lat, newLng]);
+        }
+      });
+    });
+
+    // Add tile layer with wrapping enabled
     L.tileLayer(
       "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
       {
@@ -59,11 +108,12 @@ export default function MapComponent() {
         subdomains: "abcd",
         minZoom: 2,
         maxZoom: 20,
-        noWrap: false,
+        noWrap: false, // Enable wrapping
         continuousWorld: true,
       }
     ).addTo(map);
 
+    // Marker cluster
     const cluster = L.markerClusterGroup({
       showCoverageOnHover: false,
       spiderfyOnMaxZoom: true,
@@ -77,73 +127,36 @@ export default function MapComponent() {
       },
     });
 
-    const markerOriginalLngs = new Map();
-    let lastUpdateLng = null;
-
-    map.on("move", function () {
-      const mapCenterLng = map.getCenter().lng;
-
-      if (
-        lastUpdateLng === null ||
-        Math.abs(mapCenterLng - lastUpdateLng) > 90
-      ) {
-        cluster.getLayers().forEach((marker) => {
-          const originalLng = markerOriginalLngs.get(marker);
-          if (originalLng !== undefined) {
-            let newLng = originalLng;
-
-            while (newLng - mapCenterLng > 180) {
-              newLng -= 360;
-            }
-            while (newLng - mapCenterLng < -180) {
-              newLng += 360;
-            }
-
-            const latLng = marker.getLatLng();
-            if (Math.abs(newLng - latLng.lng) > 1) {
-              marker.setLatLng([latLng.lat, newLng]);
-            }
-          }
-        });
-        lastUpdateLng = mapCenterLng;
-      }
-    });
-
     function galleryHTML(regionTitle, images) {
       let columns = 1;
       if (images.length === 2) columns = 2;
-      else if (images.length >= 3) columns = 3;
-
+      else if (images.length == 3) columns = 3;
+      else if (images.length > 3) columns = 3;
       const cards = images
         .map(
           (img) => `
-        <div class="card">
-          <img
-            class="thumb"
-            src="${img.url}"
-            alt="${img.name || regionTitle}"
-            loading="lazy"
-          >
-
-          ${
-            img.course
-              ? `<div class="course-name">${img.course}</div>`
-              : `<div class="course-name not-provided">Not Provided</div>`
-          }
-
-          <div class="caption">${img.name || "&nbsp;"}</div>
-        </div>
-      `
+    <div class="card">
+      <img class="thumb" src="${img.url}" alt="${
+            img.name || regionTitle
+          }" loading="lazy">
+      ${img.course ? `<div class="course-name">${img.course}</div>` : ""}
+      <div class="caption">${img.name || "&nbsp;"}</div>
+    </div>
+  `
         )
         .join("");
 
       return `
-    <div class="popup">
-      <h4>${regionTitle}</h4>
-      <div class="gallery cols-${columns}">
-        ${cards}
-      </div>
+  <div class="popup">
+    <h4>${regionTitle}</h4>
+    <div class="gallery" style="
+      display: grid;
+      grid-template-columns: repeat(${columns}, 1fr);
+      gap: 10px;
+    ">
+      ${cards}
     </div>
+  </div>
   `;
     }
 
@@ -181,21 +194,13 @@ export default function MapComponent() {
         maxWidth = 360;
       }
 
-      const marker = L.marker(coords, { icon: brandPin });
-      markerOriginalLngs.set(marker, coords[1]);
-
-      marker.bindPopup(popupHtml, {
+      const marker = createWrappedMarkers(
+        coords,
+        brandPin,
+        popupHtml,
         minWidth,
-        maxWidth,
-      });
-
-      marker.on("mouseover", function () {
-        this.openPopup();
-      });
-      marker.on("mouseout", function () {
-        this.closePopup();
-      });
-
+        maxWidth
+      );
       cluster.addLayer(marker);
     }
 
@@ -219,25 +224,17 @@ export default function MapComponent() {
         maxWidth = 360;
       }
 
-      const m = L.marker(coords, { icon: brandPin });
-      markerOriginalLngs.set(m, coords[1]);
-
-      m.bindPopup(popupHtml, {
+      const marker = createWrappedMarkers(
+        coords,
+        brandPin,
+        popupHtml,
         minWidth,
-        maxWidth,
-      });
-
-      m.on("mouseover", function () {
+        maxWidth
+      );
+      marker.on("click", function () {
         this.openPopup();
       });
-      m.on("mouseout", function () {
-        this.closePopup();
-      });
-      m.on("click", function () {
-        this.openPopup();
-      });
-
-      cluster.addLayer(m);
+      cluster.addLayer(marker);
     }
 
     // Load manifest and initialize
@@ -259,7 +256,8 @@ export default function MapComponent() {
         if (cluster.getLayers().length) {
           const bounds = cluster.getBounds();
           if (bounds.isValid()) {
-            map.fitBounds(bounds.pad(0.25), { maxZoom: 4 });
+            map.fitBounds(bounds.pad(0.25));
+            // Allow infinite wrapping - don't restrict bounds
           }
         }
       } catch (err) {
@@ -269,10 +267,15 @@ export default function MapComponent() {
 
     init();
 
+    // Cleanup on unmount
     return () => {
       map.remove();
     };
   }, []);
 
-  return <div id="map" style={{ height: "100vh", width: "100%" }} />;
+  return (
+    <>
+      <div id="map" style={{ height: "100vh", width: "100%" }} />
+    </>
+  );
 }

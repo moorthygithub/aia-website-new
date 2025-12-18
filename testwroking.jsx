@@ -8,7 +8,7 @@ import React from "react";
 import { titleFromSlug } from "@/utils/titleFromSlug";
 import COUNTRY_COORDS from "@/data/countryCoords";
 import INDIA_STATE_COORDS from "@/data/stateCoords";
-import "./map.module.css";
+import "./map.css";
 const MAX_PHOTOS = 6;
 
 export default function MapComponent() {
@@ -17,7 +17,6 @@ export default function MapComponent() {
     if (container && container._leaflet_id) {
       container._leaflet_id = null;
     }
-    // Custom pin icon
 
     const makePin = () => {
       const svg = `
@@ -41,13 +40,18 @@ export default function MapComponent() {
       center: [20, 0],
       zoom: 2,
       zoomSnap: 0.25,
-      maxBoundsViscosity: 0.5, // Changed from 1.0 to allow dragging when zoomed
-      worldCopyJump: true, // Changed to true to handle world wrapping properly
-      minZoom: 2, // Prevent zooming out too far
+      maxBoundsViscosity: 0.5,
+      worldCopyJump: false,
+      minZoom: 2,
       maxZoom: 18,
     });
 
-    // Add tile layer with noWrap to prevent duplicates
+    const verticalBounds = L.latLngBounds(
+      L.latLng(-70, -Infinity),
+      L.latLng(85, Infinity)
+    );
+    map.setMaxBounds(verticalBounds);
+
     L.tileLayer(
       "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
       {
@@ -55,15 +59,11 @@ export default function MapComponent() {
         subdomains: "abcd",
         minZoom: 2,
         maxZoom: 20,
-        noWrap: true, // Prevents duplicate tiles
-        bounds: [
-          [-90, -180],
-          [90, 180],
-        ], // Restrict to valid world coordinates
+        noWrap: false,
+        continuousWorld: true,
       }
     ).addTo(map);
 
-    // Marker cluster
     const cluster = L.markerClusterGroup({
       showCoverageOnHover: false,
       spiderfyOnMaxZoom: true,
@@ -77,23 +77,63 @@ export default function MapComponent() {
       },
     });
 
+    const markerOriginalLngs = new Map();
+    let lastUpdateLng = null;
+
+    map.on("move", function () {
+      const mapCenterLng = map.getCenter().lng;
+
+      if (
+        lastUpdateLng === null ||
+        Math.abs(mapCenterLng - lastUpdateLng) > 90
+      ) {
+        cluster.getLayers().forEach((marker) => {
+          const originalLng = markerOriginalLngs.get(marker);
+          if (originalLng !== undefined) {
+            let newLng = originalLng;
+
+            while (newLng - mapCenterLng > 180) {
+              newLng -= 360;
+            }
+            while (newLng - mapCenterLng < -180) {
+              newLng += 360;
+            }
+
+            const latLng = marker.getLatLng();
+            if (Math.abs(newLng - latLng.lng) > 1) {
+              marker.setLatLng([latLng.lat, newLng]);
+            }
+          }
+        });
+        lastUpdateLng = mapCenterLng;
+      }
+    });
+
     function galleryHTML(regionTitle, images) {
-      console.log(images, "images");
       let columns = 1;
       if (images.length === 2) columns = 2;
       else if (images.length == 3) columns = 3;
       else if (images.length > 3) columns = 3;
-
       const cards = images
         .map(
           (img) => `
-    <div class="card">
-      <img class="thumb" src="${img.url}" alt="${
-            img.name || regionTitle
-          }" loading="lazy">
-      ${img.course ? `<div class="course-name">${img.course}</div>` : ""}
-      <div class="caption">${img.name || "&nbsp;"}</div>
-    </div>
+<div class="card">
+  <img
+    class="thumb"
+    src="${img.url}"
+    alt="${img.name || regionTitle}"
+    loading="lazy"
+  >
+
+  ${
+    img.course
+      ? `<div class="course-name">${img.course}</div>`
+      : `<div class="course-name not-provided">Not Provided</div>`
+  }
+
+  <div class="caption">${img.name || "&nbsp;"}</div>
+</div>
+
   `
         )
         .join("");
@@ -147,6 +187,7 @@ export default function MapComponent() {
       }
 
       const marker = L.marker(coords, { icon: brandPin });
+      markerOriginalLngs.set(marker, coords[1]);
 
       marker.bindPopup(popupHtml, {
         minWidth,
@@ -184,6 +225,7 @@ export default function MapComponent() {
       }
 
       const m = L.marker(coords, { icon: brandPin });
+      markerOriginalLngs.set(m, coords[1]);
 
       m.bindPopup(popupHtml, {
         minWidth,
@@ -222,12 +264,7 @@ export default function MapComponent() {
         if (cluster.getLayers().length) {
           const bounds = cluster.getBounds();
           if (bounds.isValid()) {
-            // Fit map to cluster bounds
-            map.fitBounds(bounds.pad(0.25));
-
-            // Set max bounds with reasonable padding to allow some dragging
-            const restrictedBounds = bounds.pad(0.8);
-            map.setMaxBounds(restrictedBounds);
+            map.fitBounds(bounds.pad(0.25), { maxZoom: 4 });
           }
         }
       } catch (err) {
@@ -237,7 +274,6 @@ export default function MapComponent() {
 
     init();
 
-    // Cleanup on unmount
     return () => {
       map.remove();
     };
