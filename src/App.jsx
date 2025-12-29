@@ -1,65 +1,46 @@
-import { useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import Layout from "./layout/Navbar";
 
-import SessionTimeoutTracker from "./components/session-timeout-tracker/session-timeout-tracker";
+// import About from "./component/About";
+// import Blogs from "./component/Blogs";
+import AboutPage from "./pages/About/About";
+import CAMS from "./pages/Courses/CAMS";
+import CFECurriculam from "./pages/Courses/CFECurriculam";
+import CIAChallenge from "./pages/Courses/CIAChallenge";
+import CIACurriculam from "./pages/Courses/CIACurriculam";
+import FreeResources from "./pages/FreeResources/CFEFreeResources";
+import Home from "./pages/Home/Home";
+import Blog from "./pages/Blog/Blog";
+import OurPassout from "./pages/OurPassout/OurPassout";
 
-import Cookies from "js-cookie";
-import { Toaster } from "sonner";
-import ScrollToTop from "./components/common/scroll-to-top";
-import AppRoutes from "./routes/app-routes";
-import Popup from "./components/Popup";
-import { Button } from "./components/ui/button";
+import Enrool from "./pages/Enrool/Enrool";
+import Contact from "./pages/contact/contact";
+import BlogDetails from "./pages/Blog/blog-details";
 
-function App() {
-  const navigate = useNavigate();
-  const time = Cookies.get("token-expire-time");
-  const handleLogout = () => {
-    [
-      "token",
-      "id",
-      "name",
-      "username",
-      "chapter_id",
-      "viewer_chapter_ids",
-      "user_type_id",
-      "token-expire-time",
-      "ver_con",
-      "email",
-      "currentYear",
-      "favorite_chapters",
-      "recent_chapters",
-    ].forEach((cookie) => {
-      Cookies.remove(cookie);
-    });
-    navigate("/");
-  };
+export default function App() {
   return (
-    <>
-      <div className="fixed bottom-20 right-6 z-[10000] space-x-6">
-        <Button
-          onClick={() => navigate("/map")}
-          className=" bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg shadow-lg text-base"
-        >
-          Map
-        </Button>
-        <Button
-          onClick={() => navigate("/mapone")}
-          className=" bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg shadow-lg text-base"
-        >
-          Map One{" "}
-        </Button>
-        <Button
-          onClick={() => navigate("/maponenew")}
-          className=" bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg shadow-lg text-base"
-        >
-          Map New{" "}
-        </Button>
-      </div>
-      <Toaster richColors position="top-right" />
-      <ScrollToTop />
-      <AppRoutes />
-      <Popup />
-    </>
+    <div className="font-sans text-gray-800 min-h-screen flex flex-col">
+      <Layout>
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about-us" element={<AboutPage />} />
+            <Route path="/cfe-curriculum" element={<CFECurriculam />} />
+            <Route path="/cia-curriculum" element={<CIACurriculam />} />
+            <Route
+              path="/cia-challenge-curriculum"
+              element={<CIAChallenge />}
+            />
+            <Route path="/cams" element={<CAMS />} />
+            <Route path="/cfe-free-resources" element={<FreeResources />} />
+            <Route path="/blogs" element={<Blog />} />
+            <Route path="/blogs/:id" element={<BlogDetails />} />
+            <Route path="/passed-out" element={<OurPassout />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/enroll-now" element={<Enrool />} />
+          </Routes>
+        </main>
+      </Layout>
+    </div>
   );
 }
-
-export default App;
