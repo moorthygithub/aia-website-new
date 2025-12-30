@@ -13,6 +13,10 @@ const BlogDetails = () => {
   const [loading, setLoading] = useState(true);
   const [activeSection, setActiveSection] = useState(0);
   const sectionRefs = useRef([]);
+  const [students, setStudents] = useState([]);
+const [studentImageBaseUrl, setStudentImageBaseUrl] = useState('');
+const [currentStudentIndex, setCurrentStudentIndex] = useState(0);
+
 
   useEffect(() => {
     if (id) {
@@ -48,7 +52,7 @@ const BlogDetails = () => {
       const blogData = response.data.data;
       setBlog(blogData);
       setRelatedBlogs(response.data.related_blogs || []);
-      
+      setStudents(response.data.student || []);
      
       const blogImageConfig = response.data.image_url?.find(
         item => item.image_for === "Blog"
@@ -56,7 +60,12 @@ const BlogDetails = () => {
       if (blogImageConfig) {
         setImageBaseUrl(blogImageConfig.image_url);
       }
-      
+      const studentImageConfig = response.data.image_url?.find(
+        item => item.image_for === "Student"
+      );
+      if (studentImageConfig) {
+        setStudentImageBaseUrl(studentImageConfig.image_url);
+      }
       setLoading(false);
     } catch (error) {
       console.error("Error fetching blog details:", error);
@@ -71,7 +80,30 @@ const BlogDetails = () => {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
-
+  useEffect(() => {
+    if (students.length > 1) {
+      const interval = setInterval(() => {
+        setCurrentStudentIndex((prevIndex) => 
+          prevIndex === students.length - 1 ? 0 : prevIndex + 1
+        );
+      }, 3000); // Change every 3 seconds
+  
+      return () => clearInterval(interval);
+    }
+  }, [students]);
+  
+  // Add this function to manually change student
+  const nextStudent = () => {
+    setCurrentStudentIndex((prevIndex) => 
+      prevIndex === students.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+  
+  const prevStudent = () => {
+    setCurrentStudentIndex((prevIndex) => 
+      prevIndex === 0 ? students.length - 1 : prevIndex - 1
+    );
+  };
   const formatDate = (dateString) => {
     if (!dateString) return '';
     const date = new Date(dateString);
@@ -220,7 +252,7 @@ const BlogDetails = () => {
               <div className="sticky top-8">
                 <nav className="bg-gray-50 rounded-md p-4 border border-gray-200">
                   <h3 className="font-semibold text-gray-800 mb-3 pb-2 border-b">Table of Contents</h3>
-                  <ul className="space-y-2 h-80 overflow-y-auto overflow-hidden">
+                  <ul className="space-y-2 ">
                     {blog.web_blog_subs.map((sub, index) => (
                       <li key={sub.id}>
                         <button
@@ -237,7 +269,94 @@ const BlogDetails = () => {
                     ))}
                   </ul>
                 </nav>
+
+                {students.length > 0 && (
+  <div className="mt-6 bg-gray-50 rounded-lg p-2 border border-gray-200">
+    <h3 className="font-semibold text-gray-800 mb-2"> Recently Passed Out Students</h3>
+    
+    <div className="relative group">
+      <div className="overflow-hidden rounded-xl ">
+        <div 
+          className="flex transition-transform duration-700 ease-out"
+          style={{ transform: `translateX(-${currentStudentIndex * 100}%)` }}
+        >
+          {students.map((student, index) => (
+            <div 
+              key={index}
+              className="min-w-full"
+            >
+              <div className="relative h-auto overflow-hidden rounded-xl">
+            
+                <img
+                  src={`${studentImageBaseUrl}${student.student_image}`}
+                  alt={student.student_image_alt || student.student_name}
+                  className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                  onError={(e) => {
+                    e.target.src = "https://aia.in.net/webapi/public/assets/images/no_image.jpg";
+                  }}
+                />
+                
+         
+                <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/30 to-transparent"></div>
+                
+              
+                <div className="absolute bottom-0 left-0 right-0 p-5 transition-opacity duration-300 group-hover:opacity-0">
+                  <div className="flex flex-col items-center text-center">
+               
+                    <h4 className="font-semibold text-white text-xl mb-2">
+                      {student.student_name}
+                    </h4>
+                    
+              
+                    {student.student_course && (
+                      <span className={`inline-block ${getCourseColor(student.student_course)} text-sm font-medium px-4 py-1.5 rounded-md border-0`}>
+                        {student.student_course}
+                      </span>
+                    )}
+                  </div>
+                </div>
               </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    
+      {students.length > 1 && (
+        <div className="absolute bottom-0 left-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div className="flex items-center justify-between">
+            <button
+              onClick={prevStudent}
+              className="bg-black/60 hover:bg-black/80 backdrop-blur-sm rounded-full w-8 h-8 flex items-center justify-center transition-all hover:scale-110"
+              aria-label="Previous student"
+            >
+              <ArrowLeft className="w-4 h-4 text-white" />
+            </button>
+            
+            {/* <div className="bg-black/60 backdrop-blur-sm rounded-full px-3 py-1.5">
+              <div className="text-xs text-white font-medium">
+                <span className="text-sm">{currentStudentIndex + 1}</span>
+                <span className="mx-1.5 text-white/60">/</span>
+                <span className="text-white/80">{students.length}</span>
+              </div>
+            </div> */}
+            
+            <button
+              onClick={nextStudent}
+              className="bg-black/60 hover:bg-black/80 backdrop-blur-sm rounded-full w-8 h-8 flex items-center justify-center transition-all hover:scale-110"
+              aria-label="Next student"
+            >
+              <ArrowLeft className="w-4 h-4 text-white rotate-180" />
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  </div>
+)}
+              </div>
+
+             
             </aside>
           )}
 
@@ -335,3 +454,5 @@ const BlogDetails = () => {
 };
 
 export default BlogDetails;
+
+

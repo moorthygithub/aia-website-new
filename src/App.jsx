@@ -3,7 +3,7 @@ import Layout from "./layout/Navbar";
 
 // import About from "./component/About";
 // import Blogs from "./component/Blogs";
-import AboutPage from "./pages/About/About";
+
 import CAMS from "./pages/Courses/CAMS";
 import CFECurriculam from "./pages/Courses/CFECurriculam";
 import CIAChallenge from "./pages/Courses/CIAChallenge";
@@ -16,6 +16,7 @@ import OurPassout from "./pages/OurPassout/OurPassout";
 import Enrool from "./pages/Enrool/Enrool";
 import Contact from "./pages/contact/contact";
 import BlogDetails from "./pages/Blog/blog-details";
+import AboutPage from "./pages/About/About";
 
 export default function App() {
   return (
