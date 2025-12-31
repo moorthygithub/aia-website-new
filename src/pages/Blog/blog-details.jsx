@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Calendar, Clock, ArrowLeft, Image as ImageIcon } from 'lucide-react';
+import { Helmet } from "react-helmet-async";
 
 const BlogDetails = () => {
   const { id } = useParams();
@@ -86,13 +87,12 @@ const [currentStudentIndex, setCurrentStudentIndex] = useState(0);
         setCurrentStudentIndex((prevIndex) => 
           prevIndex === students.length - 1 ? 0 : prevIndex + 1
         );
-      }, 3000); // Change every 3 seconds
+      }, 3000); 
   
       return () => clearInterval(interval);
     }
   }, [students]);
-  
-  // Add this function to manually change student
+ 
   const nextStudent = () => {
     setCurrentStudentIndex((prevIndex) => 
       prevIndex === students.length - 1 ? 0 : prevIndex + 1
@@ -169,6 +169,57 @@ const [currentStudentIndex, setCurrentStudentIndex] = useState(0);
   }
 
   return (
+    <>
+    <Helmet>
+
+  <title>{blog.blog_meta_title}</title>
+
+  <meta
+    name="description"
+    content={blog.blog_meta_description}
+  />
+
+  {blog.blog_meta_keywords && (
+    <meta name="keywords" content={blog.blog_meta_keywords} />
+  )}
+
+  <link
+    rel="canonical"
+    href={`https://aia.in.net/blogs/${blog.blog_slug}`}
+  />
+
+ 
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `https://aia.in.net/blogs/${blog.blog_slug}`
+      },
+      "headline": blog.blog_heading,
+      "description": blog.blog_short_description,
+      "image": blog.blog_images
+        ? `${imageBaseUrl}${blog.blog_images}`
+        : "https://aia.in.net/webapi/public/assets/images/no_image.jpg",
+      "author": {
+        "@type": "Organization",
+        "name": "AIA"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Academy of Internal Audit",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://aia.in.net/crm/public/assets/images/logo/new_logo.webp"
+        }
+      },
+      "datePublished": blog.created_at,
+      "dateModified": blog.updated_at
+    })}
+  </script>
+</Helmet>
+
     <div className="min-h-screen bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
      
@@ -450,6 +501,7 @@ const [currentStudentIndex, setCurrentStudentIndex] = useState(0);
         </div>
       </div>
     </div>
+   </>
   );
 };
 

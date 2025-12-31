@@ -9,6 +9,7 @@ import {
     FaWhatsapp,
     FaYoutube,
 } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const AIANavbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -127,9 +128,9 @@ const AIANavbar = () => {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full sticky top-0 z-50">
  
-      {/* <div className="flex justify-center md:justify-between bg-[hsl(var(--dark))]">
+      <div className="flex justify-center md:justify-between bg-[hsl(var(--dark))]">
         <div className="hidden md:block  text-white py-2.5">
           <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
             <div className="flex items-center gap-6 text-sm">
@@ -189,7 +190,7 @@ const AIANavbar = () => {
             })}
           </div>
         </div>
-      </div> */}
+      </div>
       <nav className="bg-white shadow-md sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 py-3">
           <div className="flex justify-between items-center">
@@ -211,8 +212,8 @@ const AIANavbar = () => {
                   onMouseEnter={() => item.submenu && setActiveDropdown(index)}
                   onMouseLeave={() => item.submenu && setActiveDropdown(null)}
                 >
-                  <a
-                    href={item.link}
+                  <Link
+                    to={item.link}
                     className="
     flex items-center gap-1
     text-gray-800 font-medium
@@ -223,7 +224,7 @@ const AIANavbar = () => {
                   >
                     {item.title}
                     {item.submenu && <ChevronDown size={14} />}
-                  </a>
+                  </Link>
 
                   {item.submenu && (
                     <ul
@@ -235,8 +236,8 @@ const AIANavbar = () => {
                     >
                       {item.submenu.map((subItem, subIndex) => (
                         <li key={subIndex}>
-                          <a
-                            href={subItem.link}
+                          <Link
+                            to={subItem.link}
                             className="
     relative inline-block
      py-2.5
@@ -264,7 +265,7 @@ const AIANavbar = () => {
   "
                           >
                             {subItem.name}
-                          </a>
+                          </Link>
                         </li>
                       ))}
                     </ul>
@@ -343,8 +344,8 @@ const AIANavbar = () => {
                           <ul className="hover-bg-[#0067DA] rounded-md mb-4   ">
                             {item.submenu.map((subItem, subIndex) => (
                               <li key={subIndex}>
-                                <a
-                                  href={subItem.link}
+                                <Link
+                                  to={subItem.link}
                                   className="
     relative inline-block
  px-4 py-2.5
@@ -371,7 +372,7 @@ const AIANavbar = () => {
   "
                                 >
                                   {subItem.name}
-                                </a>
+                                </Link>
                               </li>
                             ))}
                           </ul>

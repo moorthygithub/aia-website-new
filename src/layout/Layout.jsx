@@ -6,16 +6,15 @@ import Footer from "../component/Footer";
 const Layout = ({ children }) => {
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Top Bar */}
-      <TopHeader />
+   
 
-      {/* Main Header / Navbar */}
+
       <AIANavbar />
 
-      {/* Page Content */}
-      <main className="flex-grow">{children}</main>
+    
+      <main className="grow">{children}</main>
 
-      {/* Footer */}
+    
       <Footer />
     </div>
   );
