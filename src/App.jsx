@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import Layout from "./layout/Navbar";
+import Layout from "./layout/Layout";
 
 // import About from "./component/About";
 // import Blogs from "./component/Blogs";
@@ -18,11 +18,13 @@ import Contact from "./pages/contact/contact";
 import BlogDetails from "./pages/Blog/blog-details";
 import AboutPage from "./pages/About/About";
 
+
 export default function App() {
   return (
     <div className="font-sans text-gray-800 min-h-screen flex flex-col">
+  
       <Layout>
-        <main className="flex-grow">
+        <main className="grow">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about-us" element={<AboutPage />} />

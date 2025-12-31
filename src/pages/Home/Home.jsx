@@ -1,27 +1,38 @@
 import About from "../../component/About";
-import Blogs from "../../component/RecentBlogs";
-import Courses from "../../component/Courses";
-import CTA from "../../component/CTA";
-import GlobalStandards from "../../component/GlobalStandards";
+
 import Hero from "../../component/Hero";
-import RecentBlogs from "../../component/RecentBlogs";
-import StandbyResult from "../../component/StandByResults";
-import Testimonials from "../../component/Testimonials";
-import WhyChoose from "../../component/WhyChoose";
-import Youtube from "../../component/Youtube";
+
+import HomeAccredited from "@/component/home/home-accredited";
+import HomeContact from "@/component/home/home-contact";
+
+import HomeCorporatePartner from "@/component/home/home-corporate-partner";
+import HomePassout from "@/component/home/home-passout";
+
+import HomeReview from "@/component/home/home-review";
+import HomeAlumniWork from "@/component/home/home-alumini-work";
+
 
 export default function Home() {
   return (
     <div className="font-sans text-gray-800">
       <Hero />
-      <Courses />
-      <WhyChoose />
       <About />
+      <HomeContact/>
+      <HomeAccredited/>
+      <HomeCorporatePartner/>
+      <HomePassout/>
+      <HomeReview/>
+      <HomeAlumniWork/>
+
+
+      {/* <Courses />
+      <WhyChoose />
+ 
       <GlobalStandards />
       <StandbyResult />
       <Youtube />
 
-      <Blogs />
+      <Blogs /> */}
     </div>
   );
 }
