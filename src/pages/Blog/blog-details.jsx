@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Calendar, Clock, ArrowLeft, Image as ImageIcon } from 'lucide-react';
-import { Helmet } from "react-helmet-async";
+
 
 const BlogDetails = () => {
   const { id } = useParams();
@@ -24,7 +24,101 @@ const [currentStudentIndex, setCurrentStudentIndex] = useState(0);
       fetchBlogDetails();
     }
   }, [ id]);
+ useEffect(() => {
+    if (!blog) return;
 
+    // Update document title
+    document.title = blog.blog_meta_title || blog.blog_heading;
+
+    // Update meta description
+    let metaDescription = document.querySelector('meta[name="description"]');
+    if (!metaDescription) {
+      metaDescription = document.createElement('meta');
+      metaDescription.name = 'description';
+      document.head.appendChild(metaDescription);
+    }
+    metaDescription.content = blog.blog_meta_description || blog.blog_short_description;
+
+    // Update meta keywords if they exist
+    if (blog.blog_meta_keywords) {
+      let metaKeywords = document.querySelector('meta[name="keywords"]');
+      if (!metaKeywords) {
+        metaKeywords = document.createElement('meta');
+        metaKeywords.name = 'keywords';
+        document.head.appendChild(metaKeywords);
+      }
+      metaKeywords.content = blog.blog_meta_keywords;
+    }
+
+    // Add canonical link
+    let canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (!canonicalLink) {
+      canonicalLink = document.createElement('link');
+      canonicalLink.rel = 'canonical';
+      document.head.appendChild(canonicalLink);
+    }
+    canonicalLink.href = `https://aia.in.net/blogs/${blog.blog_slug}`;
+
+    // Add structured data
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `https://aia.in.net/blogs/${blog.blog_slug}`
+      },
+      "headline": blog.blog_heading,
+      "description": blog.blog_short_description,
+      "image": blog.blog_images
+        ? `${imageBaseUrl}${blog.blog_images}`
+        : "https://aia.in.net/webapi/public/assets/images/no_image.jpg",
+      "author": {
+        "@type": "Organization",
+        "name": "AIA"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Academy of Internal Audit",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://aia.in.net/crm/public/assets/images/logo/new_logo.webp"
+        }
+      },
+      "datePublished": blog.created_at,
+      "dateModified": blog.updated_at
+    };
+
+    // Remove existing structured data
+    const existingScript = document.querySelector('script[type="application/ld+json"]');
+    if (existingScript) {
+      existingScript.remove();
+    }
+
+    // Add new structured data
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(structuredData);
+    document.head.appendChild(script);
+
+    // Cleanup function to remove added elements when component unmounts
+    return () => {
+      if (metaDescription && metaDescription.parentNode === document.head) {
+        document.head.removeChild(metaDescription);
+      }
+      const keywordsMeta = document.querySelector('meta[name="keywords"]');
+      if (keywordsMeta && keywordsMeta.parentNode === document.head) {
+        document.head.removeChild(keywordsMeta);
+      }
+      if (canonicalLink && canonicalLink.parentNode === document.head) {
+        document.head.removeChild(canonicalLink);
+      }
+      if (script && script.parentNode === document.head) {
+        document.head.removeChild(script);
+      }
+      // Reset title to default or empty
+      document.title = 'AIA | Academy of Internal Audit';
+    };
+  }, [blog, imageBaseUrl]);
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 100;
@@ -170,55 +264,6 @@ const [currentStudentIndex, setCurrentStudentIndex] = useState(0);
 
   return (
     <>
-    <Helmet>
-
-  <title>{blog.blog_meta_title}</title>
-
-  <meta
-    name="description"
-    content={blog.blog_meta_description}
-  />
-
-  {blog.blog_meta_keywords && (
-    <meta name="keywords" content={blog.blog_meta_keywords} />
-  )}
-
-  <link
-    rel="canonical"
-    href={`https://aia.in.net/blogs/${blog.blog_slug}`}
-  />
-
- 
-  <script type="application/ld+json">
-    {JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": `https://aia.in.net/blogs/${blog.blog_slug}`
-      },
-      "headline": blog.blog_heading,
-      "description": blog.blog_short_description,
-      "image": blog.blog_images
-        ? `${imageBaseUrl}${blog.blog_images}`
-        : "https://aia.in.net/webapi/public/assets/images/no_image.jpg",
-      "author": {
-        "@type": "Organization",
-        "name": "AIA"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Academy of Internal Audit",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://aia.in.net/crm/public/assets/images/logo/new_logo.webp"
-        }
-      },
-      "datePublished": blog.created_at,
-      "dateModified": blog.updated_at
-    })}
-  </script>
-</Helmet>
 
     <div className="min-h-screen bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

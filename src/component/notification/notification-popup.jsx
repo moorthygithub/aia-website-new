@@ -5,6 +5,7 @@ const NotificationPopup = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
 
+  
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(true);
@@ -45,7 +46,7 @@ const NotificationPopup = () => {
               alt="avatar"
               className="w-8 h-8 rounded-full"
             />
-            <div className="bg-gray-100 dark:bg-gray-800 text-sm text-gray-800 dark:text-gray-200 px-4 py-2 rounded-xl rounded-tl-none max-w-[75%]">
+            <div className="bg-blue-100 dark:bg-gray-800 text-sm text-gray-800 dark:text-gray-200 px-4 py-2 rounded-xl rounded-tl-none max-w-[75%]">
               👋 Hi! Want updates about new courses & offers?
             </div>
           </div>

@@ -17,12 +17,13 @@ import Enrool from "./pages/Enrool/Enrool";
 import Contact from "./pages/contact/contact";
 import BlogDetails from "./pages/Blog/blog-details";
 import AboutPage from "./pages/About/About";
+import NotificationPopup from "./component/notification/notification-popup";
 
 
 export default function App() {
   return (
     <div className="font-sans text-gray-800 min-h-screen flex flex-col">
-  
+  <NotificationPopup />
       <Layout>
         <main className="grow">
           <Routes>

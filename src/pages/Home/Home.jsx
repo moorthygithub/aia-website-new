@@ -2,14 +2,20 @@ import About from "../../component/About";
 
 import Hero from "../../component/Hero";
 
-import HomeAccredited from "@/component/home/home-accredited";
-import HomeContact from "@/component/home/home-contact";
+import HomeAccredited from "@/components/home/home-accredited";
+import HomeContact from "@/components/home/home-contact";
 
-import HomeCorporatePartner from "@/component/home/home-corporate-partner";
-import HomePassout from "@/component/home/home-passout";
+import HomeCorporatePartner from "@/components/home/home-corporate-partner";
+import HomePassout from "@/components/home/home-passout";
 
-import HomeReview from "@/component/home/home-review";
-import HomeAlumniWork from "@/component/home/home-alumini-work";
+import HomeReview from "@/components/home/home-review";
+import HomeAlumniWork from "@/components/home/home-alumini-work";
+import HomeCourses from "@/components/home/home-courses";
+import HomeBlogs from "@/components/home/home-blogs";
+import HomeFaq from "@/components/home/home-faq";
+import HomeYoutube from "@/components/home/home-youtube";
+
+
 
 
 export default function Home() {
@@ -19,10 +25,14 @@ export default function Home() {
       <About />
       <HomeContact/>
       <HomeAccredited/>
+      <HomeCourses/>
       <HomeCorporatePartner/>
       <HomePassout/>
       <HomeReview/>
       <HomeAlumniWork/>
+      <HomeYoutube/>
+      <HomeBlogs/>
+      <HomeFaq/>
 
 
       {/* <Courses />
