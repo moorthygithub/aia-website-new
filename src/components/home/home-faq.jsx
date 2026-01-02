@@ -1,58 +1,103 @@
 /* eslint-disable no-unused-vars */
 
-
-
-
-
 import { motion } from "framer-motion";
-
 import { Link } from "react-router-dom";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../ui/accordion";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { useEffect } from "react";
 
+const HomeFaq = () => {
+  const { data, isLoading, isError, refetch } = useQuery({
+    queryKey: ["aia-faq"],
+    queryFn: async () => {
+      const res = await axios.get(
+        "https://aia.in.net/webapi/public/api/getFAQbySlug/home"
+      );
+      return res.data;
+    },
+  });
 
-const HomeFaq=()=> {
-  const faqItems = [
-    {
-      id: 'item-1',
-      question: 'What is Ruixen UI?',
-      answer: 'Ruixen UI is a modern, fully responsive design system that provides pre-built components, utilities, and layouts to help developers build scalable web applications quickly and efficiently.',
-    },
-    {
-      id: 'item-2',
-      question: 'Which platforms does Ruixen UI support?',
-      answer: 'Ruixen UI is built for web applications and works seamlessly with React, Next.js, and other modern JavaScript frameworks. It also supports dark mode and responsive layouts out of the box.',
-    },
-    {
-      id: 'item-3',
-      question: 'Can I customize Ruixen UI components?',
-      answer: 'Yes! All Ruixen UI components are fully customizable via props, CSS classes, and theme configuration. You can easily adapt colors, spacing, typography, and layout to match your brand.',
-    },
-    {
-      id: 'item-4',
-      question: 'Does Ruixen UI provide integration with third-party tools?',
-      answer: 'Absolutely. Ruixen UI includes ready-to-use integrations and patterns for popular tools and services, making it easier to connect your application with analytics, authentication, and workflow platforms.',
-    },
-    {
-      id: 'item-5',
-      question: 'Is there documentation and support available?',
-      answer: 'Yes, Ruixen UI comes with comprehensive documentation, live examples, and tutorials. Additionally, our community and support channels are available to help you implement components and resolve any issues.',
-    },
-  ];
+  const faqHeading = data?.data?.[0]?.faq_heading || "FAQs";
 
+  const faqItems = data?.data?.map((item, index) => ({
+    id: `item-${index + 1}`,
+    question: item.faq_que,
+    answer: item.faq_ans,
+  })) || [];
+
+  // Add JSON-LD structured data to the head
+  useEffect(() => {
+    if (faqItems.length > 0) {
+      // Remove existing FAQPage schema if present
+      const existingScript = document.querySelector('script[type="application/ld+json"][data-faq-schema]');
+      if (existingScript) {
+        existingScript.remove();
+      }
+
+      // Create FAQPage structured data
+      const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqItems.map(item => ({
+          "@type": "Question",
+          "name": item.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": item.answer
+          }
+        }))
+      };
+
+      // Create and append the script element
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.setAttribute('data-faq-schema', 'true'); // Add a custom attribute for identification
+      script.textContent = JSON.stringify(faqSchema);
+      document.head.appendChild(script);
+
+      // Cleanup function to remove the script when component unmounts
+      return () => {
+        if (script && document.head.contains(script)) {
+          document.head.removeChild(script);
+        }
+      };
+    }
+  }, [faqItems]); // Re-run effect when faqItems changes
+
+  if (isLoading) {
+    return (
+      <section className="py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center">Loading FAQs...</div>
+        </div>
+      </section>
+    );
+  }
+
+  if (isError) {
+    return (
+      <section className="py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center text-red-500">Error loading FAQs</div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="py-16 md:py-24">
-      <div className="mx-auto max-w-340 px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-8 md:grid-cols-5 md:gap-12">
           <div className="md:col-span-2">
             <h2 className="text-foreground text-4xl font-semibold">FAQs</h2>
             <p className="text-muted-foreground mt-4 text-balance text-lg">
-              Everything you need to know about Ruixen UI
+              {faqHeading}
             </p>
             <p className="text-muted-foreground mt-6 hidden md:block">
-              Can’t find what you’re looking for? Reach out to our{' '}
-              <Link href="#" className="text-primary font-medium hover:underline">
-                Ruixen UI support team
+              Can't find what you're looking for? Reach out to our{' '}
+              <Link to="#" className="text-primary font-medium hover:underline">
+                support team
               </Link>{' '}
               for assistance.
             </p>
@@ -65,7 +110,9 @@ const HomeFaq=()=> {
                   key={item.id}
                   value={item.id}
                   className="border-b border-gray-200 dark:border-gray-600">
-                  <AccordionTrigger className="cursor-pointer text-base font-medium hover:no-underline">{item.question}</AccordionTrigger>
+                  <AccordionTrigger className="cursor-pointer text-base font-medium hover:no-underline">
+                    {item.question}
+                  </AccordionTrigger>
                   <AccordionContent>
                     <BlurredStagger text={item.answer} />
                   </AccordionContent>
@@ -76,7 +123,7 @@ const HomeFaq=()=> {
 
           <p className="text-muted-foreground mt-6 md:hidden">
             Can't find what you're looking for? Contact our{' '}
-            <Link href="#" className="text-primary font-medium hover:underline">
+            <Link to="#" className="text-primary font-medium hover:underline">
               customer support team
             </Link>
           </p>
@@ -84,14 +131,11 @@ const HomeFaq=()=> {
       </div>
     </section>
   );
-}
+};
 
- 
-export const BlurredStagger = ({
-  text = "built by ruixen.com"
-}) => {
+export const BlurredStagger = ({ text = "built by ruixen.com" }) => {
   const headingText = text;
- 
+
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -101,7 +145,7 @@ export const BlurredStagger = ({
       },
     },
   };
- 
+
   const letterAnimation = {
     hidden: {
       opacity: 0,
@@ -112,27 +156,25 @@ export const BlurredStagger = ({
       filter: "blur(0px)",
     },
   };
- 
+
   return (
-    <>
-      <div className="w-full">
-        <motion.p
-          variants={container}
-          initial="hidden"
-          animate="show"
-          className="text-base leading-relaxed break-words whitespace-normal">
-          {headingText.split("").map((char, index) => (
-            <motion.span
-              key={index}
-              variants={letterAnimation}
-              transition={{ duration: 0.3 }}
-              className="inline-block">
-              {char === " " ? "\u00A0" : char}
-            </motion.span>
-          ))}
-        </motion.p>
-      </div>
-    </>
+    <div className="w-full">
+      <motion.p
+        variants={container}
+        initial="hidden"
+        animate="show"
+        className="text-base leading-relaxed wrap-break-word whitespace-normal">
+        {headingText.split("").map((char, index) => (
+          <motion.span
+            key={index}
+            variants={letterAnimation}
+            transition={{ duration: 0.3 }}
+            className="inline-block">
+            {char === " " ? "\u00A0" : char}
+          </motion.span>
+        ))}
+      </motion.p>
+    </div>
   );
 };
 
