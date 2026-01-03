@@ -233,3 +233,30 @@ body {
   background-color: #f3f4f6;
   font-weight: bold;
 }
+
+
+
+/* ----------------------------------------------------------- */
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee var(--duration, 40s) linear infinite;
+}
+
+.group:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
+
+* {
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}

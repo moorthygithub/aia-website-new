@@ -1,19 +1,22 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+
+
 /* eslint-disable no-unused-vars */
 
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../ui/accordion";
+
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useEffect } from "react";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
-const HomeFaq = () => {
+const CamsFaq = () => {
   const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ["aia-faq"],
     queryFn: async () => {
       const res = await axios.get(
-        "https://aia.in.net/webapi/public/api/getFAQbySlug/home"
+        "https://aia.in.net/webapi/public/api/getFAQbySlug/CAMS"
       );
       return res.data;
     },
@@ -27,16 +30,16 @@ const HomeFaq = () => {
     answer: item.faq_ans,
   })) || [];
 
-
+ 
   useEffect(() => {
     if (faqItems.length > 0) {
-    
+     
       const existingScript = document.querySelector('script[type="application/ld+json"][data-faq-schema]');
       if (existingScript) {
         existingScript.remove();
       }
 
-
+     
       const faqSchema = {
         "@context": "https://schema.org",
         "@type": "FAQPage",
@@ -57,14 +60,14 @@ const HomeFaq = () => {
       script.textContent = JSON.stringify(faqSchema);
       document.head.appendChild(script);
 
-     
+   
       return () => {
         if (script && document.head.contains(script)) {
           document.head.removeChild(script);
         }
       };
     }
-  }, [faqItems])
+  }, [faqItems]); 
 
   if (isLoading) {
     return (
@@ -179,4 +182,4 @@ export const BlurredStagger = ({ text = "built by ruixen.com" }) => {
   );
 };
 
-export default HomeFaq;
+export default CamsFaq;
