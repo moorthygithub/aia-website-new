@@ -27,10 +27,10 @@ const [currentStudentIndex, setCurrentStudentIndex] = useState(0);
  useEffect(() => {
     if (!blog) return;
 
-    // Update document title
+  
     document.title = blog.blog_meta_title || blog.blog_heading;
 
-    // Update meta description
+
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
       metaDescription = document.createElement('meta');
@@ -39,7 +39,7 @@ const [currentStudentIndex, setCurrentStudentIndex] = useState(0);
     }
     metaDescription.content = blog.blog_meta_description || blog.blog_short_description;
 
-    // Update meta keywords if they exist
+ 
     if (blog.blog_meta_keywords) {
       let metaKeywords = document.querySelector('meta[name="keywords"]');
       if (!metaKeywords) {
@@ -50,7 +50,6 @@ const [currentStudentIndex, setCurrentStudentIndex] = useState(0);
       metaKeywords.content = blog.blog_meta_keywords;
     }
 
-    // Add canonical link
     let canonicalLink = document.querySelector('link[rel="canonical"]');
     if (!canonicalLink) {
       canonicalLink = document.createElement('link');
@@ -59,7 +58,7 @@ const [currentStudentIndex, setCurrentStudentIndex] = useState(0);
     }
     canonicalLink.href = `https://aia.in.net/blogs/${blog.blog_slug}`;
 
-    // Add structured data
+
     const structuredData = {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
@@ -88,19 +87,19 @@ const [currentStudentIndex, setCurrentStudentIndex] = useState(0);
       "dateModified": blog.updated_at
     };
 
-    // Remove existing structured data
+
     const existingScript = document.querySelector('script[type="application/ld+json"]');
     if (existingScript) {
       existingScript.remove();
     }
 
-    // Add new structured data
+  
     const script = document.createElement('script');
     script.type = 'application/ld+json';
     script.text = JSON.stringify(structuredData);
     document.head.appendChild(script);
 
-    // Cleanup function to remove added elements when component unmounts
+  
     return () => {
       if (metaDescription && metaDescription.parentNode === document.head) {
         document.head.removeChild(metaDescription);
@@ -115,7 +114,7 @@ const [currentStudentIndex, setCurrentStudentIndex] = useState(0);
       if (script && script.parentNode === document.head) {
         document.head.removeChild(script);
       }
-      // Reset title to default or empty
+    
       document.title = 'AIA | Academy of Internal Audit';
     };
   }, [blog, imageBaseUrl]);

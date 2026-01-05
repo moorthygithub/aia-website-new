@@ -55,7 +55,7 @@ const CamsHighlight = () => {
         </div>
 
     
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 py-10 px-2 mx-auto text-white bg-linear-to-r from-black to-black">
+        <div className="grid grid-cols-2 md:grid-cols-2 border  border-black lg:grid-cols-4 gap-6 py-10 px-2 mx-auto text-white bg-linear-to-r from-black/5 to-black/5">
           {logos.map((logo, index) => (
             <div
               key={index}

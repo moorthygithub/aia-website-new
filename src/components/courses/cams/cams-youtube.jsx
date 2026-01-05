@@ -1,18 +1,20 @@
+
+
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useRef, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 
-const HomeYoutube = () => {
+const CamsYoutube = () => {
   const [activeTab, setActiveTab] = useState('');
   const scrollContainerRef = useRef(null);
 
   const { data, isLoading, isError } = useQuery({
-    queryKey: ["aia-youtube-home"],
+    queryKey: ["aia-youtube-cams"],
     queryFn: async () => {
       const res = await axios.get(
-        "https://aia.in.net/webapi/public/api/getLectureYoutubebySlug/home"
+        "https://aia.in.net/webapi/public/api/getLectureYoutubebySlug/cams"
       );
       return res.data;
     },
@@ -176,4 +178,4 @@ const HomeYoutube = () => {
   );
 };
 
-export default HomeYoutube;
+export default CamsYoutube;
