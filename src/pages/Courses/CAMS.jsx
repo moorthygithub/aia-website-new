@@ -19,12 +19,43 @@ import OnePlatform from "../../component/courses/OnePlatform";
 import AlumniWorkFor from "../../component/courses/AlumniWorkFor";
 import CAMSFAQs from "../../component/courses/CAMSFAQs";
 import AMLChampions from "../../component/courses/AMLChampions";
+import CamsAbout from "../../components/courses/cams/cams-about";
+import CamsRecentPassout from "@/components/courses/cams/cams-recent-passout";
+import CamsHero from "@/components/courses/cams/cams-hero";
+import CamsResult from "@/components/courses/cams/cams-result";
+import CamsWhyAia from "@/components/courses/cams/cams-why-aia";
+import CamsHighlight from "@/components/courses/cams/cams-highlight";
+import CamsMap from "@/components/courses/cams/cams-map";
+import AboutTrainerSection from "@/components/about/about-trainer-section";
+import HomeAlumniWork from "@/components/home/home-alumini-work";
+import CamsFaq from "@/components/courses/cams/cams-faq";
+import CamsReview from "@/components/courses/cams/cams-review";
 
 const CAMS = () => {
   return (
     <div>
       {" "}
-      <PrepCourse />
+      <CamsHero/>
+      <CamsAbout />
+      <CamsRecentPassout/>
+      <CamsResult/>
+<CamsWhyAia/>
+<CamsHighlight/>
+<CamsMap/>
+<CamsReview/>
+<AboutTrainerSection/>
+
+<HomeAlumniWork/>
+<CamsFaq/>
+
+
+
+{/* 
+
+
+
+
+
       <CIARecentPassout />
       <CAMSCourseOverview />
       <CAMSCourseVersion />
@@ -43,7 +74,7 @@ const CAMS = () => {
       <AMLChampions />
       <OnePlatform />
       <AlumniWorkFor />
-      <CAMSFAQs />
+      <CAMSFAQs /> */}
     </div>
   );
 };
