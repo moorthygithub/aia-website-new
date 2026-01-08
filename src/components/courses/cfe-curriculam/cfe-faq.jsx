@@ -69,8 +69,8 @@ const CfeFaq = () => {
 
   return (
     <FaqSection
-      faqHeading={faqHeading}
-      faqItems={faqItems}
+     title={faqHeading}        
+  faqs={faqItems} 
     />
   );
 };

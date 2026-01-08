@@ -58,29 +58,33 @@ const AboutJourney = () => {
       const rect = section.getBoundingClientRect();
       const windowHeight = window.innerHeight;
       
-      // Calculate progress based on section visibility
+     
       if (rect.top <= windowHeight && rect.bottom >= 0) {
         const sectionHeight = rect.height;
         const scrolled = windowHeight - rect.top;
         const totalScrollable = sectionHeight + windowHeight;
         const scrollProgress = Math.min(Math.max(scrolled / totalScrollable, 0), 1);
         setProgress(scrollProgress);
+      } else if (rect.top > windowHeight) {
+        setProgress(0);
+      } else if (rect.bottom < 0) {
+        setProgress(1);
       }
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial check
+    handleScroll(); 
     
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Calculate active step based on progress
+ 
   const activeStep = Math.min(Math.floor(progress * processSteps.length), processSteps.length - 1);
 
   return (
     <div className="py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Journey Section */}
+       
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Our Journey
@@ -95,7 +99,7 @@ const AboutJourney = () => {
           </div>
         </div>
 
-        {/* Stats Section */}
+       
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
           {stats.map((stat, index) => (
             <div
@@ -121,7 +125,7 @@ const AboutJourney = () => {
         </div>
 
        
-        {/* <div ref={processRef} className="py-16">
+        <div ref={processRef} className="py-16">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
               Our Process
@@ -131,25 +135,34 @@ const AboutJourney = () => {
         
           <div className="hidden md:block relative">
           
-            <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-              <svg className="w-full h-64" viewBox="0 0 1200 250" preserveAspectRatio="none">
          
+            <div className="absolute top-1/2 left-0 w-full h-64 -translate-y-1/2 pointer-events-none">
+              <svg className="w-full h-full" viewBox="0 0 1200 200" preserveAspectRatio="none">
+          
                 <path
-                  d="M 50 50 L 400 50 Q 450 50 450 100 L 450 150 Q 450 200 500 200 L 1150 200"
+                  d="M 100 50 
+                     L 1100 50 
+                     L 1100 150 
+                     L 100 150"
                   fill="none"
                   stroke="#e5e7eb"
                   strokeWidth="4"
                 />
+                
              
                 <path
-                  d="M 50 50 L 400 50 Q 450 50 450 100 L 450 150 Q 450 200 500 200 L 1150 200"
+                  d="M 100 50 
+                     L 1100 50 
+                     L 1100 150 
+                     L 100 150"
                   fill="none"
                   stroke="url(#gradient)"
                   strokeWidth="4"
-                  strokeDasharray="1500"
-                  strokeDashoffset={1500 - (progress * 1500)}
+                  strokeDasharray="2200"
+                  strokeDashoffset={2200 - (progress * 2200)}
                   style={{ transition: 'stroke-dashoffset 0.3s ease-out' }}
                 />
+                
                 <defs>
                   <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
                     <stop offset="0%" stopColor="#7fbd82" />
@@ -160,10 +173,9 @@ const AboutJourney = () => {
               </svg>
             </div>
 
-     
-            <div className="relative">
-            
-              <div className="grid grid-cols-3 gap-8 mb-40">
+           
+            <div className="relative mb-40">
+              <div className="grid grid-cols-3 gap-8">
                 {processSteps.slice(0, 3).map((step, index) => (
                   <div
                     key={index}
@@ -183,18 +195,20 @@ const AboutJourney = () => {
                   </div>
                 ))}
               </div>
+            </div>
 
-             
+           
+            <div className="relative mt-40">
               <div className="grid grid-cols-3 gap-8">
                 {processSteps.slice(3, 6).map((step, index) => (
                   <div
                     key={index + 3}
                     className={`text-center transition-all duration-500 ${
-                      index + 3 <= activeStep ? 'opacity-100 translate-y-0' : 'opacity-40 translate-y-4'
+                      (index + 3) <= activeStep ? 'opacity-100 translate-y-0' : 'opacity-40 translate-y-4'
                     }`}
                   >
                     <div className={`w-24 h-24 mx-auto mb-4 rounded-full flex items-center justify-center transition-all duration-500 ${
-                      index + 3 <= activeStep 
+                      (index + 3) <= activeStep 
                         ? 'bg-gradient-to-br from-green-400 to-green-600 text-white shadow-lg scale-110' 
                         : 'bg-gray-200 text-gray-500'
                     }`}>
@@ -209,8 +223,8 @@ const AboutJourney = () => {
           </div>
 
        
+          
           <div className="md:hidden relative">
-     
             <div className="absolute left-8 top-0 w-1 bg-gray-200 h-full">
               <div 
                 className="w-full bg-gradient-to-b from-green-400 via-green-500 to-green-600 transition-all duration-300"
@@ -218,7 +232,6 @@ const AboutJourney = () => {
               />
             </div>
 
-       
             <div className="space-y-12 pl-20">
               {processSteps.map((step, index) => (
                 <div
@@ -250,7 +263,7 @@ const AboutJourney = () => {
               </span>
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
     </div>
   );
