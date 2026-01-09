@@ -8,29 +8,29 @@ const CourseCurriculum = ({ title, curriculumData }) => {
   );
 
   return (
-    <div className="py-8 px-4 sm:px-6 lg:px-8">
+    <div className="py-6 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
 
-        {/* Header */}
-        <div className="mb-10">
-          <div className="bg-[#0A2463] text-white text-center py-5 px-4 rounded-lg mb-6">
-            <h1 className="text-2xl sm:text-3xl font-bold">
+       
+        <div className="mb-8">
+          <div className="bg-[#0A2463] text-white text-center py-4 px-4 rounded-lg">
+            <h1 className="text-xl sm:text-2xl font-bold">
               {title}
             </h1>
           </div>
         </div>
 
-        {/* Main Content */}
-        <div className="flex flex-col md:flex-row gap-8">
+        
+        <div className="flex flex-col md:flex-row gap-6">
 
-          {/* Left Tabs */}
-          <div className="w-full md:w-2/5 space-y-4">
+          
+          <div className="w-full md:w-2/5 space-y-3">
             {curriculumData.map((item) => (
               <button
                 key={item.id}
                 onMouseEnter={() => setActiveTab(item.id)}
                 className={`
-                  w-full text-left p-5 rounded-bl-4xl rounded-tr-4xl transition-all duration-300
+                  w-full text-left p-4 rounded-bl-4xl rounded-tr-4xl transition-all duration-300
                   border
                   ${
                     activeTab === item.id
@@ -42,7 +42,7 @@ const CourseCurriculum = ({ title, curriculumData }) => {
                 <div className="flex items-center">
                   <div
                     className={`
-                      w-10 h-10 rounded-full flex items-center justify-center mr-4 font-bold text-lg
+                      w-9 h-9 rounded-full flex items-center justify-center mr-3 font-bold text-sm
                       ${
                         activeTab === item.id
                           ? "bg-[#0A2463] text-white"
@@ -52,18 +52,18 @@ const CourseCurriculum = ({ title, curriculumData }) => {
                   >
                     {item.id}
                   </div>
-                  <span className="font-semibold text-base leading-tight">
+                  <span className="font-semibold text-sm leading-snug">
                     {item.title}
                   </span>
                 </div>
 
                 <div
                   className={`
-                    mt-3 h-1 rounded-full transition-all duration-300
+                    mt-2 h-1 rounded-full transition-all duration-300
                     ${
                       activeTab === item.id
                         ? "w-full bg-[#FF6B35]"
-                        : "w-12 bg-[#0A2463]"
+                        : "w-10 bg-[#0A2463]"
                     }
                   `}
                 />
@@ -71,33 +71,34 @@ const CourseCurriculum = ({ title, curriculumData }) => {
             ))}
           </div>
 
-          {/* Right Content */}
+      
           <div className="w-full md:w-3/5">
-            <div className="bg-white rounded-bl-4xl rounded-tr-4xl p-8 border border-gray-900 min-h-[400px] h-full">
+            <div className="bg-white rounded-bl-4xl rounded-tr-4xl p-6 border border-gray-900 min-h-[320px] h-full">
               {activeContent?.content?.length ? (
-                <div className="space-y-5">
-                  <div className="mb-6">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                <div className="space-y-2">
+
+                  <div className="mb-4">
+                    <h3 className="text-xl font-bold text-gray-900 mb-1">
                       Module {activeContent.id}: {activeContent.title}
                     </h3>
-                    <div className="w-16 h-1 bg-[#0A2463] rounded-full" />
+                    <div className="w-14 h-1 bg-[#0A2463] rounded-full" />
                   </div>
 
                   {activeContent.content.map((text, index) => (
                     <div
                       key={index}
-                      className="flex items-start hover:bg-[#EFF6FF] p-3 rounded-lg transition-colors duration-200"
+                      className="flex items-start hover:bg-[#EFF6FF] p-2.5 rounded-md transition-colors duration-200"
                     >
-                      <div className="w-2 h-6 bg-[#FF6B35] mr-3 flex-shrink-0 rounded-full mt-1" />
-                      <p className="text-gray-700 text-base leading-relaxed flex-1">
+                      <div className="w-1.5 h-5 bg-[#FF6B35] mr-3 shrink-0 rounded-full mt-1" />
+                      <p className="text-gray-700 text-sm leading-relaxed flex-1">
                         {text}
                       </p>
                     </div>
                   ))}
                 </div>
               ) : (
-                <div className="flex items-center justify-center h-full py-12">
-                  <p className="text-gray-400 text-lg text-center">
+                <div className="flex items-center justify-center h-full py-10">
+                  <p className="text-gray-400 text-base text-center">
                     Hover over a module to view content
                   </p>
                 </div>

@@ -2,9 +2,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { Calendar, Clock, ArrowLeft, Image as ImageIcon } from 'lucide-react';
+import { Calendar, Copy, Clock, ArrowLeft, Image as ImageIcon } from 'lucide-react';
 import { BASE_URL } from '@/api/base-url';
-import FaqSection from '@/components/common/faq-section';
+
+import BlogFaq from '@/components/blog/blog-faq';
 
 
 const BlogDetails = () => {
@@ -228,7 +229,12 @@ useEffect(() => {
 
 
 
+ const [email, setEmail] = useState('');
 
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    console.log('Subscribing with email:', email);
+  };
 
 
 
@@ -346,7 +352,7 @@ useEffect(() => {
     <>
 
     <div className="min-h-screen bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-340 mx-auto px-4 sm:px-6 lg:px-8 py-8">
     
         <button
           onClick={goBack}
@@ -427,13 +433,13 @@ useEffect(() => {
             <aside className="lg:w-1/4">
               <div className="sticky top-8">
                 <nav className="bg-gray-50 rounded-md p-4 border border-gray-200">
-                  <h3 className="font-semibold text-gray-800 mb-3 pb-2 border-b">Table of Contents</h3>
-                  <ul className="space-y-2 ">
+                  <h3 className="font-semibold text-gray-800 mb-1 pb-1 border-b">Table of Contents</h3>
+                  <ul className="space-y- ">
                     {blog.web_blog_subs.map((sub, index) => (
                       <li key={sub.id}>
                         <button
                           onClick={() => scrollToSection(index)}
-                          className={`w-full text-left p-2 rounded text-sm transition-colors ${
+                          className={`w-full text-left p-1 rounded text-sm transition-colors ${
                             activeSection === index
                               ? 'bg-indigo-50 text-indigo-700 border-l-4 border-indigo-600'
                               : 'text-gray-700 hover:bg-gray-100'
@@ -445,7 +451,62 @@ useEffect(() => {
                     ))}
                   </ul>
                 </nav>
+ <div className="max-w-md mx-auto p-1 space-y-4">
+    
+      <div className="space-y-2">
+        <h2 className="text-xl font-medium text-gray-900">
+          Subscribe to newsletter
+        </h2>
+        
+        <form onSubmit={handleSubscribe} className="space-y-3">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-lime-400 focus:border-transparent text-gray-900 placeholder-gray-400"
+          />
+          
+          <button
+            type="submit"
+            className="w-full py-3 bg-lime-400 hover:bg-lime-500 text-gray-900 font-semibold rounded-2xl transition-colors"
+          >
+            Subscribe
+          </button>
+        </form>
+      </div>
 
+   
+      <div className="space-y-4">
+        <h3 className="text-xl font-medium text-gray-900">
+          Share this blog
+        </h3>
+        
+        <div className="flex gap-3">
+          <button className="p-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+            <Copy className="w-5 h-5 text-gray-600" />
+          </button>
+          
+          <button className="p-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+            <svg className="w-5 h-5 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </button>
+          
+          <button className="p-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+            <svg className="w-5 h-5 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </button>
+          
+          <button className="p-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+            <svg className="w-5 h-5 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
                 {students.length > 0 && (
   <div className="mt-6 bg-gray-50 rounded-lg p-2 border border-gray-200">
     <h3 className="font-semibold text-gray-800 mb-2"> Recently Passed Out Students</h3>
@@ -472,7 +533,7 @@ useEffect(() => {
                   }}
                 />
                 
-         
+        
                 <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/30 to-transparent"></div>
                 
               
@@ -537,10 +598,34 @@ useEffect(() => {
           )}
 
       
-          <main className={`${blog.web_blog_subs?.length > 0 ? 'lg:w-3/4' : 'w-full'}`}>
+ 
+
+          <main className={`
+    ${blog.web_blog_subs?.length > 0 ? 'lg:w-3/4' : 'w-full'} 
+    ${blog.web_blog_subs?.length > 0 && relatedBlogs.length > 0 ? 'lg:w-2/4' : ''}
+  `}>
             {blog.web_blog_subs?.length > 0 ? (
               <div className="space-y-12">
-                {blog.web_blog_subs.map((sub, index) => (
+           
+                {blog.web_blog_subs.slice(0, 3).map((sub, index) => (
+                  <article 
+                    key={sub.id}
+                    id={`section-${index}`}
+                    ref={el => sectionRefs.current[index] = el}
+                    className="scroll-mt-8"
+                  >
+                    <h2 className="text-2xl font-bold mb-6 text-gray-900 pb-3 border-b">
+                      {sub.blog_sub_heading || `Section ${index + 1}`}
+                    </h2>
+                    <div className="prose prose-gray max-w-none">
+                      <div 
+                        className="ck-content"
+                        dangerouslySetInnerHTML={{ __html: sub.blog_sub_description }} 
+                      />
+                    </div>
+                  </article>
+                ))}
+                {blog.web_blog_subs.slice(4, 8).map((sub, index) => (
                   <article 
                     key={sub.id}
                     id={`section-${index}`}
@@ -566,14 +651,28 @@ useEffect(() => {
             )}
 
          
-            {relatedBlogs.length > 0 && (
-              <section className="mt-16 pt-8 border-t border-gray-200">
+          
+ <BlogFaq
+  title={faqHeading}        
+  faqs={faqItems}           
+/>
+
+           
+          </main>
+          {blog.web_blog_subs?.length > 0 && (
+            <aside className="lg:w-1/4">
+              <div className="">
+               
+            
+
+                {relatedBlogs.length > 0 && (
+              <section className="  border-gray-200">
                 <div className="mb-8">
                   <h3 className="text-2xl font-bold text-gray-900">Related Articles</h3>
                   <p className="text-gray-600 mt-2">You might also be interested in these articles</p>
                 </div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2  gap-6">
+                <div className="grid  gap-6">
                   {relatedBlogs.map((relatedBlog) => (
                     <div
                       key={relatedBlog.id}
@@ -619,17 +718,63 @@ useEffect(() => {
                       </div>
                     </div>
                   ))}
+                    {relatedBlogs.map((relatedBlog) => (
+  <div
+    key={relatedBlog.id}
+    onClick={() => handleRelatedBlogClick(relatedBlog.blog_slug)}
+    className="flex gap-2 p-1 border border-gray-200 rounded-md hover:border-indigo-300 cursor-pointer transition-all group"
+  >
+    {/* Left Image */}
+    <div className="w-16 h-16 shrink-0 overflow-hidden rounded-md bg-gray-100">
+      <img
+        src={`${imageBaseUrl}${relatedBlog.blog_images}`}
+        alt={relatedBlog.blog_images_alt || relatedBlog.blog_heading}
+        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+        onError={(e) => {
+          e.target.src =
+            "https://aia.in.net/webapi/public/assets/images/no_image.jpg";
+        }}
+      />
+    </div>
+
+    {/* Right Content */}
+    <div className="flex flex-col justify-between flex-1">
+      <div>
+        {/* <span
+          className={`${getCourseColor(
+            relatedBlog.blog_course
+          )} text-xs font-medium px-2 py-0.5 rounded border inline-block mb-1`}
+        >
+          {relatedBlog.blog_course}
+        </span> */}
+
+        <h4 className="text-base font-semibold text-gray-900 line-clamp-2 group-hover:text-indigo-700">
+          {relatedBlog.blog_heading}
+        </h4>
+
+       
+      </div>
+
+      <div className="flex items-center gap-4 text-gray-500 text-xs mt-1">
+        <div className="flex items-center gap-1">
+          <Calendar className="w-3 h-3" />
+          {formatDate(relatedBlog.blog_created)}
+        </div>
+        <div className="flex items-center gap-1">
+          <Clock className="w-3 h-3" />5 min read
+        </div>
+      </div>
+    </div>
+  </div>
+))}
                 </div>
               </section>
             )}
- <FaqSection
-  title={faqHeading}        
-  faqs={faqItems}           
-/>
+              </div>
 
-           
-          </main>
-          
+             
+            </aside>
+          )}
         </div>
       </div>
     </div>

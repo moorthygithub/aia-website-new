@@ -52,10 +52,10 @@ import { Button } from "@/components/ui/button";
       <div className="relative z-10 w-full px-8 py-12 grid grid-cols-1 md:grid-cols-2 items-center gap-8 max-w-340 mx-auto">
         <div>
           <span className="block mb-4 text-xs md:text-sm text-primary font-medium">
-            South India Garment Association (SIGA)
+          Academy of Internal Audit
           </span>
           <h3 className="text-4xl md:text-6xl font-semibold text-foreground">
-  Efforts by the SIGA Association
+  Efforts by the AIA Association
 </h3>
           <p className="text-base md:text-lg text-muted-foreground my-4 md:my-6">
           From engaging with national leaders to presenting the SIGA Pre-Budget Memo, 
@@ -75,7 +75,7 @@ import { Button } from "@/components/ui/button";
                 <Link to={'/efforts'}>
 
 <span className="relative z-10  text-white ">
- <span>           Explore SIGA </span>
+ <span>           Explore AIA </span>
 </span>
               <span className="absolute inset-0 bg-linear-to-r from-blue-400 via-blue-500 to-blue-400  
                

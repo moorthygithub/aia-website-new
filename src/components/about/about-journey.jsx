@@ -48,40 +48,36 @@ const processSteps = [
 
 const AboutJourney = () => {
   const [progress, setProgress] = useState(0);
-  const processRef = useRef(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!processRef.current) return;
-
-      const section = processRef.current;
-      const rect = section.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      
-     
-      if (rect.top <= windowHeight && rect.bottom >= 0) {
-        const sectionHeight = rect.height;
-        const scrolled = windowHeight - rect.top;
-        const totalScrollable = sectionHeight + windowHeight;
-        const scrollProgress = Math.min(Math.max(scrolled / totalScrollable, 0), 1);
-        setProgress(scrollProgress);
-      } else if (rect.top > windowHeight) {
-        setProgress(0);
-      } else if (rect.bottom < 0) {
-        setProgress(1);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); 
-    
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
- 
-  const activeStep = Math.min(Math.floor(progress * processSteps.length), processSteps.length - 1);
-
+    const processRef = useRef(null);
+  
+    useEffect(() => {
+      const handleScroll = () => {
+        if (!processRef.current) return;
+  
+        const rect = processRef.current.getBoundingClientRect();
+        const vh = window.innerHeight;
+  
+        
+        const start = vh * 0.7;          
+        const end = rect.height * 0.75;  
+  
+        const current = start - rect.top;
+        const value = current / end;
+  
+        setProgress(Math.min(Math.max(value, 0), 1));
+      };
+  
+      window.addEventListener("scroll", handleScroll);
+      handleScroll();
+      return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+  
+    const activeStep = Math.min(
+      Math.floor(progress * processSteps.length),
+      processSteps.length - 1
+    );
   return (
+    <>
     <div className="py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
        
@@ -125,147 +121,96 @@ const AboutJourney = () => {
         </div>
 
        
-        <div ref={processRef} className="py-16">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Our Process
-            </h2>
-          </div>
+        <div ref={processRef} className="py-16 hidden md:block relative">
 
-        
-          <div className="hidden md:block relative">
-          
-         
-            <div className="absolute top-1/2 left-0 w-full h-64 -translate-y-1/2 pointer-events-none">
-              <svg className="w-full h-full" viewBox="0 0 1200 200" preserveAspectRatio="none">
-          
-                <path
-                  d="M 100 50 
-                     L 1100 50 
-                     L 1100 150 
-                     L 100 150"
-                  fill="none"
-                  stroke="#e5e7eb"
-                  strokeWidth="4"
-                />
-                
-             
-                <path
-                  d="M 100 50 
-                     L 1100 50 
-                     L 1100 150 
-                     L 100 150"
-                  fill="none"
-                  stroke="url(#gradient)"
-                  strokeWidth="4"
-                  strokeDasharray="2200"
-                  strokeDashoffset={2200 - (progress * 2200)}
-                  style={{ transition: 'stroke-dashoffset 0.3s ease-out' }}
-                />
-                
-                <defs>
-                  <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#7fbd82" />
-                    <stop offset="50%" stopColor="#94d85d" />
-                    <stop offset="100%" stopColor="#94d85d" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
+{/* SVG Path */}
+<div className="absolute top-1/2 left-0 w-full h-64 -translate-y-1/2 pointer-events-none">
+  <svg className="w-full h-full" viewBox="0 0 1200 200" preserveAspectRatio="none">
+    <path
+      d="M100 50 L1100 50 L1100 150 L100 150"
+      fill="none"
+      stroke="#e5e7eb"
+      strokeWidth="4"
+    />
+    <path
+      d="M100 50 L1100 50 L1100 150 L100 150"
+      fill="none"
+      stroke="url(#g)"
+      strokeWidth="4"
+      strokeDasharray="2200"
+      strokeDashoffset={2200 - progress * 2200}
+    />
+    <defs>
+      <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stopColor="#7fbd82" />
+        <stop offset="100%" stopColor="#94d85d" />
+      </linearGradient>
+    </defs>
+  </svg>
+</div>
 
-           
-            <div className="relative mb-40">
-              <div className="grid grid-cols-3 gap-8">
-                {processSteps.slice(0, 3).map((step, index) => (
-                  <div
-                    key={index}
-                    className={`text-center transition-all duration-500 ${
-                      index <= activeStep ? 'opacity-100 translate-y-0' : 'opacity-40 translate-y-4'
-                    }`}
-                  >
-                    <div className={`w-24 h-24 mx-auto mb-4 rounded-full flex items-center justify-center transition-all duration-500 ${
-                      index <= activeStep 
-                        ? 'bg-gradient-to-br from-green-400 to-green-600 text-white shadow-lg scale-110' 
-                        : 'bg-gray-200 text-gray-500'
-                    }`}>
-                      {step.icon}
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">{step.title}</h3>
-                    <p className="text-sm text-gray-600">{step.description}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-           
-            <div className="relative mt-40">
-              <div className="grid grid-cols-3 gap-8">
-                {processSteps.slice(3, 6).map((step, index) => (
-                  <div
-                    key={index + 3}
-                    className={`text-center transition-all duration-500 ${
-                      (index + 3) <= activeStep ? 'opacity-100 translate-y-0' : 'opacity-40 translate-y-4'
-                    }`}
-                  >
-                    <div className={`w-24 h-24 mx-auto mb-4 rounded-full flex items-center justify-center transition-all duration-500 ${
-                      (index + 3) <= activeStep 
-                        ? 'bg-gradient-to-br from-green-400 to-green-600 text-white shadow-lg scale-110' 
-                        : 'bg-gray-200 text-gray-500'
-                    }`}>
-                      {step.icon}
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">{step.title}</h3>
-                    <p className="text-sm text-gray-600">{step.description}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-       
-          
-          <div className="md:hidden relative">
-            <div className="absolute left-8 top-0 w-1 bg-gray-200 h-full">
-              <div 
-                className="w-full bg-gradient-to-b from-green-400 via-green-500 to-green-600 transition-all duration-300"
-                style={{ height: `${progress * 100}%` }}
-              />
-            </div>
-
-            <div className="space-y-12 pl-20">
-              {processSteps.map((step, index) => (
-                <div
-                  key={index}
-                  className={`transition-all duration-500 ${
-                    index <= activeStep ? 'opacity-100 translate-x-0' : 'opacity-40 translate-x-4'
-                  }`}
-                >
-                  <div className={`w-16 h-16 absolute left-0 rounded-full flex items-center justify-center transition-all duration-500 ${
-                    index <= activeStep 
-                      ? 'bg-gradient-to-br from-green-400 to-green-600 text-white shadow-lg scale-110' 
-                      : 'bg-gray-200 text-gray-500'
-                  }`}>
-                    {React.cloneElement(step.icon, { className: "w-6 h-6" })}
-                  </div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">{step.title}</h3>
-                  <p className="text-sm text-gray-600">{step.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-    
-          <div className="mt-12 text-center">
-            <div className="inline-flex items-center gap-2 px-6 py-3 bg-green-50 rounded-full">
-              <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-              <span className="text-sm font-semibold text-green-700">
-                Step {activeStep + 1} of {processSteps.length}
-              </span>
-            </div>
-          </div>
+{/* Row 1 */}
+<div className="relative mb-40">
+  <div className="grid grid-cols-3 gap-8">
+    {processSteps.slice(0, 3).map((step, i) => (
+      <div
+        key={i}
+        className={`text-center transition-all duration-500 ${
+          i <= activeStep ? "opacity-100" : "opacity-40"
+        }`}
+      >
+        <div className={`w-24 h-24 mx-auto mb-4 rounded-full flex items-center justify-center transition-all duration-500 ${
+          i <= activeStep
+            ? "bg-gradient-to-br from-green-400 to-green-600 text-white scale-110"
+            : "bg-gray-200 text-gray-500"
+        }`}>
+          {step.icon}
         </div>
+        <h3 className="font-bold">{step.title}</h3>
+        <p className="text-sm text-gray-600">{step.description}</p>
+      </div>
+    ))}
+  </div>
+</div>
+
+{/* Row 2 (reversed visually) */}
+<div className="relative mt-40">
+  <div className="grid grid-cols-3 gap-8 direction-rtl">
+    {processSteps.slice(3, 6).map((step, i) => {
+      const realIndex = i + 3;
+      return (
+        <div
+          key={realIndex}
+          className={`text-center transition-all duration-500 direction-ltr ${
+            realIndex <= activeStep ? "opacity-100" : "opacity-40"
+          }`}
+        >
+          <div className={`w-24 h-24 mx-auto mb-4 rounded-full flex items-center justify-center transition-all duration-500 ${
+            realIndex <= activeStep
+              ? "bg-gradient-to-br from-green-400 to-green-600 text-white scale-110"
+              : "bg-gray-200 text-gray-500"
+          }`}>
+            {step.icon}
+          </div>
+          <h3 className="font-bold">{step.title}</h3>
+          <p className="text-sm text-gray-600">{step.description}</p>
+        </div>
+      );
+    })}
+  </div>
+</div>
+</div>
       </div>
     </div>
+    <style jsx>{`
+      .direction-rtl {
+        direction: rtl;
+      }
+      .direction-ltr {
+        direction: ltr;
+      }
+    `}</style>
+    </>
   );
 };
 

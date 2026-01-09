@@ -1,19 +1,23 @@
 
+
+
+
+
 import { Link } from "react-router-dom";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../ui/accordion";
 import { BlurredStagger } from "../ui/blurred-stagger";
 
 
 
-const FaqSection = ({ title = "FAQs", subtitle, faqs }) => {
+const BlogFaq = ({ title = "FAQs", subtitle, faqs }) => {
   if (!faqs?.length) return null;
 
   return (
     <section className="py-16 md:py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-8 md:grid-cols-5 md:gap-12">
+      <div className="mx-auto max-w-7xl ">
+        <div className="grid gap-8 ">
           
-          {/* Left */}
+         
           <div className="md:col-span-2">
             <h2 className="text-foreground text-4xl font-semibold">
               {title}
@@ -23,10 +27,10 @@ const FaqSection = ({ title = "FAQs", subtitle, faqs }) => {
               {subtitle}
             </p>
 
-           
+            
           </div>
 
-          {/* Right */}
+        
           <div className="md:col-span-3">
             <Accordion type="single" collapsible>
               {faqs.map((item) => (
@@ -59,4 +63,4 @@ const FaqSection = ({ title = "FAQs", subtitle, faqs }) => {
   );
 };
 
-export default FaqSection;
+export default BlogFaq;

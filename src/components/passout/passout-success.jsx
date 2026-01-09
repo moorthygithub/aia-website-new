@@ -130,9 +130,7 @@ const PassoutSuccess = () => {
             className="px-6 py-3 border border-gray-300 rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <option>All industries</option>
-            <option>Finance</option>
-            <option>Consulting</option>
-            <option>Banking</option>
+       
           </select>
 
           <select 
@@ -142,7 +140,7 @@ const PassoutSuccess = () => {
           >
             <option>All Solutions</option>
             <option>CFE</option>
-            <option>Internal Audit</option>
+   
           </select>
 
           <button 
@@ -166,12 +164,15 @@ const PassoutSuccess = () => {
                 <img 
                   src={story.image}
                   alt={story.name}
-                  className="w-full h-full object-cover  rounded-2xl"
+                  className="w-full h-full object-cover  rounded-2xl p-2"
                 />
-                <div className="absolute bottom-4 left-4 right-4 bg-white rounded-lg p-3 shadow-md">
+                <div className="absolute -bottom-6 left-4 right-4 bg-linear-to-r from-blue-50 to-orange-50 rounded-lg p-3 shadow-md">
                   <h5 className="font-bold text-gray-900 text-sm">{story.name}, {story.designation}</h5>
-                  <p className="text-xs text-gray-600 mt-1">{story.role}</p>
-                  <p className="text-xs text-gray-500 mt-1">{story.date}</p>
+            <div className="flex flex-row items-center justify-between">
+
+            <p className="text-xs text-gray-600 mt-1">{story.role}</p>
+            <p className="text-xs text-gray-500 mt-1">{story.date}</p>
+            </div>
                 </div>
               </div>
 

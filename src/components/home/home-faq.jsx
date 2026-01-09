@@ -96,13 +96,7 @@ const HomeFaq = () => {
             <p className="text-muted-foreground mt-4 text-balance text-lg">
               {faqHeading}
             </p>
-            <p className="text-muted-foreground mt-6 hidden md:block">
-              Can't find what you're looking for? Reach out to our{' '}
-              <Link to="#" className="text-primary font-medium hover:underline">
-                support team
-              </Link>{' '}
-              for assistance.
-            </p>
+            
           </div>
 
           <div className="md:col-span-3">
