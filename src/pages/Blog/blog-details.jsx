@@ -1,8 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Calendar, Clock, ArrowLeft, Image as ImageIcon } from 'lucide-react';
 import { BASE_URL } from '@/api/base-url';
+import FaqSection from '@/components/common/faq-section';
 
 
 const BlogDetails = () => {
@@ -16,6 +18,7 @@ const BlogDetails = () => {
   const [activeSection, setActiveSection] = useState(0);
   const sectionRefs = useRef([]);
   const [students, setStudents] = useState([]);
+  const [faq, setFaq] = useState([]);
 const [studentImageBaseUrl, setStudentImageBaseUrl] = useState('');
 const [currentStudentIndex, setCurrentStudentIndex] = useState(0);
 
@@ -148,7 +151,7 @@ const [currentStudentIndex, setCurrentStudentIndex] = useState(0);
       setBlog(blogData);
       setRelatedBlogs(response.data.related_blogs || []);
       setStudents(response.data.student || []);
-     
+      setFaq(response.data.faq || []);
       const blogImageConfig = response.data.image_url?.find(
         item => item.image_for === "Blog"
       );
@@ -167,6 +170,83 @@ const [currentStudentIndex, setCurrentStudentIndex] = useState(0);
       setLoading(false);
     }
   };
+
+
+
+
+// ```````````````````````````````````````````````````````
+const faqHeading = faq?.[0]?.faq_heading || "FAQs";
+
+
+const faqItems =
+    faq?.map((item, index) => ({
+      id: `item-${index + 1}`,
+      question: item.faq_que,
+      answer: item.faq_ans,
+    })) || [];
+useEffect(() => {
+    if (faqItems.length > 0) {
+      const existingScript = document.querySelector(
+        'script[type="application/ld+json"][data-faq-schema]'
+      );
+      if (existingScript) {
+        existingScript.remove();
+      }
+
+      const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqItems.map((item) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: item.answer,
+          },
+        })),
+      };
+
+      const script = document.createElement("script");
+      script.type = "application/ld+json";
+      script.setAttribute("data-faq-schema", "true");
+      script.textContent = JSON.stringify(faqSchema);
+      document.head.appendChild(script);
+
+      return () => {
+        if (script && document.head.contains(script)) {
+          document.head.removeChild(script);
+        }
+      };
+    }
+  }, [faqItems]);
+
+
+  console.log(faqItems)
+//```````````````````````````````````````````````````````
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   const scrollToSection = (index) => {
     setActiveSection(index);
@@ -267,7 +347,7 @@ const [currentStudentIndex, setCurrentStudentIndex] = useState(0);
 
     <div className="min-h-screen bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-     
+    
         <button
           onClick={goBack}
           className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-8 font-medium"
@@ -542,7 +622,14 @@ const [currentStudentIndex, setCurrentStudentIndex] = useState(0);
                 </div>
               </section>
             )}
+ <FaqSection
+  title={faqHeading}        
+  faqs={faqItems}           
+/>
+
+           
           </main>
+          
         </div>
       </div>
     </div>
