@@ -31,6 +31,7 @@ import CfeCurrUnique from "@/components/courses/cia-curriculam/cfe-curr-unique";
 import CiaCurrAbout from "@/components/courses/cia-curriculam/cia-curr-about";
 
 import CourseMap from "@/components/courses/common/course-map";
+import PopUp from "@/components/common/pop-up";
 
 
 
@@ -39,6 +40,7 @@ const CIACurriculam = () => {
     <div>
       {" "}
       {" "}
+           <PopUp  slug="CIA-Curriculum"/>
       <CourseHero/>
       <CiaCurrAbout />
       {/* <CamsRecentPassout/> */}

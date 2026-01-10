@@ -28,10 +28,12 @@ import CiaFaq from "@/components/courses/cia-challenge/cia-faq";
 import CiaAbout from "@/components/courses/cia-challenge/cia-about";
 
 import CourseMap from "@/components/courses/common/course-map";
+import PopUp from "@/components/common/pop-up";
 
 const CIAChallenge = () => {
   return (
     <div>
+       <PopUp  slug="CIA-Challenge-Curriculum"/>
    <CourseHero/>
            <CiaAbout />
            {/* <CamsRecentPassout/> */}

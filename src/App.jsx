@@ -18,11 +18,14 @@ import Contact from "./pages/contact/contact";
 import BlogDetails from "./pages/Blog/blog-details";
 import AboutPage from "./pages/About/About";
 import NotificationPopup from "./component/notification/notification-popup";
+import PassoutStoriesSlug from "./components/passout/passout-stories-slug";
+import GoogleAnalytics from "./components/google-analytics/google-analytics";
 
 
 export default function App() {
   return (
     <div className="font-sans text-gray-800 min-h-screen flex flex-col">
+      <GoogleAnalytics/>
   <NotificationPopup />
       <Layout>
         <main className="grow">
@@ -41,6 +44,7 @@ export default function App() {
             <Route path="/blogs/:id" element={<BlogDetails />} />
             <Route path="/passed-out" element={<OurPassout />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/passout-stories/:slug" element={<PassoutStoriesSlug />} />
             <Route path="/enroll-now" element={<Enrool />} />
           </Routes>
         </main>

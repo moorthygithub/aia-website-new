@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Calendar, ArrowRight, Clock, BookOpen, Tag, Search, TrendingUp } from "lucide-react";
 import { BASE_URL } from "@/api/base-url";
+import PopUp from "@/components/common/pop-up";
 
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
@@ -156,6 +157,9 @@ const Blog = () => {
   }
 
   return (
+    <>
+      <PopUp  slug="Blogs"/>
+   
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
@@ -314,6 +318,7 @@ const Blog = () => {
     </div>
       </div>
     </section>
+     </>
   );
 };
 

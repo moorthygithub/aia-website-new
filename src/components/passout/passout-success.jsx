@@ -1,128 +1,106 @@
 import React, { useState } from 'react'
+import axios from 'axios'
+import { useQuery } from '@tanstack/react-query'
+import { BASE_URL } from '@/api/base-url'
+
 
 const PassoutSuccess = () => {
   const [selectedIndustry, setSelectedIndustry] = useState('All industries')
   const [selectedSolution, setSelectedSolution] = useState('All Solutions')
   const [visibleCount, setVisibleCount] = useState(6)
 
-  const stories = [
-    {
-      id: 55,
-      name: "Mohit Grover",
-      designation: "CFE",
-      role: "Assistant Account Manager at VP Kapitech",
-      date: "05.11.2025",
-      image: "https://aia.in.net/crm/public/assets/images/passout/MohitGrover.webp",
-      excerpt: "Mohit Grover decided to take a bold step toward professional growth by pursuing the CFE Certification. He was looking for guidance that was clear, reliable, and capable of supporting him from the very beginning all the way to exam success.",
-      fullStory: "What made his journey standout was how effortlessly everything came together at Academy of Internal Audit. The video lectures felt complete yet uncomplicated, the study plan removed all guesswork, and the support from the team gave him the assurance that he was on the right track.",
-      linkedIn: "https://www.linkedin.com/in/mohitgroverca/"
+  
+  const { data: studentStoriesData, isLoading, isError } = useQuery({
+    queryKey: ["student-stories"],
+    queryFn: async () => {
+      const res = await axios.get(`${BASE_URL}/api/getStudentsStory`)
+      return res.data
     },
-    {
-      id: 54,
-      name: "Sanjay Namdeo",
-      designation: "CFE",
-      role: "Professional",
-      date: "29.10.2025",
-      image: "https://aia.in.net/crm/public/assets/images/passout/SanjayNamdeo.webp",
-      excerpt: "For Sanjay Namdeo, choosing the CFE Certification wasn't just a career move—it was a decision to sharpen his investigative mindset and grow beyond his comfort zone.",
-      fullStory: "Joining Academy of Internal Audit changed the course of his preparation. With every class, concepts became clearer, patterns started forming, and fraud examination no longer felt intimidating. Puneet Sir's way of teaching made all the difference.",
-      linkedIn: "https://www.linkedin.com/in/sanjay-namdeo/"
-    },
-    {
-      id: 53,
-      name: "Minal Masurekar",
-      designation: "CFE",
-      role: "Compliance Manager at FMC Corporation",
-      date: "06.10.2025",
-      image: "https://aia.in.net/crm/public/assets/images/passout/MinalMasurekar.webp",
-      excerpt: "Success is often a combination of the right guidance and consistent effort, and Minal Masurekar experienced this firsthand while preparing for the CFE Certification.",
-      fullStory: "At Academy of Internal Audit, Minal found a perfectly balanced approach. The combination of live and recorded sessions, practice questions, and mock tests made her preparation feel structured and achievable.",
-      linkedIn: "https://www.linkedin.com/in/minal-masurekar/"
-    },
-    {
-      id: 52,
-      name: "Aboubacar Doumbia",
-      designation: "CFE",
-      role: "Professional from Abidjan",
-      date: "26.09.2025",
-      image: "https://aia.in.net/crm/public/assets/images/passout/AboubacarDoumbia-Abidjan.webp",
-      excerpt: "Achievement across borders requires vision, determination, and the right guidance. Aboubacar Doumbia embraced the challenge of the CFE Certification from Abidjan.",
-      fullStory: "At Academy of Internal Audit, Aboubacar experienced a learning journey that combined expert-led video lectures, comprehensive study manuals, and personal support from the team.",
-      linkedIn: "https://www.linkedin.com/in/aboubacar-doumbia-cfe-a87880368/"
-    },
-    {
-      id: 51,
-      name: "Supreetha S",
-      designation: "CFE",
-      role: "Professional",
-      date: "23.09.2025",
-      image: "https://aia.in.net/crm/public/assets/images/passout/Supreetha.webp",
-      excerpt: "Supreetha S always dreamed of earning her CFE Certification, but the thought of navigating the complex syllabus and exam process on her own felt overwhelming.",
-      fullStory: "From the very first class, Supreetha noticed the difference. Classes and notes were short and crisp but with full needed content and explanation to clear exam in one shot.",
-      linkedIn: "https://www.linkedin.com/in/supreetha-s-cfe-a960093b/"
-    },
-    {
-      id: 37,
-      name: "Nathasha Dowrla",
-      designation: "CFE",
-      role: "Professional from Bahrain",
-      date: "25.08.2025",
-      image: "https://aia.in.net/crm/public/assets/images/passout/NathashaDowrla-Behrain.webp",
-      excerpt: "Nathasha Dowrla, from Bahrain, a professional who has always had a deep interest in criminal and fraud detection. What started as curiosity soon turned into passion.",
-      fullStory: "That's when she discovered the Academy of Internal Audit (AIA), a place that gave her exactly what she needed: structured learning, simplified study material, and unwavering mentor support.",
-      linkedIn: "https://www.linkedin.com/in/nathasha-d/"
-    },
-    {
-      id: 38,
-      name: "Xavier Dinesh Kumar Fernando",
-      designation: "CFE",
-      role: "Senior Deputy Manager at NDB, Sri Lanka",
-      date: "19.08.2025",
-      image: "https://aia.in.net/crm/public/assets/images/passout/Xavier-Dinesh-Kumar.webp",
-      excerpt: "Xavier Dinesh Kumar Fernando began his CFE journey with uncertainty, unsure where to start or how to structure his preparation.",
-      fullStory: "From the very beginning, Xavier found the guidance he needed - clear video lectures, concise notes, and a mentor who made complex concepts easy to grasp.",
-      linkedIn: "https://www.linkedin.com/in/xavier-dinesh-kumar-fernando-cfe-mcom-bba-3216a560/"
-    },
-    {
-      id: 39,
-      name: "Viresh Karia",
-      designation: "CFE",
-      role: "Consultant at KPMG, Mumbai",
-      date: "18.08.2025",
-      image: "https://aia.in.net/crm/public/assets/images/passout/Viresh-Karia.webp",
-      excerpt: "Viresh Karia had a clear goal: to earn the Certified Fraud Examiner (CFE) credential and strengthen his professional credibility in fraud and risk management.",
-      fullStory: "His search led him to the Academy of Internal Audit where he found exactly what he was looking for: precise material, practical examples and perfect mentorship.",
-      linkedIn: "https://www.linkedin.com/in/ca-viresh-karia/"
-    }
-  ]
+  })
 
-  const [expandedStories, setExpandedStories] = useState({})
-
-  const toggleStory = (id) => {
-    setExpandedStories(prev => ({
-      ...prev,
-      [id]: !prev[id]
-    }))
-  }
 
   const handleReset = () => {
     setSelectedIndustry('All industries')
     setSelectedSolution('All Solutions')
   }
 
+
+  const getImageUrl = (type) => {
+    if (!studentStoriesData?.image_url) return ''
+    
+    const imageConfig = studentStoriesData.image_url.find(item => item.image_for === type)
+    return imageConfig ? imageConfig.image_url : ''
+  }
+
+ 
+  const transformStories = () => {
+    if (!studentStoriesData?.data) return []
+    
+    const studentImageUrl = getImageUrl('Student')
+    const companyImageUrl = getImageUrl('Student Company')
+    
+    return studentStoriesData.data.map(story => ({
+      id: story.id,
+      name: story.student_name,
+      designation: story.student_course,
+      role: story.student_designation,
+      date: story.student_story_date,
+      slug: story.student_slug,
+ 
+      image: story.student_image 
+        ? `${studentImageUrl}${story.student_image}`
+        : 'https://aia.in.net/webapi/public/assets/images/no_image.jpg',
+    
+      companyImage: story.company?.student_company_image 
+        ? `${companyImageUrl}${story.company.student_company_image}`
+        : null,
+      companyName: story.company?.student_company_name || '',
+      fullStory: story.student_story_details,
+      linkedIn: story.student_linkedin_link
+    }))
+  }
+
+  const stories = transformStories()
   const displayedStories = stories.slice(0, visibleCount)
+
+  if (isLoading) {
+    return (
+      <section className="bg-white py-16 px-6 lg:px-12">
+        <div className="max-w-7xl mx-auto text-center">
+          <div className="animate-pulse">
+            <div className="h-12 bg-gray-200 rounded w-3/4 mx-auto mb-8"></div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[1, 2, 3, 4, 5, 6].map((i) => (
+                <div key={i} className="bg-gray-200 rounded-2xl h-80"></div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  if (isError) {
+    return (
+      <section className="bg-white py-16 px-6 lg:px-12">
+        <div className="max-w-7xl mx-auto text-center">
+          <p className="text-red-600">Failed to load student stories. Please try again later.</p>
+        </div>
+      </section>
+    )
+  }
 
   return (
     <section className="bg-white py-16 px-6 lg:px-12">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
+       
         <div className="text-center mb-12">
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Read Our Student's Journey
           </h2>
         </div>
 
-        {/* Filters */}
+       
         <div className="flex flex-wrap items-center gap-4 mb-12">
           <select 
             value={selectedIndustry}
@@ -130,7 +108,6 @@ const PassoutSuccess = () => {
             className="px-6 py-3 border border-gray-300 rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <option>All industries</option>
-       
           </select>
 
           <select 
@@ -140,7 +117,6 @@ const PassoutSuccess = () => {
           >
             <option>All Solutions</option>
             <option>CFE</option>
-   
           </select>
 
           <button 
@@ -155,49 +131,63 @@ const PassoutSuccess = () => {
           </button>
         </div>
 
-        {/* Stories Grid */}
+       
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {displayedStories.map((story) => (
-            <article key={story.id} className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
-              {/* Image with Profile */}
-              <div className="relative h-64 bg-linear-to-br from-blue-100 to-purple-100">
+            <article key={story.id} className="bg-white rounded-2xl  overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
+           
+              <div className="relative h-64">
                 <img 
                   src={story.image}
                   alt={story.name}
-                  className="w-full h-full object-cover  rounded-2xl p-2"
+                  className="w-full h-full object-cover rounded-2xl p-2 border-2 border-amber-300"
                 />
-                <div className="absolute -bottom-6 left-4 right-4 bg-linear-to-r from-blue-50 to-orange-50 rounded-lg p-3 shadow-md">
-                  <h5 className="font-bold text-gray-900 text-sm">{story.name}, {story.designation}</h5>
-            <div className="flex flex-row items-center justify-between">
+                
+            
 
-            <p className="text-xs text-gray-600 mt-1">{story.role}</p>
-            <p className="text-xs text-gray-500 mt-1">{story.date}</p>
-            </div>
-                </div>
               </div>
 
-              {/* Content */}
-              <div className="p-6 flex-1 flex flex-col">
-                <p className="text-gray-700 text-sm leading-relaxed mb-4">
-                  {story.excerpt}
-                </p>
-
-                {expandedStories[story.id] && (
-                  <p className="text-gray-700 text-sm leading-relaxed mb-4">
-                    {story.fullStory}
+          
+              <div className="p-2 flex-1 flex flex-col">
+                <h5 className="font-bold text-gray-900 text-sm">
+                  {story.name}, {story.designation}
+                </h5>
+                
+                <div className="flex flex-row items-center justify-between">
+                  <p className="text-xs text-gray-600 mt-1">{story.role} Works at {story.companyName}</p>
+                  <p className="text-xs text-gray-500 mt-1">
+                    {new Date(story.date).toLocaleDateString('en-GB', {
+                      day: '2-digit',
+                      month: '2-digit',
+                      year: 'numeric'
+                    })}
                   </p>
-                )}
+                </div>
+                
+               
+              
 
-                {/* Actions */}
-                <div className="mt-auto flex items-center justify-between pt-4 border-t border-gray-200">
-                  <button 
-                    onClick={() => toggleStory(story.id)}
-                    className="text-blue-600 hover:text-blue-700 font-medium text-sm"
-                  >
-                    {expandedStories[story.id] ? 'Read Less' : 'Read More'}
-                  </button>
+            
+                <div className="mt-auto flex items-center justify-between pt-4 ">
+             
+                  
+
+                    {story.companyImage && (
+                  <div className=" mx-2">
+                    <div className="flex items-center gap-2">
+                      <img 
+                        src={story.companyImage}
+                        alt={story.companyName}
+                        className="w-8 h-8 object-contain"
+                      />
+                      
+                    </div>
+                  </div>
+                )}
+              
+                  
                   <a 
-                    href={story.linkedIn}
+                    href={`/passout-stories/${story.slug}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold py-2 px-4 rounded-full inline-flex items-center gap-2 transition-colors text-sm"
@@ -213,7 +203,7 @@ const PassoutSuccess = () => {
           ))}
         </div>
 
-        {/* View More Button */}
+
         {visibleCount < stories.length && (
           <div className="text-center">
             <button 

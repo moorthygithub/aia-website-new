@@ -1,4 +1,5 @@
 
+import PopUp from "@/components/common/pop-up";
 import CourseYoutube from "@/components/courses/common/course-youtube";
 import HomeAlumniWork from "@/components/home/home-alumini-work";
 import PassoutBanner from "@/components/passout/passout-banner";
@@ -9,7 +10,7 @@ import React from "react";
 const OurPassout = () => {
   return (
     <div>
-    
+    <PopUp  slug="Passed-Out"/>
   <PassoutBanner/>
    <PassoutResult/>
    <PassoutSucess/>
