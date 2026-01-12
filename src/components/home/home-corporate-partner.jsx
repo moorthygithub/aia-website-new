@@ -12,6 +12,7 @@ import axios from "axios";
 import Waves from "@/components/ui/waves-background";
 import CircularTestimonials from "@/components/ui/circular-testimonial";
 import { Button } from "@/components/ui/button";
+import { BASE_URL } from "@/api/base-url";
 
 
  const HomeCorporatePartner = () => {
@@ -19,16 +20,22 @@ import { Button } from "@/components/ui/button";
   const { data: effortsData = {}, isLoading, isError } = useQuery({
       queryKey: ["efforts"],
       queryFn: async () => {
-        const response = await axios.get(`https://southindiagarmentsassociation.com/crmapi/public/api/getEfforts`);
+        const response = await axios.get(`${BASE_URL}/api/getEfforts`);
         return response.data;
       },
     });
   
-    const testimonials =
-      effortsData?.data?.map((effort) => ({
-        quote: `${effort.efforts_heading}`,
-        src: `${effortsData.image_url}${effort.efforts_image}`,
-      })) || [];
+   const imageBaseUrl =
+  effortsData?.image_url?.find(
+    (item) => item.image_for === "Efforts"
+  )?.image_url || "";
+
+const testimonials =
+  effortsData?.data?.map((effort) => ({
+    quote: effort.efforts_heading,
+    src: `${imageBaseUrl}${effort.efforts_image}`,
+  })) || [];
+
   return (
     <div className="w-full  ">
       <div className=" mx-auto ">

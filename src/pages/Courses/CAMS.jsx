@@ -24,6 +24,7 @@ import CamsCourseCurriculum from "@/components/courses/cams/cams-course-curricul
 import CamsJourney from "@/components/courses/cams/cams-journey";
 import CamsAbout from "@/components/courses/cams/cams-about";
 import CourseMap from "@/components/courses/common/course-map";
+import PopUp from "@/components/common/pop-up";
 
 
 
@@ -32,6 +33,7 @@ const CAMS = () => {
   return (
     <div>
       {" "}
+          <PopUp  slug="CAMS"/>
       <CourseHero/>
       <CamsAbout />
       {/* <CamsRecentPassout/> */}

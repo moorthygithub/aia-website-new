@@ -27,11 +27,14 @@ import CfeUnique from "@/components/courses/cfe-curriculam/cfe-unique";
 import CfeAbout from "@/components/courses/cfe-curriculam/cfe-about";
 
 import CourseMap from "@/components/courses/common/course-map";
+import PopUp from "@/components/common/pop-up";
 
 
 const CFECurriculam = () => {
   return (
     <div>
+        <PopUp  slug="CFE-Curriculum"/>
+   
       <CourseHero/>
            <CfeAbout />
            {/* <CamsRecentPassout/> */}

@@ -14,6 +14,7 @@ import ContactHero from "../../component/contact/contact-hero";
 const Contact = () => {
   return (
     <div>
+       <PopUp  slug="Contact"/>
       <ContactHero />
       <ReachOut />
       <AIASuccessStats />

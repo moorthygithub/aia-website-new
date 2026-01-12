@@ -15,12 +15,11 @@ const PassoutResult = () => {
     queryKey: ["cams-certificates"],
     queryFn: async () => {
       const res = await axios.get(
-         `${BASE_URL}/api/getCertificatebyCourse/CAMS`
+         `${BASE_URL}/api/getAllCertificate`
       );
       return res.data;
     },
   })
-
 
   const testimonials = React.useMemo(() => {
     if (!certificatesData?.data) return []
