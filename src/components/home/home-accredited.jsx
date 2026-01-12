@@ -3,7 +3,7 @@ import React from "react";
 const HomeAccredited = () => {
   return (
 <div className="py-8 max-w-340 mx-auto">
-    <div className="px-4 sm:px-6 lg:px-8  mx-auto py-2 bg-linear-to-r from-pink-200/40 to bg-amber-200/20 border ">
+    <div className="px-4 sm:px-6 lg:px-8  mx-auto py-2  border ">
               <div className="flex items-center gap-3 mb-2 ">
                 <span className="text-sm font-medium text-blue-600 uppercase tracking-wider">
                 Smart Digital Service For Modern Businesses
@@ -35,12 +35,12 @@ const HomeAccredited = () => {
         {items.map((item, i) => (
           <div
             key={i}
-            className="w-24 h-24 bg-white rounded-full shadow-md flex items-center justify-center"
+            className=" bg-white rounded-full shadow-md flex items-center justify-center"
           >
             <img
               src={item.img}
               alt="logo"
-              className="max-w-15 max-h-15 object-contain"
+              className="w-auto h-auto object-contain"
             />
           </div>
         ))}
@@ -64,11 +64,11 @@ const DiamondCard = ({ img }) => (
     "
   >
 
-    <div className="-rotate-45 w-20 h-20 bg-white rounded-full shadow flex items-center justify-center">
+    <div className="-rotate-45 w-28 h-28 bg-white rounded-full shadow flex items-center justify-center">
       <img
         src={img}
         alt="logo"
-        className="max-w-14 max-h-14 object-contain"
+        className="w-auto h-auto object-contain"
       />
     </div>
   </div>

@@ -20,11 +20,14 @@ import AboutPage from "./pages/About/About";
 import NotificationPopup from "./component/notification/notification-popup";
 import PassoutStoriesSlug from "./components/passout/passout-stories-slug";
 import GoogleAnalytics from "./components/google-analytics/google-analytics";
+import ScrollToTop from "./components/common/scroll-to-top";
+import CorporateTraining from "./pages/corporate-training/corporate-training";
 
 
 export default function App() {
   return (
     <div className="font-sans text-gray-800 min-h-screen flex flex-col">
+      <ScrollToTop/>
       <GoogleAnalytics/>
   <NotificationPopup />
       <Layout>
@@ -46,6 +49,7 @@ export default function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/passout-stories/:slug" element={<PassoutStoriesSlug />} />
             <Route path="/enroll-now" element={<Enrool />} />
+            <Route path="/corpo" element={<CorporateTraining />} />
           </Routes>
         </main>
       </Layout>

@@ -22,8 +22,8 @@ const HomeContact = () => {
   };
 
   return (
-    <div className="w-full  ">
-      <div className="max-w-340 mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="w-full   ">
+      <div className="max-w-340 mx-auto px-4 sm:px-6 lg:px-8 bg-orange-400/20 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
        
           <div className="space-y-8">
@@ -63,7 +63,7 @@ const HomeContact = () => {
                   placeholder="Name*"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-amber-500 text-sm"
+                  className="w-full px-4 py-3 border border-gray-900 rounded focus:outline-none focus:ring-2 focus:ring-amber-900 text-sm"
                   required
                 />
                 <input
@@ -72,7 +72,7 @@ const HomeContact = () => {
                   placeholder="Phone No*"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-amber-500 text-sm"
+                  className="w-full px-4 py-3 border border-gray-900 rounded focus:outline-none focus:ring-2 focus:ring-amber-900 text-sm"
                   required
                 />
             
@@ -83,7 +83,7 @@ const HomeContact = () => {
                 placeholder="Email*"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-amber-500 text-sm"
+                className="w-full px-4 py-3 border border-gray-900 rounded focus:outline-none focus:ring-2 focus:ring-amber-900 text-sm"
                 required
               />
               
@@ -93,7 +93,7 @@ const HomeContact = () => {
                 value={formData.message}
                 onChange={handleChange}
                 rows="2"
-                className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-amber-500 text-sm resize-none"
+                className="w-full px-4 py-3 border border-gray-900 rounded focus:outline-none focus:ring-2 focus:ring-amber-900 text-sm resize-none"
                 required
               />
                 </div>

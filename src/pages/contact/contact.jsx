@@ -1,29 +1,39 @@
 import React from "react";
 
-import ReachOut from "../../component/ReachOut";
-import AIASuccessStats from "../../component/AIASuccessStats";
-import HeroWithProjects from "../../component/WhyChoose";
-import AlumniWorkFor from "../../component/courses/AlumniWorkFor";
-import GlobalClassroomMap from "../../component/courses/GlobalClassroomMap";
-import Youtube from "../../component/Youtube";
-import CareerPartner from "../../component/CareerPartner";
-import StudentTestimonials from "../../component/StudentTestimonials";
-import LocationMap from "../../component/LocationMap";
-import ContactHero from "../../component/contact/contact-hero";
+
+
+import PopUp from "../../components/common/pop-up";
+import ContactHero from "@/components/contact/contact-hero";
+import ContactReachOut from "@/components/contact/contact-reach-out";
+import ContactHighlight from "@/components/contact/contact-highlight";
+import ContactRecentPassout from "@/components/contact/contact-recent-passout";
+import HomeAlumniWork from "@/components/home/home-alumini-work";
+
+import ContactMap from "@/components/contact/contact-map";
+import ContactUnique from "@/components/contact/contact-unique";
+import ContactTestimonial from "@/components/contact/contact-testimonial";
+import ContactLocation from "@/components/contact/contact-location";
 
 const Contact = () => {
   return (
     <div>
        <PopUp  slug="Contact"/>
       <ContactHero />
-      <ReachOut />
-      <AIASuccessStats />
-      <HeroWithProjects />
-      <AlumniWorkFor />
-      <GlobalClassroomMap />
-      <CareerPartner />
-      <StudentTestimonials />
-      <LocationMap />
+      <ContactReachOut />
+
+      <ContactHighlight />
+      <ContactRecentPassout/>
+
+    <HomeAlumniWork/>
+    <ContactMap/>
+
+<ContactUnique/>
+
+<ContactTestimonial/>
+
+<ContactLocation/>
+
+
     </div>
   );
 };

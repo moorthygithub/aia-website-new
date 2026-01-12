@@ -105,52 +105,31 @@ const ContactHero = () => {
 
   return (
     <section className="relative overflow-hidden bg-linear-to-b from-gray-50 to-indigo-50/30 py-20">
-      {/* Background Effects */}
+   
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(221_83%_53%/.08),transparent_50%)]" />
       <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-indigo-900/10 rounded-full blur-3xl" />
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header Section */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <div className="inline-flex items-center gap-2 bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
-            <Sparkles className="w-3 h-3" />
-            Contact Us
-          </div>
+     
 
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            AIA <span className="text-indigo-700">Contact Us</span>
-          </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Have a question or career goal? Let's talk. We're here to guide you - just one message away!
-          </p>
-        </motion.div>
 
-        {/* Main Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 mb-16">
-          {/* Left Content */}
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 mb-16 items-center">
+
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="space-y-8"
           >
-            {/* AIA Info */}
+            
             <div className="space-y-6">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-                AIA is India's Leading Institute for 
-                <span className="text-amber-600"> {" "} CFE, CIA & CAMS</span> Prep Courses
+              Discover How AIA Can
+                <span className="text-amber-600"> {" "}               Transform Your Career Growth</span> 
               </h2>
 
-              <h3 className="text-2xl md:text-3xl font-semibold text-gray-800">
-                Discover How AIA Can <br />
-                Transform Your Career Growth
-              </h3>
+           
 
               <p className="text-gray-600 text-lg">
                 Have a question or career goal? <span className="text-amber-600 font-semibold">Let's talk</span><br />
@@ -158,7 +137,7 @@ const ContactHero = () => {
               </p>
             </div>
 
-            {/* Benefits List */}
+   
             <div className="space-y-4">
               {['Expert-led Training', 'Proven Results', 'Global Certifications', 'Career Support'].map((item, index) => (
                 <div key={index} className="flex items-center gap-3">
@@ -170,38 +149,15 @@ const ContactHero = () => {
               ))}
             </div>
 
-            {/* Accredited Section */}
-            <div className="bg-linear-to-r from-indigo-50 to-amber-50 rounded-xl p-6 border border-indigo-100 shadow-sm">
-              <div className="flex flex-col md:flex-row items-center gap-6">
-                <div className="text-center md:text-left">
-                  <div className="text-indigo-900 font-bold text-2xl flex items-center gap-2">
-                    <Award className="w-6 h-6" />
-                    Accredited
-                  </div>
-                  <div className="text-gray-600 text-sm">by Leading Bodies</div>
-                </div>
-                
-                <div className="hidden md:block h-12 w-px bg-linear-to-b from-transparent via-indigo-300 to-transparent"></div>
-                
-                <div className="flex flex-wrap justify-center gap-4">
-                  {['https://aia.in.net/crm/public/assets/images/brand/IAO.jpeg', 'https://aia.in.net/crm/public/assets/images/brand/IIA.png', 'https://aia.in.net/crm/public/assets/images/brand/ISO.jpeg', 'https://aia.in.net/crm/public/assets/images/brand/Gleim.jpeg'].map((logo,index ) => (
-                    <div
-                      key={index}
-                      className="w-14 h-14   flex flex-row items-center justify-center  transition-all duration-300"
-                    >
-                      <img src={logo} />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
+
+          
           </motion.div>
 
-          {/* Right Content - Grid with Form and Contact Cards */}
+    
           <FeatureCard>
        
 
-            {/* Form Section */}
+           
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -355,39 +311,8 @@ const ContactHero = () => {
           </FeatureCard>
         </div>
 
-        {/* Map Section */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="bg-white rounded-xl border border-indigo-100 shadow-lg p-6"
-        >
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 rounded-lg bg-indigo-100 flex items-center justify-center">
-              <MapPin className="w-5 h-5 text-indigo-600" />
-            </div>
-            <div>
-              <h2 className="text-2xl font-semibold text-gray-900">Our Location</h2>
-              <p className="text-gray-600 text-sm">Visit our headquarters in Mumbai</p>
-            </div>
-          </div>
-
-          <div className="h-100 relative rounded-lg overflow-hidden border border-gray-200">
-            {!mapLoaded && (
-              <div className="absolute inset-0 bg-linear-to-r from-indigo-50 to-gray-100 animate-pulse" />
-            )}
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d428221.04602404166!2d77.348773!3d28.388809000000002!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cdd5a9988bdcf%3A0x1dd0f04210cae34e!2sAcademy%20of%20Internal%20Audit!5e1!3m2!1sen!2sus!4v1766150573238!5m2!1sen!2sus"
-              referrerPolicy="no-referrer-when-downgrade"
-              className={`w-full h-full transition-opacity duration-500 ${
-                mapLoaded ? "opacity-100" : "opacity-0"
-              }`}
-              allowFullScreen
-              loading="lazy"
-              onLoad={() => setMapLoaded(true)}
-            />
-          </div>
-        </motion.div>
+      
+       
       </div>
     </section>
   );

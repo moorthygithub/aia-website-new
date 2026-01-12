@@ -10,25 +10,25 @@ const CourseHighLight = ({
   return (
     <div className="py-2">
       <div className="max-w-340 mx-auto">
-        {/* Header */}
-        <div className="text-center text-white bg-linear-to-r from-black via-yellow-900 to-black">
+   
+        <div className="text-center pb-2 border border-black ">
           {badgeText && (
-            <p className="text-orange-500 text-xs font-semibold uppercase tracking-widest mb-4">
+            <p className="text-orange-500 text-xs mt-2 font-semibold uppercase tracking-widest mb-4">
               {badgeText}
             </p>
           )}
 
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+          <h2 className="text-4xl md:text-5xl font-bold mb-2 leading-tight text-orange-800">
             {title}
           </h2>
 
-          <p className="text-gray-400 max-w-5xl mx-auto text-base leading-relaxed">
+          <p className="text-gray-800 max-w-5xl mx-auto text-base leading-relaxed">
             {description}
           </p>
         </div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-1 bg-gray-100 mx-auto">
+  
+        <div className="grid grid-cols-2 md:grid-cols-4 border-l border-r border-black gap-1 bg-gray-100 mx-auto">
           {stats.map((stat, index) => (
             <div
               key={index}
@@ -44,7 +44,8 @@ const CourseHighLight = ({
           ))}
         </div>
 
-        {/* Logos */}
+     
+        {logos.length > 0 && (
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 py-10 px-2 mx-auto text-white bg-linear-to-r from-black/5 to-black/5 border border-black">
           {logos.map((logo, index) => (
             <div
@@ -59,6 +60,7 @@ const CourseHighLight = ({
             </div>
           ))}
         </div>
+        )}
       </div>
     </div>
   );

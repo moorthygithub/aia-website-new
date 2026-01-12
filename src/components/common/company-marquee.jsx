@@ -16,12 +16,12 @@ const CompanyMarquee = ({ title, subtitle, companies }) => {
           `}
         </style>
   
-        <div className="w-full bg-linear-to-b from-black to-blue-400/80 py-20 overflow-hidden">
+        <div className="w-full bg-linear-to-b from-black/0 via-blue-400/80 to-black/0 py-20 overflow-hidden">
           <div className="max-w-340 mx-auto px-6 mb-6">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold  mb-4">
               {title}
             </h2>
-            <p className="text-gray-300 text-sm md:text-base max-w-3xl">
+            <p className="text-gray-800 text-sm md:text-base max-w-3xl">
               {subtitle}
             </p>
           </div>

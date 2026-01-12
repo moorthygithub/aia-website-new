@@ -41,7 +41,7 @@ const testimonials =
       <div className=" mx-auto ">
     <section className="relative w-full overflow-hidden bg-background">
       {/* Waves Background */}
-      <div className="absolute inset-0 z-0">
+      {/* <div className="absolute inset-0 z-0">
         <Waves
           lineColor="rgba(0, 39, 97, 0.2)"
           backgroundColor="transparent"
@@ -53,7 +53,7 @@ const testimonials =
           yGap={36}
       
         />
-      </div>  
+      </div>   */}
 
       {/* Foreground Content */}
       <div className="relative z-10 w-full px-8 py-12 grid grid-cols-1 md:grid-cols-2 items-center gap-8 max-w-340 mx-auto">

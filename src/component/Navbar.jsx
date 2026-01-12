@@ -76,6 +76,7 @@ const AIANavbar = () => {
       submenu: [
         { name: "Blog", link: "/blogs" },
         { name: "Our Passout", link: "/passed-out" },
+        { name: "Corporate Training", link: "/corpo" },
       ],
     },
     {

@@ -81,20 +81,21 @@ const HomeYoutube = () => {
   }
 
 
-  if (tabs.length === 0) {
-    return (
-      <div className="w-full bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-340 mx-auto text-center">
-          <p>No videos available.</p>
-        </div>
-      </div>
-    );
-  }
+  // if (tabs.length === 0) {
+  //   return (
+  //     <div className="w-full bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+  //       <div className="max-w-340 mx-auto text-center">
+  //         <p>No videos available.</p>
+  //       </div>
+  //     </div>
+  //   );
+  // }
+if(filteredVideos.length === 0) return null
 
   return (
     <div className="w-full bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-340 mx-auto">
-     
+     {tabs.length > 0 && (
         <div className="mb-8 border-b border-gray-200">
           <div className="flex gap-1 overflow-x-auto scrollbar-hide">
             {tabs.map((tab) => (
@@ -112,7 +113,7 @@ const HomeYoutube = () => {
             ))}
           </div>
         </div>
-
+)}
      
         {filteredVideos.length > 0 && (
           <div className="relative group">

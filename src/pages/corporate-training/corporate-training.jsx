@@ -1,0 +1,30 @@
+import CorporateCourse from '@/components/corporate-training/corporate-course'
+import CorporateCta from '@/components/corporate-training/corporate-cta'
+import CorporateFaq from '@/components/corporate-training/corporate-faq'
+import CorporateHighlight from '@/components/corporate-training/corporate-highlight'
+import CorporatePartner from '@/components/corporate-training/corporate-partner'
+import CorporateQuote from '@/components/corporate-training/corporate-quote'
+import CorporateReview from '@/components/corporate-training/corporate-review'
+import CorporateTrainer from '@/components/corporate-training/corporate-trainer'
+import CorporateWhy from '@/components/corporate-training/corporate-why'
+import CamsConnection from '@/components/courses/cams/cams-connection'
+import React from 'react'
+
+const CorporateTraining = () => {
+  return (
+    <>
+    <CorporateWhy/>
+    <CorporateCourse/>
+    <CorporatePartner/>
+    <CorporateQuote/>
+    <CamsConnection/>
+    <CorporateCta/>
+    <CorporateHighlight/>
+    <CorporateTrainer/>
+    <CorporateFaq/>
+    <CorporateReview/>
+    </>
+  )
+}
+
+export default CorporateTraining

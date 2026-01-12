@@ -1,0 +1,171 @@
+
+
+
+
+import React from "react";
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
+
+import { AlertCircle, RefreshCcw } from "lucide-react";
+import { BASE_URL } from "@/api/base-url";
+
+const ContactTestimonial = () => {
+  const { data, isLoading, isError, refetch } = useQuery({
+    queryKey: ["aia-testimonials"],
+    queryFn: async () => {
+      const res = await axios.get(
+         `${BASE_URL}/api/getAllTestimonials`
+      );
+      return res.data;
+    },
+  });
+
+
+  const studentImageBase =
+    data?.image_url?.find((img) => img.image_for === "Student")?.image_url || "";
+
+  const noImageUrl =
+    data?.image_url?.find((img) => img.image_for === "No Image")?.image_url || "";
+
+  
+  const testimonials =
+    data?.data?.map((item) => ({
+      name: item.student_name,
+      course: item.student_course,
+      message: item.student_testimonial,
+      image: item.student_image
+        ? `${studentImageBase}${item.student_image}`
+        : noImageUrl,
+      alt: item.student_image_alt || item.student_name,
+    })) || [];
+
+  return (
+    <section className="py-12 bg-white">
+      <div className="max-w-340 mx-auto w-full px-4 sm:px-6 lg:px-8">
+        <div className="mb-10">
+          <div className="text-center md:text-left">
+            <h1 className="text-3xl md:text-3xl font-bold text-black relative inline-block mb-2">
+              Top Testimonials
+              <span className="absolute left-0 -bottom-2 w-14 h-1 bg-linear-to-r from-[#f63b3b] to-[#d81d1d] rounded"></span>
+            </h1>
+            <p className="text-gray-600 text-base font-normal">
+              Description highlights the value of client feedback,
+              showcases real testimonials
+            </p>
+          </div>
+        </div>
+
+        <div className="flex flex-col lg:flex-row items-center">
+
+          <div className="w-full lg:w-1/2 mb-8 lg:mb-0">
+            <div className="flex justify-center">
+              <img
+                src="https://aia.in.net/assets/images/newcia/CIA%20Map.png"
+                alt="testimonials"
+                className="max-w-full h-auto"
+              />
+            </div>
+          </div>
+
+       
+          <div className="w-full lg:w-1/2 px-4">
+        
+            {isLoading && <p>loading......</p>}
+
+          
+            {isError && !isLoading && (
+              <div className="flex items-center justify-center bg-red-50 text-red-700 rounded-lg p-4 mb-6">
+                <AlertCircle className="mr-2" size={18} />
+                <span>Failed to load testimonials</span>
+                <button
+                  className="ml-3 px-3 py-1 text-sm border border-red-700 text-red-700 rounded hover:bg-red-700 hover:text-white transition-colors"
+                  onClick={refetch}
+                >
+                  <RefreshCcw className="mr-1 inline" size={14} />
+                  Try Again
+                </button>
+              </div>
+            )}
+
+           
+            {!isLoading && !isError && testimonials.length > 0 && (
+              <Swiper
+                modules={[Autoplay, Pagination]}
+                spaceBetween={30}
+                slidesPerView={1}
+                autoplay={{
+                  delay: 5000,
+                  disableOnInteraction: false,
+                }}
+                pagination={{ clickable: true }}
+                loop
+                className="testimonial-swiper"
+              >
+                {testimonials.map((item, index) => (
+                  <SwiperSlide key={index}>
+                    <div className="bg-white rounded-xl p-6 border border-blue-100">
+                      <div className="flex items-start gap-4 mb-4">
+                        <LazyLoadImage
+                          src={item.image}
+                          alt={item.alt}
+                          className="w-14 h-14 rounded-full object-cover border-2 border-red-900"
+                          effect="blur"
+                          width="56"
+                          height="56"
+                        />
+
+                        <div>
+                          <h4 className="text-lg font-semibold text-gray-800">
+                            {item.name}
+                          </h4>
+                          <div className="flex items-center mt-1">
+                            {[...Array(5)].map((_, i) => (
+                              <svg
+                                key={i}
+                                className="w-4 h-4 text-yellow-400"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                              >
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                              </svg>
+                            ))}
+                          </div>
+                        </div>
+
+                        <svg
+                          className="w-10 h-10 text-red-900 ml-auto"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2h-1V9z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      </div>
+
+                      <p className="text-gray-600 pl-2 border-l-2 border-red-200">
+                        {item.message}
+                      </p>
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default ContactTestimonial;

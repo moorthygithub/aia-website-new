@@ -44,12 +44,12 @@ const CourseAbout = ({
                 className="
                   relative
                   border-2
-                  border-blue-800
-                  bg-linear-to-br
+                 hover:border-blue-800
+                  hover:bg-linear-to-br
                   from-blue-900/20
                   via-blue-800
                   to-blue-900/50
-                  text-blue-50
+                  hover:text-blue-50
                   h-26.5
                   py-9
                   px-3
@@ -61,15 +61,15 @@ const CourseAbout = ({
                   text-center
                   transition-all
                   duration-300
-                  hover:border-orange-400
+                  border-orange-400
                   cursor-pointer
                 "
               >
-                <div className="text-xl font-bold mb-1 text-white">
+                <div className="text-xl font-bold mb-1 ">
                   {stat.display}
                 </div>
 {stat.show == 'true' &&(
- <h4 className="text-base font-normal text-blue-100">
+ <h4 className="text-base font-normal ">
  {stat.title}
 </h4>
 )}

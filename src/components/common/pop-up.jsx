@@ -12,6 +12,8 @@ import { Label } from "@/components/ui/label";
 import { X } from 'lucide-react';
 import { BASE_URL } from '@/api/base-url';
 
+
+
 const PopUp = ({ slug = 'home' }) => {
   const [open, setOpen] = useState(false);
   const [popupData, setPopupData] = useState(null);
@@ -82,14 +84,14 @@ const PopUp = ({ slug = 'home' }) => {
     setOpen(isOpen);
   };
 
-  const handleCheckboxChange = (checked) => {
-    setDontShowAgain(checked);
-    if (checked) {
-      localStorage.setItem(`popup_hidden_${slug}`, 'true');
-    } else {
-      localStorage.removeItem(`popup_hidden_${slug}`);
-    }
-  };
+  // const handleCheckboxChange = (checked) => {
+  //   setDontShowAgain(checked);
+  //   if (checked) {
+  //     localStorage.setItem(`popup_hidden_${slug}`, 'true');
+  //   } else {
+  //     localStorage.removeItem(`popup_hidden_${slug}`);
+  //   }
+  // };
 
   if (loading || !popupData || popupData.popup_required !== 'Yes') {
     return null;
@@ -137,7 +139,7 @@ const PopUp = ({ slug = 'home' }) => {
           </div>
 
        
-          <div className="px-2 pb-3 pt-0">
+          {/* <div className="px-2 pb-3 pt-0">
             <div className="flex items-center space-x-3 border-t border-gray-200 pt-4">
               <Checkbox
                 id={`dont-show-again-${slug}`}
@@ -152,7 +154,7 @@ const PopUp = ({ slug = 'home' }) => {
                 Don't show this again
               </Label>
             </div>
-          </div>
+          </div> */}
         </div>
       </DialogContent>
     </Dialog>
