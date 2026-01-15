@@ -29,7 +29,7 @@ export default function Hero() {
     },
   });
 
-  // 🔹 Transform API response (same logic as before)
+  
   useEffect(() => {
     if (!data?.data || !data?.image_url) return;
 
@@ -73,7 +73,7 @@ export default function Hero() {
 
   const goToSlide = (index) => setCurrentSlide(index);
 
-  // 🔹 Auto-play logic (unchanged)
+
   useEffect(() => {
     if (!isAutoPlaying || carouselSlides.length === 0) return;
 
@@ -84,7 +84,7 @@ export default function Hero() {
   const handleMouseEnter = () => setIsAutoPlaying(false);
   const handleMouseLeave = () => setIsAutoPlaying(true);
 
-  // 🔹 Loading
+
   if (isLoading) {
     return (
       <section className="relative">
@@ -95,7 +95,7 @@ export default function Hero() {
     );
   }
 
-  // 🔹 Error
+
   if (isError) {
     return (
       <section className="relative">
@@ -108,7 +108,7 @@ export default function Hero() {
     );
   }
 
-  // 🔹 Empty
+
   if (carouselSlides.length === 0) {
     return (
       <section className="relative">
@@ -183,8 +183,8 @@ export default function Hero() {
         </div> */}
       </div>
 
-      {/* 🔹 Announcement Box (unchanged) */}
-      <div className="lg:absolute lg:w-125 lg:-bottom-16 lg:z-20 lg:right-5">
+      
+      <div className="lg:absolute lg:w-125 lg:-bottom-16 lg:z-20 lg:left-5">
         <div className="bg-black/60 overflow-hidden">
           <div className="md:p-6">
             <div className="relative h-24">

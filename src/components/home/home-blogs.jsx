@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { BASE_URL } from "@/api/base-url";
 
-// -------------------- HomeBlog Component --------------------
+
 const HomeBlog = () => {
   const carouselRef = React.useRef(null);
   const controls = useAnimation();
@@ -18,7 +18,7 @@ const HomeBlog = () => {
   const [isAtStart, setIsAtStart] = React.useState(true);
   const [isAtEnd, setIsAtEnd] = React.useState(false);
 
-  // Fetch blog data from API
+  
   const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ["aia-blog"],
     queryFn: async () => {
@@ -29,7 +29,7 @@ const HomeBlog = () => {
     },
   });
 
-  // Extract blogs and image URL from API response
+ 
   const blogs = data?.data || [];
   const blogImageBaseUrl = data?.image_url?.find(item => item.image_for === "Blog")?.image_url || "";
   const noImageUrl = data?.image_url?.find(item => item.image_for === "No Image")?.image_url || "";
@@ -71,14 +71,14 @@ const HomeBlog = () => {
     return () => el.removeEventListener("scroll", checkScrollPosition);
   }, [checkScrollPosition]);
 
-  // Loading state
+ 
   if (isLoading) {
     return (
       <div className="flex min-h-125 w-full items-center justify-center bg-background p-4">
         <div className="w-full max-w-340 rounded-2xl border bg-card p-4 shadow-sm md:p-6">
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
             <div className="lg:col-span-3">
-              {/* Left section skeleton */}
+             
               <div className="animate-pulse">
                 <div className="h-6 w-3/4 rounded bg-gray-200"></div>
                 <div className="mt-4 h-8 w-full rounded bg-gray-200"></div>
@@ -87,7 +87,7 @@ const HomeBlog = () => {
               </div>
             </div>
             <div className="lg:col-span-9">
-              {/* Right carousel skeleton */}
+           
               <div className="flex gap-4 overflow-x-auto scrollbar-hide">
                 {[1, 2, 3].map((item) => (
                   <div key={item} className="w-64 shrink-0">
@@ -146,12 +146,12 @@ for CFE, CIA, and CAMS aspirants.
          
           </div>
 
-          {/* Carousel Section - Updated with Blog Data */}
+       
           <div className="relative lg:col-span-9">
-            <div ref={carouselRef} className="overflow-x-auto scrollbar-hide">
+            <div ref={carouselRef} className="">
               <motion.div className="flex gap-4 px-1 py-2" animate={controls}>
                 {(isError || blogs.length === 0) ? (
-                  // Fallback content if API fails or no blogs
+                
                   <div className="flex w-full items-center justify-center p-8">
                     <p className="text-muted-foreground">
                       No blogs available at the moment. Please try again later.
@@ -159,7 +159,7 @@ for CFE, CIA, and CAMS aspirants.
                   </div>
                 ) : (
                   blogs.map((blog) => {
-                    // Construct image URL
+                 
                     const imageUrl = blog.blog_images 
                       ? `${blogImageBaseUrl}${blog.blog_images}`
                       : noImageUrl;
@@ -191,7 +191,7 @@ for CFE, CIA, and CAMS aspirants.
                               <h3 className="text-base font-semibold line-clamp-2">
                                 {blog.blog_heading}
                               </h3>
-                              {/* Optional: You can add rating or other metadata here if needed */}
+                   
                             </div>
 
                             <p className="mt-1 text-sm text-muted-foreground line-clamp-2">
@@ -234,8 +234,8 @@ for CFE, CIA, and CAMS aspirants.
               </motion.div>
             </div>
 
-            {/* Navigation Buttons - Only show if there are blogs */}
-            {!isAtStart && blogs.length > 0 && (
+        
+            {/* {!isAtStart && blogs.length > 0 && (
               <Button
                 variant="outline"
                 size="icon"
@@ -255,7 +255,7 @@ for CFE, CIA, and CAMS aspirants.
               >
                 <ChevronRight />
               </Button>
-            )}
+            )} */}
           </div>
         </div>
       </div>

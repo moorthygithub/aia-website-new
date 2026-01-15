@@ -11,12 +11,12 @@ const CompanyMarquee = ({ title, subtitle, companies }) => {
               100% { transform: translateX(-100%); }
             }
             .marquee {
-              animation: marquee 25s linear infinite;
+              animation: marquee 50s linear infinite;
             }
           `}
         </style>
   
-        <div className="w-full bg-linear-to-b from-black/0 via-blue-400/80 to-black/0 py-20 overflow-hidden">
+        <div className="w-full bg-linear-to-b from-black/0 via-orange-400/60 to-black/0 py-20 overflow-hidden">
           <div className="max-w-340 mx-auto px-6 mb-6">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold  mb-4">
               {title}
@@ -38,8 +38,8 @@ const CompanyMarquee = ({ title, subtitle, companies }) => {
                     <img
                       src={c.src}
                       alt={c.alt}
-                      className="h-12 w-auto object-contain"
-                      style={{ maxWidth: "140px" }}
+                      className="h-20 w-auto object-contain"
+                      style={{ maxWidth: "240px" }}
                     />
                   </div>
                 ))}

@@ -6,91 +6,75 @@ import { Button } from '../ui/button';
 const certificationCourses = [
   {
     id: 1,
-    title: "Certified Fraud Examiner",
-    description: "CFE is a globally recognized certification in the field of fraud prevention, detection, and deterrence. By obtaining a CFE title you can explore growth in your career in the fields of audit, investigation, compliance, security etc.",
+    title: "Certified Fraud Examiner (CFE)",
+    description: "A globally recognised certification focused on fraud prevention, detection, and investigation, widely valued across audit, compliance, risk management, and forensic roles.",
+    description2: "How AIA Supports Your Certification Journey",
+    features: [
+"Concise, exam-focused, quick notes distilled from extensive study material",
+"60+ hours of structured, concept-driven video lectures",
+"1,500+ exam-oriented practice questions",
+"Live doubt-clearing sessions with experienced faculty",
+"Mock test preparation simulating the real exam environment",
+"End-to-end registration support for a smooth enrolment process",
+     
+    ],
+    cta:"Explore More About CFE",
     link: "cfe-curriculum",
     bgColor: "#ffffff",
     textColor: "#1e293b"
   },
   {
     id: 2,
-    title: "Certified Internal Auditor (Three Part Exam)",
-    description: "A platform for Internal Audit professionals to accelerate their professional career. CIA is a three-level exam starting from fundamentals of internal audit and moves towards excellence in practice of Internal Auditing.",
+    title: "Certified Internal Auditor (CIA – Three-Part Exam)",
+    description: "The leading international certification for internal audit professionals, covering internal audit fundamentals, risk management, governance, and advanced audit practices through a structured three-part examination framework.",
+    description2: "How AIA Supports Your Certification Journey",
+    features: [
+"60+ hours of recorded, expert-led lectures",
+"Gleim-authorised study material and practice questions",
+"Full-length Gleim mock tests aligned with CIA exam standards",
+"Training delivered by experienced, CIA-qualified faculty",
+"Live doubt-clearing sessions for continuous support",
+"Complete registration guidance at every stage",
+      
+    ],
+    cta:"Explore More About CIA",
     link: "cia-curriculum",
     bgColor: "#0f172a",
     textColor: "#ffffff"
   },
   {
     id: 3,
-    title: "Certified Internal Auditor Challenge",
-    description: "A chance to become a Certified Internal Auditor by appearing in a single exam. Members from 18 qualified bodies are eligible for the challenge exam only. It includes content not covered in the curriculum of the qualified bodies exam.",
+    title: "CIA Challenge Exam",
+    description: "A fast-track CIA pathway designed for eligible members of recognised professional bodies, allowing them to earn the CIA designation through a single comprehensive exam covering advanced internal audit competencies.",
+    description2: "How AIA Supports Your Certification Journey",
+    features: [
+"Expert-curated quick notes tailored specifically for the Challenge exam",
+"70+ hours of focused, recorded video lectures",
+"1,500+ targeted practice questions mapped to exam expectations",
+"Live online doubt-clearing sessions with qualified faculty",
+"Exam-oriented study material covering additional competency areas",
+"Mock test preparation and complete registration support",
+    ],
+    cta:"Explore More About the CIA Challenge",
     link: "cia-challenge-curriculum",
     bgColor: "#ffffff",
     textColor: "#1e293b"
   },
   {
     id: 4,
-    title: "Certified Anti Money Laundering Specialist",
-    description: "CAMS is the global gold standard in AML certifications, with more than 40,000 CAMS graduates worldwide. CAMS is an established global qualification that outlines the key principles of money laundering, and how to prevent it.",
-    link: "cams",
-    bgColor: "#0f172a",
-    textColor: "#ffffff"
-  }
-];
-
-const prepCourses = [
-  {
-    id: 5,
-    title: "AIA CFE Prep Course",
-    description: "Comprehensive preparation for the CFE certification with extensive learning materials and practice resources.",
+    title: "Certified Anti-Money Laundering Specialist (CAMS)",
+    description: "A globally respected AML certification focused on money laundering risks, regulatory frameworks, compliance programs, and financial crime prevention, especially relevant for banking and financial services professionals.",
+    description2: "How AIA Supports Your Certification Journey",
     features: [
-      "60+ Hours of Video Lectures",
-      "1500+ Practice Questions",
-      "Live Doubt Taking Sessions",
-      "Customized Study Notes"
+"40+ hours of recorded, exam-focused video sessions",
+"700+ practice questions aligned with the CAMS exam pattern",
+"Expert-curated quick notes condensed for faster revision",
+"Live doubt-clearing sessions with experienced AML faculty",
+"CAMS-style mock tests simulating the real exam scenario",
+"Complete support throughout the registration process",
+      
     ],
-    link: "become-cfe-in-just-30-days",
-    bgColor: "#ffffff",
-    textColor: "#1e293b"
-  },
-  {
-    id: 6,
-    title: "AIA CIA Prep Course",
-    description: "Complete preparation package for the CIA certification exam with expert guidance and practice materials.",
-    features: [
-      "80+ Hours of Recorded Video Lectures",
-      "Gleim Practice Questions",
-      "Gleim Mock Test",
-      "Experienced & CIA Qualified Faculty"
-    ],
-    link: "become-cia-in-just-90-days",
-    bgColor: "#0f172a",
-    textColor: "#ffffff"
-  },
-  {
-    id: 7,
-    title: "AIA CIA Challenge Prep Course",
-    description: "Specialized preparation for the CIA Challenge exam with focused study materials.",
-    features: [
-      "70+ Hours of Recorded Video Lectures",
-      "1500+ Practice Questions",
-      "Online Live Revision Classes",
-      "Classes Exam Oriented Study Material"
-    ],
-    link: "cia-challenge-prep-course",
-    bgColor: "#ffffff",
-    textColor: "#1e293b"
-  },
-  {
-    id: 8,
-    title: "AIA CAMS Prep Course",
-    description: "Preparation course for the CAMS certification with comprehensive study materials.",
-    features: [
-      "30+ Hours of Recorded/Live Video Lecture",
-      "700+ Practice Questions",
-      "Exam Oriented Study Material",
-      "CAMS Mock Test"
-    ],
+    cta:"Explore More About CAMS",
     link: "cams",
     bgColor: "#0f172a",
     textColor: "#ffffff"
@@ -98,7 +82,9 @@ const prepCourses = [
 ];
 
 
-const ALL_SERVICES = [...certificationCourses, ...prepCourses];
+
+
+const ALL_SERVICES = [...certificationCourses];
 
 const ServiceCard = ({ service, i, progress, range, targetScale }) => {
   const container = useRef(null);
@@ -121,7 +107,7 @@ const ServiceCard = ({ service, i, progress, range, targetScale }) => {
         className="relative w-full rounded-3xl p-8 shadow-2xl border-2 border-orange-500/20 min-h-125 flex flex-col justify-between origin-top"
       >
         <div>
-          <div className="flex items-start justify-between mb-6">
+          <div className="flex items-start justify-between mb-2">
             <h3 className="text-3xl font-bold mb-4" style={{ color: service.textColor }}>
               {service.title}
             </h3>
@@ -131,10 +117,16 @@ const ServiceCard = ({ service, i, progress, range, targetScale }) => {
           </div>
           
           <p 
-            className="text-lg mb-6" 
+            className="text-lg mb-1" 
             style={{ color: service.textColor === '#ffffff' ? '#d1d5db' : '#64748b' }}
           >
             {service.description}
+          </p>
+          <p 
+            className="text-md mb-3 font-bold" 
+            style={{ color: service.textColor === '#ffffff' ? '#ffffff' : '#000000' }}
+          >
+            {service.description2}
           </p>
 
           {service.features && (
@@ -154,28 +146,48 @@ const ServiceCard = ({ service, i, progress, range, targetScale }) => {
           )}
         </div>
 
-        {/* Arrow Button in bottom right */}
-        <div className="mt-8 flex justify-end">
-          <a 
-            href={service.link} 
-            className="group inline-flex items-center justify-center w-12 h-12 rounded-full bg-orange-500 hover:bg-orange-600 transition-colors"
-          >
-            <svg 
-              className="w-6 h-6 text-white transform group-hover:translate-x-1 transition-transform" 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </a>
-        </div>
+        <div className="mt-6 flex justify-end">
+  <a
+    href={service.link}
+    className="
+      group inline-flex items-center gap-2
+      h-10 px-4
+      rounded-md
+      border border-orange-500/30
+      bg-orange-500
+      text-sm font-medium text-white
+      transition-colors duration-200
+      hover:bg-orange-600
+    "
+  >
+    <span>{service.cta}</span>
 
-        {i < ALL_SERVICES.length - 1 && (
+    <svg
+      className="
+        w-4 h-4
+        transition-transform duration-200
+        group-hover:translate-x-0.5
+      "
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M14 5l7 7m0 0l-7 7m7-7H3"
+      />
+    </svg>
+  </a>
+</div>
+
+
+        {/* {i < ALL_SERVICES.length - 1 && (
           <div className="mt-8 flex justify-center">
-            <div className="h-12 w-px bg-gradient-to-b from-orange-500 to-transparent"></div>
+            <div className="h-12 w-px bg-linear-to-b from-orange-500 to-transparent"></div>
           </div>
-        )}
+        )} */}
       </motion.div>
     </div>
   );
@@ -199,15 +211,21 @@ const HomeCourses = () => {
                 PROFESSIONAL CERTIFICATION PROGRAMS
               </p>
               
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight text-blue-900">
-                Comprehensive Certification & Prep Courses
+              <h1 className="text-xl md:text-2xl font-bold mb-3 leading-tight text-blue-900">
+              Empowering Careers with Expert-Led Prep for Global Certification /
+              Global Certification Programs Designed for Professional Excellence
               </h1>
               
-              <p className="text-slate-600 text-base mb-8 max-w-lg leading-relaxed">
-                We offer complete certification programs and preparation courses for various professional qualifications 
-                in auditing, fraud examination, and anti-money laundering. Our programs are designed to help professionals 
-                excel in their careers with comprehensive study materials, expert guidance, and practical learning 
-                experiences.
+              <p className="text-slate-600 text-base mb-2 max-w-lg leading-relaxed">
+              We design our training programs to help professionals prepare for globally recognised
+certifications in internal audit, fraud, risk, and compliance. The focus is on structured learning,
+proper guidance, and practical understanding aligned with real-world requirements.
+              </p>
+              <p className="text-slate-600 text-base  max-w-lg leading-relaxed">
+              Each AIA prep program follows a clear, guided approach, combining expert-led guidance,
+tailored study resources, and extensive practice, enabling learners to develop strong
+conceptual clarity and apply their knowledge confidently across various professional roles and
+responsibilities.
               </p>
 
               <div className="inline-block ">

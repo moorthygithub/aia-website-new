@@ -224,7 +224,7 @@ export default function Waves({
         backgroundColor,
       }}
       className={cn(
-        "absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-340 mx-auto  h-full overflow-hidden",
+        "absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-full mx-auto  h-full overflow-hidden",
         className
       )}
     >

@@ -3,25 +3,26 @@ import React from "react";
 const HomeAccredited = () => {
   return (
 <div className="py-8 max-w-340 mx-auto">
-    <div className="px-4 sm:px-6 lg:px-8  mx-auto py-2  border ">
-              <div className="flex items-center gap-3 mb-2 ">
+    <div className="px-4 sm:px-6 lg:px-8  mx-auto py-2   ">
+              {/* <div className="flex items-center gap-3 mb-2 ">
                 <span className="text-sm font-medium text-blue-600 uppercase tracking-wider">
                 Smart Digital Service For Modern Businesses
                 </span>
-              </div>
+              </div> */}
 
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
-              Expert-Driven Product Development Process
+              Recognized & Accredited by Leading Global Bodies
               </h2>
 
               <div className="text-gray-600 leading-relaxed space-y-4 mb-4">
                 <p>
-                Specializing in custom web and app soluions. we use innovative strategies to build powerful, feature-packed, and secure applications for businesses worldwide from scratch. Here is our step-by-step app and web development process 
+                Our programs are recognized by international accreditation and professional bodies,
+reinforcing our commitment to quality education and global relevance
                 </p>
              
               </div>
               </div>
-    <div className="w-full py-10 bg-[url('https://christuniversity.in/images/bg_2.jpg')] bg-cover bg-center">
+    <div className="w-full py-10  bg-cover bg-center">
       
    
       <div className="hidden md:flex justify-center gap-10 px-6">
@@ -59,6 +60,7 @@ const DiamondCard = ({ img }) => (
       flex items-center justify-center
       border-2 border-gray-300
       transition-all duration-500
+      grayscale hover:grayscale-0 
       hover:-translate-y-3 hover:border-yellow-500
       hover:bg-[linear-gradient(135deg,rgba(255,255,255,0.85)_0%,rgba(255,255,255,0.55)_40%,rgba(255,255,255,0.18)_70%,rgba(255,255,255,0)_100%)]
     "
@@ -68,7 +70,7 @@ const DiamondCard = ({ img }) => (
       <img
         src={img}
         alt="logo"
-        className="w-auto h-auto object-contain"
+        className="w-auto h-auto object-contain "
       />
     </div>
   </div>
