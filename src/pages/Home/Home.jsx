@@ -38,14 +38,6 @@ export default function Home() {
       <HomeFaq/>
 
 
-      {/* <Courses />
-      <WhyChoose />
- 
-      <GlobalStandards />
-      <StandbyResult />
-      <Youtube />
-
-      <Blogs /> */}
     </div>
   );
 }

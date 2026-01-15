@@ -28,7 +28,7 @@ export function TestimonialCard({
           <AvatarImage 
             src={author.avatar} 
             alt={alt || "Certificate Image"}
-            className="object-cover w-full h-full rounded-md"
+            className=" w-full h-full object-fit rounded-md"
           />
         </Avatar>
       </div>

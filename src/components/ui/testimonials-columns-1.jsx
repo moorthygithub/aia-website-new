@@ -21,31 +21,43 @@ export const TestimonialsColumn = (props) => {
         {[
           ...new Array(2).fill(0).map((_, index) => (
             <React.Fragment key={index}>
-              {props.testimonials.map(({ text, image, alt, role }, i) => (
-                <div
-                  className="p-2 rounded-md border  shadow-lg shadow-primary/10 max-w-xs w-full"
-                  key={i}
-                >
-                  {/* <div>{text}</div> */}
-                  <div className="flex items-center gap-2 mt-5">
-                    <img
-                 
-                    
-                     decoding="async"
-                      src={image}
-                      alt={alt}
-                      className="h-full w-full"
-                    />
-                    {/* <div className="flex flex-col">
-                      <div className="font-medium tracking-tight leading-5">
-                        {name}
-                      </div>
-                      <div className="leading-5 opacity-60 tracking-tight">
-                        {role}
-                      </div>
-                    </div> */}
+              {props.testimonials.map(({ name, image, alt,student_designation,comapany_image ,company_alt }, i) => (
+              <div
+              className="rounded-md border bg-background  max-w-xs w-full overflow-hidden"
+              key={i}
+            >
+          
+              <div className="h-48 w-full">
+                <img
+                  src={image}
+                  alt={alt}
+                  decoding="async"
+                  className="h-full w-full object-top object-cover"
+                />
+              </div>
+            
+              <div className="p-4 flex flex-col gap-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex flex-col">
+                    <span className="text-sm font-semibold tracking-tight">
+                      {name}
+                    </span>
+                    <span className="text-xs opacity-60">
+                      {student_designation}
+                    </span>
                   </div>
+            
+               
+                  <img
+                    src={comapany_image}
+                    alt={company_alt}
+                    decoding="async"
+                    className="h-8 w-8 object-contain"
+                  />
                 </div>
+              </div>
+            </div>
+            
               ))}
             </React.Fragment>
           )),

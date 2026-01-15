@@ -36,7 +36,7 @@ const HomeAlumniWork = () => {
       title={
         <>
           Trusted by more than <br />
-          <span className="text-blue-500">300,000 organizations</span>
+          <span className="text-orange-500">300,000 organizations</span>
         </>
       }
       subtitle="Including 88 Fortune Global Top 100 companies that use JetBrains products to deliver top-quality software."

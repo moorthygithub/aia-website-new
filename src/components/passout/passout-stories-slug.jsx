@@ -50,8 +50,8 @@ const handleSubscribe = async (e) => {
       }
     );
     
-    if (response.data.code === '201') {
-      setSubscriptionStatus('Successfully subscribed! Thank you.');
+    if (response.data.code === 200) {
+      setSubscriptionStatus(response.data.msg || 'Successfully subscribed! Thank you.');
       setEmail('');
     } else {
       setSubscriptionStatus(response.data.message || 'Subscription failed. Please try again.');

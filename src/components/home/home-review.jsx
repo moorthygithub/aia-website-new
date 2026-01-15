@@ -14,6 +14,8 @@ import { AlertCircle, RefreshCcw } from "lucide-react";
 import { BASE_URL } from "@/api/base-url";
 
 const HomeReview = () => {
+  const [expanded, setExpanded] = React.useState(false);
+
   const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ["aia-testimonials"],
     queryFn: async () => {
@@ -42,7 +44,9 @@ const HomeReview = () => {
         : noImageUrl,
       alt: item.student_image_alt || item.student_name,
     })) || [];
-
+    const truncate = (text, limit = 320) =>
+      text.length > limit ? text.slice(0, limit) : text;
+    
   return (
     <section className="py-12 bg-white">
       <div className="max-w-340 mx-auto w-full px-4 sm:px-6 lg:px-8">
@@ -150,8 +154,17 @@ const HomeReview = () => {
                       </div>
 
                       <p className="text-gray-600 pl-2 border-l-2 border-red-200">
-                        {item.message}
-                      </p>
+  {expanded ? item.message : truncate(item.message, 320)}
+  {item.message.length > 320 && (
+    <button
+      onClick={() => setExpanded(!expanded)}
+      className="ml-2 text-red-900 font-medium text-sm hover:underline cursor-pointer"
+    >
+      {expanded ? "Read less" : "... Read more"}
+    </button>
+  )}
+</p>
+
                     </div>
                   </SwiperSlide>
                 ))}

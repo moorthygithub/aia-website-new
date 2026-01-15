@@ -4,14 +4,15 @@ const CourseAbout = ({
   badgeText, 
   heading, 
   description, 
-  aboutStats 
+  aboutStats ,
+  buttonText
 }) => {
   return (
     <section className="py-18">
       <div className="max-w-340 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-          {/* Left Content */}
+    
           <div>
             {badgeText && (
               <div className="flex items-center gap-3 mb-3">
@@ -26,6 +27,7 @@ const CourseAbout = ({
                 {heading}
               </h2>
             )}
+           
 
             {description && (
               <div className="text-gray-600 leading-relaxed space-y-4 mb-8">
@@ -34,9 +36,15 @@ const CourseAbout = ({
                 ))}
               </div>
             )}
+
+{buttonText && (
+              <span className="text-md font-semibold text-blue-600 mb-1">
+                {buttonText}
+              </span>
+            )}
           </div>
 
-          {/* Right Stats */}
+     
           <div className="grid grid-cols-2 gap-4">
             {aboutStats?.map((stat, index) => (
               <div
@@ -44,12 +52,12 @@ const CourseAbout = ({
                 className="
                   relative
                   border-2
-                 hover:border-blue-800
+                 hover:border-orange-800
                   hover:bg-linear-to-br
-                  from-blue-900/20
-                  via-blue-800
-                  to-blue-900/50
-                  hover:text-blue-50
+                  from-orange-500/20
+                  via-orange-200
+                  to-orange-500/50
+                 
                   h-26.5
                   py-9
                   px-3

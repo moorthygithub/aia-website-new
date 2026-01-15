@@ -20,6 +20,9 @@ const HomePassout = () => {
   const studentImageBase =
     data?.image_url?.find((img) => img.image_for === "Student")
       ?.image_url || "";
+  const companyImageBase =
+    data?.image_url?.find((img) => img.image_for === "Student Company")
+      ?.image_url || "";
 
 
   const testimonials =
@@ -29,6 +32,13 @@ const HomePassout = () => {
         : "",
       alt: item.student_image_alt || "Student",
       course: item.student_course,
+      name: item.student_name,
+      student_designation: item.student_designation,
+    
+      comapany_image: item.student_company_image
+      ? `${companyImageBase}${item.student_company_image}`
+      : "",
+      company_alt: item.student_company_image_alt  || "Student",
     })) || [];
 
     usePreloadImages(testimonials.map((t) => t.image));
@@ -36,15 +46,17 @@ const HomePassout = () => {
     (item) => item.course === "CFE"
   );
   const secondColumn = testimonials.filter(
-    (item) => item.course === "CIA"
+    (item) => item.course === "CIAC"
   );
   const thirdColumn = testimonials.filter(
     (item) => item.course === "CAMS"
   );
 
+
+  
   return (
-    <section className="bg-linear-to-bl from-indigo-300/25 via-transparent to-transparent relative">
-      <div className="mx-auto pt-20 max-w-340 z-10">
+    <section className="bg-linear-to-bl from-blue-300/25 via-transparent to-transparent relative pb-10">
+      <div className="mx-auto pt-10 max-w-340 z-10">
         <div className="flex flex-col items-center justify-center max-w-135 mx-auto">
           <div className="border py-1 px-4 rounded-lg">
             Testimonials
