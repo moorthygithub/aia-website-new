@@ -209,7 +209,7 @@ const HomeYoutube = () => {
                     </div>
                   </div>
                   <p className="  font-semibold px-1 mt-1 ">
-                    {video.youtube_language}
+                    {video.youtube_title}
                   </p>
                 </a>
               ))}

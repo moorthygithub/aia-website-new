@@ -4,11 +4,11 @@ const CourseJourney = ({ heading, highlight, steps, connectorImage }) => {
   return (
     <section className="py-20 px-4 bg-white">
       <div className="max-w-340 mx-auto">
-        {/* Heading */}
-        <div className="text-center max-w-4xl mx-auto mb-14">
-          <h3 className="text-[36px] font-bold mb-4">
+    
+        <div className="text-center max-w-6xl mx-auto mb-14">
+          <h3 className="text-[36px] font-bold mb-4 text-[#0F3652]">
             {heading}{" "}
-            <span className="text-[#7a00df]">{highlight}</span>
+            <span className="text-[#F3831C]">{highlight}</span>
           </h3>
         </div>
 
@@ -17,10 +17,11 @@ const CourseJourney = ({ heading, highlight, steps, connectorImage }) => {
             {steps.map((step, index) => (
               <div
                 key={index}
-                className="relative bg-indigo-100 hover:bg-[#2d245d] text-indigo-900 hover:text-white rounded-xl min-h-65"
+                className="relative bg-[#E7EBEE]
+ hover:bg-[#0F3652] text-[#0F3652] hover:text-white rounded-xl min-h-65"
               >
-                {/* Step number */}
-                <div className="absolute -top-4 border left-[45%] w-10 h-10 bg-indigo-900 text-white rounded-full flex items-center justify-center text-xl font-bold italic">
+           
+                  <div className="absolute -top-4 border left-[45%] w-10 h-10 bg-[#F3831C] text-white rounded-full flex items-center justify-center text-xl font-bold italic">
                   {step.number}
                 </div>
 
@@ -39,7 +40,7 @@ const CourseJourney = ({ heading, highlight, steps, connectorImage }) => {
             ))}
           </div>
 
-          {/* Connector image */}
+         
           {connectorImage && (
             <div className="hidden lg:block absolute top-0 left-0 right-0 z-0 scale-105">
               <img

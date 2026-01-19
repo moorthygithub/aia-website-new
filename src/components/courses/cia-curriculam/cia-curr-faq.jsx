@@ -16,7 +16,7 @@ const CiaCurrFaq = () => {
     queryKey: ["aia-faq-cia-curr"],
     queryFn: async () => {
       const res = await axios.get(
-        `${BASE_URL}/api/getFAQbySlug/cia`
+        `${BASE_URL}/api/getFAQbySlug/CIA-Curriculum`
       );
       return res.data;
     },
@@ -29,6 +29,8 @@ const CiaCurrFaq = () => {
       id: `item-${index + 1}`,
       question: item.faq_que,
       answer: item.faq_ans,
+        heading: item.faq_heading,
+      sort: item.faq_sort,
     })) || [];
 
 

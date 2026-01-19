@@ -88,14 +88,12 @@ const CorporateFaq = () => {
   }
 
   return (
-    <section className="py-16 md:py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="py-4">
+      <div className="mx-auto max-w-340 ">
         <div className="grid gap-8 md:grid-cols-5 md:gap-12">
           <div className="md:col-span-2">
-            <h2 className="text-foreground text-4xl font-semibold">FAQs</h2>
-            <p className="text-muted-foreground mt-4 text-balance text-lg">
-              {faqHeading}
-            </p>
+            <h2 className="text-foreground text-4xl font-semibold">{'FAQs' }</h2>
+           
             
           </div>
 
@@ -105,73 +103,26 @@ const CorporateFaq = () => {
                 <AccordionItem
                   key={item.id}
                   value={item.id}
-                  className="border-b border-gray-200 dark:border-gray-600">
-                  <AccordionTrigger className="cursor-pointer text-base font-medium hover:no-underline">
+                 className="border-b border-[#F3831C]/20">
+                   <AccordionTrigger className="cursor-pointer text-[#0F3652] font-medium hover:no-underline hover:text-[#F3831C] text-left">
                     {item.question}
                   </AccordionTrigger>
-                  <AccordionContent>
-                    <BlurredStagger text={item.answer} />
+                 <AccordionContent>
+                  <p className="text-[#0F3652] text-base whitespace-pre-line">
+                      {item.answer}
+                    </p>
                   </AccordionContent>
                 </AccordionItem>
               ))}
             </Accordion>
           </div>
 
-          <p className="text-muted-foreground mt-6 md:hidden">
-            Can't find what you're looking for? Contact our{' '}
-            <Link to="#" className="text-primary font-medium hover:underline">
-              customer support team
-            </Link>
-          </p>
+          
         </div>
       </div>
     </section>
   );
 };
 
-export const BlurredStagger = ({ text = "built by ruixen.com" }) => {
-  const headingText = text;
-
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.015,
-      },
-    },
-  };
-
-  const letterAnimation = {
-    hidden: {
-      opacity: 0,
-      filter: "blur(10px)",
-    },
-    show: {
-      opacity: 1,
-      filter: "blur(0px)",
-    },
-  };
-
-  return (
-    <div className="w-full">
-      <motion.p
-        variants={container}
-        initial="hidden"
-        animate="show"
-        className="text-base leading-relaxed wrap-break-word whitespace-normal">
-        {headingText.split("").map((char, index) => (
-          <motion.span
-            key={index}
-            variants={letterAnimation}
-            transition={{ duration: 0.3 }}
-            className="inline-block">
-            {char === " " ? "\u00A0" : char}
-          </motion.span>
-        ))}
-      </motion.p>
-    </div>
-  );
-};
 
 export default CorporateFaq;

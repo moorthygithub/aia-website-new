@@ -26,6 +26,8 @@ const CamsFaq = () => {
       id: `item-${index + 1}`,
       question: item.faq_que,
       answer: item.faq_ans,
+      heading: item.faq_heading,
+      sort: item.faq_sort,
     })) || [];
 
 
@@ -69,7 +71,7 @@ const CamsFaq = () => {
 
   return (
     <FaqSection
-      title={faqHeading}        
+        
   faqs={faqItems} 
     />
   );

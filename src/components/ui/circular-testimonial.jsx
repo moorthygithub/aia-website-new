@@ -199,11 +199,9 @@ import { Button } from "./button";
 <span className="relative z-10 flex flex-row items-center text-white ">
 <ChevronLeft size={28}  /> <span >Prev</span>
 </span>
-<span className="absolute inset-0 bg-linear-to-r from-blue-400 via-blue-500 to-blue-400  
-               
-              
-               opacity-100 transition-opacity duration-300 -skew-x-12" />
- 
+
+
+              <span className="absolute inset-0 bg-[#0F3652] opacity-100 transition-opacity duration-300 -skew-x-12" />
             </Button>
             <Button
     className="rounded-xl mb-4 px-5 text-base relative cursor-pointer overflow-hidden group hover:bg-linear-to-r hover:from-yellow-400/30 hover:via-yellow-500/40 hover:to-yellow-400/30"
@@ -217,7 +215,7 @@ import { Button } from "./button";
 <span className="relative z-10 flex flex-row items-center text-white ">
 <span>Next</span><ChevronRight size={28}  /> 
 </span>
-              <span className="absolute inset-0 bg-linear-to-r from-blue-400 via-blue-500 to-blue-400 opacity-100 transition-opacity duration-300 -skew-x-12" />
+                <span className="absolute inset-0 bg-[#0F3652] opacity-100 transition-opacity duration-300 -skew-x-12" />
 
             </Button>
            

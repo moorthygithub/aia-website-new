@@ -42,16 +42,15 @@ const CorporateReview = () => {
   }, [])
 
   return (
-    <div className=" py-1 ">
+    <div className="py-1">
       <div className="max-w-340 mx-auto">
-        <div className="grid md:grid-cols-2  ">
-          {/* Left Section */}
-          <div className="  p-2 rounded-lg shadow-lg">
-            <h2 className="text-3xl font-bold text-gray-800 mb-6">
+        <div className="grid md:grid-cols-2">
+          <div className="p-2 rounded-lg">
+            <h2 className="text-3xl font-bold text-[#0F3652] mb-6">
               Straight From the Learners & Organizations Who Experience Us
             </h2>
             
-            <div className="space-y-4 text-gray-700">
+            <div className="space-y-4 text-[#0F3652]">
               <p className="font-semibold">
                 AIA is a trusted partner for companies seeking measurable growth and long-term talent development.
               </p>
@@ -61,13 +60,12 @@ const CorporateReview = () => {
               </p>
             </div>
             
-            <button className="mt-8 bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-8 rounded-full transition duration-300 shadow-md">
+            <button className="mt-8 bg-[#F3831C] hover:bg-[#F3831C]/90 text-white font-semibold py-3 px-8 rounded-full transition duration-300 shadow-md">
               Know More
             </button>
           </div>
 
-      
-          <div className="relative h-96  bg-orange-500 overflow-hidden rounded-3xl">
+         <div className="relative h-96 bg-[#0F3652] overflow-hidden rounded-md w-full">
             <div 
               className="flex flex-col gap-4 p-4 transition-transform duration-100 ease-linear"
               style={{ transform: `translateY(-${scrollPosition}px)` }}
@@ -75,21 +73,20 @@ const CorporateReview = () => {
               {reviews.map((review, index) => (
                 <div 
                   key={index}
-                  className="bg-white rounded-full p-6 shadow-lg shrink-0 border-l-4 border-orange-500"
+                  className="bg-[#F3831C] rounded-md py-2 px-4 shadow-lg shrink-0 "
                 >
-                  <p className="text-gray-700 mb-1 leading-relaxed text-sm">
+                  <p className="text-white mb-1 leading-relaxed text-sm">
                     {review.text}
                   </p>
-                  <p className="text-orange-600 font-semibold text-md">
+                  <p className="text-white font-semibold text-md">
                     - {review.author}
                   </p>
                 </div>
               ))}
             </div>
             
-       
-            <div className="absolute top-0 left-0 right-0 h-8 bg-gradient-to-b from-orange-100/70 to-transparent pointer-events-none"></div>
-            <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-orange-100/70 to-transparent pointer-events-none"></div>
+            <div className="absolute top-0 left-0 right-0 h-8 bg-linear-to-b from-[#F3831C]/70 to-transparent pointer-events-none"></div>
+            <div className="absolute bottom-0 left-0 right-0 h-8 bg-linear-to-t from-[#F3831C]/70 to-transparent pointer-events-none"></div>
           </div>
         </div>
       </div>

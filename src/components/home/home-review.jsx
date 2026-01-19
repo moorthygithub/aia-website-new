@@ -1,31 +1,25 @@
 import React from "react";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
-
 import { AlertCircle, RefreshCcw } from "lucide-react";
 import { BASE_URL } from "@/api/base-url";
 
 const HomeReview = () => {
-  const [expanded, setExpanded] = React.useState(false);
-
   const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ["aia-testimonials"],
     queryFn: async () => {
       const res = await axios.get(
-         `${BASE_URL}/api/getAllTestimonials`
+        `${BASE_URL}/api/getAllTestimonials`
       );
       return res.data;
     },
   });
-
 
   const studentImageBase =
     data?.image_url?.find((img) => img.image_for === "Student")?.image_url || "";
@@ -33,7 +27,6 @@ const HomeReview = () => {
   const noImageUrl =
     data?.image_url?.find((img) => img.image_for === "No Image")?.image_url || "";
 
-  
   const testimonials =
     data?.data?.map((item) => ({
       name: item.student_name,
@@ -44,19 +37,26 @@ const HomeReview = () => {
         : noImageUrl,
       alt: item.student_image_alt || item.student_name,
     })) || [];
-    const truncate = (text, limit = 320) =>
-      text.length > limit ? text.slice(0, limit) : text;
-    
+
+  const truncateText = (text, limit = 130) => {
+    if (text.length <= limit) return text;
+    return text.slice(0, limit) + '...';
+  };
+
+  const shouldShowReadMore = (text) => {
+    return text.length > 150;
+  };
+
   return (
     <section className="py-12 bg-white">
       <div className="max-w-340 mx-auto w-full px-4 sm:px-6 lg:px-8">
         <div className="mb-10">
           <div className="text-center md:text-left">
-            <h1 className="text-3xl md:text-3xl font-bold text-black relative inline-block mb-2">
+            <h1 className="text-3xl md:text-3xl font-bold text-[#0F3652] relative inline-block mb-2">
               Top Testimonials
-              <span className="absolute left-0 -bottom-2 w-14 h-1 bg-linear-to-r from-[#f63b3b] to-[#d81d1d] rounded"></span>
+              <span className="absolute left-0 -bottom-2 w-14 h-1 bg-[#F3831C] rounded"></span>
             </h1>
-            <p className="text-gray-600 text-base font-normal">
+            <p className="text-[#0F3652] text-base font-normal">
               Description highlights the value of client feedback,
               showcases real testimonials
             </p>
@@ -64,7 +64,6 @@ const HomeReview = () => {
         </div>
 
         <div className="flex flex-col lg:flex-row items-center">
-
           <div className="w-full lg:w-1/2 mb-8 lg:mb-0">
             <div className="flex justify-center">
               <img
@@ -75,18 +74,15 @@ const HomeReview = () => {
             </div>
           </div>
 
-       
           <div className="w-full lg:w-1/2 px-4">
-        
-            {isLoading && <p>loading......</p>}
+            {isLoading && <p className="text-[#0F3652]">loading......</p>}
 
-          
             {isError && !isLoading && (
-              <div className="flex items-center justify-center bg-red-50 text-red-700 rounded-lg p-4 mb-6">
+              <div className="flex items-center justify-center bg-[#F3831C]/10 text-[#F3831C] rounded-lg p-4 mb-6">
                 <AlertCircle className="mr-2" size={18} />
                 <span>Failed to load testimonials</span>
                 <button
-                  className="ml-3 px-3 py-1 text-sm border border-red-700 text-red-700 rounded hover:bg-red-700 hover:text-white transition-colors"
+                  className="ml-3 px-3 py-1 text-sm border border-[#F3831C] text-[#F3831C] rounded hover:bg-[#F3831C] hover:text-white transition-colors"
                   onClick={refetch}
                 >
                   <RefreshCcw className="mr-1 inline" size={14} />
@@ -95,7 +91,6 @@ const HomeReview = () => {
               </div>
             )}
 
-           
             {!isLoading && !isError && testimonials.length > 0 && (
               <Swiper
                 modules={[Autoplay, Pagination]}
@@ -111,26 +106,26 @@ const HomeReview = () => {
               >
                 {testimonials.map((item, index) => (
                   <SwiperSlide key={index}>
-                    <div className="bg-white rounded-xl p-6 border border-blue-100">
+                    <div className="bg-white rounded-xl p-6 border border-[#F3831C]/20">
                       <div className="flex items-start gap-4 mb-4">
                         <LazyLoadImage
                           src={item.image}
                           alt={item.alt}
-                          className="w-14 h-14 rounded-full object-cover border-2 border-red-900"
+                          className="w-14 h-14 rounded-full object-cover border-2 border-[#0F3652]"
                           effect="blur"
                           width="56"
                           height="56"
                         />
 
                         <div>
-                          <h4 className="text-lg font-semibold text-gray-800">
+                          <h4 className="text-lg font-semibold text-[#0F3652]">
                             {item.name}
                           </h4>
                           <div className="flex items-center mt-1">
                             {[...Array(5)].map((_, i) => (
                               <svg
                                 key={i}
-                                className="w-4 h-4 text-yellow-400"
+                                className="w-4 h-4 text-[#F3831C]"
                                 fill="currentColor"
                                 viewBox="0 0 20 20"
                               >
@@ -141,7 +136,7 @@ const HomeReview = () => {
                         </div>
 
                         <svg
-                          className="w-10 h-10 text-red-900 ml-auto"
+                          className="w-10 h-10 text-[#0F3652] ml-auto"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                         >
@@ -153,18 +148,17 @@ const HomeReview = () => {
                         </svg>
                       </div>
 
-                      <p className="text-gray-600 pl-2 border-l-2 border-red-200">
-  {expanded ? item.message : truncate(item.message, 320)}
-  {item.message.length > 320 && (
-    <button
-      onClick={() => setExpanded(!expanded)}
-      className="ml-2 text-red-900 font-medium text-sm hover:underline cursor-pointer"
-    >
-      {expanded ? "Read less" : "... Read more"}
-    </button>
-  )}
-</p>
-
+                      <p className="text-[#0F3652] pl-2 border-l-2 border-[#F3831C]/50">
+                        {truncateText(item.message)}
+                        {shouldShowReadMore(item.message) && (
+                          <a
+                            href="#"
+                            className="ml-2 text-[#F3831C] font-medium text-sm hover:underline"
+                          >
+                            Read more
+                          </a>
+                        )}
+                      </p>
                     </div>
                   </SwiperSlide>
                 ))}

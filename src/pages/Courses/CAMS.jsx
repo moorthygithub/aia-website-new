@@ -42,7 +42,7 @@ const CAMS = () => {
       <CamsJourney/>
 
 
-<CamsWhyAia/>
+<CamsWhyAia/>   {/* oending */}
 <CamsHighlight/>
 
 

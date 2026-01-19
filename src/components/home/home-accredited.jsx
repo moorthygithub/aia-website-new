@@ -25,9 +25,20 @@ reinforcing our commitment to quality education and global relevance
     <div className="w-full py-10  bg-cover bg-center">
       
    
-      <div className="hidden md:flex justify-center gap-10 px-6">
+      <div className="hidden md:flex justify-center gap-20 px-6">
         {items.map((item, i) => (
-          <DiamondCard key={i} img={item.img} />
+     
+         <div
+  key={i}
+  className="w-36 h-36 grayscale hover:grayscale-0 flex items-center justify-center transition-transform duration-300 hover:scale-110"
+>
+
+      <img
+        src={item.img}
+        alt="logo"
+        className="w-auto h-auto object-contain "
+      />
+    </div>
         ))}
       </div>
 
@@ -53,28 +64,6 @@ reinforcing our commitment to quality education and global relevance
 
 export default HomeAccredited;
 
-const DiamondCard = ({ img }) => (
-  <div
-    className="
-      group w-40 h-40 rotate-45 rounded-xl
-      flex items-center justify-center
-      border-2 border-gray-300
-      transition-all duration-500
-      grayscale hover:grayscale-0 
-      hover:-translate-y-3 hover:border-yellow-500
-      hover:bg-[linear-gradient(135deg,rgba(255,255,255,0.85)_0%,rgba(255,255,255,0.55)_40%,rgba(255,255,255,0.18)_70%,rgba(255,255,255,0)_100%)]
-    "
-  >
-
-    <div className="-rotate-45 w-28 h-28 bg-white rounded-full shadow flex items-center justify-center">
-      <img
-        src={img}
-        alt="logo"
-        className="w-auto h-auto object-contain "
-      />
-    </div>
-  </div>
-);
 
 
 

@@ -11,27 +11,25 @@ export default function CourseUnique({
   return (
     <section
       id="unique-section"
-      className="w-full py-24 px-4 bg-linear-to-bl from-blue-50 via-transparent to-red-50 text-gray-800 relative"
+      className="w-full py-24 px-4 text-gray-800 relative"
     >
       <div className="container mx-auto max-w-6xl relative z-10">
-        {/* Header */}
         <div className="flex flex-col items-center mb-6">
-          <span className="text-blue-500 font-medium mb-2 flex items-center gap-2">
+          <span className="text-[#F3831C] font-medium mb-2 flex items-center gap-2">
             <Zap className="w-4 h-4" /> {badgeText}
           </span>
 
-          <h2 className="text-4xl md:text-5xl font-light mb-4 text-center">
-            {heading} <span className="text-blue-500">{highlight}</span>
+          <h2 className="text-4xl md:text-5xl font-light mb-4 text-center text-[#0F3652]">
+            {heading} <span className="text-[#F3831C]">{highlight}</span>
           </h2>
 
-          <div className="w-24 h-1 bg-blue-500"></div>
+          <div className="w-24 h-1 bg-[#F3831C]"></div>
         </div>
 
-        <p className="text-center max-w-2xl mx-auto mb-16 text-gray-600">
+        <p className="text-center max-w-2xl mx-auto mb-16 text-[#0F3652]">
           {description}
         </p>
 
-        {/* Services */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
           <div className="space-y-16">
             {services
@@ -54,20 +52,19 @@ export default function CourseUnique({
   );
 }
 
-
 function ServiceItem({ icon, secondaryIcon, title, description }) {
   return (
     <div className="flex flex-col group">
       <div className="flex items-center gap-3 mb-3">
-        <div className="text-blue-500 bg-blue-100 p-3 rounded-lg relative transition-colors duration-300 group-hover:bg-blue-200 group-hover:rotate-6">
+        <div className="text-[#F3831C] bg-[#F3831C]/10 p-3 rounded-lg relative transition-colors duration-300 group-hover:bg-[#F3831C]/20 group-hover:rotate-6">
           {icon}
           {secondaryIcon}
         </div>
-        <h3 className="text-xl font-medium text-gray-800 group-hover:text-blue-500 transition-colors duration-300">
+        <h3 className="text-xl font-medium text-[#0F3652] group-hover:text-[#F3831C] transition-colors duration-300">
           {title}
         </h3>
       </div>
-      <p className="text-sm text-gray-600 leading-relaxed pl-12">{description}</p>
+      <p className="text-sm text-[#0F3652] leading-relaxed pl-12">{description}</p>
     </div>
   );
 }

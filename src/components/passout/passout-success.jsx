@@ -3,13 +3,11 @@ import axios from 'axios'
 import { useQuery } from '@tanstack/react-query'
 import { BASE_URL } from '@/api/base-url'
 
-
 const PassoutSuccess = () => {
   const [selectedIndustry, setSelectedIndustry] = useState('All industries')
   const [selectedSolution, setSelectedSolution] = useState('All Solutions')
   const [visibleCount, setVisibleCount] = useState(6)
 
-  
   const { data: studentStoriesData, isLoading, isError } = useQuery({
     queryKey: ["student-stories"],
     queryFn: async () => {
@@ -18,24 +16,19 @@ const PassoutSuccess = () => {
     },
   })
 
-
   const handleReset = () => {
     setSelectedIndustry('All industries')
     setSelectedSolution('All Solutions')
   }
 
-
   const getImageUrl = (type) => {
     if (!studentStoriesData?.image_url) return ''
-    
     const imageConfig = studentStoriesData.image_url.find(item => item.image_for === type)
     return imageConfig ? imageConfig.image_url : ''
   }
 
- 
   const transformStories = () => {
     if (!studentStoriesData?.data) return []
-    
     const studentImageUrl = getImageUrl('Student')
     const companyImageUrl = getImageUrl('Student Company')
     
@@ -46,11 +39,9 @@ const PassoutSuccess = () => {
       role: story.student_designation,
       date: story.student_story_date,
       slug: story.student_slug,
- 
       image: story.student_image 
         ? `${studentImageUrl}${story.student_image}`
         : 'https://aia.in.net/webapi/public/assets/images/no_image.jpg',
-    
       companyImage: story.company?.student_company_image 
         ? `${companyImageUrl}${story.company.student_company_image}`
         : null,
@@ -68,10 +59,10 @@ const PassoutSuccess = () => {
       <section className="bg-white py-16 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto text-center">
           <div className="animate-pulse">
-            <div className="h-12 bg-gray-200 rounded w-3/4 mx-auto mb-8"></div>
+            <div className="h-12 bg-[#0F3652]/10 rounded w-3/4 mx-auto mb-8"></div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[1, 2, 3, 4, 5, 6].map((i) => (
-                <div key={i} className="bg-gray-200 rounded-2xl h-80"></div>
+                <div key={i} className="bg-[#0F3652]/10 rounded-2xl h-80"></div>
               ))}
             </div>
           </div>
@@ -84,7 +75,7 @@ const PassoutSuccess = () => {
     return (
       <section className="bg-white py-16 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto text-center">
-          <p className="text-red-600">Failed to load student stories. Please try again later.</p>
+          <p className="text-[#F3831C]">Failed to load student stories. Please try again later.</p>
         </div>
       </section>
     )
@@ -93,19 +84,17 @@ const PassoutSuccess = () => {
   return (
     <section className="bg-white py-16 px-6 lg:px-12">
       <div className="max-w-7xl mx-auto">
-       
         <div className="text-center mb-12">
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl lg:text-5xl font-bold text-[#0F3652] mb-4">
             Read Our Student's Journey
           </h2>
         </div>
 
-       
         <div className="flex flex-wrap items-center gap-4 mb-12">
           <select 
             value={selectedIndustry}
             onChange={(e) => setSelectedIndustry(e.target.value)}
-            className="px-6 py-3 border border-gray-300 rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="px-6 py-3 border border-[#0F3652]/30 rounded-lg bg-white text-[#0F3652] focus:outline-none focus:ring-2 focus:ring-[#0F3652]"
           >
             <option>All industries</option>
           </select>
@@ -113,7 +102,7 @@ const PassoutSuccess = () => {
           <select 
             value={selectedSolution}
             onChange={(e) => setSelectedSolution(e.target.value)}
-            className="px-6 py-3 border border-gray-300 rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="px-6 py-3 border border-[#0F3652]/30 rounded-lg bg-white text-[#0F3652] focus:outline-none focus:ring-2 focus:ring-[#0F3652]"
           >
             <option>All Solutions</option>
             <option>CFE</option>
@@ -121,18 +110,17 @@ const PassoutSuccess = () => {
 
           <button 
             onClick={handleReset}
-            className="px-6 py-3 text-gray-700 hover:text-gray-900 font-medium flex items-center gap-2"
+            className="px-6 py-3 text-[#0F3652] hover:text-[#0F3652] font-medium flex items-center gap-2"
           >
             Reset
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="text-gray-600">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="text-[#0F3652]">
               <path d="M17.5 10C17.5 14.1421 14.1421 17.5 10 17.5C5.85786 17.5 2.5 14.1421 2.5 10C2.5 5.85786 5.85786 2.5 10 2.5C12.0711 2.5 13.9464 3.35714 15.3033 4.75" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
               <path d="M17.5 4.16667V7.5H14.1667" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </button>
         </div>
 
-       
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {displayedStories.map((story) => (
             <article key={story.id} className="bg-white rounded-2xl  overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
            
@@ -203,12 +191,11 @@ const PassoutSuccess = () => {
           ))}
         </div>
 
-
         {visibleCount < stories.length && (
           <div className="text-center">
             <button 
               onClick={() => setVisibleCount(prev => prev + 3)}
-              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-full inline-flex items-center gap-2 transition-colors"
+              className="bg-[#0F3652] hover:bg-[#0F3652]/90 text-white font-semibold py-3 px-8 rounded-full inline-flex items-center gap-2 transition-colors"
             >
               <span>View More</span>
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none">

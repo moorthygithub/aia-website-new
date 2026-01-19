@@ -4,47 +4,43 @@ const CourseAbout = ({
   badgeText, 
   heading, 
   description, 
-  aboutStats ,
+  aboutStats,
   buttonText
 }) => {
   return (
     <section className="py-18">
       <div className="max-w-340 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-
-    
           <div>
             {badgeText && (
               <div className="flex items-center gap-3 mb-3">
-                <span className="text-sm font-medium text-blue-600 uppercase tracking-wider">
+                <span className="text-sm font-medium text-[#F3831C] uppercase tracking-wider">
                   {badgeText}
                 </span>
               </div>
             )}
 
             {heading && (
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#0F3652] mb-6">
                 {heading}
               </h2>
             )}
-           
 
             {description && (
-              <div className="text-gray-600 leading-relaxed space-y-4 mb-8">
+              <div className="text-[#0F3652] leading-relaxed space-y-4 mb-8">
                 {description.split("\n").map((line, i) => (
                   <p key={i}>{line}</p>
                 ))}
               </div>
             )}
 
-{buttonText && (
-              <span className="text-md font-semibold text-blue-600 mb-1">
+            {buttonText && (
+              <span className="text-md font-semibold text-[#F3831C] mb-1">
                 {buttonText}
               </span>
             )}
           </div>
 
-     
           <div className="grid grid-cols-2 gap-4">
             {aboutStats?.map((stat, index) => (
               <div
@@ -52,12 +48,11 @@ const CourseAbout = ({
                 className="
                   relative
                   border-2
-                 hover:border-orange-800
+                  hover:border-[#0F3652]
                   hover:bg-linear-to-br
-                  from-orange-500/20
-                  via-orange-200
-                  to-orange-500/50
-                 
+                  from-[#F3831C]/20
+                  via-[#F3831C]/10
+                  to-[#F3831C]/30
                   h-26.5
                   py-9
                   px-3
@@ -69,21 +64,19 @@ const CourseAbout = ({
                   text-center
                   transition-all
                   duration-300
-                  border-orange-400
+                  border-[#0F3652]
                   cursor-pointer
                 "
               >
-                <div className="text-xl font-bold mb-1 ">
+                <div className="text-xl font-bold mb-1 text-[#0F3652]">
                   {stat.display}
                 </div>
-{stat.show == 'true' &&(
- <h4 className="text-base font-normal ">
- {stat.title}
-</h4>
-)}
-               
-
-   
+                {stat.show == 'true' && (
+                  <h4 className="text-base font-normal text-[#0F3652]">
+                    {stat.title}
+                  </h4>
+                )}
+                
                 <div
                   className="
                     absolute
@@ -92,16 +85,15 @@ const CourseAbout = ({
                     right-0
                     h-1.5
                     bg-linear-to-r
-                    from-orange-400
-                    via-amber-400
-                    to-yellow-300
+                    from-[#F3831C]
+                    via-[#F3831C]/80
+                    to-[#F3831C]/60
                     rounded-b-lg
                   "
                 />
               </div>
             ))}
           </div>
-
         </div>
       </div>
     </section>

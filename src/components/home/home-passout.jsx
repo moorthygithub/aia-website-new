@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { TestimonialsColumn } from "@/components/ui/testimonials-columns-1";
-import TestimonialsColumn2 from "@/components/ui/testimonial-column-2";
+
 import usePreloadImages from "@/hooks/usePreloadImages";
 import { BASE_URL } from "@/api/base-url";
 
@@ -55,19 +55,19 @@ const HomePassout = () => {
 
   
   return (
-    <section className="bg-linear-to-bl from-blue-300/25 via-transparent to-transparent relative pb-10">
+    <section className="bg-linear-to-b from-[#0F3652]/10 via-transparent to-transparent relative pb-10">
       <div className="mx-auto pt-10 max-w-340 z-10">
         <div className="flex flex-col items-center justify-center max-w-135 mx-auto">
-          <div className="border py-1 px-4 rounded-lg">
+          <div className="border py-1 px-4 rounded-lg border-[#F3831C] text-[#F3831C]">
             Testimonials
           </div>
 
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tighter mt-5">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tighter mt-5 text-[#0F3652]">
             What our Passout say
           </h2>
 
           <p className="text-center mt-5 opacity-75">
-            See what our passout have to say about us.
+            See what our passout  say about us.
           </p>
         </div>
 
@@ -88,16 +88,16 @@ const HomePassout = () => {
       
         {!isLoading && !isError && testimonials.length > 0 && (
           <div className="flex justify-center gap-6 mt-10 mask-[linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-135 overflow-hidden">
-            <TestimonialsColumn testimonials={firstColumn} duration={15} />
-            <TestimonialsColumn2
+            <TestimonialsColumn testimonials={firstColumn} duration={20} />
+            <TestimonialsColumn
               testimonials={secondColumn}
      
-              duration={19}
+              duration={20}
             />
             <TestimonialsColumn
               testimonials={thirdColumn}
         
-              duration={17}
+              duration={20}
             />
           </div>
         )}

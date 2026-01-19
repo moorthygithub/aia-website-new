@@ -5,16 +5,16 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { BASE_URL } from '@/api/base-url';
 import CourseAchiverCard from '../common/course-achiver-card';
+
 const CamsAchivers = () => {
   const [cardSize, setCardSize] = useState(365);
   const [testimonialsList, setTestimonialsList] = useState([]);
 
-  
   const { data, isLoading, isError } = useQuery({
     queryKey: ["ciac-passout-students"],
     queryFn: async () => {
       const res = await axios.get(
-    `${BASE_URL}/api/getPassoutStudentbyCourse/CIAC`
+        `${BASE_URL}/api/getPassoutStudentbyCourse/CAMS`
       );
       return res.data;
     },
@@ -22,7 +22,6 @@ const CamsAchivers = () => {
 
   useEffect(() => {
     if (data?.data) {
-    
       const studentImageUrl = data.image_url?.find(img => img.image_for === "Student")?.image_url || '';
       
       const transformedData = data.data.map(student => ({
@@ -33,7 +32,7 @@ const CamsAchivers = () => {
         student_image_alt: student.student_image_alt,
         country_name: student.country_name,
         country_city: student.country_city,
-        imgSrc: studentImageUrl + student.student_image, 
+        imgSrc: studentImageUrl + student.student_image,
         by: `${student.student_name}, ${student.country_name}${student.country_city ? `, ${student.country_city}` : ''}`
       }));
 
@@ -74,23 +73,23 @@ const CamsAchivers = () => {
 
   if (isLoading) {
     return (
-      <div className="relative w-full overflow-hidden bg-muted/30 flex items-center justify-center" style={{ height: 600 }}>
-        <div className="text-lg">Loading achievers...</div>
+      <div className="relative w-full overflow-hidden bg-[#0F3652]/5 flex items-center justify-center" style={{ height: 600 }}>
+        <div className="text-lg text-[#0F3652]">Loading achievers...</div>
       </div>
     );
   }
 
-  if (isError ) {
+  if (isError) {
     return (
-      <div className="relative w-full overflow-hidden bg-muted/30 flex items-center justify-center" style={{ height: 600 }}>
-        <div className="text-lg text-red-500">Failed to load achievers</div>
+      <div className="relative w-full overflow-hidden bg-[#0F3652]/5 flex items-center justify-center" style={{ height: 600 }}>
+        <div className="text-lg text-[#0F3652]">Failed to load achievers</div>
       </div>
     );
   }
-
+if(testimonialsList.length === 0)  return null
   return (
     <div
-      className="relative w-full overflow-hidden bg-muted/30"
+      className="relative w-full overflow-hidden bg-[#0F3652]/5"
       style={{ height: 600 }}>
       {testimonialsList.map((testimonial, index) => {
         const position = testimonialsList.length % 2
@@ -103,7 +102,6 @@ const CamsAchivers = () => {
             handleMove={handleMove}
             position={position}
             cardSize={cardSize} />
-            
         );
       })}
       <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
@@ -111,8 +109,7 @@ const CamsAchivers = () => {
           onClick={() => handleMove(-1)}
           className={cn(
             "flex h-14 w-14 items-center justify-center text-2xl transition-colors",
-            "bg-background border-2 border-border hover:bg-primary hover:text-primary-foreground",
-            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            "bg-white border-2 border-[#0F3652] hover:bg-[#0F3652] hover:text-white text-[#0F3652]"
           )}
           aria-label="Previous testimonial">
           <ChevronLeft />
@@ -121,8 +118,7 @@ const CamsAchivers = () => {
           onClick={() => handleMove(1)}
           className={cn(
             "flex h-14 w-14 items-center justify-center text-2xl transition-colors",
-            "bg-background border-2 border-border hover:bg-primary hover:text-primary-foreground",
-            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            "bg-white border-2 border-[#0F3652] hover:bg-[#0F3652] hover:text-white text-[#0F3652]"
           )}
           aria-label="Next testimonial">
           <ChevronRight />

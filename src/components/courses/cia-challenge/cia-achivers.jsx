@@ -94,6 +94,7 @@ const CiaAchivers = () => {
     );
   }
 
+if(testimonialsList.length === 0)  return null
   return (
     <div
       className="relative w-full overflow-hidden bg-muted/30"

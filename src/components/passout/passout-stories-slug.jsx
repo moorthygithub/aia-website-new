@@ -7,7 +7,6 @@ import { BASE_URL } from "@/api/base-url";
 const PassoutStoriesSlug = () => {
   const { slug } = useParams();
 
-
   const { data: storyData, isLoading, isError } = useQuery({
     queryKey: ["passout-stories-slug", slug],
     queryFn: async () => {
@@ -19,72 +18,65 @@ const PassoutStoriesSlug = () => {
     enabled: !!slug,
   });
 
-const [email, setEmail] = useState('');
-const [subscriptionStatus, setSubscriptionStatus] = useState('');
-const [isSubscribing, setIsSubscribing] = useState(false);
+  const [email, setEmail] = useState('');
+  const [subscriptionStatus, setSubscriptionStatus] = useState('');
+  const [isSubscribing, setIsSubscribing] = useState(false);
 
-const handleSubscribe = async (e) => {
-  e.preventDefault();
-  
- 
-  if (!email || !/\S+@\S+\.\S+/.test(email)) {
-    setSubscriptionStatus('Please enter a valid email address');
-    setTimeout(() => setSubscriptionStatus(''), 3000);
-    return;
-  }
-  
-  setIsSubscribing(true);
-  setSubscriptionStatus('');
-  
-  try {
-    const response = await axios.post(
-      `${BASE_URL}/api/create-newslettersubscription`,
-      {
-        newsletter_email: email
-      },
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
+  const handleSubscribe = async (e) => {
+    e.preventDefault();
+    
+    if (!email || !/\S+@\S+\.\S+/.test(email)) {
+      setSubscriptionStatus('Please enter a valid email address');
+      setTimeout(() => setSubscriptionStatus(''), 3000);
+      return;
+    }
+    
+    setIsSubscribing(true);
+    setSubscriptionStatus('');
+    
+    try {
+      const response = await axios.post(
+        `${BASE_URL}/api/create-newslettersubscription`,
+        {
+          newsletter_email: email
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          }
         }
-      }
-    );
-    
-    if (response.data.code === 200) {
-      setSubscriptionStatus(response.data.msg || 'Successfully subscribed! Thank you.');
-      setEmail('');
-    } else {
-      setSubscriptionStatus(response.data.message || 'Subscription failed. Please try again.');
-    }
-  } catch (error) {
-    console.error('Subscription error:', error);
-    if (error.response) {
-    
-      setSubscriptionStatus(
-        error.response.data.message || 
-        error.response.data.error || 
-        'Subscription failed. Please try again.'
       );
-    } else if (error.request) {
-     
-      setSubscriptionStatus('Network error. Please check your connection.');
-    } else {
-   
-      setSubscriptionStatus('An error occurred. Please try again.');
+      
+      if (response.data.code === 200) {
+        setSubscriptionStatus(response.data.msg || 'Successfully subscribed! Thank you.');
+        setEmail('');
+      } else {
+        setSubscriptionStatus(response.data.message || 'Subscription failed. Please try again.');
+      }
+    } catch (error) {
+      console.error('Subscription error:', error);
+      if (error.response) {
+        setSubscriptionStatus(
+          error.response.data.message || 
+          error.response.data.error || 
+          'Subscription failed. Please try again.'
+        );
+      } else if (error.request) {
+        setSubscriptionStatus('Network error. Please check your connection.');
+      } else {
+        setSubscriptionStatus('An error occurred. Please try again.');
+      }
+    } finally {
+      setIsSubscribing(false);
+      setTimeout(() => setSubscriptionStatus(''), 5000);
     }
-  } finally {
-    setIsSubscribing(false);
-   
-    setTimeout(() => setSubscriptionStatus(''), 5000);
-  }
-};
-
-
+  };
 
   if (isLoading) {
     return (
       <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="text-gray-600">Loading...</div>
+        <div className="text-[#0F3652]">Loading...</div>
       </div>
     );
   }
@@ -92,7 +84,7 @@ const handleSubscribe = async (e) => {
   if (isError || !storyData?.data) {
     return (
       <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="text-red-600">Error loading story</div>
+        <div className="text-[#F3831C]">Error loading story</div>
       </div>
     );
   }
@@ -103,24 +95,22 @@ const handleSubscribe = async (e) => {
     student_designation,
     student_linkedin_link,
     student_story_details,
- 
     company,
     country
   } = storyData.data;
 
- 
   const companyImageUrl = storyData.image_url.find(img => img.image_for === "Student Company")?.image_url + company?.student_company_image;
 
   return (
     <div className="min-h-screen bg-white">
-       <header className="relative overflow-visible">
+      <header className="relative overflow-visible">
         <div className="px-4 sm:px-6 lg:px-8 max-w-340 mx-auto">
           <div className="relative">
             <div className="pt-8">
               <div className="flex items-start">
                 <a
                   href="/passed-out"
-                  className="inline-flex items-center gap-2 group transition-colors text-gray-700 hover:text-gray-900"
+                  className="inline-flex items-center gap-2 group transition-colors text-[#0F3652] hover:text-[#0F3652]"
                 >
                   <svg
                     className="w-4 h-4 transition-transform group-hover:-translate-x-0.5"
@@ -144,7 +134,7 @@ const handleSubscribe = async (e) => {
 
               <div className="mt-6"></div>
 
-              <h1 className="text-3xl md:text-4xl  lg:text-5xl font-semibold text-center text-gray-900  leading-tight">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-center text-[#0F3652] leading-tight">
                 How StayVista 3.5X'd Qualified Leads with an AI Agent
               </h1>
             </div>
@@ -164,7 +154,7 @@ const handleSubscribe = async (e) => {
               />
             </div>
 
-            <div className="absolute -z-10 top-0 left-0 right-0 h-[400px] bg-gradient-to-b from-gray-50 to-transparent"></div>
+            <div className="absolute -z-10 top-0 left-0 right-0 h-[400px] bg-gradient-to-b from-[#0F3652]/10 to-transparent"></div>
           </div>
         </div>
       </header>
@@ -173,11 +163,10 @@ const handleSubscribe = async (e) => {
         <div className="px-4 sm:px-6 lg:px-8 max-w-340 mx-auto">
           <div className="pb-24">
             <div className="flex flex-col lg:flex-row gap-12">
-              <div className="lg:w-1/4 rounded-2xl bg-gray-50 p-4">
+              <div className="lg:w-1/4 rounded-2xl bg-[#0F3652]/5 p-4">
                 <div className="">
-                  {/* About the brand */}
                   <div>
-                    <h3 className="text-base font-medium text-gray-900">
+                    <h3 className="text-base font-medium text-[#0F3652]">
                       About the Professional
                     </h3>
                     <div className="mt-2"></div>
@@ -190,19 +179,18 @@ const handleSubscribe = async (e) => {
                         />
                       )}
                       <div>
-                        <p className="text-sm font-medium text-gray-900">{student_name}</p>
-                        <p className="text-xs text-gray-500">{student_designation}</p>
+                        <p className="text-sm font-medium text-[#0F3652]">{student_name}</p>
+                        <p className="text-xs text-[#0F3652]">{student_designation}</p>
                       </div>
                     </div>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-[#0F3652]">
                       {student_name}, a {student_course} graduate, currently serves as {student_designation} at {company?.student_company_name} in {country?.country_name}.
                     </p>
                   </div>
 
-                  {/* About Details */}
                   <div className="space-y-2">
                     <div>
-                      <h3 className="text-base font-medium text-gray-900">
+                      <h3 className="text-base font-medium text-[#0F3652]">
                         LinkedIn
                       </h3>
                       <div className="mt-2"></div>
@@ -210,91 +198,88 @@ const handleSubscribe = async (e) => {
                         href={student_linkedin_link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-sm text-gray-500 hover:text-gray-700 transition-colors underline"
+                        className="text-sm text-[#0F3652] hover:text-[#0F3652] transition-colors underline"
                       >
                         {student_linkedin_link || "Not available"}
                       </a>
                     </div>
 
                     <div>
-                      <h3 className="text-base font-medium text-gray-900">
+                      <h3 className="text-base font-medium text-[#0F3652]">
                         Company
                       </h3>
                       <div className="mt-2"></div>
-                      <p className="text-sm text-gray-500">{company?.student_company_name || "Not specified"}</p>
+                      <p className="text-sm text-[#0F3652]">{company?.student_company_name || "Not specified"}</p>
                     </div>
 
                     <div>
-                      <h3 className="text-base font-medium text-gray-900">
+                      <h3 className="text-base font-medium text-[#0F3652]">
                         Course
                       </h3>
                       <div className="mt-2"></div>
-                      <p className="text-sm text-gray-500">{student_course || "Not specified"}</p>
+                      <p className="text-sm text-[#0F3652]">{student_course || "Not specified"}</p>
                     </div>
 
                     <div>
-                      <h3 className="text-base font-medium text-gray-900">
+                      <h3 className="text-base font-medium text-[#0F3652]">
                         Designation
                       </h3>
                       <div className="mt-2"></div>
-                      <p className="text-sm text-gray-500">{student_designation || "Not specified"}</p>
+                      <p className="text-sm text-[#0F3652]">{student_designation || "Not specified"}</p>
                     </div>
 
                     <div>
-                      <h3 className="text-base font-medium text-gray-900">
+                      <h3 className="text-base font-medium text-[#0F3652]">
                         Location
                       </h3>
                       <div className="mt-2"></div>
-                      <p className="text-sm text-gray-500">
+                      <p className="text-sm text-[#0F3652]">
                         {country?.country_name || "Not specified"}
                         {country?.country_city && country.country_city !== country.country_name ? `, ${country.country_city}` : ''}
                       </p>
                     </div>
                   </div>
-   <div className="py-2">
-        <h2 className="text-base font-medium text-gray-900 mb-1">
-          Subscribe to newsletter
-        </h2>
-        
-        <form  onSubmit={handleSubscribe}  className="space-y-3">
-          <input
-            type="email"
-            placeholder="Enter your email"
-              value={email}
-        onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-2 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-lime-400 focus:border-transparent text-gray-900 placeholder-gray-400"
-          />
-          <button
-        type="submit"
-        disabled={isSubscribing}
-        className={`w-full py-1.5 ${isSubscribing ? 'bg-lime-300' : 'bg-lime-400 hover:bg-lime-500'} text-gray-900 font-semibold rounded-lg transition-colors disabled:cursor-not-allowed`}
-      >
-        {isSubscribing ? 'Subscribing...' : 'Subscribe'}
-      </button>
-        </form>
-         {subscriptionStatus && (
-      <div className={`text-sm ${subscriptionStatus.includes('Success') ? 'text-green-600' : 'text-red-600'} font-medium text-center`}>
-        {subscriptionStatus}
-      </div>
-    )}
-      </div>
-                  {/* Social Share */}
+                  <div className="py-2">
+                    <h2 className="text-base font-medium text-[#0F3652] mb-1">
+                      Subscribe to newsletter
+                    </h2>
+                    
+                    <form onSubmit={handleSubscribe} className="space-y-3">
+                      <input
+                        type="email"
+                        placeholder="Enter your email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="w-full px-2 py-1.5 border border-[#0F3652]/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F3831C] focus:border-transparent text-[#0F3652] placeholder-[#0F3652]/50"
+                      />
+                      <button
+                        type="submit"
+                        disabled={isSubscribing}
+                        className={`w-full py-1.5 ${isSubscribing ? 'bg-[#F3831C]/70' : 'bg-[#F3831C] hover:bg-[#F3831C]/90'} text-white font-semibold rounded-lg transition-colors disabled:cursor-not-allowed`}
+                      >
+                        {isSubscribing ? 'Subscribing...' : 'Subscribe'}
+                      </button>
+                    </form>
+                    {subscriptionStatus && (
+                      <div className={`text-sm ${subscriptionStatus.includes('Success') ? 'text-[#F3831C]' : 'text-[#F3831C]'} font-medium text-center`}>
+                        {subscriptionStatus}
+                      </div>
+                    )}
+                  </div>
                   <div>
-                    <h3 className="text-base font-medium text-gray-900 mb-4">
+                    <h3 className="text-base font-medium text-[#0F3652] mb-4">
                       Share this Success Story
                     </h3>
                     <div className="flex gap-4">
-                      {/* Copy Link Button */}
                       <button
                         type="button"
-                        className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 hover:border-gray-300 transition-colors group"
+                        className="w-10 h-10 flex items-center justify-center rounded-full border border-[#0F3652]/20 hover:border-[#0F3652]/30 transition-colors group"
                         onClick={() => {
                           navigator.clipboard.writeText(window.location.href);
-                          // You can add toast notification here
                         }}
                       >
                         <svg
-                          className="w-5 h-5 text-gray-600 group-hover:text-gray-900"
+                          className="w-5 h-5 text-[#0F3652] group-hover:text-[#0F3652]"
                           viewBox="0 0 20 20"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
@@ -321,17 +306,16 @@ const handleSubscribe = async (e) => {
                         </svg>
                       </button>
 
-                      {/* Twitter */}
                       <a
                         href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(
                           window.location.href
                         )}&text=Success Story: ${encodeURIComponent(student_name)} at ${encodeURIComponent(company?.student_company_name || '')}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 hover:border-gray-300 transition-colors"
+                        className="w-10 h-10 flex items-center justify-center rounded-full border border-[#0F3652]/20 hover:border-[#0F3652]/30 transition-colors"
                       >
                         <svg
-                          className="w-5 h-5 text-gray-600 hover:text-gray-900"
+                          className="w-5 h-5 text-[#0F3652] hover:text-[#0F3652]"
                           viewBox="0 0 20 20"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
@@ -343,17 +327,16 @@ const handleSubscribe = async (e) => {
                         </svg>
                       </a>
 
-                      {/* Facebook */}
                       <a
                         href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
                           window.location.href
                         )}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 hover:border-gray-300 transition-colors"
+                        className="w-10 h-10 flex items-center justify-center rounded-full border border-[#0F3652]/20 hover:border-[#0F3652]/30 transition-colors"
                       >
                         <svg
-                          className="w-5 h-5 text-gray-600 hover:text-gray-900"
+                          className="w-5 h-5 text-[#0F3652] hover:text-[#0F3652]"
                           viewBox="0 0 20 20"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
@@ -377,17 +360,16 @@ const handleSubscribe = async (e) => {
                         </svg>
                       </a>
 
-                      {/* LinkedIn */}
                       <a
                         href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(
                           window.location.href
                         )}&title=${encodeURIComponent(`Success Story: ${student_name}`)}&summary=${encodeURIComponent(`${student_name}, a ${student_course} graduate, now ${student_designation} at ${company?.student_company_name}`)}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 hover:border-gray-300 transition-colors"
+                        className="w-10 h-10 flex items-center justify-center rounded-full border border-[#0F3652]/20 hover:border-[#0F3652]/30 transition-colors"
                       >
                         <svg
-                          className="w-5 h-5 text-gray-600 hover:text-gray-900"
+                          className="w-5 h-5 text-[#0F3652] hover:text-[#0F3652]"
                           viewBox="0 0 20 20"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
@@ -417,37 +399,37 @@ const handleSubscribe = async (e) => {
 
               <div className="lg:w-3/4">
                 <div className="mb-12">
-                  <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-6">
+                  <h3 className="text-xl md:text-2xl font-bold text-[#0F3652] mb-6">
                     Our Impact
                   </h3>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div className="space-y-2 border bg-green-950 p-4 rounded-2xl">
-                      <div className="text-4xl md:text-5xl font-bold text-green-400">
+                    <div className="space-y-2 border bg-[#0F3652] p-4 rounded-2xl">
+                      <div className="text-4xl md:text-5xl font-bold text-[#F3831C]">
                         3.5x
                       </div>
                       <div className="text-lg font-medium text-white">
                         Increase in lead generation
                       </div>
                     </div>
-                    <div className="space-y-2 border bg-green-950 p-4 rounded-2xl">
-                      <div className="text-4xl md:text-5xl font-bold text-green-400">
+                    <div className="space-y-2 border bg-[#0F3652] p-4 rounded-2xl">
+                      <div className="text-4xl md:text-5xl font-bold text-[#F3831C]">
                         3.5x
                       </div>
                       <div className="text-lg font-medium text-white">
                         Increase in lead generation
                       </div>
                     </div>
-                    <div className="space-y-2 border bg-green-950 p-4 rounded-2xl">
-                      <div className="text-4xl md:text-5xl font-bold text-green-400">
+                    <div className="space-y-2 border bg-[#0F3652] p-4 rounded-2xl">
+                      <div className="text-4xl md:text-5xl font-bold text-[#F3831C]">
                         3.5x
                       </div>
                       <div className="text-lg font-medium text-white">
                         Increase in lead generation
                       </div>
                     </div>
-                    <div className="space-y-2 border bg-green-950 p-4 rounded-2xl">
-                      <div className="text-4xl md:text-5xl font-bold text-green-400">
+                    <div className="space-y-2 border bg-[#0F3652] p-4 rounded-2xl">
+                      <div className="text-4xl md:text-5xl font-bold text-[#F3831C]">
                         3.5x
                       </div>
                       <div className="text-lg font-medium text-white">

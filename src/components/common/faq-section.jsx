@@ -1,55 +1,97 @@
-
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../ui/accordion";
-import { BlurredStagger } from "../ui/blurred-stagger";
 
 
+const FaqSection = ({ faqs = [] }) => {
 
-const FaqSection = ({ title = "FAQs", subtitle, faqs }) => {
-  if (!faqs?.length) return null;
+  const groupedFaqs = {};
+  let currentHeading = "General Questions";
+
+  const sortedFaqs = [...faqs].sort((a, b) =>
+    a.sort.localeCompare(b.sort)
+  );
+
+  sortedFaqs.forEach((faq) => {
+    if (faq.heading) {
+      currentHeading = faq.heading;
+    }
+
+    if (!groupedFaqs[currentHeading]) {
+      groupedFaqs[currentHeading] = [];
+    }
+
+    groupedFaqs[currentHeading].push(faq);
+  });
+
+  const headings = Object.keys(groupedFaqs);
+
+
+  const [activeHeading, setActiveHeading] = useState(
+    headings[0] || ""
+  );
+
+  
+  if (!faqs.length) return null;
 
   return (
-    <section className="py-16 md:py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="py-16">
+      <div className="mx-auto max-w-340 px-4 sm:px-6 lg:px-8">
         <div className="grid gap-8 md:grid-cols-5 md:gap-12">
-          
-          {/* Left */}
+       
           <div className="md:col-span-2">
-            <h2 className="text-foreground text-4xl font-semibold">
-              {title}
+            <h2 className="text-[#0F3652] text-4xl font-semibold">
+              FAQs
             </h2>
-
-            <p className="text-muted-foreground mt-4 text-lg">
-              {subtitle}
-            </p>
-
-           
+            
+            <div className="mt-8 space-y-4">
+              {headings.map((heading, index) => (
+                <div 
+                  key={index} 
+                  className="group"
+                  onClick={() => setActiveHeading(heading)}
+                >
+                  <h3 className={`text-lg font-medium cursor-pointer transition-colors ${
+                    activeHeading === heading 
+                      ? 'text-[#F3831C] border-l-4 border-[#F3831C] pl-4' 
+                      : 'text-[#0F3652] hover:text-[#F3831C] pl-5'
+                  }`}>
+                    {heading}
+                  </h3>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Right */}
+     
           <div className="md:col-span-3">
+            <h3 className="text-[#0F3652] text-2xl font-semibold mb-6">
+              {activeHeading}
+            </h3>
+            
             <Accordion type="single" collapsible>
-              {faqs.map((item) => (
+              {groupedFaqs[activeHeading]?.map((item) => (
                 <AccordionItem
                   key={item.id}
                   value={item.id}
-                  className="border-b border-gray-200 dark:border-gray-600"
+                  className="border-b border-[#F3831C]/20"
                 >
-                  <AccordionTrigger className="cursor-pointer text-base font-medium hover:no-underline">
+                  <AccordionTrigger className="cursor-pointer text-[#0F3652] font-medium hover:no-underline hover:text-[#F3831C] text-left">
                     {item.question}
                   </AccordionTrigger>
-
                   <AccordionContent>
-                    <BlurredStagger text={item.answer} />
+                    <p className="text-[#0F3652] text-base whitespace-pre-line">
+                      {item.answer}
+                    </p>
                   </AccordionContent>
                 </AccordionItem>
               ))}
             </Accordion>
           </div>
 
-          <p className="text-muted-foreground mt-6 md:hidden">
+          <p className="text-[#0F3652] mt-6 md:hidden">
             Can't find what you're looking for? Contact our{" "}
-            <Link to="#" className="text-primary font-medium hover:underline">
+            <Link to="#" className="text-[#F3831C] font-medium hover:underline">
               customer support team
             </Link>.
           </p>

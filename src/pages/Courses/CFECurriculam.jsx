@@ -18,7 +18,7 @@ import CourseLms from "@/components/courses/common/course-lms";
 
 import CfeAchivers from "@/components/courses/cfe-curriculam/cfe-achivers";
 
-import CiaFaq from "@/components/courses/cia-challenge/cia-faq";
+
 import CfeCourseCurriculum from "@/components/courses/cfe-curriculam/cfe-cource-curriculam";
 import CfeJourney from "@/components/courses/cfe-curriculam/cfe-journey";
 import CfeWhyAia from "@/components/courses/cfe-curriculam/cfe-why-aia";
@@ -28,6 +28,7 @@ import CfeAbout from "@/components/courses/cfe-curriculam/cfe-about";
 
 import CourseMap from "@/components/courses/common/course-map";
 import PopUp from "@/components/common/pop-up";
+import CfeFaq from "@/components/courses/cfe-curriculam/cfe-faq";
 
 
 const CFECurriculam = () => {
@@ -61,7 +62,7 @@ const CFECurriculam = () => {
      <CfeAchivers/>
      <CamsConnection/>
      <HomeAlumniWork/>
-     <CiaFaq/>
+     <CfeFaq/>
     </div>
   );
 };

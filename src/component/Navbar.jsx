@@ -19,21 +19,21 @@ const AIANavbar = () => {
       icon: <Mail size={16} />,
       text: "support@aia.in.net",
       href: "mailto:support@aia.in.net",
-      color: "text-[#fb7705]",
+      color: "text-[#F3831C]",
       underline: true,
     },
     {
       icon: <FaWhatsapp />,
       text: "",
       href: "https://wa.me/+919311320114",
-      color: "text-[#fb7705]",
+      color: "text-[#F3831C]",
       underline: false,
     },
     {
       icon: <Phone size={16} />,
       text: "+91 93113 20114",
       href: "tel:+919311320114",
-      color: "text-[#fb7705]",
+      color: "text-[#F3831C]",
       underline: true,
     },
     {
@@ -129,10 +129,9 @@ const AIANavbar = () => {
   };
 
   return (
-    <div className="w-full sticky top-0 z-50">
- 
-      <div className="flex justify-center md:justify-between bg-[hsl(var(--dark))]">
-        <div className="hidden md:block  text-white py-2.5">
+    <div className="w-full sticky top-0 z-9999">
+      <div className="flex justify-center md:justify-between bg-[#0F3652]">
+        <div className="hidden md:block text-white py-2.5">
           <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
             <div className="flex items-center gap-6 text-sm">
               {links.map((link, index) => (
@@ -172,7 +171,7 @@ const AIANavbar = () => {
           </div>
         </div>
 
-        <div className=" text-white py-2.5 ">
+        <div className="text-white py-2.5">
           <div className="px-4 flex justify-center items-center gap-4">
             {socialLinks.map((social, index) => {
               const Icon = social.icon;
@@ -183,7 +182,7 @@ const AIANavbar = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="text-white hover:text-[#fb7705] transition-colors"
+                  className="text-white hover:text-[#F3831C] transition-colors"
                 >
                   <Icon size={18} />
                 </a>
@@ -217,8 +216,8 @@ const AIANavbar = () => {
                     to={item.link}
                     className="
     flex items-center gap-1
-    text-gray-800 font-medium
-    hover:text-[#0067DA]
+    text-[#0F3652] font-medium
+    hover:text-[#F3831C]
     transition-colors
     py-2 text-[15px]
   "
@@ -229,7 +228,7 @@ const AIANavbar = () => {
 
                   {item.submenu && (
                     <ul
-                      className={`absolute top-full left-0 mt-2  px-6  bg-white rounded-lg shadow-xl min-w-[220px] py-2 transition-all duration-300 ${
+                      className={`absolute top-full left-0 mt-2 px-6 bg-white rounded-lg shadow-xl min-w-[220px] py-2 transition-all duration-300 ${
                         activeDropdown === index
                           ? "opacity-100 visible translate-y-0"
                           : "opacity-0 invisible translate-y-2"
@@ -242,8 +241,8 @@ const AIANavbar = () => {
                             className="
     relative inline-block
      py-2.5
-    text-sm text-gray-600
-    hover:text-[#0067DA]
+    text-sm text-[#0F3652]
+    hover:text-[#F3831C]
   
     transition-colors
     duration-300
@@ -254,7 +253,7 @@ const AIANavbar = () => {
     after:bottom-1
     after:h-[1px]
     after:w-full
-    after:bg-[#0067DA]
+    after:bg-[#F3831C]
     after:scale-x-0
     after:origin-right
     after:transition-transform
@@ -278,10 +277,10 @@ const AIANavbar = () => {
                 <a
                   href="/enroll-now"
                   className="
-    bg-[#0067DA] text-white
+    bg-[#F3831C] text-white
     px-6 py-2.5 rounded-md
     font-semibold
-    hover:bg-[#0067DA]/90
+    hover:bg-[#F3831C]/90
     transition-all
     shadow-md hover:shadow-lg
   "
@@ -294,14 +293,13 @@ const AIANavbar = () => {
             <div className="lg:hidden">
               <button
                 onClick={toggleMobileMenu}
-                className="text-gray-800 focus:outline-none"
+                className="text-[#0F3652] focus:outline-none"
               >
                 {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
               </button>
             </div>
           </div>
 
-          {/* Mobile Menu */}
           <div
             className={`lg:hidden fixed top-0 left-0 w-80 h-screen bg-white shadow-2xl transition-transform duration-300 overflow-y-auto z-50 ${
               isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
@@ -310,7 +308,7 @@ const AIANavbar = () => {
             <div className="p-6">
               <button
                 onClick={toggleMobileMenu}
-                className="absolute top-7 right-6 text-gray-800"
+                className="absolute top-7 right-6 text-[#0F3652]"
               >
                 <X size={28} />
               </button>
@@ -330,7 +328,7 @@ const AIANavbar = () => {
                       <>
                         <button
                           onClick={() => toggleDropdown(index)}
-                          className="flex items-center justify-between w-full py-4 text-gray-800 font-medium"
+                          className="flex items-center justify-between w-full py-4 text-[#0F3652] font-medium"
                         >
                           {item.title}
                           <ChevronDown
@@ -342,7 +340,7 @@ const AIANavbar = () => {
                         </button>
 
                         {activeDropdown === index && (
-                          <ul className="hover-bg-[#0067DA] rounded-md mb-4   ">
+                          <ul className="hover:bg-[#0F3652] rounded-md mb-4">
                             {item.submenu.map((subItem, subIndex) => (
                               <li key={subIndex}>
                                 <Link
@@ -350,8 +348,8 @@ const AIANavbar = () => {
                                   className="
     relative inline-block
  px-4 py-2.5
-    text-sm text-gray-600
-    hover:text-[#0067DA]
+    text-sm text-[#0F3652]
+    hover:text-[#F3831C]
     transition-colors
     duration-300
 
@@ -361,7 +359,7 @@ const AIANavbar = () => {
     after:bottom-1
     after:h-[1px]
     after:w-full
-    after:bg-[#0067DA]
+    after:bg-[#F3831C]
     after:scale-x-0
     after:origin-right
     after:transition-transform
@@ -382,7 +380,7 @@ const AIANavbar = () => {
                     ) : (
                       <a
                         href={item.link}
-                        className="block py-4 text-gray-800 font-medium hover-text-[#0067DA] transition-colors"
+                        className="block py-4 text-[#0F3652] font-medium hover:text-[#F3831C] transition-colors"
                       >
                         {item.title}
                       </a>
@@ -393,7 +391,7 @@ const AIANavbar = () => {
                 <div className="mt-6">
                   <a
                     href="/enroll-now"
-                    className="block w-full bg-[#0067DA] text-white text-center px-6 py-3 rounded-md font-semibold hover:opacity-90 transition-all"
+                    className="block w-full bg-[#F3831C] text-white text-center px-6 py-3 rounded-md font-semibold hover:opacity-90 transition-all"
                   >
                     Enroll Now
                   </a>
@@ -402,21 +400,21 @@ const AIANavbar = () => {
                 <div className="mt-8 pt-6 border-t border-gray-200 space-y-3">
                   <a
                     href="mailto:support@aia.in.net"
-                    className="flex items-center gap-2 text-sm text-gray-600 hover-text-[#0067DA]"
+                    className="flex items-center gap-2 text-sm text-[#0F3652] hover:text-[#F3831C]"
                   >
                     <Mail size={16} />
                     support@aia.in.net
                   </a>
                   <a
                     href="tel:+919311320114"
-                    className="flex items-center gap-2 text-sm text-gray-600 hover-text-[#0067DA]"
+                    className="flex items-center gap-2 text-sm text-[#0F3652] hover:text-[#F3831C]"
                   >
                     <Phone size={16} />
                     +91 93113 20114
                   </a>
                   <a
                     href="tel:+180012002555"
-                    className="flex items-center gap-2 text-sm text-gray-600 hover-text-[#0067DA]"
+                    className="flex items-center gap-2 text-sm text-[#0F3652] hover:text-[#F3831C]"
                   >
                     <Phone size={16} />
                     1800-1200-2555

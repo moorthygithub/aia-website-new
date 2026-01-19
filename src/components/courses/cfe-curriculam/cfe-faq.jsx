@@ -13,7 +13,7 @@ const CfeFaq = () => {
     queryKey: ["aia-faq-cfe"],
     queryFn: async () => {
       const res = await axios.get(
-        `${BASE_URL}/api/getFAQbySlug/cfe`
+        `${BASE_URL}/api/getFAQbySlug/CFE-Curriculum`
       );
       return res.data;
     },
@@ -26,6 +26,8 @@ const CfeFaq = () => {
       id: `item-${index + 1}`,
       question: item.faq_que,
       answer: item.faq_ans,
+        heading: item.faq_heading,
+      sort: item.faq_sort,
     })) || [];
 
 

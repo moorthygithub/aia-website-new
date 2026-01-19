@@ -1,11 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Users, Trophy, Award, Search, FileText, UserCheck, Settings, TrendingUp, Heart } from "lucide-react";
 
-const stats = [
-  { number: "1000+", label: "Students Trained", icon: <Users /> },
-  { number: "99%", label: "Positive Results", icon: <Trophy /> },
-  { number: "22+", label: "Faculty Experience", icon: <Award />, suffix: "Years" },
-];
+
 
 const processSteps = [
   {
@@ -79,74 +75,76 @@ const AboutJourney = () => {
   return (
     <>
     <div className="py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-340 mx-auto px-4 sm:px-6 lg:px-8">
        
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#0F3652] mb-6">
             Our Journey
           </h2>
-          <div className="mx-auto space-y-4 text-gray-700 text-lg leading-relaxed">
+          <div className="mx-auto space-y-4 text-[#0F3652] text-lg leading-relaxed">
             <p>
               Matebiz has completed its 9 years journey till now, growing further. It has seen many odds at the time of its formation and during the attempt to establish itself as a powerful organization. But the teammates here never viewed this odds as anything negative. Instead, they remained optimistic and accepted the challenges with passion and hard work of hours sending even till midnight. We were so passionate and persistent about what we wanted to achieve that we didn't even bother about the time. During our attempt to build and establish.
             </p>
-            <p className="font-semibold text-orange-600">
+            <p className="font-semibold text-[#F3831C]">
               Matebiz with the limited team, other than the hunger for development and success, the only thing we had with us was sheer hard work and persistence.
             </p>
           </div>
         </div>
 
-       
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
-          {stats.map((stat, index) => (
-            <div
-              key={index}
-              className="text-center p-8 bg-white rounded-xl transition-all duration-300 border border-gray-400"
-            >
-              <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center text-white">
-                {React.cloneElement(stat.icon, { className: "w-10 h-10" })}
-              </div>
-
-              <div className="text-4xl md:text-5xl font-bold text-gray-900 mb-2 flex items-center justify-center gap-1">
-                <span>{stat.number}</span>
-                {stat.suffix && (
-                  <span className="text-2xl text-gray-600">{stat.suffix}</span>
-                )}
-              </div>
-
-              <p className="text-lg text-gray-600 font-medium">
-                {stat.label}
-              </p>
-            </div>
-          ))}
-        </div>
-
+       <div className="bg-[#F3831C] py-16 px-8">
+  <div className="max-w-full mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center text-white">
+    <div>
+      <h2 className="text-5xl md:text-6xl font-bold mb-2">1500+</h2>
+      <p className="text-lg md:text-xl font-medium">Student Trained</p>
+    </div>
+    
+    <div>
+      <h2 className="text-5xl md:text-6xl font-bold mb-2">99%</h2>
+      <p className="text-lg md:text-xl font-medium">Positive Result</p>
+    </div>
+    
+    <div>
+      <h2 className="text-5xl md:text-6xl font-bold mb-2">22+</h2>
+      <p className="text-lg md:text-xl font-medium">Faculty Experience</p>
+    </div>
+  </div>
+</div>
        
         <div ref={processRef} className="py-16 hidden md:block relative">
 
 {/* SVG Path */}
 <div className="absolute top-1/2 left-0 w-full h-64 -translate-y-1/2 pointer-events-none">
   <svg className="w-full h-full" viewBox="0 0 1200 200" preserveAspectRatio="none">
-    <path
-      d="M100 50 L1100 50 L1100 150 L100 150"
-      fill="none"
-      stroke="#e5e7eb"
-      strokeWidth="4"
-    />
-    <path
-      d="M100 50 L1100 50 L1100 150 L100 150"
-      fill="none"
-      stroke="url(#g)"
-      strokeWidth="4"
-      strokeDasharray="2200"
-      strokeDashoffset={2200 - progress * 2200}
-    />
-    <defs>
-      <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#7fbd82" />
-        <stop offset="100%" stopColor="#94d85d" />
-      </linearGradient>
-    </defs>
-  </svg>
+  <path
+    d="M100 50 
+       L1050 50 
+       Q1100 50 1100 100 
+       Q1100 150 1050 150 
+       L100 150"
+    fill="none"
+    stroke="#e5e7eb"
+    strokeWidth="4"
+  />
+  <path
+    d="M100 50 
+       L1050 50 
+       Q1100 50 1100 100 
+       Q1100 150 1050 150 
+       L100 150"
+    fill="none"
+    stroke="url(#g)"
+    strokeWidth="4"
+    strokeDasharray="2200"
+    strokeDashoffset={2200 - progress * 2200}
+  />
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stopColor="#0F3652" />
+      <stop offset="100%" stopColor="#F3831C" />
+    </linearGradient>
+  </defs>
+</svg>
+
 </div>
 
 {/* Row 1 */}
@@ -161,13 +159,13 @@ const AboutJourney = () => {
       >
         <div className={`w-24 h-24 mx-auto mb-4 rounded-full flex items-center justify-center transition-all duration-500 ${
           i <= activeStep
-            ? "bg-gradient-to-br from-green-400 to-green-600 text-white scale-110"
+            ? "bg-gradient-to-br from-[#0F3652] to-[#F3831C] text-white scale-110"
             : "bg-gray-200 text-gray-500"
         }`}>
           {step.icon}
         </div>
-        <h3 className="font-bold">{step.title}</h3>
-        <p className="text-sm text-gray-600">{step.description}</p>
+        <h3 className="font-bold text-[#0F3652]">{step.title}</h3>
+        <p className="text-sm text-[#0F3652]/80">{step.description}</p>
       </div>
     ))}
   </div>
@@ -187,13 +185,13 @@ const AboutJourney = () => {
         >
           <div className={`w-24 h-24 mx-auto mb-4 rounded-full flex items-center justify-center transition-all duration-500 ${
             realIndex <= activeStep
-              ? "bg-gradient-to-br from-green-400 to-green-600 text-white scale-110"
+              ? "bg-gradient-to-br from-[#0F3652] to-[#F3831C] text-white scale-110"
               : "bg-gray-200 text-gray-500"
           }`}>
             {step.icon}
           </div>
-          <h3 className="font-bold">{step.title}</h3>
-          <p className="text-sm text-gray-600">{step.description}</p>
+          <h3 className="font-bold text-[#0F3652]">{step.title}</h3>
+          <p className="text-sm text-[#0F3652]/80">{step.description}</p>
         </div>
       );
     })}

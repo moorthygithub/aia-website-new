@@ -1,21 +1,13 @@
-
-
-
-
-
-
-/* eslint-disable no-unused-vars */
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-
 import { CardCarousel } from "@/components/ui/card-carousel";
 import axios from "axios";
 import { BASE_URL } from "@/api/base-url";
 
 const ContactRecentPassout = () => {
-  const { data: camsPassoutData, isLoading, isError, refetch } = useQuery({
+  const { data: camsPassoutData, isLoading, isError } = useQuery({
     queryKey: ["contact-passout-students"],
     queryFn: async () => {
       const res = await axios.get(
@@ -28,7 +20,6 @@ const ContactRecentPassout = () => {
   const images = React.useMemo(() => {
     if (!camsPassoutData?.data) return [];
     
-  
     const studentImageUrlObj = camsPassoutData.image_url?.find(
       item => item.image_for === "Student"
     );
@@ -44,7 +35,7 @@ const ContactRecentPassout = () => {
 
   if (isLoading) {
     return (
-      <div className="relative w-full bg-linear-to-br from-red-50 via-transparent to-indigo-300/25 py-8">
+      <div className="relative w-full bg-linear-to-br from-[#0F3652]/10 to-transparent py-8">
         <div className="absolute inset-0 overflow-hidden">
           <div 
             className="absolute inset-0 opacity-10"
@@ -56,7 +47,7 @@ const ContactRecentPassout = () => {
           <div 
             className="absolute inset-0 opacity-20"
             style={{
-              backgroundImage: 'radial-gradient(circle at 70% 30%, #7c3aed 1px, transparent 1.5px), radial-gradient(circle at 30% 70%, #db2777 1px, transparent 1.5px)',
+              backgroundImage: 'radial-gradient(circle at 70% 30%, #0F3652 1px, transparent 1.5px), radial-gradient(circle at 30% 70%, #F3831C 1px, transparent 1.5px)',
               backgroundSize: '60px 60px',
               animation: 'moveBackground 20s infinite alternate',
             }}
@@ -86,16 +77,16 @@ const ContactRecentPassout = () => {
 
   if (isError) {
     return (
-      <div className="relative w-full bg-linear-to-br from-red-50 via-transparent to-indigo-300/25 py-8">
+      <div className="relative w-full bg-linear-to-br from-[#0F3652]/10 via-transparent to-[#F3831C]/25 py-8">
         <div className="max-w-340 mx-auto px-4 sm:px-6 lg:px-8 relative z-20 text-center">
-          <div className="text-red-500">Error loading students. Please try again later.</div>
+          <div className="text-[#0F3652]">Error loading students. Please try again later.</div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="relative w-full bg-linear-to-br from-red-50 via-transparent to-indigo-300/25 py-8">
+    <div className="relative w-full bg-linear-to-br from-[#0F3652]/10 to-transparent">
       <div className="absolute inset-0 overflow-hidden">
         <div 
           className="absolute inset-0 opacity-10"
@@ -109,10 +100,10 @@ const ContactRecentPassout = () => {
       <div className="max-w-340 mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         <div className="mb-8 text-center gap-4">
           <div className="relative z-30"> 
-            <h2 className="text-3xl font-medium text-gray-900">
-            AIA Certified Achievers Driving  <span className="text-blue-900">Excellence Everywhere</span>
+            <h2 className="text-3xl font-medium text-[#0F3652]">
+            AIA Certified Achievers Driving  <span className="text-[#F3831C]">Excellence Everywhere</span>
             </h2>
-            <p className="text-gray-600 mt-2">
+            <p className="text-[#0F3652]/80 mt-2">
               Our successful graduates making a difference in the industry
             </p>
           </div>
@@ -165,7 +156,6 @@ const ContactRecentPassout = () => {
           100% { background-position: 100% 100%; }
         }
         
- 
         @media (prefers-reduced-motion: reduce) {
           .showcase-student-carousel .swiper {
             transition: none;

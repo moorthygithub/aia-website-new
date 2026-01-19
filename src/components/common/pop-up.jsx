@@ -84,14 +84,14 @@ const PopUp = ({ slug = 'home' }) => {
     setOpen(isOpen);
   };
 
-  // const handleCheckboxChange = (checked) => {
-  //   setDontShowAgain(checked);
-  //   if (checked) {
-  //     localStorage.setItem(`popup_hidden_${slug}`, 'true');
-  //   } else {
-  //     localStorage.removeItem(`popup_hidden_${slug}`);
-  //   }
-  // };
+  const handleCheckboxChange = (checked) => {
+    setDontShowAgain(checked);
+    if (checked) {
+      localStorage.setItem(`popup_hidden_${slug}`, 'true');
+    } else {
+      localStorage.removeItem(`popup_hidden_${slug}`);
+    }
+  };
 
   if (loading || !popupData || popupData.popup_required !== 'Yes') {
     return null;
@@ -106,7 +106,7 @@ const PopUp = ({ slug = 'home' }) => {
       <DialogContent className="p-0 overflow-hidden border-0 bg-transparent max-w-xl">
         <div className="relative bg-white rounded-xl shadow-2xl">
         
-          <DialogHeader className="p-2 pb-1 border-b border-gray-200">
+          <DialogHeader className="p-2 pb-1 ">
             <DialogTitle className="text-xl font-bold text-center text-gray-800">
               {popupData.popup_heading}
             </DialogTitle>
@@ -139,7 +139,7 @@ const PopUp = ({ slug = 'home' }) => {
           </div>
 
        
-          {/* <div className="px-2 pb-3 pt-0">
+          <div className="px-2 pb-3 pt-0">
             <div className="flex items-center space-x-3 border-t border-gray-200 pt-4">
               <Checkbox
                 id={`dont-show-again-${slug}`}
@@ -154,7 +154,7 @@ const PopUp = ({ slug = 'home' }) => {
                 Don't show this again
               </Label>
             </div>
-          </div> */}
+          </div>
         </div>
       </DialogContent>
     </Dialog>

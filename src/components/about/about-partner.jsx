@@ -1,13 +1,20 @@
+
+
+
+
+
 import React from 'react';
 
-const CorporatePartner = () => {
+const AboutPartner = () => {
   return (
     <div className="bg-white">
       <div className="max-w-full mx-auto">
         <section className="space-y-10  bg-[#0F3652] p-8">
           <h2 className="text-3xl max-w-340 mx-auto md:text-4xl font-bold text-white">
-            Navigate Seamlessly for an <br />
-            <span className="text-[#F3831C]">Immersive Learning Experience</span>
+            Corporate Training Delivered to Leading Organisations 
+
+ <br />
+            <span className="text-[#F3831C]">Trusted by Corporations for Fraud & Risk Capability Building</span>
           </h2>
 
           <div className="grid max-w-340 mx-auto md:grid-cols-2 gap-8 items-center">
@@ -23,10 +30,11 @@ const CorporatePartner = () => {
 
             <div className="order-1 md:order-2">
               <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
-                Dashboards
+               SBI Card X AIA 
               </h3>
               <p className="text-white text-lg">
-                Get comprehensive insights and analytics at a glance with our powerful dashboard solutions designed for data-driven decisions.
+        SBI Card is one of India’s leading credit card issuers, operating in a highly regulated and fraud-sensitive environment. AIA supported SBI Card through focused Certified Fraud Examiner (CFE) training, aimed at strengthening fraud awareness, detection techniques, and investigative thinking among professionals. The program helped teams better identify fraud risks, enhance compliance alignment, and apply structured fraud prevention practices across critical operational areas.
+
               </p>
             </div>
           </div>
@@ -36,10 +44,11 @@ const CorporatePartner = () => {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <h3 className="text-2xl md:text-3xl font-bold text-[#0F3652] mb-3">
-                Quick Access
+              Bajaj Allianz X AIA
               </h3>
               <p className="text-[#0F3652] text-lg">
-                Get comprehensive insights and analytics at a glance with our powerful dashboard solutions designed for data-driven decisions.
+            Bajaj Allianz is a trusted name in insurance and financial services, where fraud risk management plays a critical role. We delivered CFE-oriented training to equip professionals with practical knowledge in fraud detection, investigation methodologies, and control mechanisms. This training enabled teams to improve internal vigilance, strengthen fraud response frameworks, and support more informed decision-making in risk and compliance functions across the organization.
+
               </p>
             </div>
 
@@ -69,10 +78,10 @@ const CorporatePartner = () => {
 
             <div className="order-1 md:order-2">
               <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
-                Assessments
+               Adani X AIA
               </h3>
               <p className="text-white text-lg">
-                Track progress and measure learning outcomes with comprehensive assessment tools and detailed performance analytics.
+     Adani Group is a diversified conglomerate with operations spanning infrastructure, energy, and logistics. AIA conducted CFE-based professional training to build awareness around fraud risks, ethical practices, and governance responsibilities. The program supported professionals in understanding complex fraud scenarios, reinforcing internal controls, and promoting a proactive approach to risk management, contributing to stronger governance and compliance culture across business functions.
               </p>
             </div>
           </div>
@@ -82,4 +91,4 @@ const CorporatePartner = () => {
   );
 };
 
-export default CorporatePartner;
+export default AboutPartner;

@@ -16,12 +16,11 @@ const certificationCourses = [
 "Live doubt-clearing sessions with experienced faculty",
 "Mock test preparation simulating the real exam environment",
 "End-to-end registration support for a smooth enrolment process",
-     
     ],
     cta:"Explore More About CFE",
     link: "cfe-curriculum",
     bgColor: "#ffffff",
-    textColor: "#1e293b"
+    textColor: "#0F3652"
   },
   {
     id: 2,
@@ -35,11 +34,10 @@ const certificationCourses = [
 "Training delivered by experienced, CIA-qualified faculty",
 "Live doubt-clearing sessions for continuous support",
 "Complete registration guidance at every stage",
-      
     ],
     cta:"Explore More About CIA",
     link: "cia-curriculum",
-    bgColor: "#0f172a",
+    bgColor: "#0F3652",
     textColor: "#ffffff"
   },
   {
@@ -58,7 +56,7 @@ const certificationCourses = [
     cta:"Explore More About the CIA Challenge",
     link: "cia-challenge-curriculum",
     bgColor: "#ffffff",
-    textColor: "#1e293b"
+    textColor: "#0F3652"
   },
   {
     id: 4,
@@ -72,29 +70,20 @@ const certificationCourses = [
 "Live doubt-clearing sessions with experienced AML faculty",
 "CAMS-style mock tests simulating the real exam scenario",
 "Complete support throughout the registration process",
-      
     ],
     cta:"Explore More About CAMS",
     link: "cams",
-    bgColor: "#0f172a",
+    bgColor: "#0F3652",
     textColor: "#ffffff"
   }
 ];
-
-
-
 
 const ALL_SERVICES = [...certificationCourses];
 
 const ServiceCard = ({ service, i, progress, range, targetScale }) => {
   const container = useRef(null);
-  
-  const { scrollYProgress } = useScroll({
-    target: container,
-    offset: ['start end', 'start start']
-  });
-
   const scale = useTransform(progress, range, [1, targetScale]);
+  const opacity = useTransform(progress, [i * 0.25, (i + 1) * 0.25], [1, 1]);
 
   return (
     <div ref={container} className="h-screen flex items-center justify-center sticky top-0">
@@ -102,16 +91,17 @@ const ServiceCard = ({ service, i, progress, range, targetScale }) => {
         style={{
           backgroundColor: service.bgColor,
           scale,
-          top: `calc(-5vh + ${i * 25}px)`
+          opacity,
+          top: 0
         }}
-        className="relative w-full rounded-3xl p-8 shadow-2xl border-2 border-orange-500/20 min-h-125 flex flex-col justify-between origin-top"
+        className="relative w-full rounded-3xl p-8 shadow-2xl border-2 border-[#F3831C]/20 min-h-125 flex flex-col justify-between origin-top"
       >
         <div>
           <div className="flex items-start justify-between mb-2">
             <h3 className="text-3xl font-bold mb-4" style={{ color: service.textColor }}>
               {service.title}
             </h3>
-            <div className="text-5xl font-bold text-orange-500 opacity-20">
+            <div className="text-5xl font-bold text-[#F3831C] opacity-20">
               {String(service.id).padStart(2, '0')}
             </div>
           </div>
@@ -133,7 +123,7 @@ const ServiceCard = ({ service, i, progress, range, targetScale }) => {
             <div className="space-y-3">
               {service.features.map((feature, idx) => (
                 <div key={idx} className="flex items-center gap-3">
-                  <div className="w-2 h-2 rounded-full bg-orange-500 shrink-0"></div>
+                  <div className="w-2 h-2 rounded-full bg-[#F3831C] shrink-0"></div>
                   <span 
                     className="text-base" 
                     style={{ color: service.textColor === '#ffffff' ? '#d1d5db' : '#475569' }}
@@ -147,47 +137,39 @@ const ServiceCard = ({ service, i, progress, range, targetScale }) => {
         </div>
 
         <div className="mt-6 flex justify-end">
-  <a
-    href={service.link}
-    className="
-      group inline-flex items-center gap-2
-      h-10 px-4
-      rounded-md
-      border border-orange-500/30
-      bg-orange-500
-      text-sm font-medium text-white
-      transition-colors duration-200
-      hover:bg-orange-600
-    "
-  >
-    <span>{service.cta}</span>
-
-    <svg
-      className="
-        w-4 h-4
-        transition-transform duration-200
-        group-hover:translate-x-0.5
-      "
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M14 5l7 7m0 0l-7 7m7-7H3"
-      />
-    </svg>
-  </a>
-</div>
-
-
-        {/* {i < ALL_SERVICES.length - 1 && (
-          <div className="mt-8 flex justify-center">
-            <div className="h-12 w-px bg-linear-to-b from-orange-500 to-transparent"></div>
-          </div>
-        )} */}
+          <a
+            href={service.link}
+            className="
+              group inline-flex items-center gap-2
+              h-10 px-4
+              rounded-md
+              border border-[#F3831C]/30
+              bg-[#F3831C]
+              text-sm font-medium text-white
+              transition-colors duration-200
+              hover:bg-[#F3831C]/90
+            "
+          >
+            <span>{service.cta}</span>
+            <svg
+              className="
+                w-4 h-4
+                transition-transform duration-200
+                group-hover:translate-x-0.5
+              "
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+              />
+            </svg>
+          </a>
+        </div>
       </motion.div>
     </div>
   );
@@ -201,95 +183,84 @@ const HomeCourses = () => {
   });
 
   return (
-    <div className=" max-w-340 mx-auto px-4 sm:px-6 lg:px-8">
-     
-        <div className="grid md:grid-cols-2 gap-12 ">
-        
-          <div className="md:sticky md:top-20 md:h-screen md:flex md:flex-col md:justify-start md:pt-20 ">
-            <div>
-              <p className="text-xs uppercase tracking-wider text-orange-500 font-semibold mb-4">
-                PROFESSIONAL CERTIFICATION PROGRAMS
-              </p>
-              
-              <h1 className="text-xl md:text-2xl font-bold mb-3 leading-tight text-blue-900">
-              Empowering Careers with Expert-Led Prep for Global Certification /
-              Global Certification Programs Designed for Professional Excellence
-              </h1>
-              
-              <p className="text-slate-600 text-base mb-2 max-w-lg leading-relaxed">
+    <div className="max-w-340 mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="grid md:grid-cols-2 gap-12">
+        <div className="md:sticky md:top-20 md:h-screen md:flex md:flex-col md:justify-start md:pt-20">
+          <div>
+            <p className="text-xs uppercase tracking-wider text-[#F3831C] font-semibold mb-4">
+              PROFESSIONAL CERTIFICATION PROGRAMS
+            </p>
+            
+            <h1 className="text-xl md:text-2xl font-bold mb-3 leading-tight text-[#0F3652]">
+              Empowering Careers with Expert-Led Prep for Global Certification / Global Certification Programs Designed for Professional Excellence
+            </h1>
+            
+            <p className="text-[#0F3652] text-base mb-2 max-w-lg leading-relaxed">
               We design our training programs to help professionals prepare for globally recognised
-certifications in internal audit, fraud, risk, and compliance. The focus is on structured learning,
-proper guidance, and practical understanding aligned with real-world requirements.
-              </p>
-              <p className="text-slate-600 text-base  max-w-lg leading-relaxed">
+              certifications in internal audit, fraud, risk, and compliance. The focus is on structured learning,
+              proper guidance, and practical understanding aligned with real-world requirements.
+            </p>
+            <p className="text-[#0F3652] text-base max-w-lg leading-relaxed">
               Each AIA prep program follows a clear, guided approach, combining expert-led guidance,
-tailored study resources, and extensive practice, enabling learners to develop strong
-conceptual clarity and apply their knowledge confidently across various professional roles and
-responsibilities.
-              </p>
+              tailored study resources, and extensive practice, enabling learners to develop strong
+              conceptual clarity and apply their knowledge confidently across various professional roles and
+              responsibilities.
+            </p>
 
-              <div className="inline-block ">
-                <div className="bg-white rounded-md p-4 border-2 border-orange-500/20">
-                  <div className="flex items-center gap-6 ">
-                    <div className="w-20 h-20 rounded-full bg-orange-50 flex items-center justify-center">
-                      <svg className="w-10 h-10 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-orange-500 mb-1">
-                        Start Your Certification Journey
-                      </h3>
-                      <p className="text-xl font-bold text-orange-500">with Us</p>
-                    </div>
+            <div className="inline-block">
+              <div className="bg-white rounded-md p-4 border-2 border-[#F3831C]/20">
+                <div className="flex items-center gap-6">
+                  <div className="w-20 h-20 rounded-full bg-[#F3831C]/10 flex items-center justify-center">
+                    <svg className="w-10 h-10 text-[#F3831C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
                   </div>
-                   <Button
-                      className="rounded-xl w-full    px-5 text-base relative cursor-pointer overflow-hidden group hover:bg-linear-to-r hover:from-yellow-400/30 hover:via-yellow-500/40 hover:to-yellow-400/30"
-                            
-                               
-                              variant="ghost"
-                                aria-label="Explore Siga"
-                              >
-                                
-                  
-                  <span className="relative z-10  text-white ">
-                   <span>                   Consult Experts </span>
-                  </span>
-                                <span className="absolute inset-0 bg-linear-to-r from-orange-400 via-orange-500 to-orange-400  
-                                 
-                                
-                                opacity-100 transition-opacity duration-300 -skew-x-12" />
-                  
-                              </Button>
-                
+                  <div>
+                    <h3 className="text-xl font-bold text-[#F3831C] mb-1">
+                      Start Your Certification Journey
+                    </h3>
+                    <p className="text-xl font-bold text-[#F3831C]">with Us</p>
+                  </div>
                 </div>
-              </div>
-
-              <div className="hidden md:flex items-center gap-4 mt-8">
-                <div className="h-px w-16 bg-orange-500"></div>
-                <p className="text-sm text-slate-500">Scroll to explore all courses</p>
+                <Button
+                  className="rounded-xl w-full px-5 text-base relative cursor-pointer overflow-hidden group mt-4"
+                  variant="ghost"
+                  aria-label="Consult Experts"
+                >
+                  <span className="relative z-10 text-white">
+                    <span>Consult Experts</span>
+                  </span>
+                  <span className="absolute inset-0 bg-linear-to-r from-[#F3831C] via-[#F3831C] to-[#F3831C] opacity-100 transition-opacity duration-300 -skew-x-12" />
+                </Button>
               </div>
             </div>
-          </div>
 
-        
-          <div ref={container} className="relative ">
-            {ALL_SERVICES.map((service, i) => {
-              const targetScale = 1 - ((ALL_SERVICES.length - i) * 0.05);
-              return (
-                <ServiceCard
-                  key={service.id}
-                  service={service}
-                  i={i}
-                  progress={scrollYProgress}
-                  range={[i * 0.125, 1]}
-                  targetScale={targetScale}
-                />
-              );
-            })}
+            <div className="hidden md:flex items-center gap-4 mt-8">
+              <div className="h-px w-16 bg-[#F3831C]"></div>
+              <p className="text-sm text-[#0F3652]/70">Scroll to explore all courses</p>
+            </div>
           </div>
         </div>
-      
+
+        <div ref={container} className="relative">
+          {ALL_SERVICES.map((service, i) => {
+            const targetScale = 1 - ((ALL_SERVICES.length - i) * 0.05);
+            const start = i / ALL_SERVICES.length;
+            const end = start + 1 / ALL_SERVICES.length;
+            
+            return (
+              <ServiceCard
+                key={service.id}
+                service={service}
+                i={i}
+                progress={scrollYProgress}
+                range={[start, end]}
+                targetScale={targetScale}
+              />
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 };

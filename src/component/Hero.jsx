@@ -200,7 +200,7 @@ export default function Hero() {
                     href={announcements[currentAnnouncement].link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="absolute bottom-0 md:-bottom-5 right-0 inline-flex items-center justify-center px-6 py-2 text-xs bg-sky-500 text-white font-medium rounded-none hover:bg-gray-100 transition-colors duration-300"
+                    className="absolute bottom-0 md:-bottom-5 right-0 inline-flex items-center justify-center px-6 py-2 text-xs bg-[#0F3652] text-white font-medium rounded-none hover:bg-[#0F3652]/50 transition-colors duration-300"
                   >
                     {announcements[currentAnnouncement].buttonText}
                   </a>

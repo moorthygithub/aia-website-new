@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 
@@ -24,7 +25,7 @@ const CourseYoutube = ({ courseSlug  }) => {
   } = useQuery({
     queryKey: ["youtube-testimonials"],
     queryFn: async () => {
-      const res = await axios.get(`${BASE_URL}/api/getYoutubebyCourse/${courseSlug}`);
+      const res = await axios.get(`${BASE_URL}/api/getAllYoutube`);
       return res.data;
     },
   });

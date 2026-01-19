@@ -13,7 +13,7 @@ const CiaFaq = () => {
     queryKey: ["aia-faq-ciac"],
     queryFn: async () => {
       const res = await axios.get(
-        `${BASE_URL}/api/getFAQbySlug/ciac`
+        `${BASE_URL}/api/getFAQbySlug/CIA-Challenge-Curriculum`
       );
       return res.data;
     },
@@ -26,6 +26,8 @@ const CiaFaq = () => {
       id: `item-${index + 1}`,
       question: item.faq_que,
       answer: item.faq_ans,
+        heading: item.faq_heading,
+      sort: item.faq_sort,
     })) || [];
 
 

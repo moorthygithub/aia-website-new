@@ -29,6 +29,7 @@ import CiaAbout from "@/components/courses/cia-challenge/cia-about";
 
 import CourseMap from "@/components/courses/common/course-map";
 import PopUp from "@/components/common/pop-up";
+import CiaAchivers from "@/components/courses/cia-challenge/cia-achivers";
 
 const CIAChallenge = () => {
   return (
@@ -60,7 +61,7 @@ const CIAChallenge = () => {
 
 
 
-     <CamsAchivers/>
+     <CiaAchivers/>
 
 
      
