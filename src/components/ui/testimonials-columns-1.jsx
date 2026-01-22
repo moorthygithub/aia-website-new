@@ -35,7 +35,7 @@ export const TestimonialsColumn = (props) => {
                   className="rounded-md border border-[#F3831C]/20 bg-white max-w-xs w-full overflow-hidden"
                   key={i}
                 >
-                  <div className="h-48 w-full relative">
+                  <div className="h-48  md:h-56 w-full relative">
                     <img
                       src={image}
                       alt={alt}

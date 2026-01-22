@@ -87,7 +87,7 @@ const HomePassout = () => {
 
       
         {!isLoading && !isError && testimonials.length > 0 && (
-          <div className="flex justify-center gap-6 mt-10 mask-[linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-135 overflow-hidden">
+          <div className="flex justify-center gap-5 md:gap-25 mt-10 mask-[linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-135 overflow-hidden">
             <TestimonialsColumn testimonials={firstColumn} duration={20} />
             <TestimonialsColumn
               testimonials={secondColumn}

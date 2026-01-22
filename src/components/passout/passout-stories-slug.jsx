@@ -7,7 +7,11 @@ import { BASE_URL } from "@/api/base-url";
 const PassoutStoriesSlug = () => {
   const { slug } = useParams();
 
-  const { data: storyData, isLoading, isError } = useQuery({
+  const {
+    data: storyData,
+    isLoading,
+    isError,
+  } = useQuery({
     queryKey: ["passout-stories-slug", slug],
     queryFn: async () => {
       const res = await axios.get(
@@ -18,58 +22,78 @@ const PassoutStoriesSlug = () => {
     enabled: !!slug,
   });
 
-  const [email, setEmail] = useState('');
-  const [subscriptionStatus, setSubscriptionStatus] = useState('');
+  const [email, setEmail] = useState("");
+  const [subscriptionStatus, setSubscriptionStatus] = useState("");
   const [isSubscribing, setIsSubscribing] = useState(false);
+  const [isCopied, setIsCopied] = useState(false);
+
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(window.location.href);
+    setIsCopied(true);
+    setTimeout(() => setIsCopied(false), 2000);
+  };
+
+  // Format LinkedIn URL to ensure it's a proper external link
+  const formatLinkedInUrl = (url) => {
+    if (!url) return "#";
+    if (url.startsWith('http://') || url.startsWith('https://')) {
+      return url;
+    }
+    return `https://${url}`;
+  };
 
   const handleSubscribe = async (e) => {
     e.preventDefault();
-    
+
     if (!email || !/\S+@\S+\.\S+/.test(email)) {
-      setSubscriptionStatus('Please enter a valid email address');
-      setTimeout(() => setSubscriptionStatus(''), 3000);
+      setSubscriptionStatus("Please enter a valid email address");
+      setTimeout(() => setSubscriptionStatus(""), 3000);
       return;
     }
-    
+
     setIsSubscribing(true);
-    setSubscriptionStatus('');
-    
+    setSubscriptionStatus("");
+
     try {
       const response = await axios.post(
         `${BASE_URL}/api/create-newslettersubscription`,
         {
-          newsletter_email: email
+          newsletter_email: email,
         },
         {
           headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          }
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
         }
       );
-      
+
       if (response.data.code === 200) {
-        setSubscriptionStatus(response.data.msg || 'Successfully subscribed! Thank you.');
-        setEmail('');
+        setSubscriptionStatus(
+          response.data.msg || "Successfully subscribed! Thank you."
+        );
+        setEmail("");
       } else {
-        setSubscriptionStatus(response.data.message || 'Subscription failed. Please try again.');
+        setSubscriptionStatus(
+          response.data.message || "Subscription failed. Please try again."
+        );
       }
     } catch (error) {
-      console.error('Subscription error:', error);
+      console.error("Subscription error:", error);
       if (error.response) {
         setSubscriptionStatus(
-          error.response.data.message || 
-          error.response.data.error || 
-          'Subscription failed. Please try again.'
+          error.response.data.message ||
+            error.response.data.error ||
+            "Subscription failed. Please try again."
         );
       } else if (error.request) {
-        setSubscriptionStatus('Network error. Please check your connection.');
+        setSubscriptionStatus("Network error. Please check your connection.");
       } else {
-        setSubscriptionStatus('An error occurred. Please try again.');
+        setSubscriptionStatus("An error occurred. Please try again.");
       }
     } finally {
       setIsSubscribing(false);
-      setTimeout(() => setSubscriptionStatus(''), 5000);
+      setTimeout(() => setSubscriptionStatus(""), 5000);
     }
   };
 
@@ -90,16 +114,33 @@ const PassoutStoriesSlug = () => {
   }
 
   const {
+    student_story_banner_image,
+    student_story_banner_image_alt,
     student_name,
     student_course,
     student_designation,
     student_linkedin_link,
     student_story_details,
     company,
-    country
+    country,
+    student_story_box_title1,
+    student_story_box_title2,
+    student_story_box_title3,
+    student_story_box_title4,
+    student_story_box_details1,
+    student_story_box_details2,
+    student_story_box_details3,
+    student_story_box_details4,
   } = storyData.data;
 
-  const companyImageUrl = storyData.image_url.find(img => img.image_for === "Student Company")?.image_url + company?.student_company_image;
+  const companyImageUrl =
+    storyData.image_url.find((img) => img.image_for === "Student Company")
+      ?.image_url + company?.student_company_image;
+  const BannerImageUrl = storyData.image_url.find(
+    (img) => img.image_for === "Student"
+  )?.image_url;
+
+  const linkedinUrl = formatLinkedInUrl(student_linkedin_link);
 
   return (
     <div className="min-h-screen bg-white">
@@ -132,29 +173,18 @@ const PassoutStoriesSlug = () => {
                 </a>
               </div>
 
-              <div className="mt-6"></div>
+              <div className="mt-8 relative rounded-2xl overflow-hidden">
+                <img
+                  src={`${BannerImageUrl}/${student_story_banner_image}`}
+                  alt={student_story_banner_image_alt}
+                  className="w-full h-auto object-cover"
+                  loading="eager"
+                  sizes="100vw"
+                />
+              </div>
 
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-center text-[#0F3652] leading-tight">
-                How StayVista 3.5X'd Qualified Leads with an AI Agent
-              </h1>
+              <div className="absolute -z-10 top-0 left-0 right-0 h-[400px] bg-gradient-to-b from-[#0F3652]/10 to-transparent"></div>
             </div>
-
-            <div className="mt-8 relative rounded-2xl overflow-hidden">
-              <img
-                src="https://cdn.prod.website-files.com/65cd70909df4e526b27c7d0f/67bde29ad83aecf97314e45f_hamptons-charm-60b249.jpg"
-                alt="How StayVista 3.5X'd Qualified Leads with an AI Agent"
-                className="w-full h-auto object-cover"
-                loading="eager"
-                sizes="100vw"
-                srcSet="https://cdn.prod.website-files.com/65cd70909df4e526b27c7d0f/67bde29ad83aecf97314e45f_hamptons-charm-60b249-p-500.jpg 500w,
-                        https://cdn.prod.website-files.com/65cd70909df4e526b27c7d0f/67bde29ad83aecf97314e45f_hamptons-charm-60b249-p-800.jpg 800w,
-                        https://cdn.prod.website-files.com/65cd70909df4e526b27c7d0f/67bde29ad83aecf97314e45f_hamptons-charm-60b249-p-1080.jpg 1080w,
-                        https://cdn.prod.website-files.com/65cd70909df4e526b27c7d0f/67bde29ad83aecf97314e45f_hamptons-charm-60b249-p-1600.jpg 1600w,
-                        https://cdn.prod.website-files.com/65cd70909df4e526b27c7d0f/67bde29ad83aecf97314e45f_hamptons-charm-60b249.jpg 1920w"
-              />
-            </div>
-
-            <div className="absolute -z-10 top-0 left-0 right-0 h-[400px] bg-gradient-to-b from-[#0F3652]/10 to-transparent"></div>
           </div>
         </div>
       </header>
@@ -163,240 +193,209 @@ const PassoutStoriesSlug = () => {
         <div className="px-4 sm:px-6 lg:px-8 max-w-340 mx-auto">
           <div className="pb-24">
             <div className="flex flex-col lg:flex-row gap-12">
-              <div className="lg:w-1/4 rounded-2xl bg-[#0F3652]/5 p-4">
-                <div className="">
+              {/* Left Sidebar - Sticky */}
+              <div className="lg:w-1/4">
+                <div className="rounded-2xl bg-[#0F3652]/5 p-4 lg:sticky lg:top-24">
                   <div>
-                    <h3 className="text-base font-medium text-[#0F3652]">
-                      About the Professional
-                    </h3>
-                    <div className="mt-2"></div>
-                    <div className="flex items-center gap-3 mb-3">
-                      {companyImageUrl && (
-                        <img
-                          src={companyImageUrl}
-                          alt={company?.student_company_image_alt || company?.student_company_name}
-                          className="w-10 h-10 rounded-full object-cover"
-                        />
-                      )}
-                      <div>
-                        <p className="text-sm font-medium text-[#0F3652]">{student_name}</p>
-                        <p className="text-xs text-[#0F3652]">{student_designation}</p>
+                    <div>
+                      <h3 className="text-base font-medium text-[#0F3652]">
+                        About the Professional
+                      </h3>
+                      <div className="mt-2"></div>
+                      <div className="flex items-center gap-3 mb-3">
+                        {companyImageUrl && (
+                          <img
+                            src={companyImageUrl}
+                            alt={
+                              company?.student_company_image_alt ||
+                              company?.student_company_name
+                            }
+                            className="w-10 h-10 rounded-full object-cover"
+                          />
+                        )}
+                        <div>
+                          <p className="text-sm font-medium text-[#0F3652]">
+                            {student_name}
+                          </p>
+                          <p className="text-xs text-[#0F3652]">
+                            {student_designation}
+                          </p>
+                        </div>
                       </div>
-                    </div>
-                    <p className="text-sm text-[#0F3652]">
-                      {student_name}, a {student_course} graduate, currently serves as {student_designation} at {company?.student_company_name} in {country?.country_name}.
-                    </p>
-                  </div>
-
-                  <div className="space-y-2">
-                    <div>
-                      <h3 className="text-base font-medium text-[#0F3652]">
-                        LinkedIn
-                      </h3>
-                      <div className="mt-2"></div>
-                      <a
-                        href={student_linkedin_link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-sm text-[#0F3652] hover:text-[#0F3652] transition-colors underline"
-                      >
-                        {student_linkedin_link || "Not available"}
-                      </a>
-                    </div>
-
-                    <div>
-                      <h3 className="text-base font-medium text-[#0F3652]">
-                        Company
-                      </h3>
-                      <div className="mt-2"></div>
-                      <p className="text-sm text-[#0F3652]">{company?.student_company_name || "Not specified"}</p>
-                    </div>
-
-                    <div>
-                      <h3 className="text-base font-medium text-[#0F3652]">
-                        Course
-                      </h3>
-                      <div className="mt-2"></div>
-                      <p className="text-sm text-[#0F3652]">{student_course || "Not specified"}</p>
-                    </div>
-
-                    <div>
-                      <h3 className="text-base font-medium text-[#0F3652]">
-                        Designation
-                      </h3>
-                      <div className="mt-2"></div>
-                      <p className="text-sm text-[#0F3652]">{student_designation || "Not specified"}</p>
-                    </div>
-
-                    <div>
-                      <h3 className="text-base font-medium text-[#0F3652]">
-                        Location
-                      </h3>
-                      <div className="mt-2"></div>
                       <p className="text-sm text-[#0F3652]">
-                        {country?.country_name || "Not specified"}
-                        {country?.country_city && country.country_city !== country.country_name ? `, ${country.country_city}` : ''}
+                        {student_name}, a {student_course} graduate, currently
+                        serves as {student_designation} at{" "}
+                        {company?.student_company_name} in {country?.country_name}
+                        .
                       </p>
                     </div>
-                  </div>
-                  <div className="py-2">
-                    <h2 className="text-base font-medium text-[#0F3652] mb-1">
-                      Subscribe to newsletter
-                    </h2>
-                    
-                    <form onSubmit={handleSubscribe} className="space-y-3">
-                      <input
-                        type="email"
-                        placeholder="Enter your email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        className="w-full px-2 py-1.5 border border-[#0F3652]/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F3831C] focus:border-transparent text-[#0F3652] placeholder-[#0F3652]/50"
-                      />
-                      <button
-                        type="submit"
-                        disabled={isSubscribing}
-                        className={`w-full py-1.5 ${isSubscribing ? 'bg-[#F3831C]/70' : 'bg-[#F3831C] hover:bg-[#F3831C]/90'} text-white font-semibold rounded-lg transition-colors disabled:cursor-not-allowed`}
-                      >
-                        {isSubscribing ? 'Subscribing...' : 'Subscribe'}
-                      </button>
-                    </form>
-                    {subscriptionStatus && (
-                      <div className={`text-sm ${subscriptionStatus.includes('Success') ? 'text-[#F3831C]' : 'text-[#F3831C]'} font-medium text-center`}>
-                        {subscriptionStatus}
+
+                    <div className="space-y-2 mt-3">
+                      <div>
+                        <h3 className="text-base font-medium text-[#0F3652]">
+                          Company
+                        </h3>
+                        <div className="mt-2"></div>
+                        <p className="text-sm text-[#0F3652]">
+                          {company?.student_company_name || "Not specified"}
+                        </p>
                       </div>
-                    )}
-                  </div>
-                  <div>
-                    <h3 className="text-base font-medium text-[#0F3652] mb-4">
-                      Share this Success Story
-                    </h3>
-                    <div className="flex gap-4">
-                      <button
-                        type="button"
-                        className="w-10 h-10 flex items-center justify-center rounded-full border border-[#0F3652]/20 hover:border-[#0F3652]/30 transition-colors group"
-                        onClick={() => {
-                          navigator.clipboard.writeText(window.location.href);
-                        }}
-                      >
-                        <svg
-                          className="w-5 h-5 text-[#0F3652] group-hover:text-[#0F3652]"
-                          viewBox="0 0 20 20"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
+
+                      <div>
+                        <h3 className="text-base font-medium text-[#0F3652]">
+                          Course
+                        </h3>
+                        <div className="mt-2"></div>
+                        <p className="text-sm text-[#0F3652]">
+                          {student_course || "Not specified"}
+                        </p>
+                      </div>
+
+                      <div>
+                        <h3 className="text-base font-medium text-[#0F3652]">
+                          Designation
+                        </h3>
+                        <div className="mt-2"></div>
+                        <p className="text-sm text-[#0F3652]">
+                          {student_designation || "Not specified"}
+                        </p>
+                      </div>
+
+                      <div>
+                        <h3 className="text-base font-medium text-[#0F3652]">
+                          Location
+                        </h3>
+                        <div className="mt-2"></div>
+                        <p className="text-sm text-[#0F3652]">
+                          {country?.country_name || "Not specified"}
+                          {country?.country_city &&
+                          country.country_city !== country.country_name
+                            ? `, ${country.country_city}`
+                            : ""}
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="py-2 mt-4">
+                      <h2 className="text-base font-medium text-[#0F3652] mb-1">
+                        Subscribe to newsletter
+                      </h2>
+
+                      <form onSubmit={handleSubscribe} className="space-y-3">
+                        <input
+                          type="email"
+                          placeholder="Enter your email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          className="w-full px-2 py-1.5 border border-[#0F3652]/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F3831C] focus:border-transparent text-[#0F3652] placeholder-[#0F3652]/50"
+                        />
+                        <button
+                          type="submit"
+                          disabled={isSubscribing}
+                          className={`w-full py-1.5 ${
+                            isSubscribing
+                              ? "bg-[#F3831C]/70"
+                              : "bg-[#F3831C] hover:bg-[#F3831C]/90"
+                          } text-white font-semibold rounded-lg transition-colors disabled:cursor-not-allowed`}
                         >
-                          <g clipPath="url(#clip0_1479_3143)">
-                            <path
-                              d="M4.1665 12.5001H3.33317C2.89114 12.5001 2.46722 12.3245 2.15466 12.0119C1.8421 11.6994 1.6665 11.2754 1.6665 10.8334V3.33341C1.6665 2.89139 1.8421 2.46746 2.15466 2.1549C2.46722 1.84234 2.89114 1.66675 3.33317 1.66675H10.8332C11.2752 1.66675 11.6991 1.84234 12.0117 2.1549C12.3242 2.46746 12.4998 2.89139 12.4998 3.33341V4.16675M9.1665 7.50008H16.6665C17.587 7.50008 18.3332 8.24627 18.3332 9.16675V16.6667C18.3332 17.5872 17.587 18.3334 16.6665 18.3334H9.1665C8.24603 18.3334 7.49984 17.5872 7.49984 16.6667V9.16675C7.49984 8.24627 8.24603 7.50008 9.1665 7.50008Z"
-                              stroke="currentColor"
-                              strokeWidth="1.67"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </g>
-                          <defs>
-                            <clipPath id="clip0_1479_3143">
-                              <rect
-                                width="20"
-                                height="20"
+                          {isSubscribing ? "Subscribing..." : "Subscribe"}
+                        </button>
+                      </form>
+                      {subscriptionStatus && (
+                        <div
+                          className={`text-sm ${
+                            subscriptionStatus.includes("Success")
+                              ? "text-[#F3831C]"
+                              : "text-[#F3831C]"
+                          } font-medium text-center`}
+                        >
+                          {subscriptionStatus}
+                        </div>
+                      )}
+                    </div>
+                    
+                    <div className="mt-4">
+                      <h3 className="text-base font-medium text-[#0F3652] mb-4">
+                        Share this Success Story
+                      </h3>
+                      <div className="flex gap-4">
+                        <div className="relative">
+                          <button
+                            type="button"
+                            className="w-10 h-10 flex items-center justify-center rounded-full border border-[#0F3652]/20 hover:border-[#0F3652]/30 transition-colors group"
+                            onClick={handleCopyLink}
+                          >
+                            <svg
+                              className="w-5 h-5 text-[#0F3652] group-hover:text-[#0F3652]"
+                              viewBox="0 0 20 20"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <g clipPath="url(#clip0_1479_3143)">
+                                <path
+                                  d="M4.1665 12.5001H3.33317C2.89114 12.5001 2.46722 12.3245 2.15466 12.0119C1.8421 11.6994 1.6665 11.2754 1.6665 10.8334V3.33341C1.6665 2.89139 1.8421 2.46746 2.15466 2.1549C2.46722 1.84234 2.89114 1.66675 3.33317 1.66675H10.8332C11.2752 1.66675 11.6991 1.84234 12.0117 2.1549C12.3242 2.46746 12.4998 2.89139 12.4998 3.33341V4.16675M9.1665 7.50008H16.6665C17.587 7.50008 18.3332 8.24627 18.3332 9.16675V16.6667C18.3332 17.5872 17.587 18.3334 16.6665 18.3334H9.1665C8.24603 18.3334 7.49984 17.5872 7.49984 16.6667V9.16675C7.49984 8.24627 8.24603 7.50008 9.1665 7.50008Z"
+                                  stroke="currentColor"
+                                  strokeWidth="1.67"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                />
+                              </g>
+                              <defs>
+                                <clipPath id="clip0_1479_3143">
+                                  <rect
+                                    width="20"
+                                    height="20"
+                                    fill="currentColor"
+                                    transform="translate(-0.000488281)"
+                                  />
+                                </clipPath>
+                              </defs>
+                            </svg>
+                          </button>
+                          {isCopied && (
+                            <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-[#0F3652] text-white text-xs px-2 py-1 rounded whitespace-nowrap">
+                              Copied!
+                            </div>
+                          )}
+                        </div>
+
+                        <a
+                          href={linkedinUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-10 h-10 flex items-center justify-center rounded-full border border-[#0F3652]/20 hover:border-[#0F3652]/30 transition-colors"
+                        >
+                          <svg
+                            className="w-5 h-5 text-[#0F3652] hover:text-[#0F3652]"
+                            viewBox="0 0 20 20"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <g clipPath="url(#clip0_1479_3152)">
+                              <path
+                                d="M18.519 0H1.47607C0.659668 0 -0.000488281 0.644531 -0.000488281 1.44141V18.5547C-0.000488281 19.3516 0.659668 20 1.47607 20H18.519C19.3354 20 19.9995 19.3516 19.9995 18.5586V1.44141C19.9995 0.644531 19.3354 0 18.519 0ZM5.9331 17.043H2.96436V7.49609H5.9331V17.043ZM4.44873 6.19531C3.49561 6.19531 2.72607 5.42578 2.72607 4.47656C2.72607 3.52734 3.49561 2.75781 4.44873 2.75781C5.39795 2.75781 6.16748 3.52734 6.16748 4.47656C6.16748 5.42188 5.39795 6.19531 4.44873 6.19531ZM17.0425 17.043H14.0776V12.4023C14.0776 11.2969 14.0581 9.87109 12.5347 9.87109C10.9917 9.87109 10.7573 11.0781 10.7573 12.3242V17.043H7.79639V7.49609H10.6401V8.80078H10.6792C11.0737 8.05078 12.0425 7.25781 13.4839 7.25781C16.4878 7.25781 17.0425 9.23438 17.0425 11.8047V17.043Z"
                                 fill="currentColor"
-                                transform="translate(-0.000488281)"
                               />
-                            </clipPath>
-                          </defs>
-                        </svg>
-                      </button>
-
-                      <a
-                        href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(
-                          window.location.href
-                        )}&text=Success Story: ${encodeURIComponent(student_name)} at ${encodeURIComponent(company?.student_company_name || '')}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-10 h-10 flex items-center justify-center rounded-full border border-[#0F3652]/20 hover:border-[#0F3652]/30 transition-colors"
-                      >
-                        <svg
-                          className="w-5 h-5 text-[#0F3652] hover:text-[#0F3652]"
-                          viewBox="0 0 20 20"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M11.9042 8.46961L19.3508 0H17.5868L11.1182 7.35254L5.95551 0H-0.000488281L7.80818 11.1194L-0.000488281 20H1.76351L8.59018 12.2338L14.0435 20H19.9995M2.40018 1.30158H5.11018L17.5855 18.7624H14.8748"
-                            fill="currentColor"
-                          />
-                        </svg>
-                      </a>
-
-                      <a
-                        href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-                          window.location.href
-                        )}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-10 h-10 flex items-center justify-center rounded-full border border-[#0F3652]/20 hover:border-[#0F3652]/30 transition-colors"
-                      >
-                        <svg
-                          className="w-5 h-5 text-[#0F3652] hover:text-[#0F3652]"
-                          viewBox="0 0 20 20"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <g clipPath="url(#clip0_1479_3149)">
-                            <path
-                              d="M19.9995 10C19.9995 4.47715 15.5224 0 9.99951 0C4.47666 0 -0.000488281 4.47715 -0.000488281 10C-0.000488281 14.9912 3.65635 19.1283 8.43701 19.8785V12.8906H5.89795V10H8.43701V7.79688C8.43701 5.29063 9.92998 3.90625 12.2142 3.90625C13.3079 3.90625 14.4526 4.10156 14.4526 4.10156V6.5625H13.1917C11.9495 6.5625 11.562 7.3334 11.562 8.125V10H14.3354L13.8921 12.8906H11.562V19.8785C16.3427 19.1283 19.9995 14.9912 19.9995 10Z"
-                              fill="currentColor"
-                            />
-                          </g>
-                          <defs>
-                            <clipPath id="clip0_1479_3149">
-                              <rect
-                                width="20"
-                                height="20"
-                                fill="white"
-                                transform="translate(-0.000488281)"
-                              />
-                            </clipPath>
-                          </defs>
-                        </svg>
-                      </a>
-
-                      <a
-                        href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(
-                          window.location.href
-                        )}&title=${encodeURIComponent(`Success Story: ${student_name}`)}&summary=${encodeURIComponent(`${student_name}, a ${student_course} graduate, now ${student_designation} at ${company?.student_company_name}`)}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-10 h-10 flex items-center justify-center rounded-full border border-[#0F3652]/20 hover:border-[#0F3652]/30 transition-colors"
-                      >
-                        <svg
-                          className="w-5 h-5 text-[#0F3652] hover:text-[#0F3652]"
-                          viewBox="0 0 20 20"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <g clipPath="url(#clip0_1479_3152)">
-                            <path
-                              d="M18.519 0H1.47607C0.659668 0 -0.000488281 0.644531 -0.000488281 1.44141V18.5547C-0.000488281 19.3516 0.659668 20 1.47607 20H18.519C19.3354 20 19.9995 19.3516 19.9995 18.5586V1.44141C19.9995 0.644531 19.3354 0 18.519 0ZM5.9331 17.043H2.96436V7.49609H5.9331V17.043ZM4.44873 6.19531C3.49561 6.19531 2.72607 5.42578 2.72607 4.47656C2.72607 3.52734 3.49561 2.75781 4.44873 2.75781C5.39795 2.75781 6.16748 3.52734 6.16748 4.47656C6.16748 5.42188 5.39795 6.19531 4.44873 6.19531ZM17.0425 17.043H14.0776V12.4023C14.0776 11.2969 14.0581 9.87109 12.5347 9.87109C10.9917 9.87109 10.7573 11.0781 10.7573 12.3242V17.043H7.79639V7.49609H10.6401V8.80078H10.6792C11.0737 8.05078 12.0425 7.25781 13.4839 7.25781C16.4878 7.25781 17.0425 9.23438 17.0425 11.8047V17.043Z"
-                              fill="currentColor"
-                            />
-                          </g>
-                          <defs>
-                            <clipPath id="clip0_1479_3152">
-                              <rect
-                                width="20"
-                                height="20"
-                                fill="white"
-                                transform="translate(-0.000488281)"
-                              />
-                            </clipPath>
-                          </defs>
-                        </svg>
-                      </a>
+                            </g>
+                            <defs>
+                              <clipPath id="clip0_1479_3152">
+                                <rect
+                                  width="20"
+                                  height="20"
+                                  fill="white"
+                                  transform="translate(-0.000488281)"
+                                />
+                              </clipPath>
+                            </defs>
+                          </svg>
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
 
+              {/* Right Content */}
               <div className="lg:w-3/4">
                 <div className="mb-12">
                   <h3 className="text-xl md:text-2xl font-bold text-[#0F3652] mb-6">
@@ -406,43 +405,43 @@ const PassoutStoriesSlug = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     <div className="space-y-2 border bg-[#0F3652] p-4 rounded-2xl">
                       <div className="text-4xl md:text-5xl font-bold text-[#F3831C]">
-                        3.5x
+                        {student_story_box_title1}
                       </div>
                       <div className="text-lg font-medium text-white">
-                        Increase in lead generation
+                        {student_story_box_details1}
                       </div>
                     </div>
                     <div className="space-y-2 border bg-[#0F3652] p-4 rounded-2xl">
                       <div className="text-4xl md:text-5xl font-bold text-[#F3831C]">
-                        3.5x
+                        {student_story_box_title2}
                       </div>
                       <div className="text-lg font-medium text-white">
-                        Increase in lead generation
+                        {student_story_box_details2}
                       </div>
                     </div>
                     <div className="space-y-2 border bg-[#0F3652] p-4 rounded-2xl">
                       <div className="text-4xl md:text-5xl font-bold text-[#F3831C]">
-                        3.5x
+                        {student_story_box_title3}
                       </div>
                       <div className="text-lg font-medium text-white">
-                        Increase in lead generation
+                        {student_story_box_details3}
                       </div>
                     </div>
                     <div className="space-y-2 border bg-[#0F3652] p-4 rounded-2xl">
                       <div className="text-4xl md:text-5xl font-bold text-[#F3831C]">
-                        3.5x
+                        {student_story_box_title4}
                       </div>
                       <div className="text-lg font-medium text-white">
-                        Increase in lead generation
+                        {student_story_box_details4}
                       </div>
                     </div>
                   </div>
                 </div>
 
                 <div className="prose prose-lg max-w-none">
-                  <div 
+                  <div
                     className="ck-content"
-                    dangerouslySetInnerHTML={{ __html: student_story_details }} 
+                    dangerouslySetInnerHTML={{ __html: student_story_details }}
                   />
                 </div>
               </div>

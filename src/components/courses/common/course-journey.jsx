@@ -2,7 +2,7 @@ import React from "react";
 
 const CourseJourney = ({ heading, highlight, steps, connectorImage }) => {
   return (
-    <section className="py-20 px-4 bg-white">
+    <section className="py-20 px-12 bg-white">
       <div className="max-w-340 mx-auto">
     
         <div className="text-center max-w-6xl mx-auto mb-14">
@@ -18,7 +18,7 @@ const CourseJourney = ({ heading, highlight, steps, connectorImage }) => {
               <div
                 key={index}
                 className="relative bg-[#E7EBEE]
- hover:bg-[#0F3652] text-[#0F3652] hover:text-white rounded-xl min-h-65"
+ hover:bg-[#0F3652] text-[#0F3652] hover:text-white rounded-xl w-90 min-h-65"
               >
            
                   <div className="absolute -top-4 border left-[45%] w-10 h-10 bg-[#F3831C] text-white rounded-full flex items-center justify-center text-xl font-bold italic">

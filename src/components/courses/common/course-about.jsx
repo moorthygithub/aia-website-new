@@ -1,12 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const CourseAbout = ({ 
   badgeText, 
   heading, 
   description, 
   aboutStats,
-  buttonText
+  buttonText,
+  buttonLink
 }) => {
+
   return (
     <section className="py-18">
       <div className="max-w-340 mx-auto px-4 sm:px-6 lg:px-8">
@@ -35,9 +38,11 @@ const CourseAbout = ({
             )}
 
             {buttonText && (
-              <span className="text-md font-semibold text-[#F3831C] mb-1">
+              <Link to={buttonLink}>
+              <span className="text-md font-semibold cursor-pointer  px-4 py-2  text-xs bg-[#F3831C] text-white rounded-none hover:bg-[#0F3652] transition-colors duration-300 mb-1">
                 {buttonText}
               </span>
+              </Link>
             )}
           </div>
 

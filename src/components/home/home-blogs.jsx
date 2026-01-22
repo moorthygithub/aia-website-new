@@ -97,7 +97,8 @@ const HomeBlog = () => {
                     return (
                       <motion.div
                         key={blog.id}
-                        className="group w-64 shrink-0"
+                        onClick={() => window.open(`/blogs/${blog.blog_slug}`, '_blank')}
+                        className="group w-64 shrink-0 cursor-pointer"
                         whileHover={{ y: -5 }}
                         transition={{ type: "spring", stiffness: 300 }}
                       >

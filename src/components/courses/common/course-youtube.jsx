@@ -25,7 +25,7 @@ const CourseYoutube = ({ courseSlug  }) => {
   } = useQuery({
     queryKey: ["youtube-testimonials"],
     queryFn: async () => {
-      const res = await axios.get(`${BASE_URL}/api/getAllYoutube`);
+      const res = await axios.get(`${BASE_URL}/api/getYoutubebyCourse/${courseSlug}`);
       return res.data;
     },
   });

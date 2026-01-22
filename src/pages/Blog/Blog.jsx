@@ -163,7 +163,7 @@ const Blog = () => {
     <section className="py-16 bg-white">
       <div className="max-w-340 mx-auto px-4 sm:px-6 lg:px-8">
       
-        <div className="text-center  mb-12 bg-linear-to-b from-[#0F3652]/10 to-white rounded-2xl p-4">
+        <div className="text-center  mb-12  rounded-2xl p-4">
           <h1 className="text-4xl sm:text-5xl font-semibold text-[#0F3652] mb-6 leading-tight">
             Explore expert insights from Academy of Internal Audit
           </h1>
@@ -184,7 +184,7 @@ const Blog = () => {
 
      
         {trendingBlogs.length > 0 && (
-          <div className="mb-12 p-4 bg-[#f3841c56] rounded-lg">
+          <div className="mb-12 p-4 border-2  rounded-lg">
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-3">
                 <TrendingUp className="w-6 h-6 text-[#F3831C]" />
@@ -249,7 +249,7 @@ const Blog = () => {
             if (categoryBlogs.length === 0) return null;
             
             return (
-              <div key={category} className="mb-16 p-4 bg-[#f3841c56] rounded-lg">
+              <div key={category} className="mb-16 p-4 border-2  rounded-lg">
                 <div className="flex items-center justify-between mb-8">
                   <div className="flex items-center gap-3">
                     <h3 className="text-xl md:text-2xl font-medium text-[#0F3652]">{category}</h3>
