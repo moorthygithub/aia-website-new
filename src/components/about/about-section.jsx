@@ -13,18 +13,23 @@ const AboutSection = () => {
             </div>
 
             <h2 className="text-3xl md:text-4xl font-bold text-[#0F3652] mb-6">
-              Excellence in Professional Education
+            About AIA - Where Certifications Meet Real-World Capability
             </h2>
 
             <div className="text-[#0F3652] leading-relaxed space-y-4">
               <p>
-                AIA is an online training institute to secure success in international certification courses. With the proven study material, we are committed towards success in professional courses for our students and help them grow in their professional journey.
+              At the Academy of Internal Audit (AIA), we build certified professionals who are prepared to create real impact in audit, fraud, and compliance roles globally. We believe international certifications are more than just clearing exams, but it's actually about developing the confidence, judgment, and practical ability required to perform in real-world audit and risk environments.
+              </p>
+              <ul className="list-disc pl-6 space-y-2 text-[#0F3652]">
+  <li>Real expertise is not demonstrated in exams, but rather in the decisions made on the job.</li>
+  <li>Certifications open doors. Capability decides how far you go.</li>
+  <li>Clearing an exam is an achievement. Applying it is the profession.</li>
+</ul>
+              <p>
+              This belief shapes everything we do. Our programs are designed and led by an industry expert with over two decades of hands-on experience, ensuring every concept is grounded in real-life application. At AIA (Academy of Internal Audit), learning goes beyond theory. Professionals are trained to apply concepts, think critically, and make informed decisions in complex, dynamic business situations.
               </p>
               <p>
-                We are pleased to say that our faculty has always been our greatest strength who is always ready to assist students with his knowledge theoretically and practically. We help aspirants not only how to obtain international certifications, but also how to have them in the real sense so that they can demonstrate the same skills and competence in relevant areas as well.
-              </p>
-              <p>
-                Since 15 years, AIA has been teaching commerce students under the name of Perfect Coaching Centre and now providing guidance for Top Certification Courses as well.
+              Over the last five years, AIA has evolved into a trusted global learning ecosystem, having trained 2,000+ professionals across 36+ countries, with a proven 99.6% success rate. More than outcomes, our success is measured by the careers we help shape - from aspiring professionals entering audit roles with confidence to experienced practitioners advancing into global leadership positions. Through structured learning, focused mentorship, and continuous guidance, AIA enables professionals to thrive throughout their careers.
               </p>
             </div>
           </div>

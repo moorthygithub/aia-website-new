@@ -16,6 +16,10 @@ import HomeFaq from "@/components/home/home-faq";
 import HomeYoutube from "@/components/home/home-youtube";
 import HomeAbout from "@/components/home/home-about";
 import PopUp from "@/components/common/pop-up";
+import HomePrCarousel from "@/components/home/home-pr-carousel";
+
+
+
 
 
 
@@ -35,6 +39,8 @@ export default function Home() {
       <HomeAlumniWork/>
       <HomeYoutube/>
       <HomeBlogs/>
+      <HomePrCarousel/>
+   
       <HomeFaq/>
 
 

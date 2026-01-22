@@ -92,7 +92,9 @@ const HomeFaq = () => {
       <div className="mx-auto max-w-340 px-4 ">
         <div className="grid gap-8 md:grid-cols-5 md:gap-12">
           <div className="md:col-span-2">
-            <h2 className="text-foreground text-4xl font-semibold">{faqHeading ||'FAQs' }</h2>
+            <h2 className="text-foreground text-4xl font-semibold">{'FAQs' }</h2>
+            <h2 className="text-foreground text-4xl font-semibold">{faqHeading ||'' }</h2>
+            <h2 className="text-foreground text-lg font-medium">{faqHeading }</h2>
            
             
           </div>

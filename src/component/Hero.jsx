@@ -11,7 +11,7 @@ export default function Hero() {
   const [carouselSlides, setCarouselSlides] = useState([]);
   const [announcements, setAnnouncements] = useState([]);
 
-  // 🔹 TanStack Query
+
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["hero-banners"],
     queryFn: async () => {
@@ -184,23 +184,23 @@ export default function Hero() {
       </div>
 
       
-      <div className="lg:absolute lg:w-125 lg:-bottom-16 lg:z-20 lg:left-5">
+      <div className="lg:absolute lg:w-125 lg:-bottom-12 lg:z-20 lg:left-5">
         <div className="bg-black/60 overflow-hidden">
-          <div className="md:p-6">
+          <div className="md:pb-2 mx-2">
             <div className="relative h-24">
               {announcements.length > 0 && announcements[currentAnnouncement] && (
                 <div 
                   key={announcements[currentAnnouncement].id}
-                  className="absolute inset-0 flex flex-col justify-center items-center text-center transition-opacity duration-500"
+                  className="absolute inset-0 flex  flex-row items-start top-5 transition-opacity duration-500"
                 >
-                  <h2 className="text-sm md:text-md text-start font-semibold text-white mb-4 px-5">
+                  <h2 className="text-sm md:text-md text-start font-semibold text-white mb-4 px-5 ">
                     {announcements[currentAnnouncement].title}
                   </h2>
                   <a
                     href={announcements[currentAnnouncement].link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="absolute bottom-0 md:-bottom-5 right-0 inline-flex items-center justify-center px-6 py-2 text-xs bg-[#0F3652] text-white font-medium rounded-none hover:bg-[#0F3652]/50 transition-colors duration-300"
+                    className=" w-36 inline-flex items-center justify-center px-4 py-2  text-xs bg-[#F3831C] text-white font-medium rounded-none hover:bg-[#0F3652]/50 transition-colors duration-300"
                   >
                     {announcements[currentAnnouncement].buttonText}
                   </a>
@@ -208,7 +208,7 @@ export default function Hero() {
               )}
             </div>
 
-            <div className="flex justify-center mt-4 space-x-2">
+            <div className="flex justify-center  space-x-2">
               {announcements.map((_, index) => (
                 <button
                   key={index}

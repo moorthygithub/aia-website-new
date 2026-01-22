@@ -152,7 +152,8 @@ const HomeReview = () => {
                         {truncateText(item.message)}
                         {shouldShowReadMore(item.message) && (
                           <a
-                            href="#"
+                            href={item?.student_testimonial_link}
+                            target="_blank"
                             className="ml-2 text-[#F3831C] font-medium text-sm hover:underline"
                           >
                             Read more

@@ -34,6 +34,7 @@ Guided by industry experts with hands-on experience, our practical training ensu
 
 `}
 buttonText="Know more about AIA"
+buttonLink="/about-us"
   aboutStats={[
     { display: "50,000+ Hours", title: "Expert Mentoring Sessions" ,show:'true' },
     { display: "99.6% Success", title: "Success Rate" ,show:'true'},

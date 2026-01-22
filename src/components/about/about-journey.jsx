@@ -139,7 +139,7 @@ const AboutJourney = () => {
   />
   <defs>
     <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stopColor="#0F3652" />
+      <stop offset="0%" stopColor="#F3831C" />
       <stop offset="100%" stopColor="#F3831C" />
     </linearGradient>
   </defs>
@@ -147,7 +147,7 @@ const AboutJourney = () => {
 
 </div>
 
-{/* Row 1 */}
+
 <div className="relative mb-40">
   <div className="grid grid-cols-3 gap-8">
     {processSteps.slice(0, 3).map((step, i) => (
@@ -159,7 +159,7 @@ const AboutJourney = () => {
       >
         <div className={`w-24 h-24 mx-auto mb-4 rounded-full flex items-center justify-center transition-all duration-500 ${
           i <= activeStep
-            ? "bg-gradient-to-br from-[#0F3652] to-[#F3831C] text-white scale-110"
+            ? "bg-[#0F3652] text-white scale-110"
             : "bg-gray-200 text-gray-500"
         }`}>
           {step.icon}
@@ -171,7 +171,7 @@ const AboutJourney = () => {
   </div>
 </div>
 
-{/* Row 2 (reversed visually) */}
+
 <div className="relative mt-40">
   <div className="grid grid-cols-3 gap-8 direction-rtl">
     {processSteps.slice(3, 6).map((step, i) => {
@@ -185,7 +185,7 @@ const AboutJourney = () => {
         >
           <div className={`w-24 h-24 mx-auto mb-4 rounded-full flex items-center justify-center transition-all duration-500 ${
             realIndex <= activeStep
-              ? "bg-gradient-to-br from-[#0F3652] to-[#F3831C] text-white scale-110"
+              ? "bg-[#0F3652] text-white scale-110"
               : "bg-gray-200 text-gray-500"
           }`}>
             {step.icon}

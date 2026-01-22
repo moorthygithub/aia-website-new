@@ -1,54 +1,59 @@
-// components/GoogleAnalytics.jsx
+
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
+import { BASE_URL } from '@/api/base-url';
 
 const GoogleAnalytics = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const fetchAndInjectGTag = async () => {
-      try {
-        const response = await axios.get('https://aia.in.net/webapi/public/api/getGTag');
-        
-        if (response.data?.data?.gtag) {
-          const existingScripts = document.querySelectorAll('script[src*="googletagmanager"]');
-          const existingInlineScripts = document.querySelectorAll('script:not([src])');
-          
-          existingScripts.forEach(script => {
-            if (script.textContent.includes('dataLayer') || script.textContent.includes('gtag')) {
-              script.remove();
-            }
-          });
-          
-          existingInlineScripts.forEach(script => {
-            if (script.textContent.includes('dataLayer') || script.textContent.includes('gtag')) {
-              script.remove();
-            }
-          });
+    const loadGTagOnce = async () => {
+      if (window.__GA_LOADED__) return;
 
-      
-          const scriptElement = document.createElement('script');
-          scriptElement.innerHTML = response.data.data.gtag;
-          scriptElement.async = true;
-          document.head.appendChild(scriptElement);
-        }
-      } catch (error) {
-        console.error('Error fetching Google Analytics tag:', error);
+      try {
+        const response = await axios.get(
+         `${BASE_URL}/api/getGTag`
+        );
+
+        const gtagHtml = response?.data?.data?.gtag;
+        if (!gtagHtml) return;
+
+        const container = document.createElement('div');
+        container.innerHTML = gtagHtml;
+
+        container.querySelectorAll('script').forEach(oldScript => {
+          const newScript = document.createElement('script');
+
+          if (oldScript.src) {
+            newScript.src = oldScript.src;
+            newScript.async = true;
+          } else {
+            newScript.text = oldScript.textContent;
+          }
+
+          document.head.appendChild(newScript);
+        });
+
+        window.__GA_LOADED__ = true;
+      } catch (err) {
+        console.error('GA load failed', err);
       }
     };
 
-    fetchAndInjectGTag();
-    
+    loadGTagOnce();
+  }, []);
+
+  useEffect(() => {
     if (window.gtag) {
       window.gtag('event', 'page_view', {
         page_path: location.pathname + location.search,
-        page_title: document.title
+        page_title: document.title,
       });
     }
   }, [location.pathname, location.search]);
 
-  return null; 
+  return null;
 };
 
 export default GoogleAnalytics;

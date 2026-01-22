@@ -38,7 +38,7 @@ export default CourseWhyAia;
 
 const DiamondCard = ({ img, title }) => (
   <div className="group w-60 h-80 flex flex-col items-center justify-center">
-    <div className="relative w-40 h-40">
+    <div className="relative w-48 h-48">
       <div
         className="
           absolute inset-0 rotate-45 rounded-xl

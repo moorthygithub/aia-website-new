@@ -7,19 +7,15 @@ const AboutTrainerSection = () => {
         <div className="grid lg:grid-cols-2 gap-0 items-center">
     
           <div className="relative">
-            <div className="relative">
-             
-              
-              <img
+          <img
                 src="https://aia.in.net/crm/public/assets/images/faculty/Puneet_Garg.webp"
                 alt="Puneet Garg - Trainer"
-                className="w-full h-auto relative z-0"
+                className="w-full h-screen relative z-0"
               />
-            </div>
           </div>
 
         
-          <div className="text-white">
+          <div className="text-white py-2">
             <div className="text-center">
                 <h2 className="text-3xl md:text-4xl font-bold mb-3">
               Know Your Trainer
@@ -31,23 +27,24 @@ const AboutTrainerSection = () => {
 
             <div className="space-y-2 text-base leading-relaxed">
               <p>
-                <span className="font-bold">Puneet Garg</span> is a globally certified audit leader with{" "}
-                <span className="font-bold">22+ years</span> of experience in Internal Audit, Risk Management, Compliance, Forensics, and Finance. 
-                Holding prestigious credentials including{" "}
-                <span className="font-bold">CA, CS, CIA, CAMS, and CFE</span>, he brings unmatched expertise to his role as a mentor.
+                <span className="font-bold">Puneet Garg</span> is a globally certified audit leader with <span className="font-bold"> over 22 years of experience </span> across Internal Audit, Risk Management, Compliance, Forensics, and Finance. Holding prestigious credentials including   <span className="font-bold"> CA, CS, CIA, CAMS, and CFE</span>, he brings deep technical expertise and practical insight to his role as a mentor and industry expert.
+            
               </p>
 
               <p>
-                He held key positions at renowned companies such as{" "}
-                <span className="font-bold">Hyundai Motors, Samsung Electronics India, Panasonic India, DCM Shriram Industries, and Alchemist Group</span>, 
-                and has led audit projects across India, the Middle East, and the UK to bring rich and practical insights into his every session for his students.
+              Over the course of his career, he has worked with leading multinational organizations such as <span className="font-bold">  Samsung, Hyundai, Panasonic, and Alchemist, and has served as the Head of Internal Audit at DCM Shriram Industries Ltd.</span>, where he led enterprise-wide audit, risk, and control initiatives. His strong foundation in corporate governance, internal controls, and fraud investigation has established him as a trusted authority within the audit and compliance ecosystem.
               </p>
 
               <p>
-                Driven by a passion for teaching, Puneet has mentored and trained{" "}
-                <span className="font-bold">1,000+ aspirants</span>, helping them build{" "}
-                <span className="font-bold">successful careers and master complex concepts</span> like CIA, CFE, and CAMS with confidence. 
-                At AIA, he simplifies tough topics with real-world practical examples and engaging teaching methods, which students truly value.
+              Driven by a genuine passion for teaching, he has <span className="font-bold"> mentored and trained 2,000+ aspirants</span>, helping them build successful careers and confidently master complex certifications themselves first. <span className="font-bold"> At the Academy of Internal Audit (AIA), he is known for simplifying challenging concepts </span> through real-world examples, practical case discussions, and engaging teaching methods that learners consistently value. In addition to individual mentoring,<span className="font-bold"> he has conducted specialized training programs for corporate teams, regulatory bodies, and investigative agencies.
+              </span>
+              </p>
+              <p>He has also served as an <span className="font-bold">Authorized Trainer with the NSE Academy</span>, contributing to the professional development of finance and audit professionals across India. 
+
+              </p>
+
+              <p>
+              In recognition of his impact on ethical leadership and capability building in the profession, <a href="https://www.ceoinsightsindia.com/leader/puneet-garg-equipping-audit-compliance-professionals-to-lead-with-integrity-impact-cid-9846.html" target="_blank" className="font-bold text-blue-200">CEO Insights India</a> <span className="font-bold">featured him</span> among the <span className="font-bold">Top 10 Impactful Business Leaders in India.</span>
               </p>
                <div className="">
               <img

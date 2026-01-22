@@ -9,9 +9,9 @@ const CourseHighLight = ({
 }) => {
   return (
     <div className="py-2">
-      <div className="max-w-340 mx-auto">
+      <div className="">
    
-        <div className="text-center pb-2 border border-[#0F3652] ">
+        <div className="text-center pb-2  max-w-340 mx-auto">
           {badgeText && (
             <p className="text-[#F3831C] text-xs mt-2 font-semibold uppercase tracking-widest mb-4">
               {badgeText}
@@ -46,7 +46,8 @@ const CourseHighLight = ({
 
      
         {logos.length > 0 && (
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 py-10 px-2 mx-auto text-white bg-[#0F3652]/5 border border-[#0F3652]">
+          <div className="text-white bg-[#0F3652]/5">
+        <div className=" max-w-340 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 py-10 px-2 mx-auto  ">
           {logos.map((logo, index) => (
             <div
               key={index}
@@ -60,8 +61,11 @@ const CourseHighLight = ({
             </div>
           ))}
         </div>
+        </div>
         )}
+        
       </div>
+      
     </div>
   );
 };

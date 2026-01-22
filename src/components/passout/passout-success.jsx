@@ -39,15 +39,17 @@ const PassoutSuccess = () => {
       role: story.student_designation,
       date: story.student_story_date,
       slug: story.student_slug,
-      image: story.student_image 
-        ? `${studentImageUrl}${story.student_image}`
+      image: story.student_story_banner_image 
+        ? `${studentImageUrl}${story.student_story_banner_image}`
         : 'https://aia.in.net/webapi/public/assets/images/no_image.jpg',
+      
       companyImage: story.company?.student_company_image 
         ? `${companyImageUrl}${story.company.student_company_image}`
         : null,
       companyName: story.company?.student_company_name || '',
       fullStory: story.student_story_details,
-      linkedIn: story.student_linkedin_link
+      linkedIn: story.student_linkedin_link,
+      imageAlt: story.student_story_banner_image_alt
     }))
   }
 
@@ -120,22 +122,18 @@ const PassoutSuccess = () => {
           </button>
         </div>
 
-         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {displayedStories.map((story) => (
-            <article key={story.id} className="bg-white rounded-2xl  overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
+            <article key={story.id} className="bg-white rounded-md overflow-hidden shadow-lg  transition-shadow duration-300 flex flex-col">
            
-              <div className="relative h-64">
+              <div className="relative h-54">
                 <img 
                   src={story.image}
-                  alt={story.name}
-                  className="w-full h-full object-cover rounded-2xl p-2 border-2 border-amber-300"
+                  alt={story.imageAlt}
+                  className="w-full h-full object-contain rounded-md border-2 border-amber-300"
                 />
-                
-            
-
               </div>
 
-          
               <div className="p-2 flex-1 flex flex-col">
                 <h5 className="font-bold text-gray-900 text-sm">
                   {story.name}, {story.designation}
@@ -152,33 +150,24 @@ const PassoutSuccess = () => {
                   </p>
                 </div>
                 
-               
-              
-
-            
-                <div className="mt-auto flex items-center justify-between pt-4 ">
-             
-                  
-
+                <div className="mt-auto flex items-center justify-between pt-4">
+                  <div className="flex items-center">
                     {story.companyImage && (
-                  <div className=" mx-2">
-                    <div className="flex items-center gap-2">
-                      <img 
-                        src={story.companyImage}
-                        alt={story.companyName}
-                        className="w-8 h-8 object-contain"
-                      />
-                      
-                    </div>
+                      <div className="flex items-center gap-2">
+                        <img 
+                          src={story.companyImage}
+                          alt={story.companyName}
+                          className="w-8 h-8 object-contain"
+                        />
+                      </div>
+                    )}
                   </div>
-                )}
-              
                   
                   <a 
                     href={`/passout-stories/${story.slug}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold py-2 px-4 rounded-full inline-flex items-center gap-2 transition-colors text-sm"
+                    className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold py-2 px-4 rounded-full inline-flex items-center gap-2 transition-colors text-sm ml-auto"
                   >
                     Learn More
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
