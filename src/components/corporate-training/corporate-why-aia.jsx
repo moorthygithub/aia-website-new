@@ -3,7 +3,6 @@
 
 
 import React from 'react';
-import { Globe, Smartphone, Palette, Wrench, Zap, BarChart3 } from 'lucide-react';
 
 const CorporateWhyAia = () => {
  
@@ -40,7 +39,7 @@ const CorporateWhyAia = () => {
 
     <div className="relative max-w-6xl mx-auto h-30  flex items-center justify-center ">
           
-          {/* Center Logo Circle */}
+         
           <div className="absolute z-20 w-48 h-48 bg-white rounded-full shadow-2xl flex items-center justify-center">
             <img
               src="https://www.matebiz.com/wp-content/themes/matebiz/matebiz-new/assests/images/mb-logo.png"
@@ -49,32 +48,32 @@ const CorporateWhyAia = () => {
             />
           </div>
 
-          {/* Surrounding Icon Circles */}
+        
           <div className="absolute z-10">
            
-            {/* Right Circle */}
+          
             <div className="absolute w-30 h-30  rotate-270  flex items-center justify-center" style={{ top: '1px', left: '180px' }}>
               <img src="https://www.matebiz.com/wp-content/themes/matebiz/matebiz-new/assests/images/ovel-3.png" className="w-30 h-30 object-contain" alt="icon" />
             </div>
 
-            {/* Bottom-Right Circle */}
-            <div className="absolute w-20 h-20 bg-white rounded-full shadow-xl flex items-center justify-center" style={{ top: '155px', left: '140px' }}>
-              <img src="https://www.matebiz.com/wp-content/themes/matebiz/matebiz-new/assests/images/ovel-4.png" className="w-14 h-14 object-contain" alt="icon" />
+         
+            <div className="absolute w-30 h-30    flex items-center justify-center" style={{ top: '155px', left: '140px' }}>
+              <img src="https://www.matebiz.com/wp-content/themes/matebiz/matebiz-new/assests/images/ovel-4.png" className="w-30 h-30 object-contain" alt="icon" />
             </div>
 
-            {/* Bottom Circle */}
-            <div className="absolute w-20 h-20 bg-white rounded-full shadow-xl flex items-center justify-center" style={{ top: '220px', left: '-40px' }}>
-              <img src="https://www.matebiz.com/wp-content/themes/matebiz/matebiz-new/assests/images/ovel-5.png" className="w-14 h-14 object-contain" alt="icon" />
+          
+            <div className="absolute w-30 h-30  flex items-center justify-center" style={{ top: '220px', left: '-40px' }}>
+              <img src="https://www.matebiz.com/wp-content/themes/matebiz/matebiz-new/assests/images/ovel-5.png" className="w-30 h-30 object-contain" alt="icon" />
             </div>
 
-            {/* Bottom-Left Circle */}
-            <div className="absolute w-20 h-20 bg-white rounded-full shadow-xl flex items-center justify-center" style={{ top: '155px', left: '-220px' }}>
-              <img src="https://www.matebiz.com/wp-content/themes/matebiz/matebiz-new/assests/images/ovel-6.png" className="w-14 h-14 object-contain" alt="icon" />
+         
+            <div className="absolute w-30 h-30  flex items-center justify-center" style={{ top: '155px', left: '-220px' }}>
+              <img src="https://www.matebiz.com/wp-content/themes/matebiz/matebiz-new/assests/images/ovel-6.png" className="w-30 h-30 object-contain" alt="icon" />
             </div>
 
-            {/* Left Circle */}
-            <div className="absolute w-20 h-20 bg-white rounded-full shadow-xl flex items-center justify-center" style={{ top: '10px', left: '-320px' }}>
-              <img src="https://www.matebiz.com/wp-content/themes/matebiz/matebiz-new/assests/images/ovel-1.png" className="w-14 h-14 object-contain" alt="icon" />
+          
+            <div className="absolute w-30 h-30  flex items-center justify-center" style={{ top: '10px', left: '-320px' }}>
+              <img src="https://www.matebiz.com/wp-content/themes/matebiz/matebiz-new/assests/images/ovel-1.png" className="w-30 h-30 object-contain" alt="icon" />
             </div>
 
            
@@ -137,15 +136,7 @@ const CorporateWhyAia = () => {
         </div>
       </div>
 
-      <div class="flex gap-4 items-start">
-        <img src="https://www.matebiz.com/wp-content/themes/matebiz/matebiz-new/assests/images/ovel-lin6.png" class="w-10" loading="lazy" />
-        <div>
-          <div class="text-orange-500 font-bold text-lg">06</div>
-          <h3 class="font-semibold text-gray-900">
-            Clear Calls-To-Action That Drive Results
-          </h3>
-        </div>
-      </div>
+      
 
     </div>
 

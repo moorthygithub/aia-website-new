@@ -1,3 +1,4 @@
+import CorporateBanner from '@/components/corporate-training/corporate-banner'
 import CorporateCarousel from '@/components/corporate-training/corporate-carousel'
 import CorporateCourse from '@/components/corporate-training/corporate-course'
 import CorporateCta from '@/components/corporate-training/corporate-cta'
@@ -16,6 +17,7 @@ import React from 'react'
 const CorporateTraining = () => {
   return (
     <>
+    <CorporateBanner/>
     <CorporateWhy/>
     <CorporateCourse/>
     <CorporateWhyAia/>

@@ -8,7 +8,7 @@ import CAMS from "./pages/Courses/CAMS";
 import CFECurriculam from "./pages/Courses/CFECurriculam";
 import CIAChallenge from "./pages/Courses/CIAChallenge";
 import CIACurriculam from "./pages/Courses/CIACurriculam";
-import FreeResources from "./pages/FreeResources/CFEFreeResources";
+import FreeResources from "./pages/free-resources/cfe-free-resources";
 import Home from "./pages/Home/Home";
 import Blog from "./pages/Blog/Blog";
 import OurPassout from "./pages/OurPassout/OurPassout";
