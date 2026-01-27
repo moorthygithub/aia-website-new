@@ -16,7 +16,7 @@ const OurPassout = () => {
    <PassoutSucess/>
      <HomeAlumniWork/>
 
-<CourseYoutube courseSlug="home"/>
+<CourseYoutube courseSlug="Passed-Out"/>
     
 
       

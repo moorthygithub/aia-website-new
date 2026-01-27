@@ -16,24 +16,13 @@ const CorporateWhy = () => {
     badgeText=""
     title="Why Leading Organizations are Investing in Employee"
     description="Because every smart business knows - when your people grow it leads to strong results. Here’s the proof"
-    stats={[
-      {
-        value: "94%",
-        subtitle: "Say employees stay longer at a company",
-      },
-      {
-        value: "74%",
-        subtitle: "Report higher engagement with structured training",
-      },
-      {
-        value: "30% ",
-        subtitle: "See improved performance within 3 months ",
-      },
-      {
-        value: "21%",
-        subtitle: "of companies report direct profitability gains ",
-      },
+     stats={[
+      { value: 94, suffix: "%", subtitle: "Say employees stay longer at a company" },
+      { value:74, suffix: "%", subtitle: "Report higher engagement with structured training" },
+      { value: 30, suffix: "%", subtitle: "See improved performance within 3 months" },
+      { value: 21, suffix: "%", subtitle: "of companies report direct profitability gains" },
     ]}
+    
     logos={[
       
     ]}

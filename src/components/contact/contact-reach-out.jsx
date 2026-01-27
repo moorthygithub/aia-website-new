@@ -4,84 +4,111 @@ import { Mail, MapPin, Phone } from "lucide-react";
 const ContactReachOut = () => {
   const contactMethods = [
     {
-      icon: <MapPin className="w-5 h-5" />,
+      icon: <MapPin className="w-6 h-6" />,
       title: "Office Address",
-      color: "indigo",
       details: [
         "C826-828, Vipul Plaza,",
         "Sector-81, Faridabad,",
         "Delhi - NCR 121002,",
         "India"
-      ],
-      iconBg: "bg-[#0F3652]/10",
-      iconColor: "text-[#0F3652]",
-      borderColor: "border-[#0F3652]/20",
-      bg: "bg-white"
+      ]
     },
     {
-      icon: <Mail className="w-5 h-5" />,
+      icon: <Mail className="w-6 h-6" />,
       title: "Email Us",
-      color: "amber",
       details: [
-        "support@aia.in.net",
-        "contact@aia.in.net"
-      ],
-      iconBg: "bg-[#F3831C]/10",
-      iconColor: "text-[#F3831C]",
-      borderColor: "border-[#F3831C]/20",
-      bg: "bg-white"
+        { text: "support@aia.in.net", link: "mailto:support@aia.in.net" },
+        { text: "contact@aia.in.net", link: "mailto:contact@aia.in.net" }
+      ]
     },
     {
-      icon: <Phone className="w-5 h-5" />,
+      icon: <Phone className="w-6 h-6" />,
       title: "Call Us",
-      color: "blue",
       details: [
-        "+91 93113 20114",
-        "+91 97175 97197",
-        "0129 417 4177",
-        "Toll free number"
-      ],
-      iconBg: "bg-[#0F3652]/10",
-      iconColor: "text-[#0F3652]",
-      borderColor: "border-[#0F3652]/20",
-      bg: "bg-white"
+        { text: "+91 93113 20114", link: "tel:+919311320114" },
+        { text: "+91 97175 97197", link: "tel:+919717597197" },
+        { text: "0129 417 4177", link: "tel:01294174177" },
+        { text: "1800-1200-2555", link: "tel:+180012002555", isTollFree: true }
+      ]
     }
   ];
 
   return (
-    <section className="py-12 md:py-16 bg-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-10">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#0F3652] mb-2">
-            Reach Out Anytime
-            <div className="w-20 h-1 bg-linear-to-r from-[#0F3652] to-[#F3831C] mx-auto rounded-full"></div>
+    <section 
+      className="py-16 pb-16"
+      style={{
+        background: 'linear-gradient(to bottom, #052154 0%, #052154 50%, #ffffff 50%, #ffffff 100%)'
+      }}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Title */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-white mb-0">
+            Reach Out Anytime, We're Here for You
           </h2>
-          <p className="text-[#0F3652]/80 text-sm md:text-base">
-            We're here for you
-          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-          {contactMethods.map((method) => (
+        {/* Cards Container */}
+        <div className="flex flex-wrap justify-center gap-8 px-5 pb-16">
+          {contactMethods.map((method, index) => (
             <div
-              key={method.title}
-              className={`${method.bg} rounded-xl p-5 border ${method.borderColor} shadow-sm hover:shadow-md transition-shadow duration-200`}
+              key={index}
+              className="relative bg-white rounded-3xl w-72 pt-16 pb-8 px-5 text-center"
+              style={{
+                border: '2px solid #f97316'
+              }}
             >
-              <div className="flex items-center gap-3 mb-4">
-                <div className={`${method.iconBg} w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0`}>
-                  <div className={method.iconColor}>
-                    {method.icon}
-                  </div>
+              {/* Icon Circle - Positioned absolutely */}
+              <div 
+                className="absolute -top-10 left-1/2 w-20 h-20 rounded-full flex items-center justify-center"
+                style={{
+                  transform: 'translateX(-50%)',
+                  background: 'rgba(249, 115, 22, 0.1)'
+                }}
+              >
+                <div 
+                  className="w-12 h-12 rounded-full flex items-center justify-center text-white"
+                  style={{
+                    backgroundColor: '#f97316'
+                  }}
+                >
+                  {method.icon}
                 </div>
-                <h3 className="text-lg font-semibold text-[#0F3652]">
-                  {method.title}
-                </h3>
               </div>
 
-              <div className="space-y-2">
+              {/* Content */}
+              <h3 
+                className="text-3xl font-bold mb-4 mt-8"
+                style={{ color: '#f97316' }}
+              >
+                {method.title}
+              </h3>
+
+              <div className="space-y-1">
                 {method.details.map((detail, i) => (
-                  <p key={i} className="text-[#0F3652] text-sm leading-relaxed">
-                    {detail}
+                  <p key={i} className="text-base text-black leading-relaxed">
+                    {typeof detail === 'string' ? (
+                      detail
+                    ) : detail.isTollFree ? (
+                     <a
+  href={detail.link}
+  style={{ color: "#000", textDecoration: "none" }}
+>
+  <img
+    src="https://aia.in.net/crm/public/assets/images/logo/toll free.png"
+    alt="Toll free number"
+    className="mx-auto"
+  />
+</a>
+
+                    ) : (
+                      <a 
+                        href={detail.link}
+                        className="text-black no-underline hover:text-[#f97316] transition-colors"
+                      >
+                        {detail.text}
+                      </a>
+                    )}
                   </p>
                 ))}
               </div>
@@ -94,3 +121,4 @@ const ContactReachOut = () => {
 };
 
 export default ContactReachOut;
+

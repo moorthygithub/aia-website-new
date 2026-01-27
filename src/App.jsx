@@ -8,12 +8,12 @@ import CAMS from "./pages/Courses/CAMS";
 import CFECurriculam from "./pages/Courses/CFECurriculam";
 import CIAChallenge from "./pages/Courses/CIAChallenge";
 import CIACurriculam from "./pages/Courses/CIACurriculam";
-import FreeResources from "./pages/FreeResources/CFEFreeResources";
+import FreeResources from "./pages/free-resources/cfe-free-resources";
 import Home from "./pages/Home/Home";
 import Blog from "./pages/Blog/Blog";
 import OurPassout from "./pages/OurPassout/OurPassout";
 
-import Enrool from "./pages/Enrool/Enrool";
+import Enrool from "./pages/Enroll/Enroll";
 import Contact from "./pages/contact/contact";
 import BlogDetails from "./pages/Blog/blog-details";
 import AboutPage from "./pages/About/About";

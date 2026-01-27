@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import {
   Dialog,
@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/dialog";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import { X } from 'lucide-react';
+import { X, Loader2 } from 'lucide-react';
 import { BASE_URL } from '@/api/base-url';
 
 const PopUp = ({ slug = 'home' }) => {
@@ -18,9 +18,12 @@ const PopUp = ({ slug = 'home' }) => {
   const [dontShowAgain, setDontShowAgain] = useState(false);
   const [loading, setLoading] = useState(true);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageUrl, setImageUrl] = useState('');
+  const [showPopupAfterLoad, setShowPopupAfterLoad] = useState(false);
+  const imageRef = useRef(null);
 
   useEffect(() => {
-    
+  
     const popupHidden = sessionStorage.getItem('popup_hidden_globally');
     if (popupHidden === 'true') {
       setDontShowAgain(true);
@@ -56,24 +59,65 @@ const PopUp = ({ slug = 'home' }) => {
   }, [slug]);
 
   useEffect(() => {
-  
-    const popupHidden = sessionStorage.getItem('popup_hidden_globally');
-    if (popupHidden === 'true') {
+    if (!popupData || popupData.popup_required !== 'Yes') {
       return;
     }
 
     
-    if (!loading && popupData?.popup_required === 'Yes') {
+    const url = popupData.popup_image 
+      ? `${imageBaseUrl}${popupData.popup_image}`
+      : 'https://aia.in.net/webapi/public/assets/images/no_image.jpg';
+    
+    setImageUrl(url);
+  }, [popupData, imageBaseUrl]);
+
+  useEffect(() => {
+  
+    if (imageUrl && !imageLoaded) {
+      const img = new Image();
+      img.src = imageUrl;
+      
+      img.onload = () => {
+        setImageLoaded(true);
+       
+        if (!loading && popupData?.popup_required === 'Yes') {
+         
+          const popupHidden = sessionStorage.getItem('popup_hidden_globally');
+          if (popupHidden !== 'true') {
+            setShowPopupAfterLoad(true);
+          }
+        }
+      };
+
+      img.onerror = () => {
+       
+        const fallbackImg = new Image();
+        fallbackImg.src = 'https://aia.in.net/webapi/public/assets/images/no_image.jpg';
+        fallbackImg.onload = () => {
+          setImageUrl('https://aia.in.net/webapi/public/assets/images/no_image.jpg');
+          setImageLoaded(true);
+        
+          const popupHidden = sessionStorage.getItem('popup_hidden_globally');
+          if (popupHidden !== 'true') {
+            setShowPopupAfterLoad(true);
+          }
+        };
+      };
+    }
+  }, [imageUrl, loading, popupData]);
+
+  useEffect(() => {
+    
+    if (showPopupAfterLoad) {
       const timer = setTimeout(() => {
         setOpen(true);
       }, 5000);
 
       return () => clearTimeout(timer);
     }
-  }, [loading, popupData, slug]);
+  }, [showPopupAfterLoad]);
 
   const handleClose = () => {
-
     if (dontShowAgain) {
       sessionStorage.setItem('popup_hidden_globally', 'true');
     }
@@ -82,7 +126,6 @@ const PopUp = ({ slug = 'home' }) => {
 
   const handleOpenChange = (isOpen) => {
     if (!isOpen) {
-    
       if (dontShowAgain) {
         sessionStorage.setItem('popup_hidden_globally', 'true');
       }
@@ -98,25 +141,42 @@ const PopUp = ({ slug = 'home' }) => {
     }
   };
 
+
   if (loading || !popupData || popupData.popup_required !== 'Yes') {
     return null;
   }
 
-
+  
   const popupHidden = sessionStorage.getItem('popup_hidden_globally');
   if (popupHidden === 'true') {
     return null;
   }
 
-  const imageUrl = popupData.popup_image 
-    ? `${imageBaseUrl}${popupData.popup_image}`
-    : 'https://aia.in.net/webapi/public/assets/images/no_image.jpg';
+  
+  if (!imageLoaded) {
+    return (
+      <div className="hidden">
+   
+        <img 
+          ref={imageRef}
+          src={imageUrl}
+          alt="preload"
+          style={{ display: 'none' }}
+          onLoad={() => setImageLoaded(true)}
+          onError={() => {
+            setImageUrl('https://aia.in.net/webapi/public/assets/images/no_image.jpg');
+            setImageLoaded(true);
+          }}
+        />
+      </div>
+    );
+  }
 
   return (
-    <Dialog open={open} onOpenChange={handleOpenChange}>
+    <Dialog open={open} onOpenChange={handleOpenChange} >
       <DialogContent className="p-0 overflow-hidden border-0 bg-transparent max-w-xl">
         <div className="relative bg-white rounded-xl shadow-2xl">
-          <DialogHeader className="p-2 pb-1 ">
+          <DialogHeader className="p-2 pb-1">
             <DialogTitle className="text-xl font-bold text-center text-gray-800">
               {popupData.popup_heading}
             </DialogTitle>
@@ -134,14 +194,8 @@ const PopUp = ({ slug = 'home' }) => {
             <img 
               src={imageUrl}
               alt={popupData.popup_image_alt}
-              className={`w-full h-auto rounded-lg transition-opacity duration-300 ${
-                imageLoaded ? 'opacity-100' : 'opacity-0'
-              }`}
-              onLoad={() => setImageLoaded(true)}
-              onError={(e) => {
-                e.currentTarget.src = 'https://aia.in.net/webapi/public/assets/images/no_image.jpg';
-                setImageLoaded(true);
-              }}
+              className="w-full h-auto rounded-lg"
+              loading="eager"
             />
           </div>
 

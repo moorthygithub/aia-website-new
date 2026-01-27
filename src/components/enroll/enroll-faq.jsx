@@ -1,3 +1,7 @@
+
+
+
+
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 
@@ -9,12 +13,12 @@ import axios from "axios";
 import { useEffect } from "react";
 import { BASE_URL } from "@/api/base-url";
 
-const HomeFaq = () => {
+const EnrollFaq = () => {
   const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ["aia-faq"],
     queryFn: async () => {
       const res = await axios.get(
-        `${BASE_URL}/api/getFAQbySlug/home`
+        `${BASE_URL}/api/getFAQbySlug/Enroll-Now`
       );
       return res.data;
     },
@@ -128,4 +132,4 @@ const HomeFaq = () => {
 
 
 
-export default HomeFaq;
+export default EnrollFaq;
