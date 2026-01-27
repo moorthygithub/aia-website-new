@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useCallback } from 'react';
 import { ArrowRight } from 'lucide-react';
+import { BASE_URL } from '@/api/base-url';
+import axios from 'axios';
 
 const ContactHero = () => {
   const [formData, setFormData] = useState({
@@ -9,7 +11,8 @@ const ContactHero = () => {
     userMobile: '',
     userLocation: '',
     userCourse: '',
-    userMessage: ''
+    userMessage: '',
+    userType: 'Contact-Page'
   });
 
   const [errors, setErrors] = useState({});
@@ -48,32 +51,66 @@ const ContactHero = () => {
     return newErrors;
   }, [formData]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+ 
 
-    const validationErrors = validate();
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    setLoader(true);
+  const validationErrors = validate();
+  if (Object.keys(validationErrors).length > 0) {
+    setErrors(validationErrors);
+    return;
+  }
 
-    setTimeout(() => {
-      console.log("Form submitted:", formData);
-      setLoader(false);
-      alert("Demo booked successfully!");
-      
-      setFormData({
-        userName: "",
-        userEmail: "",
-        userMobile: "",
-        userLocation: "",
-        userCourse: "",
-        userMessage: ""
-      });
-    }, 1500);
-  };
+  setLoader(true);
+
+  try {
+    const { data } = await axios.post(
+      `${BASE_URL}/api/create-webenquiry`,
+      {
+        userName: formData.userName,
+        userEmail: formData.userEmail,
+        userMobile: formData.userMobile,
+        userCourse: formData.userCourse,
+        userLocation: formData.userLocation,
+        userMessage: formData.userMessage,
+        userType: formData.userType
+      },
+      {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }
+    );
+
+    console.log("API success:", data);
+    alert("Demo booked successfully!");
+
+    setFormData({
+      userName: "",
+      userEmail: "",
+      userMobile: "",
+      userLocation: "",
+      userCourse: "",
+      userMessage: "",
+      userType: "Contact-Page"
+    });
+
+    setErrors({});
+  } catch (error) {
+    console.error(
+      "API error:",
+      error.response?.data || error.message
+    );
+    alert(
+      error.response?.data?.message ||
+      "Something went wrong. Please try again."
+    );
+  } finally {
+    setLoader(false);
+  }
+};
+
 
   return (
     <section className="relative bg-white py-16 ">

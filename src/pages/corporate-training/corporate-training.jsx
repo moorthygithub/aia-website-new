@@ -20,7 +20,7 @@ const CorporateTraining = () => {
     <CorporateBanner/>
     <CorporateWhy/>
     <CorporateCourse/>
-    <CorporateWhyAia/>
+    {/* <CorporateWhyAia/>  */}
     <CorporatePartner/>
     <CorporateQuote/>
 

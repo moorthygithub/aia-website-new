@@ -39,7 +39,7 @@ const HomeCorporatePartner = () => {
   
   const currentDescription = effortsData?.data?.[currentEffortIndex]?.efforts_description || 
     "From engaging with national leaders to presenting the SIGA Pre-Budget Memo, hosting insightful Apparel Talks, and organizing the grand SIGA Fair, our association works tirelessly to represent the garment industry's voice. These moments capture our ongoing commitment to strengthening connections between industry stakeholders, policymakers, and the business community.";
-
+    const currentTitle = effortsData?.data?.[currentEffortIndex]?.efforts_heading 
   return (
     <div className="w-full">
       <div className="mx-auto">
@@ -50,8 +50,7 @@ const HomeCorporatePartner = () => {
                 Academy of Internal Audit
               </span>
               <h3 className="text-xl font-semibold text-[#0F3652]">
-                Corporate Training Delivered to Leading Organisations
-                Trusted by Corporations for Fraud & Risk Capability Building
+                {currentTitle}
               </h3>
               <p className="text-base md:text-lg text-[#0F3652] my-4">
                 {currentDescription}

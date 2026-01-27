@@ -278,11 +278,11 @@ const AIANavbar = () => {
                   href="/enroll-now"
                   className="
     bg-[#F3831C] text-white
-    px-6 py-2.5 rounded-md
+    px-6 py-2.5 rounded-none
     font-semibold
     hover:bg-[#F3831C]/90
     transition-all
-    shadow-md hover:shadow-lg
+
   "
                 >
                   Enroll Now

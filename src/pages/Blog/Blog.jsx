@@ -136,7 +136,7 @@ const Blog = () => {
         <div className="flex flex-col md:flex-row gap-6 ">
         
           <div className="md:w-2/5 relative overflow-hidden rounded-lg">
-            <div className="h-64 md:h-full bg-gradient-to-r from-[#0F3652]/10 to-[#0F3652]/20">
+            <div className="h-64 md:h-full bg-linear-to-r from-[#0F3652]/10 to-[#0F3652]/20">
               <img
                 src={`${imageBaseUrl}${blog.blog_images}`}
                 alt={blog.blog_images_alt || blog.blog_heading}
@@ -256,7 +256,7 @@ const Blog = () => {
             </div>
           </div>
 
-          {/* Trending Blogs Section */}
+       
           {trendingBlogs.length > 0 && (
             <div className="mb-12 p-2 border-2 rounded-lg">
               <div className="flex items-center justify-between mb-6">
@@ -280,7 +280,7 @@ const Blog = () => {
                         style={{ transform: `translateX(-${currentSlide * 100}%)` }}
                       >
                         {trendingBlogs.slice(0, 4).map((blog) => (
-                          <div key={blog.id} className="w-full flex-shrink-0 px-2">
+                          <div key={blog.id} className="w-full shrink-0 px-2">
                             <BannerBlogCard blog={blog} />
                           </div>
                         ))}

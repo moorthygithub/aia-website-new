@@ -185,13 +185,13 @@ export const CircularTestimonials = ({
     <div className="testimonial-container">
       <div className="testimonial-grid">
         {/* Images */}
-        <div className="image-container" ref={imageContainerRef}>
+        <div className="image-container " ref={imageContainerRef}>
           {testimonials.map((testimonial, index) => (
             <img
               key={testimonial.src}
               src={testimonial.src}
               alt={testimonial.name}
-              className="testimonial-image"
+              className="testimonial-image "
               data-index={index}
               style={getImageStyle(index)}
             />
@@ -199,7 +199,7 @@ export const CircularTestimonials = ({
         </div>
 
         {/* Quote */}
-        <div className="quote-wrapper ">
+        {/* <div className="quote-wrapper ">
           <AnimatePresence mode="wait">
             <motion.p
               key={activeIndex}
@@ -213,7 +213,7 @@ export const CircularTestimonials = ({
               {activeTestimonial.quote}
             </motion.p>
           </AnimatePresence>
-        </div>
+        </div> */}
 
      
         <div className="  w-full flex flex-row items-center justify-center gap-2">
