@@ -187,7 +187,7 @@ const CfeReview = () => {
           <img
             src="https://aia.in.net/crm/public/assets/images/testimonial/rated.jpg"
             alt="Rated testimonial"
-            className="w-full h-auto max-w-full object-contain"
+            className="w-full h-auto max-w-full object-contain transform -scale-x-100"
             style={{ maxHeight: '90vh' }}
           />
         </div>

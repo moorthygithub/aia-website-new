@@ -54,10 +54,10 @@ const AboutPartner = () => {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <h3 className="text-2xl md:text-3xl font-bold text-[#0F3652] mb-3">
-                Bajaj Allianz X AIA
+                 Adani X AIA
               </h3>
               <p className="text-[#0F3652] text-lg">
-                Bajaj Allianz is a trusted name in insurance and financial services, where fraud risk management plays a critical role. We delivered CFE-oriented training to equip professionals with practical knowledge in fraud detection, investigation methodologies, and control mechanisms. This training enabled teams to improve internal vigilance, strengthen fraud response frameworks, and support more informed decision-making in risk and compliance functions across the organization.
+              Adani Group is a diversified conglomerate with operations spanning infrastructure, energy, and logistics. AIA conducted CFE-based professional training to build awareness around fraud risks, ethical practices, and governance responsibilities. The program supported professionals in understanding complex fraud scenarios, reinforcing internal controls, and promoting a proactive approach to risk management, contributing to stronger governance and compliance culture across business functions.
               </p>
             </div>
 
@@ -102,10 +102,10 @@ const AboutPartner = () => {
 
               <div className="order-1 md:order-2">
                 <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
-                  Adani X AIA
+                Bajaj Allianz X AIA 
                 </h3>
                 <p className="text-white text-lg">
-                  Adani Group is a diversified conglomerate with operations spanning infrastructure, energy, and logistics. AIA conducted CFE-based professional training to build awareness around fraud risks, ethical practices, and governance responsibilities. The program supported professionals in understanding complex fraud scenarios, reinforcing internal controls, and promoting a proactive approach to risk management, contributing to stronger governance and compliance culture across business functions.
+                Bajaj Allianz is a trusted name in insurance and financial services, where fraud risk management plays a critical role. We delivered CFE-oriented training to equip professionals with practical knowledge in fraud detection, investigation methodologies, and control mechanisms. This training enabled teams to improve internal vigilance, strengthen fraud response frameworks, and support more informed decision-making in risk and compliance functions across the organization.
                 </p>
               </div>
             </div>

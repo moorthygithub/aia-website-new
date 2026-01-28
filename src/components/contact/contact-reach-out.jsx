@@ -88,8 +88,9 @@ const ContactReachOut = () => {
                 {method.details.map((detail, i) => (
                   <p key={i} className="text-base text-black leading-relaxed">
                     {typeof detail === 'string' ? (
-                      detail
+                     <span className="flex  justify-start">{ detail}</span>
                     ) : detail.isTollFree ? (
+                      
                      <a
   href={detail.link}
   style={{ color: "#000", textDecoration: "none" }}

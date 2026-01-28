@@ -15,7 +15,7 @@ const TestimonialCard = ({
   imageBaseUrl 
 }) => {
   const isCenter = position === 0;
-
+  const zIndex = isCenter ? 10 : 10 - Math.abs(position);
   return (
     <div
       onClick={() => handleMove(position)}
@@ -28,6 +28,7 @@ const TestimonialCard = ({
       style={{
         width: cardSize,
         height: cardSize,
+        zIndex: zIndex,
         clipPath: `polygon(50px 0%, calc(100% - 50px) 0%, 100% 50px, 100% 100%, calc(100% - 50px) 100%, 50px 100%, 0 100%, 0 0)`,
         transform: `
           translate(-50%, -50%) 
@@ -201,8 +202,13 @@ export default function HomePrCarousel() {
 
   return (
     <div
-      className="relative w-full overflow-hidden bg-gray-50"
-      style={{ height: 600 }}>
+      className="relative w-full min-h-screen overflow-hidden bg-gray-50 "
+      >
+<h2 className=" absolute top-0  w-full  text-center text-3xl  font-bold text-[#0F3652] py-10">
+            Heading - Need to Receive 
+          </h2>
+
+
       {testimonialsList.map((testimonial, index) => {
         const position = testimonialsList.length % 2
           ? index - (testimonialsList.length + 1) / 2
@@ -217,6 +223,9 @@ export default function HomePrCarousel() {
             imageBaseUrl={imageBaseUrl} />
         );
       })}
+
+
+
       <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
         <button
           onClick={() => handleMove(-1)}

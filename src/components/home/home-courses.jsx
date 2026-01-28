@@ -162,7 +162,7 @@ const HomeCourses = () => {
 
   return (
     <div className="max-w-340 mx-auto px-4 sm:px-6 lg:px-8">
-      {/* Mobile - Simple stacked layout similar to desktop but simplified */}
+    
       <div className="md:hidden">
         <div className="mb-8">
           <p className="text-xs uppercase tracking-wider text-[#F3831C] font-semibold mb-4">
@@ -258,7 +258,8 @@ const HomeCourses = () => {
       <div className="hidden md:grid md:grid-cols-2 gap-12 ">
         {/* Left side - Changes with scroll */}
         <div className="md:sticky md:top-20 md:h-screen md:flex md:flex-col md:justify-center ">
-          <div>
+          <div  className=" h-full mt-18 flex flex-col justify-between">
+            <div>
             <p className="text-sm uppercase tracking-wider text-[#F3831C] font-semibold mb-4">
               PROFESSIONAL CERTIFICATION PROGRAMS
             </p>
@@ -272,10 +273,21 @@ const HomeCourses = () => {
               <p className="text-[#0F3652] text-lg mb-2 max-w-lg leading-relaxed">
                 {ALL_SERVICES[activeCard]?.description || ALL_SERVICES[0].description}
               </p>
+              <p className="text-[#0F3652] text-lg mb-2 max-w-lg leading-relaxed">
+                {ALL_SERVICES[activeCard]?.description || ALL_SERVICES[0].description}
+              </p>
+              <p className="text-[#0F3652] text-lg mb-2 max-w-lg leading-relaxed">
+                {ALL_SERVICES[activeCard]?.description || ALL_SERVICES[0].description}
+              </p>
+
+
+          
+            </div>
             </div>
 
             {/* Button moved to left side */}
-            <div className="mt-4">
+           <div className='mb-30'>
+           <div className="mt-4">
               <a
                 href={ALL_SERVICES[activeCard]?.link || ALL_SERVICES[0].link}
                 className="
@@ -314,6 +326,7 @@ const HomeCourses = () => {
               <div className="h-px w-16 bg-[#F3831C]"></div>
               <p className="text-sm text-[#0F3652]/70">Scroll to explore all courses</p>
             </div>
+           </div>
           </div>
         </div>
 

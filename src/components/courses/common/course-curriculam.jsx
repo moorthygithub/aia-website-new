@@ -9,7 +9,7 @@ const CourseCurriculum = ({ title, curriculumData }) => {
 
   return (
     <div className="py-6 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-340 mx-auto">
+      <div className="max-w-6xl mx-auto">
 
        
         <div className="mb-8">
@@ -22,15 +22,15 @@ const CourseCurriculum = ({ title, curriculumData }) => {
 
        
         <div className="flex flex-col md:flex-row gap-4">
-
+  center alignment
       
-          <div className="w-full md:w-2/5 space-y-2">
+          <div className="w-full md:w-1/5 space-y-2">
             {curriculumData.map((item) => (
               <button
                 key={item.id}
                 onMouseEnter={() => setActiveTab(item.id)}
                 className={`
-                  w-full text-left p-3 rounded-tr-3xl rounded-bl-3xl transition-all duration-200
+                  w-full text-left p-6 shadow-lg shadow-black/20  rounded-br-3xl rounded-tl-3xl transition-all duration-200
                   border
                   ${
                     activeTab === item.id
@@ -42,7 +42,7 @@ const CourseCurriculum = ({ title, curriculumData }) => {
                 <div className="flex items-center">
                   <div
                     className={`
-                      w-8 h-8 rounded-full flex items-center justify-center mr-3 font-bold text-xs
+                      w-8 h-8 rounded-full flex items-center justify-center mr-3 font-bold text-lg
                       ${
                         activeTab === item.id
                           ? "bg-[#F3831C] text-white"
@@ -50,7 +50,7 @@ const CourseCurriculum = ({ title, curriculumData }) => {
                       }
                     `}
                   >
-                    {item.id}
+                    {item.id}   
                   </div>
                   <span className="font-medium text-sm leading-tight">
                     {item.title}
@@ -73,7 +73,7 @@ const CourseCurriculum = ({ title, curriculumData }) => {
 
        
           <div className="w-full md:w-3/5">
-            <div className="bg-white rounded-tr-3xl rounded-bl-3xl p-4 border border-[#F3831C]/20">
+            <div className="bg-white rounded-br-3xl rounded-tl-3xl p-4  shadow-lg shadow-black/20 border border-[#F3831C]/20">
               {activeContent?.content?.length ? (
                 <div className="space-y-1">
                   <div className="mb-3">
@@ -87,10 +87,10 @@ const CourseCurriculum = ({ title, curriculumData }) => {
                     {activeContent.content.map((text, index) => (
                       <div
                         key={index}
-                        className="flex items-start mb-1 p-1.5 rounded hover:bg-[#0F3652]/5 transition-colors duration-150"
+                        className="flex items-start mb-0.5 p-0.5 rounded hover:bg-[#0F3652]/5 transition-colors duration-150"
                       >
-                        <div className="w-1.5 h-4 bg-[#F3831C] mr-2 shrink-0 rounded-full mt-0.5" />
-                        <p className="text-[#0F3652] text-sm leading-relaxed flex-1">
+                        <div className="w-0.5 h-5 bg-[#F3831C] mr-2 shrink-0 rounded-full mt-0.5" />
+                        <p className="text-[#0F3652] text-md leading-relaxed flex-1">
                           {text}
                         </p>
                       </div>

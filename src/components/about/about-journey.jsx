@@ -124,26 +124,33 @@ const AboutJourney = () => {
           </div>
         </div>
         <div className="px-6">
-  <div className="max-w-340 mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-    {statsCards.map((item, index) => (
-      <div
-        key={index}
-        className="bg-white rounded-2xl shadow-md p-6 text-center border border-[#0F3652] hover:border-[#F3831C] cursor-pointer transition-transform hover:scale-105"
-      >
-        <div className="w-12 h-12 mx-auto mb-4 flex items-center justify-center rounded-full bg-[#F3831C]/10 text-[#F3831C] text-xl font-bold">
-          {item.icon}
-        </div>
+        <div className="max-w-340 mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 mb-5">
+  {statsCards.map((item, index) => (
+    <div
+      key={index}
+      className="relative bg-white rounded-xl p-6 text-center border border-gray-200 hover:border-[#F3831C] cursor-pointer transition-all duration-300 hover:shadow-lg group overflow-hidden"
+    >
+      {/* Top accent bar */}
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#0F3652] to-[#F3831C] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+      
+      {/* Corner accents */}
+      <div className="absolute top-2 right-2 w-6 h-6 border-t-2 border-r-2 border-[#0F3652]/20 rounded-tr-xl"></div>
+      <div className="absolute bottom-2 left-2 w-6 h-6 border-b-2 border-l-2 border-[#0F3652]/20 rounded-bl-xl"></div>
 
-        <h2 className="text-3xl font-bold text-[#0F3652]">
-          <CountUp end={item.value} suffix={item.suffix} />
-        </h2>
+      <h2 className="text-5xl font-black text-[#0F3652]  mb-2">
+        <CountUp end={item.value} suffix={item.suffix} />
+      </h2>
 
-        <p className="text-sm text-gray-600 mt-2">
-          {item.label}
-        </p>
-      </div>
-    ))}
-  </div>
+      <div className="h-px w-12 bg-gradient-to-r from-transparent via-[#F3831C] to-transparent mx-auto my-4"></div>
+
+      <p className="text-sm font-medium text-gray-700">
+        {item.label}
+      </p>
+    </div>
+  ))}
+</div>
+       
+       
 </div>
 
 

@@ -1,11 +1,5 @@
 import React from "react";
-import EnrollNowOpportunies from "../../component/EnrollNowOpportunies";
-import GlobalStandards from "../../component/GlobalStandards";
-import VoicesOfLearners from "../../component/VoicesOfLearners";
-import TurningDreams from "../../component/courses/TurningDreams";
-import AlumniWorkFor from "../../component/courses/AlumniWorkFor";
-import PaymentFAQ from "../../component/PaymentFAQ";
-import WorldMapSection from "../../component/WorldMapSection";
+
 import EnrollHighlight from "@/components/enroll/enroll-highlight";
 import CourseTopStudent from "@/components/courses/common/course-top-student";
 import HomeAlumniWork from "@/components/home/home-alumini-work";
@@ -25,14 +19,7 @@ const Enrool = () => {
 <CourseMap courseCode="Enroll-Now"/>
 <EnrollReview/>
 <EnrollFaq/>
-{/*       
-      <EnrollNowOpportunies />
-      <GlobalStandards />
-      <VoicesOfLearners />
-      <WorldMapSection />
-      <TurningDreams />
-      <AlumniWorkFor />
-      <PaymentFAQ /> */}
+
     </div>
   );
 };

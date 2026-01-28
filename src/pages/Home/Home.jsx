@@ -1,6 +1,5 @@
-import About from "../../component/About";
 
-import Hero from "../../component/Hero";
+
 
 import HomeAccredited from "@/components/home/home-accredited";
 import HomeContact from "@/components/home/home-contact";
@@ -17,6 +16,7 @@ import HomeYoutube from "@/components/home/home-youtube";
 import HomeAbout from "@/components/home/home-about";
 import PopUp from "@/components/common/pop-up";
 import HomePrCarousel from "@/components/home/home-pr-carousel";
+import HomeHero from "@/components/home/home-hero";
 
 
 
@@ -28,7 +28,7 @@ export default function Home() {
   return (
     <div className="font-sans text-gray-800">
       <PopUp  slug="home"/>
-      <Hero />
+      <HomeHero />
       <HomeAbout />
       <HomeContact/>
       <HomeAccredited/>

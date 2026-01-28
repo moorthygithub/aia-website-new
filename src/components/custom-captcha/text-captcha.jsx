@@ -77,7 +77,7 @@ const TextCaptcha = ({ onVerify, onRefresh, showVerifyButton = false, autoVerify
     } else {
       setIsVerified(false);
       setVerificationError(true);
-      generateTextCaptcha(); // Refresh on failure
+      generateTextCaptcha();
       if (onVerify) onVerify(false);
     }
   };
@@ -106,7 +106,7 @@ const TextCaptcha = ({ onVerify, onRefresh, showVerifyButton = false, autoVerify
             ref={canvasRef} 
             width="155" 
             height="40"
-            className="border border-amber-300 rounded-md bg-white flex-shrink-0"
+            className="border border-amber-300 rounded-md bg-white shrink-0"
           ></canvas>
           
           <div className="flex-grow flex flex-col gap-2 w-full">
@@ -116,7 +116,7 @@ const TextCaptcha = ({ onVerify, onRefresh, showVerifyButton = false, autoVerify
               onChange={(e) => setUserInput(e.target.value.toUpperCase())}
               onKeyPress={handleKeyPress}
               maxLength={6}
-              className="px-3 py-2 w-48 bg-white text-black text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-amber-500 focus:border-amber-500 flex-grow"
+              className="px-3 py-2 w-30 md:w-48 bg-white text-black text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-amber-500 focus:border-amber-500 flex-grow"
               placeholder="Enter 6 characters"
               autoFocus
             />

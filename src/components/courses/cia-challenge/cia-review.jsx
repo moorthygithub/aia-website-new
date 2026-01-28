@@ -31,7 +31,7 @@ const ServiceCard = React.forwardRef(({ testimonial, i, progress, range, targetS
                 <img
                   src={`${imageUrl}${testimonial.student_image}`}
                   alt={testimonial.student_name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover "
                   onError={(e) => {
                     e.target.src = "https://aia.in.net/webapi/public/assets/images/no_image.jpg";
                   }}
@@ -190,7 +190,7 @@ const CiaRevew = () => {
           <img
             src="https://aia.in.net/crm/public/assets/images/testimonial/rated.jpg"
             alt="Rated testimonial"
-            className="w-full h-auto max-w-full object-contain"
+            className="w-full h-auto max-w-full object-contain transform -scale-x-100"
             style={{ maxHeight: '90vh' }}
           />
         </div>

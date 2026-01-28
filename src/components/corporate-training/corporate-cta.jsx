@@ -11,7 +11,7 @@ const CorporateCta = () => {
         </div>
         <div className="shrink-0">
           <button className="bg-[#0F3652] hover:bg-[#0F3652]/90 text-white font-semibold px-8 py-3 rounded-full transition-colors duration-200 whitespace-nowrap">
-            Talk to our Training Expert
+            Talk to our Training Expert  -- form dialog
           </button>
         </div>
       </div>

@@ -43,7 +43,7 @@ const FaqSection = ({ faqs = [] }) => {
   };
 
   // Determine which heading to show on right side
-  const displayHeading = hoveredHeading || activeHeading;
+  const displayHeading = hoveredHeading || activeHeading || (headings[0] || "");
 
   return (
     <section className="py-16">

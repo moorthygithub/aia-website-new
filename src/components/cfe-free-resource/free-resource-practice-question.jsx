@@ -87,7 +87,7 @@ const FreeResourcePracticeQuestion = () => {
         <div className="mb-8">
           <div className="bg-[#0F3652] text-white text-center py-3 px-4 rounded-lg">
             <h1 className="text-lg sm:text-xl font-bold">
-              Free Practice Questions
+              Free Practice Questions   -- second module check
             </h1>
           </div>
         </div>

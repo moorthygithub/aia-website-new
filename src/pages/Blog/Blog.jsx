@@ -131,7 +131,7 @@ const Blog = () => {
     return (
       <div
         onClick={() => handleBlogClick(blog.blog_slug)}
-        className="bg-white  rounded-lg hover:border-[#0F3652] transition-all duration-300 cursor-pointer group overflow-hidden"
+        className="  rounded-lg hover:border-[#0F3652] transition-all duration-300 cursor-pointer group overflow-hidden"
       >
         <div className="flex flex-col md:flex-row gap-6 ">
         
@@ -258,7 +258,7 @@ const Blog = () => {
 
        
           {trendingBlogs.length > 0 && (
-            <div className="mb-12 p-2 border-2 rounded-lg">
+            <div className="mb-12 p-2 border-2 rounded-lg bg-[#0F3652]/5">
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
                   <TrendingUp className="w-6 h-6 text-[#F3831C]" />
@@ -273,7 +273,7 @@ const Blog = () => {
               {!showAllTrending ? (
                 <>
                 
-                  <div className="relative mb-8 px-2 pb-2 pt-4 rounded-lg bg-[#0F3652]/5">
+                  <div className="relative mb-8 px-2 pb-2 pt-4 rounded-lg ">
                     <div className="overflow-hidden">
                       <div 
                         className="flex transition-transform duration-500 ease-in-out"
@@ -308,7 +308,7 @@ const Blog = () => {
                   </div>
 
                 
-                  {trendingBlogs.length > 4 && (
+                  {/* {trendingBlogs.length > 4 && (
                     <div className="text-center">
                       <button
                         className="relative overflow-hidden cursor-pointer flex items-center justify-center px-4 py-2 border border-[#0F3652] mx-auto gap-2 rounded-md font-medium text-sm text-[#0F3652] group"
@@ -316,12 +316,12 @@ const Blog = () => {
                       >
                         <span className="absolute inset-0 bg-[#0F3652] scale-y-0 origin-bottom transition-transform duration-300 group-hover:scale-y-100"></span>
                         <span className="relative z-10 flex items-center gap-2 transition-colors duration-300 group-hover:text-white">
-                          View All Trending Articles ({trendingBlogs.length})
+                          View All 
                           <ArrowRight className="w-4 h-4" />
                         </span>
                       </button>
                     </div>
-                  )}
+                  )} */}
                 </>
               ) : (
                 <>
@@ -358,7 +358,7 @@ const Blog = () => {
        
           <div className="mb-12">
             <h2 className="text-2xl md:text-3xl font-medium text-[#0F3652] text-left mb-6">Categories</h2>
-          
+          need to open in new page-- all res -  full formcourse name  - all button remove
             <div className="flex flex-wrap justify-start gap-3 mb-8">
               <button
                 onClick={() => {
@@ -454,12 +454,12 @@ const Blog = () => {
           
             <div className="flex flex-wrap gap-4 justify-center">
               <button className="px-6 py-3 bg-[#F3831C] text-white rounded-lg font-medium hover:bg-[#F3831C]/90 transition-colors">
-                Contact Now
+                Contact Now  -- link to contact
               </button>
             </div>
           </div>
           
-          <BlogListFaq/>
+
         </div>
       </section>
     </>

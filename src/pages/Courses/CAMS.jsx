@@ -7,7 +7,9 @@ import CamsHighlight from "@/components/courses/cams/cams-highlight";
 
 import AboutTrainerSection from "@/components/about/about-trainer-section";
 import HomeAlumniWork from "@/components/home/home-alumini-work";
+
 import CamsFaq from "@/components/courses/cams/cams-faq";
+
 import CamsReview from "@/components/courses/cams/cams-review";
 
 import CamsUnique from "@/components/courses/cams/cams-unique";
@@ -61,6 +63,10 @@ const CAMS = () => {
 <CamsAchivers/>
 <CamsConnection/>
 <HomeAlumniWork/>
+
+
+
+
 <CamsFaq/>
 
 

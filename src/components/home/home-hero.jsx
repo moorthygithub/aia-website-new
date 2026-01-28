@@ -5,7 +5,7 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { BASE_URL } from "@/api/base-url";
 
-export default function Hero() {
+export default function HomeHero() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [carouselSlides, setCarouselSlides] = useState([]);

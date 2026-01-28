@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
 const CorporateReview = () => {
-  const [scrollPosition, setScrollPosition] = useState(0)
+ 
   
   const reviews = [
     {
@@ -26,20 +26,7 @@ const CorporateReview = () => {
     }
   ]
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setScrollPosition(prev => {
-        const newPosition = prev + 1
-        
-        if (newPosition >= reviews.length * 100) {
-          return 0
-        }
-        return newPosition
-      })
-    }, 30)
-
-    return () => clearInterval(interval)
-  }, [])
+ 
 
   return (
     <div className="py-1">
@@ -65,10 +52,10 @@ const CorporateReview = () => {
             </button>
           </div>
 
-         <div className="relative h-96 bg-[#0F3652] overflow-hidden rounded-md w-full">
+         <div className="relative h-96 bg-[#0F3652]  overflow-y-auto overflow-hidden rounded-md w-full">
             <div 
-              className="flex flex-col gap-4 p-4 transition-transform duration-100 ease-linear"
-              style={{ transform: `translateY(-${scrollPosition}px)` }}
+              className="flex flex-col gap-4 p-4 "
+          
             >
               {reviews.map((review, index) => (
                 <div 

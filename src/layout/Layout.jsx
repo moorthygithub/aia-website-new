@@ -1,7 +1,8 @@
 import React from "react";
-import TopHeader from "../component/TopHeader";
-import AIANavbar from "../component/Navbar";
-import Footer from "../component/Footer";
+
+
+import Navbar from "./navbar";
+import Footer from "./footer";
 
 const Layout = ({ children }) => {
   return (
@@ -9,7 +10,7 @@ const Layout = ({ children }) => {
    
 
 
-      <AIANavbar />
+      <Navbar />
 
     
       <main className="grow">{children}</main>

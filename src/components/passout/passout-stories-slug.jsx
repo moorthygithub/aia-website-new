@@ -25,13 +25,9 @@ const PassoutStoriesSlug = () => {
   const [email, setEmail] = useState("");
   const [subscriptionStatus, setSubscriptionStatus] = useState("");
   const [isSubscribing, setIsSubscribing] = useState(false);
-  const [isCopied, setIsCopied] = useState(false);
+  
 
-  const handleCopyLink = () => {
-    navigator.clipboard.writeText(window.location.href);
-    setIsCopied(true);
-    setTimeout(() => setIsCopied(false), 2000);
-  };
+  
 
  
   const formatLinkedInUrl = (url) => {
@@ -296,7 +292,7 @@ const PassoutStoriesSlug = () => {
                     
                     <div className="py-2 mt-4">
                       <h2 className="text-base font-medium text-[#0F3652] mb-1">
-                        Subscribe to newsletter
+                        Subscribe to newsletter   -- back -1
                       </h2>
 
                       <form onSubmit={handleSubscribe} className="space-y-3">

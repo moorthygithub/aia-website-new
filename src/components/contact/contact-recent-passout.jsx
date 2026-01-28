@@ -227,7 +227,7 @@ const ContactRecentPassout = ({courseSlug,title}) => {
 
   if (isLoading) {
     return (
-      <div className="relative w-full bg-linear-to-br from-red-50 via-transparent to-indigo-300/25 py-8">
+      <div className="relative w-full  py-8">
         <div className="absolute inset-0 overflow-hidden">
           <div 
             className="absolute inset-0 opacity-10"
@@ -269,7 +269,7 @@ const ContactRecentPassout = ({courseSlug,title}) => {
 
   if (isError) {
     return (
-      <div className="relative w-full bg-linear-to-br from-red-50 via-transparent to-indigo-300/25 py-8">
+      <div className="relative w-full  py-8">
         <div className="max-w-340 mx-auto px-4 sm:px-6 lg:px-8 relative z-20 text-center">
           <div className="text-red-500">Error loading students. Please try again later.</div>
         </div>
@@ -278,7 +278,7 @@ const ContactRecentPassout = ({courseSlug,title}) => {
   }
 
   return (
-    <div className="relative w-full bg-linear-to-br from-red-50 via-transparent to-indigo-300/25 py-8">
+    <div className="relative w-full py-8">
       <div className="absolute inset-0 overflow-hidden">
         <div 
           className="absolute inset-0 opacity-10"

@@ -25,14 +25,14 @@ const CourseJourney = ({ heading, highlight, steps, connectorImage }) => {
                   {step.number}
                 </div>
 
-                <div className="p-8">
-                  <h4 className="text-lg font-semibold mb-3">
+                <div className="p-8 ">
+                  <h4 className="text-lg font-semibold mb-3 text-center">
                     {step.title}
                   </h4>
 
-                  <ul className="text-sm leading-relaxed space-y-1 list-disc list-inside">
+                  <ul className="text-sm leading-relaxed pl-10 space-y-1 list-disc list-inside">
                     {step.items.map((item, i) => (
-                      <li key={i}>{item}</li>
+                      <li key={i} className="">{item}</li>
                     ))}
                   </ul>
                 </div>

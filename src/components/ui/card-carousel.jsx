@@ -79,7 +79,7 @@ export const CardCarousel = ({
                             ))}
                           </div>
                         </div>
-                      )}
+                      )}  , redegisn
                       
                     
                       <div className="">
@@ -102,8 +102,8 @@ export const CardCarousel = ({
                             
                             
                             <span className="text-xs text-white/90 truncate">
-                                {student.designation}  at    <span className="text-sm text-[#F3831C] font-medium truncate">
-                                {student.companyName}
+                                  <span className="text-sm text-[#F3831C] font-medium truncate">
+                                {student.companyName}  , logo 
                               </span>
                               </span>
                           </h3>

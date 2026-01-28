@@ -8,7 +8,7 @@ const CourseAchiverCard = ({
   cardSize 
 }) => {
   const isCenter = position === 0;
-
+  const zIndex = isCenter ? 10 : 10 - Math.abs(position);
   return (
     <div
       onClick={() => handleMove(position)}
@@ -21,16 +21,17 @@ const CourseAchiverCard = ({
       style={{
         width: cardSize,
         height: cardSize,
+        zIndex: zIndex,
         clipPath: `polygon(50px 0%, calc(100% - 50px) 0%, 100% 50px, 100% 100%, calc(100% - 50px) 100%, 50px 100%, 0 100%, 0 0)`,
         transform: `
-          translate(-50%, -50%) 
-          translateX(${(cardSize / 1.5) * position}px)
-          translateY(${isCenter ? -65 : position % 2 ? 15 : -15}px)
-          rotate(${isCenter ? 0 : position % 2 ? 2.5 : -2.5}deg)
-        `,
-        boxShadow: isCenter ? "0px 8px 0px 4px hsl(var(--border))" : "0px 0px 0px 0px transparent",
-        // opacity: Math.abs(position) > 2 ? 0 : 1,
-        // pointerEvents: Math.abs(position) > 2 ? 'none' : 'auto',
+    translate(-50%, -50%) 
+    translateX(${(cardSize / 1.5) * position}px)
+    translateY(${isCenter ? -65 : Math.abs(position) % 2 ? 15 : -15}px)
+rotate(${isCenter ? 0 : position > 0 ? -2.5 : 2.5}deg)
+  `,
+        boxShadow: isCenter
+          ? "0px 8px 0px 4px hsl(var(--border))"
+          : "0px 0px 0px 0px transparent",
       }}>
       <span
         className="absolute block origin-top-right rotate-45 bg-border"

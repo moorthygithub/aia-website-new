@@ -11,7 +11,7 @@ import {
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const AIANavbar = () => {
+const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const links = [
@@ -274,8 +274,8 @@ const AIANavbar = () => {
               ))}
 
               <li>
-                <a
-                  href="/enroll-now"
+                <Link
+        to="/enroll-now"
                   className="
     bg-[#F3831C] text-white
     px-6 py-2.5 rounded-none
@@ -286,7 +286,7 @@ const AIANavbar = () => {
   "
                 >
                   Enroll Now
-                </a>
+                </Link>
               </li>
             </ul>
 
@@ -389,12 +389,12 @@ const AIANavbar = () => {
                 ))}
 
                 <div className="mt-6">
-                  <a
-                    href="/enroll-now"
+                  <Link
+                    to="/enroll-now"
                     className="block w-full bg-[#F3831C] text-white text-center px-6 py-3 rounded-md font-semibold hover:opacity-90 transition-all"
                   >
                     Enroll Now
-                  </a>
+                  </Link>
                 </div>
 
                 <div className="mt-8 pt-6 border-t border-gray-200 space-y-3">
@@ -436,4 +436,4 @@ const AIANavbar = () => {
   );
 };
 
-export default AIANavbar;
+export default Navbar;

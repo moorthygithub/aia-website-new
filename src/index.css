@@ -154,7 +154,9 @@ body {
 }
 
 
-
+.instrument-font {
+  font-family: 'Instrument Serif', serif;
+}
 
 
 /* CKEditor content display */

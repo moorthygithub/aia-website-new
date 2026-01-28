@@ -112,11 +112,11 @@ const PassoutResult = () => {
 
   return (
     <div>
-      <section className="pb-12 px-0">
+      <section className="py-12 px-0">
         <div className="mx-auto flex max-w-340 flex-col items-center gap-4 text-center sm:gap-16">
           <div className="flex flex-col items-center gap-4 px-4 sm:gap-8">
             <h2 className="max-w-340 text-[#0F3652] text-3xl font-semibold leading-tight sm:text-4xl sm:leading-tight">
-              Meet Our Passouts on LinkedIn
+              Meet Our Passouts on LinkedIn  -- speed slow   -- heading design
             </h2>
           </div>
 

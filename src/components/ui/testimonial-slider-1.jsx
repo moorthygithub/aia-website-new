@@ -55,12 +55,20 @@ export const TestimonialSlider = ({
   }, [currentIndex, reviews]);
 
  
-  const thumbnailReviews = useMemo(() => 
-    reviews
-      .filter((_, i) => i !== currentIndex)
-      .slice(0, 3),
-    [reviews, currentIndex]
-  );
+  const thumbnailReviews = useMemo(() => {
+    if (reviews.length <= 1) return [];
+    
+    const thumbnails = [];
+    const total = reviews.length;
+    
+  
+    for (let i = 1; i <= 3 && i < total; i++) {
+      const nextIndex = (currentIndex + i) % total;
+      thumbnails.push(reviews[nextIndex]);
+    }
+    
+    return thumbnails;
+  }, [reviews, currentIndex]);
 
  
   const imageVariants = {
@@ -119,12 +127,12 @@ export const TestimonialSlider = ({
            
             <h2
               className="text-sm font-medium tracking-widest uppercase [writing-mode:vertical-rl] md:rotate-180 hidden md:block">
-              Reviews
+              OUR SUPPORT
             </h2>
           </div>
 
           
-          <div className="flex space-x-2 mt-8 md:mt-0">
+          <div className="flex space-x-2 mt-8 md:mt-0 ">
             {thumbnailReviews.map((review) => {
               const originalIndex = reviews.findIndex((r) => r.id === review.id);
               return (
@@ -150,7 +158,7 @@ export const TestimonialSlider = ({
 
       
         <div
-          className="md:col-span-4 relative h-80 min-h-[400px] md:min-h-[500px] order-1 md:order-2">
+          className="md:col-span-4 relative h-80 min-h-[400px] md:min-h-[500px] order-1 md:order-2 ">
           <AnimatePresence initial={false} custom={direction}>
             <motion.img
               key={currentIndex}
@@ -179,9 +187,9 @@ export const TestimonialSlider = ({
 
        
         <div
-          className="md:col-span-5 flex flex-col justify-between md:pl-8 order-3 md:order-3">
+          className="md:col-span-5 flex flex-col justify-between md:pl-8 order-3 md:order-3 ">
  
-          <div className="relative overflow-hidden pt-4 md:pt-24 min-h-[200px]">
+          <div className="relative overflow-hidden pt-4  min-h-[200px]">
             <AnimatePresence initial={false} custom={direction} mode="wait">
               <motion.div
                 key={currentIndex}
@@ -194,10 +202,10 @@ export const TestimonialSlider = ({
                 <p className="text-sm font-medium text-muted-foreground">
                   {activeReview.affiliation}
                 </p>
-                <h3 className="text-xl font-semibold mt-1">
+                <h3 className="text-3xl font-semibold mt-1">
                   {activeReview.name}
                 </h3>
-                <blockquote className="mt-6 text-2xl md:text-3xl font-medium leading-snug">
+                <blockquote className="mt-6 text-xl md:text-2xl  leading-snug">
                   "{activeReview.quote}"
                 </blockquote>
               </motion.div>

@@ -6,7 +6,7 @@ const CfeJourney = () => {
     <CourseJourney
       heading="Your Complete Guide to CFE Mastery –"
       highlight="Value, Learning, Format"
-      connectorImage="https://www.matebiz.com/wp-content/themes/matebiz/matebiz-new/assests/images/step-line.png"
+      connectorImage="https://i.postimg.cc/4dVWknz1/step-line.png"
       steps={[
         {
           number: 1,

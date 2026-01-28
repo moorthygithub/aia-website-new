@@ -1,8 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Layout from "./layout/Layout";
 
-// import About from "./component/About";
-// import Blogs from "./component/Blogs";
 
 import CAMS from "./pages/Courses/CAMS";
 import CFECurriculam from "./pages/Courses/CFECurriculam";
@@ -17,11 +15,13 @@ import Enrool from "./pages/Enroll/Enroll";
 import Contact from "./pages/contact/contact";
 import BlogDetails from "./pages/Blog/blog-details";
 import AboutPage from "./pages/About/About";
-import NotificationPopup from "./component/notification/notification-popup";
+import NotificationPopup from "./components/notification/notification-popup";
 import PassoutStoriesSlug from "./components/passout/passout-stories-slug";
 import GoogleAnalytics from "./components/google-analytics/google-analytics";
 import ScrollToTop from "./components/common/scroll-to-top";
 import CorporateTraining from "./pages/corporate-training/corporate-training";
+import Policies from "./pages/policies/policies";
+import TermsAndConditions from "./pages/terms-and-conditions/terms-and-conditions";
 
 
 export default function App() {
@@ -50,6 +50,8 @@ export default function App() {
             <Route path="/passout-stories/:slug" element={<PassoutStoriesSlug />} />
             <Route path="/enroll-now" element={<Enrool />} />
             <Route path="/corpo" element={<CorporateTraining />} />
+            <Route path="/policies" element={<Policies />} />
+            <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
           </Routes>
         </main>
       </Layout>
