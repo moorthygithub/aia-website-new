@@ -43,6 +43,7 @@ const CorporateCarousel = () => {
                     src={src}
                     alt={`Slide ${index + 1}`}
                     className="w-full h-56 object-cover"
+                    loading="lazy"
                   />
                 </div>
               </div>

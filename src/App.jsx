@@ -22,6 +22,8 @@ import ScrollToTop from "./components/common/scroll-to-top";
 import CorporateTraining from "./pages/corporate-training/corporate-training";
 import Policies from "./pages/policies/policies";
 import TermsAndConditions from "./pages/terms-and-conditions/terms-and-conditions";
+import BlogCourse from "./pages/Blog/blog-course";
+import CfePracticeQuestion from "./pages/free-resources/cfe-practice-question";
 
 
 export default function App() {
@@ -43,8 +45,10 @@ export default function App() {
             />
             <Route path="/cams" element={<CAMS />} />
             <Route path="/cfe-free-resources" element={<FreeResources />} />
+            <Route path="/cfe-free-resource/:questions_module" element={<CfePracticeQuestion />} />
             <Route path="/blogs" element={<Blog />} />
             <Route path="/blogs/:id" element={<BlogDetails />} />
+            <Route path="/blogs/course/:courseName" element={<BlogCourse />} />
             <Route path="/passed-out" element={<OurPassout />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/passout-stories/:slug" element={<PassoutStoriesSlug />} />

@@ -9,7 +9,7 @@ const CourseCurriculum = ({ title, curriculumData }) => {
 
   return (
     <div className="py-6 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-340 mx-auto">
 
        
         <div className="mb-8">
@@ -21,10 +21,10 @@ const CourseCurriculum = ({ title, curriculumData }) => {
         </div>
 
        
-        <div className="flex flex-col md:flex-row gap-4">
-  center alignment
+        <div className="flex flex-col md:flex-row  max-w-5xl mx-auto justify-center gap-4">
+ 
       
-          <div className="w-full md:w-1/5 space-y-2">
+          <div className="w-full md:w-[30%] space-y-2">
             {curriculumData.map((item) => (
               <button
                 key={item.id}
@@ -42,7 +42,7 @@ const CourseCurriculum = ({ title, curriculumData }) => {
                 <div className="flex items-center">
                   <div
                     className={`
-                      w-8 h-8 rounded-full flex items-center justify-center mr-3 font-bold text-lg
+                      w-8 h-8 rounded-md flex items-center justify-center mr-3 font-bold text-lg
                       ${
                         activeTab === item.id
                           ? "bg-[#F3831C] text-white"
@@ -72,8 +72,8 @@ const CourseCurriculum = ({ title, curriculumData }) => {
           </div>
 
        
-          <div className="w-full md:w-3/5">
-            <div className="bg-white rounded-br-3xl rounded-tl-3xl p-4  shadow-lg shadow-black/20 border border-[#F3831C]/20">
+          <div className="w-full md:w-[70%]">
+            <div className="bg-white rounded-br-3xl  rounded-tl-3xl p-4  shadow-lg shadow-black/20 border border-[#F3831C]/20">
               {activeContent?.content?.length ? (
                 <div className="space-y-1">
                   <div className="mb-3">

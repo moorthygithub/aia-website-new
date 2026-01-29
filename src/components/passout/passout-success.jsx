@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useQuery } from '@tanstack/react-query'
 import { BASE_URL } from '@/api/base-url'
 import { ArrowRight } from 'lucide-react' 
+import Highlight from '../common/highlight'
 
 const PassoutSuccess = () => {
   
@@ -105,8 +106,8 @@ const PassoutSuccess = () => {
     <section className="bg-white py-16 px-6 lg:px-12">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-4xl lg:text-5xl font-bold text-[#0F3652] mb-4">
-            Read Our Student's Journey
+          <h2 className="text-3xl sm:text-4xl sm:leading-tight font-bold text-[#0F3652] mb-4">
+         <Highlight>  Read Our Student's Journey</Highlight> 
           </h2>
         </div>
 
@@ -279,5 +280,7 @@ const PassoutSuccess = () => {
     </section>
   )
 }
+
+
 
 export default PassoutSuccess

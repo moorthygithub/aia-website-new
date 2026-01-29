@@ -64,53 +64,61 @@ export const CardCarousel = ({
               >
                 {studentData.map((student, index) => (
                   <SwiperSlide key={index} className="max-w-xs">
-                    <div className="relative bg-white rounded-md shadow-lg shadow-gray-200/50 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-gray-300/50">
+                    <div className="relative bg-white shadow-lg shadow-gray-200/50 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-gray-300/50">
                    
-                      {student.marks && student.marks.split(',').length > 0 && (
-                        <div className="bg-[#0F3652] px-3 py-2">
-                          <div className="flex flex-wrap items-center justify-center gap-1">
-                            {student.marks.split(',').map((mark, idx) => (
-                              <div 
-                                key={idx}
-                                className="px-2 py-1 bg-[#F3831C] text-white text-xs font-medium rounded"
-                              >
-                                {mark.trim()}
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      )}  , redegisn
+                      
                       
                     
-                      <div className="">
+                      <div className=" border !rounded-none border-[#0F3652]">
                         <img
                           src={student.src}
                           width={400}
                           height={300}
-                          className="w-full h-48 object-cover rounded-lg shadow-md"
+                          className="w-full h-48 object-cover !rounded-none "
                           alt={student.alt}
                           loading="lazy"
                         />
+                       
                       </div>
                       
-        
+           
                       <div className="bg-[#0F3652] px-4 py-3">
-                        <div className="flex flex-col space-y-2">
-                        
-                          <h3 className="text-base flex flex-row items-center justify-between font-bold text-white truncate ">
-                            <span>{student.name}  </span>
-                            
-                            
-                            <span className="text-xs text-white/90 truncate">
-                                  <span className="text-sm text-[#F3831C] font-medium truncate">
-                                {student.companyName}  , logo 
-                              </span>
-                              </span>
-                          </h3>
-                     
-                         
-                        </div>
-                      </div>
+  <div className="flex flex-row items-start justify-between w-full">
+
+    <div className="flex flex-col it space-y-1">
+      <span className="text-white font-bold text-base">
+        {student.name}
+      </span>
+      
+      {student.marks && student.marks.split(',').length > 0 && (
+        <div className="flex flex-wrap gap-1">
+          {student.marks.split(',').map((mark, idx) => (
+            <span 
+              key={idx}
+              className="px-2 py-0.5 bg-[#F3831C] text-white text-xs font-medium rounded"
+            >
+              {mark.trim()}
+            </span>
+          ))}
+        </div>
+      )}
+    </div>
+    
+  
+    <div className="flex-shrink-0 pt-1">
+      <div className="w-12 h-12 flex items-center justify-center overflow-hidden ">
+        <img 
+          src={student.companyLogo}
+          alt={student.companyLogoAlt}
+          className="max-w-full border border-white !rounded-none  max-h-full object-contain"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+
+                      
                     </div>
                   </SwiperSlide>
                 ))}

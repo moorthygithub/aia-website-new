@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils"
 import { TestimonialCardCourse } from "./testimonial-card-course";
+import Highlight from "@/components/common/highlight";
 
 
 export function TestimonialsSectionCourse({
@@ -16,7 +17,7 @@ export function TestimonialsSectionCourse({
         {title && (
           <div className="flex flex-col items-center gap-4 px-4 sm:gap-8">
             <h2 className="max-w-340 text-[#0F3652] text-3xl font-semibold leading-tight sm:text-4xl sm:leading-tight">
-              {title}     // need to change
+            <Highlight> {title} </Highlight>     
             </h2>
           </div>
         )}
