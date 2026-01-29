@@ -240,7 +240,8 @@ const CorporateCourse = () => {
       <div className="hidden md:grid md:grid-cols-2 gap-12 ">
         {/* Left side - Changes with scroll */}
         <div className="md:sticky md:top-20 md:h-screen md:flex md:flex-col md:justify-center ">
-          <div>
+          <div  className=" h-full mt-18 flex flex-col justify-between">
+            <div>
             <p className="text-sm uppercase tracking-wider text-[#F3831C] font-semibold mb-4">
               PROFESSIONAL CERTIFICATION PROGRAMS
             </p>
@@ -251,13 +252,20 @@ const CorporateCourse = () => {
                 {ALL_SERVICES[activeCard]?.title || ALL_SERVICES[0].title}
               </h1>
 
+            
+             
               <p className="text-[#0F3652] text-lg mb-2 max-w-lg leading-relaxed">
                 {ALL_SERVICES[activeCard]?.description || ALL_SERVICES[0].description}
               </p>
+
+
+          
+            </div>
             </div>
 
             {/* Button moved to left side */}
-            <div className="mt-4">
+           <div className='mb-30'>
+           <div className="mt-4">
               <a
                 href={ALL_SERVICES[activeCard]?.link || ALL_SERVICES[0].link}
                 className="
@@ -296,6 +304,7 @@ const CorporateCourse = () => {
               <div className="h-px w-16 bg-[#F3831C]"></div>
               <p className="text-sm text-[#0F3652]/70">Scroll to explore all courses</p>
             </div>
+           </div>
           </div>
         </div>
 

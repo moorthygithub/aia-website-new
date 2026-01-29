@@ -5,7 +5,7 @@ import { Calendar, ArrowRight, Clock, BookOpen, Tag, Search, TrendingUp, Chevron
 import { BASE_URL } from "@/api/base-url";
 import PopUp from "@/components/common/pop-up";
 
-import BlogListFaq from "./blog-list-faq";
+
 
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
@@ -19,8 +19,6 @@ const Blog = () => {
   useEffect(() => {
     fetchBlogs();
   }, []);
-
-  
 
   const fetchBlogs = async () => {
     try {
@@ -46,9 +44,12 @@ const Blog = () => {
   const uniqueCategories = [...new Set(blogs.map(blog => blog.blog_course).filter(Boolean))];
   const trendingBlogs = blogs.filter(blog => blog.blog_trending === 'yes');
 
-  const filteredBlogs = selectedCategory === 'ALL' 
-    ? blogs 
-    : blogs.filter(blog => blog.blog_course === selectedCategory);
+  const COURSE_NAME_MAP = {
+    'CFE': 'Certified Fraud Examiner',
+    'CIA': 'Certified Internal Auditor', 
+    'CAMS': 'Certified Anti Money Laundering Specialist',
+   
+  };
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -58,6 +59,7 @@ const Blog = () => {
       year: "numeric"
     });
   };
+
   useEffect(() => {
     if (!showAllTrending && trendingBlogs.length > 1) {
       const interval = setInterval(() => {
@@ -67,19 +69,23 @@ const Blog = () => {
       return () => clearInterval(interval);
     }
   }, [showAllTrending, trendingBlogs.length]);
+
   const handleBlogClick = (slug) => {
     navigate(`/blogs/${slug}`);
   };
 
-
+ 
+  const handleCategoryClick = (category) => {
+    navigate(`/blogs/course/${category}`);
+  };
 
   const BlogCard = ({ blog }) => {
     return (
       <div
         onClick={() => handleBlogClick(blog.blog_slug)}
-        className="bg-white border border-[#0F3652]/20 rounded-md hover:border-[#0F3652] transition-colors duration-200 cursor-pointer group"
+        className=" rounded-none hover:border-[#0F3652] transition-colors duration-200 cursor-pointer group"
       >
-        <div className="relative overflow-hidden rounded-t-md">
+        <div className="relative overflow-hidden rounded-md">
           <div className="h-48 bg-linear-to-r from-[#0F3652]/10 to-[#0F3652]/20">
             <img
               src={`${imageBaseUrl}${blog.blog_images}`}
@@ -109,7 +115,7 @@ const Blog = () => {
             </div>
           </div>
 
-          <h3 className="text-lg font-semibold text-[#0F3652] mb-3 line-clamp-2 group-hover:text-[#0F3652]">
+          <h3 className="text-lg font-semibold text-[#0F3652] hover:text-[#F3831C] mb-3 line-clamp-2 group-hover:text-[#0F3652]">
             {blog.blog_heading}
           </h3>
 
@@ -126,15 +132,13 @@ const Blog = () => {
     );
   };
 
- 
   const BannerBlogCard = ({ blog }) => {
     return (
       <div
         onClick={() => handleBlogClick(blog.blog_slug)}
-        className="  rounded-lg hover:border-[#0F3652] transition-all duration-300 cursor-pointer group overflow-hidden"
+        className="rounded-lg hover:border-[#0F3652] transition-all duration-300 cursor-pointer group overflow-hidden"
       >
-        <div className="flex flex-col md:flex-row gap-6 ">
-        
+        <div className="flex flex-col md:flex-row gap-6">
           <div className="md:w-2/5 relative overflow-hidden rounded-lg">
             <div className="h-64 md:h-full bg-linear-to-r from-[#0F3652]/10 to-[#0F3652]/20">
               <img
@@ -153,7 +157,6 @@ const Blog = () => {
             </div>
           </div>
 
-         
           <div className="md:w-3/5 flex flex-col justify-center">
             <div className="flex items-center gap-4 text-sm text-[#0F3652] mb-4">
               <div className="flex items-center gap-2">
@@ -236,7 +239,6 @@ const Blog = () => {
    
       <section className="py-16 bg-white">
         <div className="max-w-340 mx-auto px-4 sm:px-6 lg:px-8">
-      
           <div className="text-center mb-12 rounded-2xl p-4">
             <h1 className="text-4xl sm:text-5xl font-semibold text-[#0F3652] mb-6 leading-tight">
               Explore expert insights from Academy of Internal Audit
@@ -256,7 +258,6 @@ const Blog = () => {
             </div>
           </div>
 
-       
           {trendingBlogs.length > 0 && (
             <div className="mb-12 p-2 border-2 rounded-lg bg-[#0F3652]/5">
               <div className="flex items-center justify-between mb-6">
@@ -269,11 +270,9 @@ const Blog = () => {
                 </span>
               </div>
             
-            
               {!showAllTrending ? (
                 <>
-                
-                  <div className="relative mb-8 px-2 pb-2 pt-4 rounded-lg ">
+                  <div className="relative mb-8 px-2 pb-2 pt-4 rounded-lg">
                     <div className="overflow-hidden">
                       <div 
                         className="flex transition-transform duration-500 ease-in-out"
@@ -287,9 +286,6 @@ const Blog = () => {
                       </div>
                     </div>
 
-
-
-                  
                     {trendingBlogs.slice(0, 4).length > 1 && (
                       <div className="flex justify-center gap-2 mt-2">
                         {trendingBlogs.slice(0, 4).map((_, index) => (
@@ -306,33 +302,15 @@ const Blog = () => {
                       </div>
                     )}
                   </div>
-
-                
-                  {/* {trendingBlogs.length > 4 && (
-                    <div className="text-center">
-                      <button
-                        className="relative overflow-hidden cursor-pointer flex items-center justify-center px-4 py-2 border border-[#0F3652] mx-auto gap-2 rounded-md font-medium text-sm text-[#0F3652] group"
-                        onClick={() => setShowAllTrending(true)}
-                      >
-                        <span className="absolute inset-0 bg-[#0F3652] scale-y-0 origin-bottom transition-transform duration-300 group-hover:scale-y-100"></span>
-                        <span className="relative z-10 flex items-center gap-2 transition-colors duration-300 group-hover:text-white">
-                          View All 
-                          <ArrowRight className="w-4 h-4" />
-                        </span>
-                      </button>
-                    </div>
-                  )} */}
                 </>
               ) : (
                 <>
-                 
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                     {trendingBlogs.map((blog) => (
                       <BlogCard key={blog.id} blog={blog} />
                     ))}
                   </div>
 
-              
                   {trendingBlogs.length > 4 && (
                     <div className="text-center">
                       <button
@@ -355,47 +333,41 @@ const Blog = () => {
             </div>
           )}
 
-       
-          <div className="mb-12">
+          <div className="mb-12 ">
             <h2 className="text-2xl md:text-3xl font-medium text-[#0F3652] text-left mb-6">Categories</h2>
-          need to open in new page-- all res -  full formcourse name  - all button remove
+         
             <div className="flex flex-wrap justify-start gap-3 mb-8">
-              <button
-                onClick={() => {
-                  setSelectedCategory('ALL');
-                  setShowAllTrending(false);
-                }}
-                className={`px-6 py-2 rounded-md text-sm transition-colors duration-200 ${selectedCategory === 'ALL' ? 'bg-[#0F3652] text-white' : 'bg-[#0F3652]/10 text-[#0F3652] hover:bg-[#0F3652]/20'}`}
-              >
-                ALL
-              </button>
-            
-              {uniqueCategories.map((category) => (
-                <button
-                  key={category}
-                  onClick={() => {
-                    setSelectedCategory(category);
-                    setShowAllTrending(false);
-                  }}
-                  className={`px-6 py-2 cursor-pointer rounded-md text-sm transition-colors duration-200 ${selectedCategory === category ? 'bg-[#0F3652] text-white' : 'bg-[#0F3652]/10 text-[#0F3652] hover:bg-[#0F3652]/20'}`}
-                >
-                  {category}
-                </button>
-              ))}
+              
+            {uniqueCategories.map((category) => {
+
+      const displayName = COURSE_NAME_MAP[category] || category;
+      
+      return (
+        <button
+          key={category}
+          onClick={() => handleCategoryClick(category)}
+          className={`px-6 py-2 cursor-pointer rounded-md text-sm transition-colors duration-200 ${selectedCategory === category ? 'bg-[#0F3652] text-white' : 'bg-[#0F3652]/10 text-[#0F3652] hover:bg-[#0F3652]/20'}`}
+          title={category} 
+        >
+          {displayName}
+        </button>
+      );
+    })}
             </div>
           </div>
 
-         
           {selectedCategory === 'ALL' ? (
             uniqueCategories.map((category) => {
               const categoryBlogs = blogs.filter(blog => blog.blog_course === category).slice(0, 4);
               if (categoryBlogs.length === 0) return null;
             
               return (
-                <div key={category} className="mb-16 p-4 border-2 rounded-lg">
+                <div key={category} className="mb-16 p-4 border-2 rounded-lg bg-[#0F3652]/5">
                   <div className="flex items-center justify-between mb-8">
                     <div className="flex items-center gap-3">
-                      <h3 className="text-xl md:text-2xl font-medium text-[#0F3652]">{category}</h3>
+                    <h3 className="text-xl md:text-2xl font-medium text-[#0F3652]">
+  {COURSE_NAME_MAP[category] || category}
+</h3>
                     </div>
                   </div>
 
@@ -405,8 +377,8 @@ const Blog = () => {
                     ))}
                   </div>
             
-                  <button
-                    onClick={() => setSelectedCategory(category)}
+                  {/* <button
+                    onClick={() => handleCategoryClick(category)}
                     className="relative overflow-hidden cursor-pointer flex items-center justify-center px-4 py-2 border border-[#0F3652] mx-auto gap-2 rounded-md font-medium text-sm text-[#0F3652] group"
                   >
                     <span className="absolute inset-0 bg-[#0F3652] scale-y-0 origin-bottom transition-transform duration-300 group-hover:scale-y-100"></span>
@@ -414,52 +386,23 @@ const Blog = () => {
                       View All
                       <ArrowRight className="w-4 h-4" />
                     </span>
-                  </button>
+                  </button> */}
                 </div>
               );
             })
-          ) : (
-            <div className="p-4 bg-[#f3841c56] rounded-lg">
-              <div className="flex items-center justify-between mb-8">
-                <div className="flex items-center gap-3">
-                  <h3 className="text-xl md:text-2xl font-medium text-[#0F3652]">{selectedCategory}</h3>
-                </div>
-                <span className="text-sm text-[#0F3652]">
-                  Showing {filteredBlogs.length} {filteredBlogs.length === 1 ? 'article' : 'articles'}
-                </span>
-              </div>
+          ) : null}
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                {filteredBlogs.map((blog) => (
-                  <BlogCard key={blog.id} blog={blog} />
-                ))}
-              </div>
-
-              {filteredBlogs.length > 6 && (
-                <div className="text-center mt-12 pt-8 border-t border-[#0F3652]/20">
-                  <button className="inline-flex items-center gap-2 border border-[#0F3652]/20 hover:border-[#0F3652] text-[#0F3652] hover:text-[#0F3652] px-6 py-3 rounded-md font-medium transition-colors duration-200">
-                    View All {selectedCategory} Articles ({filteredBlogs.length})
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
-                </div>
-              )}
-            </div>
-          )}
-
-        
           <div className="flex flex-col items-center justify-center bg-white px-4">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-center mb-8 max-w-5xl text-[#0F3652]">
               Grow Better with AIA today
             </h1>
           
             <div className="flex flex-wrap gap-4 justify-center">
-              <button className="px-6 py-3 bg-[#F3831C] text-white rounded-lg font-medium hover:bg-[#F3831C]/90 transition-colors">
-                Contact Now  -- link to contact
+              <button onClick={()=> navigate('/contact')} className=" cursor-pointer px-6 py-3 bg-[#F3831C] text-white rounded-lg font-medium hover:bg-[#F3831C]/90 transition-colors">
+                Contact Now 
               </button>
             </div>
           </div>
-          
-
         </div>
       </section>
     </>

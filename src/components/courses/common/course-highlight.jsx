@@ -3,7 +3,7 @@ import React from "react";
 
 const CourseHighLight = ({ badgeText, title, description, stats, logos }) => {
   return (
-    <div className="  py-2">
+    <div className=" mt-10 py-2">
       <div className="relative">
         <div className=" text-center mb-16 max-w-full ">
         
