@@ -16,9 +16,11 @@ const CiaAbout=()=> {
     <>
       <CourseAbout
   badgeText="Best Prep Course For CIA Challenge Exam"
-  heading="Join AIA Prep Course and Get 100% Success in CIA Challenge Exam"
+  heading="Prepare Confidently for the CIA Challenge Exam with AIA’s Expert-Led Training"
   description={`
-The globally recognized CIA Challenge exam is a fast track for qualified professionals to earn the prestigious CIA Certification by passing one exam.\n AIA supports your success with expert-led video lectures and concise learning notes designed for efficient, practical exam preparation`}
+The CIA Challenge Exam is a fast-track pathway, offered by The Institute of Internal Auditors (IIA), designed for qualified professionals to earn the Certified Internal Auditor (CIA) designation by passing a single comprehensive exam.
+\n AIA is officially recognised by IIA India for a credible CIA Challenge Exam preparation program. With structured prep, we help eligible professionals to prepare confidently through focused learning, exam-oriented practice, aligned with the latest Challenge Exam framework. The training approach emphasises concept integration, application of IIA standards, and strategic exam readiness - helping candidates prepare with clarity and confidence.
+`}
   aboutStats={[
     { display: "Recorded Video Classes", title: "Expert Mentoring Sessions" },
     { display: "Practice Questions", title: "Success Rate" },

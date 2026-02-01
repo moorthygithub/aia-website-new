@@ -29,6 +29,7 @@ import CourseMap from "@/components/courses/common/course-map";
 import PopUp from "@/components/common/pop-up";
 import CourseYoutubeLecture from "@/components/courses/common/course-youtube-lecture";
 import CourseTopStudent from "@/components/courses/common/course-top-student";
+import CfeCourseLms from "@/components/courses/cfe-curriculam/cfe-course-lms";
 
 
 
@@ -56,7 +57,7 @@ const CAMS = () => {
 <CourseYoutubeLecture courseSlug="cams"/>
 <CourseYoutube courseSlug="cams"/>
 <AboutTrainerSection/>
-<CourseLms/>
+<CfeCourseLms/>
 
 
 <CamsUnique/>

@@ -11,6 +11,7 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { BASE_URL } from '@/api/base-url';
 import CourseAchiverCard from '../common/course-achiver-card';
+import Highlight from '@/components/common/highlight';
 const CiaAchivers = () => {
   const [cardSize, setCardSize] = useState(365);
   const [testimonialsList, setTestimonialsList] = useState([]);
@@ -97,8 +98,13 @@ const CiaAchivers = () => {
 if(testimonialsList.length === 0)  return null
   return (
     <div
-      className="relative w-full overflow-hidden bg-muted/30"
+      className="relative w-full min-h-screen overflow-hidden bg-muted/30"
       style={{ height: 600 }}>
+
+
+        <h2 className=" absolute top-0  w-full  text-center text-3xl  font-bold text-[#0F3652] py-10">
+          <Highlight>Meet the Professionals Who Earned Their CFE Credential </Highlight>  
+          </h2>
       {testimonialsList.map((testimonial, index) => {
         const position = testimonialsList.length % 2
           ? index - (testimonialsList.length + 1) / 2

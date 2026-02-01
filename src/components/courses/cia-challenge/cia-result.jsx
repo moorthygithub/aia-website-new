@@ -76,7 +76,7 @@ const CiaResult = () => {
   return (
     <div>
       <TestimonialsSectionCourse
-        title="Proof of Excellence: Real CIA Challenge Exam Results of AIA Students!"
+        title="Proof of Excellence: CIA Challenge Exam Success Stories of AIA Achievers"
     
         testimonials={testimonials}
      

@@ -1,7 +1,11 @@
+
+
+
+
 import React from 'react'
 import CourseLms from '../common/course-lms'
 
-const CiaCourseLms = () => {
+const CfeCourseLms = () => {
      const courseFeatures = [
     {
       title: "CFE Personalised Study Material",
@@ -46,4 +50,4 @@ const CiaCourseLms = () => {
   )
 }
 
-export default CiaCourseLms
+export default CfeCourseLms
