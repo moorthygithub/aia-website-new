@@ -1,55 +1,44 @@
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 import { TestimonialCardCourse } from "./testimonial-card-course";
 import Highlight from "@/components/common/highlight";
+import SectionHeading from "@/components/SectionHeading/SectionHeading";
 
-
-export function TestimonialsSectionCourse({
-  title,
-  testimonials,
-  className
-}) {
-
+export function TestimonialsSectionCourse({ title, testimonials, className }) {
   if (!testimonials || testimonials.length === 0) return null;
 
   return (
     <section className={cn("py-12 sm:py-16 md:py-18 px-0 ", className)}>
       <div className="mx-auto flex max-w-340 flex-col items-center gap-4 text-center sm:gap-16">
-        {title && (
-          <div className="flex flex-col items-center gap-4 px-4 sm:gap-8">
-            <h2 className="max-w-340 text-[#0F3652] text-3xl font-semibold leading-tight sm:text-4xl sm:leading-tight">
-            <Highlight> {title} </Highlight>     
-            </h2>
-          </div>
-        )}
-
+        <SectionHeading title={title} align="center" />
         <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
           <div className="group flex overflow-hidden p-2 [--gap:1rem] gap-(--gap) flex-row [--duration:40s]">
             <div className="flex shrink-0 justify-around gap-(--gap) animate-marquee flex-row group-hover:paused">
-              {[...Array(2)].map((_, setIndex) => (
+              {[...Array(2)].map((_, setIndex) =>
                 testimonials.map((testimonial, i) => (
-                  <TestimonialCardCourse 
-                    key={`first-${setIndex}-${i}`} 
-                    {...testimonial} 
-                    href={testimonial.youtubeLink} 
+                  <TestimonialCardCourse
+                    key={`first-${setIndex}-${i}`}
+                    {...testimonial}
+                    href={testimonial.youtubeLink}
                     target="_blank"
                   />
-                ))
-              ))}
+                )),
+              )}
             </div>
-            
+
             <div
               className="flex shrink-0 justify-around gap-(--gap) animate-marquee flex-row group-hover:paused"
-              aria-hidden="true">
-              {[...Array(2)].map((_, setIndex) => (
+              aria-hidden="true"
+            >
+              {[...Array(2)].map((_, setIndex) =>
                 testimonials.map((testimonial, i) => (
-                  <TestimonialCardCourse 
-                    key={`second-${setIndex}-${i}`} 
-                    {...testimonial} 
-                    href={testimonial.youtubeLink} 
+                  <TestimonialCardCourse
+                    key={`second-${setIndex}-${i}`}
+                    {...testimonial}
+                    href={testimonial.youtubeLink}
                     target="_blank"
                   />
-                ))
-              ))}
+                )),
+              )}
             </div>
           </div>
 

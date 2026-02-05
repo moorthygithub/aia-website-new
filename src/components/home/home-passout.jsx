@@ -5,25 +5,23 @@ import { TestimonialsColumn } from "@/components/ui/testimonials-columns-1";
 
 import usePreloadImages from "@/hooks/usePreloadImages";
 import { BASE_URL } from "@/api/base-url";
+import SectionHeading from "../SectionHeading/SectionHeading";
 
 const HomePassout = () => {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["passout-students"],
     queryFn: async () => {
-      const res = await axios.get(
-         `${BASE_URL}/api/getAllPassoutStudents`
-      );
+      const res = await axios.get(`${BASE_URL}/api/getAllPassoutStudents`);
       return res.data;
     },
   });
 
   const studentImageBase =
-    data?.image_url?.find((img) => img.image_for === "Student")
-      ?.image_url || "";
+    data?.image_url?.find((img) => img.image_for === "Student")?.image_url ||
+    "";
   const companyImageBase =
     data?.image_url?.find((img) => img.image_for === "Student Company")
       ?.image_url || "";
-
 
   const testimonials =
     data?.data?.map((item) => ({
@@ -34,26 +32,18 @@ const HomePassout = () => {
       course: item.student_course,
       name: item.student_name,
       student_designation: item.student_designation,
-    
+
       comapany_image: item.student_company_image
-      ? `${companyImageBase}${item.student_company_image}`
-      : "",
-      company_alt: item.student_company_image_alt  || "Student",
+        ? `${companyImageBase}${item.student_company_image}`
+        : "",
+      company_alt: item.student_company_image_alt || "Student",
     })) || [];
 
-    usePreloadImages(testimonials.map((t) => t.image));
-  const firstColumn = testimonials.filter(
-    (item) => item.course === "CFE"
-  );
-  const secondColumn = testimonials.filter(
-    (item) => item.course === "CIAC"
-  );
-  const thirdColumn = testimonials.filter(
-    (item) => item.course === "CAMS"
-  );
+  usePreloadImages(testimonials.map((t) => t.image));
+  const firstColumn = testimonials.filter((item) => item.course === "CFE");
+  const secondColumn = testimonials.filter((item) => item.course === "CIAC");
+  const thirdColumn = testimonials.filter((item) => item.course === "CAMS");
 
-
-  
   return (
     <section className="bg-linear-to-b from-[#0F3652]/10 via-transparent to-transparent relative pb-10">
       <div className="mx-auto pt-10 max-w-340 z-10">
@@ -62,43 +52,30 @@ const HomePassout = () => {
             Testimonials
           </div>
 
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tighter mt-5 text-[#0F3652]">
-            What our Passout say
-          </h2>
-
-          <p className="text-center mt-5 opacity-75">
-            See what our passout  say about us.
-          </p>
+          <SectionHeading
+            title=" What our Passout say"
+            description=" See what our passout say about us."
+            align="center"
+          />
         </div>
 
-      
         {isLoading && (
           <div className="text-center mt-10 text-gray-500">
             Loading testimonials...
           </div>
         )}
 
-    
         {isError && (
           <div className="text-center mt-10 text-red-500">
             Failed to load testimonials
           </div>
         )}
 
-      
         {!isLoading && !isError && testimonials.length > 0 && (
           <div className="flex justify-center gap-5 md:gap-25 mt-10 mask-[linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-135 overflow-hidden">
             <TestimonialsColumn testimonials={firstColumn} duration={20} />
-            <TestimonialsColumn
-              testimonials={secondColumn}
-     
-              duration={20}
-            />
-            <TestimonialsColumn
-              testimonials={thirdColumn}
-        
-              duration={20}
-            />
+            <TestimonialsColumn testimonials={secondColumn} duration={20} />
+            <TestimonialsColumn testimonials={thirdColumn} duration={20} />
           </div>
         )}
       </div>

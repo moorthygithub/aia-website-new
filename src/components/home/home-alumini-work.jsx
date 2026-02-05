@@ -1,9 +1,7 @@
-
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { BASE_URL } from "@/api/base-url";
 import CompanyMarquee from "../common/company-marquee";
-
 
 const HomeAlumniWork = () => {
   const { data, isLoading, isError } = useQuery({
@@ -14,35 +12,20 @@ const HomeAlumniWork = () => {
     },
   });
 
-
-
-  
   if (isLoading || isError) return null;
 
   const alumniList = data?.data || [];
 
   const companyImageBaseUrl =
-    data?.image_url?.find(
-      (img) => img.image_for === "Student Company"
-    )?.image_url || "";
+    data?.image_url?.find((img) => img.image_for === "Student Company")
+      ?.image_url || "";
 
   const companies = alumniList.map((item) => ({
     src: `${companyImageBaseUrl}${item.student_company_image}`,
     alt: item.student_company_image_alt || item.student_company_name,
   }));
 
-  return (
-    <CompanyMarquee
-      title={
-        <>
-          Trusted by more than <br />
-          <span className="text-orange-500">300,000 organizations</span>
-        </>
-      }
-      subtitle="Including 88 Fortune Global Top 100 companies that use JetBrains products to deliver top-quality software."
-      companies={companies}
-    />
-  );
+  return <CompanyMarquee companies={companies} />;
 };
 
 export default HomeAlumniWork;

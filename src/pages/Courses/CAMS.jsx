@@ -1,9 +1,6 @@
-import React from "react";
-
-
+import CamsHighlight from "@/components/courses/cams/cams-highlight";
 import CamsResult from "@/components/courses/cams/cams-result";
 import CamsWhyAia from "@/components/courses/cams/cams-why-aia";
-import CamsHighlight from "@/components/courses/cams/cams-highlight";
 
 import AboutTrainerSection from "@/components/about/about-trainer-section";
 import HomeAlumniWork from "@/components/home/home-alumini-work";
@@ -12,65 +9,51 @@ import CamsFaq from "@/components/courses/cams/cams-faq";
 
 import CamsReview from "@/components/courses/cams/cams-review";
 
-import CamsUnique from "@/components/courses/cams/cams-unique";
 import CamsAchivers from "@/components/courses/cams/cams-achivers";
-
+import CamsUnique from "@/components/courses/cams/cams-unique";
 
 import CamsConnection from "@/components/courses/cams/cams-connection";
 import CourseHero from "@/components/courses/common/course-hero";
 
 import CourseYoutube from "@/components/courses/common/course-youtube";
-import CourseLms from "@/components/courses/common/course-lms";
 
+import PopUp from "@/components/common/pop-up";
+import CamsAbout from "@/components/courses/cams/cams-about";
 import CamsCourseCurriculum from "@/components/courses/cams/cams-course-curriculum";
 import CamsJourney from "@/components/courses/cams/cams-journey";
-import CamsAbout from "@/components/courses/cams/cams-about";
-import CourseMap from "@/components/courses/common/course-map";
-import PopUp from "@/components/common/pop-up";
-import CourseYoutubeLecture from "@/components/courses/common/course-youtube-lecture";
-import CourseTopStudent from "@/components/courses/common/course-top-student";
 import CfeCourseLms from "@/components/courses/cfe-curriculam/cfe-course-lms";
-
-
-
+import CourseMap from "@/components/courses/common/course-map";
+import CourseTopStudent from "@/components/courses/common/course-top-student";
+import CourseYoutubeLecture from "@/components/courses/common/course-youtube-lecture";
 
 const CAMS = () => {
   return (
     <div>
       {" "}
-          <PopUp  slug="CAMS"/>
-      <CourseHero/>
+      <PopUp slug="CAMS" />
+      <CourseHero />
       <CamsAbout />
-      <CourseTopStudent courseSlug="cams" needPrefix="true" title="From CAMS Course"/>
-      <CamsCourseCurriculum/>
-      <CamsResult/> 
-      <CamsJourney/>
-
-
-<CamsWhyAia/>   {/* oending */}
-<CamsHighlight/>
-
-
-
-<CourseMap courseCode="CAMS"/>
-<CamsReview/>
-<CourseYoutubeLecture courseSlug="cams"/>
-<CourseYoutube courseSlug="cams"/>
-<AboutTrainerSection/>
-<CfeCourseLms/>
-
-
-<CamsUnique/>
-<CamsAchivers/>
-<CamsConnection/>
-<HomeAlumniWork/>
-
-
-
-
-<CamsFaq/>
-
-
+      <CourseTopStudent
+        courseSlug="cams"
+        needPrefix="true"
+        title="From CAMS Course"
+      />
+      <CamsCourseCurriculum />
+      <CamsResult />
+      <CamsJourney />
+      <CamsWhyAia />
+      <CamsHighlight />
+      <CourseMap courseCode="CAMS" />
+      <CamsReview />
+      <CourseYoutubeLecture courseSlug="cams" />
+      <CourseYoutube courseSlug="cams" />
+      <AboutTrainerSection path="faculty_cams.webp" />
+      <CfeCourseLms />
+      <CamsUnique />
+      <CamsAchivers />
+      <CamsConnection path="how_it_works_cams.webp" />
+      <HomeAlumniWork />
+      <CamsFaq />
     </div>
   );
 };

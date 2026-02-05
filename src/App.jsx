@@ -1,7 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Layout from "./layout/Layout";
 
-
 import CAMS from "./pages/Courses/CAMS";
 import CFECurriculam from "./pages/Courses/CFECurriculam";
 import CIAChallenge from "./pages/Courses/CIAChallenge";
@@ -26,15 +25,14 @@ import BlogCourse from "./pages/Blog/blog-course";
 import CfePracticeQuestion from "./pages/free-resources/cfe-practice-question";
 import Meta from "./components/seo/meta";
 
-
 export default function App() {
   return (
     <div className="font-sans text-gray-800 min-h-screen flex flex-col">
-      <ScrollToTop/>
-      <GoogleAnalytics/>
-  <NotificationPopup />
+      <ScrollToTop />
+      <GoogleAnalytics />
+      <NotificationPopup />
       <Layout>
-        <Meta/>
+        <Meta />
         <main className="grow">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -47,17 +45,26 @@ export default function App() {
             />
             <Route path="/cams" element={<CAMS />} />
             <Route path="/cfe-free-resources" element={<FreeResources />} />
-            <Route path="/cfe-free-resource/:questions_module" element={<CfePracticeQuestion />} />
+            <Route
+              path="/cfe-free-resource/:questions_module"
+              element={<CfePracticeQuestion />}
+            />
             <Route path="/blogs" element={<Blog />} />
             <Route path="/blogs/:id" element={<BlogDetails />} />
             <Route path="/blogs/course/:courseName" element={<BlogCourse />} />
             <Route path="/passed-out" element={<OurPassout />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/passout-stories/:slug" element={<PassoutStoriesSlug />} />
+            <Route
+              path="/passout-stories/:slug"
+              element={<PassoutStoriesSlug />}
+            />
             <Route path="/enroll-now" element={<Enrool />} />
-            <Route path="/corpo" element={<CorporateTraining />} />
+            <Route path="/corporate-training" element={<CorporateTraining />} />
             <Route path="/policies" element={<Policies />} />
-            <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+            <Route
+              path="/terms-and-conditions"
+              element={<TermsAndConditions />}
+            />
           </Routes>
         </main>
       </Layout>

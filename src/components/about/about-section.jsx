@@ -1,4 +1,5 @@
 import React from "react";
+import SectionHeading from "../SectionHeading/SectionHeading";
 
 const AboutSection = () => {
   return (
@@ -12,11 +13,11 @@ const AboutSection = () => {
               </span>
             </div>
 
-            <h2 className="text-3xl md:text-4xl font-bold text-[#0F3652] mb-6">
-              About AIA - Where Certifications Meet Real-World Capability
-            </h2>
-
-            <div className="text-[#0F3652] leading-relaxed space-y-4">
+            <SectionHeading
+              title="About AIA - Where Certifications Meet Real-World Capability"
+              description=""
+            />
+            <div className="text-[#0F3652] leading-relaxed space-y-4 text-justify">
               <p>
                 At the Academy of Internal Audit (AIA), we build certified
                 professionals who are prepared to create real impact in audit,
@@ -30,14 +31,14 @@ const AboutSection = () => {
                 <span>
                   <strong>
                     <em>
-                      “Clearing an exam is an achievement. Applying it is the
-                      profession.”
+                      “Clearing an exam is an achievement. Applying it defines
+                      the profession .”
                     </em>
                   </strong>
                 </span>
               </span>
 
-              <p>
+              <p className="text-justify">
                 This belief shapes everything we do. Our programs are designed
                 and led by an industry expert with over two decades of hands-on
                 experience, ensuring every concept is grounded in real-life
@@ -46,7 +47,7 @@ const AboutSection = () => {
                 think critically, and make informed decisions in complex,
                 dynamic business situations.
               </p>
-              <p>
+              <p className="text-justify">
                 Over the last five years, AIA has evolved into a trusted global
                 learning ecosystem, having trained 2,000+ professionals across
                 36+ countries, with a proven 99.6% success rate. More than

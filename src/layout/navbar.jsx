@@ -2,13 +2,13 @@ import { IMAGE_PATH } from "@/api/base-url";
 import { ChevronDown, Mail, Menu, Phone, X } from "lucide-react";
 import { useState } from "react";
 import {
-    FaFacebookF,
-    FaInstagram,
-    FaLinkedinIn,
-    FaPinterestP,
-    FaTwitter,
-    FaWhatsapp,
-    FaYoutube,
+  FaFacebookF,
+  FaInstagram,
+  FaLinkedinIn,
+  FaPinterestP,
+  FaTwitter,
+  FaWhatsapp,
+  FaYoutube,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -77,7 +77,7 @@ const Navbar = () => {
       submenu: [
         { name: "Blog", link: "/blogs" },
         { name: "Our Passout", link: "/passed-out" },
-        { name: "Corporate Training", link: "/corpo" },
+        { name: "Corporate Training", link: "/corporate-training" },
       ],
     },
     {
@@ -276,7 +276,7 @@ const Navbar = () => {
 
               <li>
                 <Link
-        to="/enroll-now"
+                  to="/enroll-now"
                   className="
     bg-[#F3831C] text-white
     px-6 py-2.5 rounded-none

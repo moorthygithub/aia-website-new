@@ -1,17 +1,11 @@
-
-
-
-
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useRef, useEffect } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { BASE_URL } from "@/api/base-url";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { BASE_URL } from "@/api/base-url";
-import { TestimonialsSection } from "../ui/testimonials-with-marquee";
-import Skeleton from "react-loading-skeleton";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import "react-loading-skeleton/dist/skeleton.css";
-const FreeResourceYoutube = () => { 
+const FreeResourceYoutube = () => {
   const [activeTab, setActiveTab] = useState("");
   const scrollContainerRef = useRef(null);
 
@@ -19,7 +13,7 @@ const FreeResourceYoutube = () => {
     queryKey: ["aia-youtube-free"],
     queryFn: async () => {
       const res = await axios.get(
-        `${BASE_URL}/api/getLectureYoutubebySlug/CFE-Free-Resources`
+        `${BASE_URL}/api/getLectureYoutubebySlug/CFE-Free-Resources`,
       );
       return res.data;
     },
@@ -54,19 +48,17 @@ const FreeResourceYoutube = () => {
     if (!data?.image_url || !imageName) return "";
 
     const lectureImage = data.image_url.find(
-      (item) => item.image_for === "Lecture Youtube"
+      (item) => item.image_for === "Lecture Youtube",
     );
     if (lectureImage) {
       return `${lectureImage.image_url}${imageName}`;
     }
 
     const noImage = data.image_url.find(
-      (item) => item.image_for === "No Image"
+      (item) => item.image_for === "No Image",
     );
     return noImage ? noImage.image_url : "";
   };
-
- 
 
   if (isLoading) {
     return (
@@ -173,7 +165,6 @@ const FreeResourceYoutube = () => {
           </div>
         )}
       </div>
-    
     </div>
   );
 };

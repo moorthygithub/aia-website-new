@@ -1,23 +1,14 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React from 'react';
+import React from "react";
 
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
-import { BASE_URL } from '@/api/base-url';
+import { BASE_URL } from "@/api/base-url";
+import { TestimonialsSection } from "@/components/ui/testimonials-with-marquee";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import { TestimonialsSection } from '@/components/ui/testimonials-with-marquee';
-const CourseYoutube = ({ courseSlug  }) => {
-
-
-
-
-
-
-
-
-
+const CourseYoutube = ({ courseSlug }) => {
   const {
     data: certificatesData,
     isLoading: isLoadingPassout,
@@ -25,7 +16,9 @@ const CourseYoutube = ({ courseSlug  }) => {
   } = useQuery({
     queryKey: ["youtube-testimonials"],
     queryFn: async () => {
-      const res = await axios.get(`${BASE_URL}/api/getYoutubebyCourse/${courseSlug}`);
+      const res = await axios.get(
+        `${BASE_URL}/api/getYoutubebyCourse/${courseSlug}`,
+      );
       return res.data;
     },
   });
@@ -82,13 +75,11 @@ const CourseYoutube = ({ courseSlug  }) => {
     );
   }
 
-  
-
   return (
-   <TestimonialsSection
-          title="Meet Recently Qualified on YouTube "
-          testimonials={testimonials}
-        />
+    <TestimonialsSection
+      title="Meet Recently Qualified on YouTube "
+      testimonials={testimonials}
+    />
   );
 };
 

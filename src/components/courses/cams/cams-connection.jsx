@@ -1,21 +1,24 @@
-import React from 'react'
+import { IMAGE_PATH } from "@/api/base-url";
+import SectionHeading from "@/components/SectionHeading/SectionHeading";
+import React from "react";
 
-const CamsConnection = () => {
+const CamsConnection = ({ path = "how_it_works_cfe.webp" }) => {
   return (
     <div className="relative py-8 text-center">
-      <h1 className="text-3xl font-semibold mb-2">
-        How It <span className="italic text-purple-600">Works?</span>
-      </h1>
-      <p>Your Success Path, Simplified</p>
-      <p>Your Certification Journey From Learning to Leadership</p>
-
+      <SectionHeading
+        title="How It"
+        highlight1="Works?"
+        align="center"
+        description="Your Success Path, Simplified"
+        description1="Your Certification Journey From Learning to Leadership"
+      />
       <img
-        src="https://globalprofessionalcertifications.com/assets/how-it-works-Crei1qCt.webp"
+        src={`${IMAGE_PATH}/${path}`}
         alt="CAMS Hero Banner"
         className="inset-0 w-full h-full object-cover"
       />
     </div>
-  )
-}
+  );
+};
 
-export default CamsConnection
+export default CamsConnection;

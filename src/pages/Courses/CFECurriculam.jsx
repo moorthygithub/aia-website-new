@@ -1,5 +1,3 @@
-import React from "react";
-
 import AboutTrainerSection from "@/components/about/about-trainer-section";
 import HomeAlumniWork from "@/components/home/home-alumini-work";
 
@@ -10,32 +8,35 @@ import CfeResult from "@/components/courses/cfe-curriculam/cfe-result";
 
 import CfeReview from "@/components/courses/cfe-curriculam/cfe-review";
 import CourseYoutube from "@/components/courses/common/course-youtube";
-import CourseLms from "@/components/courses/common/course-lms";
 
 import CfeAchivers from "@/components/courses/cfe-curriculam/cfe-achivers";
 
-import CfeCourseCurriculum from "@/components/courses/cfe-curriculam/cfe-cource-curriculam";
-import CfeJourney from "@/components/courses/cfe-curriculam/cfe-journey";
-import CfeWhyAia from "@/components/courses/cfe-curriculam/cfe-why-aia";
-import CfeHighlight from "@/components/courses/cfe-curriculam/cfe-highlight";
-import CfeUnique from "@/components/courses/cfe-curriculam/cfe-unique";
 import CfeAbout from "@/components/courses/cfe-curriculam/cfe-about";
+import CfeCourseCurriculum from "@/components/courses/cfe-curriculam/cfe-cource-curriculam";
+import CfeHighlight from "@/components/courses/cfe-curriculam/cfe-highlight";
+import CfeJourney from "@/components/courses/cfe-curriculam/cfe-journey";
+import CfeUnique from "@/components/courses/cfe-curriculam/cfe-unique";
+import CfeWhyAia from "@/components/courses/cfe-curriculam/cfe-why-aia";
 
-import CourseMap from "@/components/courses/common/course-map";
 import PopUp from "@/components/common/pop-up";
-import CfeFaq from "@/components/courses/cfe-curriculam/cfe-faq";
-import CourseYoutubeLecture from "@/components/courses/common/course-youtube-lecture";
-import CourseTopStudent from "@/components/courses/common/course-top-student";
 import CfeCourseLms from "@/components/courses/cfe-curriculam/cfe-course-lms";
+import CfeFaq from "@/components/courses/cfe-curriculam/cfe-faq";
+import CourseMap from "@/components/courses/common/course-map";
+import CourseTopStudent from "@/components/courses/common/course-top-student";
+import CourseYoutubeLecture from "@/components/courses/common/course-youtube-lecture";
 
 const CFECurriculam = () => {
   return (
     <div>
       <PopUp slug="CFE-Curriculum" />
-
       <CourseHero />
       <CfeAbout />
-      <CourseTopStudent courseSlug="cfe" subtitle="Learners who prepared with AIA and performed strongly in the CFE exam" needPrefix="false" title="Professionals Who Excelled in the CFE Exam with Outstanding Scores" />
+      <CourseTopStudent
+        courseSlug="cfe"
+        subtitle="Professionals trained by AIA who achieved 90% and above, reflecting strong exam readiness and depth of subject knowledge."
+        needPrefix="false"
+        title="Professionals Who Excelled in the CFE Exam with Outstanding Scores"
+      />
       <CfeCourseCurriculum />
       <CfeResult />
       <CfeJourney />
@@ -45,12 +46,11 @@ const CFECurriculam = () => {
       <CourseYoutubeLecture courseSlug="cfe" />
       <CourseYoutube courseSlug="cfe" />
       <CfeReview />
-
-      <AboutTrainerSection />
+      <AboutTrainerSection path="faculty_cfe.webp" />
       <CfeCourseLms />
       <CfeUnique />
       <CfeAchivers />
-      <CamsConnection />
+      <CamsConnection path="how_it_works_cfe.webp" />
       <HomeAlumniWork />
       <CfeFaq />
     </div>

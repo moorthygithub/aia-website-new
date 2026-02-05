@@ -1,4 +1,6 @@
-const CompanyMarquee = ({ title, subtitle, companies }) => {
+import SectionHeading from "../SectionHeading/SectionHeading";
+
+const CompanyMarquee = ({ companies }) => {
   if (!companies?.length) return null;
 
   return (
@@ -15,16 +17,13 @@ const CompanyMarquee = ({ title, subtitle, companies }) => {
         `}
       </style>
 
-         <div className="w-full bg-linear-to-b from-black/0 via-black/0 to-[#0F3652]/40 py-20 overflow-hidden">
-        <div className="max-w-340 mx-auto px-6 mb-6">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#0F3652] mb-4">
-            {title}
-          </h2>
-          <p className="text-[#0F3652] text-sm md:text-base max-w-3xl">
-            {subtitle}
-          </p>
-        </div>
-
+      <div className="w-full bg-linear-to-b from-black/0 via-black/0 to-[#0F3652]/40 py-20 overflow-hidden">
+        <SectionHeading
+          title="Shaping Alumni Who Lead"
+          description="Delivering excellence &
+        empowering professionals who are creating a real-world impact"
+          align="center"
+        />
         <div className="relative flex overflow-hidden py-8">
           {[1, 2].map((loop) => (
             <div

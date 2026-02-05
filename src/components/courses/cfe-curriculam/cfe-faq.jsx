@@ -7,13 +7,12 @@ import { useEffect } from "react";
 import { BASE_URL } from "@/api/base-url";
 import FaqSection from "@/components/common/faq-section";
 
-
 const CfeFaq = () => {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["aia-faq-cfe"],
     queryFn: async () => {
       const res = await axios.get(
-        `${BASE_URL}/api/getFAQbySlug/CFE-Curriculum`
+        `${BASE_URL}/api/getFAQbySlug/CFE-Curriculum`,
       );
       return res.data;
     },
@@ -26,15 +25,14 @@ const CfeFaq = () => {
       id: `item-${index + 1}`,
       question: item.faq_que,
       answer: item.faq_ans,
-        heading: item.faq_heading,
+      heading: item.faq_heading,
       sort: item.faq_sort,
     })) || [];
-
 
   useEffect(() => {
     if (faqItems.length > 0) {
       const existingScript = document.querySelector(
-        'script[type="application/ld+json"][data-faq-schema]'
+        'script[type="application/ld+json"][data-faq-schema]',
       );
       if (existingScript) {
         existingScript.remove();
@@ -69,12 +67,7 @@ const CfeFaq = () => {
 
   if (isLoading || isError) return null;
 
-  return (
-    <FaqSection
-     title={faqHeading}        
-  faqs={faqItems} 
-    />
-  );
+  return <FaqSection title={faqHeading} faqs={faqItems} />;
 };
 
 export default CfeFaq;

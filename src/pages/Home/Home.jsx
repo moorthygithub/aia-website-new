@@ -1,6 +1,3 @@
-
-
-
 import HomeAccredited from "@/components/home/home-accredited";
 import HomeContact from "@/components/home/home-contact";
 
@@ -18,32 +15,23 @@ import PopUp from "@/components/common/pop-up";
 import HomePrCarousel from "@/components/home/home-pr-carousel";
 import HomeHero from "@/components/home/home-hero";
 
-
-
-
-
-
-
 export default function Home() {
   return (
     <div className="font-sans text-gray-800">
-      <PopUp  slug="home"/>
+      <PopUp slug="home" />
       <HomeHero />
       <HomeAbout />
-      <HomeContact/>
-      <HomeAccredited/>
-      <HomeCourses/>
-      <HomeCorporatePartner/>
-      <HomePassout/>
-      <HomeReview/>
-      <HomeAlumniWork/>
-      <HomeYoutube/>
-      <HomeBlogs/>
-      <HomePrCarousel/>
-   
-      <HomeFaq/>
-
-
+      <HomeContact />
+      <HomeCourses />
+      <HomePassout />
+      <HomeAccredited />
+      <HomeReview />
+      <HomeYoutube />
+      <HomeCorporatePartner />
+      <HomePrCarousel />
+      <HomeAlumniWork />
+      <HomeBlogs />
+      <HomeFaq />
     </div>
   );
 }

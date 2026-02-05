@@ -1,29 +1,32 @@
-import { useQuery } from '@tanstack/react-query'
-import React from 'react'
-import axios from 'axios'
-import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
-import { BASE_URL } from '@/api/base-url'
-import { cn } from '@/lib/utils'
-import { Avatar, AvatarImage } from '../ui/avatar'
-import Highlight from '../common/highlight'
+import { BASE_URL } from "@/api/base-url";
+import { cn } from "@/lib/utils";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import React from "react";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+import Highlight from "../common/highlight";
+import { Avatar, AvatarImage } from "../ui/avatar";
+import SectionHeading from "../SectionHeading/SectionHeading";
 
 export function TestimonialCardCourse({
   author,
   href,
   alt,
   className,
-  target
+  target,
 }) {
-  const Card = href ? 'a' : 'div'
-  
+  const Card = href ? "a" : "div";
+
   return (
     <Card
-      {...(href ? { 
-        href, 
-        target: target || "_blank",
-        rel: "noopener noreferrer" 
-      } : {})}
+      {...(href
+        ? {
+            href,
+            target: target || "_blank",
+            rel: "noopener noreferrer",
+          }
+        : {})}
       className={cn(
         "flex flex-col rounded-lg relative group",
         "text-start",
@@ -32,13 +35,13 @@ export function TestimonialCardCourse({
         "transition-all duration-300",
         "h-50 w-[320px]",
         href ? "cursor-pointer" : "cursor-default",
-        className
-      )}>
-      
+        className,
+      )}
+    >
       <div className="h-full w-full flex items-center justify-center">
         <Avatar className="h-full w-full rounded-md">
-          <AvatarImage 
-            src={author?.avatar} 
+          <AvatarImage
+            src={author?.avatar}
             alt={alt || "Certificate Image"}
             className="w-full h-full object-contain rounded-md"
           />
@@ -49,33 +52,35 @@ export function TestimonialCardCourse({
 }
 
 const PassoutResult = () => {
-  const { data: certificatesData, isLoading, isError } = useQuery({
+  const {
+    data: certificatesData,
+    isLoading,
+    isError,
+  } = useQuery({
     queryKey: ["cams-certificates"],
     queryFn: async () => {
-      const res = await axios.get(
-        `${BASE_URL}/api/getAllCertificate`
-      );
+      const res = await axios.get(`${BASE_URL}/api/getAllCertificate`);
       return res.data;
     },
-  })
+  });
 
   const testimonials = React.useMemo(() => {
-    if (!certificatesData?.data) return []
-    
+    if (!certificatesData?.data) return [];
+
     const certificateImageUrlObj = certificatesData.image_url?.find(
-      item => item.image_for === "Student"
-    )
-    const certificateImageUrl = certificateImageUrlObj?.image_url || ""
-    
+      (item) => item.image_for === "Student",
+    );
+    const certificateImageUrl = certificateImageUrlObj?.image_url || "";
+
     return certificatesData.data.map((certificate) => ({
       author: {
-        avatar: `${certificateImageUrl}${certificate.student_certificate_image}`
+        avatar: `${certificateImageUrl}${certificate.student_certificate_image}`,
       },
-      href: certificate.student_linkedin_link, 
+      href: certificate.student_linkedin_link,
       alt: certificate.student_certificate_image_alt || "Certificate Image",
-      target: "_blank" 
-    }))
-  }, [certificatesData])
+      target: "_blank",
+    }));
+  }, [certificatesData]);
 
   if (isLoading) {
     return (
@@ -96,17 +101,19 @@ const PassoutResult = () => {
           </div>
         </div>
       </div>
-    )
+    );
   }
 
   if (isError) {
     return (
       <div className="relative w-full py-12 sm:py-24 md:py-32">
         <div className="mx-auto max-w-container flex flex-col items-center gap-4 text-center sm:gap-16">
-          <div className="text-red-500">Error loading certificates. Please try again later.</div>
+          <div className="text-red-500">
+            Error loading certificates. Please try again later.
+          </div>
         </div>
       </div>
-    )
+    );
   }
 
   if (!testimonials || testimonials.length === 0) return null;
@@ -115,19 +122,17 @@ const PassoutResult = () => {
     <div>
       <section className="py-12 px-0">
         <div className="mx-auto flex max-w-340 flex-col items-center gap-4 text-center sm:gap-16">
-          <div className="flex flex-col items-center gap-4 px-4 sm:gap-8">
-            <h2 className="max-w-340 text-[#0F3652] text-3xl font-semibold leading-tight sm:text-4xl sm:leading-tight">
-         <Highlight>Meet Our Proud Alumni on LinkedIn</Highlight>    
-            </h2>
-          </div>
-
+          <SectionHeading
+            title="Meet the AIA-Certified Professionals Worldwide"
+            description="Click a certificate to explore their LinkedIn profile and connect with certified professionals"
+            align="center"
+          />
           <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
             <div className="group flex overflow-hidden p-2 [--gap:1rem] gap-(--gap) flex-row [--duration:150s]">
-              {/* First set of cards */}
               <div className="flex shrink-0 justify-around gap-(--gap) animate-marquee flex-row group-hover:paused">
                 {testimonials.map((testimonial, i) => (
-                  <TestimonialCardCourse 
-                    key={`first-${i}`} 
+                  <TestimonialCardCourse
+                    key={`first-${i}`}
                     author={testimonial.author}
                     href={testimonial.href}
                     alt={testimonial.alt}
@@ -135,14 +140,14 @@ const PassoutResult = () => {
                   />
                 ))}
               </div>
-              
-          
+
               <div
                 className="flex shrink-0 justify-around gap-(--gap) animate-marquee flex-row group-hover:paused"
-                aria-hidden="true">
+                aria-hidden="true"
+              >
                 {testimonials.map((testimonial, i) => (
-                  <TestimonialCardCourse 
-                    key={`second-${i}`} 
+                  <TestimonialCardCourse
+                    key={`second-${i}`}
                     author={testimonial.author}
                     href={testimonial.href}
                     alt={testimonial.alt}
@@ -158,7 +163,7 @@ const PassoutResult = () => {
         </div>
       </section>
     </div>
-  )
-}
+  );
+};
 
-export default PassoutResult
+export default PassoutResult;

@@ -1,6 +1,8 @@
+import { IMAGE_PATH } from "@/api/base-url";
+import SectionHeading from "@/components/SectionHeading/SectionHeading";
 import React, { useEffect, useRef, useState } from "react";
 
-const CourseLms = ({courseFeatures,cardTitle}) => {
+const CourseLms = ({ courseFeatures, cardTitle }) => {
   const labels = [
     "Dedicated Support Person",
     "Updated Study Curriculum",
@@ -39,15 +41,13 @@ const CourseLms = ({courseFeatures,cardTitle}) => {
     };
   };
 
- 
-
   return (
     <>
       <section
         className="relative flex items-center justify-center py-24"
         style={{
-          backgroundImage:
-            "url('https://aia.in.net/crm/public/assets/images/LMS.webp')",
+          backgroundImage: `url(${IMAGE_PATH}/LMS.webp)`,
+
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
@@ -60,11 +60,11 @@ const CourseLms = ({courseFeatures,cardTitle}) => {
             <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4">
               AIA Digital Learning Platform
             </h1>
-            
+
             <h2 className="text-xl lg:text-2xl font-semibold text-white/90 mb-8">
               Your All-in-One Partner for Structured Exam Preparation
             </h2>
-            
+
             <div className="mb-8">
               <p className="text-3xl font-bold text-white mb-2">
                 Padho Kabhi Bhi, Kahi Bhi
@@ -83,12 +83,24 @@ const CourseLms = ({courseFeatures,cardTitle}) => {
                 style={{ willChange: "transform" }}
               >
                 <defs>
-                  <linearGradient id="orbitGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <linearGradient
+                    id="orbitGradient"
+                    x1="0%"
+                    y1="0%"
+                    x2="100%"
+                    y2="100%"
+                  >
                     <stop offset="0%" stopColor="#6366f1" />
                     <stop offset="50%" stopColor="#8b5cf6" />
                     <stop offset="100%" stopColor="#ec4899" />
                   </linearGradient>
-                  <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                  <filter
+                    id="glow"
+                    x="-50%"
+                    y="-50%"
+                    width="200%"
+                    height="200%"
+                  >
                     <feGaussianBlur stdDeviation="3" result="blur" />
                     <feMerge>
                       <feMergeNode in="blur" />
@@ -96,7 +108,7 @@ const CourseLms = ({courseFeatures,cardTitle}) => {
                     </feMerge>
                   </filter>
                 </defs>
-                
+
                 <circle
                   cx={centerX}
                   cy={centerY}
@@ -106,7 +118,7 @@ const CourseLms = ({courseFeatures,cardTitle}) => {
                   strokeWidth={8}
                   filter="url(#glow)"
                 />
-                
+
                 <circle
                   cx={centerX}
                   cy={centerY}
@@ -115,7 +127,7 @@ const CourseLms = ({courseFeatures,cardTitle}) => {
                   stroke="none"
                   strokeWidth={2.5}
                 />
-                
+
                 <circle
                   cx={centerX}
                   cy={centerY}
@@ -123,7 +135,7 @@ const CourseLms = ({courseFeatures,cardTitle}) => {
                   fill="#6366f1"
                   opacity={0.1}
                 />
-                
+
                 <circle
                   cx={centerX}
                   cy={centerY}
@@ -133,10 +145,15 @@ const CourseLms = ({courseFeatures,cardTitle}) => {
                   strokeWidth={2.5}
                 />
 
-                <foreignObject x={center - 100} y={center - 100} width={200} height={200}>
+                <foreignObject
+                  x={center - 100}
+                  y={center - 100}
+                  width={200}
+                  height={200}
+                >
                   <div className="w-full h-full flex items-center justify-center">
                     <img
-                      src="https://i.postimg.cc/BbXsmB3J/dsfsd-modified.png"
+                      src={`${IMAGE_PATH}/LMS.webp`}
                       alt="LMS"
                       className="w-40 h-40 object-cover rounded-full"
                       draggable={false}
@@ -187,17 +204,11 @@ const CourseLms = ({courseFeatures,cardTitle}) => {
 
       <section className="py-12 px-4 bg-white">
         <div className="max-w-340 mx-auto">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-[#0F3652] mb-3">
-              {cardTitle}
-            </h2>
-            <div className="w-24 h-1 bg-[#F3831C] mx-auto rounded-full"></div>
-          </div>
-
+          <SectionHeading title={cardTitle} align="center" />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {courseFeatures.map((feature, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="bg-white border border-[#0F3652]/20 rounded-lg p-4 hover:shadow-md transition-shadow duration-200"
               >
                 <div className="flex items-start gap-3 mb-3">

@@ -1,5 +1,6 @@
 import React from "react";
 import { Zap } from "lucide-react";
+import SectionHeading from "@/components/SectionHeading/SectionHeading";
 
 export default function CourseUnique({
   badgeText,
@@ -7,7 +8,7 @@ export default function CourseUnique({
   highlight,
   description,
   services,
-  lastText=""
+  lastText = "",
 }) {
   return (
     <section
@@ -20,11 +21,11 @@ export default function CourseUnique({
             <Zap className="w-4 h-4" /> {badgeText}
           </span>
 
-          <h2 className="text-4xl md:text-5xl font-light mb-4 text-center text-[#0F3652]">
-            {heading} <span className="text-[#F3831C]">{highlight}</span>
-          </h2>
-
-          <div className="w-24 h-1 bg-[#F3831C]"></div>
+          <SectionHeading
+            title={heading}
+            highlight1={highlight}
+            align="center"
+          />
         </div>
 
         <p className="text-center max-w-2xl mx-auto mb-16 text-[#0F3652]">
@@ -49,8 +50,7 @@ export default function CourseUnique({
           </div>
 
           <div className="font-bold w-full  col-span-2 text-center text-xl">
-        {lastText}
-
+            {lastText}
           </div>
         </div>
       </div>
@@ -70,7 +70,9 @@ function ServiceItem({ icon, secondaryIcon, title, description }) {
           {title}
         </h3>
       </div>
-      <p className="text-sm text-[#0F3652] leading-relaxed pl-12">{description}</p>
+      <p className="text-sm text-[#0F3652] leading-relaxed pl-12">
+        {description}
+      </p>
     </div>
   );
 }

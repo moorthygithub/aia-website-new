@@ -1,35 +1,32 @@
-
-
-
-
-import React from 'react'
-import CourseHighLight from '../courses/common/course-highlight'
-import { IMAGE_PATH } from '@/api/base-url'
-
+import React from "react";
+import CourseHighLight from "../courses/common/course-highlight";
+import { IMAGE_PATH } from "@/api/base-url";
 
 const AboutHighlight = () => {
   return (
     <CourseHighLight
-    badgeText="Accreditation & Highlights"
-    title=" Trusted & Authorized by Leading Global Bodies"
-    description="With globally recognized certifications, authorized partnerships, and a proven track record of success. We empower professionals and organizations across various industries with audit, risk, and compliance excellence."
-    stats={[
-      { value: 50000, suffix: "+ Hours", subtitle: "Expert Mentoring Sessions" },
-      { value: 99.6, suffix: "%", subtitle: "Success Rate" },
-      { value: 2000, suffix: "+", subtitle: "Success Stories" },
-      { value: 36, suffix: "+ Countries", subtitle: "Served" },
-    ]}
-    
-    logos={[
-      { img: `${IMAGE_PATH}/IAO.jpeg`} ,
-      { img: `${IMAGE_PATH}/IIA.png` },
-      { img: `${IMAGE_PATH}/ISO.jpeg` },
-      { img: `${IMAGE_PATH}/Gleim.jpeg` },
-      { img: `${IMAGE_PATH}/GSAAA.png` },
-    ]}
-  />
-  
-  )
-}
+      badgeText="Accreditation & Highlights"
+      title=" Trusted & Authorized by Leading Global Bodies"
+      description="With globally recognized certifications, authorized partnerships, and a proven track record of success. We empower professionals and organizations across various industries with audit, risk, and compliance excellence."
+      stats={[
+        {
+          value: 50000,
+          suffix: "+ Hours",
+          subtitle: "Expert Mentoring Sessions",
+        },
+        { value: 99.6, suffix: "%", subtitle: "Success Rate" },
+        { value: 2000, suffix: "+", subtitle: "Success Stories" },
+        { value: 36, suffix: "+ Countries", subtitle: "Served" },
+      ]}
+      logos={[
+        { img: `${IMAGE_PATH}/IAO.jpeg` },
+        { img: `${IMAGE_PATH}/IIA.png` },
+        { img: `${IMAGE_PATH}/ISO.jpeg` },
+        { img: `${IMAGE_PATH}/Gleim.jpeg` },
+        { img: `${IMAGE_PATH}/GSAAA.png` },
+      ]}
+    />
+  );
+};
 
-export default AboutHighlight
+export default AboutHighlight;

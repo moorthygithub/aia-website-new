@@ -1,81 +1,7 @@
-/* eslint-disable no-unused-vars */
-import React, { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-
-const certificationCourses = [
-  {
-    id: 1,
-    title: "Certified Fraud Examiner (CFE)",
-    description: "A globally recognised certification focused on fraud prevention, detection, and investigation, widely valued across audit, compliance, risk management, and forensic roles.",
-    description2: "How AIA Supports Your Certification Journey",
-    features: [
-      "Concise, exam-focused, quick notes distilled from extensive study material",
-      "60+ hours of structured, concept-driven video lectures",
-      "1,500+ exam-oriented practice questions",
-      "Live doubt-clearing sessions with experienced faculty",
-      "Mock test preparation simulating the real exam environment",
-      "End-to-end registration support for a smooth enrolment process",
-    ],
-    cta: "Explore More About CFE",
-    link: "cfe-curriculum",
-    bgColor: "#ffffff",
-    textColor: "#0F3652"
-  },
-  {
-    id: 2,
-    title: "Certified Internal Auditor (CIA – Three-Part Exam)",
-    description: "The leading international certification for internal audit professionals, covering internal audit fundamentals, risk management, governance, and advanced audit practices through a structured three-part examination framework.",
-    description2: "How AIA Supports Your Certification Journey",
-    features: [
-      "60+ hours of recorded, expert-led lectures",
-      "Gleim-authorised study material and practice questions",
-      "Full-length Gleim mock tests aligned with CIA exam standards",
-      "Training delivered by experienced, CIA-qualified faculty",
-      "Live doubt-clearing sessions for continuous support",
-      "Complete registration guidance at every stage",
-    ],
-    cta: "Explore More About CIA",
-    link: "cia-curriculum",
-    bgColor: "#0F3652",
-    textColor: "#ffffff"
-  },
-  {
-    id: 3,
-    title: "CIA Challenge Exam",
-    description: "A fast-track CIA pathway designed for eligible members of recognised professional bodies, allowing them to earn the CIA designation through a single comprehensive exam covering advanced internal audit competencies.",
-    description2: "How AIA Supports Your Certification Journey",
-    features: [
-      "Expert-curated quick notes tailored specifically for the Challenge exam",
-      "70+ hours of focused, recorded video lectures",
-      "1,500+ targeted practice questions mapped to exam expectations",
-      "Live online doubt-clearing sessions with qualified faculty",
-      "Exam-oriented study material covering additional competency areas",
-      "Mock test preparation and complete registration support",
-    ],
-    cta: "Explore More About the CIA Challenge",
-    link: "cia-challenge-curriculum",
-    bgColor: "#ffffff",
-    textColor: "#0F3652"
-  },
-  {
-    id: 4,
-    title: "Certified Anti-Money Laundering Specialist (CAMS)",
-    description: "A globally respected AML certification focused on money laundering risks, regulatory frameworks, compliance programs, and financial crime prevention, especially relevant for banking and financial services professionals.",
-    description2: "How AIA Supports Your Certification Journey",
-    features: [
-      "40+ hours of recorded, exam-focused video sessions",
-      "700+ practice questions aligned with the CAMS exam pattern",
-      "Expert-curated quick notes condensed for faster revision",
-      "Live doubt-clearing sessions with experienced AML faculty",
-      "CAMS-style mock tests simulating the real exam scenario",
-      "Complete support throughout the registration process",
-    ],
-    cta: "Explore More About CAMS",
-    link: "cams",
-    bgColor: "#0F3652",
-    textColor: "#ffffff"
-  }
-];
+import React, { useRef, useState, useEffect } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import certificationCourses from "@/data/certificationCourses";
+import SectionHeading from "../SectionHeading/SectionHeading";
 
 const ALL_SERVICES = [...certificationCourses];
 
@@ -85,39 +11,35 @@ const ServiceCard = ({ service, i, progress, range, targetScale }) => {
   const opacity = useTransform(progress, [i * 0.25, (i + 1) * 0.25], [1, 1]);
 
   return (
-    <div ref={container} className="h-screen  flex items-center justify-center sticky top-0" >
+    <div
+      ref={container}
+      className="h-screen  flex items-center justify-center sticky top-0"
+    >
       <motion.div
         style={{
           backgroundColor: service.bgColor,
           scale,
           opacity,
-          top: 0
+          top: 0,
         }}
         className="relative w-full rounded-none p-8 border-2 border-[#F3831C]/20 min-h-125 flex flex-col justify-between origin-top"
       >
         <div>
-          {/* Only show ID number, no title */}
           <div className="flex items-start justify-between mb-2">
-          <p
+            <p
               className="text-xl  font-bold"
-              style={{ color: service.textColor === '#ffffff' ? '#ffffff' : '#000000' }}
+              style={{
+                color: service.textColor === "#ffffff" ? "#ffffff" : "#000000",
+              }}
             >
               {service.description2}
             </p>
             <div className="text-5xl font-bold text-[#F3831C] opacity-20">
-              {String(service.id).padStart(2, '0')}
+              {String(service.id).padStart(2, "0")}
             </div>
           </div>
 
-          {/* Right side only shows features (description2 + features) */}
           <div className="mt-2">
-            {/* <p
-              className="text-md mb-3 font-bold"
-              style={{ color: service.textColor === '#ffffff' ? '#ffffff' : '#000000' }}
-            >
-              {service.description2}
-            </p> */}
-
             {service.features && (
               <div className="space-y-5">
                 {service.features.map((feature, idx) => (
@@ -125,7 +47,12 @@ const ServiceCard = ({ service, i, progress, range, targetScale }) => {
                     <div className="w-2 h-2 rounded-full bg-[#F3831C] shrink-0"></div>
                     <span
                       className="text-lg"
-                      style={{ color: service.textColor === '#ffffff' ? '#d1d5db' : '#475569' }}
+                      style={{
+                        color:
+                          service.textColor === "#ffffff"
+                            ? "#d1d5db"
+                            : "#475569",
+                      }}
                     >
                       {feature}
                     </span>
@@ -145,10 +72,9 @@ const HomeCourses = () => {
   const [activeCard, setActiveCard] = useState(0);
   const { scrollYProgress } = useScroll({
     target: container,
-    offset: ['start start', 'end end']
+    offset: ["start start", "end end"],
   });
 
-  
   useEffect(() => {
     const unsubscribe = scrollYProgress.on("change", (latest) => {
       const cardIndex = Math.floor(latest * ALL_SERVICES.length);
@@ -162,19 +88,13 @@ const HomeCourses = () => {
 
   return (
     <div className="max-w-340 mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="">
+        <SectionHeading
+          title=" International Certification Programs Offered by AIA"
+          align="center"
+        />
+      </div>
 
-
-            <div className="">
-          <div className="text-center ">
-            <h1 className="text-3xl md:text-4xl font-bold text-[#0F3652] relative inline-block mb-2">
-         International Certification Programs Offered by AIA
-              <span className="absolute left-0 -bottom-2 w-14 h-1 bg-[#F3831C] rounded"></span>
-            </h1>
-          
-          </div>
-        </div>
-      
-    
       <div className="md:hidden">
         <div className="mb-8">
           <p className="text-xs uppercase tracking-wider text-[#F3831C] font-semibold mb-4">
@@ -191,12 +111,18 @@ const HomeCourses = () => {
             }}
           >
             <div className="mb-4">
-              <h3 className="text-xl font-bold mb-2" style={{ color: service.textColor }}>
+              <h3
+                className="text-xl font-bold mb-2"
+                style={{ color: service.textColor }}
+              >
                 {service.title}
               </h3>
               <p
                 className="text-sm mb-4"
-                style={{ color: service.textColor === '#ffffff' ? '#d1d5db' : '#64748b' }}
+                style={{
+                  color:
+                    service.textColor === "#ffffff" ? "#d1d5db" : "#64748b",
+                }}
               >
                 {service.description}
               </p>
@@ -205,7 +131,10 @@ const HomeCourses = () => {
             <div className="mb-4">
               <p
                 className="text-sm font-bold mb-3"
-                style={{ color: service.textColor === '#ffffff' ? '#ffffff' : '#000000' }}
+                style={{
+                  color:
+                    service.textColor === "#ffffff" ? "#ffffff" : "#000000",
+                }}
               >
                 {service.description2}
               </p>
@@ -217,7 +146,12 @@ const HomeCourses = () => {
                       <div className="w-2 h-2 rounded-full bg-[#F3831C] shrink-0 mt-2"></div>
                       <span
                         className="text-sm flex-1"
-                        style={{ color: service.textColor === '#ffffff' ? '#d1d5db' : '#475569' }}
+                        style={{
+                          color:
+                            service.textColor === "#ffffff"
+                              ? "#d1d5db"
+                              : "#475569",
+                        }}
                       >
                         {feature}
                       </span>
@@ -270,39 +204,31 @@ const HomeCourses = () => {
       <div className="hidden md:grid md:grid-cols-2 gap-12 ">
         {/* Left side - Changes with scroll */}
         <div className="md:sticky md:top-20 md:h-screen md:flex md:flex-col md:justify-center ">
-          <div  className=" h-full mt-18 flex flex-col justify-between">
+          <div className=" h-full mt-18 flex flex-col justify-between">
             <div>
-            <p className="text-sm uppercase tracking-wider text-[#F3831C] font-semibold mb-4">
-              PROFESSIONAL CERTIFICATION PROGRAMS
-            </p>
-
-            {/* Dynamic content based on active card */}
-            <div className="transition-opacity duration-300">
-              <h1 className="text-xl md:text-3xl font-bold mb-3 leading-tight text-[#0F3652]">
-                {ALL_SERVICES[activeCard]?.title || ALL_SERVICES[0].title}
-              </h1>
-
-              <p className="text-[#0F3652] text-lg mb-2 max-w-lg leading-relaxed">
-                {ALL_SERVICES[activeCard]?.description || ALL_SERVICES[0].description}
-              </p>
-              <p className="text-[#0F3652] text-lg mb-2 max-w-lg leading-relaxed">
-                {ALL_SERVICES[activeCard]?.description || ALL_SERVICES[0].description}
-              </p>
-              <p className="text-[#0F3652] text-lg mb-2 max-w-lg leading-relaxed">
-                {ALL_SERVICES[activeCard]?.description || ALL_SERVICES[0].description}
+              <p className="text-sm uppercase tracking-wider text-[#F3831C] font-semibold mb-4">
+                PROFESSIONAL CERTIFICATION PROGRAMS
               </p>
 
+              {/* Dynamic content based on active card */}
+              <div className="transition-opacity duration-300">
+                <h1 className="text-xl md:text-3xl font-bold mb-3 leading-tight text-[#0F3652]">
+                  {ALL_SERVICES[activeCard]?.title || ALL_SERVICES[0].title}
+                </h1>
 
-          
-            </div>
+                <p className="text-[#0F3652] text-lg mb-2 max-w-lg leading-relaxed text-justify">
+                  {ALL_SERVICES[activeCard]?.description ||
+                    ALL_SERVICES[0].description}
+                </p>
+              </div>
             </div>
 
             {/* Button moved to left side */}
-           <div className='mb-30'>
-           <div className="mt-4">
-              <a
-                href={ALL_SERVICES[activeCard]?.link || ALL_SERVICES[0].link}
-                className="
+            <div className="mb-30">
+              <div className="mt-4">
+                <a
+                  href={ALL_SERVICES[activeCard]?.link || ALL_SERVICES[0].link}
+                  className="
                   group inline-flex items-center gap-2
                   h-10 px-4
                 
@@ -312,40 +238,44 @@ const HomeCourses = () => {
                   transition-colors duration-200
                   hover:bg-[#F3831C]/90
                 "
-              >
-                <span>{ALL_SERVICES[activeCard]?.cta || ALL_SERVICES[0].cta}</span>
-                <svg
-                  className="
+                >
+                  <span>
+                    {ALL_SERVICES[activeCard]?.cta || ALL_SERVICES[0].cta}
+                  </span>
+                  <svg
+                    className="
                     w-4 h-4
                     transition-transform duration-200
                     group-hover:translate-x-0.5
                   "
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M14 5l7 7m0 0l-7 7m7-7H3"
-                  />
-                </svg>
-              </a>
-            </div>
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
+                  </svg>
+                </a>
+              </div>
 
-            <div className="hidden md:flex items-center gap-4 mt-8">
-              <div className="h-px w-16 bg-[#F3831C]"></div>
-              <p className="text-sm text-[#0F3652]/70">Scroll to explore all courses</p>
+              <div className="hidden md:flex items-center gap-4 mt-8">
+                <div className="h-px w-16 bg-[#F3831C]"></div>
+                <p className="text-sm text-[#0F3652]/70">
+                  Scroll to explore all courses
+                </p>
+              </div>
             </div>
-           </div>
           </div>
         </div>
 
         {/* Right side - Scrollable cards (Desktop) */}
         <div ref={container} className="relative hidden md:block ">
           {ALL_SERVICES.map((service, i) => {
-            const targetScale = 1 - ((ALL_SERVICES.length - i) * 0.05);
+            const targetScale = 1 - (ALL_SERVICES.length - i) * 0.05;
             const start = i / ALL_SERVICES.length;
             const end = start + 1 / ALL_SERVICES.length;
 

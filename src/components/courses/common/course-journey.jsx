@@ -1,14 +1,17 @@
+import SectionHeading from "@/components/SectionHeading/SectionHeading";
 import React from "react";
 
 const CourseJourney = ({ heading, highlight, steps, connectorImage }) => {
   return (
     <section className="py-20 px-12 bg-white">
       <div className="max-w-340 mx-auto">
-    
         <div className="text-center max-w-6xl mx-auto mb-14">
           <h3 className="text-[36px] font-bold mb-4 text-[#0F3652]">
-            {heading}{" "}
-            <span className="text-[#F3831C]">{highlight}</span>
+            <SectionHeading
+              title={heading}
+              highlight1={highlight}
+              align="center"
+            />
           </h3>
         </div>
 
@@ -20,8 +23,7 @@ const CourseJourney = ({ heading, highlight, steps, connectorImage }) => {
                 className="relative bg-[#E7EBEE]
  hover:bg-[#0F3652] text-[#0F3652] hover:text-white rounded-xl w-90 min-h-65"
               >
-           
-                  <div className="absolute -top-4 border left-[45%] w-10 h-10 bg-[#F3831C] text-white rounded-full flex items-center justify-center text-xl font-bold italic">
+                <div className="absolute -top-4 border left-[45%] w-10 h-10 bg-[#F3831C] text-white rounded-full flex items-center justify-center text-xl font-bold italic">
                   {step.number}
                 </div>
 
@@ -32,7 +34,9 @@ const CourseJourney = ({ heading, highlight, steps, connectorImage }) => {
 
                   <ul className="text-sm leading-relaxed pl-10 space-y-1 list-disc list-inside">
                     {step.items.map((item, i) => (
-                      <li key={i} className="">{item}</li>
+                      <li key={i} className="">
+                        {item}
+                      </li>
                     ))}
                   </ul>
                 </div>
@@ -40,7 +44,6 @@ const CourseJourney = ({ heading, highlight, steps, connectorImage }) => {
             ))}
           </div>
 
-         
           {connectorImage && (
             <div className="hidden lg:block absolute top-0 left-0 right-0 z-0 scale-105">
               <img

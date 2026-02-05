@@ -1,13 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useRef, useEffect } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { BASE_URL } from "@/api/base-url";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { BASE_URL } from "@/api/base-url";
-import { TestimonialsSection } from "../ui/testimonials-with-marquee";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import React, { useEffect, useRef, useState } from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-const HomeYoutube = () => { 
+import SectionHeading from "../SectionHeading/SectionHeading";
+import { TestimonialsSection } from "../ui/testimonials-with-marquee";
+const HomeYoutube = () => {
   const [activeTab, setActiveTab] = useState("");
   const scrollContainerRef = useRef(null);
 
@@ -15,7 +16,7 @@ const HomeYoutube = () => {
     queryKey: ["aia-youtube-home"],
     queryFn: async () => {
       const res = await axios.get(
-        `${BASE_URL}/api/getLectureYoutubebySlug/home`
+        `${BASE_URL}/api/getLectureYoutubebySlug/home`,
       );
       return res.data;
     },
@@ -50,14 +51,14 @@ const HomeYoutube = () => {
     if (!data?.image_url || !imageName) return "";
 
     const lectureImage = data.image_url.find(
-      (item) => item.image_for === "Lecture Youtube"
+      (item) => item.image_for === "Lecture Youtube",
     );
     if (lectureImage) {
       return `${lectureImage.image_url}${imageName}`;
     }
 
     const noImage = data.image_url.find(
-      (item) => item.image_for === "No Image"
+      (item) => item.image_for === "No Image",
     );
     return noImage ? noImage.image_url : "";
   };
@@ -151,11 +152,10 @@ const HomeYoutube = () => {
   return (
     <div className="w-full  py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-340 mx-auto">
-        <div className="flex flex-col items-center justify-center mb-8 mx-auto">
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl  font-bold tracking-tighter mt-5">
-            Visit Our Youtube Channel
-          </h2>
-        </div>
+        <SectionHeading
+          title="Watch & Learn Everything You Need to Crack the CFE, CIA & CAMS"
+          align="center"
+        />
         {tabs.length > 0 && (
           <div className="mb-8 border-b border-gray-200">
             <div className="flex gap-1 overflow-x-auto scrollbar-hide">
@@ -232,7 +232,8 @@ const HomeYoutube = () => {
         )}
       </div>
       <TestimonialsSection
-        title="    Meet Recently Qualified on YouTube"
+        title="Meet Professionals Who Made It with AIA"
+        description="Click a success story to watch their full interview with Puneet Sir and get inspired."
         testimonials={testimonials}
       />
       <style jsx>{`

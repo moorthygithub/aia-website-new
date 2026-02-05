@@ -1,14 +1,14 @@
-import * as React from "react";
-import { TestimonialSlider } from "../ui/testimonial-slider-1";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { BASE_URL } from "../../api/base-url";
-
-
-
+import { TestimonialSlider } from "../ui/testimonial-slider-1";
 
 const AboutTestimonial = () => {
-  const { data: apiData, isLoading, isError } = useQuery({
+  const {
+    data: apiData,
+    isLoading,
+    isError,
+  } = useQuery({
     queryKey: ["team-data"],
     queryFn: async () => {
       const res = await axios.get(`${BASE_URL}/api/getTeam`);
@@ -16,35 +16,31 @@ const AboutTestimonial = () => {
     },
   });
 
- 
   const transformApiData = () => {
     if (!apiData?.data) return [];
 
-    
     const teamImageBaseUrl = apiData.image_url?.find(
-      (item) => item.image_for === "Team"
+      (item) => item.image_for === "Team",
     )?.image_url;
 
-    
     const noImageUrl = apiData.image_url?.find(
-      (item) => item.image_for === "No Image"
+      (item) => item.image_for === "No Image",
     )?.image_url;
 
     return apiData.data.map((member, index) => {
-    
-      const fullImageSrc = member.team_image 
+      const fullImageSrc = member.team_image
         ? `${teamImageBaseUrl}${member.team_image}`
         : noImageUrl;
-      
-      const thumbnailSrc = member.team_image 
+
+      const thumbnailSrc = member.team_image
         ? `${teamImageBaseUrl}${member.team_image}?w=100&h=120&fit=crop&q=80`
         : `${noImageUrl}?w=100&h=120&fit=crop&q=80`;
 
       return {
         id: member.id || index + 1,
         name: member.team_name || "Anonymous",
-        affiliation: member.team_designation 
-          ? `${member.team_designation}${member.team_type ? ` - ${member.team_type}` : ''}`
+        affiliation: member.team_designation
+          ? `${member.team_designation}${member.team_type ? ` - ${member.team_type}` : ""}`
           : "Team Member",
         quote: member.team_description || "No description available.",
         imageSrc: fullImageSrc,

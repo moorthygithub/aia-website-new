@@ -1,15 +1,15 @@
+import SectionHeading from "@/components/SectionHeading/SectionHeading";
 import React from "react";
 import { Link } from "react-router-dom";
 
-const CourseAbout = ({ 
-  badgeText, 
-  heading, 
-  description, 
+const CourseAbout = ({
+  badgeText,
+  heading,
+  description,
   aboutStats,
   buttonText,
-  buttonLink
+  buttonLink,
 }) => {
-
   return (
     <section className="py-18">
       <div className="max-w-340 mx-auto px-4 sm:px-6 lg:px-8">
@@ -23,14 +23,9 @@ const CourseAbout = ({
               </div>
             )}
 
-            {heading && (
-              <h2 className="text-3xl md:text-4xl font-bold text-[#0F3652] mb-6">
-                {heading}
-              </h2>
-            )}
-
+            <SectionHeading title={heading} />
             {description && (
-              <div className="text-[#0F3652] leading-relaxed space-y-4 mb-8">
+              <div className="text-[#0F3652] leading-relaxed space-y-4 mb-8 text-justify">
                 {description.split("\n").map((line, i) => (
                   <p key={i}>{line}</p>
                 ))}
@@ -39,9 +34,9 @@ const CourseAbout = ({
 
             {buttonText && (
               <Link to={buttonLink}>
-              <span className="text-md font-semibold cursor-pointer  px-4 py-2  text-xs bg-[#F3831C] text-white rounded-none hover:bg-[#0F3652] transition-colors duration-300 mb-1">
-                {buttonText}
-              </span>
+                <span className="text-md font-semibold cursor-pointer  px-4 py-2  text-xs bg-[#F3831C] text-white rounded-none hover:bg-[#0F3652] transition-colors duration-300 mb-1">
+                  {buttonText}
+                </span>
               </Link>
             )}
           </div>
@@ -75,13 +70,14 @@ const CourseAbout = ({
               >
                 <div className="text-xl font-bold mb-1 text-[#0F3652]">
                   {stat.display}
+                
                 </div>
-                {stat.show == 'true' && (
+                {stat.show == "true" && (
                   <h4 className="text-base font-normal text-[#0F3652]">
                     {stat.title}
                   </h4>
                 )}
-                
+
                 <div
                   className="
                     absolute

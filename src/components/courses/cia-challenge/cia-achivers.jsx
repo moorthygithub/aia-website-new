@@ -1,27 +1,21 @@
-
-
-
-
-
-
-import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
-import { BASE_URL } from '@/api/base-url';
-import CourseAchiverCard from '../common/course-achiver-card';
-import Highlight from '@/components/common/highlight';
+import { BASE_URL } from "@/api/base-url";
+import Highlight from "@/components/common/highlight";
+import { cn } from "@/lib/utils";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useEffect, useState } from "react";
+import CourseAchiverCard from "../common/course-achiver-card";
+import SectionHeading from "@/components/SectionHeading/SectionHeading";
 const CiaAchivers = () => {
   const [cardSize, setCardSize] = useState(365);
   const [testimonialsList, setTestimonialsList] = useState([]);
 
-  
   const { data, isLoading, isError } = useQuery({
     queryKey: ["cfe-passout-students"],
     queryFn: async () => {
       const res = await axios.get(
-    `${BASE_URL}/api/getPassoutStudentbyCourse/cfe`
+        `${BASE_URL}/api/getPassoutStudentbyCourse/cfe`,
       );
       return res.data;
     },
@@ -29,10 +23,11 @@ const CiaAchivers = () => {
 
   useEffect(() => {
     if (data?.data) {
-    
-      const studentImageUrl = data.image_url?.find(img => img.image_for === "Student")?.image_url || '';
-      
-      const transformedData = data.data.map(student => ({
+      const studentImageUrl =
+        data.image_url?.find((img) => img.image_for === "Student")?.image_url ||
+        "";
+
+      const transformedData = data.data.map((student) => ({
         tempId: student.id,
         student_name: student.student_name,
         student_course: student.student_course,
@@ -40,8 +35,8 @@ const CiaAchivers = () => {
         student_image_alt: student.student_image_alt,
         country_name: student.country_name,
         country_city: student.country_city,
-        imgSrc: studentImageUrl + student.student_image, 
-        by: `${student.student_name}, ${student.country_name}${student.country_city ? `, ${student.country_city}` : ''}`
+        imgSrc: studentImageUrl + student.student_image,
+        by: `${student.student_name}, ${student.country_name}${student.country_city ? `, ${student.country_city}` : ""}`,
       }));
 
       setTestimonialsList(transformedData);
@@ -50,7 +45,7 @@ const CiaAchivers = () => {
 
   const handleMove = (steps) => {
     if (testimonialsList.length === 0) return;
-    
+
     const newList = [...testimonialsList];
     if (steps > 0) {
       for (let i = steps; i > 0; i--) {
@@ -81,52 +76,58 @@ const CiaAchivers = () => {
 
   if (isLoading) {
     return (
-      <div className="relative w-full overflow-hidden bg-muted/30 flex items-center justify-center" style={{ height: 600 }}>
+      <div
+        className="relative w-full overflow-hidden bg-muted/30 flex items-center justify-center"
+        style={{ height: 600 }}
+      >
         <div className="text-lg">Loading achievers...</div>
       </div>
     );
   }
 
-  if (isError ) {
+  if (isError) {
     return (
-      <div className="relative w-full overflow-hidden bg-muted/30 flex items-center justify-center" style={{ height: 600 }}>
+      <div
+        className="relative w-full overflow-hidden bg-muted/30 flex items-center justify-center"
+        style={{ height: 600 }}
+      >
         <div className="text-lg text-red-500">Failed to load achievers</div>
       </div>
     );
   }
 
-if(testimonialsList.length === 0)  return null
+  if (testimonialsList.length === 0) return null;
   return (
     <div
       className="relative w-full min-h-screen overflow-hidden bg-muted/30"
-      style={{ height: 600 }}>
-
-
-        <h2 className=" absolute top-0  w-full  text-center text-3xl  font-bold text-[#0F3652] py-10">
-          <Highlight>Meet the Professionals Who Earned Their CFE Credential </Highlight>  
-          </h2>
+      style={{ height: 600 }}
+    >
+      <SectionHeading title="Meet the Professionals Who Earned Their CFE Credential" align="center"/>
       {testimonialsList.map((testimonial, index) => {
-        const position = testimonialsList.length % 2
-          ? index - (testimonialsList.length + 1) / 2
-          : index - testimonialsList.length / 2;
+        const position =
+          testimonialsList.length % 2
+            ? index - (testimonialsList.length + 1) / 2
+            : index - testimonialsList.length / 2;
         return (
           <CourseAchiverCard
             key={testimonial.tempId}
             testimonial={testimonial}
             handleMove={handleMove}
             position={position}
-            cardSize={cardSize} />
+            cardSize={cardSize}
+          />
         );
       })}
-      <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
+      <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2 mt-2">
         <button
           onClick={() => handleMove(-1)}
           className={cn(
             "flex h-14 w-14 items-center justify-center text-2xl transition-colors",
             "bg-background border-2 border-border hover:bg-primary hover:text-primary-foreground",
-            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
           )}
-          aria-label="Previous testimonial">
+          aria-label="Previous testimonial"
+        >
           <ChevronLeft />
         </button>
         <button
@@ -134,9 +135,10 @@ if(testimonialsList.length === 0)  return null
           className={cn(
             "flex h-14 w-14 items-center justify-center text-2xl transition-colors",
             "bg-background border-2 border-border hover:bg-primary hover:text-primary-foreground",
-            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
           )}
-          aria-label="Next testimonial">
+          aria-label="Next testimonial"
+        >
           <ChevronRight />
         </button>
       </div>

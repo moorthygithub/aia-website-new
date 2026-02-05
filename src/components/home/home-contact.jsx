@@ -127,30 +127,7 @@ const HomeContact = () => {
     };
 
  
-    const handleSubmitWithoutMessageRequired = async (e) => {
-        e.preventDefault();
-        
-        setSubmitSuccess(false);
-        setSubmitError('');
-        
-      
-        const requiredFields = {
-            name: formData.name.trim(),
-            phone: formData.phone.trim(),
-            email: formData.email.trim()
-          
-        };
-        
-    
-        const allRequiredFieldsFilled = Object.values(requiredFields).every(field => field !== '');
-        
-        if (!allRequiredFieldsFilled) {
-            alert('Please fill all required fields');
-            return;
-        }
-        
-       
-    };
+
 
     const handleCaptchaVerified = (isVerified) => {
         if (isVerified) {

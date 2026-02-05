@@ -1,45 +1,41 @@
-
-
-
-import { TestimonialsSection } from '@/components/ui/testimonials-with-marquee'
-import { useQuery } from '@tanstack/react-query'
-import React from 'react'
-import axios from 'axios'
-import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
-import { BASE_URL } from '@/api/base-url'
-import { TestimonialsSectionCourse } from '../common/testimonials-with-marquee-course'
+import { BASE_URL } from "@/api/base-url";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import React from "react";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+import { TestimonialsSectionCourse } from "../common/testimonials-with-marquee-course";
 
 const CfeResult = () => {
-  const { data: certificatesData, isLoading, isError } = useQuery({
+  const {
+    data: certificatesData,
+    isLoading,
+    isError,
+  } = useQuery({
     queryKey: ["cfe-certificates"],
     queryFn: async () => {
-      const res = await axios.get(
-         `${BASE_URL}/api/getCertificatebyCourse/CFE`
-      );
+      const res = await axios.get(`${BASE_URL}/api/getCertificatebyCourse/CFE`);
       return res.data;
     },
-  })
-
+  });
 
   const testimonials = React.useMemo(() => {
-    if (!certificatesData?.data) return []
-    
-   
+    if (!certificatesData?.data) return [];
+
     const certificateImageUrlObj = certificatesData.image_url?.find(
-      item => item.image_for === "Student"
-    )
-    const certificateImageUrl = certificateImageUrlObj?.image_url || ""
-    
+      (item) => item.image_for === "Student",
+    );
+    const certificateImageUrl = certificateImageUrlObj?.image_url || "";
+
     return certificatesData.data.map((certificate) => ({
       author: {
-    
-        avatar: `${certificateImageUrl}${certificate.student_other_certificate_image}`
+        avatar: `${certificateImageUrl}${certificate.student_other_certificate_image}`,
       },
-  
-      alt: certificate.student_other_certificate_image_alt || "Certificate Image"
-    }))
-  }, [certificatesData])
+
+      alt:
+        certificate.student_other_certificate_image_alt || "Certificate Image",
+    }));
+  }, [certificatesData]);
 
   if (isLoading) {
     return (
@@ -60,29 +56,29 @@ const CfeResult = () => {
           </div>
         </div>
       </div>
-    )
+    );
   }
 
   if (isError) {
     return (
       <div className="relative w-full py-12 sm:py-24 md:py-32">
         <div className="mx-auto max-w-container flex flex-col items-center gap-4 text-center sm:gap-16">
-          <div className="text-red-500">Error loading certificates. Please try again later.</div>
+          <div className="text-red-500">
+            Error loading certificates. Please try again later.
+          </div>
         </div>
       </div>
-    )
+    );
   }
 
   return (
     <div>
       <TestimonialsSectionCourse
         title="Verified CFE Exam Results Achieved by AIA Learners"
-    
         testimonials={testimonials}
-     
       />
     </div>
-  )
-}
+  );
+};
 
-export default CfeResult
+export default CfeResult;

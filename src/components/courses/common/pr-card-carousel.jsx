@@ -1,28 +1,23 @@
-
-
-
-import React from "react"
-import { Swiper, SwiperSlide } from "swiper/react"
-import "swiper/css"
-import "swiper/css/effect-coverflow"
-import "swiper/css/pagination"
-import "swiper/css/navigation"
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 import {
   Autoplay,
   EffectCoverflow,
   Navigation,
   Pagination,
-} from "swiper/modules"
+} from "swiper/modules";
 
 export const PrCardCarousel = ({
   studentData,
   autoplayDelay = 1500,
   showPagination = true,
   showNavigation = true,
-  className = "", 
+  className = "",
 }) => {
-
-  
   return (
     <section className={`py-6 ${className}`}>
       <div className="mx-auto px-4">
@@ -63,34 +58,25 @@ export const PrCardCarousel = ({
                 threshold={15}
                 updateOnWindowResize={true}
                 breakpoints={{
-                  0: { spaceBetween: 10 },   
-                  640: { spaceBetween: 50 }, 
+                  0: { spaceBetween: 10 },
+                  640: { spaceBetween: 50 },
                 }}
               >
                 {studentData.map((student, index) => (
                   <SwiperSlide key={index} className="max-w-xs">
                     <div className="relative bg-white shadow-lg shadow-gray-200/50 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-gray-300/50">
-                   
-                      
-                      
-                    
                       <div className=" border !rounded-none border-[#0F3652]">
                         <a href={student.link} target="_blank">
-                        <img
-                          src={student.src}
-                          width={400}
-                          height={300}
-                          className="w-full h-48 object-contain !rounded-none "
-                          alt={student.alt}
-                          loading="lazy"
-                        />
-                       </a>
+                          <img
+                            src={student.src}
+                            width={400}
+                            height={300}
+                            className="w-full h-48 object-contain !rounded-none "
+                            alt={student.alt}
+                            loading="lazy"
+                          />
+                        </a>
                       </div>
-                      
-           
-
-
-                      
                     </div>
                   </SwiperSlide>
                 ))}
@@ -100,5 +86,5 @@ export const PrCardCarousel = ({
         </div>
       </div>
     </section>
-  )
-}
+  );
+};

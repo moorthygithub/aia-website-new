@@ -1,30 +1,15 @@
-
-
-
+import SectionHeading from "@/components/SectionHeading/SectionHeading";
 import React from "react";
 
 const CourseWhyAia = ({ heading, items }) => {
   return (
     <div className="max-w-340 mx-auto">
-      <div
-        className="w-full py-10 bg-cover bg-center"
-     
-      >
-        {/* Heading */}
-        <div className="text-center mb-1 px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0F3652]">
-            {heading}
-          </h2>
-        </div>
-
+      <div className="w-full py-10 bg-cover bg-center">
+        <SectionHeading title={heading} align="center" />
         {/* Cards */}
         <div className="md:flex justify-center">
           {items.map((item, i) => (
-            <DiamondCard
-              key={i}
-              img={item.img}
-              title={item.title}
-            />
+            <DiamondCard key={i} img={item.img} title={item.title} />
           ))}
         </div>
       </div>
@@ -33,8 +18,6 @@ const CourseWhyAia = ({ heading, items }) => {
 };
 
 export default CourseWhyAia;
-
-
 
 const DiamondCard = ({ img, title }) => (
   <div className="group w-60 h-80 flex flex-col items-center justify-center">
@@ -56,7 +39,9 @@ const DiamondCard = ({ img, title }) => (
               className="max-w-14 max-h-14 object-contain"
             />
           </div>
-          <h3 className="text-sm font-semibold text-[#0F3652] text-center">{title}</h3>
+          <h3 className="text-sm font-semibold text-[#0F3652] text-center">
+            {title}
+          </h3>
         </div>
       </div>
     </div>

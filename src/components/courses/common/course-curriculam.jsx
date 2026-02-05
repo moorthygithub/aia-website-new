@@ -1,43 +1,35 @@
 import React, { useState } from "react";
 
-const CourseCurriculum = ({ title, curriculumData ,description}) => {
+const CourseCurriculum = ({ title, curriculumData, description }) => {
   const [activeTab, setActiveTab] = useState(curriculumData?.[0]?.id || null);
 
-  const activeContent = curriculumData.find(
-    (item) => item.id === activeTab
-  );
+  const activeContent = curriculumData.find((item) => item.id === activeTab);
 
   return (
     <div className="py-6 px-4 sm:px-6 lg:px-8">
       <div className="max-w-340 mx-auto">
-
-       
         <div className="mb-8">
           <div className="bg-[#0F3652] text-white text-center py-3 px-4 rounded-lg">
-            <h1 className="text-lg sm:text-xl font-bold">
-              {title}
-            </h1>
+            <h1 className="text-lg sm:text-xl font-bold">{title}</h1>
           </div>
         </div>
         {description && (
-  <div
-    className="text-[#0F3652] leading-relaxed space-y-4 mx-20 mb-8"
-    dangerouslySetInnerHTML={{
-      __html: description.replace(/\n/g, "<br />"),
-    }}
-  />
-)}
+          <div
+            className="text-[#0F3652] leading-relaxed  mx-20 mb-8 text-justify"
+            dangerouslySetInnerHTML={{
+              __html: description.replace(/\n/g, "<br />"),
+            }}
+          />
+        )}
 
         <div className="flex flex-col md:flex-row  max-w-5xl mx-auto justify-center gap-4">
- 
-      
           <div className="w-full md:w-[30%] space-y-2">
             {curriculumData.map((item) => (
               <button
                 key={item.id}
                 onMouseEnter={() => setActiveTab(item.id)}
                 className={`
-                  w-full text-left p-6 shadow-lg shadow-black/20  rounded-br-3xl rounded-tl-3xl transition-all duration-200
+                  w-full text-left p-6 shadow-lg shadow-black/20  rounded-br-3xl rounded-tl-3xl transition-all duration-200 cursor-pointer
                   border
                   ${
                     activeTab === item.id
@@ -53,28 +45,16 @@ const CourseCurriculum = ({ title, curriculumData ,description}) => {
                       
                     `}
                   >
-                    {item.id}   
+                    {item.id}
                   </div>
                   <span className="font-medium text-sm leading-tight">
                     {item.title}
                   </span>
                 </div>
-
-                {/* <div
-                  className={`
-                    mt-1 h-0.5 rounded-full transition-all duration-200
-                    ${
-                      activeTab === item.id
-                        ? "w-full bg-[#F3831C]"
-                        : "w-8 bg-[#0F3652]"
-                    }
-                  `}
-                /> */}
               </button>
             ))}
           </div>
 
-       
           <div className="w-full md:w-[70%]">
             <div className="bg-white rounded-br-3xl  rounded-tl-3xl p-4  shadow-lg shadow-black/20 border border-[#F3831C]/20">
               {activeContent?.content?.length ? (
@@ -87,17 +67,38 @@ const CourseCurriculum = ({ title, curriculumData ,description}) => {
                   </div>
 
                   <div className=" pr-2">
-                    {activeContent.content.map((text, index) => (
+                    {/* {activeContent.content.map((text, index) => (
                       <div
                         key={index}
                         className="flex items-start mb-0.5 p-0.5 rounded hover:bg-[#0F3652]/5 transition-colors duration-150"
                       >
                         <div className="w-0.5 h-5 bg-[#F3831C] mr-2 shrink-0 rounded-full mt-0.5" />
-                        <p className="text-[#0F3652] text-md leading-relaxed flex-1">
-                          {text}
-                        </p>
+                        <div
+                          className="text-[#0F3652] leading-relaxed text-justify"
+                          dangerouslySetInnerHTML={{
+                            __html: text.replace(/\n/g, "<br />"),
+                          }}
+                        />
                       </div>
-                    ))}
+                    ))} */}
+                    {activeContent.content.map((text, index) =>
+                      text
+                        .split(/\n+/)
+                        .filter(Boolean) 
+                        .map((paragraph, pIndex) => (
+                          <div
+                            key={`${index}-${pIndex}`}
+                            className="flex items-start mb-1 p-0.5 rounded hover:bg-[#0F3652]/5 transition-colors duration-150"
+                          >
+                            <span className="w-0.5 h-5 bg-[#F3831C] mr-2 shrink-0 rounded-full mt-1" />
+
+                            <div
+                              className="text-[#0F3652] leading-relaxed text-justify"
+                              dangerouslySetInnerHTML={{ __html: paragraph }}
+                            />
+                          </div>
+                        )),
+                    )}
                   </div>
                 </div>
               ) : (
@@ -109,7 +110,6 @@ const CourseCurriculum = ({ title, curriculumData ,description}) => {
               )}
             </div>
           </div>
-
         </div>
       </div>
     </div>

@@ -1,20 +1,15 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-unused-vars */
-
-import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../ui/accordion";
+import { BASE_URL } from "@/api/base-url";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useEffect } from "react";
-import { BASE_URL } from "@/api/base-url";
+import FaqSection from "../common/faq-section";
 
 const CorporateFaq = () => {
   const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ["aia-faq-corporate"],
     queryFn: async () => {
       const res = await axios.get(
-        `${BASE_URL}/api/getFAQbySlug/Corporate-Training`
+        `${BASE_URL}/api/getFAQbySlug/Corporate-Training`,
       );
       return res.data;
     },
@@ -22,50 +17,48 @@ const CorporateFaq = () => {
 
   const faqHeading = data?.data?.[0]?.faq_heading || "FAQs";
 
-  const faqItems = data?.data?.map((item, index) => ({
-    id: `item-${index + 1}`,
-    question: item.faq_que,
-    answer: item.faq_ans,
-  })) || [];
-
+  const faqItems =
+    data?.data?.map((item, index) => ({
+      id: `item-${index + 1}`,
+      question: item.faq_que,
+      answer: item.faq_ans,
+    })) || [];
 
   useEffect(() => {
     if (faqItems.length > 0) {
-    
-      const existingScript = document.querySelector('script[type="application/ld+json"][data-faq-schema]');
+      const existingScript = document.querySelector(
+        'script[type="application/ld+json"][data-faq-schema]',
+      );
       if (existingScript) {
         existingScript.remove();
       }
 
-
       const faqSchema = {
         "@context": "https://schema.org",
         "@type": "FAQPage",
-        "mainEntity": faqItems.map(item => ({
+        mainEntity: faqItems.map((item) => ({
           "@type": "Question",
-          "name": item.question,
-          "acceptedAnswer": {
+          name: item.question,
+          acceptedAnswer: {
             "@type": "Answer",
-            "text": item.answer
-          }
-        }))
+            text: item.answer,
+          },
+        })),
       };
 
-     
-      const script = document.createElement('script');
-      script.type = 'application/ld+json';
-      script.setAttribute('data-faq-schema', 'true'); 
+      const script = document.createElement("script");
+      script.type = "application/ld+json";
+      script.setAttribute("data-faq-schema", "true");
       script.textContent = JSON.stringify(faqSchema);
       document.head.appendChild(script);
 
-     
       return () => {
         if (script && document.head.contains(script)) {
           document.head.removeChild(script);
         }
       };
     }
-  }, [faqItems])
+  }, [faqItems]);
 
   if (isLoading) {
     return (
@@ -89,40 +82,9 @@ const CorporateFaq = () => {
 
   return (
     <section className="py-4">
-      <div className="mx-auto max-w-340 ">
-        <div className="grid gap-8 md:grid-cols-5 md:gap-12">
-          <div className="md:col-span-2">
-            <h2 className="text-foreground text-4xl font-semibold">{'FAQs' }</h2>
-           
-            
-          </div>
-
-          <div className="md:col-span-3">
-            <Accordion type="single" collapsible>
-              {faqItems.map((item) => (
-                <AccordionItem
-                  key={item.id}
-                  value={item.id}
-                 className="border-b border-[#F3831C]/20">
-                   <AccordionTrigger className="cursor-pointer text-[#0F3652] font-medium hover:no-underline hover:text-[#F3831C] text-left">
-                    {item.question}
-                  </AccordionTrigger>
-                 <AccordionContent>
-                  <p className="text-[#0F3652] text-base whitespace-pre-line">
-                      {item.answer}
-                    </p>
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
-
-          
-        </div>
-      </div>
+      <FaqSection title={faqHeading} faqs={faqItems} />
     </section>
   );
 };
-
 
 export default CorporateFaq;

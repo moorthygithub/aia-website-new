@@ -1,5 +1,3 @@
-
-
 import React from "react";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
@@ -10,24 +8,24 @@ import "swiper/css/pagination";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { AlertCircle, RefreshCcw } from "lucide-react";
-import { BASE_URL } from "@/api/base-url";
+import { BASE_URL, IMAGE_PATH } from "@/api/base-url";
 
 const ContactTestimonial = () => {
   const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ["aia-testimonials"],
     queryFn: async () => {
-      const res = await axios.get(
-        `${BASE_URL}/api/getAllTestimonials`
-      );
+      const res = await axios.get(`${BASE_URL}/api/getAllTestimonials`);
       return res.data;
     },
   });
 
   const studentImageBase =
-    data?.image_url?.find((img) => img.image_for === "Student")?.image_url || "";
+    data?.image_url?.find((img) => img.image_for === "Student")?.image_url ||
+    "";
 
   const noImageUrl =
-    data?.image_url?.find((img) => img.image_for === "No Image")?.image_url || "";
+    data?.image_url?.find((img) => img.image_for === "No Image")?.image_url ||
+    "";
 
   const testimonials =
     data?.data?.map((item) => ({
@@ -42,25 +40,24 @@ const ContactTestimonial = () => {
 
   const truncateText = (text, limit = 130) => {
     if (text.length <= limit) return text;
-    return text.slice(0, limit) + '...';
+    return text.slice(0, limit) + "...";
   };
 
   const shouldShowReadMore = (text) => {
     return text.length > 150;
   };
-  
-            
+
   return (
     <section className="py-12 bg-white">
       <div className="max-w-340 mx-auto w-full px-4 sm:px-6 lg:px-8">
         <div className="mb-10">
           <div className="text-center md:text-left">
             <h1 className="text-3xl md:text-3xl font-bold text-[#0F3652] relative inline-block mb-2">
-          Learner Experiences From Across the Globe 
+              Learner Experiences From Across the Globe
               <span className="absolute left-0 -bottom-2 w-14 h-1 bg-[#F3831C] rounded"></span>
             </h1>
             <p className="text-[#0F3652] text-base font-normal">
-           Hear directly from professionals who achieved success with AIA.
+              Hear directly from professionals who achieved success with AIA.
             </p>
           </div>
         </div>
@@ -69,7 +66,7 @@ const ContactTestimonial = () => {
           <div className="w-full lg:w-1/2 mb-8 lg:mb-0">
             <div className="flex justify-center">
               <img
-                src="https://v3care.in/assets/img/testimonials-seven.png"
+                src={`${IMAGE_PATH}/testimonials-seven.png`}
                 alt="testimonials"
                 className="max-w-full h-auto"
               />

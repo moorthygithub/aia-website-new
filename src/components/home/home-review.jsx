@@ -1,51 +1,50 @@
-import React from "react";
-import axios from "axios";
+import { BASE_URL, IMAGE_PATH } from "@/api/base-url";
 import { useQuery } from "@tanstack/react-query";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
+import axios from "axios";
+import { AlertCircle, RefreshCcw } from "lucide-react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
-import { AlertCircle, RefreshCcw } from "lucide-react";
-import { BASE_URL } from "@/api/base-url";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Autoplay, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 const HomeReview = () => {
   const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ["aia-testimonials"],
     queryFn: async () => {
-      const res = await axios.get(
-        `${BASE_URL}/api/getAllTestimonials`
-      );
+      const res = await axios.get(`${BASE_URL}/api/getAllTestimonials`);
       return res.data;
     },
   });
 
   const studentImageBase =
-    data?.image_url?.find((img) => img.image_for === "Student")?.image_url || "";
+    data?.image_url?.find((img) => img.image_for === "Student")?.image_url ||
+    "";
 
   const noImageUrl =
-    data?.image_url?.find((img) => img.image_for === "No Image")?.image_url || "";
+    data?.image_url?.find((img) => img.image_for === "No Image")?.image_url ||
+    "";
 
   const testimonials =
     data?.data?.map((item) => ({
       name: item.student_name,
       course: item.student_course,
       message: item.student_testimonial,
+      link: item.student_testimonial_link,
       image: item.student_image
         ? `${studentImageBase}${item.student_image}`
         : noImageUrl,
       alt: item.student_image_alt || item.student_name,
     })) || [];
-
   const truncateText = (text, limit = 130) => {
     if (text.length <= limit) return text;
-    return text.slice(0, limit) + '...';
+    return text.slice(0, limit) + "...";
   };
 
-  const shouldShowReadMore = (text) => {
-    return text.length > 150;
-  };
+  // const shouldShowReadMore = (text) => {
+  //   return text.length > 150;
+  // };
 
   return (
     <section className="py-12 bg-white">
@@ -53,11 +52,11 @@ const HomeReview = () => {
         <div className="mb-10">
           <div className="text-center md:text-left">
             <h1 className="text-3xl md:text-3xl font-bold text-[#0F3652] relative inline-block mb-2">
-            Learner Experiences From Across the Globe 
+              Learner Experiences From Across the Globe
               <span className="absolute left-0 -bottom-2 w-14 h-1 bg-[#F3831C] rounded"></span>
             </h1>
             <p className="text-[#0F3652] text-base font-normal">
-            Hear directly from professionals who achieved success with AIA.
+              Hear directly from professionals who achieved success with AIA.
             </p>
           </div>
         </div>
@@ -66,7 +65,7 @@ const HomeReview = () => {
           <div className="w-full lg:w-1/2 mb-8 lg:mb-0">
             <div className="flex justify-center">
               <img
-                src="https://v3care.in/assets/img/testimonials-seven.png"
+                src={`${IMAGE_PATH}/testimonials-seven.png`}
                 alt="testimonials"
                 className="max-w-full h-auto"
               />
@@ -149,11 +148,13 @@ const HomeReview = () => {
 
                       <p className="text-[#0F3652] pl-2 border-l-2 border-[#F3831C]/50">
                         {truncateText(item.message)}
-                        {shouldShowReadMore(item.message) && (
+
+                        {item?.link && (
                           <a
-                            href={item?.student_testimonial_link}
+                            href={item.link}
                             target="_blank"
-                            className="ml-2 text-[#F3831C] font-medium text-sm hover:underline"
+                            rel="noopener noreferrer"
+                            className="ml-2 text-[#F3831C] font-medium text-sm hover:underline cursor-pointer"
                           >
                             Read more
                           </a>

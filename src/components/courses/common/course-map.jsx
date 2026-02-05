@@ -1,6 +1,3 @@
-
-
-
 import { useEffect, useState } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -14,6 +11,7 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import "../map.css";
 import { BASE_URL } from "@/api/base-url";
+import SectionHeading from "@/components/SectionHeading/SectionHeading";
 
 const MAX_PHOTOS = 6;
 
@@ -21,17 +19,25 @@ const CourseMap = ({ courseCode }) => {
   const [mapData, setMapData] = useState(null);
   const [imageUrl, setImageUrl] = useState("");
 
-  const { data: apiData, isLoading, isError } = useQuery({
+  const {
+    data: apiData,
+    isLoading,
+    isError,
+  } = useQuery({
     queryKey: ["student-map-data", courseCode],
     queryFn: async () => {
-      const res = await axios.get(`${BASE_URL}/api/getPassoutStudentsMapbyCourse/${courseCode}`);
+      const res = await axios.get(
+        `${BASE_URL}/api/getPassoutStudentsMapbyCourse/${courseCode}`,
+      );
       return res.data;
     },
   });
 
   useEffect(() => {
     if (apiData) {
-      const studentImageUrlObj = apiData.image_url?.find((item) => item.image_for === "Student");
+      const studentImageUrlObj = apiData.image_url?.find(
+        (item) => item.image_for === "Student",
+      );
       const studentImageUrl = studentImageUrlObj?.image_url || "";
 
       setMapData(apiData.data);
@@ -75,7 +81,7 @@ const CourseMap = ({ courseCode }) => {
 
     const verticalBounds = L.latLngBounds(
       L.latLng(-70, -Infinity),
-      L.latLng(85, Infinity)
+      L.latLng(85, Infinity),
     );
     map.setMaxBounds(verticalBounds);
 
@@ -88,7 +94,7 @@ const CourseMap = ({ courseCode }) => {
         maxZoom: 20,
         noWrap: false,
         continuousWorld: true,
-      }
+      },
     ).addTo(map);
 
     const cluster = L.markerClusterGroup({
@@ -109,7 +115,10 @@ const CourseMap = ({ courseCode }) => {
 
     map.on("move", function () {
       const mapCenterLng = map.getCenter().lng;
-      if (lastUpdateLng === null || Math.abs(mapCenterLng - lastUpdateLng) > 90) {
+      if (
+        lastUpdateLng === null ||
+        Math.abs(mapCenterLng - lastUpdateLng) > 90
+      ) {
         cluster.getLayers().forEach((marker) => {
           const originalLng = markerOriginalLngs.get(marker);
           if (originalLng !== undefined) {
@@ -117,7 +126,8 @@ const CourseMap = ({ courseCode }) => {
             while (newLng - mapCenterLng > 180) newLng -= 360;
             while (newLng - mapCenterLng < -180) newLng += 360;
             const latLng = marker.getLatLng();
-            if (Math.abs(newLng - latLng.lng) > 1) marker.setLatLng([latLng.lat, newLng]);
+            if (Math.abs(newLng - latLng.lng) > 1)
+              marker.setLatLng([latLng.lat, newLng]);
           }
         });
         lastUpdateLng = mapCenterLng;
@@ -138,7 +148,7 @@ const CourseMap = ({ courseCode }) => {
             <div class="course-name">${student.course}</div>
             <div class="caption">${student.name}</div>
           </div>
-        `
+        `,
         )
         .join("");
 
@@ -229,15 +239,30 @@ const CourseMap = ({ courseCode }) => {
           justifyContent: "center",
         }}
       >
-        <div className="text-red-500">Error loading map data. Please try again later.</div>
+        <div className="text-red-500">
+          Error loading map data. Please try again later.
+        </div>
       </div>
     );
   }
 
-  return <div id="map" style={{ height: "100vh", width: "95.5%" }} className="mx-auto" />;
+  return (
+    <>
+      <div className="mb-3">
+        <SectionHeading
+          title="Trusted by Professionals Across 36+ Countries Around the World"
+          description="AIA’s global learning community brings together working professionals, helping them build practical expertise that delivers real-world impact."
+          align="center"
+        />
+      </div>
+      <div
+        id="map"
+        style={{ height: "100vh", width: "95.5%" }}
+        className="mx-auto"
+      />
+      ;
+    </>
+  );
 };
 
 export default CourseMap;
-
-
-
