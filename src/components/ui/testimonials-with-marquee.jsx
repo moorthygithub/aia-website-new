@@ -12,7 +12,7 @@ export function TestimonialsSection({
 
   return (
 
-    <section className={cn("pb-12  px-0 ", className)}>
+    <section className={cn("py-12  px-0  ", className)}>
       <div className="mx-auto flex max-w-340 flex-col items-center gap-4 text-center sm:gap-16">
         {title && (
           <div className="flex flex-col items-center gap-4 px-4 sm:gap-8">

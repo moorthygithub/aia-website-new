@@ -86,7 +86,7 @@ const CourseYoutube = ({ courseSlug  }) => {
 
   return (
    <TestimonialsSection
-          title=" "
+          title="Meet Recently Qualified on YouTube "
           testimonials={testimonials}
         />
   );

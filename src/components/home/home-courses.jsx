@@ -162,6 +162,18 @@ const HomeCourses = () => {
 
   return (
     <div className="max-w-340 mx-auto px-4 sm:px-6 lg:px-8">
+
+
+            <div className="">
+          <div className="text-center ">
+            <h1 className="text-3xl md:text-4xl font-bold text-[#0F3652] relative inline-block mb-2">
+         International Certification Programs Offered by AIA
+              <span className="absolute left-0 -bottom-2 w-14 h-1 bg-[#F3831C] rounded"></span>
+            </h1>
+          
+          </div>
+        </div>
+      
     
       <div className="md:hidden">
         <div className="mb-8">

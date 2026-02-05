@@ -16,18 +16,18 @@ const CfeCurrUnique = () => {
   return (
     <CourseUnique
       badgeText="WHAT MAKES US UNIQUE"
-      heading="Welcome to"
-      highlight="AIA"
-      description="At the Academy of Internal Audit, we go beyond just training — we provide a complete support system to ensure your success."
+      heading="Why AIA is the Preferred Choice for "
+      highlight="Professionals"
+      description="Because we go beyond just training - we provide a complete support system to ensure your success."
       services={[
         {
           icon: <Users className="w-6 h-6" />,
           secondaryIcon: (
             <Sparkles className="w-4 h-4 absolute -top-1 -right-1 text-blue-400" />
           ),
-          title: "Dedicated Support Person",
+          title: "Proven Exam-Oriented Training Methodology",
           description:
-            "Get one-on-one guidance throughout your learning journey — we're with you every step of the way.",
+            "AIA is an officially authorized learning partner of IIA India, supporting a credible and structured CIA learning journey.",
           position: "left",
         },
         {
@@ -35,9 +35,9 @@ const CfeCurrUnique = () => {
           secondaryIcon: (
             <CheckCircle className="w-4 h-4 absolute -top-1 -right-1 text-blue-400" />
           ),
-          title: "Gleim Hard Copy Notes",
+          title: "Dedicated Support Person",
           description:
-            "Comprehensive and well-structured notes delivered to your doorstep for easy offline study.",
+            "Get one-on-one guidance throughout your learning journey; we're with you every step of the way.",
           position: "left",
         },
         {
@@ -45,9 +45,9 @@ const CfeCurrUnique = () => {
           secondaryIcon: (
             <Star className="w-4 h-4 absolute -top-1 -right-1 text-blue-400" />
           ),
-          title: "60+ Hours of Video Lectures",
+          title: "Gleim Hard Copy Notes",
           description:
-            "Learn at your own pace with high-quality, detailed video lectures covering the complete syllabus.",
+            "Comprehensive and well-structured notes delivered to your doorstep for easy offline study.",
           position: "left",
         },
         {
@@ -57,7 +57,7 @@ const CfeCurrUnique = () => {
           ),
           title: "Live Sessions with Faculty",
           description:
-            "Interact directly with expert faculty members to clarify doubts and deepen your understanding.",
+            "Learn at your own pace with high-quality, detailed video lectures covering the complete syllabus.",
           position: "right",
         },
         {
@@ -65,9 +65,9 @@ const CfeCurrUnique = () => {
           secondaryIcon: (
             <CheckCircle className="w-4 h-4 absolute -top-1 -right-1 text-blue-400" />
           ),
-          title: "100% Exam Registration Support",
+          title: "Live Sessions with Faculty",
           description:
-            "From registration to scheduling your exam — we assist you at every stage.",
+            "Interact directly with expert faculty members to clarify doubts and deepen your understanding.",
           position: "right",
         },
         {
@@ -75,12 +75,13 @@ const CfeCurrUnique = () => {
           secondaryIcon: (
             <Star className="w-4 h-4 absolute -top-1 -right-1 text-blue-400" />
           ),
-          title: "Practical & Proven Training",
+          title: "100% Exam Registration Support",
           description:
-            "Join AIA and experience audit training that’s practical, personal, and proven.",
+            "From registration to scheduling your exam, we assist you at every stage of your journey.",
           position: "right",
         },
       ]}
+      lastText="Join AIA and experience audit training that’s practical, personal, and proven."
     />
   );
 };

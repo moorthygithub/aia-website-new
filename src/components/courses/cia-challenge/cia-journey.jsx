@@ -4,8 +4,8 @@ import CourseJourney from "../common/course-journey";
 const CiaJourney = () => {
   return (
     <CourseJourney
-      heading="Your Complete Guide to CIA Challenge Mastery –"
-      highlight="Value, Learning, Format"
+      heading="CIA Challenge Exam Essentials - "
+      highlight="Eligibility, Learning, Structure"
       connectorImage="https://i.postimg.cc/4dVWknz1/step-line.png"
       steps={[
         {

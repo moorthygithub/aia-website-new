@@ -26,16 +26,16 @@ const AboutSection = () => {
                 practical ability required to perform in real-world audit and
                 risk environments.
               </p>
-              <ul className="list-disc pl-6 space-y-2 text-[#0F3652]">
-                <li>
+              <span className="list-disc pl-6 space-y-2 text-[#0F3652]">
+                <span>
                   <strong>
                     <em>
                       “Clearing an exam is an achievement. Applying it is the
                       profession.”
                     </em>
                   </strong>
-                </li>
-              </ul>
+                </span>
+              </span>
 
               <p>
                 This belief shapes everything we do. Our programs are designed

@@ -47,7 +47,7 @@ const HomeCorporatePartner = () => {
           <div className="relative z-10 w-full px-8 pb-12 grid grid-cols-1 md:grid-cols-2 items-center gap-8 max-w-340 mx-auto">
             <div>
               <span className="block mb-4 text-xs md:text-sm text-[#F3831C] font-medium">
-                Academy of Internal Audit
+               AIA Empowers Organisations Through Audit & Fraud Excellence
               </span>
               <h3 className="text-xl font-semibold text-[#0F3652]">
                 {currentTitle}
@@ -61,9 +61,9 @@ const HomeCorporatePartner = () => {
                 variant="ghost"
                 aria-label="Explore Siga"
               >
-                <Link to={'/efforts'}>
+                <Link to={'/corpo'}>
                   <span className="relative z-10 text-white">
-                    <span>Explore AIA</span>
+                    <span>Read More</span>
                   </span>
            
                 </Link>

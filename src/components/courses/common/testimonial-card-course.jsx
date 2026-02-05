@@ -34,7 +34,7 @@ export function TestimonialCardCourse({
       
       
       
-      <div className="h-full w-full flex items-center justify-center">
+      <div className="h-full w-full flex items-center justify-center border-2 border-[#0F3652] rounded-lg overflow-hidden relative">
         <Avatar className="h-full w-full rounded-md">
           <AvatarImage 
             src={author?.avatar} 

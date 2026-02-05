@@ -181,14 +181,11 @@ const FreeResourceFlashCard = () => {
             <div key={module.id} className="flex flex-col items-center">
               <button
                 onClick={() => setOpenDrawer(module.id)}
-                className="group cursor-pointer relative mb-3 flex h-28 w-28 items-center justify-center rounded-full shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl sm:h-32 sm:w-32 sm:text-5xl md:h-36 md:w-36"
-                style={{
-                  background: 'linear-gradient(135deg, #0F3652 0%, #1a5483 100%)'
-                }}
+                className="group cursor-pointer relative mb-3 flex h-28 w-28 items-center justify-center rounded-full transition-all duration-300 hover:scale-110 hover:shadow-xl sm:h-32 sm:w-32 sm:text-5xl md:h-36 md:w-36"
+              
               >
-                <div className="absolute inset-0 rounded-full border-4" style={{ borderColor: '#F3831C', opacity: 0.5 }}></div>
-                <div className="absolute inset-2 rounded-full border-2 border-white opacity-20"></div>
-                <span className="relative z-10 text-4xl">{module.icon}</span>
+               
+                <span className="relative z-10 text-8xl">{module.icon}</span>
               </button>
               
               <div className="text-center">

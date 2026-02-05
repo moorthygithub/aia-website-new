@@ -50,11 +50,7 @@ const CourseCurriculum = ({ title, curriculumData ,description}) => {
                   <div
                     className={`
                       w-8 h-8 rounded-md flex items-center justify-center mr-3 font-bold text-lg
-                      ${
-                        activeTab === item.id
-                          ? "bg-[#F3831C] text-white"
-                          : "bg-[#F3831C] text-white"
-                      }
+                      
                     `}
                   >
                     {item.id}   

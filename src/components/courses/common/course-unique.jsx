@@ -7,6 +7,7 @@ export default function CourseUnique({
   highlight,
   description,
   services,
+  lastText=""
 }) {
   return (
     <section
@@ -45,6 +46,11 @@ export default function CourseUnique({
               .map((service, index) => (
                 <ServiceItem key={index} {...service} />
               ))}
+          </div>
+
+          <div className="font-bold w-full  col-span-2 text-center text-xl">
+        {lastText}
+
           </div>
         </div>
       </div>

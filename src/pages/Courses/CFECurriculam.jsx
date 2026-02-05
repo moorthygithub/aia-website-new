@@ -26,6 +26,7 @@ import PopUp from "@/components/common/pop-up";
 import CfeFaq from "@/components/courses/cfe-curriculam/cfe-faq";
 import CourseYoutubeLecture from "@/components/courses/common/course-youtube-lecture";
 import CourseTopStudent from "@/components/courses/common/course-top-student";
+import CfeCourseLms from "@/components/courses/cfe-curriculam/cfe-course-lms";
 
 const CFECurriculam = () => {
   return (
@@ -46,7 +47,7 @@ const CFECurriculam = () => {
       <CfeReview />
 
       <AboutTrainerSection />
-      <CourseLms />
+      <CfeCourseLms />
       <CfeUnique />
       <CfeAchivers />
       <CamsConnection />

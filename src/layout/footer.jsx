@@ -205,7 +205,7 @@ export default function Footer() {
                   </div>
                   <a href="tel:+18001200255" className="block hover:scale-105 transition-transform">
                     <div className=" rounded-xl p-4">
-                      <img src={`${IMAGE_PATH}/logo/toll free.png`} alt="Toll Free" className="w-full" />
+                      <img src={`${IMAGE_PATH}/toll free.png`} alt="Toll Free" className="w-full" />
                     </div>
                   </a>
                 </div>
