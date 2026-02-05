@@ -449,7 +449,7 @@ const BlogDetails = () => {
                 <div className="max-w-md mx-auto p-1 space-y-4">
                   <div className="space-y-2">
                     <h2 className="text-xl font-medium text-[#0F3652]">
-                      Subscribe to newsletter
+                      Subscribe to Newsletter
                     </h2>
                     
                     <form onSubmit={handleSubscribe} className="space-y-3">

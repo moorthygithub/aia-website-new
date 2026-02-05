@@ -38,7 +38,7 @@ const curriculumData = [
 const CfeCourseCurriculum = () => {
   return (
     <CourseCurriculum
-      title="Course Curriculum"
+      title="CFE Course Curriculum"
       description={` The <strong>Certified Fraud Examiner (CFE) credential is globally recognised </strong> as a benchmark for professionals working in fraud detection, investigation, and prevention. The certification <strong> validates a professional’s ability to understand & identify fraud schemes </strong>, conduct structured investigations, and design effective fraud prevention frameworks across organisations.<br/> \nThe CFE exam is divided into <strong> four core modules </strong>, covering financial fraud schemes, legal aspects, investigation techniques, and fraud prevention and deterrence. Together, these modules build strong technical knowledge and practical judgment required to handle real-world fraud risks.<br/> \n At AIA, we design our <strong> CFE training program </strong> to ensure that aspirants develop a <strong> clear organisational understanding and an investigator mindset. </strong> The course structure helps learners view transactions through a fraud-risk framework, understand how controls fail, and analyse fraud from the perspective of how it occurs.`}
       curriculumData={curriculumData}
     />

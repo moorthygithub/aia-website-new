@@ -17,7 +17,7 @@ const CourseAbout = ({
           <div>
             {badgeText && (
               <div className="flex items-center gap-3 mb-3">
-                <span className="text-sm font-medium text-[#F3831C] uppercase tracking-wider">
+                <span className="text-sm font-medium text-[#F3831C]  tracking-wider">
                   {badgeText}
                 </span>
               </div>

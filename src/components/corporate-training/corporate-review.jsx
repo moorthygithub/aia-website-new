@@ -17,13 +17,21 @@ const CorporateReview = () => {
       author: "Karan Warit, CAMS, Investcorp"
     },
     {
-      text: "Thank you, AIA It wouldn't be possible without your support & guidance.",
-      author: "HRT BARRINGAYA, CFE, KPMG"
+      text: "Nice Faculty and staff. Recommended for CFE course.",
+      author: "Ankit Dhyani, Audit Associate, PWC"
     },
     {
-      text: "Purest 5in 5 CFE classes are outstanding-clear, focused, and incredibly helpful for exam prep. Highly recommended! Thank you Sir...",
-      author: "Nathania D, CFE, Bahrain"
-    }
+      text: "I truly appreciate the professionalism, dedication, and personalized support provided by team AIA, which helped me clear the certification with confidence. I would highly recommend AIA to all professionals aspiring to build a career in fraud examination, audit, and risk management.",
+      author: "Prithvi Raj Chauhan, Subject Matter Expert, GLA university"
+    },
+    {
+      text: "Ever Grateful to Mr. Garg for founding AIA. The coaching is immaculate & indeed helpful enough to score amazingly. I would choose AIA again for my future courses. Thankyou AIA team!",
+      author: "Lakshmi Chandana, Forensic Associate Consultant, EY"
+    },
+    {
+      text: "AIA delivered a high-quality CAMS training program that met my expectation in every aspect. Well-structured and aligned with current industry standards. Highly recommend to any organization looking to enhance their AML compliance capabilities.",
+      author: "Kamal Mahmoud, Head of Regulatory & Compliance, MEC Gulf"
+    },
   ]
 
  

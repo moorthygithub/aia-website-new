@@ -74,10 +74,10 @@ const Blog = () => {
     navigate(`/blogs/${slug}`);
   };
 
- 
-  const handleCategoryClick = (category) => {
-    navigate(`/blogs/course/${category}`);
-  };
+const handleCategoryClick = (category) => {
+  window.open(`/blogs/course/${category}`, "_blank", "noopener,noreferrer");
+};
+
 
   const BlogCard = ({ blog }) => {
     return (
