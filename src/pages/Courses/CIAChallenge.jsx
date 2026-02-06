@@ -1,4 +1,5 @@
 import AboutTrainerSection from "@/components/about/about-trainer-section";
+import CourseReview from "@/components/common/course-review";
 import PopUp from "@/components/common/pop-up";
 import CamsConnection from "@/components/courses/cams/cams-connection";
 import CiaAbout from "@/components/courses/cia-challenge/cia-about";
@@ -8,7 +9,6 @@ import CiaCourseLms from "@/components/courses/cia-challenge/cia-course-lms";
 import CiaFaq from "@/components/courses/cia-challenge/cia-faq";
 import CiaHighlight from "@/components/courses/cia-challenge/cia-highlight";
 import CiaJourney from "@/components/courses/cia-challenge/cia-journey";
-import CiaRevew from "@/components/courses/cia-challenge/cia-review";
 import CiaUnique from "@/components/courses/cia-challenge/cia-unique";
 import CiaWhyAia from "@/components/courses/cia-challenge/cia-why-aia";
 import CourseHero from "@/components/courses/common/course-hero";
@@ -30,8 +30,7 @@ const CIAChallenge = () => {
         courseSlug="ciac"
         needPrefix="false"
         title="We Stand by Results"
-        subtitle="Meet our Latest CIA Challenge Achievers of November 2025!
-"
+        subtitle="Meet our Latest CIA Challenge Achievers of November 2025!"
       />
       <CiaCourseCurriculum />
       {/* <CiaResult /> */}
@@ -46,7 +45,8 @@ const CIAChallenge = () => {
       <CourseMap courseCode="CIAC" />
       <CourseYoutubeLecture courseSlug="ciac" />
       <CourseYoutube courseSlug="ciac" />
-      <CiaRevew />
+      {/* <CiaRevew /> */}
+      <CourseReview slug="CIAC" />
       <AboutTrainerSection path="faculty_cia_challenge.webp" />
       <CiaCourseLms />
       <CiaUnique />

@@ -4,7 +4,6 @@ import HomeAlumniWork from "@/components/home/home-alumini-work";
 import CamsConnection from "@/components/courses/cams/cams-connection";
 import CourseHero from "@/components/courses/common/course-hero";
 
-import CfeReview from "@/components/courses/cfe-curriculam/cfe-review";
 import CourseYoutube from "@/components/courses/common/course-youtube";
 
 import CfeAchivers from "@/components/courses/cfe-curriculam/cfe-achivers";
@@ -16,6 +15,7 @@ import CfeJourney from "@/components/courses/cfe-curriculam/cfe-journey";
 import CfeUnique from "@/components/courses/cfe-curriculam/cfe-unique";
 import CfeWhyAia from "@/components/courses/cfe-curriculam/cfe-why-aia";
 
+import CourseReview from "@/components/common/course-review";
 import PopUp from "@/components/common/pop-up";
 import CfeCourseLms from "@/components/courses/cfe-curriculam/cfe-course-lms";
 import CfeFaq from "@/components/courses/cfe-curriculam/cfe-faq";
@@ -48,7 +48,8 @@ const CFECurriculam = () => {
       <CourseMap courseCode="CFE" />
       <CourseYoutubeLecture courseSlug="cfe" />
       <CourseYoutube courseSlug="cfe" />
-      <CfeReview />
+      {/* <CfeReview /> */}
+      <CourseReview slug="CFE" />
       <AboutTrainerSection path="faculty_cfe.webp" />
       <CfeCourseLms />
       <CfeUnique />

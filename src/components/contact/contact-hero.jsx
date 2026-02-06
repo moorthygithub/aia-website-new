@@ -1,4 +1,4 @@
-import { BASE_URL } from "@/api/base-url";
+import { BASE_URL, IMAGE_PATH } from "@/api/base-url";
 import axios from "axios";
 import { useCallback, useState } from "react";
 
@@ -130,11 +130,11 @@ const ContactHero = () => {
                 <span className="text-[#fa8017] font-semibold">Let's talk</span>
               </p>
 
-              <div className="absolute top-[20%] left-[50%]">
+              <div className="absolute top-[20%] left-[65%]">
                 <img
-                  src="https://aia.in.net/assets/images/arrow.png"
+                  src={`${IMAGE_PATH}/arrow.png`}
                   alt="arrow"
-                  className="w-full h-auto"
+                  className="w-[240px] h-auto"
                 />
               </div>
 

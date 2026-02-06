@@ -1,4 +1,5 @@
 import AboutTrainerSection from "@/components/about/about-trainer-section";
+import CourseReview from "@/components/common/course-review";
 import PopUp from "@/components/common/pop-up";
 import CamsConnection from "@/components/courses/cams/cams-connection";
 import CfeCurrUnique from "@/components/courses/cia-curriculam/cfe-curr-unique";
@@ -9,7 +10,6 @@ import CiaCurrCourseLms from "@/components/courses/cia-curriculam/cia-curr-cours
 import CiaCurrFaq from "@/components/courses/cia-curriculam/cia-curr-faq";
 import CiaCurrHighlight from "@/components/courses/cia-curriculam/cia-curr-highlight";
 import CiaCurrJourney from "@/components/courses/cia-curriculam/cia-curr-journey";
-import CiaCurrReview from "@/components/courses/cia-curriculam/cia-curr-review";
 import CiaCurrWhyAia from "@/components/courses/cia-curriculam/cia-curr-why-aia";
 import CourseHero from "@/components/courses/common/course-hero";
 import CourseMap from "@/components/courses/common/course-map";
@@ -45,7 +45,8 @@ const CIACurriculam = () => {
       <CourseMap courseCode="CIA" />
       <CourseYoutubeLecture courseSlug="cia" />
       <CourseYoutube courseSlug="cia" />
-      <CiaCurrReview />
+      {/* <CiaCurrReview /> */}
+      <CourseReview slug="CIA" />
       <AboutTrainerSection path="faculty_cia.webp" />
       <CiaCurrCourseLms />
       <CfeCurrUnique />

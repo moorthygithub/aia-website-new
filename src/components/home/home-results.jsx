@@ -1,0 +1,91 @@
+import { BASE_URL } from "@/api/base-url";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import React, { useMemo } from "react";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+import { TestimonialsSectionCourse } from "../courses/common/testimonials-with-marquee-course";
+
+const HomeResults = ({ title }) => {
+  const {
+    data: certificatesData,
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ["course-results-common"],
+    queryFn: async () => {
+      const res = await axios.get(`${BASE_URL}/api/getAllCertificate`);
+      return res?.data ?? { data: [], image_url: [] };
+    },
+  });
+
+  const testimonials = useMemo(() => {
+    if (!certificatesData?.data?.length) return [];
+
+    const studentImageBaseUrl =
+      certificatesData.image_url?.find((item) => item.image_for === "Student")
+        ?.image_url || "";
+
+    const validCertificates = certificatesData.data.filter(
+      (item) => item.student_other_certificate_image,
+    );
+
+    const order = ["ACFE", "IIA", "ACAMS"];
+
+    validCertificates.sort((a, b) => {
+      const aIndex = order.indexOf(a.student_certificate_issued_by);
+      const bIndex = order.indexOf(b.student_certificate_issued_by);
+
+      return (aIndex === -1 ? 99 : aIndex) - (bIndex === -1 ? 99 : bIndex);
+    });
+
+    return validCertificates.map((certificate) => ({
+      author: {
+        avatar: `${studentImageBaseUrl}${certificate.student_other_certificate_image}`,
+      },
+      alt:
+        certificate.student_other_certificate_image_alt || "Certificate Image",
+    }));
+  }, [certificatesData]);
+
+  if (isLoading) {
+    return (
+      <div className="relative w-full py-12 sm:py-24 md:py-32">
+        <div className="mx-auto max-w-container flex flex-col items-center gap-4 text-center sm:gap-16">
+          <div className="flex flex-col items-center gap-4 px-4 sm:gap-8">
+            <Skeleton height={40} width={400} />
+            <Skeleton height={20} width={200} />
+          </div>
+
+          <div className="flex overflow-hidden gap-4">
+            {[...Array(6)].map((_, i) => (
+              <Skeleton key={i} height={200} width={320} />
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div className="relative w-full py-12 sm:py-24 md:py-32 text-center">
+        <p className="text-red-500">
+          Error loading certificates. Please try again later.
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <TestimonialsSectionCourse
+      title={
+        title ||
+        "Proof of Excellence: CIA Challenge Exam Success Stories of AIA Achievers"
+      }
+      testimonials={testimonials}
+    />
+  );
+};
+
+export default HomeResults;

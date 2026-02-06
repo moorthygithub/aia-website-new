@@ -14,7 +14,6 @@ const CourseTopStudent = ({
   needPrefix,
   subtitle = "Our successful graduates making a difference in the industry",
 }) => {
-  console.log(courseSlug, "courseSlug");
   const {
     data: camsPassoutData,
     isLoading,

@@ -6,8 +6,6 @@ import HomeAlumniWork from "@/components/home/home-alumini-work";
 
 import CamsFaq from "@/components/courses/cams/cams-faq";
 
-import CamsReview from "@/components/courses/cams/cams-review";
-
 import CamsAchivers from "@/components/courses/cams/cams-achivers";
 import CamsUnique from "@/components/courses/cams/cams-unique";
 
@@ -25,6 +23,7 @@ import CourseMap from "@/components/courses/common/course-map";
 import CourseResult from "@/components/courses/common/course-result";
 import CourseTopStudent from "@/components/courses/common/course-top-student";
 import CourseYoutubeLecture from "@/components/courses/common/course-youtube-lecture";
+import CourseReview from "@/components/common/course-review";
 
 const CAMS = () => {
   return (
@@ -48,7 +47,8 @@ const CAMS = () => {
       <CamsWhyAia />
       <CamsHighlight />
       <CourseMap courseCode="CAMS" />
-      <CamsReview />
+      {/* <CamsReview /> */}
+      <CourseReview slug="CAMS" />
       <CourseYoutubeLecture courseSlug="cams" />
       <CourseYoutube courseSlug="cams" />
       <AboutTrainerSection path="faculty_cams.webp" />
