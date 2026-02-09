@@ -17,7 +17,7 @@ const CompanyMarquee = ({ companies }) => {
         `}
       </style>
 
-      <div className="w-full bg-linear-to-b from-black/0 via-black/0 to-[#0F3652]/40 py-20 overflow-hidden">
+      <div className="w-full bg-gradient-to-b from-[#0f365200]/5 via-[#0F3652]/30 to-[#0F3652]/60 py-20 overflow-hidden">
         <SectionHeading
           title="Shaping Alumni Who Lead"
           description="Delivering excellence &

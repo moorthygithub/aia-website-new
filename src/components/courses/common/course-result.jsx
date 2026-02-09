@@ -28,21 +28,34 @@ const CourseResult = ({ course, queryKey, title }) => {
     const certificateImageUrlObj = certificatesData.image_url?.find(
       (item) => item.image_for === "Student",
     );
+
     const certificateNoImageUrlObj = certificatesData.image_url?.find(
       (item) => item.image_for === "No Image",
     );
+
     const certificateImageUrl = certificateImageUrlObj?.image_url || "";
+    const noImageUrl = certificateNoImageUrlObj?.image_url || "";
 
-    return certificatesData.data.map((certificate) => ({
-      author: {
-        avatar: certificate.student_other_certificate_image
+    return certificatesData.data
+      .map((certificate) => {
+        const imageSrc = certificate.student_other_certificate_image
           ? `${certificateImageUrl}${certificate.student_other_certificate_image}`
-          : certificateNoImageUrlObj?.image_url || "",
-      },
+          : "";
 
-      alt:
-        certificate.student_other_certificate_image_alt || "Certificate Image",
-    }));
+        if (!imageSrc || imageSrc === noImageUrl) {
+          return null;
+        }
+
+        return {
+          author: {
+            avatar: imageSrc,
+          },
+          alt:
+            certificate.student_other_certificate_image_alt ||
+            "Certificate Image",
+        };
+      })
+      .filter(Boolean);
   }, [certificatesData]);
 
   if (isLoading) {

@@ -56,7 +56,7 @@ const CourseCurriculum = ({ title, curriculumData, description }) => {
           </div>
 
           <div className="w-full md:w-[70%]">
-            <div className="bg-white rounded-br-3xl  rounded-tl-3xl p-4  shadow-lg shadow-black/20 border border-[#F3831C]/20">
+            <div className="bg-white rounded-br-3xl  rounded-tl-3xl p-4  shadow-lg shadow-black/20 border border-[#F3831C]/20 h-[350px]">
               {activeContent?.content?.length ? (
                 <div className="space-y-1">
                   <div className="mb-3">

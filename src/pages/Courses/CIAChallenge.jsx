@@ -51,7 +51,11 @@ const CIAChallenge = () => {
       <CiaCourseLms />
       <CiaUnique />
       <CiaAchivers />
-      <CamsConnection path="how_it_works_cia_challenge.webp" />
+      <CamsConnection
+        path="how_it_works_cia_challenge.webp"
+        title="The Right Certification Starts With the Right Choice"
+        description="Find the certification that aligns with your background and carrer stage"
+      />
       <HomeAlumniWork />
       <CiaFaq />
     </div>

@@ -74,26 +74,26 @@ const HomeCorporatePartner = () => {
               )}
             </div>
 
-            {!isLoading && !isError && testimonials.length > 0 && (
-              <CircularTestimonials
-                testimonials={testimonials}
-                autoplay={true}
-                onIndexChange={handleTestimonialChange} // Pass callback
-                colors={{
-                  name: "#0F3652",
-                  designation: "#0F3652",
-                  testimony: "#0F3652",
-                  arrowBackground: "#F3831C",
-                  arrowForeground: "#ffffff",
-                  arrowHoverBackground: "#0F3652",
-                }}
-                fontSizes={{
-                  name: "28px",
-                  designation: "20px",
-                  quote: "20px",
-                }}
-              />
-            )}
+              {!isLoading && !isError && testimonials.length > 0 && (
+                <CircularTestimonials
+                  testimonials={testimonials}
+                  autoplay={true}
+                  onIndexChange={handleTestimonialChange}
+                  colors={{
+                    name: "#0F3652",
+                    designation: "#0F3652",
+                    testimony: "#0F3652",
+                    arrowBackground: "#F3831C",
+                    arrowForeground: "#ffffff",
+                    arrowHoverBackground: "#0F3652",
+                  }}
+                  fontSizes={{
+                    name: "28px",
+                    designation: "20px",
+                    quote: "20px",
+                  }}
+                />
+              )}
           </div>
         </section>
       </div>

@@ -2,15 +2,21 @@ import { IMAGE_PATH } from "@/api/base-url";
 import SectionHeading from "@/components/SectionHeading/SectionHeading";
 import React from "react";
 
-const CamsConnection = ({ path = "how_it_works_cfe.webp" }) => {
+const CamsConnection = ({
+  title,
+  highlight1,
+  path = "how_it_works_cfe.webp",
+  description,
+  description1,
+}) => {
   return (
     <div className="relative py-8 text-center">
       <SectionHeading
-        title="How It"
-        highlight1="Works?"
+        title={title || ""}
+        highlight1={highlight1 || ""}
         align="center"
-        description="Your Success Path, Simplified"
-        description1="Your Certification Journey From Learning to Leadership"
+        description={description || ""}
+        description1={description1 || ""}
       />
       <img
         src={`${IMAGE_PATH}/${path}`}

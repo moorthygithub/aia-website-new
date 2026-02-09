@@ -24,7 +24,10 @@ const CorporateTraining = () => {
       <CorporateQuote />
       <CorporateDeliver />
       <CorporateCarousel />
-      <CamsConnection path="how_it_works_corporate.webp" />
+      <CamsConnection
+        path="how_it_works_corporate.webp"
+        title="Here's Why Top Organizations Partner With Us"
+      />
       <CorporateCta />
       <CorporateHighlight />
       <CorporateTrainer />
