@@ -35,7 +35,7 @@ export function TestimonialCardCourse({
         "transition-all duration-300",
         "h-50 w-[320px]",
         href ? "cursor-pointer" : "cursor-default",
-        className,
+        className
       )}
     >
       <div className="h-full w-full flex items-center justify-center">
@@ -68,7 +68,7 @@ const PassoutResult = () => {
     if (!certificatesData?.data) return [];
 
     const certificateImageUrlObj = certificatesData.image_url?.find(
-      (item) => item.image_for === "Student",
+      (item) => item.image_for === "Student"
     );
     const certificateImageUrl = certificateImageUrlObj?.image_url || "";
 

@@ -1,9 +1,9 @@
 import AboutTrainerSection from "@/components/about/about-trainer-section";
+import CourseAchivers from "@/components/common/course-achivers";
 import CourseReview from "@/components/common/course-review";
 import PopUp from "@/components/common/pop-up";
 import CamsConnection from "@/components/courses/cams/cams-connection";
 import CiaAbout from "@/components/courses/cia-challenge/cia-about";
-import CiaAchivers from "@/components/courses/cia-challenge/cia-achivers";
 import CiaCourseCurriculum from "@/components/courses/cia-challenge/cia-cource-curriculam";
 import CiaCourseLms from "@/components/courses/cia-challenge/cia-course-lms";
 import CiaFaq from "@/components/courses/cia-challenge/cia-faq";
@@ -48,7 +48,11 @@ const CIAChallenge = () => {
       <AboutTrainerSection path="faculty_cia_challenge.webp" />
       <CiaCourseLms />
       <CiaUnique />
-      <CiaAchivers />
+      <CourseAchivers
+        slug="ciac"
+        title="Meet the Professionals Who Earned Their CFE Credential"
+      />
+
       <CamsConnection
         path="how_it_works_cia_challenge.webp"
         title="The Right Certification Starts With the Right Choice"

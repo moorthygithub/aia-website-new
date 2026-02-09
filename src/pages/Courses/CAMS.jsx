@@ -1,8 +1,8 @@
 import AboutTrainerSection from "@/components/about/about-trainer-section";
+import CourseAchivers from "@/components/common/course-achivers";
 import CourseReview from "@/components/common/course-review";
 import PopUp from "@/components/common/pop-up";
 import CamsAbout from "@/components/courses/cams/cams-about";
-import CamsAchivers from "@/components/courses/cams/cams-achivers";
 import CamsConnection from "@/components/courses/cams/cams-connection";
 import CamsCourseCurriculum from "@/components/courses/cams/cams-course-curriculum";
 import CamsFaq from "@/components/courses/cams/cams-faq";
@@ -46,7 +46,10 @@ const CAMS = () => {
       <AboutTrainerSection path="faculty_cams.webp" />
       <CfeCourseLms />
       <CamsUnique />
-      <CamsAchivers />
+      <CourseAchivers
+        slug="CAMS"
+        title="Meet the Professionals Who Successfully Cleared the CFE with AIA"
+      />
       <CamsConnection
         path="how_it_works_cams.webp"
         title="The Right Certification Starts With the Right Choice"

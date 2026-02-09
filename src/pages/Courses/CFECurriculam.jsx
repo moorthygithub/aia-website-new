@@ -6,8 +6,6 @@ import CourseHero from "@/components/courses/common/course-hero";
 
 import CourseYoutube from "@/components/courses/common/course-youtube";
 
-import CfeAchivers from "@/components/courses/cfe-curriculam/cfe-achivers";
-
 import CfeAbout from "@/components/courses/cfe-curriculam/cfe-about";
 import CfeCourseCurriculum from "@/components/courses/cfe-curriculam/cfe-cource-curriculam";
 import CfeHighlight from "@/components/courses/cfe-curriculam/cfe-highlight";
@@ -15,6 +13,7 @@ import CfeJourney from "@/components/courses/cfe-curriculam/cfe-journey";
 import CfeUnique from "@/components/courses/cfe-curriculam/cfe-unique";
 import CfeWhyAia from "@/components/courses/cfe-curriculam/cfe-why-aia";
 
+import CourseAchivers from "@/components/common/course-achivers";
 import CourseReview from "@/components/common/course-review";
 import PopUp from "@/components/common/pop-up";
 import CfeCourseLms from "@/components/courses/cfe-curriculam/cfe-course-lms";
@@ -52,7 +51,12 @@ const CFECurriculam = () => {
       <AboutTrainerSection path="faculty_cfe.webp" />
       <CfeCourseLms />
       <CfeUnique />
-      <CfeAchivers title="Meet the Professionals Who Successfully Cleared the CFE with AIA" />
+      {/* <CfeAchivers title="Meet the Professionals Who Successfully Cleared the CFE with AIA" /> */}
+      <CourseAchivers
+        slug="CAMS"
+        title="Meet the Professionals Who Successfully Cleared the CFE with AIA"
+      />
+
       <CamsConnection
         path="how_it_works_cfe.webp"
         title="The Right Certification Starts With the Right Choice"

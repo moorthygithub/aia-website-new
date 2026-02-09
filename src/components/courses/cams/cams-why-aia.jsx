@@ -1,11 +1,11 @@
-import React from 'react'
-import CourseWhyAia from '../common/course-why-aia'
-import { IMAGE_PATH } from '@/api/base-url'
+import React from "react";
+import CourseWhyAia from "../common/course-why-aia";
+import { IMAGE_PATH } from "@/api/base-url";
 
 const CamsWhyAia = () => {
   return (
     <CourseWhyAia
-      heading="WHY AIA"
+      heading="WHY AIA(Academy of Internal Audit)"
       items={[
         {
           img: `${IMAGE_PATH}/teacher-svgrepo-com.png`,
@@ -29,7 +29,7 @@ const CamsWhyAia = () => {
         },
       ]}
     />
-  )
-}
+  );
+};
 
-export default CamsWhyAia
+export default CamsWhyAia;

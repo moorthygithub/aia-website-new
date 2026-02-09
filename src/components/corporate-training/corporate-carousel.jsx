@@ -4,6 +4,7 @@ import axios from "axios";
 import { useEffect, useMemo, useState } from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import SectionHeading from "../SectionHeading/SectionHeading";
 
 const CorporateCarouselSkeleton = ({ cards = 5 }) => {
   return (
@@ -50,7 +51,7 @@ const CorporateCarousel = () => {
 
     const sliderImageBase =
       certificatesData.image_url?.find(
-        (item) => item.image_for === "Corporate Slider",
+        (item) => item.image_for === "Corporate Slider"
       )?.image_url || "";
 
     const noImage =
@@ -70,7 +71,7 @@ const CorporateCarousel = () => {
 
     const interval = setInterval(() => {
       setCurrentSlide((prev) =>
-        prev + cardsToShow >= images.length ? 0 : prev + cardsToShow,
+        prev + cardsToShow >= images.length ? 0 : prev + cardsToShow
       );
     }, 3000);
 
@@ -84,7 +85,11 @@ const CorporateCarousel = () => {
 
   return (
     <div className="w-full max-w-340 mx-auto py-8">
-      <div className="relative">
+      <SectionHeading
+        title="Moments That Made Professionals Journey Worth It"
+        align="center"
+      />
+      <div className="relative mt-3">
         <div className="overflow-hidden">
           <div
             className="flex gap-4 transition-transform duration-500 ease-in-out"
@@ -103,7 +108,7 @@ const CorporateCarousel = () => {
                     onError={(e) => {
                       e.currentTarget.src =
                         certificatesData.image_url?.find(
-                          (item) => item.image_for === "No Image",
+                          (item) => item.image_for === "No Image"
                         )?.image_url || "";
                     }}
                   />

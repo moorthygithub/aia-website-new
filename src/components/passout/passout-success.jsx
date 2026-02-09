@@ -2,12 +2,14 @@ import { BASE_URL } from "@/api/base-url";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { ArrowRight } from "lucide-react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import SectionHeading from "../SectionHeading/SectionHeading";
 
 const PassoutSuccess = () => {
-  const [expandedCourses, setExpandedCourses] = useState({});
+  const ITEMS_PER_LOAD = 3;
+  // const courseRefs = useRef({});
 
+  const [visibleCountByCourse, setVisibleCountByCourse] = useState({});
   const {
     data: studentStoriesData,
     isLoading,
@@ -23,7 +25,7 @@ const PassoutSuccess = () => {
   const getImageUrl = (type) => {
     if (!studentStoriesData?.image_url) return "";
     const imageConfig = studentStoriesData.image_url.find(
-      (item) => item.image_for === type,
+      (item) => item.image_for === type
     );
     return imageConfig ? imageConfig.image_url : "";
   };
@@ -53,11 +55,23 @@ const PassoutSuccess = () => {
       course: story.student_course || "Other",
     }));
   };
+  const normalizeCourseName = (course = "") => {
+    const normalized = course.trim().toUpperCase();
 
+    if (
+      normalized === "CIA" ||
+      normalized === "CIAC" ||
+      normalized.startsWith("CIA PART")
+    ) {
+      return "CIA";
+    }
+
+    return course || "Other";
+  };
   const groupStoriesByCourse = () => {
     const stories = transformStories();
     const grouped = stories.reduce((acc, story) => {
-      const course = story.course || "Other";
+      const course = normalizeCourseName(story.course);
       if (!acc[course]) {
         acc[course] = [];
       }
@@ -68,11 +82,31 @@ const PassoutSuccess = () => {
     return grouped;
   };
 
-  const toggleCourseExpansion = (course) => {
-    setExpandedCourses((prev) => ({
+  const getVisibleCount = (course, total) => {
+    return visibleCountByCourse[course] || Math.min(ITEMS_PER_LOAD, total);
+  };
+
+  const handleViewMore = (course, total) => {
+    setVisibleCountByCourse((prev) => ({
       ...prev,
-      [course]: !prev[course],
+      [course]: Math.min(
+        (prev[course] || ITEMS_PER_LOAD) + ITEMS_PER_LOAD,
+        total
+      ),
     }));
+  };
+
+  const handleShowLess = (course) => {
+    setVisibleCountByCourse((prev) => ({
+      ...prev,
+      [course]: ITEMS_PER_LOAD,
+    }));
+    // setTimeout(() => {
+    //   courseRefs.current[course]?.scrollIntoView({
+    //     behavior: "smooth",
+    //     block: "start",
+    //   });
+    // }, 50);
   };
 
   const groupedStories = groupStoriesByCourse();
@@ -114,7 +148,11 @@ const PassoutSuccess = () => {
           align="center"
         />
         {Object.entries(groupedStories).map(([course, stories]) => (
-          <div key={course} className="mb-12 p-4 border-2 rounded-lg mt-4">
+          <div
+            key={course}
+            // ref={(el) => (courseRefs.current[course] = el)}
+            className="mb-12 p-4 border-2 rounded-lg mt-4"
+          >
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-3">
                 <div className="w-6 h-6 text-[#F3831C]">
@@ -132,175 +170,102 @@ const PassoutSuccess = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-              {expandedCourses[course]
-                ? stories.map((story) => (
-                    <article
-                      key={story.id}
-                      className="bg-white rounded-md overflow-hidden shadow-lg transition-shadow duration-300 flex flex-col"
-                    >
-                      <div className="relative h-54">
-                        <img
-                          src={story.image}
-                          alt={story.imageAlt}
-                          className="w-full h-full object-contain rounded-md border-2 border-amber-300"
-                        />
+              {stories
+                .slice(0, getVisibleCount(course, stories.length))
+                .map((story) => (
+                  <article
+                    key={story.id}
+                    className="bg-white rounded-md overflow-hidden shadow-lg transition-shadow duration-300 flex flex-col"
+                  >
+                    <div className="relative h-54">
+                      <img
+                        src={story.image}
+                        alt={story.imageAlt}
+                        className="w-full h-full object-contain rounded-md border-2 border-amber-300"
+                      />
+                    </div>
+
+                    <div className="p-2 flex-1 flex flex-col">
+                      <h5 className="font-bold text-gray-900 text-sm">
+                        {story.name}, {story.designation}
+                      </h5>
+
+                      <div className="flex flex-row items-center justify-between">
+                        <p className="text-xs text-gray-600 mt-1">
+                          {story.role} Works at {story.companyName}
+                        </p>
+                        <p className="text-xs text-gray-500 mt-1">
+                          {new Date(story.date).toLocaleDateString("en-GB", {
+                            day: "2-digit",
+                            month: "2-digit",
+                            year: "numeric",
+                          })}
+                        </p>
                       </div>
 
-                      <div className="p-2 flex-1 flex flex-col">
-                        <h5 className="font-bold text-gray-900 text-sm">
-                          {story.name}, {story.designation}
-                        </h5>
-
-                        <div className="flex flex-row items-center justify-between">
-                          <p className="text-xs text-gray-600 mt-1">
-                            {story.role} Works at {story.companyName}
-                          </p>
-                          <p className="text-xs text-gray-500 mt-1">
-                            {new Date(story.date).toLocaleDateString("en-GB", {
-                              day: "2-digit",
-                              month: "2-digit",
-                              year: "numeric",
-                            })}
-                          </p>
-                        </div>
-
-                        <div className="mt-auto flex items-center justify-between pt-4">
-                          <div className="flex items-center">
-                            {story.companyImage && (
-                              <div className="flex items-center gap-2">
-                                <img
-                                  src={story.companyImage}
-                                  alt={story.companyName}
-                                  className="w-8 h-8 object-contain"
-                                />
-                              </div>
-                            )}
-                          </div>
-
-                          <a
-                            href={`/passout-stories/${story.slug}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold py-2 px-4 rounded-full inline-flex items-center gap-2 transition-colors text-sm ml-auto"
-                          >
-                            Learn More
-                            <svg
-                              width="16"
-                              height="16"
-                              viewBox="0 0 16 16"
-                              fill="none"
-                            >
-                              <path
-                                d="M6 12L10 8L6 4"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
+                      <div className="mt-auto flex items-center justify-between pt-4">
+                        <div className="flex items-center">
+                          {story.companyImage && (
+                            <div className="flex items-center gap-2">
+                              <img
+                                src={story.companyImage}
+                                alt={story.companyName}
+                                className="w-8 h-8 object-contain"
                               />
-                            </svg>
-                          </a>
-                        </div>
-                      </div>
-                    </article>
-                  ))
-                : stories.slice(0, 3).map((story) => (
-                    <article
-                      key={story.id}
-                      className="bg-white rounded-md overflow-hidden shadow-lg transition-shadow duration-300 flex flex-col"
-                    >
-                      <div className="relative h-54">
-                        <img
-                          src={story.image}
-                          alt={story.imageAlt}
-                          className="w-full h-full object-contain rounded-md border-2 border-amber-300"
-                        />
-                      </div>
-
-                      <div className="p-2 flex-1 flex flex-col">
-                        <h5 className="font-bold text-gray-900 text-sm">
-                          {story.name}, {story.designation}
-                        </h5>
-
-                        <div className="flex flex-row items-center justify-between">
-                          <p className="text-xs text-gray-600 mt-1">
-                            {story.role} Works at {story.companyName}
-                          </p>
-                          <p className="text-xs text-gray-500 mt-1">
-                            {new Date(story.date).toLocaleDateString("en-GB", {
-                              day: "2-digit",
-                              month: "2-digit",
-                              year: "numeric",
-                            })}
-                          </p>
+                            </div>
+                          )}
                         </div>
 
-                        <div className="mt-auto flex items-center justify-between pt-4">
-                          <div className="flex items-center">
-                            {story.companyImage && (
-                              <div className="flex items-center gap-2">
-                                <img
-                                  src={story.companyImage}
-                                  alt={story.companyName}
-                                  className="w-8 h-8 object-contain"
-                                />
-                              </div>
-                            )}
-                          </div>
-
-                          <a
-                            href={`/passout-stories/${story.slug}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold py-2 px-4 rounded-full inline-flex items-center gap-2 transition-colors text-sm ml-auto"
+                        <a
+                          href={`/passout-stories/${story.slug}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold py-2 px-4 rounded-full inline-flex items-center gap-2 transition-colors text-sm ml-auto"
+                        >
+                          Learn More
+                          <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 16 16"
+                            fill="none"
                           >
-                            Learn More
-                            <svg
-                              width="16"
-                              height="16"
-                              viewBox="0 0 16 16"
-                              fill="none"
-                            >
-                              <path
-                                d="M6 12L10 8L6 4"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                              />
-                            </svg>
-                          </a>
-                        </div>
+                            <path
+                              d="M6 12L10 8L6 4"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        </a>
                       </div>
-                    </article>
-                  ))}
+                    </div>
+                  </article>
+                ))}
             </div>
 
-            {stories.length > 3 && !expandedCourses[course] && (
+            {getVisibleCount(course, stories.length) < stories.length && (
               <div className="text-center">
                 <button
+                  onClick={() => handleViewMore(course, stories.length)}
                   className="relative overflow-hidden cursor-pointer flex items-center justify-center px-4 py-2 border border-[#0F3652] mx-auto gap-2 rounded-md font-medium text-sm text-[#0F3652] group"
-                  onClick={() => toggleCourseExpansion(course)}
                 >
                   <span className="absolute inset-0 bg-[#0F3652] scale-y-0 origin-bottom transition-transform duration-300 group-hover:scale-y-100"></span>
-                  <span className="relative z-10 flex items-center gap-2 transition-colors duration-300 group-hover:text-white">
-                    View All {course} Stories ({stories.length})
+                  <span className="relative z-10 flex items-center gap-2 group-hover:text-white">
+                    View More
                     <ArrowRight className="w-4 h-4" />
                   </span>
                 </button>
               </div>
             )}
 
-            {expandedCourses[course] && stories.length > 3 && (
-              <div className="text-center">
+            {getVisibleCount(course, stories.length) > ITEMS_PER_LOAD && (
+              <div className="text-center mt-3">
                 <button
-                  className="relative overflow-hidden cursor-pointer flex items-center justify-center px-4 py-2 border border-[#0F3652] mx-auto gap-2 rounded-md font-medium text-sm text-[#0F3652] group"
-                  onClick={() => toggleCourseExpansion(course)}
+                  onClick={() => handleShowLess(course)}
+                  className="text-sm text-[#0F3652] underline hover:text-[#F3831C]"
                 >
-                  <span className="absolute inset-0 bg-[#0F3652] scale-y-0 origin-bottom transition-transform duration-300 group-hover:scale-y-100"></span>
-                  <span className="relative z-10 flex items-center gap-2 transition-colors duration-300 group-hover:text-white">
-                    Show Less
-                    <ArrowRight className="w-4 h-4 rotate-180" />
-                  </span>
+                  Show Less
                 </button>
               </div>
             )}

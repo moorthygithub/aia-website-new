@@ -34,14 +34,14 @@ const PopUp = ({ slug = "home" }) => {
       try {
         setLoading(true);
         const response = await axios.get(
-          `${BASE_URL}/api/getPopupbySlug/${slug}`,
+          `${BASE_URL}/api/getPopupbySlug/${slug}`
         );
 
         if (response.data?.data) {
           setPopupData(response.data.data);
 
           const popupImageConfig = response.data.image_url?.find(
-            (item) => item.image_for === "Popup",
+            (item) => item.image_for === "Popup"
           );
           if (popupImageConfig) {
             setImageBaseUrl(popupImageConfig.image_url);
@@ -91,7 +91,7 @@ const PopUp = ({ slug = "home" }) => {
           "https://aia.in.net/webapi/public/assets/images/no_image.jpg";
         fallbackImg.onload = () => {
           setImageUrl(
-            "https://aia.in.net/webapi/public/assets/images/no_image.jpg",
+            "https://aia.in.net/webapi/public/assets/images/no_image.jpg"
           );
           setImageLoaded(true);
 
@@ -158,7 +158,7 @@ const PopUp = ({ slug = "home" }) => {
           onLoad={() => setImageLoaded(true)}
           onError={() => {
             setImageUrl(
-              "https://aia.in.net/webapi/public/assets/images/no_image.jpg",
+              "https://aia.in.net/webapi/public/assets/images/no_image.jpg"
             );
             setImageLoaded(true);
           }}
@@ -168,22 +168,25 @@ const PopUp = ({ slug = "home" }) => {
   }
 
   return (
-    <Dialog open={open} onOpenChange={handleOpenChange}>
-      <DialogContent className="p-0 overflow-hidden border-0 bg-transparent max-w-xl">
-        <div className="relative bg-white rounded-xl shadow-2xl">
-          <DialogHeader className="p-2 pb-1">
-            <DialogTitle className="text-xl font-bold text-center text-gray-800">
+    <Dialog open={open} onOpenChange={handleOpenChange} className="z-999">
+      <DialogContent className="p-0 overflow-hidden border-0 bg-transparent max-w-xl z-[9999]">
+        <div className="relative bg-white rounded-xl shadow-2xl ">
+          <DialogHeader className="relative p-4">
+            <DialogTitle className="text-lg font-bold text-center text-gray-800 p-0">
               {popupData.popup_heading}
             </DialogTitle>
-          </DialogHeader>
 
-          <button
-            onClick={handleClose}
-            className="absolute right-3 top-3 z-10 h-7 w-7 rounded-full bg-white/80 hover:bg-white shadow-md flex items-center justify-center"
-            aria-label="Close popup"
-          >
-            <X className="h-3 w-3 text-gray-700" />
-          </button>
+            <button
+              onClick={handleClose}
+              className="absolute right-4 top-1/2 -translate-y-1/2 h-8 w-8 rounded-full mt-2
+               bg-[#0F3652] hover:bg-[#F3831C] shadow-md 
+               flex items-center justify-center
+               focus:outline-none focus:ring-2 focus:ring-[#0F3652]/40 cursor-pointer"
+              aria-label="Close popup"
+            >
+              <X className="h-4 w-4 text-white" />
+            </button>
+          </DialogHeader>
 
           <div className="p-2">
             <img

@@ -1,10 +1,10 @@
 import AboutTrainerSection from "@/components/about/about-trainer-section";
+import CourseAchivers from "@/components/common/course-achivers";
 import CourseReview from "@/components/common/course-review";
 import PopUp from "@/components/common/pop-up";
 import CamsConnection from "@/components/courses/cams/cams-connection";
 import CfeCurrUnique from "@/components/courses/cia-curriculam/cfe-curr-unique";
 import CiaCurrAbout from "@/components/courses/cia-curriculam/cia-curr-about";
-import CiaCurrAchivers from "@/components/courses/cia-curriculam/cia-curr-achivers";
 import CiaCurrCourseCurriculum from "@/components/courses/cia-curriculam/cia-curr-cource-curriculam";
 import CiaCurrCourseLms from "@/components/courses/cia-curriculam/cia-curr-course-lms";
 import CiaCurrFaq from "@/components/courses/cia-curriculam/cia-curr-faq";
@@ -49,7 +49,11 @@ const CIACurriculam = () => {
       <AboutTrainerSection path="faculty_cia.webp" />
       <CiaCurrCourseLms />
       <CfeCurrUnique />
-      <CiaCurrAchivers />
+      {/* <CiaCurrAchivers /> */}
+      <CourseAchivers
+        slug="cia"
+        title="From Aspirants to Certified Internal Auditors - Our Recent CIA Achievers"
+      />
       <CamsConnection
         path="how_it_works_cia.webp"
         title="The Right Certification Starts With the Right Choice"

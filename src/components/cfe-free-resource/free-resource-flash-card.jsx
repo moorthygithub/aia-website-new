@@ -1,25 +1,25 @@
-'use client';
-import React, { useState } from 'react';
+"use client";
+import { BASE_URL } from "@/api/base-url";
 import {
   Drawer,
-  DrawerClose,
   DrawerContent,
   DrawerDescription,
-  DrawerFooter,
   DrawerHeader,
   DrawerTitle,
-} from '@/components/ui/drawer';
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
-import { BASE_URL } from '@/api/base-url';
+} from "@/components/ui/drawer";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { useState } from "react";
 
 const FreeResourceFlashCard = () => {
   const [openDrawer, setOpenDrawer] = useState(null);
   const [flippedCardKey, setFlippedCardKey] = useState(null);
 
-
-
-  const { data: flashCardData = {}, isLoading, isError } = useQuery({
+  const {
+    data: flashCardData = {},
+    isLoading,
+    isError,
+  } = useQuery({
     queryKey: ["flash-card"],
     queryFn: async () => {
       const response = await axios.get(`${BASE_URL}/api/getFlashCard`);
@@ -27,13 +27,11 @@ const FreeResourceFlashCard = () => {
     },
   });
 
- 
   const transformApiDataToModules = (apiData) => {
     if (!apiData || !apiData.data || !Array.isArray(apiData.data)) {
       return [];
     }
 
-  
     const groupedCards = apiData.data.reduce((acc, card) => {
       const group = card.flash_cards_group;
       if (!acc[group]) {
@@ -42,60 +40,55 @@ const FreeResourceFlashCard = () => {
       acc[group].push({
         id: card.id,
         question: card.flash_cards_question,
-        answer: card.flash_cards_answer, 
+        answer: card.flash_cards_answer,
       });
       return acc;
     }, {});
 
-    
     const moduleMetadata = {
-      '1': {
+      1: {
         id: 1,
         number: "01",
         title: "Financial Transactions & Fraud Schemes",
-        icon: "💡"
+        icon: "💡",
       },
-      '2': {
+      2: {
         id: 2,
         number: "02",
         title: "Law",
-        icon: "⚖️"
+        icon: "⚖️",
       },
-      '3': {
+      3: {
         id: 3,
         number: "03",
         title: "Investigation",
-        icon: "🔍"
+        icon: "🔍",
       },
-      '4': {
+      4: {
         id: 4,
         number: "04",
         title: "Fraud Prevention & Deterrence",
-        icon: "🛡️"
-      }
+        icon: "🛡️",
+      },
     };
 
-
-    const modules = Object.keys(moduleMetadata).map(groupKey => {
+    const modules = Object.keys(moduleMetadata).map((groupKey) => {
       const metadata = moduleMetadata[groupKey];
       const cards = groupedCards[groupKey] || [];
-      
-     
+
       const sortedCards = cards.sort((a, b) => {
-      
-        const cardA = apiData.data.find(item => item.id === a.id);
-        const cardB = apiData.data.find(item => item.id === b.id);
-        
-      
+        const cardA = apiData.data.find((item) => item.id === a.id);
+        const cardB = apiData.data.find((item) => item.id === b.id);
+
         const orderA = cardA ? cardA.flash_cards_no : a.id;
         const orderB = cardB ? cardB.flash_cards_no : b.id;
-        
+
         return orderA - orderB;
       });
 
       return {
         ...metadata,
-        cards: sortedCards
+        cards: sortedCards,
       };
     });
 
@@ -106,15 +99,13 @@ const FreeResourceFlashCard = () => {
 
   const toggleFlip = (moduleId, cardId) => {
     const key = `${moduleId}-${cardId}`;
-    setFlippedCardKey(prev => (prev === key ? null : key));
+    setFlippedCardKey((prev) => (prev === key ? null : key));
   };
-  
 
   const closeDrawer = () => {
-  setOpenDrawer(null);
-  setFlippedCardKey(null);
-};
-
+    setOpenDrawer(null);
+    setFlippedCardKey(null);
+  };
 
   const handleDrawerChange = (open) => {
     if (!open) {
@@ -122,15 +113,16 @@ const FreeResourceFlashCard = () => {
     }
   };
 
-  const currentModule = modules.find(m => m.id === openDrawer);
+  const currentModule = modules.find((m) => m.id === openDrawer);
 
- 
   if (isLoading) {
     return (
       <div className="w-full bg-white py-12 px-4 sm:py-16 sm:px-6 md:py-20 md:px-8">
         <div className="mb-8 text-center sm:mb-12">
           <h2 className="mb-2 text-xl font-bold text-gray-800 sm:mb-4 sm:text-2xl md:text-3xl">
-            <span className="mr-2" style={{ color: '#F3831C' }}>»</span>
+            <span className="mr-2" style={{ color: "#F3831C" }}>
+              »
+            </span>
             Free Flash Cards
           </h2>
           <p className="text-sm text-gray-600 sm:text-base">
@@ -144,13 +136,14 @@ const FreeResourceFlashCard = () => {
     );
   }
 
- 
   if (isError) {
     return (
       <div className="w-full bg-white py-12 px-4 sm:py-16 sm:px-6 md:py-20 md:px-8">
         <div className="mb-8 text-center sm:mb-12">
           <h2 className="mb-2 text-xl font-bold text-gray-800 sm:mb-4 sm:text-2xl md:text-3xl">
-            <span className="mr-2" style={{ color: '#F3831C' }}>»</span>
+            <span className="mr-2" style={{ color: "#F3831C" }}>
+              »
+            </span>
             Free Flash Cards
           </h2>
           <p className="text-sm text-red-600 sm:text-base">
@@ -163,10 +156,11 @@ const FreeResourceFlashCard = () => {
 
   return (
     <div className="w-full bg-white py-12 px-4 sm:py-16 sm:px-6 md:py-20 md:px-8">
-  
       <div className="mb-8 text-center sm:mb-12">
         <h2 className="mb-2 text-xl font-bold text-gray-800 sm:mb-4 sm:text-2xl md:text-3xl">
-          <span className="mr-2" style={{ color: '#F3831C' }}>»</span>
+          <span className="mr-2" style={{ color: "#F3831C" }}>
+            »
+          </span>
           Free Flash Cards
         </h2>
         <p className="text-sm text-gray-600 sm:text-base">
@@ -174,25 +168,29 @@ const FreeResourceFlashCard = () => {
         </p>
       </div>
 
-     
       <div className="mx-auto max-w-5xl cursor-pointer">
         <div className="grid grid-cols-2 gap-6 sm:gap-8 md:grid-cols-4 md:gap-10">
           {modules.map((module) => (
             <div key={module.id} className="flex flex-col items-center">
-              <button
-                onClick={() => setOpenDrawer(module.id)}
-                className="group cursor-pointer relative mb-3 flex h-28 w-28 items-center justify-center rounded-full transition-all duration-300 hover:scale-110 hover:shadow-xl sm:h-32 sm:w-32 sm:text-5xl md:h-36 md:w-36"
-              
-              >
-               
-                <span className="relative z-10 text-8xl">{module.icon}</span>
-              </button>
-              
+              <div className="relative group">
+                {/* Tooltip */}
+                <div className="absolute -top-9 left-1/2 w-20 -translate-x-1/2 scale-0 rounded bg-black px-3 py-1 text-xs text-white transition-all duration-300 group-hover:scale-100">
+                  Click here
+                </div>
+
+                <button
+                  onClick={() => setOpenDrawer(module.id)}
+                  className="cursor-pointer relative mb-3 flex h-28 w-28 items-center justify-center rounded-full transition-all duration-300 hover:scale-110 hover:shadow-xl sm:h-32 sm:w-32 md:h-36 md:w-36"
+                >
+                  <span className="relative z-10 text-8xl">{module.icon}</span>
+                </button>
+              </div>
+
               <div className="text-center">
-                <p className="text-xs font-semibold sm:text-sm" style={{ color: '#0F3652' }}>
+                <p className="text-xs font-semibold sm:text-sm text-[#0F3652]">
                   {module.title}
                 </p>
-                <p className="mt-1 text-xs font-bold sm:text-sm" style={{ color: '#F3831C' }}>
+                <p className="mt-1 text-xs font-bold sm:text-sm text-[#F3831C]">
                   {module.number}
                 </p>
               </div>
@@ -201,20 +199,24 @@ const FreeResourceFlashCard = () => {
         </div>
       </div>
 
-     
-      <Drawer 
-        open={openDrawer !== null} 
+      <Drawer
+        open={openDrawer !== null}
         onOpenChange={handleDrawerChange}
         snapPoints={[0.7]}
       >
         <DrawerContent className="flex max-h-[95vh] flex-col">
-          <DrawerHeader className="text-white flex flex-row justify-between items-center" style={{ backgroundColor: '#0F3652' }}>
+          <DrawerHeader
+            className="text-white flex flex-row justify-between items-center"
+            style={{ backgroundColor: "#0F3652" }}
+          >
             <div>
               <DrawerTitle className="text-xl font-bold text-white sm:text-2xl">
-                <span className="mr-2" style={{ color: '#F3831C' }}>»</span>
+                <span className="mr-2" style={{ color: "#F3831C" }}>
+                  »
+                </span>
                 {currentModule?.title}
               </DrawerTitle>
-              <DrawerDescription style={{ color: '#F3831C' }}>
+              <DrawerDescription style={{ color: "#F3831C" }}>
                 Module {currentModule?.number}
               </DrawerDescription>
             </div>
@@ -229,9 +231,8 @@ const FreeResourceFlashCard = () => {
           <div className="flex-1 overflow-y-auto px-4 py-4 sm:px-6 sm:py-6">
             <div className="mx-auto grid max-w-6xl grid-cols-1 gap-3 pb-48 sm:gap-4 md:grid-cols-2 lg:grid-cols-3">
               {currentModule?.cards.map((card, index) => {
-               const isFlipped = flippedCardKey === `${openDrawer}-${card.id}`;
+                const isFlipped = flippedCardKey === `${openDrawer}-${card.id}`;
 
-                
                 return (
                   <div
                     key={card.id}
@@ -240,47 +241,51 @@ const FreeResourceFlashCard = () => {
                   >
                     <div
                       className={`relative h-full w-full transition-transform duration-500 preserve-3d ${
-                        isFlipped ? 'rotate-y-180' : ''
+                        isFlipped ? "rotate-y-180" : ""
                       }`}
                     >
-                
                       <div className="absolute inset-0 flex flex-col items-center justify-center rounded-lg border-2 bg-white p-4 shadow-sm backface-hidden sm:p-4">
-                        <div 
+                        <div
                           className="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full text-xs font-bold text-white sm:h-8 sm:w-8 sm:text-sm"
-                          style={{ backgroundColor: '#0F3652' }}
+                          style={{ backgroundColor: "#0F3652" }}
                         >
                           {index + 1}
                         </div>
-                        
-                        <h4 className="mb-4 w-full h-full flex items-center justify-center text-center text-sm font-semibold sm:text-sm" style={{ color: '#0F3652' }}>
+
+                        <h4
+                          className="mb-4 w-full h-full flex items-center justify-center text-center text-sm font-semibold sm:text-sm"
+                          style={{ color: "#0F3652" }}
+                        >
                           {card.question}
                         </h4>
-                        
-                        <button 
+
+                        <button
                           className="mt-auto  w-full text-end x-4 py-1.5 text-xs font-medium text-black transition-colors sm:px-4 sm:py-1.5 sm:text-sm"
-                          style={{ backgroundColor: '#F3831C' }}
-                          onMouseEnter={(e) => e.target.style.backgroundColor = '#e27519'}
-                          onMouseLeave={(e) => e.target.style.backgroundColor = '#F3831C'}
+                          style={{ backgroundColor: "#F3831C" }}
+                          onMouseEnter={(e) =>
+                            (e.target.style.backgroundColor = "#e27519")
+                          }
+                          onMouseLeave={(e) =>
+                            (e.target.style.backgroundColor = "#F3831C")
+                          }
                         >
                           Click to Flip
                         </button>
                       </div>
 
-                  
-                      <div 
+                      <div
                         className="absolute inset-0 flex items-center justify-center rounded-lg border-2 p-4 shadow-sm backface-hidden rotate-y-180 sm:p-4"
                         style={{
-                          borderColor: '#0F3652',
-                          background: 'linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)'
+                          borderColor: "#0F3652",
+                          background:
+                            "linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)",
                         }}
                       >
-                        <div 
-                          className="prose prose-gray max-w-none w-full h-full flex items-center justify-center overflow-y-auto"
-                        >
-                          <div 
+                        <div className="prose prose-gray max-w-none w-full h-full flex items-center justify-center overflow-y-auto">
+                          <div
                             className="ck-content text-center text-xs sm:text-sm"
-                            style={{ color: '#0F3652' }}
-                            dangerouslySetInnerHTML={{ __html: card.answer }} 
+                            style={{ color: "#0F3652" }}
+                            dangerouslySetInnerHTML={{ __html: card.answer }}
                           />
                         </div>
                       </div>
