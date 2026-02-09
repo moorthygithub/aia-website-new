@@ -16,7 +16,7 @@ const AboutTrainerSection = ({ path = "faculty_about.webp" }) => {
 
           <div className="text-white py-2">
             <div className="text-center">
-              <h2 className="text-3xl  bg-orange-500  instrument-font  text-transparent  bg-clip-text md:text-4xl font-bold mb-3">
+              <h2 className="text-2xl md:text-5xl font-bold text-transparent bg-clip-text bg-linear-to-r from-white via-[#F3831C] to-[#F3831C] italic block mt-2">
                 Know Your Trainer
               </h2>
               <p className="text-xl md:text-2xl mb-4 font-bold">

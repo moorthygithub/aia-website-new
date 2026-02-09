@@ -1,14 +1,5 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, {
-  useEffect,
-  useRef,
-  useState,
-  useMemo,
-  useCallback,
-} from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "./button";
 
 function calculateGap(width) {
@@ -19,7 +10,9 @@ function calculateGap(width) {
   if (width <= minWidth) return minGap;
   if (width >= maxWidth)
     return Math.max(minGap, maxGap + 0.06018 * (width - maxWidth));
-  return minGap + (maxGap - minGap) * ((width - minWidth) / (maxWidth - minWidth));
+  return (
+    minGap + (maxGap - minGap) * ((width - minWidth) / (maxWidth - minWidth))
+  );
 }
 
 export const CircularTestimonials = ({
@@ -45,7 +38,7 @@ export const CircularTestimonials = ({
   const testimonialsLength = useMemo(() => testimonials.length, [testimonials]);
   const activeTestimonial = useMemo(
     () => testimonials[activeIndex],
-    [activeIndex, testimonials]
+    [activeIndex, testimonials],
   );
 
   // Notify parent when index changes
@@ -79,7 +72,8 @@ export const CircularTestimonials = ({
       }, 5000);
     }
     return () => {
-      if (autoplayIntervalRef.current) clearInterval(autoplayIntervalRef.current);
+      if (autoplayIntervalRef.current)
+        clearInterval(autoplayIntervalRef.current);
     };
   }, [autoplay, testimonialsLength, activeIndex, onIndexChange]);
 
@@ -97,11 +91,11 @@ export const CircularTestimonials = ({
   const handleNext = useCallback(() => {
     const newIndex = (activeIndex + 1) % testimonialsLength;
     setActiveIndex(newIndex);
-    
+
     if (onIndexChange) {
       onIndexChange(newIndex);
     }
-    
+
     if (autoplayIntervalRef.current) {
       clearInterval(autoplayIntervalRef.current);
       if (autoplay) {
@@ -117,13 +111,14 @@ export const CircularTestimonials = ({
   }, [activeIndex, testimonialsLength, autoplay, onIndexChange]);
 
   const handlePrev = useCallback(() => {
-    const newIndex = (activeIndex - 1 + testimonialsLength) % testimonialsLength;
+    const newIndex =
+      (activeIndex - 1 + testimonialsLength) % testimonialsLength;
     setActiveIndex(newIndex);
-    
+
     if (onIndexChange) {
       onIndexChange(newIndex);
     }
-    
+
     if (autoplayIntervalRef.current) {
       clearInterval(autoplayIntervalRef.current);
       if (autoplay) {
@@ -143,7 +138,8 @@ export const CircularTestimonials = ({
     const gap = calculateGap(containerWidth);
     const maxStickUp = gap * 0.8;
     const isActive = index === activeIndex;
-    const isLeft = (activeIndex - 1 + testimonialsLength) % testimonialsLength === index;
+    const isLeft =
+      (activeIndex - 1 + testimonialsLength) % testimonialsLength === index;
     const isRight = (activeIndex + 1) % testimonialsLength === index;
 
     if (isActive) {
@@ -185,7 +181,7 @@ export const CircularTestimonials = ({
     <div className="testimonial-container">
       <div className="testimonial-grid">
         {/* Images */}
-        <div className="image-container " ref={imageContainerRef}>
+        {/* <div className="image-container " ref={imageContainerRef}>
           {testimonials.map((testimonial, index) => (
             <img
               key={testimonial.src}
@@ -196,6 +192,66 @@ export const CircularTestimonials = ({
               style={getImageStyle(index)}
             />
           ))}
+        </div> */}
+        <div
+          ref={imageContainerRef}
+          className="relative w-full min-w-[400px] h-96 perspective-[1000px] overflow-visible"
+        >
+          {testimonials.map((testimonial, index) => (
+            <img
+              key={testimonial.src}
+              src={testimonial.src}
+              alt={testimonial.name}
+              className="absolute left-1/2 w-[400px] h-full -translate-x-1/2 rounded-3xl object-contain transition-all duration-700"
+              style={getImageStyle(index)}
+            />
+          ))}
+
+          {/* LEFT ARROW */}
+          <Button
+            onClick={handlePrev}
+            aria-label="Previous testimonial"
+            variant="ghost"
+            className="
+      absolute left-[-22px] top-1/2 -translate-y-1/2
+      z-10
+      h-11 w-11
+      rounded-full
+      bg-[#0F3652]/90
+      text-white
+      flex items-center justify-center
+      transition-all duration-300
+      hover:bg-[#F3831C]
+      hover:scale-105
+      md:left-[-28px]
+      cursor-pointer
+    "
+          >
+            <ChevronLeft size={22} />
+          </Button>
+
+          {/* RIGHT ARROW */}
+          <Button
+            onClick={handleNext}
+            aria-label="Next testimonial"
+            variant="ghost"
+            className="
+      absolute right-[-22px] top-1/2 -translate-y-1/2
+      z-10
+      h-11 w-11
+      rounded-full
+      bg-[#0F3652]/90
+      text-white
+      flex items-center justify-center
+      transition-all duration-300
+      hover:bg-[#F3831C]
+      hover:scale-105
+      md:right-[-28px]
+       cursor-pointer
+    "
+          >
+            <ChevronRight size={22} />
+          </Button>
         </div>
 
         {/* Quote */}
@@ -215,10 +271,9 @@ export const CircularTestimonials = ({
           </AnimatePresence>
         </div> */}
 
-     
-        <div className="  w-full flex flex-row items-center justify-center gap-2">
+        {/* <div className="  w-full flex flex-row items-center justify-center gap-2">
           <Button
-             className="mb-4  relative cursor-pointer overflow-hidden px-4 py-2  text-xs bg-[#F3831C] text-white rounded-none hover:bg-[#0F3652] transition-colors duration-300"
+            className="mb-4  relative cursor-pointer overflow-hidden px-4 py-2  text-xs bg-[#F3831C] text-white rounded-none hover:bg-[#0F3652] transition-colors duration-300"
             onClick={handlePrev}
             variant="ghost"
             onMouseEnter={() => setHoverPrev(true)}
@@ -228,7 +283,6 @@ export const CircularTestimonials = ({
             <span className="relative z-10 flex flex-row items-center text-white ">
               <ChevronLeft size={28} /> <span>Prev</span>
             </span>
-            
           </Button>
           <Button
             className="mb-4  relative cursor-pointer overflow-hidden px-4 py-2  text-xs bg-[#F3831C] text-white rounded-none hover:bg-[#0F3652] transition-colors duration-300"
@@ -242,9 +296,8 @@ export const CircularTestimonials = ({
               <span>Next</span>
               <ChevronRight size={28} />
             </span>
- 
           </Button>
-        </div>
+        </div> */}
       </div>
 
       <style>{`

@@ -51,7 +51,11 @@ const CIACurriculam = () => {
       <CiaCurrCourseLms />
       <CfeCurrUnique />
       <CiaCurrAchivers />
-      <CamsConnection path="how_it_works_cia.webp" />
+      <CamsConnection
+        path="how_it_works_cia.webp"
+        title="The Right Certification Starts With the Right Choice"
+        description="Find the certification that aligns with your background and carrer stage"
+      />
       <HomeAlumniWork />
       <CiaCurrFaq />
     </div>

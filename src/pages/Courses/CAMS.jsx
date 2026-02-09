@@ -55,7 +55,11 @@ const CAMS = () => {
       <CfeCourseLms />
       <CamsUnique />
       <CamsAchivers />
-      <CamsConnection path="how_it_works_cams.webp" />
+      <CamsConnection
+        path="how_it_works_cams.webp"
+        title="The Right Certification Starts With the Right Choice"
+        description="Find the certification that aligns with your background and carrer stage"
+      />
       <HomeAlumniWork />
       <CamsFaq />
     </div>

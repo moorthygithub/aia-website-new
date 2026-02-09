@@ -29,7 +29,7 @@ const CourseHighLight = ({ badgeText, title, description, stats, logos }) => {
         <div className="absolute inset-0  pointer-events-none">
           <svg
             className="w-full h-full"
-            viewBox="0 0 1440 500"
+            viewBox="0 -30 1440 500"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -109,7 +109,7 @@ const CourseHighLight = ({ badgeText, title, description, stats, logos }) => {
 
         <div className="grid grid-cols-2 md:grid-cols-4  gap-1 max-w-340 mx-auto mb-12">
           {stats.map((stat, index) => (
-            <div key={index} className="text-center px-6 py-4  last:border-r-0">
+            <div key={index} className="text-center px-6 py-4  last:border-r-0 mt-12">
               <h3 className="text-2xl md:text-3xl font-bold mb-1 text-[#0F3652]">
                 <CountUp end={stat.value} suffix={stat.suffix} />
               </h3>
