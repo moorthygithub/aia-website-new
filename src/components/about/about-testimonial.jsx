@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { BASE_URL } from "../../api/base-url";
 import { TestimonialSlider } from "../ui/testimonial-slider-1";
+import SectionHeading from "../SectionHeading/SectionHeading";
 
 const AboutTestimonial = () => {
   const {
@@ -84,7 +85,8 @@ const AboutTestimonial = () => {
 
   return (
     <>
-      <div>
+      <div className="mt-4">
+        <SectionHeading title="Our Support Team" align="center" />
         <TestimonialSlider reviews={reviews} />
       </div>
     </>

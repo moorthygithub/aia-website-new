@@ -1,3 +1,4 @@
+import { IMAGE_PATH } from "@/api/base-url";
 import React, { useEffect, useRef, useState } from "react";
 
 const CamsLms = () => {
@@ -43,21 +44,24 @@ const CamsLms = () => {
     <section
       className="relative flex items-center justify-center py-24"
       style={{
-        backgroundImage:
-          "url('https://aia.in.net/crm/public/assets/images/LMS.webp')",
+        backgroundImage: `url(${IMAGE_PATH}/LMS.webp)`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
       }}
     >
-     
       <div className="absolute inset-0 bg-black/55 " />
 
-      
       <div className="relative z-10 w-full max-w-3xl aspect-square">
         <svg viewBox="0 0 600 600" className="w-full h-full">
           <defs>
-            <linearGradient id="orbitGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <linearGradient
+              id="orbitGradient"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+            >
               <stop offset="0%" stopColor="#5956d6" />
               <stop offset="100%" stopColor="#8c7fff" />
             </linearGradient>
@@ -81,7 +85,6 @@ const CamsLms = () => {
             filter="url(#glow)"
           />
 
-    
           <circle cx={center} cy={center} r="52" fill="#6366f1" opacity="0.1" />
           <circle
             cx={center}
@@ -92,11 +95,10 @@ const CamsLms = () => {
             strokeWidth="2.5"
           />
 
-         
           <foreignObject x={center - 28} y={center - 28} width={56} height={56}>
             <div className="w-full h-full flex items-center justify-center">
               <img
-                src="https://aia.in.net/assets/images/new2/LMS.png"
+                src={`${IMAGE_PATH}/LMS.webp`}
                 alt="LMS"
                 className="w-10 h-10 object-contain"
                 draggable={false}
@@ -104,7 +106,6 @@ const CamsLms = () => {
             </div>
           </foreignObject>
 
-       
           {labels.map((label, i) => {
             const angle = i * (360 / labels.length) + angleOffset;
             const { x, y } = getPosition(angle);

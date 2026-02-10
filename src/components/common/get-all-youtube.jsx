@@ -4,7 +4,7 @@ import axios from "axios";
 import React from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import { TestimonialsSection } from "../ui/testimonials-with-marquee";
+import { TestimonialsSectionCourse } from "../courses/common/testimonials-with-marquee-course";
 const AllYoutube = () => {
   const {
     data: certificatesData,
@@ -72,7 +72,7 @@ const AllYoutube = () => {
 
   return (
     <div className="w-full  py-12 px-4 sm:px-6 lg:px-8">
-      <TestimonialsSection
+      <TestimonialsSectionCourse
         title="Meet Professionals Who Made It with AIA"
         description="Click a success story to watch their full interview with Puneet Sir and get inspired."
         testimonials={testimonials}

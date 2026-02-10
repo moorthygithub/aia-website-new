@@ -6,6 +6,7 @@ import HomePassout from "@/components/home/home-passout";
 
 import AllYoutube from "@/components/common/get-all-youtube";
 import PopUp from "@/components/common/pop-up";
+import CourseYoutubeLecture from "@/components/courses/common/course-youtube-lecture";
 import HomeAbout from "@/components/home/home-about";
 import HomeAlumniWork from "@/components/home/home-alumini-work";
 import HomeBlogs from "@/components/home/home-blogs";
@@ -15,7 +16,6 @@ import HomeHero from "@/components/home/home-hero";
 import HomePrCarousel from "@/components/home/home-pr-carousel";
 import HomeResults from "@/components/home/home-results";
 import HomeReview from "@/components/home/home-review";
-import HomeYoutube from "@/components/home/home-youtube";
 
 export default function Home() {
   return (
@@ -26,14 +26,17 @@ export default function Home() {
       <HomeContact />
       <HomeCourses />
       <HomePassout />
-      <HomeResults title="Verified CFE Exam Results Achieved by AIA Learners" />
+      <HomeResults title="AIA Certified Achievers Driving Excellence Everywhere" />
       <HomeAccredited />
       <HomeReview />
       <AllYoutube />
       <HomeCorporatePartner />
       <HomePrCarousel />
       <HomeAlumniWork />
-      <HomeYoutube />
+      <CourseYoutubeLecture
+        courseSlug="home"
+        title="Watch & Learn Everything You Need to Crack the CFE, CIA & CAMS"
+      />
       <HomeBlogs />
       <HomeFaq />
     </div>

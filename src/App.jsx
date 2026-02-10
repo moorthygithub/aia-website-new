@@ -24,6 +24,7 @@ import TermsAndConditions from "./pages/terms-and-conditions/terms-and-condition
 import BlogCourse from "./pages/Blog/blog-course";
 import CfePracticeQuestion from "./pages/free-resources/cfe-practice-question";
 import Meta from "./components/seo/meta";
+import FloatingContact from "./components/common/floating-contact";
 
 export default function App() {
   return (
@@ -31,6 +32,7 @@ export default function App() {
       <ScrollToTop />
       <GoogleAnalytics />
       <NotificationPopup />
+      <FloatingContact />
       <Layout>
         <Meta />
         <main className="grow">

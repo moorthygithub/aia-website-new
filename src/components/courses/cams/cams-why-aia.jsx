@@ -5,7 +5,7 @@ import { IMAGE_PATH } from "@/api/base-url";
 const CamsWhyAia = () => {
   return (
     <CourseWhyAia
-      heading="WHY AIA(Academy of Internal Audit)"
+      heading="WHY Academy of Internal Audit"
       items={[
         {
           img: `${IMAGE_PATH}/teacher-svgrepo-com.png`,

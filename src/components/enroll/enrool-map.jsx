@@ -258,7 +258,6 @@ const EnroolMap = ({ courseCode }) => {
         style={{ height: "100vh", width: "95.5%" }}
         className="mx-auto"
       />
-      ;
     </>
   );
 };

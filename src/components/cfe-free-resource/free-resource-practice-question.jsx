@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { BASE_URL } from "@/api/base-url";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { BASE_URL } from "@/api/base-url";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const FreeResourcePracticeQuestion = () => {
@@ -31,7 +31,7 @@ const FreeResourcePracticeQuestion = () => {
           id: 1,
           title: "MODULE-I: FINANCIAL TRANSACTIONS AND FRAUD SCHEMES",
           questions: questionsData.filter(
-            (q) => q.questions_module === "CFE-1"
+            (q) => q.questions_module === "CFE-1",
           ),
         };
       case "CFE-2":
@@ -39,7 +39,7 @@ const FreeResourcePracticeQuestion = () => {
           id: 2,
           title: "MODULE-II: LAW",
           questions: questionsData.filter(
-            (q) => q.questions_module === "CFE-2"
+            (q) => q.questions_module === "CFE-2",
           ),
         };
       case "CFE-3":
@@ -47,7 +47,7 @@ const FreeResourcePracticeQuestion = () => {
           id: 3,
           title: "MODULE-III: INVESTIGATION",
           questions: questionsData.filter(
-            (q) => q.questions_module === "CFE-3"
+            (q) => q.questions_module === "CFE-3",
           ),
         };
       case "CFE-4":
@@ -55,7 +55,7 @@ const FreeResourcePracticeQuestion = () => {
           id: 4,
           title: "MODULE-IV: FRAUD PREVENTION & DETERRENCE",
           questions: questionsData.filter(
-            (q) => q.questions_module === "CFE-4"
+            (q) => q.questions_module === "CFE-4",
           ),
         };
       default:
@@ -107,10 +107,10 @@ const FreeResourcePracticeQuestion = () => {
       moduleId === 1
         ? "CFE-1"
         : moduleId === 2
-        ? "CFE-2"
-        : moduleId === 3
-        ? "CFE-3"
-        : "CFE-4";
+          ? "CFE-2"
+          : moduleId === 3
+            ? "CFE-3"
+            : "CFE-4";
     return `/cfe-free-resource/${moduleCode}`;
   };
 
@@ -170,7 +170,7 @@ const FreeResourcePracticeQuestion = () => {
                 key={module.id}
                 onMouseEnter={() => setActiveModule(module.id)}
                 className={`
-                  w-full text-left p-3 rounded-tr-3xl rounded-bl-3xl transition-all duration-200
+                  w-full text-left p-3 rounded-tr-3xl rounded-bl-3xl transition-all duration-200 cursor-pointer
                   border
                   ${
                     activeModule === module.id
@@ -237,7 +237,7 @@ const FreeResourcePracticeQuestion = () => {
                               onChange={() =>
                                 handleOptionSelect(
                                   currentQuestion.id,
-                                  option.id
+                                  option.id,
                                 )
                               }
                               className="sr-only"
@@ -249,10 +249,10 @@ const FreeResourcePracticeQuestion = () => {
                                 showCorrect && isCorrect
                                   ? "border-[#21bf73] bg-[#21bf73]"
                                   : showCorrect && isSelected && !isCorrect
-                                  ? "border-red-500 bg-red-500"
-                                  : isSelected
-                                  ? "border-[#0F3652]"
-                                  : "border-gray-300"
+                                    ? "border-red-500 bg-red-500"
+                                    : isSelected
+                                      ? "border-[#0F3652]"
+                                      : "border-gray-300"
                               }
                             `}
                             >
@@ -322,7 +322,7 @@ const FreeResourcePracticeQuestion = () => {
                 <div className="flex flex-col sm:flex-row gap-2 justify-center mt-6">
                   <button
                     onClick={() => handleShowAnswer(currentQuestion.id)}
-                    className="px-4 py-2 bg-[#F3831C] text-white text-xs font-semibold rounded-lg hover:bg-[#e57610] transition-colors duration-200 flex items-center justify-center gap-1"
+                    className="px-4 py-2 bg-[#F3831C] text-white text-xs font-semibold rounded-lg hover:bg-[#e57610] transition-colors duration-200 flex items-center justify-center gap-1 cursor-pointer"
                   >
                     <span>
                       {showAnswerFor === currentQuestion.id
@@ -350,6 +350,7 @@ const FreeResourcePracticeQuestion = () => {
 
                   <Link
                     to={getMoreQuestionsLink(currentModule.id)}
+                    target="_blank"
                     className="px-4 py-2 bg-[#0F3652] text-white text-xs font-semibold rounded-lg hover:bg-[#0d2d44] transition-colors duration-200 flex items-center justify-center gap-1"
                   >
                     <span>More Questions</span>

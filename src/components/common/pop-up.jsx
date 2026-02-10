@@ -1,15 +1,15 @@
-import React, { useState, useEffect, useRef } from "react";
-import axios from "axios";
+import { BASE_URL, IMAGE_PATH } from "@/api/base-url";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import { X, Loader2 } from "lucide-react";
-import { BASE_URL, IMAGE_PATH } from "@/api/base-url";
+import axios from "axios";
+import { X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 const PopUp = ({ slug = "home" }) => {
   const [open, setOpen] = useState(false);
@@ -21,6 +21,7 @@ const PopUp = ({ slug = "home" }) => {
   const [imageUrl, setImageUrl] = useState("");
   const [showPopupAfterLoad, setShowPopupAfterLoad] = useState(false);
   const imageRef = useRef(null);
+  const storageKey = `popup_hidden_${slug}`;
 
   useEffect(() => {
     const popupHidden = sessionStorage.getItem("popup_hidden_globally");
@@ -78,7 +79,7 @@ const PopUp = ({ slug = "home" }) => {
         setImageLoaded(true);
 
         if (!loading && popupData?.popup_required === "Yes") {
-          const popupHidden = sessionStorage.getItem("popup_hidden_globally");
+          const popupHidden = sessionStorage.getItem(storageKey);
           if (popupHidden !== "true") {
             setShowPopupAfterLoad(true);
           }
@@ -92,7 +93,7 @@ const PopUp = ({ slug = "home" }) => {
           setImageUrl(`${IMAGE_PATH}/no_image.jpg`);
           setImageLoaded(true);
 
-          const popupHidden = sessionStorage.getItem("popup_hidden_globally");
+          const popupHidden = sessionStorage.getItem(storageKey);
           if (popupHidden !== "true") {
             setShowPopupAfterLoad(true);
           }
@@ -113,7 +114,7 @@ const PopUp = ({ slug = "home" }) => {
 
   const handleClose = () => {
     if (dontShowAgain) {
-      sessionStorage.setItem("popup_hidden_globally", "true");
+      sessionStorage.setItem(storageKey, "true");
     }
     setOpen(false);
   };
@@ -121,7 +122,7 @@ const PopUp = ({ slug = "home" }) => {
   const handleOpenChange = (isOpen) => {
     if (!isOpen) {
       if (dontShowAgain) {
-        sessionStorage.setItem("popup_hidden_globally", "true");
+        sessionStorage.setItem(storageKey, "true");
       }
     }
     setOpen(isOpen);
@@ -131,7 +132,7 @@ const PopUp = ({ slug = "home" }) => {
     setDontShowAgain(checked);
 
     if (!checked) {
-      sessionStorage.removeItem("popup_hidden_globally");
+      sessionStorage.removeItem(storageKey);
     }
   };
 
@@ -139,7 +140,8 @@ const PopUp = ({ slug = "home" }) => {
     return null;
   }
 
-  const popupHidden = sessionStorage.getItem("popup_hidden_globally");
+  const popupHidden = sessionStorage.getItem(storageKey);
+
   if (popupHidden === "true") {
     return null;
   }
@@ -154,9 +156,7 @@ const PopUp = ({ slug = "home" }) => {
           style={{ display: "none" }}
           onLoad={() => setImageLoaded(true)}
           onError={() => {
-            setImageUrl(
-              `${IMAGE_PATH}/no_image.jpg`,
-            );
+            setImageUrl(`${IMAGE_PATH}/no_image.jpg`);
             setImageLoaded(true);
           }}
         />
@@ -167,22 +167,31 @@ const PopUp = ({ slug = "home" }) => {
   return (
     <Dialog open={open} onOpenChange={handleOpenChange} className="z-999">
       <DialogContent className="p-0 overflow-hidden border-0 bg-transparent max-w-xl z-[9999]">
-        <div className="relative bg-white rounded-xl shadow-2xl ">
-          <DialogHeader className="relative p-4">
-            <DialogTitle className="text-lg font-bold text-center text-gray-800 p-0">
-              {popupData.popup_heading}
-            </DialogTitle>
+        <div className="relative bg-white">
+          <DialogHeader className="p-2">
+            <div className="flex items-center justify-between gap-2">
+              <DialogTitle className="flex-1 text-md font-bold text-center text-gray-800">
+                {popupData.popup_heading}
+              </DialogTitle>
 
-            <button
-              onClick={handleClose}
-              className="absolute right-4 top-1/2 -translate-y-1/2 h-8 w-8 rounded-full mt-2
-               bg-[#0F3652] hover:bg-[#F3831C] shadow-md 
-               flex items-center justify-center
-               focus:outline-none focus:ring-2 focus:ring-[#0F3652]/40 cursor-pointer"
-              aria-label="Close popup"
-            >
-              <X className="h-4 w-4 text-white" />
-            </button>
+              <button
+                onClick={handleClose}
+                className="
+        h-6 w-6
+        rounded-lg
+        bg-[#0F3652]
+        hover:bg-[#F3831C]
+        shadow-md
+        flex items-center justify-center
+        focus:outline-none focus:ring-2 focus:ring-[#0F3652]/40
+        cursor-pointer
+        shrink-0
+      "
+                aria-label="Close popup"
+              >
+                <X className="h-4 w-4 text-white" />
+              </button>
+            </div>
           </DialogHeader>
 
           <div className="p-2">
@@ -200,7 +209,7 @@ const PopUp = ({ slug = "home" }) => {
                 id="dont-show-again-global"
                 checked={dontShowAgain}
                 onCheckedChange={handleCheckboxChange}
-                className="h-5 w-5 data-[state=checked]:bg-indigo-600 data-[state=checked]:border-indigo-600"
+                className="h-5 w-5 data-[state=checked]:bg-[#0F3652] data-[state=checked]:border-[#0F3652]"
               />
               <Label
                 htmlFor="dont-show-again-global"

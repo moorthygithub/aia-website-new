@@ -1,8 +1,3 @@
-
-
-
-
-
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useRef, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -10,16 +5,17 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { BASE_URL } from "@/api/base-url";
 import "react-loading-skeleton/dist/skeleton.css";
+import SectionHeading from "@/components/SectionHeading/SectionHeading";
 
-const CourseYoutubeLecture = ({courseSlug}) => { 
+const CourseYoutubeLecture = ({ courseSlug, title }) => {
   const [activeTab, setActiveTab] = useState("");
   const scrollContainerRef = useRef(null);
 
   const { data, isLoading, isError } = useQuery({
-    queryKey: ["aia-youtube-home"],
+    queryKey: [courseSlug || "aia-youtube-home"],
     queryFn: async () => {
       const res = await axios.get(
-        `${BASE_URL}/api/getLectureYoutubebySlug/${courseSlug}`
+        `${BASE_URL}/api/getLectureYoutubebySlug/${courseSlug}`,
       );
       return res.data;
     },
@@ -54,21 +50,18 @@ const CourseYoutubeLecture = ({courseSlug}) => {
     if (!data?.image_url || !imageName) return "";
 
     const lectureImage = data.image_url.find(
-      (item) => item.image_for === "Lecture Youtube"
+      (item) => item.image_for === "Lecture Youtube",
     );
     if (lectureImage) {
       return `${lectureImage.image_url}${imageName}`;
     }
 
     const noImage = data.image_url.find(
-      (item) => item.image_for === "No Image"
+      (item) => item.image_for === "No Image",
     );
     return noImage ? noImage.image_url : "";
   };
 
-  
-
-  
   if (isLoading) {
     return (
       <div className="w-full bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
@@ -92,13 +85,12 @@ const CourseYoutubeLecture = ({courseSlug}) => {
   if (filteredVideos.length === 0) return null;
 
   return (
-    <div className="w-full  px-4 sm:px-6 lg:px-8">
+    <div className="w-full  px-4 sm:px-6 lg:px-8 mt-4">
       <div className="max-w-340 mx-auto">
-        <div className="flex flex-col items-center justify-center mb-8 mx-auto">
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl  font-bold tracking-tighter mt-5">
-            Visit Our Youtube Channel
-          </h2>
-        </div>
+        <SectionHeading
+          title={title || "Visit Our Youtube Channel"}
+          align="center"
+        />
         {tabs.length > 0 && (
           <div className="mb-8 border-b border-gray-200">
             <div className="flex gap-1 overflow-x-auto scrollbar-hide">
@@ -123,7 +115,7 @@ const CourseYoutubeLecture = ({courseSlug}) => {
           <div className="relative group">
             <button
               onClick={() => scroll("left")}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-gray-50 -ml-4"
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-gray-50 -ml-4 cursor-pointer"
               aria-label="Scroll left"
             >
               <ChevronLeft className="w-5 h-5 text-gray-700" />
@@ -160,7 +152,7 @@ const CourseYoutubeLecture = ({courseSlug}) => {
 
             <button
               onClick={() => scroll("right")}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-gray-50 -mr-4"
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-gray-50 -mr-4 cursor-pointer"
               aria-label="Scroll right"
             >
               <ChevronRight className="w-5 h-5 text-gray-700" />
@@ -174,8 +166,6 @@ const CourseYoutubeLecture = ({courseSlug}) => {
           </div>
         )}
       </div>
-   
-    
     </div>
   );
 };

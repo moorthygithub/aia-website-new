@@ -40,15 +40,15 @@ const CAMS = () => {
       <CamsWhyAia />
       <CamsHighlight />
       <CourseMap courseCode="CAMS" />
-      <CourseYoutube courseSlug="cams" />
-      <CourseYoutubeLecture courseSlug="cams" />
       <CourseReview slug="CAMS" />
+      <CourseYoutube courseSlug="cams" />
       <AboutTrainerSection path="faculty_cams.webp" />
+      <CourseYoutubeLecture courseSlug="cams" />
       <CfeCourseLms />
       <CamsUnique />
       <CourseAchivers
         slug="CAMS"
-        title="Meet the Professionals Who Successfully Cleared the CFE with AIA"
+        title="Meet the Professionals Who Successfully Cleared the CAMS with AIA"
       />
       <CamsConnection
         path="how_it_works_cams.webp"

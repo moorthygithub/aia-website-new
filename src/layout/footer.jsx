@@ -172,7 +172,7 @@ export default function Footer() {
                   <h5 className="text-white font-bold mb-3">VIETNAM</h5>
                   <div className="flex justify-center gap-2 mb-3">
                     <div className="bg-white p-1 rounded-full">
-                      <img src="https://aia.in.net/assets/images/Zalo.webp" alt="Zalo" className="w-4 h-4" />
+                      <img src={`${IMAGE_PATH}/Zalo.webp`} alt="Zalo" className="w-4 h-4" />
                     </div>
                     <a href="tel:+84911677672" className="bg-[#fa8017] text-white p-2 rounded-full hover:scale-110 transition-transform">
                       <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">

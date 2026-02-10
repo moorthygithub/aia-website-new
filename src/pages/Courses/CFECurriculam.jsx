@@ -45,15 +45,14 @@ const CFECurriculam = () => {
       <CfeWhyAia />
       <CfeHighlight />
       <CourseMap courseCode="CFE" />
-      <CourseYoutube courseSlug="cfe" />
-      <CourseYoutubeLecture courseSlug="cfe" />
       <CourseReview slug="CFE" />
+      <CourseYoutube courseSlug="cfe" />
       <AboutTrainerSection path="faculty_cfe.webp" />
+      <CourseYoutubeLecture courseSlug="cfe-curriculum" />
       <CfeCourseLms />
       <CfeUnique />
-      {/* <CfeAchivers title="Meet the Professionals Who Successfully Cleared the CFE with AIA" /> */}
       <CourseAchivers
-        slug="CAMS"
+        slug="cfe"
         title="Meet the Professionals Who Successfully Cleared the CFE with AIA"
       />
 

@@ -1,8 +1,8 @@
 import { BASE_URL, IMAGE_PATH } from "@/api/base-url";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { ArrowRight } from "lucide-react";
-import { useRef, useState } from "react";
+import { ArrowDown, ArrowUp } from "lucide-react";
+import { useState } from "react";
 import SectionHeading from "../SectionHeading/SectionHeading";
 
 const PassoutSuccess = () => {
@@ -244,31 +244,37 @@ const PassoutSuccess = () => {
                 ))}
             </div>
 
-            {getVisibleCount(course, stories.length) < stories.length && (
-              <div className="text-center">
-                <button
-                  onClick={() => handleViewMore(course, stories.length)}
-                  className="relative overflow-hidden cursor-pointer flex items-center justify-center px-4 py-2 border border-[#0F3652] mx-auto gap-2 rounded-md font-medium text-sm text-[#0F3652] group"
-                >
-                  <span className="absolute inset-0 bg-[#0F3652] scale-y-0 origin-bottom transition-transform duration-300 group-hover:scale-y-100"></span>
-                  <span className="relative z-10 flex items-center gap-2 group-hover:text-white">
-                    View More
-                    <ArrowRight className="w-4 h-4" />
-                  </span>
-                </button>
-              </div>
-            )}
+            <div className="flex justify-center gap-3">
+              {getVisibleCount(course, stories.length) < stories.length && (
+                <div className="text-center">
+                  <button
+                    onClick={() => handleViewMore(course, stories.length)}
+                    className="relative overflow-hidden cursor-pointer flex items-center justify-center px-4 py-2 border border-[#0F3652] mx-auto gap-2 rounded-md font-medium text-sm text-[#0F3652] group"
+                  >
+                    <span className="absolute inset-0 bg-[#0F3652] scale-y-0 origin-bottom transition-transform duration-300 group-hover:scale-y-100"></span>
+                    <span className="relative z-10 flex items-center gap-2 group-hover:text-white">
+                      View More
+                      <ArrowDown className="w-4 h-4" />
+                    </span>
+                  </button>
+                </div>
+              )}
 
-            {getVisibleCount(course, stories.length) > ITEMS_PER_LOAD && (
-              <div className="text-center mt-3">
-                <button
-                  onClick={() => handleShowLess(course)}
-                  className="text-sm text-[#0F3652] underline hover:text-[#F3831C]"
-                >
-                  Show Less
-                </button>
-              </div>
-            )}
+              {getVisibleCount(course, stories.length) > ITEMS_PER_LOAD && (
+                <div className="text-center">
+                  <button
+                    onClick={() => handleShowLess(course)}
+                    className="relative overflow-hidden cursor-pointer flex items-center justify-center px-4 py-2 border border-[#0F3652] mx-auto gap-2 rounded-md font-medium text-sm text-[#0F3652] group"
+                  >
+                    <span className="absolute inset-0 bg-[#0F3652] scale-y-0 origin-bottom transition-transform duration-300 group-hover:scale-y-100"></span>
+                    <span className="relative z-10 flex items-center gap-2 group-hover:text-white">
+                      View Less
+                      <ArrowUp className="w-4 h-4" />
+                    </span>
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         ))}
       </div>

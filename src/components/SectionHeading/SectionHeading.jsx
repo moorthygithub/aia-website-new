@@ -14,8 +14,16 @@ const SectionHeading = ({
         <h2 className="text-3xl md:text-4xl font-bold text-[#0F3652]">
           {title} <span className="text-[#F3831C]">{highlight1}</span>
         </h2>
+        <div
+          className={`mt-3 relative overflow-hidden ${
+            isCenter ? "mx-auto" : ""
+          }`}
+          style={{ width: "120px" }}
+        >
+          <span className="block h-1 w-full bg-[#0F3652] rounded" />
 
-        <span className="mt-2 block h-1 w-14 bg-[#F3831C] rounded" />
+          <span className="absolute top-0 left-0 h-1 w-1/2 bg-[#F3831C] rounded animate-underline-slide" />
+        </div>
       </div>
       <h2 className="text-3xl md:text-4xl font-bold text-[#F3831C]">
         {highlight}
@@ -38,6 +46,7 @@ const SectionHeading = ({
           <p>{description1}</p>
         </div>
       )}
+      
     </div>
   );
 };

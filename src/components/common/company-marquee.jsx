@@ -18,12 +18,14 @@ const CompanyMarquee = ({ companies }) => {
       </style>
 
       <div className="w-full bg-gradient-to-b from-[#0f365200]/5 via-[#0F3652]/30 to-[#0F3652]/60 py-20 overflow-hidden">
-        <SectionHeading
-          title="Shaping Alumni Who Lead"
-          description="Delivering excellence &
+        <div className="pl-4">
+          <SectionHeading
+            title="Shaping Alumni Who Lead"
+            description="Delivering excellence &
         empowering professionals who are creating a real-world impact"
-          align="center"
-        />
+            // align="center"
+          />
+        </div>
         <div className="relative flex overflow-hidden py-8">
           {[1, 2].map((loop) => (
             <div

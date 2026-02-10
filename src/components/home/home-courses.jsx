@@ -87,13 +87,11 @@ const HomeCourses = () => {
   }, [scrollYProgress]);
 
   return (
-    <div className="max-w-340 mx-auto px-4 sm:px-6 lg:px-8 mt-4">
-      <div className="">
+    <div className="max-w-340 mx-auto px-4 sm:px-6 lg:px-8 mt-12 mb-50">
         <SectionHeading
           title=" International Certification Programs Offered by AIA"
           align="center"
         />
-      </div>
 
       <div className="md:hidden">
         <div className="mb-8">
@@ -200,17 +198,14 @@ const HomeCourses = () => {
         ))}
       </div>
 
-      {/* Desktop - Split layout with sticky left and scrolling right */}
-      <div className="hidden md:grid md:grid-cols-2 gap-12 ">
-        {/* Left side - Changes with scroll */}
-        <div className="md:sticky md:top-20 md:h-screen md:flex md:flex-col md:justify-center ">
+      <div className="hidden md:grid md:grid-cols-2 gap-12">
+        <div className="md:sticky md:top-20 md:h-[50vh] md:flex md:flex-col md:justify-center ">
           <div className=" h-full mt-18 flex flex-col justify-between">
             <div>
               <p className="text-sm uppercase tracking-wider text-[#F3831C] font-semibold mb-4">
                 PROFESSIONAL CERTIFICATION PROGRAMS
               </p>
 
-              {/* Dynamic content based on active card */}
               <div className="transition-opacity duration-300">
                 <h1 className="text-xl md:text-3xl font-bold mb-3 leading-tight text-[#0F3652]">
                   {ALL_SERVICES[activeCard]?.title || ALL_SERVICES[0].title}
@@ -223,8 +218,7 @@ const HomeCourses = () => {
               </div>
             </div>
 
-            {/* Button moved to left side */}
-            <div className="mb-30">
+            <div className="mb-30 mt-10">
               <div className="mt-4">
                 <a
                   href={ALL_SERVICES[activeCard]?.link || ALL_SERVICES[0].link}
@@ -272,7 +266,6 @@ const HomeCourses = () => {
           </div>
         </div>
 
-        {/* Right side - Scrollable cards (Desktop) */}
         <div ref={container} className="relative hidden md:block ">
           {ALL_SERVICES.map((service, i) => {
             const targetScale = 1 - (ALL_SERVICES.length - i) * 0.05;

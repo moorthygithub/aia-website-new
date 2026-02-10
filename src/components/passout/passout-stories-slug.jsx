@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { BASE_URL } from "@/api/base-url";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { BASE_URL } from "@/api/base-url";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
 
 const PassoutStoriesSlug = () => {
   const { slug } = useParams();
@@ -15,7 +15,7 @@ const PassoutStoriesSlug = () => {
     queryKey: ["passout-stories-slug", slug],
     queryFn: async () => {
       const res = await axios.get(
-        `${BASE_URL}/api/getStudentsStorybySlug/${slug}`
+        `${BASE_URL}/api/getStudentsStorybySlug/${slug}`,
       );
       return res.data;
     },
@@ -25,14 +25,10 @@ const PassoutStoriesSlug = () => {
   const [email, setEmail] = useState("");
   const [subscriptionStatus, setSubscriptionStatus] = useState("");
   const [isSubscribing, setIsSubscribing] = useState(false);
-  
 
-  
-
- 
   const formatLinkedInUrl = (url) => {
     if (!url) return "#";
-    if (url.startsWith('http://') || url.startsWith('https://')) {
+    if (url.startsWith("http://") || url.startsWith("https://")) {
       return url;
     }
     return `https://${url}`;
@@ -56,22 +52,16 @@ const PassoutStoriesSlug = () => {
         {
           newsletter_email: email,
         },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-        }
       );
 
       if (response.data.code === 200) {
         setSubscriptionStatus(
-          response.data.msg || "Successfully subscribed! Thank you."
+          response.data.msg || "Successfully subscribed! Thank you.",
         );
         setEmail("");
       } else {
         setSubscriptionStatus(
-          response.data.message || "Subscription failed. Please try again."
+          response.data.message || "Subscription failed. Please try again.",
         );
       }
     } catch (error) {
@@ -80,7 +70,7 @@ const PassoutStoriesSlug = () => {
         setSubscriptionStatus(
           error.response.data.message ||
             error.response.data.error ||
-            "Subscription failed. Please try again."
+            "Subscription failed. Please try again.",
         );
       } else if (error.request) {
         setSubscriptionStatus("Network error. Please check your connection.");
@@ -133,7 +123,7 @@ const PassoutStoriesSlug = () => {
     storyData.image_url.find((img) => img.image_for === "Student Company")
       ?.image_url + company?.student_company_image;
   const BannerImageUrl = storyData.image_url.find(
-    (img) => img.image_for === "Student"
+    (img) => img.image_for === "Student",
   )?.image_url;
 
   const linkedinUrl = formatLinkedInUrl(student_linkedin_link);
@@ -169,13 +159,12 @@ const PassoutStoriesSlug = () => {
                 </a>
               </div>
 
-              <div className="mt-8 relative rounded-2xl overflow-hidden">
+              <div className="mt-2 relative rounded-2xl overflow-hidden">
                 <img
                   src={`${BannerImageUrl}/${student_story_banner_image}`}
                   alt={student_story_banner_image_alt}
-                  className="w-full h-auto object-cover"
+                  className="w-full h-[400px] object-contain"
                   loading="eager"
-                  sizes="100vw"
                 />
               </div>
 
@@ -221,8 +210,8 @@ const PassoutStoriesSlug = () => {
                       <p className="text-sm text-[#0F3652]">
                         {student_name}, a {student_course} graduate, currently
                         serves as {student_designation} at{" "}
-                        {company?.student_company_name} in {country?.country_name}
-                        .
+                        {company?.student_company_name} in{" "}
+                        {country?.country_name}.
                       </p>
                     </div>
 
@@ -271,28 +260,26 @@ const PassoutStoriesSlug = () => {
                         </p>
                       </div>
 
-
                       <div>
                         <h3 className="text-base font-medium text-[#0F3652]">
                           LinkedIn
                         </h3>
-                   
+
                         <a
                           href={linkedinUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                     
                         >
-                        <p className="text-sm text-[#0F3652] underline">
-                        View 
-                        </p>
+                          <p className="text-sm text-[#0F3652] underline">
+                            View
+                          </p>
                         </a>
                       </div>
                     </div>
-                    
+
                     <div className="py-2 mt-4">
                       <h2 className="text-base font-medium text-[#0F3652] mb-1">
-                        Subscribe to newsletter   -- back -1
+                        Subscribe to newsletter -- back -1
                       </h2>
 
                       <form onSubmit={handleSubscribe} className="space-y-3">
@@ -327,7 +314,7 @@ const PassoutStoriesSlug = () => {
                         </div>
                       )}
                     </div>
-{/*                     
+                    {/*                     
                     <div className="mt-4">
                       <h3 className="text-base font-medium text-[#0F3652] mb-4">
                         Share this Success Story

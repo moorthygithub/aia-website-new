@@ -1,10 +1,9 @@
-import { TestimonialsSection } from "@/components/ui/testimonials-with-marquee";
+import { BASE_URL } from "@/api/base-url";
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
 import axios from "axios";
+import React from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import { BASE_URL } from "@/api/base-url";
 import { TestimonialsSectionCourse } from "../common/testimonials-with-marquee-course";
 
 const CourseResult = ({ course, queryKey, title }) => {
@@ -53,6 +52,7 @@ const CourseResult = ({ course, queryKey, title }) => {
           alt:
             certificate.student_other_certificate_image_alt ||
             "Certificate Image",
+          youtubeLink: certificate.student_linkedin_link || "",
         };
       })
       .filter(Boolean);

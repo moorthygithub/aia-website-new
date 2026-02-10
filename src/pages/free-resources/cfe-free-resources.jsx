@@ -2,15 +2,16 @@ import FreeResourceBanner from "@/components/cfe-free-resource/free-resource-ban
 import FreeResourceFlashCard from "@/components/cfe-free-resource/free-resource-flash-card";
 import FreeResourcePracticeQuestion from "@/components/cfe-free-resource/free-resource-practice-question";
 import FreeResourceReview from "@/components/cfe-free-resource/free-resource-review";
-import FreeResourceYoutube from "@/components/cfe-free-resource/free-resource-youtube";
 import CourseAchivers from "@/components/common/course-achivers";
+import CourseYoutubeLecture from "@/components/courses/common/course-youtube-lecture";
 import HomeAlumniWork from "@/components/home/home-alumini-work";
 
 const FreeResources = () => {
   return (
     <>
       <FreeResourceBanner />
-      <FreeResourceYoutube />
+      {/* <FreeResourceYoutube /> */}
+      <CourseYoutubeLecture courseSlug="CFE-Free-Resources" />
       <FreeResourceFlashCard />
       <FreeResourcePracticeQuestion />
       {/* <CourseTopStudent

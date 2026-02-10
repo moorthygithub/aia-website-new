@@ -42,15 +42,15 @@ const CIAChallenge = () => {
       <CiaWhyAia />
       <CiaHighlight />
       <CourseMap courseCode="CIAC" />
-      <CourseYoutube courseSlug="ciac" />
-      <CourseYoutubeLecture courseSlug="ciac" />
       <CourseReview slug="CIAC" />
+      <CourseYoutube courseSlug="ciac" />
       <AboutTrainerSection path="faculty_cia_challenge.webp" />
+      <CourseYoutubeLecture courseSlug="cia-challenge-curriculum" />
       <CiaCourseLms />
       <CiaUnique />
       <CourseAchivers
         slug="ciac"
-        title="Meet the Professionals Who Earned Their CFE Credential"
+        title="Meet the Professionals Who Earned Their CIA Credential"
       />
 
       <CamsConnection

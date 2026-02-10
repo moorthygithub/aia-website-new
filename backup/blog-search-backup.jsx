@@ -21,6 +21,7 @@ const Blog = () => {
   const [showAllTrending, setShowAllTrending] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     fetchBlogs();
@@ -44,9 +45,17 @@ const Blog = () => {
       setLoading(false);
     }
   };
+  const filteredBlogs = blogs.filter((blog) => {
+    const query = searchQuery.toLowerCase();
 
+    return (
+      blog.blog_heading?.toLowerCase().includes(query) ||
+      blog.blog_short_description?.toLowerCase().includes(query) ||
+      blog.blog_course?.toLowerCase().includes(query)
+    );
+  });
   const uniqueCategories = [
-    ...new Set(blogs.map((blog) => blog.blog_course).filter(Boolean)),
+    ...new Set(filteredBlogs.map((blog) => blog.blog_course).filter(Boolean)),
   ];
   const trendingBlogs = blogs.filter((blog) => blog.blog_trending === "yes");
 
@@ -265,9 +274,12 @@ const Blog = () => {
               <div className="relative">
                 <input
                   type="text"
-                  placeholder=" Search smart. Learn Audit, Fraud & AML with AIA..."
+                  placeholder="Search smart. Learn Audit, Fraud & AML with AIA..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full px-6 py-2 pr-12 text-lg rounded-2xl focus:outline-none shadow-sm bg-white text-[#0F3652] border border-[#0F3652]/20"
                 />
+
                 <button className="absolute right-2 top-1/2 transform -translate-y-1/2 p-2 hover:bg-[#0F3652]/10 rounded-full transition-colors">
                   <Search className="w-6 h-6 text-[#0F3652]" />
                 </button>
@@ -352,6 +364,17 @@ const Blog = () => {
                   )}
                 </>
               )}
+            </div>
+          )}
+          {searchQuery && filteredBlogs.length === 0 && (
+            <div className="text-center py-16">
+              <Search className="w-12 h-12 text-[#0F3652]/40 mx-auto mb-4" />
+              <p className="text-[#0F3652] text-lg font-medium">
+                No blogs found for "{searchQuery}"
+              </p>
+              <p className="text-[#0F3652]/60 text-sm mt-2">
+                Try searching with different keywords
+              </p>
             </div>
           )}
 
