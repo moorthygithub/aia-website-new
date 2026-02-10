@@ -71,7 +71,7 @@ const BlogDetails = () => {
       "description": blog.blog_short_description,
       "image": blog.blog_images
         ? `${imageBaseUrl}${blog.blog_images}`
-        : "https://aia.in.net/webapi/public/assets/images/no_image.jpg",
+        : `${IMAGE_PATH}/no_image.jpg`,
       "author": {
         "@type": "Organization",
         "name": "AIA"
@@ -408,7 +408,7 @@ const BlogDetails = () => {
                     alt={blog.blog_images_alt || blog.blog_heading}
                     className="w-full h-full object-contain"
                     onError={(e) => {
-                      e.target.src = "https://aia.in.net/webapi/public/assets/images/no_image.jpg";
+                      e.target.src = `${IMAGE_PATH}/no_image.jpg`;
                     }}
                   />
                 ) : (
@@ -577,7 +577,7 @@ const BlogDetails = () => {
                               alt={relatedBlog.blog_images_alt || relatedBlog.blog_heading}
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                               onError={(e) => {
-                                e.target.src = "https://aia.in.net/webapi/public/assets/images/no_image.jpg";
+                                e.target.src = `${IMAGE_PATH}/no_image.jpg`;
                               }}
                             />
                           </div>
@@ -623,7 +623,7 @@ const BlogDetails = () => {
                                   alt={student.student_image_alt || student.student_name}
                                   className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
                                   onError={(e) => {
-                                    e.target.src = "https://aia.in.net/webapi/public/assets/images/no_image.jpg";
+                                    e.target.src = `${IMAGE_PATH}/no_image.jpg`;
                                   }}
                                 />
                                 

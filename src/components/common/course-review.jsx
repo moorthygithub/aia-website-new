@@ -34,7 +34,7 @@ const ServiceCard = React.forwardRef(
                     className="w-full h-full object-cover"
                     onError={(e) => {
                       e.target.src =
-                        "https://aia.in.net/webapi/public/assets/images/no_image.jpg";
+                        `${IMAGE_PATH}/no_image.jpg`;
                     }}
                   />
                 </div>

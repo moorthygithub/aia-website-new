@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Calendar, ArrowRight, Clock, ArrowLeft, Search } from "lucide-react";
-import { BASE_URL } from "@/api/base-url";
+import { BASE_URL, IMAGE_PATH } from "@/api/base-url";
 
 const BlogCard = React.memo(({ blog, imageBaseUrl, onClick }) => {
   const formatDate = useCallback((dateString) => {
@@ -15,7 +15,7 @@ const BlogCard = React.memo(({ blog, imageBaseUrl, onClick }) => {
   }, []);
 
   const handleImageError = useCallback((e) => {
-    e.target.src = "https://aia.in.net/webapi/public/assets/images/no_image.jpg";
+    e.target.src = `${IMAGE_PATH}/no_image.jpg`;
   }, []);
 
   return (

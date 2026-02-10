@@ -1,4 +1,4 @@
-import { BASE_URL } from "@/api/base-url";
+import { BASE_URL, IMAGE_PATH } from "@/api/base-url";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { ArrowRight } from "lucide-react";
@@ -25,7 +25,7 @@ const PassoutSuccess = () => {
   const getImageUrl = (type) => {
     if (!studentStoriesData?.image_url) return "";
     const imageConfig = studentStoriesData.image_url.find(
-      (item) => item.image_for === type
+      (item) => item.image_for === type,
     );
     return imageConfig ? imageConfig.image_url : "";
   };
@@ -44,7 +44,7 @@ const PassoutSuccess = () => {
       slug: story.student_slug,
       image: story.student_story_banner_image
         ? `${studentImageUrl}${story.student_story_banner_image}`
-        : "https://aia.in.net/webapi/public/assets/images/no_image.jpg",
+        : `${IMAGE_PATH}/no_image.jpg`,
       companyImage: story.company?.student_company_image
         ? `${companyImageUrl}${story.company.student_company_image}`
         : null,
@@ -91,7 +91,7 @@ const PassoutSuccess = () => {
       ...prev,
       [course]: Math.min(
         (prev[course] || ITEMS_PER_LOAD) + ITEMS_PER_LOAD,
-        total
+        total,
       ),
     }));
   };

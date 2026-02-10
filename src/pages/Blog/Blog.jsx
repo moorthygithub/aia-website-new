@@ -1,4 +1,4 @@
-import { BASE_URL } from "@/api/base-url";
+import { BASE_URL, IMAGE_PATH } from "@/api/base-url";
 import PopUp from "@/components/common/pop-up";
 import SectionHeading from "@/components/SectionHeading/SectionHeading";
 import axios from "axios";
@@ -98,8 +98,7 @@ const Blog = () => {
               alt={blog.blog_images_alt || blog.blog_heading}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               onError={(e) => {
-                e.target.src =
-                  "https://aia.in.net/webapi/public/assets/images/no_image.jpg";
+                e.target.src = `${IMAGE_PATH}/no_image.jpg`;
               }}
             />
           </div>
@@ -152,8 +151,7 @@ const Blog = () => {
                 alt={blog.blog_images_alt || blog.blog_heading}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 onError={(e) => {
-                  e.target.src =
-                    "https://aia.in.net/webapi/public/assets/images/no_image.jpg";
+                  e.target.src = `${IMAGE_PATH}/no_image.jpg`;
                 }}
               />
             </div>

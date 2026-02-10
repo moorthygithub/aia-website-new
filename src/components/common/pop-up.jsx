@@ -9,7 +9,7 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { X, Loader2 } from "lucide-react";
-import { BASE_URL } from "@/api/base-url";
+import { BASE_URL, IMAGE_PATH } from "@/api/base-url";
 
 const PopUp = ({ slug = "home" }) => {
   const [open, setOpen] = useState(false);
@@ -34,14 +34,14 @@ const PopUp = ({ slug = "home" }) => {
       try {
         setLoading(true);
         const response = await axios.get(
-          `${BASE_URL}/api/getPopupbySlug/${slug}`
+          `${BASE_URL}/api/getPopupbySlug/${slug}`,
         );
 
         if (response.data?.data) {
           setPopupData(response.data.data);
 
           const popupImageConfig = response.data.image_url?.find(
-            (item) => item.image_for === "Popup"
+            (item) => item.image_for === "Popup",
           );
           if (popupImageConfig) {
             setImageBaseUrl(popupImageConfig.image_url);
@@ -64,7 +64,7 @@ const PopUp = ({ slug = "home" }) => {
 
     const url = popupData.popup_image
       ? `${imageBaseUrl}${popupData.popup_image}`
-      : "https://aia.in.net/webapi/public/assets/images/no_image.jpg";
+      : `${IMAGE_PATH}/no_image.jpg`;
 
     setImageUrl(url);
   }, [popupData, imageBaseUrl]);
@@ -87,12 +87,9 @@ const PopUp = ({ slug = "home" }) => {
 
       img.onerror = () => {
         const fallbackImg = new Image();
-        fallbackImg.src =
-          "https://aia.in.net/webapi/public/assets/images/no_image.jpg";
+        fallbackImg.src = `${IMAGE_PATH}/no_image.jpg`;
         fallbackImg.onload = () => {
-          setImageUrl(
-            "https://aia.in.net/webapi/public/assets/images/no_image.jpg"
-          );
+          setImageUrl(`${IMAGE_PATH}/no_image.jpg`);
           setImageLoaded(true);
 
           const popupHidden = sessionStorage.getItem("popup_hidden_globally");
@@ -158,7 +155,7 @@ const PopUp = ({ slug = "home" }) => {
           onLoad={() => setImageLoaded(true)}
           onError={() => {
             setImageUrl(
-              "https://aia.in.net/webapi/public/assets/images/no_image.jpg"
+              `${IMAGE_PATH}/no_image.jpg`,
             );
             setImageLoaded(true);
           }}
