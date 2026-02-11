@@ -87,12 +87,12 @@ const HomeCourses = () => {
   }, [scrollYProgress]);
 
   return (
-    <div className="max-w-340 mx-auto px-4 sm:px-6 lg:px-8 mt-12 mb-50">
-        <SectionHeading
-          title=" International Certification Programs Offered by AIA"
-          align="center"
-        />
-
+    <div className="max-w-340 mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+      {" "}
+      <SectionHeading
+        title=" International Certification Programs Offered by AIA"
+        align="center"
+      />
       <div className="md:hidden">
         <div className="mb-8">
           <p className="text-xs uppercase tracking-wider text-[#F3831C] font-semibold mb-4">
@@ -197,9 +197,9 @@ const HomeCourses = () => {
           </div>
         ))}
       </div>
-
       <div className="hidden md:grid md:grid-cols-2 gap-12">
-        <div className="md:sticky md:top-20 md:h-[50vh] md:flex md:flex-col md:justify-center ">
+        <div className="md:sticky md:top-20 md:h-screen md:flex md:flex-col md:justify-center ">
+          {" "}
           <div className=" h-full mt-18 flex flex-col justify-between">
             <div>
               <p className="text-sm uppercase tracking-wider text-[#F3831C] font-semibold mb-4">
@@ -266,7 +266,7 @@ const HomeCourses = () => {
           </div>
         </div>
 
-        <div ref={container} className="relative hidden md:block ">
+        <div ref={container} className="relative hidden md:block">
           {ALL_SERVICES.map((service, i) => {
             const targetScale = 1 - (ALL_SERVICES.length - i) * 0.05;
             const start = i / ALL_SERVICES.length;

@@ -78,7 +78,7 @@ const HomeFaq = () => {
   }
 
   return (
-    <section className="py-4">
+    <section>
       <FaqSection title={faqHeading} faqs={faqItems} />
     </section>
   );

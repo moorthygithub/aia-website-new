@@ -27,7 +27,9 @@ const AboutPage = () => {
       <HomePrCarousel />
       <AboutJourney />
       <HomeCourses />
-      <HomeCorporatePartner />
+
+        <HomeCorporatePartner />
+   
       <CourseYoutubeLecture courseSlug="about-us" />
       <HomeReview />
     </div>
