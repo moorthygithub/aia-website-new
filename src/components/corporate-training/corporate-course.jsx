@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import SectionHeading from "../SectionHeading/SectionHeading";
 
 const certificationCourses = [
   {
@@ -152,7 +153,10 @@ const CorporateCourse = () => {
 
   return (
     <div className="max-w-340 mx-auto px-4 sm:px-6 lg:px-8">
-      {/* Mobile - Simple stacked layout similar to desktop but simplified */}
+      <SectionHeading
+        title=" International Certification Programs Offered by AIA"
+        align="center"
+      />{" "}
       <div className="md:hidden">
         <div className="mb-8">
           <p className="text-xs uppercase tracking-wider text-[#F3831C] font-semibold mb-4">
@@ -257,10 +261,9 @@ const CorporateCourse = () => {
           </div>
         ))}
       </div>
-
-      <div className="hidden md:grid md:grid-cols-2 gap-12 ">
-        <div className="md:sticky md:top-20 md:h-screen md:flex md:flex-col md:justify-center ">
-          <div className=" h-full mt-18 flex flex-col justify-between">
+      <div className="hidden md:grid md:grid-cols-2 gap-12">
+        <div className="md:sticky md:top-20 md:h-screen md:flex md:flex-col md:justify-center">
+          <div className=" h-full mt-8 flex flex-col justify-between">
             <div>
               <p className="text-sm uppercase tracking-wider text-[#F3831C] font-semibold mb-4">
                 PROFESSIONAL CERTIFICATION PROGRAMS

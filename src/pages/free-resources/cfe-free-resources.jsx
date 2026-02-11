@@ -14,6 +14,7 @@ const FreeResources = () => {
       <CourseYoutubeLecture courseSlug="CFE-Free-Resources" />
       <FreeResourceFlashCard />
       <FreeResourcePracticeQuestion />
+
       {/* <CourseTopStudent
         courseSlug="CFE-Free-Resources"
         needPrefix="false"
@@ -26,7 +27,7 @@ const FreeResources = () => {
       /> */}
 
       <CourseAchivers
-        slug="cia"
+        slug="cfe"
         title="From Aspirants to Certified Internal Auditors - Our Recent CIA Achievers"
         description="Professionals who strengthened and advanced their careers through CFE preparation with AIA"
       />

@@ -1,3 +1,4 @@
+import AboutPartner from "@/components/about/about-partner";
 import CorporateBanner from "@/components/corporate-training/corporate-banner";
 import CorporateCarousel from "@/components/corporate-training/corporate-carousel";
 import CorporateCourse from "@/components/corporate-training/corporate-course";
@@ -18,8 +19,8 @@ const CorporateTraining = () => {
       <CorporateBanner />
       <CorporateWhy />
       <CorporateCourse />
-      {/* <AboutPartner /> */}
-      <HomeCorporatePartner />
+      <AboutPartner />
+      {/* <HomeCorporatePartner /> */}
       <CorporateQuote />
       <CorporateDeliver />
       <CorporateCarousel />

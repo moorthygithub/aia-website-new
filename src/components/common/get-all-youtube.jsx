@@ -71,7 +71,7 @@ const AllYoutube = () => {
   }
 
   return (
-    <div className="w-full  py-12 px-4 sm:px-6 lg:px-8">
+    <div className="w-full px-4 sm:px-6 lg:px-8">
       <TestimonialsSectionCourse
         title="Meet Professionals Who Made It with AIA"
         description="Click a success story to watch their full interview with Puneet Sir and get inspired."
