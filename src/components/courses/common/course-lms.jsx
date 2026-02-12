@@ -2,7 +2,7 @@ import { IMAGE_PATH } from "@/api/base-url";
 import SectionHeading from "@/components/SectionHeading/SectionHeading";
 import React, { useEffect, useRef, useState } from "react";
 
-const CourseLms = ({ courseFeatures, cardTitle }) => {
+const CourseLms = ({ courseFeatures, cardTitle, image = "lms2.webp" }) => {
   const labels = [
     "Dedicated Support Person",
     "Updated Study Curriculum",
@@ -43,18 +43,15 @@ const CourseLms = ({ courseFeatures, cardTitle }) => {
 
   return (
     <>
-      <section>
-        <div className="relative w-full h-full">
-          {/* Image stays in normal flow */}
+      <section className="mt-8">
+        {/* <div className="relative w-full h-full">
           <img
             src={`${IMAGE_PATH}/LMS.webp`}
             alt="LMS-Image"
             className="w-full h-full object-cover"
           />
 
-          {/* Overlay + Content */}
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-            {/* Overlay */}
             <div className="absolute inset-0 bg-black/55" />
 
             <div className="relative z-10">
@@ -73,7 +70,17 @@ const CourseLms = ({ courseFeatures, cardTitle }) => {
               </p>
             </div>
           </div>
-        </div>
+        </div> */}
+        <img
+          src={`${IMAGE_PATH}/${image}`}
+          alt="LMS-Image"
+          className="w-full h-full object-cover"
+        />
+        {/* <img
+          src={`${IMAGE_PATH}/lms2.webp`}
+          alt="LMS-Image"
+          className="w-full h-full object-cover"
+        /> */}
       </section>
       <section className="py-12 px-4 bg-white">
         <div className="max-w-340 mx-auto">

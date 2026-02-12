@@ -3,6 +3,7 @@ import FreeResourceFlashCard from "@/components/cfe-free-resource/free-resource-
 import FreeResourcePracticeQuestion from "@/components/cfe-free-resource/free-resource-practice-question";
 import FreeResourceReview from "@/components/cfe-free-resource/free-resource-review";
 import CourseAchivers from "@/components/common/course-achivers";
+import CfeCourseLms from "@/components/courses/cfe-curriculam/cfe-course-lms";
 import CourseYoutubeLecture from "@/components/courses/common/course-youtube-lecture";
 import HomeAlumniWork from "@/components/home/home-alumini-work";
 
@@ -14,6 +15,7 @@ const FreeResources = () => {
       <CourseYoutubeLecture courseSlug="CFE-Free-Resources" />
       <FreeResourceFlashCard />
       <FreeResourcePracticeQuestion />
+      <CfeCourseLms image="lms1.webp"/>
 
       {/* <CourseTopStudent
         courseSlug="CFE-Free-Resources"
