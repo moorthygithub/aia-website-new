@@ -62,7 +62,7 @@ const FooterReviews = ({ footer = true }) => {
                     href={item.link || undefined}
                     target={item.link ? "_blank" : undefined}
                     rel={item.link ? "noopener noreferrer" : undefined}
-                    className={`flex items-center ${item.bgColor} rounded-lg overflow-hidden hover:scale-105 transition-transform duration-300 cursor-pointer shadow-lg`}
+                    className={`flex items-center ${item.bgColor} max-h-18 rounded-lg overflow-hidden hover:scale-105 transition-transform duration-300 cursor-pointer shadow-lg`}
                   >
                     <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center border-r border-white/10">
                       {item.icon}
@@ -80,7 +80,7 @@ const FooterReviews = ({ footer = true }) => {
           </div>
         ) : (
           <>
-            <div className="flex flex-col items-center justify-center lg:hidden">
+            <div className="flex flex-col items-center justify-center lg:hidden px-3">
               <div className="text-center mb-8">
                 <h2 className="text-3xl md:text-4xl font-bold text-white">
                   Our Reviews
@@ -100,7 +100,7 @@ const FooterReviews = ({ footer = true }) => {
                       href={item.link || undefined}
                       target={item.link ? "_blank" : undefined}
                       rel={item.link ? "noopener noreferrer" : undefined}
-                      className={`flex items-center ${item.bgColor} rounded-lg overflow-hidden hover:scale-105 transition-transform duration-300 cursor-pointer shadow-lg`}
+                      className={`flex items-center ${item.bgColor} max-h-14 rounded-lg overflow-hidden hover:scale-105 transition-transform duration-300 cursor-pointer shadow-lg`}
                     >
                       <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center border-r border-white/10">
                         {item.icon}
@@ -118,7 +118,7 @@ const FooterReviews = ({ footer = true }) => {
             </div>
 
             {/* Desktop: Side-by-side layout (>= lg) */}
-            <div className="hidden lg:flex flex-row items-center justify-between gap-8">
+            <div className="hidden lg:flex flex-row items-center justify-between gap-8 px-14">
               <div className="text-left">
                 <h2 className="text-3xl md:text-4xl font-bold text-white">
                   Our Reviews
@@ -138,7 +138,7 @@ const FooterReviews = ({ footer = true }) => {
                       href={item.link || undefined}
                       target={item.link ? "_blank" : undefined}
                       rel={item.link ? "noopener noreferrer" : undefined}
-                      className={`flex items-center ${item.bgColor} rounded-lg overflow-hidden hover:scale-105 transition-transform duration-300 cursor-pointer shadow-lg`}
+                      className={`flex items-center ${item.bgColor} max-h-16 rounded-lg overflow-hidden hover:scale-105 transition-transform duration-300 cursor-pointer shadow-lg`}
                     >
                       <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center border-r border-white/10">
                         {item.icon}

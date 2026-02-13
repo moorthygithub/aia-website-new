@@ -15,7 +15,7 @@ const FreeResources = () => {
       <CourseYoutubeLecture courseSlug="CFE-Free-Resources" />
       <FreeResourceFlashCard />
       <FreeResourcePracticeQuestion />
-      <CfeCourseLms image="lms1.webp" />
+      {/* <CfeCourseLms image="lms1.webp" /> */}
 
       {/* <CourseTopStudent
         courseSlug="CFE-Free-Resources"

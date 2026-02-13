@@ -11,6 +11,9 @@ export default function Footer() {
       //     "url('https://www.zarasoftwareprovider.com/assets/img/service-bg.png')",
       // }}
     >
+      <div>
+        <FooterReviews footer={false} />
+      </div>
       <div className="max-w-340 mx-auto px-4  py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-4">
           <div className="space-y-6">
@@ -159,7 +162,6 @@ export default function Footer() {
         </div>
 
         <div className="w-full h-px bg-linear-to-r from-transparent via-gray-700 to-transparent mb-4"></div>
-        <FooterReviews footer={false} />
 
         <div className="">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">

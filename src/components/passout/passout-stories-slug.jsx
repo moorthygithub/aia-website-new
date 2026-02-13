@@ -277,7 +277,7 @@ const PassoutStoriesSlug = () => {
                       </div>
                     </div>
 
-                    <div className="py-2 mt-4">
+                    {/* <div className="py-2 mt-4">
                       <h2 className="text-base font-medium text-[#0F3652] mb-1">
                         Subscribe to Newsletter
                       </h2>
@@ -313,7 +313,7 @@ const PassoutStoriesSlug = () => {
                           {subscriptionStatus}
                         </div>
                       )}
-                    </div>
+                    </div> */}
                     {/*                     
                     <div className="mt-4">
                       <h3 className="text-base font-medium text-[#0F3652] mb-4">
