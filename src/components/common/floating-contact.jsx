@@ -96,8 +96,7 @@ const FloatingContactRight = () => {
         >
           <div className="absolute inset-0">
             <div
-              className="absolute inset-0 bg-gradient-to-br 
-  from-[#F3831C] via-[#f7a35a] to-[#0F3652]"
+              className="absolute inset-0 bg-[#F3831C]"
             />
           </div>
 

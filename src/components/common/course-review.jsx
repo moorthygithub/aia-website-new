@@ -193,7 +193,7 @@ const CourseReview = ({ slug }) => {
             src={`${IMAGE_PATH}/rated.jpg`}
             alt="Rated testimonial"
             className="w-full h-auto max-w-full object-contain transform -scale-x-100"
-            style={{ maxHeight: "90vh" }}
+            style={{ maxHeight: "70vh" }}
           />
         </div>
 
