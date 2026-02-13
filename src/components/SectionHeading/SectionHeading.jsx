@@ -5,6 +5,7 @@ const SectionHeading = ({
   align = "start",
   highlight,
   highlight1,
+  highlightclassName,
 }) => {
   const isCenter = align == "center";
 
@@ -14,7 +15,14 @@ const SectionHeading = ({
         <h2 className="text-3xl md:text-4xl font-bold text-[#0F3652]">
           {title} <span className="text-[#F3831C]">{highlight1}</span>
         </h2>
-        <h2 className="text-3xl md:text-4xl font-bold text-[#F3831C]">
+        {/* <h2 className="text-3xl md:text-4xl font-bold text-[#F3831C]">
+          {highlight}
+        </h2> */}
+        <h2
+          className={`font-bold text-[#F3831C] ${
+            highlightclassName ? highlightclassName : "text-3xl md:text-4xl"
+          }`}
+        >
           {highlight}
         </h2>
         <div

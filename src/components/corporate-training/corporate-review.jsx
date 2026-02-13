@@ -4,16 +4,16 @@ import SectionHeading from "../SectionHeading/SectionHeading";
 const CorporateReview = () => {
   const reviews = [
     {
-      text: "Thank you, AIA It wouldn't be possible without your support & guidance.",
-      author: "HET BARRINGAYA, CFE, KPMG",
+      text: "Thank you, AIA it wouldn't be possible without yoursupport & guidance.",
+      author: "HET BARBHAIYA,CFE, KPMG",
     },
     {
-      text: "Puneet Sir's CFE classes are outstanding-clear, focused, and incredibly helpful for exam prep. Highly recommended! Thankyou Sir...",
-      author: "Nathania D, CFE, Bahrain",
+      text: "Puneet Sir's CFE classes are outstanding-clear, focused, and incredibly helpful for exam prep. Highly recommended! ThankyouSir...",
+      author: "Nathasha D, CFE, Bahrain",
     },
     {
       text: "Best Institute for CAMS Prep.",
-      author: "Karan Warit, CAMS, Investcorp",
+      author: " Karan Wahi, CAMS, Investcorp",
     },
     {
       text: "Nice Faculty and staff. Recommended for CFE course.",
@@ -28,7 +28,7 @@ const CorporateReview = () => {
       author: "Lakshmi Chandana, Forensic Associate Consultant, EY",
     },
     {
-      text: "AIA delivered a high-quality CAMS training program that met my expectation in every aspect. Well-structured and aligned with current industry standards. Highly recommend to any organization looking to enhance their AML compliance capabilities.",
+      text: "AIA delivered a high-quality CAMS training program that met my expectation in every aspect. Well-structured and aligned with current industry standards.Highly recommend to any organization looking to enhance their AML compliance capabilities.",
       author: "Kamal Mahmoud, Head of Regulatory & Compliance, MEC Gulf",
     },
   ];

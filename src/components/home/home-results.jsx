@@ -26,20 +26,20 @@ const HomeResults = ({ title }) => {
       certificatesData.image_url?.find((item) => item.image_for === "Student")
         ?.image_url || "";
 
-    const validCertificates = certificatesData.data.filter(
-      (item) => item.student_other_certificate_image,
-    );
+    // const validCertificates = certificatesData.data.filter(
+    //   (item) => item.student_other_certificate_image,
+    // );
 
-    const order = ["ACFE", "IIA", "ACAMS"];
+    // const order = ["ACFE", "IIA", "ACAMS"];
 
-    validCertificates.sort((a, b) => {
-      const aIndex = order.indexOf(a.student_certificate_issued_by);
-      const bIndex = order.indexOf(b.student_certificate_issued_by);
+    // validCertificates.sort((a, b) => {
+    //   const aIndex = order.indexOf(a.student_certificate_issued_by);
+    //   const bIndex = order.indexOf(b.student_certificate_issued_by);
 
-      return (aIndex === -1 ? 99 : aIndex) - (bIndex === -1 ? 99 : bIndex);
-    });
+    //   return (aIndex === -1 ? 99 : aIndex) - (bIndex === -1 ? 99 : bIndex);
+    // });
 
-    return validCertificates.map((certificate) => ({
+    return certificatesData?.data.map((certificate) => ({
       author: {
         avatar: `${studentImageBaseUrl}${certificate.student_other_certificate_image}`,
       },
