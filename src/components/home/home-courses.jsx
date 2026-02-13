@@ -89,11 +89,15 @@ const HomeCourses = () => {
   return (
     <div className="max-w-340 mx-auto px-4 sm:px-6 lg:px-8 mt-4">
       {" "}
-      <SectionHeading
+      {/* <SectionHeading
         title=" International Certification Programs Offered by AIA"
         align="center"
-      />
+      /> */}
       <div className="md:hidden">
+        <SectionHeading
+          title=" International Certification Programs Offered by AIA"
+          // align="center"
+        />
         <div className="mb-8">
           <p className="text-xs uppercase tracking-wider text-[#F3831C] font-semibold mb-4">
             PROFESSIONAL CERTIFICATION PROGRAMS
@@ -198,9 +202,12 @@ const HomeCourses = () => {
         ))}
       </div>
       <div className="hidden md:grid md:grid-cols-2 gap-12">
-        <div className="md:sticky md:top-20 md:h-screen md:flex md:flex-col md:justify-center ">
-          {" "}
-          <div className=" h-full mt-18 flex flex-col justify-between">
+        <div className="md:sticky md:top-30 md:h-screen md:flex md:flex-col md:justify-center ">
+          <SectionHeading
+            title=" International Certification Programs Offered by AIA"
+            // align="center"
+          />
+          <div className=" h-full flex flex-col justify-between">
             <div>
               <p className="text-sm uppercase tracking-wider text-[#F3831C] font-semibold mb-4">
                 PROFESSIONAL CERTIFICATION PROGRAMS

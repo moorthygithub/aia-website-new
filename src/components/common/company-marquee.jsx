@@ -24,6 +24,7 @@ const CompanyMarquee = ({ companies }) => {
             highlight="Who Lead"
             description="Delivering excellence &
         empowering professionals who are creating a real-world impact"
+            highlightclassName="text-3xl  md:text-6xl"
           />
 
           {/* <div className="max-w-340 mx-auto px-6 mb-6">

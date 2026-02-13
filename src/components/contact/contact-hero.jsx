@@ -1,6 +1,7 @@
 import { BASE_URL, IMAGE_PATH } from "@/api/base-url";
 import axios from "axios";
 import { useCallback, useState } from "react";
+import FooterReviews from "../Footer/footer-review";
 
 const ContactHero = () => {
   const [formData, setFormData] = useState({
@@ -105,10 +106,10 @@ const ContactHero = () => {
   };
 
   return (
-    <section className="relative bg-white py-16 ">
+    <section className="relative bg-white py-16">
       <div className="max-w-340 mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-5 gap-0 ">
-          <div className=" relative lg:col-span-3 flex flex-col justify-center ">
+        <div className="grid lg:grid-cols-5 gap-0">
+          <div className="relative lg:col-span-3 flex flex-col justify-center ">
             <div className="space-y-6">
               <h1 className="text-3xl md:text-4xl font-bold text-[#0c2340] leading-tight">
                 Turn Experience into
@@ -140,6 +141,7 @@ const ContactHero = () => {
 
               <div className="h-px w-full"></div>
             </div>
+            <FooterReviews />
           </div>
 
           <div className="lg:col-span-2 bg-white border-2 border-[#0F3652] shadow-lg rounded-md">

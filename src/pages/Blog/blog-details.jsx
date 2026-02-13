@@ -367,8 +367,8 @@ const BlogDetails = () => {
         </button>
 
         <header className="mb-8">
-          <div className="flex flex-col lg:flex-row gap-8">
-            <div className="lg:w-1/2">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
               {blog.blog_course && (
                 <span className={`inline-block ${getCourseColor(blog.blog_course)} text-sm font-medium px-3 py-1.5 rounded border mb-4`}>
                   {blog.blog_course}
@@ -400,13 +400,13 @@ const BlogDetails = () => {
               </div>
             </div>
 
-            <div className="lg:w-1/2">
-              <div className="relative aspect-video rounded-md overflow-hidden">
+            <div>
+              <div className="relative  rounded-md overflow-hidden">
                 {blog.blog_images ? (
                   <img 
                     src={`${imageBaseUrl}${blog.blog_images}`}
                     alt={blog.blog_images_alt || blog.blog_heading}
-                    className="w-full h-full object-contain"
+                    className="w-full h-auto object-contain"
                     onError={(e) => {
                       e.target.src = `${IMAGE_PATH}/no_image.jpg`;
                     }}
@@ -447,7 +447,7 @@ const BlogDetails = () => {
                 </nav>
                 
                 <div className="max-w-md mx-auto p-1 space-y-4">
-                  <div className="space-y-2">
+                  {/* <div className="space-y-2">
                     <h2 className="text-xl font-medium text-[#0F3652]">
                       Subscribe to Newsletter
                     </h2>
@@ -476,7 +476,7 @@ const BlogDetails = () => {
                         {subscriptionStatus}
                       </div>
                     )}
-                  </div>
+                  </div> */}
 
                   <div className="space-y-4">
                     <h3 className="text-xl font-medium text-[#0F3652]">

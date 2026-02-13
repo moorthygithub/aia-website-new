@@ -26,7 +26,7 @@ const CourseHighLight = ({ badgeText, title, description, stats, logos }) => {
           </div>
         </div>
 
-        <div className="absolute inset-0  pointer-events-none">
+        {/* <div className="absolute inset-0  pointer-events-none">
           <svg
             className="w-full h-full"
             viewBox="0 -30 1440 500"
@@ -104,12 +104,97 @@ const CourseHighLight = ({ badgeText, title, description, stats, logos }) => {
               </linearGradient>
             </defs>
           </svg>
+        </div> */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <svg
+            className="w-full h-full min-h-[400px] sm:min-h-[500px] md:min-h-[600px]"
+            viewBox="0 -60 1440 600"
+            preserveAspectRatio="xMidYMid slice"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0,200 C300,100 500,300 800,200 C1100,100 1200,300 1440,200 L1440,600 L0,600 Z"
+              fill="url(#waveGradient)"
+              fillOpacity="0.1"
+            />
+
+            <path
+              d="M0,200 C300,100 500,300 800,200 C1100,100 1200,300 1440,200"
+              stroke="#0F3652"
+              strokeWidth="2"
+              strokeOpacity="0.3"
+              fill="none"
+              vectorEffect="non-scaling-stroke"
+            />
+
+            <path
+              d="M0,220 C200,150 400,250 600,220 C800,180 1000,250 1200,220 L1440,220"
+              stroke="#F3831C"
+              strokeWidth="2"
+              strokeOpacity="0.4"
+              fill="none"
+              vectorEffect="non-scaling-stroke"
+            />
+
+            <path
+              d="M0,180 C250,80 450,280 700,180 C950,80 1150,280 1440,180"
+              stroke="#0F3652"
+              strokeWidth="3"
+              strokeOpacity="0.2"
+              fill="none"
+              strokeDasharray="5,5"
+              vectorEffect="non-scaling-stroke"
+            />
+
+            <circle cx="0" cy="200" r="4" fill="#F3831C">
+              <animateMotion
+                dur="20s"
+                repeatCount="indefinite"
+                path="M0,200 C300,100 500,300 800,200 C1100,100 1200,300 1440,200"
+              />
+            </circle>
+
+            <circle cx="0" cy="220" r="3" fill="#0F3652" opacity="0.6">
+              <animateMotion
+                dur="15s"
+                repeatCount="indefinite"
+                begin="2s"
+                path="M0,220 C200,150 400,250 600,220 C800,180 1000,250 1200,220 L1440,220"
+              />
+            </circle>
+
+            <circle cx="0" cy="180" r="2" fill="#F3831C" opacity="0.4">
+              <animateMotion
+                dur="25s"
+                repeatCount="indefinite"
+                begin="5s"
+                path="M0,180 C250,80 450,280 700,180 C950,80 1150,280 1440,180"
+              />
+            </circle>
+
+            <defs>
+              <linearGradient
+                id="waveGradient"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="0%"
+              >
+                <stop offset="0%" stopColor="#F3831C" />
+                <stop offset="50%" stopColor="#0F3652" />
+                <stop offset="100%" stopColor="#F3831C" />
+              </linearGradient>
+            </defs>
+          </svg>
         </div>
 
-
-        <div className="grid grid-cols-2 md:grid-cols-4  gap-1 max-w-340 mx-auto mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-1 max-w-340 mx-auto mb-12">
           {stats.map((stat, index) => (
-            <div key={index} className="text-center px-6 py-4  last:border-r-0 mt-12">
+            <div
+              key={index}
+              className="text-center px-6 py-4  last:border-r-0 mt-12"
+            >
               <h3 className="text-2xl md:text-3xl font-bold mb-1 text-[#0F3652]">
                 <CountUp end={stat.value} suffix={stat.suffix} />
               </h3>
@@ -119,12 +204,11 @@ const CourseHighLight = ({ badgeText, title, description, stats, logos }) => {
         </div>
 
         {logos.length > 0 && (
-          <div className="">
             <div className=" max-w-340 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-6 py-10 px-2 mx-auto  ">
               {logos.map((logo, index) => (
                 <div
                   key={index}
-                  className="rounded-xl p-8 text-center transition-all duration-300 cursor-pointer bg-white flex items-center justify-center hover:scale-150"
+                  className="rounded-xl p-8 text-center transition-all duration-300 cursor-pointer  flex items-center justify-center hover:scale-150"
                 >
                   <img
                     src={logo.img}
@@ -133,7 +217,6 @@ const CourseHighLight = ({ badgeText, title, description, stats, logos }) => {
                   />
                 </div>
               ))}
-            </div>
           </div>
         )}
       </div>
