@@ -1,4 +1,6 @@
 import { BASE_URL, IMAGE_PATH } from "@/api/base-url";
+import BannerBlogCard from "@/components/blog/banner-blog-card";
+import BlogCard from "@/components/blog/blog-card";
 import PopUp from "@/components/common/pop-up";
 import SectionHeading from "@/components/SectionHeading/SectionHeading";
 import axios from "axios";
@@ -22,10 +24,7 @@ const Blog = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
-
-  useEffect(() => {
-    fetchBlogs();
-  }, []);
+  const [showDropdown, setShowDropdown] = useState(false);
 
   const fetchBlogs = async () => {
     try {
@@ -33,10 +32,10 @@ const Blog = () => {
       setBlogs(response.data.data || []);
 
       const blogImageConfig = response.data.image_url?.find(
-        (item) => item.image_for === "Blog",
+        (item) => item.image_for === "Blog"
       );
       if (blogImageConfig) {
-        setImageBaseUrl(blogImageConfig.image_url);
+        setImageBaseUrl(blogImageConfig?.image_url);
       }
 
       setLoading(false);
@@ -45,6 +44,11 @@ const Blog = () => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchBlogs();
+  }, []);
+
   const filteredBlogs = blogs.filter((blog) => {
     if (!searchTerm.trim()) return true;
 
@@ -61,8 +65,20 @@ const Blog = () => {
     ...new Set(blogs.map((blog) => blog.blog_course).filter(Boolean)),
   ];
   const trendingBlogs = filteredBlogs.filter(
-    (blog) => blog.blog_trending === "yes",
+    (blog) => blog.blog_trending === "yes"
   );
+
+  const searchSuggestions = searchTerm.trim()
+    ? blogs
+        .filter((blog) => {
+          const search = searchTerm.toLowerCase();
+          return (
+            blog.blog_heading?.toLowerCase().includes(search) ||
+            blog.blog_short_description?.toLowerCase().includes(search)
+          );
+        })
+        .slice(0, 5)
+    : [];
   const COURSE_NAME_MAP = {
     CFE: "Certified Fraud Examiner",
     CIA: "Certified Internal Auditor",
@@ -77,12 +93,22 @@ const Blog = () => {
       year: "numeric",
     });
   };
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (!event.target.closest(".relative")) {
+        setShowDropdown(false);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, []);
 
   useEffect(() => {
     if (!showAllTrending && trendingBlogs.length > 1) {
       const interval = setInterval(() => {
         setCurrentSlide(
-          (prev) => (prev + 1) % Math.min(4, trendingBlogs.length),
+          (prev) => (prev + 1) % Math.min(4, trendingBlogs.length)
         );
       }, 5000);
 
@@ -96,116 +122,6 @@ const Blog = () => {
 
   const handleCategoryClick = (category) => {
     window.open(`/blogs/course/${category}`, "_blank", "noopener,noreferrer");
-  };
-
-  const BlogCard = ({ blog }) => {
-    return (
-      <div
-        onClick={() => handleBlogClick(blog.blog_slug)}
-        className="h-full flex flex-col cursor-pointer group border transition-colors duration-200"
-      >
-        {/* Image */}
-        <div className="relative overflow-hidden rounded-md">
-          <div className="h-[156px] bg-gradient-to-r from-[#0F3652]/10 to-[#0F3652]/20 flex items-center justify-center">
-            <img
-              src={`${imageBaseUrl}${blog.blog_images}`}
-              alt={blog.blog_images_alt || blog.blog_heading}
-              className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-              onError={(e) => {
-                e.currentTarget.src = `${IMAGE_PATH}/no_image.jpg`;
-              }}
-            />
-          </div>
-
-          <div className="absolute top-1.5 left-2">
-            <span className="bg-[#0F3652] text-white text-xs font-medium px-3 py-1.5 rounded border border-[#0F3652]">
-              {blog.blog_course}
-            </span>
-          </div>
-        </div>
-
-        {/* Content */}
-        <div className="p-5 flex flex-col flex-1">
-          <div className="flex items-center justify-between text-xs text-[#0F3652] mb-4">
-            <div className="flex items-center gap-1">
-              <Calendar className="w-3 h-3" />
-              {formatDate(blog.blog_created)}
-            </div>
-            <div className="flex items-center gap-1">
-              <Clock className="w-3 h-3" />5 min
-            </div>
-          </div>
-
-          <h3 className="text-lg font-semibold text-[#0F3652] mb-3 line-clamp-2">
-            {blog.blog_heading}
-          </h3>
-
-          <p className="text-[#0F3652] text-sm line-clamp-3 leading-relaxed">
-            {blog.blog_short_description}
-          </p>
-
-          {/* Push to bottom */}
-          <div className="mt-auto pt-4 flex items-center gap-2 text-[#F3831C]">
-            <span className="text-sm font-medium">Read Article</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </div>
-        </div>
-      </div>
-    );
-  };
-
-  const BannerBlogCard = ({ blog }) => {
-    return (
-      <div
-        onClick={() => handleBlogClick(blog.blog_slug)}
-        className="rounded-lg hover:border-[#0F3652] transition-all duration-300 cursor-pointer group overflow-hidden"
-      >
-        <div className="flex flex-col md:flex-row gap-6">
-          <div className="md:w-2/5 relative overflow-hidden rounded-lg">
-            <div className="h-64 md:h-full bg-linear-to-r from-[#0F3652]/10 to-[#0F3652]/20">
-              <img
-                src={`${imageBaseUrl}${blog.blog_images}`}
-                alt={blog.blog_images_alt || blog.blog_heading}
-                className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
-                onError={(e) => {
-                  e.target.src = `${IMAGE_PATH}/no_image.jpg`;
-                }}
-              />
-            </div>
-            <div className="absolute top-4 left-4">
-              <span className="bg-[#0F3652] text-white text-sm font-medium px-4 py-2 rounded border border-[#0F3652]">
-                {blog.blog_course}
-              </span>
-            </div>
-          </div>
-
-          <div className="md:w-3/5 flex flex-col justify-center">
-            <div className="flex items-center gap-4 text-sm text-[#0F3652] mb-4">
-              <div className="flex items-center gap-2">
-                <Calendar className="w-4 h-4" />
-                {formatDate(blog.blog_created)}
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4" />5 min read
-              </div>
-            </div>
-
-            <h3 className="text-2xl md:text-3xl font-bold text-[#0F3652] mb-4 group-hover:text-[#0F3652] line-clamp-2">
-              {blog.blog_heading}
-            </h3>
-
-            <p className="text-[#0F3652] text-base mb-6 line-clamp-3 leading-relaxed">
-              {blog.blog_short_description}
-            </p>
-
-            <div className="flex items-center gap-3 text-[#F3831C] group/readmore">
-              <span className="text-base font-semibold">Read Full Article</span>
-              <ArrowRight className="w-5 h-5 group-hover/readmore:translate-x-2 transition-transform" />
-            </div>
-          </div>
-        </div>
-      </div>
-    );
   };
 
   if (loading) {
@@ -274,25 +190,65 @@ const Blog = () => {
               align="center"
             />
 
-            <div className="max-w-2xl mx-auto mt-8">
+            <div className="max-w-2xl mx-auto mt-8 relative">
               <div className="relative">
                 <input
                   type="text"
                   value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
+                  onChange={(e) => {
+                    setSearchTerm(e.target.value);
+                    setShowDropdown(true);
+                  }}
+                  onFocus={() => setShowDropdown(true)}
                   placeholder=" Search smart. Learn Audit, Fraud & AML with AIA..."
-                  className="w-full px-6 py-3 pr-14 text-base md:text-lg rounded-full 
-bg-white/90 backdrop-blur-sm 
-border border-[#0F3652]/20 
-shadow-md 
-text-[#0F3652] placeholder:text-[#0F3652]/50
-focus:outline-none focus:ring-2 focus:ring-[#F3831C] focus:border-[#F3831C]
-transition-all duration-300"
+                  className="w-full px-6 py-3 pr-14 text-base md:text-lg rounded-lg 
+      bg-white border border-[#0F3652]/20 shadow-md 
+      text-[#0F3652] placeholder:text-[#0F3652]/50
+      focus:outline-none focus:ring-2 focus:ring-[#F3831C]"
                 />
-                <button className="absolute right-2 top-1/2 transform -translate-y-1/2 p-2 hover:bg-[#0F3652]/10 rounded-full transition-colors">
-                  <Search className="w-6 h-6 text-[#0F3652]" />
+
+                <button className="absolute right-3 top-1/2 -translate-y-1/2">
+                  <Search className="w-5 h-5 text-[#0F3652]" />
                 </button>
               </div>
+
+              {showDropdown && searchSuggestions.length > 0 && (
+                <div className="absolute mt-2 w-full bg-white border border-gray-200 rounded-xl shadow-lg z-50 overflow-hidden">
+                  {searchSuggestions.map((blog) => (
+                    <div
+                      key={blog.id}
+                      onClick={() => {
+                        navigate(`/blogs/${blog.blog_slug}`);
+                        setSearchTerm("");
+                        setShowDropdown(false);
+                      }}
+                      className="flex items-center gap-2 p-4 hover:bg-[#0F3652]/5 cursor-pointer transition-colors"
+                    >
+                      <img
+                        src={
+                          blog.blog_images
+                            ? `${imageBaseUrl}${blog.blog_images}`
+                            : `${IMAGE_PATH}/no_image.jpg`
+                        }
+                        alt={blog.blog_heading}
+                        className="w-24 h-20 object-contain rounded-sm"
+                        onError={(e) => {
+                          e.currentTarget.src = `${IMAGE_PATH}/no_image.jpg`;
+                        }}
+                      />
+
+                      <div className="flex flex-col">
+                        <span className="font-semibold text-[#0F3652] line-clamp-1 text-start">
+                          {blog.blog_heading}
+                        </span>
+                        <span className="text-sm text-gray-500 line-clamp-2 text-start">
+                          {blog.blog_short_description}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
 
@@ -323,7 +279,11 @@ transition-all duration-300"
                       >
                         {trendingBlogs.slice(0, 4).map((blog) => (
                           <div key={blog.id} className="w-full shrink-0 px-2">
-                            <BannerBlogCard blog={blog} />
+                            <BannerBlogCard
+                              blog={blog}
+                              handleBlogClick={handleBlogClick}
+                              imageBaseUrl={imageBaseUrl}
+                            />
                           </div>
                         ))}
                       </div>
@@ -350,7 +310,11 @@ transition-all duration-300"
                 <>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                     {trendingBlogs.map((blog) => (
-                      <BlogCard key={blog.id} blog={blog} />
+                      <BlogCard
+                        blog={blog}
+                        handleBlogClick={handleBlogClick}
+                        imageBaseUrl={imageBaseUrl}
+                      />
                     ))}
                   </div>
 
@@ -389,7 +353,11 @@ transition-all duration-300"
                   <button
                     key={category}
                     onClick={() => handleCategoryClick(category)}
-                    className={`px-6 py-2 cursor-pointer rounded-md text-sm transition-colors duration-200 ${selectedCategory === category ? "bg-[#0F3652] text-white" : "bg-[#0F3652]/10 text-[#0F3652] hover:bg-[#0F3652]/20"}`}
+                    className={`px-6 py-2 cursor-pointer rounded-md text-sm transition-colors duration-200 ${
+                      selectedCategory === category
+                        ? "bg-[#0F3652] text-white"
+                        : "bg-[#0F3652]/10 text-[#0F3652] hover:bg-[#0F3652]/20"
+                    }`}
                     title={category}
                   >
                     {displayName}
@@ -421,7 +389,12 @@ transition-all duration-300"
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                       {categoryBlogs.map((blog) => (
-                        <BlogCard key={blog.id} blog={blog} />
+                        <BlogCard
+                          key={blog.id}
+                          blog={blog}
+                          handleBlogClick={handleBlogClick}
+                          imageBaseUrl={imageBaseUrl}
+                        />
                       ))}
                     </div>
                   </div>

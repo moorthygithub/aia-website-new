@@ -71,7 +71,7 @@ const ServiceCard = ({ service, i, progress, range, targetScale }) => {
   return (
     <div
       ref={container}
-      className="h-screen  flex items-center justify-center sticky top-0"
+      className="h-screen  flex items-center justify-center sticky md:top-30"
     >
       <motion.div
         style={{
@@ -153,17 +153,16 @@ const CorporateCourse = () => {
 
   return (
     <div className="max-w-340 mx-auto px-4 sm:px-6 lg:px-8">
-      <SectionHeading
-        title=" International Certification Programs Offered by AIA"
-        align="center"
-      />{" "}
       <div className="md:hidden">
+        <SectionHeading
+          title=" International Certification Programs Offered by AIA"
+          align="center"
+        />{" "}
         <div className="mb-8">
           <p className="text-xs uppercase tracking-wider text-[#F3831C] font-semibold mb-4">
             PROFESSIONAL CERTIFICATION PROGRAMS
           </p>
         </div>
-
         {ALL_SERVICES.map((service) => (
           <div
             key={service.id}
@@ -261,7 +260,79 @@ const CorporateCourse = () => {
           </div>
         ))}
       </div>
-      <div className="hidden md:grid md:grid-cols-2 gap-12">
+      <div className="hidden md:block">
+        <div className="sticky md:top-20 z-40 bg-white py-6">
+          <SectionHeading
+            title="International Certification Programs Offered by AIA"
+            align="center"
+          />
+        </div>
+
+        {/* Two Column Layout */}
+        <div className="grid md:grid-cols-2 gap-12">
+          {/* Left Side Content */}
+          <div className="md:sticky md:top-55 md:h-screen md:flex md:flex-col md:justify-center">
+            <div className="h-full flex flex-col justify-between">
+              <div>
+                <p className="text-sm uppercase tracking-wider text-[#F3831C] font-semibold mb-4">
+                  PROFESSIONAL CERTIFICATION PROGRAMS
+                </p>
+
+                <div className="transition-opacity duration-300">
+                  <h1 className="text-xl md:text-3xl font-bold mb-3 leading-tight text-[#0F3652]">
+                    {ALL_SERVICES[activeCard]?.title || ALL_SERVICES[0].title}
+                  </h1>
+
+                  <p className="text-[#0F3652] text-lg mb-2 max-w-lg leading-relaxed text-justify">
+                    {ALL_SERVICES[activeCard]?.description ||
+                      ALL_SERVICES[0].description}
+                  </p>
+                </div>
+              </div>
+
+              {/* CTA Section */}
+              <div className="mb-30 mt-10">
+                <a
+                  href={ALL_SERVICES[activeCard]?.link || ALL_SERVICES[0].link}
+                  className="group inline-flex items-center gap-2 h-10 px-4 bg-[#F3831C] text-sm font-medium text-white hover:bg-[#F3831C]/90"
+                >
+                  <span>
+                    {ALL_SERVICES[activeCard]?.cta || ALL_SERVICES[0].cta}
+                  </span>
+                </a>
+
+                <div className="hidden md:flex items-center gap-4 mt-8">
+                  <div className="h-px w-16 bg-[#F3831C]"></div>
+                  <p className="text-sm text-[#0F3652]/70">
+                    Scroll to explore all courses
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Scroll Cards */}
+          <div ref={container} className="relative">
+            {ALL_SERVICES.map((service, i) => {
+              const targetScale = 1 - (ALL_SERVICES.length - i) * 0.05;
+              const start = i / ALL_SERVICES.length;
+              const end = start + 1 / ALL_SERVICES.length;
+
+              return (
+                <ServiceCard
+                  key={service.id}
+                  service={service}
+                  i={i}
+                  progress={scrollYProgress}
+                  range={[start, end]}
+                  targetScale={targetScale}
+                />
+              );
+            })}
+          </div>
+        </div>
+      </div>
+      {/* <div className="hidden md:grid md:grid-cols-2 gap-12">
         <div className="md:sticky md:top-20 md:h-screen md:flex md:flex-col md:justify-center">
           <div className=" h-full mt-8 flex flex-col justify-between">
             <div>
@@ -269,7 +340,6 @@ const CorporateCourse = () => {
                 PROFESSIONAL CERTIFICATION PROGRAMS
               </p>
 
-              {/* Dynamic content based on active card */}
               <div className="transition-opacity duration-300">
                 <h1 className="text-xl md:text-3xl font-bold mb-3 leading-tight text-[#0F3652]">
                   {ALL_SERVICES[activeCard]?.title || ALL_SERVICES[0].title}
@@ -282,7 +352,6 @@ const CorporateCourse = () => {
               </div>
             </div>
 
-            {/* Button moved to left side */}
             <div className="mb-30">
               <div className="mt-4">
                 <a
@@ -330,8 +399,6 @@ const CorporateCourse = () => {
             </div>
           </div>
         </div>
-
-        {/* Right side - Scrollable cards (Desktop) */}
         <div ref={container} className="relative hidden md:block ">
           {ALL_SERVICES.map((service, i) => {
             const targetScale = 1 - (ALL_SERVICES.length - i) * 0.05;
@@ -350,7 +417,7 @@ const CorporateCourse = () => {
             );
           })}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

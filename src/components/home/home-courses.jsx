@@ -13,7 +13,7 @@ const ServiceCard = ({ service, i, progress, range, targetScale }) => {
   return (
     <div
       ref={container}
-      className="h-screen  flex items-center justify-center sticky top-0"
+      className="h-screen  flex items-center justify-center sticky md:top-30"
     >
       <motion.div
         style={{
@@ -201,95 +201,74 @@ const HomeCourses = () => {
           </div>
         ))}
       </div>
-      <div className="hidden md:grid md:grid-cols-2 gap-12">
-        <div className="md:sticky md:top-30 md:h-screen md:flex md:flex-col md:justify-center ">
-          <SectionHeading
-            title=" International Certification Programs Offered by AIA"
-            // align="center"
-          />
-          <div className=" h-full flex flex-col justify-between">
-            <div>
-              <p className="text-sm uppercase tracking-wider text-[#F3831C] font-semibold mb-4">
-                PROFESSIONAL CERTIFICATION PROGRAMS
-              </p>
+      {/* Desktop Layout */}
+      <div className="hidden md:block">
+        <div className="sticky md:top-20 z-40 bg-white py-6">
+          <SectionHeading title="International Certification Programs Offered by AIA" align="center"/>
+        </div>
 
-              <div className="transition-opacity duration-300">
-                <h1 className="text-xl md:text-3xl font-bold mb-3 leading-tight text-[#0F3652]">
-                  {ALL_SERVICES[activeCard]?.title || ALL_SERVICES[0].title}
-                </h1>
-
-                <p className="text-[#0F3652] text-lg mb-2 max-w-lg leading-relaxed text-justify">
-                  {ALL_SERVICES[activeCard]?.description ||
-                    ALL_SERVICES[0].description}
+        {/* Two Column Layout */}
+        <div className="grid md:grid-cols-2 gap-12">
+          {/* Left Side Content */}
+          <div className="md:sticky md:top-55 md:h-screen md:flex md:flex-col md:justify-center">
+            <div className="h-full flex flex-col justify-between">
+              <div>
+                <p className="text-sm uppercase tracking-wider text-[#F3831C] font-semibold mb-4">
+                  PROFESSIONAL CERTIFICATION PROGRAMS
                 </p>
-              </div>
-            </div>
 
-            <div className="mb-30 mt-10">
-              <div className="mt-4">
+                <div className="transition-opacity duration-300">
+                  <h1 className="text-xl md:text-3xl font-bold mb-3 leading-tight text-[#0F3652]">
+                    {ALL_SERVICES[activeCard]?.title || ALL_SERVICES[0].title}
+                  </h1>
+
+                  <p className="text-[#0F3652] text-lg mb-2 max-w-lg leading-relaxed text-justify">
+                    {ALL_SERVICES[activeCard]?.description ||
+                      ALL_SERVICES[0].description}
+                  </p>
+                </div>
+              </div>
+
+              {/* CTA Section */}
+              <div className="mb-30 mt-10">
                 <a
                   href={ALL_SERVICES[activeCard]?.link || ALL_SERVICES[0].link}
-                  className="
-                  group inline-flex items-center gap-2
-                  h-10 px-4
-                
-                  border border-[#F3831C]/30
-                  bg-[#F3831C]
-                  text-sm font-medium text-white
-                  transition-colors duration-200
-                  hover:bg-[#F3831C]/90
-                "
+                  className="group inline-flex items-center gap-2 h-10 px-4 bg-[#F3831C] text-sm font-medium text-white hover:bg-[#F3831C]/90"
                 >
                   <span>
                     {ALL_SERVICES[activeCard]?.cta || ALL_SERVICES[0].cta}
                   </span>
-                  <svg
-                    className="
-                    w-4 h-4
-                    transition-transform duration-200
-                    group-hover:translate-x-0.5
-                  "
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    />
-                  </svg>
                 </a>
-              </div>
 
-              <div className="hidden md:flex items-center gap-4 mt-8">
-                <div className="h-px w-16 bg-[#F3831C]"></div>
-                <p className="text-sm text-[#0F3652]/70">
-                  Scroll to explore all courses
-                </p>
+                <div className="hidden md:flex items-center gap-4 mt-8">
+                  <div className="h-px w-16 bg-[#F3831C]"></div>
+                  <p className="text-sm text-[#0F3652]/70">
+                    Scroll to explore all courses
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div ref={container} className="relative hidden md:block">
-          {ALL_SERVICES.map((service, i) => {
-            const targetScale = 1 - (ALL_SERVICES.length - i) * 0.05;
-            const start = i / ALL_SERVICES.length;
-            const end = start + 1 / ALL_SERVICES.length;
+          {/* Right Scroll Cards */}
+          <div ref={container} className="relative">
+            {ALL_SERVICES.map((service, i) => {
+              const targetScale = 1 - (ALL_SERVICES.length - i) * 0.05;
+              const start = i / ALL_SERVICES.length;
+              const end = start + 1 / ALL_SERVICES.length;
 
-            return (
-              <ServiceCard
-                key={service.id}
-                service={service}
-                i={i}
-                progress={scrollYProgress}
-                range={[start, end]}
-                targetScale={targetScale}
-              />
-            );
-          })}
+              return (
+                <ServiceCard
+                  key={service.id}
+                  service={service}
+                  i={i}
+                  progress={scrollYProgress}
+                  range={[start, end]}
+                  targetScale={targetScale}
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
