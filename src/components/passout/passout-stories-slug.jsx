@@ -15,7 +15,7 @@ const PassoutStoriesSlug = () => {
     queryKey: ["passout-stories-slug", slug],
     queryFn: async () => {
       const res = await axios.get(
-        `${BASE_URL}/api/getStudentsStorybySlug/${slug}`
+        `${BASE_URL}/api/getStudentsStorybySlug/${slug}`,
       );
       return res.data;
     },
@@ -51,17 +51,17 @@ const PassoutStoriesSlug = () => {
         `${BASE_URL}/api/create-newslettersubscription`,
         {
           newsletter_email: email,
-        }
+        },
       );
 
       if (response.data.code === 200) {
         setSubscriptionStatus(
-          response.data.msg || "Successfully subscribed! Thank you."
+          response.data.msg || "Successfully subscribed! Thank you.",
         );
         setEmail("");
       } else {
         setSubscriptionStatus(
-          response.data.message || "Subscription failed. Please try again."
+          response.data.message || "Subscription failed. Please try again.",
         );
       }
     } catch (error) {
@@ -70,7 +70,7 @@ const PassoutStoriesSlug = () => {
         setSubscriptionStatus(
           error.response.data.message ||
             error.response.data.error ||
-            "Subscription failed. Please try again."
+            "Subscription failed. Please try again.",
         );
       } else if (error.request) {
         setSubscriptionStatus("Network error. Please check your connection.");
@@ -123,7 +123,7 @@ const PassoutStoriesSlug = () => {
     storyData.image_url.find((img) => img.image_for === "Student Company")
       ?.image_url + company?.student_company_image;
   const BannerImageUrl = storyData.image_url.find(
-    (img) => img.image_for === "Student"
+    (img) => img.image_for === "Student",
   )?.image_url;
 
   const linkedinUrl = formatLinkedInUrl(student_linkedin_link);
@@ -159,16 +159,16 @@ const PassoutStoriesSlug = () => {
                 </a>
               </div>
 
-              <div className="mt-2 relative rounded-2xl overflow-hidden">
-                <img
-                  src={`${BannerImageUrl}/${student_story_banner_image}`}
-                  alt={student_story_banner_image_alt}
-                  className="w-full h-full object-contain"
-                  loading="eager"
-                />
+              <div className="flex justify-center">
+                <div className="mt-2 relative overflow-hidden max-w-5xl rounded-3xl">
+                  <img
+                    src={`${BannerImageUrl}/${student_story_banner_image}`}
+                    alt={student_story_banner_image_alt}
+                    className="w-full h-[500px] object-contain mt-4"
+                    loading="eager"
+                  />
+                </div>
               </div>
-
-              <div className="absolute -z-10 top-0 left-0 right-0 h-full bg-gradient-to-b from-[#0F3652]/10 to-transparent"></div>
             </div>
           </div>
         </div>

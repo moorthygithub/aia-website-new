@@ -6,10 +6,6 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { BASE_URL, IMAGE_PATH } from "@/api/base-url";
 import SectionHeading from "@/components/SectionHeading/SectionHeading";
-
-/* =========================
-   Service Card
-========================= */
 const ServiceCard = ({ testimonial, i, progress, total, imageUrl }) => {
   const start = i / total;
   const end = (i + 1) / total;
@@ -72,9 +68,6 @@ const ServiceCard = ({ testimonial, i, progress, total, imageUrl }) => {
   );
 };
 
-/* =========================
-   Main Component
-========================= */
 const CourseReview = ({ slug }) => {
   const containerRef = useRef(null);
   const [testimonials, setTestimonials] = useState([]);
@@ -86,7 +79,7 @@ const CourseReview = ({ slug }) => {
     queryKey: ["course-testimonials", slug],
     queryFn: async () => {
       const res = await axios.get(
-        `${BASE_URL}/api/getTestimonialbyCourse/${slug}`
+        `${BASE_URL}/api/getTestimonialbyCourse/${slug}`,
       );
       return res.data;
     },
@@ -95,7 +88,7 @@ const CourseReview = ({ slug }) => {
   useEffect(() => {
     if (data) {
       const studentImageUrlObj = data.image_url?.find(
-        (item) => item.image_for === "Student"
+        (item) => item.image_for === "Student",
       );
 
       setImageUrl(studentImageUrlObj?.image_url || "");
@@ -104,31 +97,27 @@ const CourseReview = ({ slug }) => {
     }
   }, [data]);
 
-  /* =========================
-     Scroll Logic
-  ========================= */
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start start", "end end"],
+    offset: ["start center", "end center"],
   });
 
   useEffect(() => {
-    const unsubscribe = scrollYProgress.on("change", (latest) => {
-      const total = testimonials.length;
+    const handleScroll = () => {
+      if (!containerRef.current) return;
 
-      const index = Math.min(total - 1, Math.floor(latest * total));
+      const rect = containerRef.current.getBoundingClientRect();
 
-      setActiveCard(index);
-
-      if (latest >= 0.98) {
+      if (rect.bottom <= window.innerHeight) {
         setScrollFinished(true);
       } else {
         setScrollFinished(false);
       }
-    });
+    };
 
-    return () => unsubscribe();
-  }, [scrollYProgress, testimonials.length]);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   if (isLoading) {
     return (
@@ -144,7 +133,6 @@ const CourseReview = ({ slug }) => {
   console.log(scrollFinished, "scrollFinished");
   return (
     <div className="max-w-340 mx-auto px-4">
-      {/* Sticky Header */}
       <div
         className={`${
           scrollFinished ? "relative" : "sticky top-20"
@@ -158,7 +146,6 @@ const CourseReview = ({ slug }) => {
       </div>
 
       <div className="grid md:grid-cols-2 gap-12">
-        {/* Left Sticky Image */}
         <div className="md:sticky md:top-20 md:h-screen md:flex md:items-center md:justify-center">
           <img
             src={`${IMAGE_PATH}/rated.jpg`}
@@ -168,7 +155,6 @@ const CourseReview = ({ slug }) => {
           />
         </div>
 
-        {/* Scrollable Cards */}
         <div ref={containerRef} className="relative">
           {testimonials.map((testimonial, i) => (
             <ServiceCard

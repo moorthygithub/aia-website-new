@@ -55,7 +55,6 @@ const CFECurriculam = () => {
         slug="cfe"
         title="Meet the Professionals Who Successfully Cleared the CFE with AIA"
       />
-
       <CamsConnection
         title="The Right Certification Starts With the Right Choice"
         description="Find the certification that aligns with your background and carrer stage"
