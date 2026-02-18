@@ -16,10 +16,10 @@ const EnrollHighlight = () => {
     ]}
     
     logos={[
-      { img: `${IMAGE_PATH}/IAO.jpeg` },
+      { img: `${IMAGE_PATH}/IAO.png` },
       { img: `${IMAGE_PATH}/IIA.png` },
-      { img: `${IMAGE_PATH}/ISO.jpeg` },
-      { img: `${IMAGE_PATH}/Gleim.jpeg` },
+      { img: `${IMAGE_PATH}/ISO.png` },
+      { img: `${IMAGE_PATH}/Gleim.png` },
       { img: `${IMAGE_PATH}/GSAAA.png` },
     ]}
   />

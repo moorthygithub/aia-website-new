@@ -14,6 +14,7 @@ import HomeCourses from "@/components/home/home-courses";
 import HomePrCarousel from "@/components/home/home-pr-carousel";
 import HomeReview from "@/components/home/home-review";
 import AboutPartner from "@/components/about/about-partner";
+import certificationCourses from "@/data/certificationCourses";
 
 const AboutPage = () => {
   return (
@@ -27,8 +28,8 @@ const AboutPage = () => {
       <AboutHighlight />
       <HomePrCarousel />
       <AboutJourney />
-      <HomeCourses />
-       <AboutPartner />
+      <HomeCourses certificationCourses={certificationCourses} />
+      <AboutPartner />
       {/* <HomeCorporatePartner /> */}
       <CourseYoutubeLecture courseSlug="about-us" />
       <HomeReview />

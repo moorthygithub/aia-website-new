@@ -1,6 +1,6 @@
 import SectionHeading from "@/components/SectionHeading/SectionHeading";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import CfeJoinDialog from "../cfe-curriculam/join-prep";
 
 const CourseAbout = ({
@@ -15,7 +15,7 @@ const CourseAbout = ({
   formcourse,
   formbuttonlabel,
 }) => {
-  console.log(badgeText,"formtitle")
+  const location = useLocation();
   return (
     <section className="py-18">
       <div className="max-w-340 mx-auto px-4 sm:px-6 lg:px-8">
@@ -102,12 +102,14 @@ const CourseAbout = ({
           </div>
         </div>
       </div>
-      <CfeJoinDialog
-        title={formtitle}
-        subtitle={formsubtitle}
-        course={formcourse}
-        buttonlabel={formbuttonlabel}
-      />
+      {location.pathname != "/" && (
+        <CfeJoinDialog
+          title={formtitle}
+          subtitle={formsubtitle}
+          course={formcourse}
+          buttonlabel={formbuttonlabel}
+        />
+      )}
     </section>
   );
 };

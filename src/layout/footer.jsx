@@ -1,18 +1,10 @@
-import { IMAGE_PATH } from "@/api/base-url";
 import { PaymentAccreditation } from "@/components/Footer/footer-accredationbadges";
 import FooterReviews from "@/components/Footer/footer-review";
 import { ContactGrid } from "@/components/Footer/global-contact";
-import React from "react";
 
 export default function Footer() {
   return (
-    <footer
-      className="bg-linear-to-b from-[#1a2332] to-[#0f172a] text-white"
-      // style={{
-      //   backgroundImage:
-      //     "url('https://www.zarasoftwareprovider.com/assets/img/service-bg.png')",
-      // }}
-    >
+    <footer className="bg-linear-to-b from-[#1a2332] to-[#0f172a] text-white">
       <div>
         <FooterReviews footer={false} />
       </div>

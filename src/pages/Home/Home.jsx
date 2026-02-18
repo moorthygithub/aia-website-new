@@ -16,6 +16,7 @@ import HomeHero from "@/components/home/home-hero";
 import HomePrCarousel from "@/components/home/home-pr-carousel";
 import HomeResults from "@/components/home/home-results";
 import HomeReview from "@/components/home/home-review";
+import certificationCourses from "@/data/certificationCourses";
 
 export default function Home() {
   return (
@@ -24,7 +25,7 @@ export default function Home() {
       <HomeHero />
       <HomeAbout />
       <HomeContact />
-      <HomeCourses />
+      <HomeCourses certificationCourses={certificationCourses}/>
       <HomePassout />
       <HomeResults title="AIA Certified Achievers Driving Excellence Everywhere" />
       <HomeAccredited />

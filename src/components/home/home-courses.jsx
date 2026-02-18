@@ -1,9 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import certificationCourses from "@/data/certificationCourses";
+// import certificationCourses from "@/data/certificationCourses";
 import SectionHeading from "../SectionHeading/SectionHeading";
-
-const ALL_SERVICES = [...certificationCourses];
 
 const ServiceCard = ({ service, i, progress, range, total }) => {
   const start = i / total;
@@ -11,7 +9,6 @@ const ServiceCard = ({ service, i, progress, range, total }) => {
 
   const scale = useTransform(progress, [start, end], [1, 0.95]);
   const container = useRef(null);
-  // const scale = useTransform(progress, range, [1, targetScale]);
   const opacity = useTransform(progress, [i * 0.25, (i + 1) * 0.25], [1, 1]);
 
   return (
@@ -71,7 +68,9 @@ const ServiceCard = ({ service, i, progress, range, total }) => {
   );
 };
 
-const HomeCourses = () => {
+const HomeCourses = ({ certificationCourses }) => {
+  const ALL_SERVICES = [...certificationCourses];
+
   const container = useRef(null);
   const [activeCard, setActiveCard] = useState(0);
   const { scrollYProgress } = useScroll({
@@ -109,20 +108,8 @@ const HomeCourses = () => {
   return (
     <div className="max-w-340 mx-auto px-4 sm:px-6 lg:px-8 mt-4">
       {" "}
-      {/* <SectionHeading
-        title=" International Certification Programs Offered by AIA"
-        align="center"
-      /> */}
       <div className="md:hidden">
-        <SectionHeading
-          title=" International Certification Programs Offered by AIA"
-          // align="center"
-        />
-        {/* <div className="mb-8">
-          <p className="text-xs uppercase tracking-wider text-[#F3831C] font-semibold mb-4">
-            PROFESSIONAL CERTIFICATION PROGRAMS
-          </p>
-        </div> */}
+        <SectionHeading title=" International Certification Programs Offered by AIA" />
 
         {ALL_SERVICES.map((service) => (
           <div
