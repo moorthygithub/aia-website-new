@@ -22,6 +22,7 @@ import CourseMap from "@/components/courses/common/course-map";
 import CourseResult from "@/components/courses/common/course-result";
 import CourseTopStudent from "@/components/courses/common/course-top-student";
 import CourseYoutubeLecture from "@/components/courses/common/course-youtube-lecture";
+import CourseBlog from "@/components/courses/common/course-blog";
 
 const CFECurriculam = () => {
   return (
@@ -55,6 +56,7 @@ const CFECurriculam = () => {
         slug="cfe"
         title="Meet the Professionals Who Successfully Cleared the CFE with AIA"
       />
+      <CourseBlog course="CFE"/>
       <CamsConnection
         title="The Right Certification Starts With the Right Choice"
         description="Find the certification that aligns with your background and carrer stage"

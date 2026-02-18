@@ -11,6 +11,7 @@ import CiaHighlight from "@/components/courses/cia-challenge/cia-highlight";
 import CiaJourney from "@/components/courses/cia-challenge/cia-journey";
 import CiaUnique from "@/components/courses/cia-challenge/cia-unique";
 import CiaWhyAia from "@/components/courses/cia-challenge/cia-why-aia";
+import CourseBlog from "@/components/courses/common/course-blog";
 import CourseHero from "@/components/courses/common/course-hero";
 import CourseMap from "@/components/courses/common/course-map";
 import CourseResult from "@/components/courses/common/course-result";
@@ -52,6 +53,7 @@ const CIAChallenge = () => {
         slug="ciac"
         title="Meet the Professionals Who Earned Their CIA Credential"
       />
+      <CourseBlog course="CIAC" />
 
       <CamsConnection
         title="The Right Certification Starts With the Right Choice"

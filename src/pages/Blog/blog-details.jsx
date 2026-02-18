@@ -1,15 +1,15 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
-import {
-  Calendar,
-  Copy,
-  Clock,
-  ArrowLeft,
-  Image as ImageIcon,
-} from "lucide-react";
 import { BASE_URL, IMAGE_PATH } from "@/api/base-url";
 import BlogFaq from "@/components/blog/blog-faq";
+import axios from "axios";
+import {
+  ArrowLeft,
+  Calendar,
+  Clock,
+  Copy,
+  Image as ImageIcon,
+} from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 const BlogDetails = () => {
   const { id } = useParams();
@@ -383,7 +383,7 @@ const BlogDetails = () => {
           Back to Blogs
         </button>
 
-        <header className="mb-8">
+        {/* <header className="mb-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
               {blog.blog_course && (
@@ -404,7 +404,7 @@ const BlogDetails = () => {
                 </p>
               )}
 
-              <div className="flex flex-wrap items-end gap-4 text-[#0F3652] text-sm min-h-16">
+              <div className="flex flex-wrap items-end gap-4 text-[#0F3652] text-sm min-h-26 border-4">
                 <div className="flex items-center gap-2">
                   <Calendar className="w-4 h-4" />
                   <time dateTime={blog.blog_created}>
@@ -430,6 +430,75 @@ const BlogDetails = () => {
                     src={`${imageBaseUrl}${blog.blog_images}`}
                     alt={blog.blog_images_alt || blog.blog_heading}
                     className="w-full h-auto object-contain"
+                    onError={(e) => {
+                      e.target.src = `${IMAGE_PATH}/no_image.jpg`;
+                    }}
+                  />
+                ) : (
+                  <div className="w-full h-full flex flex-col items-center justify-center">
+                    <ImageIcon className="h-12 w-12 text-[#0F3652] mb-2" />
+                    <p className="text-sm text-[#0F3652]">Blog Image</p>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </header> */}
+        <header className="mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+            <div className="flex flex-col h-full">
+              {blog.blog_course && (
+                <span
+                  className={`inline-block ${getCourseColor(
+                    blog.blog_course,
+                  )} text-sm font-medium px-3 py-1.5 rounded border mb-4 w-fit`}
+                >
+                  {blog.blog_course}
+                </span>
+              )}
+
+              <h1 className="text-3xl md:text-4xl font-bold text-[#0F3652] mb-4">
+                {blog.blog_heading}
+              </h1>
+
+              {blog.blog_short_description && (
+                <p className="text-lg text-[#0F3652] mb-6">
+                  {blog.blog_short_description}
+                </p>
+              )}
+
+              {/* DATE SECTION AT BOTTOM */}
+              <div className="flex flex-wrap items-center gap-4 text-[#0F3652] text-sm mt-auto">
+                <div className="flex items-center gap-2">
+                  <Calendar className="w-4 h-4" />
+                  <time dateTime={blog.blog_created}>
+                    {formatDate(blog.blog_created)}
+                  </time>
+                </div>
+
+                <span className="hidden sm:inline">•</span>
+
+                <div className="flex items-center gap-2">
+                  <Clock className="w-4 h-4" />
+                  <span>5 min read</span>
+                </div>
+
+                <span className="hidden sm:inline">•</span>
+
+                <div className="flex items-center gap-2">
+                  <span>Published by AIA</span>
+                </div>
+              </div>
+            </div>
+
+            {/* RIGHT SIDE IMAGE */}
+            <div className="h-full">
+              <div className="relative h-full rounded-md overflow-hidden">
+                {blog.blog_images ? (
+                  <img
+                    src={`${imageBaseUrl}${blog.blog_images}`}
+                    alt={blog.blog_images_alt || blog.blog_heading}
+                    className="w-full h-full object-contain"
                     onError={(e) => {
                       e.target.src = `${IMAGE_PATH}/no_image.jpg`;
                     }}

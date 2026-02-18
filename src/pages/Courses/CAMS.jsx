@@ -11,6 +11,7 @@ import CamsJourney from "@/components/courses/cams/cams-journey";
 import CamsUnique from "@/components/courses/cams/cams-unique";
 import CamsWhyAia from "@/components/courses/cams/cams-why-aia";
 import CfeCourseLms from "@/components/courses/cfe-curriculam/cfe-course-lms";
+import CourseBlog from "@/components/courses/common/course-blog";
 import CourseHero from "@/components/courses/common/course-hero";
 import CourseMap from "@/components/courses/common/course-map";
 import CourseResult from "@/components/courses/common/course-result";
@@ -56,6 +57,7 @@ const CAMS = () => {
         slug="CAMS"
         title="Meet the Professionals Who Successfully Cleared the CAMS with AIA"
       />
+      <CourseBlog course="CAMS" />
 
       <CamsConnection
         title="The Right Certification Starts With the Right Choice"

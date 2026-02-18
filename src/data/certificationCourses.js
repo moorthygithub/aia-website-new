@@ -77,3 +77,61 @@ const certificationCourses = [
   },
 ];
 export default certificationCourses;
+export const CorporatecertificationCourses = [
+  {
+    id: 1,
+    title: "CFE Certified Fraud Examiner",
+    description:
+      "CFE certification gives your professionals the mindset and tools to detect, investigate, and prevent fraud. The program blends analytical thinking, investigative techniques, and real-world case studies, enabling teams to uncover financial irregularities before they cause any damage to organization. It's about creating a workplace culture where integrity becomes a shared habit, not an expectation.",
+    description2: "How It Transforms Your Team & Organization",
+    features: [
+      "Develop sharp-eyed fraud examiners who protect what your company stands for.",
+      "Build organizational resilience by minimizing financial, operational, and reputational risks linked to fraud.",
+      "Instill a culture of transparency, accountability, and ethical decision-making across departments.",
+      "Strengthen compliance functions and reinforce trust with regulators, clients, and stakeholders.",
+      "Improve overall financial governance by equipping managers with tools to identify and mitigate risk in",
+    ],
+    cta: "Explore More About CFE",
+    link: "cfe-curriculum",
+    bgColor: "#ffffff",
+    textColor: "#0F3652",
+  },
+  {
+    id: 2,
+    title: "CIA - Certified Internal Auditor",
+    description:
+      "The CIA program provides an in-depth mastery of internal audit methodologies, risk management frameworks, and governance practices aligned with international standards. Designed for modern auditors, this program transforms traditional auditing into strategic advisory, helping professionals deliver insights that directly influence leadership decisions and business outcomes.",
+    description2: "How It Transforms Your Team & Organization",
+    features: [
+      "Strengthen audit quality through evidence-based evaluation, analytical thinking, and clear reporting.",
+      "Develop auditors who identify control gaps & help management close them effectively.",
+      "Enhance risk-based audit planning and execution, improving efficiency and decision-making.",
+      "Build consistent internal control mechanisms that ensure governance, compliance, and accountability.",
+      "Position your audit team as trusted advisors who contribute to performance improvement.",
+      "Increase organizational credibility by aligning audit practices with global standards and best-in-class methodologies.",
+    ],
+    cta: "Explore More About CIA",
+    link: "cia-curriculum",
+    bgColor: "#0F3652",
+    textColor: "#ffffff",
+  },
+  {
+    id: 3,
+    title: "CAMS - Certified Anti-Money Laundering Specialist",
+    description:
+      "CAMS training equips compliance and finance professionals to spot, assess, and prevent money laundering activities with confidence. This program develops a proactive mindset that protects your business from risk, strengthens its reputation, and ensures you stay aligned with global Anti Financial Crime standards",
+    description2: "How It Transforms Your Team & Organization",
+    features: [
+      "Strengthen AML and compliance readiness by training teams to spot suspicious activity early.",
+      "Build a compliance culture where everyone, from frontline staff to leadership, understands their role in keeping your organization safe",
+      "Equip professionals with global AFC insights and investigative skills to respond confidently to regulatory changes.",
+      "Reduce exposure to financial and reputational threats that can quietly erode trust and long-term stability.",
+      "Streamline compliance processes, minimize penalties, and maintain consistent reporting accuracy.",
+      "Fosters stronger relationships with regulators, clients, and partners through trust and transparency.",
+    ],
+    cta: "Explore More About the CIA Challenge",
+    link: "cia-challenge-curriculum",
+    bgColor: "#ffffff",
+    textColor: "#0F3652",
+  },
+];
