@@ -38,7 +38,7 @@ const HomeReview = () => {
         : noImageUrl,
       alt: item.student_image_alt || item.student_name,
     })) || [];
-  const truncateText = (text, limit = 130) => {
+  const truncateText = (text, limit = 430) => {
     if (text.length <= limit) return text;
     return text.slice(0, limit) + "...";
   };

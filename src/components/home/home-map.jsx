@@ -1,18 +1,25 @@
 import { useEffect, useState } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import "leaflet.markercluster/dist/leaflet.markercluster.js";
-import "leaflet.markercluster/dist/MarkerCluster.css";
-import "leaflet.markercluster/dist/MarkerCluster.Default.css";
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import "../courses/map.css";
-import { BASE_URL, IMAGE_PATH } from "@/api/base-url";
+import "./home-map.css";
+import { BASE_URL } from "@/api/base-url";
 
 const MAX_PHOTOS = 6;
+const SPREAD_OFFSETS = [
+  { lat: 0.0, lng: 0.0 },
+  { lat: 1.2, lng: 1.4 },
+  { lat: -1.2, lng: 1.0 },
+  { lat: 1.0, lng: -1.4 },
+  { lat: -1.0, lng: -1.2 },
+  { lat: 0.0, lng: 2.0 },
+];
+
+const SIZES = [38, 44, 36, 42, 34, 40];
 
 const HomeMap = ({ courseCode }) => {
   const [mapData, setMapData] = useState(null);
@@ -36,7 +43,6 @@ const HomeMap = ({ courseCode }) => {
         (item) => item.image_for === "Student",
       );
       const studentImageUrl = studentImageUrlObj?.image_url || "";
-
       setMapData(apiData.data);
       setImageUrl(studentImageUrl);
     }
@@ -47,24 +53,6 @@ const HomeMap = ({ courseCode }) => {
 
     const container = L.DomUtil.get("map");
     if (container && container._leaflet_id) container._leaflet_id = null;
-
-    const makePin = () => {
-      const svg = `
-        <svg width="46" height="64" viewBox="0 0 46 64">
-          <path fill="#50648e" d="M23 0C10.3 0 0 10.3 0 23c0 16.3 18.8 36.6 22.5 40.5a1 1 0 0 0 1.4 0C27.2 59.6 46 39.3 46 23 46 10.3 35.7 0 23 0z"/>
-          <circle cx="23" cy="23" r="8" fill="#ffffff"/>
-        </svg>
-      `;
-      return L.divIcon({
-        className: "pin-icon",
-        html: svg,
-        iconSize: [40, 54],
-        iconAnchor: [20, 54],
-        popupAnchor: [0, -48],
-      });
-    };
-
-    const brandPin = makePin();
 
     const map = L.map("map", {
       center: [20, 0],
@@ -94,19 +82,7 @@ const HomeMap = ({ courseCode }) => {
       },
     ).addTo(map);
 
-    const cluster = L.markerClusterGroup({
-      showCoverageOnHover: false,
-      spiderfyOnMaxZoom: true,
-      disableClusteringAtZoom: 6,
-      iconCreateFunction: (cluster) => {
-        return L.divIcon({
-          html: `<div><span>${cluster.getChildCount()}</span></div>`,
-          className: "marker-cluster marker-cluster-large",
-          iconSize: [46, 46],
-        });
-      },
-    });
-
+    const layerGroup = L.layerGroup();
     const markerOriginalLngs = new Map();
     let lastUpdateLng = null;
 
@@ -116,7 +92,7 @@ const HomeMap = ({ courseCode }) => {
         lastUpdateLng === null ||
         Math.abs(mapCenterLng - lastUpdateLng) > 90
       ) {
-        cluster.getLayers().forEach((marker) => {
+        layerGroup.getLayers().forEach((marker) => {
           const originalLng = markerOriginalLngs.get(marker);
           if (originalLng !== undefined) {
             let newLng = originalLng;
@@ -131,39 +107,53 @@ const HomeMap = ({ courseCode }) => {
       }
     });
 
-    const galleryHTML = (regionTitle, students) => {
-      let columns = 1;
-      if (students.length === 2) columns = 2;
-      else if (students.length >= 3) columns = 3;
+    const makeAvatarIcon = (student, index) => {
+      const size = SIZES[index % SIZES.length];
+      const html = `
+        <div style="
+          width:${size}px;
+          height:${size}px;
+          border-radius:50%;
+          overflow:hidden;
+          border:2.5px solid #fff;
+          box-shadow:0 3px 10px rgba(0,0,0,0.28);
+          background:#e5e7eb;
+          cursor:pointer;
+          transition: transform 0.18s ease, box-shadow 0.18s ease;
+        " class="avatar-marker-img">
+          <img
+            src="${student.imageUrl}"
+            alt="${student.name}"
+            style="width:100%;height:100%;object-fit:cover;display:block;"
+          />
+        </div>
+      `;
+      return L.divIcon({
+        className: "avatar-icon-wrapper",
+        html,
+        iconSize: [size, size],
+        iconAnchor: [size / 2, size / 2],
+        popupAnchor: [0, -(size / 2 + 6)],
+      });
+    };
 
-      const cards = students
-        .slice(0, MAX_PHOTOS)
-        .map(
-          (student) => `
-          <div class="card">
+    const singlePopupHTML = (student, countryName) => `
+      <div class="popup" style="min-width:120px;text-align:center;">
+        <h4>${countryName}</h4>
+        <div style="margin-top:8px;">
+          <div class="card" style="margin:auto;width:90px;">
             <img class="thumb" src="${student.imageUrl}" alt="${student.name}" loading="lazy">
             <div class="course-name">${student.course}</div>
             <div class="caption">${student.name}</div>
           </div>
-        `,
-        )
-        .join("");
-
-      return `
-        <div class="popup">
-          <h4>${regionTitle}</h4>
-          <div class="gallery cols-${columns}">
-            ${cards}
-          </div>
         </div>
-      `;
-    };
+      </div>
+    `;
 
     const groupedByCountry = {};
     mapData.forEach((student) => {
       const country = student.country_name || "Unknown";
       if (!groupedByCountry[country]) groupedByCountry[country] = [];
-
       groupedByCountry[country].push({
         name: student.student_name,
         course: student.student_course,
@@ -173,44 +163,80 @@ const HomeMap = ({ courseCode }) => {
       });
     });
 
+    const allLatLngs = [];
+
     Object.keys(groupedByCountry).forEach((country) => {
       const students = groupedByCountry[country];
       if (!students.length) return;
 
-      const firstStudent = students[0];
-      const coords = [firstStudent.lat, firstStudent.lng];
-      if (isNaN(coords[0]) || isNaN(coords[1])) return;
+      const baseLat = students[0].lat;
+      const baseLng = students[0].lng;
+      if (isNaN(baseLat) || isNaN(baseLng)) return;
 
-      const popupHtml = galleryHTML(country, students);
-      let minWidth = 160,
-        maxWidth = 160;
+      students.slice(0, MAX_PHOTOS).forEach((student, i) => {
+        const offset = SPREAD_OFFSETS[i] || { lat: 0, lng: 0 };
+        const coords = [baseLat + offset.lat, baseLng + offset.lng];
 
-      if (students.length === 2) {
-        minWidth = 260;
-        maxWidth = 360;
-      } else if (students.length >= 3) {
-        minWidth = 360;
-        maxWidth = 360;
-      }
+        const icon = makeAvatarIcon(student, i);
+        const popupHtml = singlePopupHTML(student, country);
 
-      const marker = L.marker(coords, { icon: brandPin });
-      markerOriginalLngs.set(marker, coords[1]);
+        const marker = L.marker(coords, { icon });
+        markerOriginalLngs.set(marker, coords[1]);
 
-      marker.bindPopup(popupHtml, { minWidth, maxWidth });
-      marker.on("mouseover", function () {
-        this.openPopup();
+        marker.bindPopup(popupHtml, {
+          minWidth: 130,
+          maxWidth: 180,
+          closeButton: false,
+          autoClose: true,
+          closeOnClick: true,
+        });
+
+        marker.on("click", function () {
+          map.setView([baseLat, baseLng], 6, { animate: true });
+          this.openPopup();
+        });
+
+        marker.on("mouseover", function () {
+          this.openPopup();
+        });
+
+        marker.on("mouseout", function (e) {
+          const popupEl = this.getPopup()?.getElement();
+          if (
+            popupEl &&
+            e.originalEvent?.relatedTarget &&
+            popupEl.contains(e.originalEvent.relatedTarget)
+          )
+            return;
+          this.closePopup();
+        });
+
+        marker.on("popupopen", function () {
+          const popupEl = this.getPopup()?.getElement();
+          if (!popupEl) return;
+          const self = this;
+          popupEl._mouseoutHandler = function (e) {
+            if (!popupEl.contains(e.relatedTarget)) self.closePopup();
+          };
+          popupEl.addEventListener("mouseleave", popupEl._mouseoutHandler);
+        });
+
+        marker.on("popupclose", function () {
+          const popupEl = this.getPopup()?.getElement();
+          if (popupEl?._mouseoutHandler) {
+            popupEl.removeEventListener("mouseleave", popupEl._mouseoutHandler);
+          }
+        });
+
+        layerGroup.addLayer(marker);
+        allLatLngs.push(coords);
       });
-      marker.on("mouseout", function () {
-        this.closePopup();
-      });
-
-      cluster.addLayer(marker);
     });
 
-    map.addLayer(cluster);
+    layerGroup.addTo(map);
 
-    if (cluster.getLayers().length) {
-      const bounds = cluster.getBounds();
+    if (allLatLngs.length) {
+      const bounds = L.latLngBounds(allLatLngs);
       if (bounds.isValid()) map.fitBounds(bounds.pad(0.25), { maxZoom: 4 });
     }
 
@@ -246,7 +272,7 @@ const HomeMap = ({ courseCode }) => {
   return (
     <div
       id="map"
-      style={{ height: "100vh", width: "95.5%" }}
+      style={{ height: "60vh", width: "95.5%" }}
       className="mx-auto"
     />
   );

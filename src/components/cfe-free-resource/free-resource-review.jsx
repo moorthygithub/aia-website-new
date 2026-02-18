@@ -8,6 +8,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Autoplay, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import HomeMap from "../home/home-map";
 
 const FreeResourceReview = () => {
   const { data, isLoading, isError, refetch } = useQuery({
@@ -36,7 +37,7 @@ const FreeResourceReview = () => {
         : noImageUrl,
       alt: item.student_image_alt || item.student_name,
     })) || [];
-  const truncateText = (text, limit = 130) => {
+  const truncateText = (text, limit = 430) => {
     if (text.length <= limit) return text;
     return text.slice(0, limit) + "...";
   };
@@ -58,13 +59,14 @@ const FreeResourceReview = () => {
 
         <div className="flex flex-col lg:flex-row items-center">
           <div className="w-full lg:w-1/2 mb-8 lg:mb-0">
-            <div className="flex justify-center">
+            {/* <div className="flex justify-center">
               <img
                 src={`${IMAGE_PATH}/testimonials-seven.png`}
                 alt="testimonials"
                 className="max-w-full h-auto"
               />
-            </div>
+            </div> */}
+            <HomeMap />
           </div>
 
           <div className="w-full lg:w-1/2 px-4">
