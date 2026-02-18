@@ -99,7 +99,7 @@ const CorporateCarousel = () => {
           >
             {images.map((img, index) => (
               <div key={index} className="shrink-0 w-[calc(20%-16px)]">
-                <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-orange-950">
+                <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-[#0F3652]">
                   <img
                     src={img.src}
                     alt={img.alt}

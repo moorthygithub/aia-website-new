@@ -1,4 +1,4 @@
-import { BASE_URL, IMAGE_PATH } from "@/api/base-url";
+import { BASE_URL } from "@/api/base-url";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { AlertCircle, RefreshCcw } from "lucide-react";
@@ -8,6 +8,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Autoplay, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import HomeMap from "./home-map";
 
 const HomeReview = () => {
   const { data, isLoading, isError, refetch } = useQuery({
@@ -41,11 +42,6 @@ const HomeReview = () => {
     if (text.length <= limit) return text;
     return text.slice(0, limit) + "...";
   };
-
-  // const shouldShowReadMore = (text) => {
-  //   return text.length > 150;
-  // };
-
   return (
     <section className="py-12 bg-white">
       <div className="max-w-340 mx-auto w-full px-4 sm:px-6 lg:px-8">
@@ -63,13 +59,14 @@ const HomeReview = () => {
 
         <div className="flex flex-col lg:flex-row items-center">
           <div className="w-full lg:w-1/2 mb-8 lg:mb-0">
-            <div className="flex justify-center">
+            {/* <div className="flex justify-center">
               <img
                 src={`${IMAGE_PATH}/testimonials-seven.png`}
                 alt="testimonials"
                 className="max-w-full h-auto"
               />
-            </div>
+            </div> */}
+            <HomeMap/>
           </div>
 
           <div className="w-full lg:w-1/2 px-4">

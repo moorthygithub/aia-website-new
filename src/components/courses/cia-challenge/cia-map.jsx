@@ -18,12 +18,15 @@
 //   const [mapData, setMapData] = useState(null);
 //   const [imageUrl, setImageUrl] = useState("");
 
-
-//   const { data: apiData, isLoading, isError } = useQuery({
+//   const {
+//     data: apiData,
+//     isLoading,
+//     isError,
+//   } = useQuery({
 //     queryKey: ["student-map-data"],
 //     queryFn: async () => {
 //       const res = await axios.get(
-//            `${BASE_URL}/api/getPassoutStudentsMapbyCourse/CIAC`
+//         `${BASE_URL}/api/getPassoutStudentsMapbyCourse/CIAC`,
 //       );
 //       return res.data;
 //     },
@@ -31,12 +34,11 @@
 
 //   useEffect(() => {
 //     if (apiData) {
-  
 //       const studentImageUrlObj = apiData.image_url?.find(
-//         item => item.image_for === "Student"
+//         (item) => item.image_for === "Student",
 //       );
 //       const studentImageUrl = studentImageUrlObj?.image_url || "";
-      
+
 //       setMapData(apiData.data);
 //       setImageUrl(studentImageUrl);
 //     }
@@ -80,7 +82,7 @@
 
 //     const verticalBounds = L.latLngBounds(
 //       L.latLng(-70, -Infinity),
-//       L.latLng(85, Infinity)
+//       L.latLng(85, Infinity),
 //     );
 //     map.setMaxBounds(verticalBounds);
 
@@ -93,7 +95,7 @@
 //         maxZoom: 20,
 //         noWrap: false,
 //         continuousWorld: true,
-//       }
+//       },
 //     ).addTo(map);
 
 //     const cluster = L.markerClusterGroup({
@@ -160,7 +162,7 @@
 //           <div class="course-name">${student.course}</div>
 //           <div class="caption">${student.name}</div>
 //         </div>
-//       `
+//       `,
 //         )
 //         .join("");
 
@@ -181,25 +183,23 @@
 //       if (!groupedByCountry[country]) {
 //         groupedByCountry[country] = [];
 //       }
-      
+
 //       groupedByCountry[country].push({
 //         name: student.student_name,
 //         course: student.student_course,
 //         imageUrl: `${imageUrl}${student.student_image}`,
 //         lat: parseFloat(student.country_latitude),
-//         lng: parseFloat(student.country_longitude)
+//         lng: parseFloat(student.country_longitude),
 //       });
 //     });
 
- 
 //     Object.keys(groupedByCountry).forEach((country) => {
 //       const students = groupedByCountry[country];
 //       if (students.length === 0) return;
 
 //       const firstStudent = students[0];
 //       const coords = [firstStudent.lat, firstStudent.lng];
-      
-  
+
 //       if (isNaN(coords[0]) || isNaN(coords[1])) {
 //         console.warn(`Invalid coordinates for ${country}:`, coords);
 //         return;
@@ -260,13 +260,29 @@
 
 //   if (isError) {
 //     return (
-//       <div style={{ height: "100vh", width: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
-//         <div className="text-red-500">Error loading map data. Please try again later.</div>
+//       <div
+//         style={{
+//           height: "100vh",
+//           width: "100%",
+//           display: "flex",
+//           alignItems: "center",
+//           justifyContent: "center",
+//         }}
+//       >
+//         <div className="text-red-500">
+//           Error loading map data. Please try again later.
+//         </div>
 //       </div>
 //     );
 //   }
 
-//   return <div id="map" style={{ height: "100vh", width: "95.5%" }}  className="mx-auto"/>;
+//   return (
+//     <div
+//       id="map"
+//       style={{ height: "70vh", width: "95.5%" }}
+//       className="mx-auto"
+//     />
+//   );
 // };
 
 // export default CiaMap;

@@ -1,7 +1,6 @@
 @import "tailwindcss";
 @plugin "tailwindcss-animate";
 
-
 @custom-variant dark (&:is(.dark *));
 
 body {
@@ -153,11 +152,9 @@ body {
   }
 }
 
-
 .instrument-font {
-  font-family: 'Instrument Serif', serif;
+  font-family: "Instrument Serif", serif;
 }
-
 
 /* CKEditor content display */
 .ck-content {
@@ -165,21 +162,29 @@ body {
   color: #374151;
 }
 
-.ck-content h1, 
-.ck-content h2, 
-.ck-content h3, 
-.ck-content h4, 
-.ck-content h5, 
+.ck-content h1,
+.ck-content h2,
+.ck-content h3,
+.ck-content h4,
+.ck-content h5,
 .ck-content h6 {
   font-weight: bold;
   margin-top: 1.5em;
   margin-bottom: 0.5em;
 }
 
-.ck-content h1 { font-size: 2em; }
-.ck-content h2 { font-size: 1.5em; }
-.ck-content h3 { font-size: 1.25em; }
-.ck-content h4 { font-size: 1.125em; }
+.ck-content h1 {
+  font-size: 2em;
+}
+.ck-content h2 {
+  font-size: 1.5em;
+}
+.ck-content h3 {
+  font-size: 1.25em;
+}
+.ck-content h4 {
+  font-size: 1.125em;
+}
 
 .ck-content p {
   margin-bottom: 1em;
@@ -192,10 +197,9 @@ body {
 }
 
 .ck-content a:hover {
-  color: #1d4ed8; 
+  color: #1d4ed8;
   text-decoration: underline;
 }
-
 
 .ck-content a[target="_blank"]::after {
   content: "↗";
@@ -204,7 +208,7 @@ body {
   text-decoration: none;
   display: inline-block;
 }
-.ck-content ul, 
+.ck-content ul,
 .ck-content ol {
   padding-left: 2em;
   margin-bottom: 1em;
@@ -236,8 +240,6 @@ body {
   font-weight: bold;
 }
 
-
-
 /* ----------------------------------------------------------- */
 
 @keyframes marquee {
@@ -257,8 +259,6 @@ body {
   animation-play-state: paused;
 }
 
-
-
 @keyframes slide-down {
   from {
     transform: translateY(-100px);
@@ -272,4 +272,8 @@ body {
 
 .animate-slide-down {
   animation: slide-down 0.5s ease-out;
+}
+* {
+  scrollbar-width: thick;
+  scrollbar-color: #f3831c #ffffff;
 }
