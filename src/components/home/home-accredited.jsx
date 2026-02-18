@@ -16,7 +16,7 @@ const HomeAccredited = () => {
         <div className="hidden md:flex justify-center gap-20 px-6">
           <div className="grayscale hover:grayscale-0 flex items-center justify-center transition-transform duration-300 hover:scale-110">
             <img
-              src={`${IMAGE_PATH}/IAO.jpeg`}
+              src={`${IMAGE_PATH}/IAO.png`}
               alt="IAO logo"
               className="w-40 h-40 object-contain"
             />
@@ -32,7 +32,7 @@ const HomeAccredited = () => {
 
           <div className="grayscale hover:grayscale-0 flex items-center justify-center transition-transform duration-300 hover:scale-110">
             <img
-              src={`${IMAGE_PATH}/ISO.jpeg`}
+              src={`${IMAGE_PATH}/ISO.png`}
               alt="ISO logo"
               className="w-40 h-40 object-contain"
             />
@@ -40,7 +40,7 @@ const HomeAccredited = () => {
 
           <div className="grayscale hover:grayscale-0 flex items-center justify-center transition-transform duration-300 hover:scale-110">
             <img
-              src={`${IMAGE_PATH}/Gleim.jpeg`}
+              src={`${IMAGE_PATH}/Gleim.png`}
               alt="Gleim logo"
               className="w-40 h-40 object-contain"
             />
