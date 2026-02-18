@@ -97,7 +97,7 @@ const CourseAchivers = ({ slug, title }) => {
     );
   }
 
-  // if (testimonialsList.length === 0) return null;
+  if (testimonialsList.length === 0) return null;
   return (
     <div
       className="relative w-full min-h-screen overflow-hidden bg-muted/30 my-18"

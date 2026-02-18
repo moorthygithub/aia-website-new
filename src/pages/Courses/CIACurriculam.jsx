@@ -11,6 +11,7 @@ import CiaCurrFaq from "@/components/courses/cia-curriculam/cia-curr-faq";
 import CiaCurrHighlight from "@/components/courses/cia-curriculam/cia-curr-highlight";
 import CiaCurrJourney from "@/components/courses/cia-curriculam/cia-curr-journey";
 import CiaCurrWhyAia from "@/components/courses/cia-curriculam/cia-curr-why-aia";
+import CourseBlog from "@/components/courses/common/course-blog";
 import CourseHero from "@/components/courses/common/course-hero";
 import CourseMap from "@/components/courses/common/course-map";
 import CourseResult from "@/components/courses/common/course-result";
@@ -53,6 +54,7 @@ const CIACurriculam = () => {
         slug="CIA"
         title="From Aspirants to Certified Internal Auditors - Our Recent CIA Achievers"
       />
+      <CourseBlog course="CIA" />
       <CamsConnection
         title="The Right Certification Starts With the Right Choice"
         description="Find the certification that aligns with your background and carrer stage"
