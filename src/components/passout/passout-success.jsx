@@ -147,6 +147,7 @@ const PassoutSuccess = () => {
       <div className="max-w-7xl mx-auto">
         <SectionHeading
           title="Know How Our Learners Turned Certification into Career Progress"
+          description="Discover real career journeys of professionals who used global certifications to unlock role transitions, professional growth, and long-term career advancement."
           align="center"
         />
         {Object.entries(groupedStories).map(([course, stories]) => (

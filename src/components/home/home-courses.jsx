@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-// import certificationCourses from "@/data/certificationCourses";
 import SectionHeading from "../SectionHeading/SectionHeading";
 
 const ServiceCard = ({ service, i, progress, range, total }) => {
@@ -109,7 +108,7 @@ const HomeCourses = ({ certificationCourses }) => {
     <div className="max-w-340 mx-auto px-4 sm:px-6 lg:px-8 mt-4">
       {" "}
       <div className="md:hidden">
-        <SectionHeading title=" International Certification Programs Offered by AIA" />
+        <SectionHeading title="Global Certification Programs Offered by AIA" />
 
         {ALL_SERVICES.map((service) => (
           <div
@@ -216,7 +215,7 @@ const HomeCourses = ({ certificationCourses }) => {
         >
           {" "}
           <SectionHeading
-            title="International Certification Programs Offered by AIA"
+            title="Global Certification Programs Offered by AIA"
             align="center"
           />
         </div>

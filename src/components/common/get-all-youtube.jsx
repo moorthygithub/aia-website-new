@@ -5,9 +5,7 @@ import React from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { TestimonialsSectionCourse } from "../courses/common/testimonials-with-marquee-course";
-import { Button } from "../ui/button";
-import { Link } from "react-router-dom";
-const AllYoutube = () => {
+const AllYoutube = ({ title, description }) => {
   const {
     data: certificatesData,
     isLoading: isLoadingPassout,
@@ -75,8 +73,11 @@ const AllYoutube = () => {
   return (
     <div className="w-full px-4 sm:px-6 lg:px-8">
       <TestimonialsSectionCourse
-        title="Meet Professionals Who Made It with AIA"
-        description="Click a success story to watch their full interview with Puneet Sir and get inspired."
+        title={title || "Meet Professionals Who Made It with AIA"}
+        description={
+          description ||
+          "Click a success story to watch their full interview with Puneet Sir and get inspired."
+        }
         testimonials={testimonials}
         sucessstory={true}
       />

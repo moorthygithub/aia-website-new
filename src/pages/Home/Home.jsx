@@ -25,9 +25,12 @@ export default function Home() {
       <HomeHero />
       <HomeAbout />
       <HomeContact />
-      <HomeCourses certificationCourses={certificationCourses}/>
+      <HomeCourses certificationCourses={certificationCourses} />
       <HomePassout />
-      <HomeResults title="AIA Certified Achievers Driving Excellence Everywhere" />
+      <HomeResults
+        title="We Stand by Results - Actual Certificates Earned by AIA Learners"
+        description="Actual certificates earned by professionals across CFE, CIA, and CAMS after structured preparation with AIA."
+      />
       <HomeAccredited />
       <HomeReview />
       <AllYoutube />

@@ -28,15 +28,15 @@ export function TestimonialCardCourse({
         "hover:from-muted/60 hover:to-muted/20",
         "max-w-[320px] sm:max-w-[320px]",
         "transition-all duration-300",
-        "h-50 w-[320px]",
+        "h-[182px] w-[320px]",
         href ? "cursor-pointer" : "cursor-default",
-        className,
+        className
       )}
     >
       <div className="h-full w-full flex items-center justify-center border-2 border-[#0F3652] rounded-lg overflow-hidden relative">
         <Avatar className="h-full w-full rounded-md">
-          <AvatarImage 
-            src={author?.avatar} 
+          <AvatarImage
+            src={author?.avatar}
             alt={alt || "Certificate Image"}
             className="w-full h-full object-contain rounded-md"
           />

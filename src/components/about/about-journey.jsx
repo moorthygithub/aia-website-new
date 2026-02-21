@@ -59,7 +59,7 @@ const statsCards = [
   {
     value: 2000,
     suffix: "+",
-    label: "Professionals Enrolled",
+    label: "Professionals (Trained & Certified)",
     icon: "👥",
   },
   {
@@ -109,7 +109,7 @@ const AboutJourney = () => {
 
   const activeStep = Math.min(
     Math.floor(progress * processSteps.length),
-    processSteps.length - 1,
+    processSteps.length - 1
   );
   return (
     <>
@@ -160,101 +160,6 @@ const AboutJourney = () => {
             </div>
           </div>
 
-          {/* <div ref={processRef} className="py-16 hidden md:block relative">
-            <div className="absolute top-1/2 left-0 w-full h-64 -translate-y-1/2 pointer-events-none">
-              <svg
-                className="w-full h-full"
-                viewBox="0 0 1200 200"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M100 50 
-       L1050 50 
-       Q1100 50 1100 100 
-       Q1100 150 1050 150 
-       L100 150"
-                  fill="none"
-                  stroke="#e5e7eb"
-                  strokeWidth="4"
-                />
-                <path
-                  d="M100 50 
-       L1050 50 
-       Q1100 50 1100 100 
-       Q1100 150 1050 150 
-       L100 150"
-                  fill="none"
-                  stroke="url(#g)"
-                  strokeWidth="4"
-                  strokeDasharray="2200"
-                  strokeDashoffset={2200 - progress * 2200}
-                />
-                <defs>
-                  <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#F3831C" />
-                    <stop offset="100%" stopColor="#F3831C" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
-
-            <div className="relative mb-40">
-              <div className="grid grid-cols-3 gap-8">
-                {processSteps.slice(0, 3).map((step, i) => (
-                  <div
-                    key={i}
-                    className={`text-center transition-all duration-500 ${
-                      i <= activeStep ? "opacity-100" : "opacity-40"
-                    }`}
-                  >
-                    <div
-                      className={`w-24 h-24 mx-auto mb-4 rounded-full flex items-center justify-center transition-all duration-500 ${
-                        i <= activeStep
-                          ? "bg-[#0F3652] text-white scale-110"
-                          : "bg-gray-200 text-gray-500"
-                      }`}
-                    >
-                      {step.icon}
-                    </div>
-                    <h3 className="font-bold text-[#0F3652]">{step.title}</h3>
-                    <p className="text-sm text-[#0F3652]/80">
-                      {step.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="relative mt-40">
-              <div className="grid grid-cols-3 gap-8 direction-rtl">
-                {processSteps.slice(3, 6).map((step, i) => {
-                  const realIndex = i + 3;
-                  return (
-                    <div
-                      key={realIndex}
-                      className={`text-center transition-all duration-500 direction-ltr ${
-                        realIndex <= activeStep ? "opacity-100" : "opacity-40"
-                      }`}
-                    >
-                      <div
-                        className={`w-24 h-24 mx-auto mb-4 rounded-full flex items-center justify-center transition-all duration-500 ${
-                          realIndex <= activeStep
-                            ? "bg-[#0F3652] text-white scale-110"
-                            : "bg-gray-200 text-gray-500"
-                        }`}
-                      >
-                        {step.icon}
-                      </div>
-                      <h3 className="font-bold text-[#0F3652]">{step.title}</h3>
-                      <p className="text-sm text-[#0F3652]/80">
-                        {step.description}
-                      </p>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div> */}
           <div className="mt-10">
             <img
               src={`${IMAGE_PATH}/certified.webp`}

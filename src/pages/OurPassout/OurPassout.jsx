@@ -14,7 +14,10 @@ const OurPassout = () => {
       <PassoutBanner />
       <PassoutResult />
       <PassoutSucess />
-      <AllYoutube />
+      <AllYoutube
+        title="Hear from Our Recently Qualified Professionals on YouTube"
+        description="Watch AIA-trained professionals share their success stories, exam strategies, and career insights in exclusive interviews with Puneet Sir on YouTube."
+      />
       <HomeReview />
       <HomeAlumniWork />
     </div>

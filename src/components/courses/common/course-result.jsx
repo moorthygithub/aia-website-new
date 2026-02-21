@@ -6,7 +6,7 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { TestimonialsSectionCourse } from "../common/testimonials-with-marquee-course";
 
-const CourseResult = ({ course, queryKey, title }) => {
+const CourseResult = ({ course, queryKey, title, description }) => {
   const {
     data: certificatesData,
     isLoading,
@@ -15,7 +15,7 @@ const CourseResult = ({ course, queryKey, title }) => {
     queryKey: [queryKey ? queryKey : "course-results-common"],
     queryFn: async () => {
       const res = await axios.get(
-        `${BASE_URL}/api/getCertificatebyCourse/${course}`,
+        `${BASE_URL}/api/getCertificatebyCourse/${course}`
       );
       return res.data;
     },
@@ -25,11 +25,11 @@ const CourseResult = ({ course, queryKey, title }) => {
     if (!certificatesData?.data) return [];
 
     const certificateImageUrlObj = certificatesData.image_url?.find(
-      (item) => item.image_for === "Student",
+      (item) => item.image_for === "Student"
     );
 
     const certificateNoImageUrlObj = certificatesData.image_url?.find(
-      (item) => item.image_for === "No Image",
+      (item) => item.image_for === "No Image"
     );
 
     const certificateImageUrl = certificateImageUrlObj?.image_url || "";
@@ -100,6 +100,7 @@ const CourseResult = ({ course, queryKey, title }) => {
             ? title
             : "Proof of Excellence: CIA Challenge Exam Success Stories of AIA Achievers"
         }
+        description={description}
         testimonials={testimonials}
       />
     </div>

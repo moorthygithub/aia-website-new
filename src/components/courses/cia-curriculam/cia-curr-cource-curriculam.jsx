@@ -6,8 +6,8 @@ const curriculumData = [
     id: 1,
     title: "Internal Audit Fundamentals",
     content: [
-      "CIA Part 1 - Internal Audit Fundamentals provides comprehensive coverage on the fundamentals of Internal Auditing, all about ethical norms and professionalism, core concepts of governance, risk management, and control frameworks. Last but not least, give exposure to potential fraud risks, thereby helping professionals stay informed and prepared for the evolving demands of the internal auditing field.",
-      "Foundation of Internal Auditing (35%)",
+      "CIA Part 1 - Internal Audit Fundamentals provides comprehensive coverage on the fundamentals of Internal Auditing, all about ethical norms and professionalism, core concepts of governance, risk management, and control frameworks.",
+      "Foundation of Internal Auditing(35%)",
       "Ethics & Professionalism (20%)",
       "Governance, Risk Management and Control (30%)",
       "Fraud Risks (15%)",
@@ -17,7 +17,7 @@ const curriculumData = [
     id: 2,
     title: "Internal Audit Engagement",
     content: [
-      "CIA Part 2 - Internal Audit Engagement focuses on applying internal audit processes in real-world scenarios. It covers essential topics like how to plan an audit engagement, steps to gather the information, and ways of analysis & evaluation, and also covers the do’s & don’ts during supervision activities, ensuring auditors are equipped with the practical skills necessary for success in the field.",
+      "CIA Part 2 – Internal Audit Engagement focuses on key areas such as planning an audit engagement, collecting and analyzing audit evidence, and evaluating findings effectively. The module also explains supervision responsibilities and common mistakes to avoid during audit execution.",
       "Engagement Planning (50%)",
       "Information Gathering, Analysis & Evaluation (40%)",
       "Engagement Supervision & Communication (10%)",
@@ -27,7 +27,7 @@ const curriculumData = [
     id: 3,
     title: "Internal Audit Function",
     content: [
-      "CIA Part 3 focuses on the Internal Audit Function, highlighting critical internal audit operations and planning the activities of a department. The pointers that need to be adhered to ensure the quality of IA functions and various activities related to engagement reporting and monitoring are covered in this part. This part curriculum has been significantly changed in 2025 as compared to the previous one.",
+      "CIA Part 3 focuses on understanding how to run an effective internal audit function aligned with organizational goals. The 2025 syllabus update introduces significant changes, making the curriculum more relevant to current industry practices and modern internal audit expectations.",
       "Internal Audit Operations (25%)",
       "Internal Audit Plan (15%)",
       "Quality of Internal Audit Functions (15%)",

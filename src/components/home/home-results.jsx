@@ -6,7 +6,7 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { TestimonialsSectionCourse } from "../courses/common/testimonials-with-marquee-course";
 
-const HomeResults = ({ title }) => {
+const HomeResults = ({ title, description }) => {
   const {
     data: certificatesData,
     isLoading,
@@ -84,6 +84,7 @@ const HomeResults = ({ title }) => {
         title ||
         "Proof of Excellence: CIA Challenge Exam Success Stories of AIA Achievers"
       }
+      description={description}
       testimonials={testimonials}
     />
   );

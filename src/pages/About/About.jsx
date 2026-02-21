@@ -7,13 +7,12 @@ import AboutTrainerSection from "@/components/about/about-trainer-section";
 
 import AboutHighlight from "@/components/about/about-highlight";
 import AboutJourney from "@/components/about/about-journey";
+import AboutPartner from "@/components/about/about-partner";
 import PopUp from "@/components/common/pop-up";
 import CourseYoutubeLecture from "@/components/courses/common/course-youtube-lecture";
-import HomeCorporatePartner from "@/components/home/home-corporate-partner";
 import HomeCourses from "@/components/home/home-courses";
 import HomePrCarousel from "@/components/home/home-pr-carousel";
 import HomeReview from "@/components/home/home-review";
-import AboutPartner from "@/components/about/about-partner";
 import certificationCourses from "@/data/certificationCourses";
 
 const AboutPage = () => {

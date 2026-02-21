@@ -1,13 +1,12 @@
 import React from "react";
 
 import { BASE_URL } from "@/api/base-url";
-// import { TestimonialsSection } from "@/components/ui/testimonials-with-marquee";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { TestimonialsSectionCourse } from "./testimonials-with-marquee-course";
-const CourseYoutube = ({ courseSlug }) => {
+const CourseYoutube = ({ courseSlug, title, description }) => {
   const {
     data: certificatesData,
     isLoading: isLoadingPassout,
@@ -16,7 +15,7 @@ const CourseYoutube = ({ courseSlug }) => {
     queryKey: ["youtube-testimonials"],
     queryFn: async () => {
       const res = await axios.get(
-        `${BASE_URL}/api/getYoutubebyCourse/${courseSlug}`,
+        `${BASE_URL}/api/getYoutubebyCourse/${courseSlug}`
       );
       return res.data;
     },
@@ -77,9 +76,10 @@ const CourseYoutube = ({ courseSlug }) => {
 
   return (
     <TestimonialsSectionCourse
-      title="Meet Recently Qualified on YouTube "
+      title={title || "Meet Recently Qualified on YouTube "}
       testimonials={testimonials}
       sucessstory={true}
+      description={description}
     />
     // <TestimonialsSection
     //   title="Meet Recently Qualified on YouTube "

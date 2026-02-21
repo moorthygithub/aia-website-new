@@ -124,7 +124,7 @@ const PassoutResult = () => {
         <div className="mx-auto flex max-w-340 flex-col items-center gap-4 text-center sm:gap-16">
           <SectionHeading
             title="Meet the AIA-Certified Professionals Worldwide"
-            description="Click a certificate to explore their LinkedIn profile and connect with certified professionals"
+            description="Tap on any certificate to learn about their certification journey, explore their LinkedIn profiles, and connect with professionals who advanced their careers through AIA’s global programs."
             align="center"
           />
           <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">

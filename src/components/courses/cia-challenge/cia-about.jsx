@@ -13,11 +13,24 @@ The CIA Challenge Exam is a fast-track pathway, offered by The Institute of Inte
         aboutStats={[
           {
             display: "Recorded Video Classes",
-            title: "Expert Mentoring Sessions",
+            title: "(50+ hours of structured learning)",
+            show: "true",
           },
-          { display: "Practice Questions", title: "Success Rate" },
-          { display: "Experts Study Material", title: "Success Stories" },
-          { display: "CIA Qualified Trainer", title: "Served" },
+          {
+            display: "500+ Exam Distractors",
+            title: "(Identify traps & improve accuracy)",
+            show: "true",
+          },
+          {
+            display: "Experts Study Material",
+            title: "(200 pages of concise notes)",
+            show: "true",
+          },
+          {
+            display: "Flash Cards",
+            title: "(300+ Flash cards for quick revision)",
+            show: "true",
+          },
         ]}
         formtitle="Join AiA CIA LMS"
         formsubtitle="Online Training and Certification Course"

@@ -28,7 +28,7 @@ const CfeUnique = () => {
             ),
             title: "Expert-Curated CFE Study Material",
             description:
-              "AIA simplifies CFE prep with exam-focused 250-page notes derived from the ACFE manual. It covers relevant concepts only, helping professionals study effectively.",
+              "AIA simplifies CFE prep with exam-focused 250-page concrete notes that cover relevant concepts only, helping professionals study effectively.",
             position: "left",
           },
           {
@@ -48,7 +48,7 @@ const CfeUnique = () => {
             ),
             title: "Live Interactive Sessions with Faculty",
             description:
-              "AIA conducts live sessions where learners actively discuss fraud cases, practical challenges, exchange perspectives & gain insights from experienced professionals.",
+              "AIA conducts live sessions where learners can actively address their queries and get a chance to gain insights from experienced fellow professionals from different industries.",
             position: "left",
           },
           {
@@ -58,7 +58,7 @@ const CfeUnique = () => {
             ),
             title: "Mentorship & Enrolment Support",
             description:
-              "From CFE registration guidance to final exam readiness, we support learners at every stage. At AIA, we simplify the ACFE process and ensure a smooth, stress-free journey.",
+              "From CFE registration guidance to final exam readiness, we support learners at every stage. At AIA, we simplify the ACFE enrolment process and ensure a smooth journey.",
             position: "right",
           },
           {
@@ -76,7 +76,7 @@ const CfeUnique = () => {
             secondaryIcon: (
               <Star className="w-4 h-4 absolute -top-1 -right-1 text-blue-400" />
             ),
-            title: "Trusted by Professionals Across Fraud, Audit & Risk Roles",
+            title: "Trusted by Professionals From Different Domains",
             description:
               "Professionals from different fields trust AIA because we respect their time, understand real-world challenges & consistently deliver clarity, confidence & exam results.",
             position: "right",

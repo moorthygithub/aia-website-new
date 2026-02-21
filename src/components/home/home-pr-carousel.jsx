@@ -1,9 +1,7 @@
-/* eslint-disable no-unused-vars */
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-
 import { BASE_URL } from "@/api/base-url";
 import axios from "axios";
 import { PrCardCarousel } from "../courses/common/pr-card-carousel";
@@ -11,6 +9,7 @@ import SectionHeading from "../SectionHeading/SectionHeading";
 
 const CourseTopStudent = ({
   title = "AIA in the News & Media Spotlight",
+  description = "AIA has been recognized by leading news and media platforms for its work in certification training, highlighting our role in building practical skills and supporting professionals across audit, fraud, and compliance",
   needPrefix,
 }) => {
   const {
@@ -30,7 +29,7 @@ const CourseTopStudent = ({
     if (!prdata?.data) return [];
 
     const studentImageUrlObj = prdata.image_url?.find(
-      (item) => item.image_for === "Pr",
+      (item) => item.image_for === "Pr"
     );
     const studentImageUrl = studentImageUrlObj?.image_url || "";
 
@@ -117,8 +116,12 @@ const CourseTopStudent = ({
           <div className="relative z-30">
             <h2 className="text-3xl font-medium text-gray-900">
               {needPrefix == "true" && <span>Recent Passout Students</span>}{" "}
-              <SectionHeading title={title} align="center" />
             </h2>
+            <SectionHeading
+              title={title}
+              beforeheading={description}
+              align="center"
+            />
           </div>
         </div>
 

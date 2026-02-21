@@ -25,18 +25,17 @@ const AboutMissionSection = () => {
               </h2>
             </div>
 
-            <p className="text-[#0F3652] leading-relaxed">
-              At AIA, we empower professionals to move beyond credentials to
+            <p className="text-[#0F3652] leading-relaxed text-justify">
+              At AIA, we empower professionals to move beyond credentials and
               build real capability. We exist to prepare audit, risk, and
-              compliance professionals for the real realities of the profession,
-              while also supporting them to achieve their certification goals on
-              their first attempt. Through structured learning, practical
-              insights, and expert-led mentorship, we focus on building skills
-              that translate directly into confident decision-making and
-              real-world impact. Our commitment is to walk with you at every
-              stage of your journey, ensuring you gain clarity, competence, and
-              the professional mindset needed to succeed in global roles and
-              evolving business environments.
+              compliance professionals for the realities of the profession,
+              while supporting them to achieve certification goals on their
+              first attempt. Through structured learning, practical insights,
+              and expert-led mentorship, we focus on building skills that
+              translate into real-world impact. Our commitment is to walk with
+              you at every stage of your journey, ensuring you gain clarity,
+              competence, and the professional mindset needed to succeed in
+              global roles and evolving business environments.
             </p>
           </div>
 
@@ -50,7 +49,7 @@ const AboutMissionSection = () => {
               </h2>
             </div>
 
-            <div className="text-[#0F3652] leading-relaxed space-y-4">
+            <div className="text-[#0F3652] leading-relaxed space-y-4 text-justify">
               <p>
                 Our vision is to shape a global community of audit, fraud, and
                 compliance professionals who have respected credentials,

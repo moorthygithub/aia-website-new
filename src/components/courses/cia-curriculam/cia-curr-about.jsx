@@ -12,12 +12,25 @@ The Certified Internal Auditor (CIA) is a globally recognized professional certi
 `}
         aboutStats={[
           {
-            display: "Recorded Video Classes",
-            title: "Expert Mentoring Sessions",
+            display: "Recorded Video Sessions",
+            title: "(60+ hours of structured learning)",
+            show: "true",
           },
-          { display: "Practice Questions", title: "Success Rate" },
-          { display: "Updated Gleim Study Material", title: "Success Stories" },
-          { display: "CIA Qualified Trainer", title: "Served" },
+          {
+            display: "Live-Doubt Sessions",
+            title: "(Doubt-solving sessions with faculty)",
+            show: "true",
+          },
+          {
+            display: "Updated Gliem Resources",
+            title: "(Get access to Gleim software)",
+            show: "true",
+          },
+          {
+            display: "CIA-Qualified Faculty",
+            title: "(22+ years of industry experience)",
+            show: "true",
+          },
         ]}
         formtitle="Join AiA CIA LMS"
         formsubtitle="Online Training and Certification Course"

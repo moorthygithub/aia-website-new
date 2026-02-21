@@ -12,6 +12,7 @@ import axios from "axios";
 import { useState } from "react";
 import { Button } from "../ui/button";
 import { Link } from "react-router-dom";
+import SectionHeading from "../SectionHeading/SectionHeading";
 
 const FreeResourceFlashCard = () => {
   const [openDrawer, setOpenDrawer] = useState(null);
@@ -158,17 +159,11 @@ const FreeResourceFlashCard = () => {
 
   return (
     <div className="w-full bg-white py-12 px-4 sm:py-16 sm:px-6 md:py-20 md:px-8">
-      <div className="mb-8 text-center sm:mb-12">
-        <h2 className="mb-2 text-xl font-bold text-gray-800 sm:mb-4 sm:text-2xl md:text-3xl">
-          <span className="mr-2" style={{ color: "#F3831C" }}>
-            »
-          </span>
-          Free Flash Cards
-        </h2>
-        <p className="text-sm text-gray-600 sm:text-base">
-          Success is a Process not an Event
-        </p>
-      </div>
+      <SectionHeading
+        title="CFE Free Flashcards – Module Wise"
+        description="Select any module to access free flashcards that help you revise key topics, improve concept clarity, and strengthen your CFE preparation efficiently."
+      align="center"
+      />
 
       <div className="mx-auto max-w-5xl cursor-pointer">
         <div className="grid grid-cols-2 gap-6 sm:gap-8 md:grid-cols-4 md:gap-10">

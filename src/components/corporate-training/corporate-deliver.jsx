@@ -175,7 +175,7 @@ const CorporateDeliver = () => {
       ),
       title: "Data-Backed Performance Insights",
       description:
-        "Every program includes progress tracking and post-training analytics, helping HR and L&D teams measure the impact of learning, engagement, and skill improvement across departments.",
+        "Every program includes progress tracking & post-training analytics, helping. HR and L&D teams measure the impact of learning and skill improvement across departments.",
     },
   ];
 

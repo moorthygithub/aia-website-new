@@ -31,7 +31,7 @@ const CIACurriculam = () => {
         courseSlug="cia"
         needPrefix="false"
         title="We Stand by Results "
-        subtitle="Meet Our Recent Proud Achievers of CIA Part 1 & 2."
+        subtitle="Meet the latest AIA-trained professionals who successfully earned their CIA credential through structured preparation and expert guidance."
       />
       <CiaCurrCourseCurriculum />
       {/* <CiaCurrResult /> */}

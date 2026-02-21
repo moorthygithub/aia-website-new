@@ -34,7 +34,6 @@ const CorporateTraining = () => {
       />
       <CorporateCta />
       <CorporateHighlight />
-
       <CorporateFaq />
       <CorporateReview />
       <CorporateWhyAia />

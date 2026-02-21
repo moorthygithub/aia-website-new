@@ -6,40 +6,32 @@ const curriculumData = [
     id: 1,
     title: "Understanding the Risks and Methods of Financial Crime",
     content: [
-      "Money Laundering and Financial Crime",
-      "Money Laundering Risks in Financial Services",
-      "Money Laundering Risks in Nonbank Financial Institutions",
-      "Money Laundering Risks in DNFBPs and Other High-Risk Sectors",
+      "This module explains the basics of money laundering and how financial crimes happen in different industries. It covers risks faced by banks, non-banking financial institutions, and high-risk sectors like DNFBPs. Learners understand how criminals misuse financial systems and why certain industries are more vulnerable.",
+      "By the end, professionals gain a strong foundation in financial crime risks, helping them recognize suspicious activities early and support stronger prevention measures within their organizations.",
     ],
   },
   {
     id: 2,
     title: "Global AFC Frameworks, Governance, and Regulations",
     content: [
-      "Global AFC Standards and Guidance",
-      "AFC Regulations and Regimes",
-      "Use of Guidance and AFC Cooperation",
+      "This module focuses on global anti-financial crime standards, regulations, and governance structures. It explains how international frameworks guide countries and institutions in fighting financial crime. Learners understand key regulatory expectations, compliance requirements, and the importance of following global best practices.",
+      "By completing this module, professionals learn how regulations work in practice and how organizations must align their compliance programs with global standards to avoid penalties and maintain regulatory trust.",
     ],
   },
   {
     id: 3,
     title: "Building an AFC Compliance Program",
     content: [
-      "Components of an AFC Program",
-      "Risk Assessment",
-      "Design your AFC Program and Controls",
-      "Transaction Monitoring and Investigation",
-      "Concluding Investigations and Coordinating with Law Enforcement",
+      "This module teaches how to design and implement an effective anti-financial crime compliance program. It explains key components such as risk assessment, control design, transaction monitoring, and investigation processes. Learners understand how to identify risks specific to their organization and build controls to reduce those risks.",
+      "By the end, professionals gain practical knowledge to build, manage, and improve AFC programs that protect organizations from financial crime risks.",
     ],
   },
   {
     id: 4,
     title: "Tools and Technologies to Fight Financial Crimes",
     content: [
-      "Technology for AFC Compliance",
-      "Technology for Customer Onboarding",
-      "Technology for Ongoing Monitoring and Investigations",
-      "Data Collection and Preparation",
+      "This module introduces modern technologies for detecting and preventing financial crimes. It explains how technology supports customers' onboarding, transaction monitoring, investigations, and data management. Learners understand how data is collected, prepared, and analyzed to identify suspicious patterns.",
+      "By completing this module, professionals learn how technology strengthens financial crime detection, reduces manual errors, and helps organizations respond faster to emerging financial crime threats.",
     ],
   },
 ];
@@ -49,7 +41,7 @@ const CamsCourseCurriculum = () => {
     <>
       <CourseCurriculum
         title="CAMS Course Overview"
-        description={` The Certified Anti-Money Laundering Specialist (CAMS) certification is the globally recognised benchmark for professionals working in Anti-Money Laundering (AML), Counter-Terrorist Financing (CTF), and financial crime compliance. It is widely recognised across banks, financial institutions, fintechs, consulting firms, and regulatory environments.<br/> \nThe CAMS program focuses on real-world AML applications, regulatory expectations, and effective financial crime risk management. Its curriculum is designed to equip professionals with a practical, risk-based understanding of AML frameworks, which helps them to evaluate control effectiveness, identify financial crime risks, and respond appropriately to suspicious activity within complex institutional environments.<br/> \n <strong> At AIA, we design a CAMS prep program aligning with the latest CAMS Version 7 exam framework, </strong> ensuring coverage of all key knowledge areas tested in the examination, while maintaining a strong focus on practical understanding relevant to today's evolving financial crime landscape.`}
+        description={`<strong>The Certified Anti-Money Laundering Specialist (CAMS) certification is the globally recognised benchmark for professionals working in Anti-Money Laundering (AML), Counter-Terrorist Financing (CTF), and financial crime compliance. It is widely recognised across banks, financial institutions, fintechs, consulting firms, and regulatory environments. CAMS curriculum is designed to equip professionals with a practical, risk-based understanding of AML frameworks, which helps them to evaluate control effectiveness and respond appropriately to suspicious activity within complex institutional environments.<br/> \n<strong> At AIA, we design a CAMS prep program aligning with the latest CAMS Version 7 exam framework,</strong> ensuring coverage of all key knowledge areas tested in the examination, while maintaining a strong focus on practical understanding relevant to today's evolving financial crime landscape.`}
         curriculumData={curriculumData}
       />
       <CfeJoinDialog

@@ -37,14 +37,19 @@ const CIAChallenge = () => {
       <CourseResult
         course="CIAC"
         queryKey="cia-challenge-certificates"
-        title="Proof of Excellence: CIA Challenge Exam Success Stories of AIA Achievers"
+        title="CIA Challenge Exam Results by AIA Professionals"
+        description="Actual score results of professionals who cleared the CIA Challenge Exam through AIA’s structured, exam-focused preparation."
       />
       <CiaJourney />
       <CiaWhyAia />
       <CiaHighlight />
       <CourseMap courseCode="CIAC" />
       <CourseReview slug="CIAC" />
-      <CourseYoutube courseSlug="ciac" />
+      <CourseYoutube
+        courseSlug="ciac"
+        title="Hear from Our Recently Qualified Professionals on YouTube"
+        description="Watch AIA-trained professionals share their CIA journey, exam strategies, and career insights in exclusive interviews with Puneet Sir on YouTube."
+      />
       <AboutTrainerSection path="faculty_cia_challenge.webp" />
       <CourseYoutubeLecture courseSlug="cia-challenge-curriculum" />
       <CiaCourseLms />

@@ -53,8 +53,8 @@ const HomePassout = () => {
           </div>
 
           <SectionHeading
-            title=" What our Passout say"
-            description=" See what our passout say about us."
+            title="AIA Certified Achievers"
+            description="Professionals who turned global certifications into career milestones with AIA."
             align="center"
           />
         </div>

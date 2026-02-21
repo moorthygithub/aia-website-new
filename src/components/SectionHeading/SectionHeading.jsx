@@ -6,11 +6,21 @@ const SectionHeading = ({
   highlight,
   highlight1,
   highlightclassName,
+  beforeheading
 }) => {
   const isCenter = align == "center";
 
   return (
     <div className={`py-2 ${isCenter ? "text-center" : "text-left"}`}>
+      {beforeheading && (
+        <div
+          className={`mt-4 text-gray-600 leading-relaxed  mx-auto ${
+            isCenter ? "text-center" : "text-left"
+          }`}
+        >
+          <p>{beforeheading}</p>
+        </div>
+      )}
       <div className={`inline-block ${isCenter ? "mx-auto" : ""}`}>
         <h2 className="text-3xl md:text-4xl font-bold text-[#0F3652]">
           {title} <span className="text-[#F3831C]">{highlight1}</span>

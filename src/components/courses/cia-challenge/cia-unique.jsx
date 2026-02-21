@@ -20,9 +20,9 @@ const CiaUnique = () => {
   return (
     <CourseUnique
       badgeText="WHAT MAKES US UNIQUE"
-      heading="Why AIA is the Preferred Choice for "
-      highlight="Professionals "
-      description="Because we go beyond just training - we provide a complete support system to ensure your success."
+      heading="Why AIA is the Preferred Choice for CIA Prep"
+      // highlight="Professionals "
+      description="Because at AIA, we provide a complete support system to ensure your success."
       services={[
         {
           icon: <Users className="w-6 h-6" />,

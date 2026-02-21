@@ -9,7 +9,12 @@ import SectionHeading from "@/components/SectionHeading/SectionHeading";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
-const CourseYoutubeLecture = ({ courseSlug, title, highlight1 }) => {
+const CourseYoutubeLecture = ({
+  courseSlug,
+  title,
+  highlight1,
+  description,
+}) => {
   const [activeTab, setActiveTab] = useState("");
   const scrollContainerRef = useRef(null);
 
@@ -17,7 +22,7 @@ const CourseYoutubeLecture = ({ courseSlug, title, highlight1 }) => {
     queryKey: [courseSlug || "aia-youtube-home"],
     queryFn: async () => {
       const res = await axios.get(
-        `${BASE_URL}/api/getLectureYoutubebySlug/${courseSlug}`,
+        `${BASE_URL}/api/getLectureYoutubebySlug/${courseSlug}`
       );
       return res.data;
     },
@@ -52,14 +57,14 @@ const CourseYoutubeLecture = ({ courseSlug, title, highlight1 }) => {
     if (!data?.image_url || !imageName) return "";
 
     const lectureImage = data.image_url.find(
-      (item) => item.image_for === "Lecture Youtube",
+      (item) => item.image_for === "Lecture Youtube"
     );
     if (lectureImage) {
       return `${lectureImage.image_url}${imageName}`;
     }
 
     const noImage = data.image_url.find(
-      (item) => item.image_for === "No Image",
+      (item) => item.image_for === "No Image"
     );
     return noImage ? noImage.image_url : "";
   };
@@ -92,6 +97,7 @@ const CourseYoutubeLecture = ({ courseSlug, title, highlight1 }) => {
         <SectionHeading
           title={title || "Visit Our Youtube Channel"}
           highlight1={highlight1}
+          description={description}
           align="center"
         />
         {tabs.length > 0 && (
@@ -175,13 +181,7 @@ const CourseYoutubeLecture = ({ courseSlug, title, highlight1 }) => {
           variant="ghost"
           aria-label="Visit Our YouTube Channel"
         >
-          <Link
-            to={
-              "https://www.youtube.com/@academyofia"
-            }
-            
-            target="_blank"
-          >
+          <Link to={"https://www.youtube.com/@academyofia"} target="_blank">
             <span className="relative z-10 text-white">
               <span>Visit Our YouTube Channel</span>
             </span>

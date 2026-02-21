@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
-import { Button } from "@/components/ui/button";
-import React, { useState, useRef, useEffect } from "react";
-import TextCaptcha from "../custom-captcha/text-captcha";
-import axios from "axios";
 import { BASE_URL } from "@/api/base-url";
+import { Button } from "@/components/ui/button";
+import axios from "axios";
+import { useEffect, useRef, useState } from "react";
+import TextCaptcha from "../custom-captcha/text-captcha";
 
 const HomeContact = () => {
   const [showCaptcha, setShowCaptcha] = useState(false);
@@ -53,7 +53,7 @@ const HomeContact = () => {
     };
 
     const allRequiredFieldsFilled = Object.values(requiredFields).every(
-      (field) => field !== "",
+      (field) => field !== ""
     );
 
     if (!allRequiredFieldsFilled) {
@@ -87,7 +87,7 @@ const HomeContact = () => {
           headers: {
             "Content-Type": "application/json",
           },
-        },
+        }
       );
 
       if (response.status === 200 || response.status === 201) {
@@ -116,7 +116,7 @@ const HomeContact = () => {
       setSubmitError(
         error.response?.data?.message ||
           error.message ||
-          "Failed to submit form. Please try again.",
+          "Failed to submit form. Please try again."
       );
     } finally {
       setIsSubmitting(false);
@@ -165,7 +165,7 @@ const HomeContact = () => {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 col-span-1 lg:col-span-2">
                 <div className="border-b-4 border-[#F3831C] pb-3 text-center">
                   <div className="text-lg font-bold text-[#0F3652]">
-                    50,000+ Hours
+                    50k+ hours{" "}
                   </div>
                   <div className="text-xs md:text-sm text-[#0F3652] mt-1">
                     Expert-Led Training Delivered
@@ -176,7 +176,7 @@ const HomeContact = () => {
                     2,000+ Students
                   </div>
                   <div className="text-xs md:text-sm text-[#0F3652] mt-1">
-                    Trained Every Year
+                    Professional (Trained & Certified)
                   </div>
                 </div>
                 <div className="border-b-4 border-[#F3831C] pb-3 text-center">

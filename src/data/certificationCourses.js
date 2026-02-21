@@ -41,7 +41,7 @@ const certificationCourses = [
     id: 3,
     title: "CIA Challenge Exam",
     description:
-      "The CIA Challenge Exam is a fast-track pathway designed for qualified professionals such as CA, CS, CISA or other members of recognised professional bodies by IIA to earn the CIA designation through a single comprehensive exam. It focuses on advanced internal audit concepts, risk management, governance, and strategic audit practices. This route allows experienced professionals to leverage their existing knowledge, accelerate certification, and enhance their global credibility in internal audit roles.",
+      "The CIA Challenge Exam is a fast-track pathway designed for qualified professionals such as CAs, CPAs, CISAs, or other members of recognised professional bodies, enabling them to earn the CIA designation through a single comprehensive exam. It focuses on advanced internal audit concepts, risk management, governance, and strategic audit practices. This route allows experienced professionals to leverage their existing knowledge, accelerate certification, and enhance their global credibility in internal audit roles.",
     description2: "How AIA Supports Your Certification Journey",
     features: [
       "Expert-curated quick notes tailored for the CIA Challenge exam",
@@ -80,7 +80,7 @@ export default certificationCourses;
 export const CorporatecertificationCourses = [
   {
     id: 1,
-    title: "CFE Certified Fraud Examiner",
+    title: "Certified Fraud Examiner",
     description:
       "CFE certification gives your professionals the mindset and tools to detect, investigate, and prevent fraud. The program blends analytical thinking, investigative techniques, and real-world case studies, enabling teams to uncover financial irregularities before they cause any damage to organization. It's about creating a workplace culture where integrity becomes a shared habit, not an expectation.",
     description2: "How It Transforms Your Team & Organization",
@@ -98,7 +98,7 @@ export const CorporatecertificationCourses = [
   },
   {
     id: 2,
-    title: "CIA - Certified Internal Auditor",
+    title: "Certified Internal Auditor",
     description:
       "The CIA program provides an in-depth mastery of internal audit methodologies, risk management frameworks, and governance practices aligned with international standards. Designed for modern auditors, this program transforms traditional auditing into strategic advisory, helping professionals deliver insights that directly influence leadership decisions and business outcomes.",
     description2: "How It Transforms Your Team & Organization",
@@ -117,19 +117,19 @@ export const CorporatecertificationCourses = [
   },
   {
     id: 3,
-    title: "CAMS - Certified Anti-Money Laundering Specialist",
+    title: "Certified Anti-Money Laundering Specialist",
     description:
       "CAMS training equips compliance and finance professionals to spot, assess, and prevent money laundering activities with confidence. This program develops a proactive mindset that protects your business from risk, strengthens its reputation, and ensures you stay aligned with global Anti Financial Crime standards",
     description2: "How It Transforms Your Team & Organization",
     features: [
       "Strengthen AML and compliance readiness by training teams to spot suspicious activity early.",
-      "Build a compliance culture where everyone, from frontline staff to leadership, understands their role in keeping your organization safe",
+      "Build a compliance culture where everyone, from frontline staff to leadership, understands their role in keeping your organization safe.",
       "Equip professionals with global AFC insights and investigative skills to respond confidently to regulatory changes.",
       "Reduce exposure to financial and reputational threats that can quietly erode trust and long-term stability.",
       "Streamline compliance processes, minimize penalties, and maintain consistent reporting accuracy.",
       "Fosters stronger relationships with regulators, clients, and partners through trust and transparency.",
     ],
-    cta: "Explore More About the CIA Challenge",
+    cta: "Explore more about the CAMS",
     link: "cia-challenge-curriculum",
     bgColor: "#ffffff",
     textColor: "#0F3652",

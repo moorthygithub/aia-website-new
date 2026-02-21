@@ -38,24 +38,20 @@ const CorporateReview = () => {
       <div className="max-w-340 mx-auto">
         <div className="grid md:grid-cols-2">
           <div className="p-2 rounded-lg">
-            <SectionHeading title="Straight From the Learners & Organizations Who Experience Us" />
+            <SectionHeading title="What Learners and Organizations Say About AIA" />
 
             <div className="space-y-4 text-[#0F3652]">
-              <p className="font-semibold">
-                AIA is a trusted partner for companies seeking measurable growth
-                and long-term talent development.
+              <p className="font-semibold text-justify">
+                AIA is a trusted partner for organizations seeking measurable
+                growth and long-term talent development
               </p>
 
-              <p>
+              <p className="text-justify">
                 Our tailored programs are designed to align with your business
                 objectives - helping teams strengthen core competencies, improve
                 productivity, and foster leadership that's ready for the future.
               </p>
             </div>
-
-            {/* <button className="mt-8 bg-[#F3831C] hover:bg-[#F3831C]/90 text-white font-semibold py-3 px-8 rounded-full transition duration-300 shadow-md">
-              Know More
-            </button> */}
           </div>
 
           <div className="relative h-96 bg-[#0F3652]  overflow-y-auto overflow-hidden rounded-md w-full">

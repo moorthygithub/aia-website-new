@@ -23,7 +23,7 @@ const CourseTopStudent = ({
     queryKey: ["recent-passout-students"],
     queryFn: async () => {
       const res = await axios.get(
-        `${BASE_URL}/api/getTopStudentbyCourse/${courseSlug}`,
+        `${BASE_URL}/api/getTopStudentbyCourse/${courseSlug}`
       );
       return res.data;
     },
@@ -33,15 +33,19 @@ const CourseTopStudent = ({
     if (!camsPassoutData?.data) return [];
 
     const studentImageUrlObj = camsPassoutData.image_url?.find(
-      (item) => item.image_for === "Student",
+      (item) => item.image_for === "Student"
     );
     const studentNoImageUrlObj = camsPassoutData.image_url?.find(
-      (item) => item.image_for === "No Image",
+      (item) => item.image_for === "No Image"
     );
     const studentImageUrl = studentImageUrlObj?.image_url || "";
 
     return camsPassoutData.data.map((student) => ({
-      src: `${student.student_marks_image ? studentImageUrl + student.student_marks_image : studentNoImageUrlObj?.image_url || ""}`,
+      src: `${
+        student.student_marks_image
+          ? studentImageUrl + student.student_marks_image
+          : studentNoImageUrlObj?.image_url || ""
+      }`,
       alt: student.student_marks_image_alt || "Marks Image",
     }));
   }, [camsPassoutData]);

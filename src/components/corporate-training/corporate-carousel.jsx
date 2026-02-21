@@ -86,7 +86,8 @@ const CorporateCarousel = () => {
   return (
     <div className="w-full max-w-340 mx-auto py-8">
       <SectionHeading
-        title="Moments That Made Professionals Journey Worth It"
+        title="Glimpses of Impactful Corporate Training Sessions at SBI Card"
+        description="These moments capture AIA’s hands-on corporate training engagement at SBI Card, marking professionals’ successful participation in real-world learning sessions designed to strengthen audit, risk, and fraud capabilities through expert-led guidance."
         align="center"
       />
       <div className="relative mt-3">

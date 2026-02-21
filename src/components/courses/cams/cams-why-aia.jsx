@@ -7,7 +7,7 @@ const CamsWhyAia = () => {
   return (
     <>
       <CourseWhyAia
-        heading="WHY Academy of Internal Audit"
+        heading="What sets AIA Apart"
         items={[
           {
             img: `${IMAGE_PATH}/teacher-svgrepo-com.png`,

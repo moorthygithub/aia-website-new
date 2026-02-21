@@ -6,7 +6,7 @@ import axios from "axios";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import CourseAchiverCard from "../courses/common/course-achiver-card";
-const CourseAchivers = ({ slug, title }) => {
+const CourseAchivers = ({ slug, title, description }) => {
   const [cardSize, setCardSize] = useState(365);
   const [testimonialsList, setTestimonialsList] = useState([]);
 
@@ -14,7 +14,7 @@ const CourseAchivers = ({ slug, title }) => {
     queryKey: ["achivers-passout-students"],
     queryFn: async () => {
       const res = await axios.get(
-        `${BASE_URL}/api/getPassoutStudentbyCourse/${slug}`,
+        `${BASE_URL}/api/getPassoutStudentbyCourse/${slug}`
       );
       return res.data;
     },
@@ -103,7 +103,7 @@ const CourseAchivers = ({ slug, title }) => {
       className="relative w-full min-h-screen overflow-hidden bg-muted/30 my-18"
       style={{ height: 600 }}
     >
-      <SectionHeading title={title} align="center" />
+      <SectionHeading title={title} description={description} align="center" />
       {testimonialsList.map((testimonial, index) => {
         const position =
           testimonialsList.length % 2
@@ -125,7 +125,7 @@ const CourseAchivers = ({ slug, title }) => {
           className={cn(
             "flex h-14 w-14 items-center justify-center text-2xl transition-colors",
             "bg-background border-2 border-border hover:bg-primary hover:text-primary-foreground",
-            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           )}
           aria-label="Previous testimonial"
         >
@@ -136,7 +136,7 @@ const CourseAchivers = ({ slug, title }) => {
           className={cn(
             "flex h-14 w-14 items-center justify-center text-2xl transition-colors",
             "bg-background border-2 border-border hover:bg-primary hover:text-primary-foreground",
-            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           )}
           aria-label="Next testimonial"
         >

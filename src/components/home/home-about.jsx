@@ -9,8 +9,7 @@ const HomeAbout = () => {
         description={`
 The Academy of Internal Audit (AIA) is a leading professional training institute dedicated to helping aspirants succeed in international certification programs. Beyond clearing exams, AIA focuses on building real-world competence in learners for audit, risk, and compliance roles.
 \n
-Guided by industry experts with hands-on experience, our practical training ensures learners not only understand concepts but can also apply them effectively in professional scenarios. Today, AIA has expanded its reach across 32+ countries within 5 years of its journey, along with a 99.6% success rate and high learner satisfaction, guiding professionals toward respected international certifications with confidence and clarity.
-
+Guided by industry experts with hands-on experience, our practical training ensures learners understand concept & apply them effectively in professional scenarios. Today, AIA has expanded its reach across 36+ countries within 5 years of its journey, along with a 99.6% success rate & high learner satisfaction, guiding professionals toward respected international certifications with confidence and clarity.
 
 
 `}

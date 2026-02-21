@@ -55,7 +55,7 @@ const CfeCurrUnique = () => {
           secondaryIcon: (
             <Sparkles className="w-4 h-4 absolute -top-1 -right-1 text-blue-400" />
           ),
-          title: "Live Sessions with Faculty",
+          title: "60+ Hours of Video Lectures",
           description:
             "Learn at your own pace with high-quality, detailed video lectures covering the complete syllabus.",
           position: "right",

@@ -29,46 +29,75 @@ const CorporateTrainer = () => {
                 <span className="font-bold text-3xl italic text-justify">
                   Puneet Garg
                 </span>{" "}
-                is a distinguished professional with over 22 years of leadership
-                experience in Internal Audit, Risk Management, Compliance,
-                Forensics, and Financial Advisory. A Chartered Accountant (CA),
-                Company Secretary (CS), and globally certified expert holding
-                the CIA, CFE, and CAMS credentials.
+                is a distinguished professional with{" "}
+                <strong>over 22 years of leadership experience </strong> in
+                Internal Audit, Risk Management, Compliance, Forensics, and
+                Financial Advisory.{" "}
+                <strong>
+                  A Chartered Accountant (CA), Company Secretary (CS), and
+                  globally certified expert holding the CIA, CFE, and CAMS
+                  credentials
+                </strong>
               </p>
 
               <p className="text-justify">
                 Puneet represents a rare blend of technical depth and strategic
-                insight in the governance and assurance domain. He has worked
-                with leading multinational organizations, including Samsung,
-                Hyundai, Panasonic and Alchemist, while served as Head of
-                Internal Audit at DCM Shriram Industries Ltd.
+                insight in the governance and assurance domain.
+                <strong>
+                  {" "}
+                  He has worked with leading multinational organizations,
+                </strong>{" "}
+                including Samsung, Hyundai, Panasonic, and Alchemist, while
+                serving as Head of Internal Audit at DCM Shriram Industries Ltd.
               </p>
               <p className="text-justify">
                 His strong foundation in corporate governance, risk controls,
                 and fraud investigation has established him as a trusted
-                authority in the audit and compliance landscape. An Authorized
-                Trainer with the National Stock Exchange (NSE) Academy, he has
-                been instrumental in advancing professional excellence and
-                capacity building for finance and audit professionals across
-                India.
+                authority in the audit and compliance landscape.
               </p>
               <p className="text-justify">
-                As the CEO and Lead Faculty at the Academy of Internal Audit
-                (AIA), he has designed and delivered specialized training
-                programs for both public and private sector organizations —
-                including regulatory and investigative bodies.
+                As the{" "}
+                <strong>
+                  {" "}
+                  CEO and Lead Faculty at the Academy of Internal Audit (AIA),
+                </strong>
+                he has designed and delivered specialized training programs for
+                both public and private sector organizations - including
+                regulatory and investigative bodies.
               </p>
               <p className="text-justify">
-                His programs go beyond certification, equipping professionals
-                with practical forensic insights, robust control frameworks, and
-                global compliance standards that directly strengthen an
-                organization’s internal audit effectiveness, risk management
-                maturity, and fraud resilience.
+                <strong>
+                  His programs go beyond certification, equipping professionals
+                  with practical forensic insights
+                </strong>
+                ,robust control frameworks, and global compliance standards that
+                directly strengthen an organization’s internal audit
+                effectiveness, risk management maturity, and fraud resilience.
               </p>
               <p className="text-justify">
                 Puneet’s initiatives to train corporate teams are not limited to
                 helping them earn global credentials, but also to ensure they
-                acquire real-world analytical and auditing skills that
+                acquire real-world analytical and auditing skills that enable
+                them to demonstrate excellence while performing their
+                professional responsibilities
+              </p>
+              <strong className="text-justify">
+                He has trained professionals from prestigious institutions such
+                as CBI, NIA, CAG, NFSU, SPG, Indian security forces, among
+                others.
+              </strong>
+              <p className="text-justify">
+                He has also served as an{" "}
+                <strong>Authorized Trainer with the NSE Academy</strong>
+                ,contributing to the professional development of finance and
+                audit professionals across India
+              </p>
+              <p className="text-justify">
+                In recognition of his impact on ethical leadership and
+                capability building in the profession,
+                <strong>CEO Insights India featured him </strong>
+                among the
+                <strong>Top 10 Impactful Business Leaders in India. </strong>
               </p>
             </div>
           </div>
