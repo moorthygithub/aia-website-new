@@ -15,12 +15,12 @@ export default function CourseUnique({
   return (
     <section
       id="unique-section"
-      className="w-full py-24 px-4 text-gray-800 relative"
+      className="w-full py-12 md:py-16 lg:py-24 px-4 text-gray-800 relative"
     >
       <div className="container mx-auto max-w-6xl relative z-10">
-        <div className="flex flex-col items-center mb-6">
-          <span className="text-[#F3831C] font-medium mb-2 flex items-center gap-2">
-            <Zap className="w-4 h-4" /> {badgeText}
+        <div className="flex flex-col items-center mb-4 md:mb-6">
+          <span className="text-[#F3831C] font-medium mb-2 flex items-center gap-2 text-sm md:text-base">
+            <Zap className="w-3 h-3 md:w-4 md:h-4" /> {badgeText}
           </span>
 
           <SectionHeading
@@ -30,35 +30,40 @@ export default function CourseUnique({
           />
         </div>
 
-        <p className="text-center max-w-2xl mx-auto mb-16 text-[#0F3652]">
+        <p className="text-center max-w-2xl mx-auto mb-8 md:mb-12 lg:mb-16 text-sm md:text-base text-[#0F3652] px-2">
           {description}
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
-          <div className="space-y-16">
+        {/* Mobile: Single column, Tablet/Desktop: Two columns */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-8 relative">
+          {/* Left Column - All services will stack on mobile, split on desktop */}
+          <div className="space-y-8 md:space-y-12 lg:space-y-16">
             {services
               .filter((s) => s.position === "left")
               .map((service, index) => (
-                <ServiceItem key={index} {...service} />
+                <ServiceItem key={`left-${index}`} {...service} />
               ))}
           </div>
 
-          <div className="space-y-16">
+          <div className="space-y-8 md:space-y-12 lg:space-y-16 mt-0 lg:mt-0">
             {services
               .filter((s) => s.position === "right")
               .map((service, index) => (
-                <ServiceItem key={index} {...service} />
+                <ServiceItem key={`right-${index}`} {...service} />
               ))}
           </div>
 
-          <div className="font-bold w-full  col-span-2 text-center text-xl">
-            {lastText}
-          </div>
+          {lastText && (
+            <div className="font-bold w-full col-span-1 lg:col-span-2 text-center text-base md:text-lg lg:text-xl mt-4 md:mt-6 px-2">
+              {lastText}
+            </div>
+          )}
         </div>
       </div>
-      <div className="flex justify-center mt-8">
+      
+      <div className="flex justify-center mt-6 md:mt-8">
         <Button
-          className="relative cursor-pointer overflow-hidden group  px-4 py-2  text-xs bg-[#F3831C] text-white rounded-none hover:bg-[#0F3652] transition-colors duration-300 "
+          className="relative cursor-pointer overflow-hidden group px-4 py-2 md:px-6 md:py-3 text-xs md:text-sm bg-[#F3831C] text-white rounded-none hover:bg-[#0F3652] transition-colors duration-300"
           variant="ghost"
           aria-label="Visit Our YouTube Channel"
         >
@@ -67,7 +72,7 @@ export default function CourseUnique({
               <span>Get in Touch</span>
             </span>
           </Link>
-        </Button>{" "}
+        </Button>
       </div>
     </section>
   );
@@ -76,16 +81,22 @@ export default function CourseUnique({
 function ServiceItem({ icon, secondaryIcon, title, description }) {
   return (
     <div className="flex flex-col group">
-      <div className="flex items-center gap-3 mb-3">
-        <div className="text-[#F3831C] bg-[#F3831C]/10 p-3 rounded-lg relative transition-colors duration-300 group-hover:bg-[#F3831C]/20 group-hover:rotate-6">
-          {icon}
-          {secondaryIcon}
+      <div className="flex items-center gap-2 md:gap-3 mb-2 md:mb-3">
+        <div className="text-[#F3831C] bg-[#F3831C]/10 p-2 md:p-3 rounded-lg relative transition-colors duration-300 group-hover:bg-[#F3831C]/20 group-hover:rotate-6 flex-shrink-0">
+          <div className="w-5 h-5 md:w-6 md:h-6">
+            {icon}
+          </div>
+          {secondaryIcon && (
+            <div className="absolute -top-1 -right-1">
+              {secondaryIcon}
+            </div>
+          )}
         </div>
-        <h3 className="text-xl font-medium text-[#0F3652] group-hover:text-[#F3831C] transition-colors duration-300">
+        <h3 className="text-base md:text-lg lg:text-xl font-medium text-[#0F3652] group-hover:text-[#F3831C] transition-colors duration-300">
           {title}
         </h3>
       </div>
-      <p className="text-sm text-[#0F3652] leading-relaxed pl-12">
+      <p className="text-xs md:text-sm text-[#0F3652] leading-relaxed pl-10 md:pl-12 pr-2">
         {description}
       </p>
     </div>

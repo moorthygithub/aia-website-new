@@ -16,38 +16,42 @@ const CourseAbout = ({
   formbuttonlabel,
 }) => {
   const location = useLocation();
+  
   return (
-    <section className="py-18">
-      <div className="max-w-340 mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div>
+    <section className="py-12 md:py-16 lg:py-18">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-10 lg:gap-12 xl:gap-16 items-center">
+          {/* Left Content */}
+          <div className="order-2 lg:order-1">
             {badgeText && (
-              <div className="flex items-center gap-3 mb-3">
-                <span className="text-sm font-medium text-[#F3831C]  tracking-wider">
+              <div className="flex items-center gap-3 mb-2 md:mb-3">
+                <span className="text-xs sm:text-sm font-medium text-[#F3831C] tracking-wider">
                   {badgeText}
                 </span>
               </div>
             )}
 
             <SectionHeading title={heading} />
+            
             {description && (
-              <div className="text-[#0F3652] leading-relaxed space-y-4 mb-8 text-justify">
+              <div className="text-sm sm:text-base text-[#0F3652] leading-relaxed space-y-3 md:space-y-4 mb-6 md:mb-8 text-justify">
                 {description.split("\n").map((line, i) => (
-                  <p key={i}>{line}</p>
+                  <p key={i} className="break-words">{line}</p>
                 ))}
               </div>
             )}
 
             {buttonText && (
-              <Link to={buttonLink}>
-                <span className="text-md font-semibold cursor-pointer  px-4 py-2  text-xs bg-[#F3831C] text-white rounded-none hover:bg-[#0F3652] transition-colors duration-300 mb-1">
+              <Link to={buttonLink} className="inline-block">
+                <span className="text-xs sm:text-sm font-semibold cursor-pointer px-4 py-2.5 sm:px-5 sm:py-2.5 bg-[#F3831C] text-white rounded-none hover:bg-[#0F3652] transition-colors duration-300">
                   {buttonText}
                 </span>
               </Link>
             )}
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          {/* Right Content - Stats Grid */}
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 order-1 lg:order-2">
             {aboutStats?.map((stat, index) => (
               <div
                 key={index}
@@ -59,9 +63,9 @@ const CourseAbout = ({
                   from-[#F3831C]/20
                   via-[#F3831C]/10
                   to-[#F3831C]/30
-                  h-26.5
-                  py-9
-                  px-3
+                  min-h-[100px] sm:min-h-[110px] md:min-h-[120px] lg:h-26.5
+                  py-4 sm:py-6 md:py-7 lg:py-9
+                  px-2 sm:px-3
                   rounded-lg
                   flex
                   flex-col
@@ -74,11 +78,12 @@ const CourseAbout = ({
                   cursor-pointer
                 "
               >
-                <div className="text-xl font-bold mb-1 text-[#0F3652]">
+                <div className="text-base sm:text-lg md:text-xl font-bold mb-1 text-[#0F3652]">
                   {stat.display}
                 </div>
+                
                 {stat.show == "true" && (
-                  <h4 className="text-base font-normal text-[#0F3652]">
+                  <h4 className="text-xs sm:text-sm md:text-base font-normal text-[#0F3652] leading-tight">
                     {stat.title}
                   </h4>
                 )}
@@ -89,7 +94,7 @@ const CourseAbout = ({
                     bottom-0
                     left-0
                     right-0
-                    h-1.5
+                    h-1 sm:h-1.5
                     bg-linear-to-r
                     from-[#F3831C]
                     via-[#F3831C]/80
@@ -102,13 +107,17 @@ const CourseAbout = ({
           </div>
         </div>
       </div>
+
+      {/* Form Dialog - Only on non-home pages */}
       {location.pathname != "/" && (
-        <CfeJoinDialog
-          title={formtitle}
-          subtitle={formsubtitle}
-          course={formcourse}
-          buttonlabel={formbuttonlabel}
-        />
+        <div className="mt-8 md:mt-10 lg:mt-12 px-4">
+          <CfeJoinDialog
+            title={formtitle}
+            subtitle={formsubtitle}
+            course={formcourse}
+            buttonlabel={formbuttonlabel}
+          />
+        </div>
       )}
     </section>
   );

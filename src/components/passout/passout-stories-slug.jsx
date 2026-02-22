@@ -1,7 +1,6 @@
 import { BASE_URL } from "@/api/base-url";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Button } from "../ui/button";
 
@@ -23,10 +22,6 @@ const PassoutStoriesSlug = () => {
     enabled: !!slug,
   });
 
-  const [email, setEmail] = useState("");
-  const [subscriptionStatus, setSubscriptionStatus] = useState("");
-  const [isSubscribing, setIsSubscribing] = useState(false);
-
   const formatLinkedInUrl = (url) => {
     if (!url) return "#";
     if (url.startsWith("http://") || url.startsWith("https://")) {
@@ -35,59 +30,10 @@ const PassoutStoriesSlug = () => {
     return `https://${url}`;
   };
 
-  const handleSubscribe = async (e) => {
-    e.preventDefault();
-
-    if (!email || !/\S+@\S+\.\S+/.test(email)) {
-      setSubscriptionStatus("Please enter a valid email address");
-      setTimeout(() => setSubscriptionStatus(""), 3000);
-      return;
-    }
-
-    setIsSubscribing(true);
-    setSubscriptionStatus("");
-
-    try {
-      const response = await axios.post(
-        `${BASE_URL}/api/create-newslettersubscription`,
-        {
-          newsletter_email: email,
-        },
-      );
-
-      if (response.data.code === 200) {
-        setSubscriptionStatus(
-          response.data.msg || "Successfully subscribed! Thank you.",
-        );
-        setEmail("");
-      } else {
-        setSubscriptionStatus(
-          response.data.message || "Subscription failed. Please try again.",
-        );
-      }
-    } catch (error) {
-      console.error("Subscription error:", error);
-      if (error.response) {
-        setSubscriptionStatus(
-          error.response.data.message ||
-            error.response.data.error ||
-            "Subscription failed. Please try again.",
-        );
-      } else if (error.request) {
-        setSubscriptionStatus("Network error. Please check your connection.");
-      } else {
-        setSubscriptionStatus("An error occurred. Please try again.");
-      }
-    } finally {
-      setIsSubscribing(false);
-      setTimeout(() => setSubscriptionStatus(""), 5000);
-    }
-  };
-
   if (isLoading) {
     return (
       <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="text-[#0F3652]">Loading...</div>
+        <div className="text-[#0F3652] text-sm sm:text-base">Loading...</div>
       </div>
     );
   }
@@ -95,10 +41,11 @@ const PassoutStoriesSlug = () => {
   if (isError || !storyData?.data) {
     return (
       <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="text-[#F3831C]">Error loading story</div>
+        <div className="text-[#F3831C] text-sm sm:text-base">Error loading story</div>
       </div>
     );
   }
+
   const courseRoutes = {
     CAMS: "/cams",
     CFE: "/cfe-curriculum",
@@ -129,6 +76,7 @@ const PassoutStoriesSlug = () => {
     student_story_box_details3,
     student_story_box_details4,
   } = storyData.data;
+  
   const companyImageUrl =
     storyData.image_url.find((img) => img.image_for === "Student Company")
       ?.image_url + company?.student_company_image;
@@ -141,16 +89,16 @@ const PassoutStoriesSlug = () => {
   return (
     <div className="min-h-screen bg-white">
       <header className="relative overflow-visible">
-        <div className="px-4 sm:px-6 lg:px-8 max-w-340 mx-auto">
+        <div className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
           <div className="relative">
-            <div className="pt-8">
+            <div className="pt-4 sm:pt-6 lg:pt-8">
               <div className="flex items-start">
                 <a
                   href="/our-passouts"
                   className="inline-flex items-center gap-2 group transition-colors text-[#0F3652] hover:text-[#0F3652]"
                 >
                   <svg
-                    className="w-4 h-4 transition-transform group-hover:-translate-x-0.5"
+                    className="w-3 h-3 sm:w-4 sm:h-4 transition-transform group-hover:-translate-x-0.5"
                     width="16"
                     height="16"
                     viewBox="0 0 16 16"
@@ -163,18 +111,18 @@ const PassoutStoriesSlug = () => {
                       strokeWidth="1.5"
                     />
                   </svg>
-                  <span className="text-sm font-medium tracking-wide uppercase">
+                  <span className="text-xs sm:text-sm font-medium tracking-wide uppercase">
                     All stories
                   </span>
                 </a>
               </div>
 
               <div className="flex justify-center">
-                <div className="mt-2 relative overflow-hidden max-w-5xl rounded-3xl">
+                <div className="mt-2 relative overflow-hidden max-w-5xl rounded-xl sm:rounded-2xl lg:rounded-3xl">
                   <img
                     src={`${BannerImageUrl}/${student_story_banner_image}`}
                     alt={student_story_banner_image_alt}
-                    className="w-full h-[500px] object-contain mt-4"
+                    className="w-full h-auto max-h-[250px] sm:max-h-[350px] md:max-h-[400px] lg:max-h-[500px] object-contain mt-2 sm:mt-3 lg:mt-4"
                     loading="eager"
                   />
                 </div>
@@ -184,20 +132,21 @@ const PassoutStoriesSlug = () => {
         </div>
       </header>
 
-      <main className="py-16">
-        <div className="px-4 sm:px-6 lg:px-8 max-w-340 mx-auto">
-          <div className="pb-24">
-            <div className="flex flex-col lg:flex-row gap-12">
-              {/* Left Sidebar - Sticky */}
+      <main className="py-8 sm:py-10 md:py-12 lg:py-16">
+        <div className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+          <div className="pb-12 sm:pb-16 lg:pb-24">
+            {/* Mobile/Tablet: Stacked, Desktop: Side by side */}
+            <div className="flex flex-col lg:flex-row gap-6 sm:gap-8 lg:gap-12">
+              {/* Left Sidebar - Sticky on desktop only */}
               <div className="lg:w-1/4">
-                <div className="rounded-2xl bg-[#0F3652]/5 p-4 lg:sticky lg:top-24">
+                <div className="rounded-xl sm:rounded-2xl bg-[#0F3652]/5 p-3 sm:p-4 lg:sticky lg:top-24">
                   <div>
                     <div>
-                      <h3 className="text-base font-medium text-[#0F3652]">
+                      <h3 className="text-sm sm:text-base font-medium text-[#0F3652]">
                         About the Professional
                       </h3>
                       <div className="mt-2"></div>
-                      <div className="flex items-center gap-3 mb-3">
+                      <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
                         {companyImageUrl && (
                           <img
                             src={companyImageUrl}
@@ -205,60 +154,60 @@ const PassoutStoriesSlug = () => {
                               company?.student_company_image_alt ||
                               company?.student_company_name
                             }
-                            className="w-10 h-10 rounded-full object-cover"
+                            className="w-8 h-8 sm:w-10 sm:h-10 rounded-full object-cover"
                           />
                         )}
                         <div>
-                          <p className="text-sm font-medium text-[#0F3652]">
+                          <p className="text-xs sm:text-sm font-medium text-[#0F3652]">
                             {student_name}
                           </p>
-                          <p className="text-xs text-[#0F3652]">
+                          <p className="text-xs text-[#0F3652] break-words">
                             {student_designation}
                           </p>
                         </div>
                       </div>
-                      <p className="text-sm text-[#0F3652]">
+                      <p className="text-xs sm:text-sm text-[#0F3652] break-words">
                         {student_story_short_description}
                       </p>
                     </div>
 
-                    <div className="space-y-2 mt-3">
+                    <div className="space-y-2 sm:space-y-3 mt-3 sm:mt-4">
                       <div>
-                        <h3 className="text-base font-medium text-[#0F3652]">
+                        <h3 className="text-sm sm:text-base font-medium text-[#0F3652]">
                           Company
                         </h3>
-                        <div className="mt-2"></div>
-                        <p className="text-sm text-[#0F3652]">
+                        <div className="mt-1 sm:mt-2"></div>
+                        <p className="text-xs sm:text-sm text-[#0F3652] break-words">
                           {company?.student_company_name || "Not specified"}
                         </p>
                       </div>
 
                       <div>
-                        <h3 className="text-base font-medium text-[#0F3652]">
+                        <h3 className="text-sm sm:text-base font-medium text-[#0F3652]">
                           Course
                         </h3>
-                        <div className="mt-2"></div>
-                        <p className="text-sm text-[#0F3652]">
+                        <div className="mt-1 sm:mt-2"></div>
+                        <p className="text-xs sm:text-sm text-[#0F3652] break-words">
                           {student_course || "Not specified"}
                         </p>
                       </div>
 
                       <div>
-                        <h3 className="text-base font-medium text-[#0F3652]">
+                        <h3 className="text-sm sm:text-base font-medium text-[#0F3652]">
                           Designation
                         </h3>
-                        <div className="mt-2"></div>
-                        <p className="text-sm text-[#0F3652]">
+                        <div className="mt-1 sm:mt-2"></div>
+                        <p className="text-xs sm:text-sm text-[#0F3652] break-words">
                           {student_designation || "Not specified"}
                         </p>
                       </div>
 
                       <div>
-                        <h3 className="text-base font-medium text-[#0F3652]">
+                        <h3 className="text-sm sm:text-base font-medium text-[#0F3652]">
                           Location
                         </h3>
-                        <div className="mt-2"></div>
-                        <p className="text-sm text-[#0F3652]">
+                        <div className="mt-1 sm:mt-2"></div>
+                        <p className="text-xs sm:text-sm text-[#0F3652] break-words">
                           {country?.country_name || "Not specified"}
                           {country?.country_city &&
                           country.country_city !== country.country_name
@@ -268,202 +217,91 @@ const PassoutStoriesSlug = () => {
                       </div>
 
                       <div>
-                        <h3 className="text-base font-medium text-[#0F3652]">
+                        <h3 className="text-sm sm:text-base font-medium text-[#0F3652]">
                           LinkedIn
                         </h3>
-
+                        <div className="mt-1 sm:mt-2"></div>
                         <a
                           href={linkedinUrl}
                           target="_blank"
                           rel="noopener noreferrer"
+                          className="inline-block"
                         >
-                          <p className="text-sm text-[#0F3652] underline">
-                            View
+                          <p className="text-xs sm:text-sm text-[#0F3652] underline break-words">
+                            View Profile
                           </p>
                         </a>
                       </div>
-                      <div className="flex  mt-4">
+
+                      <div className="flex mt-3 sm:mt-4">
                         <Button
-                          className=" mb-4  relative cursor-pointer overflow-hidden group  px-4 py-2  text-xs bg-[#F3831C] text-white rounded-none hover:bg-[#0F3652] transition-colors duration-300 "
+                          className="relative cursor-pointer overflow-hidden group px-3 sm:px-4 py-1.5 sm:py-2 text-xs bg-[#F3831C] text-white rounded-none hover:bg-[#0F3652] transition-colors duration-300 w-full sm:w-auto"
                           variant="ghost"
                           aria-label="View All Success Stories"
                         >
                           <Link
                             to={courseRoutes[student_course] || "/courses"}
+                            className="block w-full"
                           >
-                            <span className="relative z-10 text-white">
+                            <span className="relative z-10 text-white text-xs sm:text-sm">
                               <span>Explore {student_course}</span>
                             </span>
                           </Link>
-                        </Button>{" "}
+                        </Button>
                       </div>
                     </div>
-
-                    {/* <div className="py-2 mt-4">
-                      <h2 className="text-base font-medium text-[#0F3652] mb-1">
-                        Subscribe to Newsletter
-                      </h2>
-
-                      <form onSubmit={handleSubscribe} className="space-y-3">
-                        <input
-                          type="email"
-                          placeholder="Enter your email"
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          className="w-full px-2 py-1.5 border border-[#0F3652]/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F3831C] focus:border-transparent text-[#0F3652] placeholder-[#0F3652]/50"
-                        />
-                        <button
-                          type="submit"
-                          disabled={isSubscribing}
-                          className={`w-full py-1.5 ${
-                            isSubscribing
-                              ? "bg-[#F3831C]/70"
-                              : "bg-[#F3831C] hover:bg-[#F3831C]/90"
-                          } text-white font-semibold rounded-lg transition-colors disabled:cursor-not-allowed`}
-                        >
-                          {isSubscribing ? "Subscribing..." : "Subscribe"}
-                        </button>
-                      </form>
-                      {subscriptionStatus && (
-                        <div
-                          className={`text-sm ${
-                            subscriptionStatus.includes("Success")
-                              ? "text-[#F3831C]"
-                              : "text-[#F3831C]"
-                          } font-medium text-center`}
-                        >
-                          {subscriptionStatus}
-                        </div>
-                      )}
-                    </div> */}
-                    {/*                     
-                    <div className="mt-4">
-                      <h3 className="text-base font-medium text-[#0F3652] mb-4">
-                        Share this Success Story
-                      </h3>
-                      <div className="flex gap-4">
-                        <div className="relative">
-                          <button
-                            type="button"
-                            className="w-10 h-10 flex items-center justify-center rounded-full border border-[#0F3652]/20 hover:border-[#0F3652]/30 transition-colors group"
-                            onClick={handleCopyLink}
-                          >
-                            <svg
-                              className="w-5 h-5 text-[#0F3652] group-hover:text-[#0F3652]"
-                              viewBox="0 0 20 20"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <g clipPath="url(#clip0_1479_3143)">
-                                <path
-                                  d="M4.1665 12.5001H3.33317C2.89114 12.5001 2.46722 12.3245 2.15466 12.0119C1.8421 11.6994 1.6665 11.2754 1.6665 10.8334V3.33341C1.6665 2.89139 1.8421 2.46746 2.15466 2.1549C2.46722 1.84234 2.89114 1.66675 3.33317 1.66675H10.8332C11.2752 1.66675 11.6991 1.84234 12.0117 2.1549C12.3242 2.46746 12.4998 2.89139 12.4998 3.33341V4.16675M9.1665 7.50008H16.6665C17.587 7.50008 18.3332 8.24627 18.3332 9.16675V16.6667C18.3332 17.5872 17.587 18.3334 16.6665 18.3334H9.1665C8.24603 18.3334 7.49984 17.5872 7.49984 16.6667V9.16675C7.49984 8.24627 8.24603 7.50008 9.1665 7.50008Z"
-                                  stroke="currentColor"
-                                  strokeWidth="1.67"
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                />
-                              </g>
-                              <defs>
-                                <clipPath id="clip0_1479_3143">
-                                  <rect
-                                    width="20"
-                                    height="20"
-                                    fill="currentColor"
-                                    transform="translate(-0.000488281)"
-                                  />
-                                </clipPath>
-                              </defs>
-                            </svg>
-                          </button>
-                          {isCopied && (
-                            <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-[#0F3652] text-white text-xs px-2 py-1 rounded whitespace-nowrap">
-                              Copied!
-                            </div>
-                          )}
-                        </div>
-
-                        <a
-                          href={linkedinUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="w-10 h-10 flex items-center justify-center rounded-full border border-[#0F3652]/20 hover:border-[#0F3652]/30 transition-colors"
-                        >
-                          <svg
-                            className="w-5 h-5 text-[#0F3652] hover:text-[#0F3652]"
-                            viewBox="0 0 20 20"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <g clipPath="url(#clip0_1479_3152)">
-                              <path
-                                d="M18.519 0H1.47607C0.659668 0 -0.000488281 0.644531 -0.000488281 1.44141V18.5547C-0.000488281 19.3516 0.659668 20 1.47607 20H18.519C19.3354 20 19.9995 19.3516 19.9995 18.5586V1.44141C19.9995 0.644531 19.3354 0 18.519 0ZM5.9331 17.043H2.96436V7.49609H5.9331V17.043ZM4.44873 6.19531C3.49561 6.19531 2.72607 5.42578 2.72607 4.47656C2.72607 3.52734 3.49561 2.75781 4.44873 2.75781C5.39795 2.75781 6.16748 3.52734 6.16748 4.47656C6.16748 5.42188 5.39795 6.19531 4.44873 6.19531ZM17.0425 17.043H14.0776V12.4023C14.0776 11.2969 14.0581 9.87109 12.5347 9.87109C10.9917 9.87109 10.7573 11.0781 10.7573 12.3242V17.043H7.79639V7.49609H10.6401V8.80078H10.6792C11.0737 8.05078 12.0425 7.25781 13.4839 7.25781C16.4878 7.25781 17.0425 9.23438 17.0425 11.8047V17.043Z"
-                                fill="currentColor"
-                              />
-                            </g>
-                            <defs>
-                              <clipPath id="clip0_1479_3152">
-                                <rect
-                                  width="20"
-                                  height="20"
-                                  fill="white"
-                                  transform="translate(-0.000488281)"
-                                />
-                              </clipPath>
-                            </defs>
-                          </svg>
-                        </a>
-                      </div>
-                    </div> */}
                   </div>
                 </div>
               </div>
 
               {/* Right Content */}
               <div className="lg:w-3/4">
-                <div className="mb-12">
-                  <h3 className="text-xl md:text-2xl font-bold text-[#0F3652] mb-6">
+                <div className="mb-8 sm:mb-10 lg:mb-12">
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-[#0F3652] mb-4 sm:mb-5 lg:mb-6">
                     Our Impact
                   </h3>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div className="space-y-2 border bg-[#0F3652] p-4 rounded-2xl">
-                      <div className="text-4xl md:text-5xl font-bold text-[#F3831C]">
+                  {/* Impact Stats Grid */}
+                  <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
+                    <div className="space-y-1 sm:space-y-2 border bg-[#0F3652] p-3 sm:p-4 rounded-xl sm:rounded-2xl">
+                      <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#F3831C] break-words">
                         {student_story_box_title1}
                       </div>
-                      <div className="text-lg font-medium text-white">
+                      <div className="text-sm sm:text-base lg:text-lg font-medium text-white break-words">
                         {student_story_box_details1}
                       </div>
                     </div>
-                    <div className="space-y-2 border bg-[#0F3652] p-4 rounded-2xl">
-                      <div className="text-4xl md:text-5xl font-bold text-[#F3831C]">
+                    <div className="space-y-1 sm:space-y-2 border bg-[#0F3652] p-3 sm:p-4 rounded-xl sm:rounded-2xl">
+                      <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#F3831C] break-words">
                         {student_story_box_title2}
                       </div>
-                      <div className="text-lg font-medium text-white">
+                      <div className="text-sm sm:text-base lg:text-lg font-medium text-white break-words">
                         {student_story_box_details2}
                       </div>
                     </div>
-                    <div className="space-y-2 border bg-[#0F3652] p-4 rounded-2xl">
-                      <div className="text-4xl md:text-5xl font-bold text-[#F3831C]">
+                    <div className="space-y-1 sm:space-y-2 border bg-[#0F3652] p-3 sm:p-4 rounded-xl sm:rounded-2xl">
+                      <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#F3831C] break-words">
                         {student_story_box_title3}
                       </div>
-                      <div className="text-lg font-medium text-white">
+                      <div className="text-sm sm:text-base lg:text-lg font-medium text-white break-words">
                         {student_story_box_details3}
                       </div>
                     </div>
-                    <div className="space-y-2 border bg-[#0F3652] p-4 rounded-2xl">
-                      <div className="text-4xl md:text-5xl font-bold text-[#F3831C]">
+                    <div className="space-y-1 sm:space-y-2 border bg-[#0F3652] p-3 sm:p-4 rounded-xl sm:rounded-2xl">
+                      <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#F3831C] break-words">
                         {student_story_box_title4}
                       </div>
-                      <div className="text-lg font-medium text-white">
+                      <div className="text-sm sm:text-base lg:text-lg font-medium text-white break-words">
                         {student_story_box_details4}
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="prose prose-lg max-w-none">
+                {/* Story Content */}
+                <div className="prose prose-sm sm:prose-base lg:prose-lg max-w-none">
                   <div
-                    className="ck-content"
+                    className="ck-content text-sm sm:text-base text-[#0F3652] break-words"
                     dangerouslySetInnerHTML={{ __html: student_story_details }}
                   />
                 </div>
