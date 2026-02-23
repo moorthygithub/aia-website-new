@@ -1,7 +1,7 @@
 const certificationCourses = [
   {
     id: 1,
-    title: "Certified Fraud Examiner (CFE)",
+    title: "Certified Fraud Examiner",
     description:
       "The Certified Fraud Examiner (CFE) credential is a globally recognised certification designed for professionals involved in fraud prevention, detection, and investigation. It equips learners with strong knowledge of fraud schemes, investigative techniques, legal frameworks, and ethical practices. This certification is highly valued across audit, compliance, risk management, and forensic roles. It helps professionals identify red flags, prevent financial misconduct, and strengthen organisational fraud risk controls.",
     description2: "How AIA Supports Your Certification Journey",
@@ -20,7 +20,7 @@ const certificationCourses = [
   },
   {
     id: 2,
-    title: "Certified Internal Auditor (CIA – Three-Part Exam)",
+    title: "Certified Internal Auditor",
     description:
       "The Certified Internal Auditor (CIA) is the leading international certification for internal audit professionals. Structured across three exam parts, it covers internal audit fundamentals, risk management, governance, internal controls, and advanced audit practices. The CIA credential strengthens professional credibility and equips auditors with the skills needed to evaluate business risks and support ethical governance, making it ideal for those aiming to grow into senior audit and leadership roles.",
     description2: "How AIA Supports Your Certification Journey",
@@ -58,7 +58,7 @@ const certificationCourses = [
   },
   {
     id: 4,
-    title: "Certified Anti-Money Laundering Specialist (CAMS)",
+    title: "Certified Anti-Money Laundering Specialist",
     description:
       "The Certified Anti-Money Laundering Specialist (CAMS) is a globally respected certification focused on combating money laundering and financial crime. It covers AML regulations, risk assessment, compliance frameworks, transaction monitoring, and investigative processes. Widely recognised in banking and financial services, CAMS equips professionals with practical skills to detect suspicious activities, strengthen compliance programs, and meet regulatory expectations effectively.",
     description2: "How AIA Supports Your Certification Journey",
@@ -130,7 +130,7 @@ export const CorporatecertificationCourses = [
       "Fosters stronger relationships with regulators, clients, and partners through trust and transparency.",
     ],
     cta: "Explore more about the CAMS",
-    link: "cia-challenge-curriculum",
+    link: "cams",
     bgColor: "#ffffff",
     textColor: "#0F3652",
   },

@@ -119,7 +119,7 @@ const CourseTopStudent = ({
             </h2>
             <SectionHeading
               title={title}
-              beforeheading={description}
+              description={description}
               align="center"
             />
           </div>

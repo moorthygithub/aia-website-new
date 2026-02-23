@@ -109,7 +109,7 @@ export const TestimonialSlider = ({ reviews, className }) => {
             </span>
 
             <h2 className="text-sm font-medium tracking-widest uppercase [writing-mode:vertical-rl] md:rotate-180 hidden md:block">
-              OUR SUPPORT
+              OUR STRENGTH
             </h2>
           </div>
 

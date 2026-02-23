@@ -7,14 +7,11 @@ import { useEffect } from "react";
 import { BASE_URL } from "@/api/base-url";
 import FaqSection from "@/components/common/faq-section";
 
-
 const CamsFaq = () => {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["aia-faq"],
     queryFn: async () => {
-      const res = await axios.get(
-        `${BASE_URL}/api/getFAQbySlug/CAMS`
-      );
+      const res = await axios.get(`${BASE_URL}/api/getFAQbySlug/CAMS`);
       return res.data;
     },
   });
@@ -29,7 +26,6 @@ const CamsFaq = () => {
       heading: item.faq_heading,
       sort: item.faq_sort,
     })) || [];
-
 
   useEffect(() => {
     if (faqItems.length > 0) {
@@ -69,12 +65,7 @@ const CamsFaq = () => {
 
   if (isLoading || isError) return null;
 
-  return (
-    <FaqSection
-        
-  faqs={faqItems} 
-    />
-  );
+  return <FaqSection title={faqHeading} faqs={faqItems} />;
 };
 
 export default CamsFaq;

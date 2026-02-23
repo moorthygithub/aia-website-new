@@ -78,8 +78,8 @@ const PassoutBanner = () => {
   }
 
   return (
-    <section className="bg-[#0F3652]/10 px-6 lg:px-12 overflow-hidden">
-      <div className="mx-auto flex flex-col lg:flex-row items-center gap-12">
+    <section className="bg-[#0F3652]/10 px-6 lg:px-12 overflow-hidden max-h-[450px]">
+      <div className="mx-auto flex flex-col lg:flex-row items-center gap-12 max-h-[450px]">
         <div className="flex-1 max-w-5xl">
           <h1 className="text-5xl font-bold text-[#0F3652] mb-4">
             Guidance That Goes Beyond Training
@@ -92,7 +92,7 @@ const PassoutBanner = () => {
         </div>
 
         <div className="flex-1 relative h-160 w-full overflow-hidden max-w-2xl">
-          <div className="absolute left-18 w-[200px] pr-2">
+          <div className="absolute left-24 w-[200px] pr-2">
             <div className="animate-marquee-up">
               {[...leftImages, ...leftImages].map((img, idx) => (
                 <div
@@ -164,10 +164,10 @@ const PassoutBanner = () => {
           }
         }
         .animate-marquee-up {
-          animation: marquee-up 20s linear infinite;
+          animation: marquee-up 40s linear infinite;
         }
         .animate-marquee-down {
-          animation: marquee-down 20s linear infinite;
+          animation: marquee-down 40s linear infinite;
         }
       `}</style>
     </section>

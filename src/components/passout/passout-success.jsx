@@ -221,7 +221,7 @@ const PassoutSuccess = () => {
                           href={`/passout-stories/${story.slug}`}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold py-2 px-4 rounded-full inline-flex items-center gap-2 transition-colors text-sm ml-auto"
+                          className="bg-[#F3831C] text-white hover:bg-[#F3831C]/90  font-semibold py-2 px-4 rounded-full inline-flex items-center gap-2 transition-colors text-sm ml-auto"
                         >
                           Read More
                           <svg

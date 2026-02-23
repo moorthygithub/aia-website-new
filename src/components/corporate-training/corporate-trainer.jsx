@@ -3,7 +3,7 @@ import React from "react";
 
 const CorporateTrainer = () => {
   return (
-    <div className="bg-linear-to-r from-slate-700 via-slate-600 to-blue-950 ">
+    <div className="bg-linear-to-r from-slate-700 via-slate-600 to-blue-950 mb-14">
       <div className="max-w-340 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-x-12 items-center">
           <div className="relative px-4 shadow-[4px_0_15px_rgba(0,0,0,0.15)]">
@@ -16,7 +16,7 @@ const CorporateTrainer = () => {
 
           <div className="text-white">
             <div className="text-center">
-              <h2 className="text-2xl md:text-5xl font-bold text-transparent bg-clip-text bg-linear-to-r from-white via-[#F3831C] to-[#F3831C] italic block">
+              <h2 className="text-2xl md:text-5xl font-bold text-transparent bg-clip-text bg-linear-to-r from-white via-[#F3831C] to-[#F3831C] italic block mt-2">
                 Know Your Trainer
               </h2>
               <p className="text-xl md:text-2xl mb-4 font-medium">

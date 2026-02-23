@@ -24,6 +24,7 @@ const ContactUnique = () => {
   badgeText="WHAT MAKES US UNIQUE"
   heading="Enrollment to"
   highlight="Success"
+  button={false}
   description="How AIA Supports You at Every Career Stage"
   services={[
     {

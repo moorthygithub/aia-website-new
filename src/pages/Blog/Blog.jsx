@@ -413,7 +413,7 @@ const Blog = () => {
             </div>
           )}
 
-          <div className="flex flex-col items-center justify-center bg-white px-4">
+          {/* <div className="flex flex-col items-center justify-center bg-white px-4">
             <SectionHeading
               title="Start Your Journey with AIA"
               align="center"
@@ -426,7 +426,7 @@ const Blog = () => {
                 Contact Now
               </button>
             </div>
-          </div>
+          </div> */}
         </div>
         <CourseTopStudent />
         <BlogSubscribeSection />

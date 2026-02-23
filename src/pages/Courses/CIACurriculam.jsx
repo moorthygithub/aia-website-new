@@ -40,6 +40,11 @@ const CIACurriculam = () => {
         queryKey="cia-certificates"
         title="Proof of Excellence: Real CIA Results of AIA Students!"
       />
+            {/* <CourseYoutube
+        courseSlug="cfe"
+        title="Hear from Our Recently Qualified Professionals on YouTube"
+        description="Watch AIA-trained professionals share their CFE journey, exam strategies, and career insights in exclusive interviews with Puneet Sir on YouTube."
+      /> */}
       <CiaCurrJourney />
       <CiaCurrWhyAia />
       <CiaCurrHighlight />
