@@ -25,7 +25,7 @@ const CIACurriculam = () => {
     <div>
       {" "}
       <PopUp slug="CIA-Curriculum" />
-      <CourseHero />
+      <CourseHero path="cia_banner.webp"/>
       <CiaCurrAbout />
       <CourseTopStudent
         courseSlug="cia"

@@ -28,7 +28,7 @@ const CFECurriculam = () => {
   return (
     <div>
       <PopUp slug="CFE-Curriculum" />
-      <CourseHero />
+      <CourseHero path="cfe_banner.webp"/>
       <CfeAbout />
       <CourseTopStudent
         courseSlug="cfe"

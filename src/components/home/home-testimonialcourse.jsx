@@ -1,37 +1,10 @@
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
 
-export function TestimonialCardCourse({
-  author,
-  href,
-  alt,
-  className,
-  target,
-}) {
+export function TestimonialCardColor({ author, href, alt, className, target }) {
   const Card = href ? "a" : "div";
 
   return (
-    // <Card
-    //   {...(href
-    //     ? {
-    //         href,
-    //         target: target || "_blank",
-    //         rel: "noopener noreferrer",
-    //       }
-    //     : {})}
-    // className={cn(
-    //   "flex flex-col  rounded-lg  relative group",
-
-    //   "text-start",
-    //   "hover:from-muted/60 hover:to-muted/20",
-    //   "max-w-[320px] sm:max-w-[320px]",
-    //   "transition-all duration-300",
-    //   "h-[182px] w-[320px]",
-    //   href ? "cursor-pointer" : "cursor-default",
-    //   className
-    // )}
-
-    // >
     <Card
       {...(href
         ? {
@@ -42,8 +15,8 @@ export function TestimonialCardCourse({
         : {})}
       className={cn(
         "flex flex-col rounded-lg relative group",
-        "h-[165px] w-[290px]",
-        "border-2 border-[#F3831C]",
+        "h-[165px] w-[260px]",
+        "border-2 border-[#F3831C] bg-white",
         "overflow-hidden",
         className
       )}
