@@ -11,7 +11,7 @@ const CorporateQuote = () => {
     userLocation: "",
     userCourse: "",
     userMessage: "",
-    userMode: "",
+    userCourseMode: "",
     userType: "Corporate-Quote",
   });
   const [errors, setErrors] = useState({});
@@ -48,8 +48,8 @@ const CorporateQuote = () => {
     if (!formData.userCourse) {
       newErrors.userCourse = "Service selection is required";
     }
-    if (!formData.userMode) {
-      newErrors.userMode = "Mode is required";
+    if (!formData.userCourseMode) {
+      newErrors.userCourseMode = "Mode is required";
     }
     if (!formData.userLocation) {
       newErrors.userLocation = "Location is required";
@@ -79,7 +79,7 @@ const CorporateQuote = () => {
           userLocation: formData.userLocation,
           userMessage: formData.userMessage,
           userType: formData.userType,
-          userMode: formData.userMode,
+          userCourseMode: formData.userCourseMode,
         },
         {
           headers: {
@@ -95,7 +95,7 @@ const CorporateQuote = () => {
         userLocation: "",
         userCourse: "",
         userMessage: "",
-        userMode: "",
+        userCourseMode: "",
         userType: "Corporate-Quote",
       });
       setErrors({});
@@ -362,11 +362,11 @@ const CorporateQuote = () => {
                   </div>
                   <div>
                     <select
-                      name="userMode"
-                      value={formData.userMode}
+                      name="userCourseMode"
+                      value={formData.userCourseMode}
                       onChange={handleChange}
                       className={`w-full px-3 py-2 border rounded-md ${
-                        errors.userMode ? "border-red-500" : "border-gray-300"
+                        errors.userCourseMode ? "border-red-500" : "border-gray-300"
                       }`}
                     >
                       <option value="">Mode of Training *</option>
@@ -382,9 +382,9 @@ const CorporateQuote = () => {
                         Decided.
                       </option>
                     </select>
-                    {errors.userMode && (
+                    {errors.userCourseMode && (
                       <p className="text-red-500 text-xs mt-1">
-                        {errors.userMode}
+                        {errors.userCourseMode}
                       </p>
                     )}
                   </div>

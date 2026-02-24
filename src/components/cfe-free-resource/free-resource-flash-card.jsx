@@ -1,5 +1,5 @@
 "use client";
-import { BASE_URL } from "@/api/base-url";
+import { BASE_URL, IMAGE_PATH } from "@/api/base-url";
 import {
   Drawer,
   DrawerContent,
@@ -10,9 +10,8 @@ import {
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useState } from "react";
-import { Button } from "../ui/button";
-import { Link } from "react-router-dom";
 import SectionHeading from "../SectionHeading/SectionHeading";
+import { Button } from "../ui/button";
 
 const FreeResourceFlashCard = () => {
   const [openDrawer, setOpenDrawer] = useState(null);
@@ -53,25 +52,25 @@ const FreeResourceFlashCard = () => {
         id: 1,
         number: "01",
         title: "Financial Transactions & Fraud Schemes",
-        icon: "💡",
+        icon: `${IMAGE_PATH}/flash_card_1.webp`,
       },
       2: {
         id: 2,
         number: "02",
         title: "Law",
-        icon: "⚖️",
+        icon: `${IMAGE_PATH}/flash_card_2.webp`,
       },
       3: {
         id: 3,
         number: "03",
         title: "Investigation",
-        icon: "🔍",
+        icon: `${IMAGE_PATH}/flash_card_3.webp`,
       },
       4: {
         id: 4,
         number: "04",
         title: "Fraud Prevention & Deterrence",
-        icon: "🛡️",
+        icon: `${IMAGE_PATH}/flash_card_4.webp`,
       },
     };
 
@@ -156,7 +155,6 @@ const FreeResourceFlashCard = () => {
       </div>
     );
   }
-
   return (
     <div className="w-full bg-white pb-12 px-4  sm:px-6  md:px-8">
       <SectionHeading
@@ -174,7 +172,8 @@ const FreeResourceFlashCard = () => {
             >
               <div className="relative group">
                 <button className="cursor-pointer relative mb-3 flex h-28 w-28 items-center justify-center rounded-full transition-all duration-300 hover:scale-110 shadow-xl sm:h-32 sm:w-32 md:h-36 md:w-36">
-                  <span className="relative z-10 text-8xl">{module.icon}</span>
+                  {/* <span className="relative z-10 text-8xl">{module.icon}</span> */}
+                  <img src={module.icon} className="h-26 w-26 object-contain" />
                 </button>
               </div>
               <div className="flex flex-col flex-1 items-center w-full">
