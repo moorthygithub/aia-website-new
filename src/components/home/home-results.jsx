@@ -47,6 +47,7 @@ const HomeResults = ({ title, description }) => {
       alt:
         certificate.student_other_certificate_image_alt || "Certificate Image",
       youtubeLink: certificate.student_linkedin_link || "",
+      course: certificate.student_course || "",
     }));
   }, [certificatesData]);
 

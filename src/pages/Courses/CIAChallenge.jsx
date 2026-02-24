@@ -2,6 +2,7 @@ import AboutTrainerSection from "@/components/about/about-trainer-section";
 import CourseAchivers from "@/components/common/course-achivers";
 import CourseReview from "@/components/common/course-review";
 import PopUp from "@/components/common/pop-up";
+import WhatsappCarosal from "@/components/common/whatsapp-carosal";
 import CamsConnection from "@/components/courses/cams/cams-connection";
 import CiaAbout from "@/components/courses/cia-challenge/cia-about";
 import CiaCourseCurriculum from "@/components/courses/cia-challenge/cia-cource-curriculam";
@@ -25,7 +26,7 @@ const CIAChallenge = () => {
     <div>
       <PopUp slug="CIA-Challenge-Curriculum" />
 
-      <CourseHero  path="cia_challenge_banner.webp"/>
+      <CourseHero path="cia_challenge_banner.webp" />
       <CiaAbout />
       <CourseTopStudent
         courseSlug="ciac"
@@ -42,6 +43,11 @@ const CIAChallenge = () => {
       />
       <CiaJourney />
       <CiaWhyAia />
+      <WhatsappCarosal
+        title="Unfiltered Reflections from AIA-Trained Professionals"
+        description=" Heartfelt messages shared by professionals after completing their journey with AIA"
+        course="CIAC"
+      />
       <CiaHighlight />
       <CourseMap courseCode="CIAC" />
       <CourseReview slug="CIAC" />

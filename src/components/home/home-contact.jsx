@@ -142,7 +142,7 @@ const HomeContact = () => {
   }, []);
 
   return (
-    <div className="space-y-2 md:mb-18">
+    <div className="space-y-2 md:mb-8">
       <div className="w-full bg-[#0F3652]/10">
         <div className="max-w-340 mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-start">

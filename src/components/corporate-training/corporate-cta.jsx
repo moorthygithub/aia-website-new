@@ -80,7 +80,7 @@ const CorporateCta = () => {
           headers: {
             "Content-Type": "application/json",
           },
-        }
+        },
       );
 
       console.log("API success:", data);
@@ -102,7 +102,7 @@ const CorporateCta = () => {
       console.error("API error:", error.response?.data || error.message);
       alert(
         error.response?.data?.message ||
-          "Something went wrong. Please try again."
+          "Something went wrong. Please try again.",
       );
     } finally {
       setLoader(false);
@@ -112,8 +112,13 @@ const CorporateCta = () => {
   return (
     <>
       <div className="relative  px-6 py-10 md:py-12 overflow-hidden">
-        <div className="absolute inset-0 bg-[#F3831C]/90 to-[#F3831C]"></div>
-
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(90deg, rgba(230, 246, 251, 1) 0%, rgba(253, 242, 255, 1) 50%, rgba(254, 249, 233, 1) 100%)",
+          }}
+        ></div>
         <div className="absolute top-0 left-0 w-20 h-20 border-t-4 border-l-4 border-white/20"></div>
         <div className="absolute bottom-0 right-0 w-20 h-20 border-b-4 border-r-4 border-white/20"></div>
 
@@ -121,13 +126,13 @@ const CorporateCta = () => {
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="flex-1 text-center md:text-left">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 mb-4">
-                <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
-                <span className="text-white text-xs font-semibold uppercase tracking-wider">
+                <div className="w-1.5 h-1.5 bg-[#F3831C] rounded-full"></div>
+                <span className="text-[#F3831C] text-xs font-semibold uppercase tracking-wider">
                   CUSTOM TRAINING
                 </span>
               </div>
 
-              <h2 className="text-2xl md:text-3xl font-bold text-white leading-tight">
+              <h2 className="text-2xl md:text-3xl font-bold text-[#F3831C] leading-tight">
                 Let's Design Your Custom Training Plan Today!
               </h2>
             </div>

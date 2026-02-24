@@ -11,6 +11,7 @@ const CorporateQuote = () => {
     userLocation: "",
     userCourse: "",
     userMessage: "",
+    userMode: "",
     userType: "Corporate-Quote",
   });
   const [errors, setErrors] = useState({});
@@ -18,14 +19,11 @@ const CorporateQuote = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     if (name === "userMobile" && value && !/^\d*$/.test(value)) return;
-
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
-
     setErrors((prev) => ({
       ...prev,
       [name]: "",
@@ -49,6 +47,9 @@ const CorporateQuote = () => {
     }
     if (!formData.userCourse) {
       newErrors.userCourse = "Service selection is required";
+    }
+    if (!formData.userMode) {
+      newErrors.userMode = "Mode is required";
     }
     if (!formData.userLocation) {
       newErrors.userLocation = "Location is required";
@@ -78,18 +79,15 @@ const CorporateQuote = () => {
           userLocation: formData.userLocation,
           userMessage: formData.userMessage,
           userType: formData.userType,
+          userMode: formData.userMode,
         },
         {
           headers: {
             "Content-Type": "application/json",
           },
-        }
+        },
       );
-
-      console.log("API success:", data);
       alert("Demo booked successfully!");
-
-      // Reset form and close modal
       setFormData({
         userName: "",
         userEmail: "",
@@ -97,6 +95,7 @@ const CorporateQuote = () => {
         userLocation: "",
         userCourse: "",
         userMessage: "",
+        userMode: "",
         userType: "Corporate-Quote",
       });
       setErrors({});
@@ -105,7 +104,7 @@ const CorporateQuote = () => {
       console.error("API error:", error.response?.data || error.message);
       alert(
         error.response?.data?.message ||
-          "Something went wrong. Please try again."
+          "Something went wrong. Please try again.",
       );
     } finally {
       setLoader(false);
@@ -115,7 +114,13 @@ const CorporateQuote = () => {
   return (
     <>
       <div className="relative px-6 py-10 md:py-12 overflow-hidden">
-        <div className="absolute inset-0 bg-[#F3831C]"></div>
+        <div
+          className="absolute inset-0 "
+          style={{
+            background:
+              "linear-gradient(90deg, rgba(230, 246, 251, 1) 0%, rgba(253, 242, 255, 1) 50%, rgba(254, 249, 233, 1) 100%)",
+          }}
+        ></div>
         {/* <span className="bg-gradient-to-r from-[#0F3652] via-[#1E5A7A] to-[#4FA3C7] bg-clip-text text-transparent"> */}
 
         <div className="absolute top-0 left-0 w-full h-full opacity-10">
@@ -166,17 +171,17 @@ const CorporateQuote = () => {
               </div>
 
               <div className="pl-8">
-                <h2 className="text-2xl md:text-3xl font-bold text-white leading-relaxed mb-4">
-                  <span className="bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
+                <h2 className="text-2xl md:text-3xl font-bold text-[#F3831C] leading-relaxed mb-4">
+                  <span className="bg-gradient-to-r from-[#F3831C] to-[#F3831C]/80 bg-clip-text text-transparent">
                     Invest in people because untrained teams can't execute great
                     strategies.
                   </span>
                 </h2>
 
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-0.5 bg-white/50"></div>
-                  <div className="w-1 h-1 rounded-full bg-white"></div>
-                  <div className="text-white/80 text-sm italic">
+                  <div className="w-8 h-0.5 bg-[#F3831C]/50"></div>
+                  <div className="w-1 h-1 rounded-full bg-[#F3831C]"></div>
+                  <div className="text-[#F3831C]/80 text-sm italic">
                     — Leadership Insight
                   </div>
                 </div>
@@ -315,7 +320,9 @@ const CorporateQuote = () => {
                       onChange={handleChange}
                       placeholder="Location *"
                       className={`w-full px-3 py-2 border rounded-md ${
-                        errors.userMobile ? "border-red-500" : "border-gray-300"
+                        errors.userLocation
+                          ? "border-red-500"
+                          : "border-gray-300"
                       }`}
                     />
                     {errors.userLocation && (
@@ -324,36 +331,63 @@ const CorporateQuote = () => {
                       </p>
                     )}
                   </div>
-                </div>
-
-                <div>
-                  <select
-                    name="userCourse"
-                    value={formData.userCourse}
-                    onChange={handleChange}
-                    className={`w-full px-3 py-2 border rounded-md ${
-                      errors.userCourse ? "border-red-500" : "border-gray-300"
-                    }`}
-                  >
-                    <option value="">Service Interested In *</option>
-                    <option value="Certified Fraud Examiner">
-                      Certified Fraud Examiner
-                    </option>
-                    <option value="Certified Internal Auditor">
-                      Certified Internal Auditor
-                    </option>
-                    <option value="Certified Anti Money Laundering Specialist">
-                      Certified Anti Money Laundering Specialist
-                    </option>
-                    <option value="CIA Challenge Exam">
-                      CIA Challenge Exam
-                    </option>
-                  </select>
-                  {errors.userCourse && (
-                    <p className="text-red-500 text-xs mt-1">
-                      {errors.userCourse}
-                    </p>
-                  )}
+                  <div>
+                    <select
+                      name="userCourse"
+                      value={formData.userCourse}
+                      onChange={handleChange}
+                      className={`w-full px-3 py-2 border rounded-md ${
+                        errors.userCourse ? "border-red-500" : "border-gray-300"
+                      }`}
+                    >
+                      <option value="">Service Interested In *</option>
+                      <option value="Certified Fraud Examiner">
+                        Certified Fraud Examiner
+                      </option>
+                      <option value="Certified Internal Auditor">
+                        Certified Internal Auditor
+                      </option>
+                      <option value="Certified Anti Money Laundering Specialist">
+                        Certified Anti Money Laundering Specialist
+                      </option>
+                      <option value="CIA Challenge Exam">
+                        CIA Challenge Exam
+                      </option>
+                    </select>
+                    {errors.userCourse && (
+                      <p className="text-red-500 text-xs mt-1">
+                        {errors.userCourse}
+                      </p>
+                    )}
+                  </div>
+                  <div>
+                    <select
+                      name="userMode"
+                      value={formData.userMode}
+                      onChange={handleChange}
+                      className={`w-full px-3 py-2 border rounded-md ${
+                        errors.userMode ? "border-red-500" : "border-gray-300"
+                      }`}
+                    >
+                      <option value="">Mode of Training *</option>
+                      <option value="Onsite">Onsite</option>
+                      <option value="Certified Internal Auditor">
+                        Certified Internal Auditor
+                      </option>
+                      <option value="Certified Anti Money Laundering Specialist">
+                        Certified Anti Money Laundering Specialist
+                      </option>
+                      <option value="CIA Challenge Exam">
+                        CIA Challenge Exam Onsite, Virtual, Hybrid, and Not Yet
+                        Decided.
+                      </option>
+                    </select>
+                    {errors.userMode && (
+                      <p className="text-red-500 text-xs mt-1">
+                        {errors.userMode}
+                      </p>
+                    )}
+                  </div>
                 </div>
 
                 <div>

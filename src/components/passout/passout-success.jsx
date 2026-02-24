@@ -8,7 +8,11 @@ import SectionHeading from "../SectionHeading/SectionHeading";
 const PassoutSuccess = () => {
   const ITEMS_PER_LOAD = 3;
   // const courseRefs = useRef({});
-
+  const courseColors = {
+    CFE: "#93c0e2",
+    CIA: "#f2a966",
+    CAMS: "#25777a",
+  };
   const [visibleCountByCourse, setVisibleCountByCourse] = useState({});
   const {
     data: studentStoriesData,
@@ -150,134 +154,140 @@ const PassoutSuccess = () => {
           description="Discover real career journeys of professionals who used global certifications to unlock role transitions, professional growth, and long-term career advancement."
           align="center"
         />
-        {Object.entries(groupedStories).map(([course, stories]) => (
-          <div key={course} className="mb-12 p-4 border-2 rounded-lg mt-4">
-            <div className="flex items-center justify-between mb-6">
-              <div className="flex items-center gap-3">
-                <div className="w-6 h-6 text-[#F3831C]">
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
-                  </svg>
+        {Object.entries(groupedStories).map(([course, stories]) => {
+          const courseColor = courseColors[course] || "#F3831C";
+
+          return (
+            <div key={course} className="mb-12 p-4 border-2 rounded-lg mt-4">
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-6 h-6 text-[#F3831C]">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+                    </svg>
+                  </div>
+                  <h2 className="text-2xl md:text-3xl font-medium text-[#0F3652]">
+                    {courseFullForms[course]
+                      ? `${courseFullForms[course]}`
+                      : course}{" "}
+                  </h2>
                 </div>
-                <h2 className="text-2xl md:text-3xl font-medium text-[#0F3652]">
-                  {courseFullForms[course]
-                    ? `${courseFullForms[course]}`
-                    : course}{" "}
-                </h2>
+                <span className="text-sm text-[#0F3652]">
+                  {stories.length} {stories.length === 1 ? "story" : "stories"}
+                </span>
               </div>
-              <span className="text-sm text-[#0F3652]">
-                {stories.length} {stories.length === 1 ? "story" : "stories"}
-              </span>
-            </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-              {stories
-                .slice(0, getVisibleCount(course, stories.length))
-                .map((story) => (
-                  <article
-                    key={story.id}
-                    className="bg-white rounded-md overflow-hidden shadow-lg transition-shadow duration-300 flex flex-col"
-                  >
-                    <div className="relative h-54">
-                      <img
-                        src={story.image}
-                        alt={story.imageAlt}
-                        className="w-full h-full object-contain rounded-md border-2 border-amber-300"
-                      />
-                    </div>
-
-                    <div className="p-2 flex-1 flex flex-col">
-                      <h5 className="font-bold text-gray-900 text-sm">
-                        {story.name}, {story.designation}
-                      </h5>
-
-                      <div className="flex flex-row items-center justify-between">
-                        <p className="text-xs text-gray-600 mt-1">
-                          {story.role} Works at {story.companyName}
-                        </p>
-                        <p className="text-xs text-gray-500 mt-1">
-                          {new Date(story.date).toLocaleDateString("en-GB", {
-                            day: "2-digit",
-                            month: "2-digit",
-                            year: "numeric",
-                          })}
-                        </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                {stories
+                  .slice(0, getVisibleCount(course, stories.length))
+                  .map((story) => (
+                    <article
+                      key={story.id}
+                      className="bg-white rounded-md overflow-hidden shadow-lg transition-shadow duration-300 flex flex-col"
+                    >
+                      <div className="relative h-54">
+                        <img
+                          src={story.image}
+                          alt={story.imageAlt}
+                          className="w-full h-auto object-contain rounded-md border-2"
+                          style={{ borderColor: courseColor }}
+                        />
                       </div>
 
-                      <div className="mt-auto flex items-center justify-between pt-4">
-                        <div className="flex items-center">
-                          {story.companyImage && (
-                            <div className="flex items-center gap-2">
-                              <img
-                                src={story.companyImage}
-                                alt={story.companyName}
-                                className="w-8 h-8 object-contain"
-                              />
-                            </div>
-                          )}
+                      <div className="p-2 flex-1 flex flex-col">
+                        <h5 className="font-bold text-gray-900 text-sm">
+                          {story.name}, {story.designation}
+                        </h5>
+
+                        <div className="flex flex-row items-center justify-between">
+                          <p className="text-xs text-gray-600 mt-1">
+                            {story.role} Works at {story.companyName}
+                          </p>
+                          <p className="text-xs text-gray-500 mt-1">
+                            {new Date(story.date).toLocaleDateString("en-GB", {
+                              day: "2-digit",
+                              month: "2-digit",
+                              year: "numeric",
+                            })}
+                          </p>
                         </div>
 
-                        <a
-                          href={`/passout-stories/${story.slug}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="bg-[#F3831C] text-white hover:bg-[#F3831C]/90  font-semibold py-2 px-4 rounded-full inline-flex items-center gap-2 transition-colors text-sm ml-auto"
-                        >
-                          Read More
-                          <svg
-                            width="16"
-                            height="16"
-                            viewBox="0 0 16 16"
-                            fill="none"
+                        <div className="mt-auto flex items-center justify-between pt-4">
+                          <div className="flex items-center">
+                            {story.companyImage && (
+                              <div className="flex items-center gap-2">
+                                <img
+                                  src={story.companyImage}
+                                  alt={story.companyName}
+                                  className="w-8 h-8 object-contain"
+                                />
+                              </div>
+                            )}
+                          </div>
+
+                          <a
+                            href={`/passout-stories/${story.slug}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className=" text-white ]/90  font-semibold py-2 px-4 rounded-full inline-flex items-center gap-2 transition-colors text-sm ml-auto"
+                            style={{ backgroundColor: courseColor }}
                           >
-                            <path
-                              d="M6 12L10 8L6 4"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
-                        </a>
+                            Read More
+                            <svg
+                              width="16"
+                              height="16"
+                              viewBox="0 0 16 16"
+                              fill="none"
+                            >
+                              <path
+                                d="M6 12L10 8L6 4"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                          </a>
+                        </div>
                       </div>
-                    </div>
-                  </article>
-                ))}
-            </div>
+                    </article>
+                  ))}
+              </div>
 
-            <div className="flex justify-center gap-3">
-              {getVisibleCount(course, stories.length) < stories.length && (
-                <div className="text-center">
-                  <button
-                    onClick={() => handleViewMore(course, stories.length)}
-                    className="relative overflow-hidden cursor-pointer flex items-center justify-center px-4 py-2 border border-[#0F3652] mx-auto gap-2 rounded-md font-medium text-sm text-[#0F3652] group"
-                  >
-                    <span className="absolute inset-0 bg-[#0F3652] scale-y-0 origin-bottom transition-transform duration-300 group-hover:scale-y-100"></span>
-                    <span className="relative z-10 flex items-center gap-2 group-hover:text-white">
-                      View More
-                      <ArrowDown className="w-4 h-4" />
-                    </span>
-                  </button>
-                </div>
-              )}
+              <div className="flex justify-center gap-3">
+                {getVisibleCount(course, stories.length) < stories.length && (
+                  <div className="text-center">
+                    <button
+                      onClick={() => handleViewMore(course, stories.length)}
+                      className="relative overflow-hidden cursor-pointer flex items-center justify-center px-4 py-2 border border-[#0F3652] mx-auto gap-2 rounded-md font-medium text-sm text-[#0F3652] group"
+                    >
+                      <span className="absolute inset-0 bg-[#0F3652] scale-y-0 origin-bottom transition-transform duration-300 group-hover:scale-y-100"></span>
+                      <span className="relative z-10 flex items-center gap-2 group-hover:text-white">
+                        View More
+                        <ArrowDown className="w-4 h-4" />
+                      </span>
+                    </button>
+                  </div>
+                )}
 
-              {getVisibleCount(course, stories.length) > ITEMS_PER_LOAD && (
-                <div className="text-center">
-                  <button
-                    onClick={() => handleShowLess(course)}
-                    className="relative overflow-hidden cursor-pointer flex items-center justify-center px-4 py-2 border border-[#0F3652] mx-auto gap-2 rounded-md font-medium text-sm text-[#0F3652] group"
-                  >
-                    <span className="absolute inset-0 bg-[#0F3652] scale-y-0 origin-bottom transition-transform duration-300 group-hover:scale-y-100"></span>
-                    <span className="relative z-10 flex items-center gap-2 group-hover:text-white">
-                      View Less
-                      <ArrowUp className="w-4 h-4" />
-                    </span>
-                  </button>
-                </div>
-              )}
+                {getVisibleCount(course, stories.length) > ITEMS_PER_LOAD && (
+                  <div className="text-center">
+                    <button
+                      onClick={() => handleShowLess(course)}
+                      className="relative overflow-hidden cursor-pointer flex items-center justify-center px-4 py-2 border border-[#0F3652] mx-auto gap-2 rounded-md font-medium text-sm text-[#0F3652] group"
+                    >
+                      <span className="absolute inset-0 bg-[#0F3652] scale-y-0 origin-bottom transition-transform duration-300 group-hover:scale-y-100"></span>
+                      <span className="relative z-10 flex items-center gap-2 group-hover:text-white">
+                        View Less
+                        <ArrowUp className="w-4 h-4" />
+                      </span>
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );

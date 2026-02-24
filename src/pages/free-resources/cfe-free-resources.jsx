@@ -12,7 +12,7 @@ const FreeResources = () => {
   return (
     <>
       <CourseHero path="free-resource_banner.webp" />
-      <FreeResourceBanner />
+      {/* <FreeResourceBanner /> */}
       {/* <FreeResourceYoutube /> */}
       <CourseYoutubeLecture courseSlug="CFE-Free-Resources" />
       <FreeResourceFlashCard />

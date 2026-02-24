@@ -81,8 +81,11 @@ const PassoutBanner = () => {
     <section className="bg-[#0F3652]/10 px-6 lg:px-12 overflow-hidden max-h-[450px]">
       <div className="mx-auto flex flex-col lg:flex-row items-center gap-12 max-h-[450px]">
         <div className="flex-1 max-w-5xl">
-          <h1 className="text-5xl font-bold text-[#0F3652] mb-4">
-            Guidance That Goes Beyond Training
+          <h1 className="text-5xl font-bold text-[#0F3652] mb-2">
+            Guidance That Goes 
+          </h1>
+          <h1 className="text-5xl font-bold text-[#F3831C] mb-4">
+            Beyond Training
           </h1>
           <p className="text-[#0F3652] text-lg leading-relaxed">
             Genuine moments shared by professionals who completed their global

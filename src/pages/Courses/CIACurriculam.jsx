@@ -2,6 +2,7 @@ import AboutTrainerSection from "@/components/about/about-trainer-section";
 import CourseAchivers from "@/components/common/course-achivers";
 import CourseReview from "@/components/common/course-review";
 import PopUp from "@/components/common/pop-up";
+import WhatsappCarosal from "@/components/common/whatsapp-carosal";
 import CamsConnection from "@/components/courses/cams/cams-connection";
 import CfeCurrUnique from "@/components/courses/cia-curriculam/cfe-curr-unique";
 import CiaCurrAbout from "@/components/courses/cia-curriculam/cia-curr-about";
@@ -25,7 +26,7 @@ const CIACurriculam = () => {
     <div>
       {" "}
       <PopUp slug="CIA-Curriculum" />
-      <CourseHero path="cia_banner.webp"/>
+      <CourseHero path="cia_banner.webp" />
       <CiaCurrAbout />
       <CourseTopStudent
         courseSlug="cia"
@@ -40,13 +41,18 @@ const CIACurriculam = () => {
         queryKey="cia-certificates"
         title="Proof of Excellence: Real CIA Results of AIA Students!"
       />
-            {/* <CourseYoutube
+      {/* <CourseYoutube
         courseSlug="cfe"
         title="Hear from Our Recently Qualified Professionals on YouTube"
         description="Watch AIA-trained professionals share their CFE journey, exam strategies, and career insights in exclusive interviews with Puneet Sir on YouTube."
       /> */}
       <CiaCurrJourney />
       <CiaCurrWhyAia />
+      <WhatsappCarosal
+        title="Unfiltered Reflections from AIA-Trained Professionals"
+        description=" Heartfelt messages shared by professionals after completing their journey with AIA"
+        course="CIA"
+      />
       <CiaCurrHighlight />
       <CourseMap courseCode="CIA" />
       <CourseReview slug="CIA" />

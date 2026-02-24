@@ -10,7 +10,10 @@ export function TestimonialsSectionCourse({
   testimonials,
   className,
   sucessstory,
+  size,
+  border,
 }) {
+  console.log(testimonials);
   const marqueeRef = useRef(null);
   const [duration, setDuration] = useState(40);
 
@@ -23,7 +26,6 @@ export function TestimonialsSectionCourse({
   }, [testimonials]);
 
   if (!testimonials || testimonials.length === 0) return null;
-
   return (
     // <section className={cn("py-12 sm:py-16 md:py-18 px-0 bg-[#0F3652] mt-10", className)}>
     <section className={cn("py-12 sm:py-16 md:py-18 px-0  mt-10", className)}>
@@ -50,6 +52,8 @@ export function TestimonialsSectionCourse({
                   {...testimonial}
                   href={testimonial.youtubeLink}
                   target="_blank"
+                  size={size}
+                  border={border}
                 />
               ))}
             </div>
@@ -65,6 +69,8 @@ export function TestimonialsSectionCourse({
                   {...testimonial}
                   href={testimonial.youtubeLink}
                   target="_blank"
+                  size={size}
+                  border={border}
                 />
               ))}
             </div>

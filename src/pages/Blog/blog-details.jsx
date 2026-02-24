@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { ShareButtons } from "./share-button";
 
 const BlogDetails = () => {
   const { id } = useParams();
@@ -97,7 +98,7 @@ const BlogDetails = () => {
     };
 
     const existingScript = document.querySelector(
-      'script[type="application/ld+json"]'
+      'script[type="application/ld+json"]',
     );
     if (existingScript) {
       existingScript.remove();
@@ -167,13 +168,13 @@ const BlogDetails = () => {
       setStudents(response.data.student || []);
       setFaq(response.data.faq || []);
       const blogImageConfig = response.data.image_url?.find(
-        (item) => item.image_for === "Blog"
+        (item) => item.image_for === "Blog",
       );
       if (blogImageConfig) {
         setImageBaseUrl(blogImageConfig.image_url);
       }
       const studentImageConfig = response.data.image_url?.find(
-        (item) => item.image_for === "Student"
+        (item) => item.image_for === "Student",
       );
       if (studentImageConfig) {
         setStudentImageBaseUrl(studentImageConfig.image_url);
@@ -196,7 +197,7 @@ const BlogDetails = () => {
   useEffect(() => {
     if (faqItems.length > 0) {
       const existingScript = document.querySelector(
-        'script[type="application/ld+json"][data-faq-schema]'
+        'script[type="application/ld+json"][data-faq-schema]',
       );
       if (existingScript) {
         existingScript.remove();
@@ -252,17 +253,17 @@ const BlogDetails = () => {
             "Content-Type": "application/json",
             Accept: "application/json",
           },
-        }
+        },
       );
 
       if (response.data.code === 200) {
         setSubscriptionStatus(
-          response.data.msg || "Successfully subscribed! Thank you."
+          response.data.msg || "Successfully subscribed! Thank you.",
         );
         setEmail("");
       } else {
         setSubscriptionStatus(
-          response.data.message || "Subscription failed. Please try again."
+          response.data.message || "Subscription failed. Please try again.",
         );
       }
     } catch (error) {
@@ -271,7 +272,7 @@ const BlogDetails = () => {
         setSubscriptionStatus(
           error.response.data.message ||
             error.response.data.error ||
-            "Subscription failed. Please try again."
+            "Subscription failed. Please try again.",
         );
       } else if (error.request) {
         setSubscriptionStatus("Network error. Please check your connection.");
@@ -284,18 +285,11 @@ const BlogDetails = () => {
     }
   };
 
-  // const scrollToSection = (index) => {
-  //   setActiveSection(index);
-  //   const element = sectionRefs.current[index];
-  //   if (element) {
-  //     element.scrollIntoView({ behavior: "smooth", block: "start" });
-  //   }
-  // };
 
   const scrollToSection = (index, e) => {
     e.stopPropagation();
 
-    if (isScrollingProgrammatically.current) return; // prevent re-entry
+    if (isScrollingProgrammatically.current) return; 
 
     console.log("Clicked TOC index:", index);
     setActiveSection(index);
@@ -321,7 +315,7 @@ const BlogDetails = () => {
     if (students.length > 1) {
       const interval = setInterval(() => {
         setCurrentStudentIndex((prevIndex) =>
-          prevIndex === students.length - 1 ? 0 : prevIndex + 1
+          prevIndex === students.length - 1 ? 0 : prevIndex + 1,
         );
       }, 3000);
 
@@ -331,13 +325,13 @@ const BlogDetails = () => {
 
   const nextStudent = () => {
     setCurrentStudentIndex((prevIndex) =>
-      prevIndex === students.length - 1 ? 0 : prevIndex + 1
+      prevIndex === students.length - 1 ? 0 : prevIndex + 1,
     );
   };
 
   const prevStudent = () => {
     setCurrentStudentIndex((prevIndex) =>
-      prevIndex === 0 ? students.length - 1 : prevIndex - 1
+      prevIndex === 0 ? students.length - 1 : prevIndex - 1,
     );
   };
 
@@ -418,74 +412,13 @@ const BlogDetails = () => {
           Back to Blogs
         </button>
 
-        {/* <header className="mb-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-              {blog.blog_course && (
-                <span
-                  className={`inline-block ${getCourseColor(blog.blog_course)} text-sm font-medium px-3 py-1.5 rounded border mb-4`}
-                >
-                  {blog.blog_course}
-                </span>
-              )}
-
-              <h1 className="text-3xl md:text-4xl font-bold text-[#0F3652] mb-4">
-                {blog.blog_heading}
-              </h1>
-
-              {blog.blog_short_description && (
-                <p className="text-lg text-[#0F3652] mb-6">
-                  {blog.blog_short_description}
-                </p>
-              )}
-
-              <div className="flex flex-wrap items-end gap-4 text-[#0F3652] text-sm min-h-26 border-4">
-                <div className="flex items-center gap-2">
-                  <Calendar className="w-4 h-4" />
-                  <time dateTime={blog.blog_created}>
-                    {formatDate(blog.blog_created)}
-                  </time>
-                </div>
-                <span className="hidden sm:inline">•</span>
-                <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4" />
-                  <span>5 min read</span>
-                </div>
-                <span className="hidden sm:inline">•</span>
-                <div className="flex items-center gap-2">
-                  <span>Published by AIA</span>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <div className="relative  rounded-md overflow-hidden">
-                {blog.blog_images ? (
-                  <img
-                    src={`${imageBaseUrl}${blog.blog_images}`}
-                    alt={blog.blog_images_alt || blog.blog_heading}
-                    className="w-full h-auto object-contain"
-                    onError={(e) => {
-                      e.target.src = `${IMAGE_PATH}/no_image.jpg`;
-                    }}
-                  />
-                ) : (
-                  <div className="w-full h-full flex flex-col items-center justify-center">
-                    <ImageIcon className="h-12 w-12 text-[#0F3652] mb-2" />
-                    <p className="text-sm text-[#0F3652]">Blog Image</p>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        </header> */}
         <header className="mb-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
             <div className="flex flex-col h-full">
               {blog.blog_course && (
                 <span
                   className={`inline-block ${getCourseColor(
-                    blog.blog_course
+                    blog.blog_course,
                   )} text-sm font-medium px-3 py-1.5 rounded border mb-4 w-fit`}
                 >
                   {blog.blog_course}
@@ -555,7 +488,7 @@ const BlogDetails = () => {
               <div className="sticky top-28">
                 <nav
                   className="bg-[#0F3652]/5 rounded-md p-4 border border-[#0F3652]/20 overflow-y-auto"
-                  style={{ maxHeight: "calc(100vh - 22rem)" }}
+                  style={{ maxHeight: "calc(100vh - 30rem)" }}
                 >
                   <h3 className="font-semibold text-[#0F3652] mb-1 pb-1 border-b">
                     Table of Contents
@@ -620,47 +553,7 @@ const BlogDetails = () => {
                     )}
                   </div>
 
-                  <div className="space-y-4">
-                    <h3 className="text-xl font-medium text-[#0F3652]">
-                      Share this blog
-                    </h3>
-
-                    <div className="flex gap-3">
-                      <button className="p-3 border border-[#0F3652]/20 rounded-lg hover:bg-[#0F3652]/5 transition-colors">
-                        <Copy className="w-5 h-5 text-[#0F3652]" />
-                      </button>
-
-                      <button className="p-3 border border-[#0F3652]/20 rounded-lg hover:bg-[#0F3652]/5 transition-colors">
-                        <svg
-                          className="w-5 h-5 text-[#0F3652]"
-                          fill="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                        </svg>
-                      </button>
-
-                      <button className="p-3 border border-[#0F3652]/20 rounded-lg hover:bg-[#0F3652]/5 transition-colors">
-                        <svg
-                          className="w-5 h-5 text-[#0F3652]"
-                          fill="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                        </svg>
-                      </button>
-
-                      <button className="p-3 border border-[#0F3652]/20 rounded-lg hover:bg-[#0F3652]/5 transition-colors">
-                        <svg
-                          className="w-5 h-5 text-[#0F3652]"
-                          fill="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                        </svg>
-                      </button>
-                    </div>
-                  </div>
+                  <ShareButtons/>
                 </div>
               </div>
             </aside>
@@ -813,7 +706,7 @@ const BlogDetails = () => {
                                 {student.student_course && (
                                   <span
                                     className={` absolute top-0 right-0 ${getCourseColor(
-                                      student.student_course
+                                      student.student_course,
                                     )} text-sm font-medium px-4 py-1.5  rounded-bl-md   border-0`}
                                   >
                                     {student.student_course}

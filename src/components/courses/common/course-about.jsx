@@ -18,7 +18,7 @@ const CourseAbout = ({
   const location = useLocation();
   
   return (
-    <section className="py-12 md:py-16 lg:py-18">
+    <section className="py-12 md:py-16 lg:py-18 ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-8 md:gap-10 lg:gap-12 xl:gap-16 items-center">
           {/* Left Content */}

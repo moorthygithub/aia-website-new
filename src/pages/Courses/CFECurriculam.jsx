@@ -23,12 +23,13 @@ import CourseResult from "@/components/courses/common/course-result";
 import CourseTopStudent from "@/components/courses/common/course-top-student";
 import CourseYoutubeLecture from "@/components/courses/common/course-youtube-lecture";
 import CourseBlog from "@/components/courses/common/course-blog";
+import WhatsappCarosal from "@/components/common/whatsapp-carosal";
 
 const CFECurriculam = () => {
   return (
     <div>
       <PopUp slug="CFE-Curriculum" />
-      <CourseHero path="cfe_banner.webp"/>
+      <CourseHero path="cfe_banner.webp" />
       <CfeAbout />
       <CourseTopStudent
         courseSlug="cfe"
@@ -45,6 +46,11 @@ const CFECurriculam = () => {
       />
       <CfeJourney />
       <CfeWhyAia />
+      <WhatsappCarosal
+        title="Unfiltered Reflections from AIA-Trained Professionals"
+        description=" Heartfelt messages shared by professionals after completing their journey with AIA"
+        course="CFE"
+      />
       <CfeHighlight />
       <CourseMap courseCode="CFE" />
       <CourseReview slug="CFE" />

@@ -1,19 +1,19 @@
 // import React, { useRef, useState, useEffect } from "react";
 // import { motion, useScroll, useTransform } from "framer-motion";
-// import certificationCourses from "@/data/certificationCourses";
 // import SectionHeading from "../SectionHeading/SectionHeading";
 
-// const ALL_SERVICES = [...certificationCourses];
+// const ServiceCard = ({ service, i, progress, range, total }) => {
+//   const start = i / total;
+//   const end = (i + 1) / total;
 
-// const ServiceCard = ({ service, i, progress, range, targetScale }) => {
+//   const scale = useTransform(progress, [start, end], [1, 0.95]);
 //   const container = useRef(null);
-//   const scale = useTransform(progress, range, [1, targetScale]);
 //   const opacity = useTransform(progress, [i * 0.25, (i + 1) * 0.25], [1, 1]);
 
 //   return (
 //     <div
 //       ref={container}
-//       className="h-screen  flex items-center justify-center sticky md:top-30"
+//       className="min-h-screen flex items-center justify-center sticky md:top-30"
 //     >
 //       <motion.div
 //         style={{
@@ -67,13 +67,16 @@
 //   );
 // };
 
-// const HomeCourses = () => {
+// const HomeCourses = ({ certificationCourses }) => {
+//   const ALL_SERVICES = [...certificationCourses];
+
 //   const container = useRef(null);
 //   const [activeCard, setActiveCard] = useState(0);
 //   const { scrollYProgress } = useScroll({
 //     target: container,
-//     offset: ["start start", "end end"],
+//     offset: ["start center", "end center"],
 //   });
+//   const [scrollFinished, setScrollFinished] = useState(false);
 
 //   useEffect(() => {
 //     const unsubscribe = scrollYProgress.on("change", (latest) => {
@@ -85,19 +88,27 @@
 
 //     return () => unsubscribe();
 //   }, [scrollYProgress]);
+//   useEffect(() => {
+//     const handleScroll = () => {
+//       if (!container.current) return;
 
+//       const rect = container.current.getBoundingClientRect();
+
+//       if (rect.bottom <= window.innerHeight) {
+//         setScrollFinished(true);
+//       } else {
+//         setScrollFinished(false);
+//       }
+//     };
+
+//     window.addEventListener("scroll", handleScroll);
+//     return () => window.removeEventListener("scroll", handleScroll);
+//   }, []);
 //   return (
 //     <div className="max-w-340 mx-auto px-4 sm:px-6 lg:px-8 mt-4">
 //       {" "}
 //       <div className="md:hidden">
-//         <SectionHeading
-//           title=" International Certification Programs Offered by AIA"
-//         />
-//         <div className="mb-8">
-//           <p className="text-xs uppercase tracking-wider text-[#F3831C] font-semibold mb-4">
-//             PROFESSIONAL CERTIFICATION PROGRAMS
-//           </p>
-//         </div>
+//         <SectionHeading title="Global Certification Programs Offered by AIA" />
 
 //         {ALL_SERVICES.map((service) => (
 //           <div
@@ -196,23 +207,28 @@
 //           </div>
 //         ))}
 //       </div>
-//       {/* Desktop Layout */}
 //       <div className="hidden md:block">
-//         <div className="sticky md:top-20 z-40 bg-white py-6">
-//           <SectionHeading title="International Certification Programs Offered by AIA" align="center"/>
+//         <div
+//           className={`${
+//             scrollFinished ? "relative" : "sticky top-20"
+//           } bg-white z-40 pb-2 pt-6`}
+//         >
+//           {" "}
+//           <SectionHeading
+//             title="Global Certification Programs Offered by AIA"
+//             align="center"
+//           />
 //         </div>
 
-//         {/* Two Column Layout */}
 //         <div className="grid md:grid-cols-2 gap-12">
-//           {/* Left Side Content */}
 //           <div className="md:sticky md:top-55 md:h-screen md:flex md:flex-col md:justify-center">
 //             <div className="h-full flex flex-col justify-between">
 //               <div>
-//                 <p className="text-sm uppercase tracking-wider text-[#F3831C] font-semibold mb-4">
+//                 {/* <p className="text-sm uppercase tracking-wider text-[#F3831C] font-semibold mb-4">
 //                   PROFESSIONAL CERTIFICATION PROGRAMS
-//                 </p>
+//                 </p> */}
 
-//                 <div className="transition-opacity duration-300">
+//                 <div className="transition-opacity duration-300 mb-20">
 //                   <h1 className="text-xl md:text-3xl font-bold mb-3 leading-tight text-[#0F3652]">
 //                     {ALL_SERVICES[activeCard]?.title || ALL_SERVICES[0].title}
 //                   </h1>
@@ -222,30 +238,29 @@
 //                       ALL_SERVICES[0].description}
 //                   </p>
 //                 </div>
-//               </div>
+//                 <div className="mt-10">
+//                   <a
+//                     href={
+//                       ALL_SERVICES[activeCard]?.link || ALL_SERVICES[0].link
+//                     }
+//                     className="group inline-flex items-center gap-2 h-10 px-4 bg-[#F3831C] text-sm font-medium text-white hover:bg-[#F3831C]/90"
+//                   >
+//                     <span>
+//                       {ALL_SERVICES[activeCard]?.cta || ALL_SERVICES[0].cta}
+//                     </span>
+//                   </a>
 
-//               {/* CTA Section */}
-//               <div className="mb-30 mt-10">
-//                 <a
-//                   href={ALL_SERVICES[activeCard]?.link || ALL_SERVICES[0].link}
-//                   className="group inline-flex items-center gap-2 h-10 px-4 bg-[#F3831C] text-sm font-medium text-white hover:bg-[#F3831C]/90"
-//                 >
-//                   <span>
-//                     {ALL_SERVICES[activeCard]?.cta || ALL_SERVICES[0].cta}
-//                   </span>
-//                 </a>
-
-//                 <div className="hidden md:flex items-center gap-4 mt-8">
-//                   <div className="h-px w-16 bg-[#F3831C]"></div>
-//                   <p className="text-sm text-[#0F3652]/70">
-//                     Scroll to explore all courses
-//                   </p>
+//                   <div className="hidden md:flex items-center gap-4">
+//                     <div className="h-px w-16 bg-[#F3831C]"></div>
+//                     <p className="text-sm text-[#0F3652]/70">
+//                       Scroll to explore all courses
+//                     </p>
+//                   </div>
 //                 </div>
 //               </div>
 //             </div>
 //           </div>
 
-//           {/* Right Scroll Cards */}
 //           <div ref={container} className="relative">
 //             {ALL_SERVICES.map((service, i) => {
 //               const targetScale = 1 - (ALL_SERVICES.length - i) * 0.05;
@@ -260,6 +275,7 @@
 //                   progress={scrollYProgress}
 //                   range={[start, end]}
 //                   targetScale={targetScale}
+//                   total={ALL_SERVICES.length}
 //                 />
 //               );
 //             })}

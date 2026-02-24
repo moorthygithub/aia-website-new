@@ -39,12 +39,14 @@ const AboutPartner = () => {
               Trusted by Corporations for Fraud & Risk Capability Building
             </span>
           </h2> */}
-          <SectionHeading
-            title="Corporate Training Delivered to Leading Organisations"
-            description="              Trusted by Corporations for Fraud & Risk Capability Building"
-            align="center"
-          />
+
           <section className="relative space-y-10 bg-[#0F3652] p-8 overflow-hidden mt-6">
+            <SectionHeading
+              title="Corporate Training Delivered to Leading Organisations"
+              description="Trusted by Corporations for Fraud & Risk Capability Building"
+              align="center"
+              className="white"
+            />
             <div className="relative z-10 max-w-340 mx-auto">
               <div className="grid max-w-340 mx-auto md:grid-cols-2 gap-8 items-center mt-10">
                 <div className="order-2 md:order-1">

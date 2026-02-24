@@ -14,6 +14,7 @@ import HomeCourses from "@/components/home/home-courses";
 import HomePrCarousel from "@/components/home/home-pr-carousel";
 import HomeReview from "@/components/home/home-review";
 import certificationCourses from "@/data/certificationCourses";
+import OfficeCeleberation from "@/components/common/celeberation";
 
 const AboutPage = () => {
   return (
@@ -32,6 +33,10 @@ const AboutPage = () => {
       {/* <HomeCorporatePartner /> */}
       <CourseYoutubeLecture courseSlug="about-us" />
       <HomeReview />
+      <OfficeCeleberation
+        title="Inside Life at AIA"
+        description="Snapshots from AIA’s workplace where teamwork, milestones, and shared wins come together - reflecting the culture behind everything we build."
+      />
     </div>
   );
 };

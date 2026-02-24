@@ -2,6 +2,7 @@ import AboutTrainerSection from "@/components/about/about-trainer-section";
 import CourseAchivers from "@/components/common/course-achivers";
 import CourseReview from "@/components/common/course-review";
 import PopUp from "@/components/common/pop-up";
+import WhatsappCarosal from "@/components/common/whatsapp-carosal";
 import CamsAbout from "@/components/courses/cams/cams-about";
 import CamsConnection from "@/components/courses/cams/cams-connection";
 import CamsCourseCurriculum from "@/components/courses/cams/cams-course-curriculum";
@@ -24,7 +25,7 @@ const CAMS = () => {
   return (
     <div>
       <PopUp slug="CAMS" />
-      <CourseHero path="cams_banner.webp"/>
+      <CourseHero path="cams_banner.webp" />
       <CamsAbout />
       <CourseTopStudent
         courseSlug="cams"
@@ -41,6 +42,11 @@ const CAMS = () => {
       />
       <CamsJourney />
       <CamsWhyAia />
+      <WhatsappCarosal
+        title="Unfiltered Reflections from AIA-Trained Professionals"
+        description=" Heartfelt messages shared by professionals after completing their journey with AIA"
+        course="CAMS"
+      />
       <CamsHighlight />
       <CourseMap courseCode="CAMS" />
       <CourseReview slug="CAMS" />

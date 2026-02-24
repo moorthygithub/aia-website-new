@@ -31,9 +31,9 @@ const CourseYoutubeLecture = ({
   const tabs = data?.data
     ? Array.from(new Set(data.data.map((item) => item.youtube_language)))
         .filter(Boolean)
-        .sort()
+        
     : [];
-
+console.log(tabs,"tabs")
   useEffect(() => {
     if (tabs.length > 0 && !activeTab) {
       setActiveTab(tabs[0]);

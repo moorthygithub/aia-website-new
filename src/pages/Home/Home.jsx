@@ -17,6 +17,7 @@ import HomePrCarousel from "@/components/home/home-pr-carousel";
 import HomeResults from "@/components/home/home-results";
 import HomeReview from "@/components/home/home-review";
 import certificationCourses from "@/data/certificationCourses";
+import WhatsappCarosal from "@/components/common/whatsapp-carosal";
 
 export default function Home() {
   return (
@@ -32,14 +33,20 @@ export default function Home() {
         description="Actual certificates earned by professionals across CFE, CIA, and CAMS after structured preparation with AIA."
       />
       <HomeAccredited />
+      <WhatsappCarosal
+        title="Unfiltered Reflections from AIA-Trained Professionals"
+        description=" Heartfelt messages shared by professionals after completing their journey with AIA"
+        course="all"
+      />
       <HomeReview />
+
       <AllYoutube />
       <HomeCorporatePartner />
       <HomePrCarousel />
       <HomeAlumniWork />
       <CourseYoutubeLecture
         courseSlug="home"
-        title="Watch & Learn Everything You Need to"
+        title="Watch & Learn! Everything You Need to"
         highlight1="Crack the CFE, CIA & CAMS"
       />
       <HomeBlogs />

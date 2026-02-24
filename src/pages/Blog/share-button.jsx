@@ -1,0 +1,51 @@
+import { Copy, Share2, Check } from "lucide-react";
+import { useState } from "react";
+
+export function ShareButtons() {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(window.location.href);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handleShare = async () => {
+    if (navigator.share) {
+      await navigator.share({
+        title: document.title,
+        url: window.location.href,
+      });
+    } else {
+      handleCopy();
+    }
+  };
+
+  return (
+    <div className="space-y-4">
+      <h3 className="text-xl font-medium text-[#0F3652]">Share this blog</h3>
+
+      <div className="flex gap-3">
+        <button
+          onClick={handleCopy}
+          className="flex items-center gap-2 px-4 py-2.5 border border-[#0F3652]/20 rounded-lg hover:bg-[#0F3652]/5 transition-colors text-[#0F3652] text-sm font-medium"
+        >
+          {copied ? (
+            <Check className="w-4 h-4" />
+          ) : (
+            <Copy className="w-4 h-4" />
+          )}
+          {copied ? "Copied!" : "Copy"}
+        </button>
+
+        <button
+          onClick={handleShare}
+          className="flex items-center gap-2 px-4 py-2.5 border border-[#0F3652]/20 rounded-lg hover:bg-[#0F3652]/5 transition-colors text-[#0F3652] text-sm font-medium"
+        >
+          <Share2 className="w-4 h-4" />
+          Share
+        </button>
+      </div>
+    </div>
+  );
+}

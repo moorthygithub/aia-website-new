@@ -18,7 +18,7 @@ const Enrool = () => {
       <EnroolTopStudent />
       {/* getAllPassoutStudents */}
       <HomeAlumniWork />
-      <EnroolMap />
+      {/* <EnroolMap /> */}
       {/* <EnrollReview /> */}
       <CourseYoutubeLecture courseSlug="enroll-now" />
       <HomeReview />

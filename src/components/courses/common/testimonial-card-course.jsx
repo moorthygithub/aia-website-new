@@ -7,6 +7,8 @@ export function TestimonialCardCourse({
   alt,
   className,
   target,
+  size,
+  border,
 }) {
   const Card = href ? "a" : "div";
 
@@ -41,12 +43,13 @@ export function TestimonialCardCourse({
           }
         : {})}
       className={cn(
-        "flex flex-col rounded-lg relative group",
-        "h-[165px] w-[290px]",
-        "border-2 border-[#F3831C]",
-        "overflow-hidden",
-        className
+        "flex flex-col rounded-lg relative group overflow-hidden",
+        border ? "border-2 border-[#F3831C]" : "border-none",
       )}
+      style={{
+        height: size?.height || "165px",
+        width: size?.width || "290px",
+      }}
     >
       <div className="h-full w-full flex items-center justify-center overflow-hidden relative">
         <Avatar className="h-full w-full rounded-md">
