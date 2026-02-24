@@ -148,7 +148,7 @@ const CourseYoutubeLecture = ({
                       <img
                         src={getImageUrl(video.youtube_image)}
                         alt={video.youtube_image_alt || video.youtube_language}
-                        className="w-full h-40 object-fit"
+                        className="w-full h-auto object-contain"
                       />
                     </div>
                   </div>

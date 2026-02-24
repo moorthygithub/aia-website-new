@@ -65,7 +65,12 @@ const Blog = () => {
 
   const uniqueCategories = [
     ...new Set(blogs.map((blog) => blog.blog_course).filter(Boolean)),
-  ];
+  ].sort((a, b) => {
+    if (a === "Other") return 1; // push "Other" down
+    if (b === "Other") return -1; // keep others above
+    return a.localeCompare(b); // normal alphabetical sort
+  });
+
   const trendingBlogs = filteredBlogs.filter(
     (blog) => blog.blog_trending === "yes"
   );

@@ -43,15 +43,16 @@ const HomeCorporatePartner = () => {
   const currentTitle = effortsData?.data?.[currentEffortIndex]?.efforts_heading;
   return (
     <div className="w-full">
-      <SectionHeading
-        title="AIA Empowers Organisations Through Audit & Fraud Excellences"
-        description="Industry-aligned certification training designed for enterprise
-            audit and fraud teams."
-        align="center"
-      />
       <div className="mx-auto">
-        <section className="relative w-full overflow-hidden bg-[#0F3652]">
-          <div className="relative z-10 w-full px-8 pb-12 grid grid-cols-1 md:grid-cols-2 items-center gap-8 max-w-340 mx-auto">
+        <section className="relative w-full overflow-hidden bg-[#0F3652] pt-6">
+          <SectionHeading
+            title="AIA Empowers Organisations Through Audit & Fraud Excellences"
+            description="Industry-aligned certification training designed for enterprise
+            audit and fraud teams."
+            align="center"
+            className="white"
+          />
+          <div className="relative z-10 w-full px-8 pb-4 grid grid-cols-1 md:grid-cols-2 items-center gap-8 max-w-340 mx-auto">
             <div>
               <h3 className="text-3xl font-semibold">
                 {currentTitle?.split("X").map((part, index, arr) => (

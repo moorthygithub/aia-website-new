@@ -4,12 +4,14 @@ import FreeResourcePracticeQuestion from "@/components/cfe-free-resource/free-re
 import FreeResourceReview from "@/components/cfe-free-resource/free-resource-review";
 import CourseAchivers from "@/components/common/course-achivers";
 import CfeCourseLms from "@/components/courses/cfe-curriculam/cfe-course-lms";
+import CourseHero from "@/components/courses/common/course-hero";
 import CourseYoutubeLecture from "@/components/courses/common/course-youtube-lecture";
 import HomeAlumniWork from "@/components/home/home-alumini-work";
 
 const FreeResources = () => {
   return (
     <>
+      <CourseHero path="free-resource_banner.webp" />
       <FreeResourceBanner />
       {/* <FreeResourceYoutube /> */}
       <CourseYoutubeLecture courseSlug="CFE-Free-Resources" />

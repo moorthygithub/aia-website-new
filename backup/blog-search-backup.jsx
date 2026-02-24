@@ -57,6 +57,7 @@ const Blog = () => {
   const uniqueCategories = [
     ...new Set(filteredBlogs.map((blog) => blog.blog_course).filter(Boolean)),
   ];
+  
   const trendingBlogs = blogs.filter((blog) => blog.blog_trending === "yes");
 
   const COURSE_NAME_MAP = {

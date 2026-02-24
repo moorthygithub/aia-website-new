@@ -24,7 +24,7 @@ const CAMS = () => {
   return (
     <div>
       <PopUp slug="CAMS" />
-      <CourseHero />
+      <CourseHero path="cams_banner.webp"/>
       <CamsAbout />
       <CourseTopStudent
         courseSlug="cams"

@@ -92,7 +92,7 @@ const PassoutBanner = () => {
         </div>
 
         <div className="flex-1 relative h-160 w-full overflow-hidden max-w-2xl">
-          <div className="absolute left-24 w-[200px] pr-2">
+          <div className="absolute left-30 w-[200px] pr-2">
             <div className="animate-marquee-up">
               {[...leftImages, ...leftImages].map((img, idx) => (
                 <div
@@ -117,7 +117,7 @@ const PassoutBanner = () => {
           </div>
 
           {/* RIGHT COLUMN */}
-          <div className="absolute right-26 w-[200px] pl-2">
+          <div className="absolute right-30 w-[200px] pl-2 pt-24">
             <div className="animate-marquee-up">
               {[...rightImages, ...rightImages].map((img, idx) => (
                 <div
