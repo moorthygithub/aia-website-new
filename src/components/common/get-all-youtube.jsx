@@ -80,6 +80,7 @@ const AllYoutube = ({ title, description }) => {
         }
         testimonials={testimonials}
         sucessstory={true}
+        border={true}
       />
     </div>
   );

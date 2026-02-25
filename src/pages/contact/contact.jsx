@@ -3,10 +3,10 @@ import ContactHighlight from "@/components/contact/contact-highlight";
 import ContactLocation from "@/components/contact/contact-location";
 import ContactMap from "@/components/contact/contact-map";
 import ContactReachOut from "@/components/contact/contact-reach-out";
-import ContactTestimonial from "@/components/contact/contact-testimonial";
 import ContactUnique from "@/components/contact/contact-unique";
 import CourseTopStudent from "@/components/courses/common/course-top-student";
 import HomeAlumniWork from "@/components/home/home-alumini-work";
+import HomeReview from "@/components/home/home-review";
 import PopUp from "../../components/common/pop-up";
 
 const Contact = () => {
@@ -26,7 +26,8 @@ const Contact = () => {
       <HomeAlumniWork />
       <ContactMap />
       <ContactUnique />
-      <ContactTestimonial />
+      <HomeReview />
+      {/* <ContactTestimonial /> */}
       <ContactLocation />
     </div>
   );

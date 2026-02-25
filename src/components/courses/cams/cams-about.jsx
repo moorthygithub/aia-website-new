@@ -9,13 +9,13 @@ const CamsAbout = () => {
         description={`The Certified Anti-Money Laundering Specialist (CAMS) certification by ACAMS is widely recognised as the leading global credential in Anti-Money Laundering and Financial Crime Compliance. With 50,000+ CAMS-certified professionals worldwide, it is the preferred qualification for AML, compliance, risk, and audit professionals across banks, fintechs, consulting firms, and regulators.\nAt the AIA, we design our CAMS prep program in the best manner to provide comprehensive, end-to-end training to master all exam concepts. Whether you are preparing alongside a full-time job or returning to AML after a break, AIA’s CAMS prep course offers the structure, guidance, and flexibility required to clear the exam on your first serious attempt.`}
         aboutStats={[
           {
-            display: "Detailed recorded Sessions",
+            display: "Recorded Video Sessions",
             title: "(40+ hours of structured learning)",
             show: "true",
           },
           {
-            display: "Live-Doubt Sessions ",
-            title: "(Doubt-solving sessions with faculty)",
+            display: "Live-Doubt Sessions",
+            title: "(With expert faculty)",
             show: "true",
           },
           {

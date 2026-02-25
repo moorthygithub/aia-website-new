@@ -9,6 +9,7 @@ import "swiper/css/pagination";
 import { Autoplay, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import HomeMap from "../home/home-map";
+import SectionHeading from "../SectionHeading/SectionHeading";
 
 const FreeResourceReview = () => {
   const { data, isLoading, isError, refetch } = useQuery({
@@ -45,17 +46,10 @@ const FreeResourceReview = () => {
   return (
     <section className="py-12 bg-white">
       <div className="max-w-340 mx-auto w-full px-4 sm:px-6 lg:px-8">
-        <div className="mb-10">
-          <div className="text-center md:text-left">
-            <h1 className="text-3xl md:text-3xl font-bold text-[#0F3652] relative inline-block mb-2">
-              Learner Experiences From Across the Globe
-              <span className="absolute left-0 -bottom-2 w-14 h-1 bg-[#F3831C] rounded"></span>
-            </h1>
-            <p className="text-[#0F3652] text-base font-normal">
-              Hear directly from professionals who achieved success with AIA.
-            </p>
-          </div>
-        </div>
+        <SectionHeading
+          title="Trusted by Learners Across the Globe"
+          description="Real experiences shared by professionals on how AIA helped them achieve their certification goals."
+        />
 
         <div className="flex flex-col lg:flex-row items-center">
           <div className="w-full lg:w-1/2 mb-8 lg:mb-0">

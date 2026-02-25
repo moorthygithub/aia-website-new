@@ -46,9 +46,8 @@ const HomeCorporatePartner = () => {
       <div className="mx-auto">
         <section className="relative w-full overflow-hidden bg-[#0F3652] pt-6">
           <SectionHeading
-            title="AIA Empowers Organisations Through Audit & Fraud Excellences"
-            description="Industry-aligned certification training designed for enterprise
-            audit and fraud teams."
+            title="AIA Empowers Organisations Through Audit & Fraud Risk Excellences"
+            description="Industry-aligned certification training designed to strengthen fraud prevention, detection, investigation, and audit capabilities across organisations."
             align="center"
             className="white"
           />

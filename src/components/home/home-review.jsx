@@ -47,8 +47,8 @@ const HomeReview = () => {
     <section className="py-12 bg-white">
       <div className="max-w-340 mx-auto w-full px-4 sm:px-6 lg:px-8">
         <SectionHeading
-          title="Learner Experiences from Across the Globe"
-          description="Hear directly from professionals who achieved success with AIA."
+          title="Trusted by Learners Across the Globe"
+          description="Real experiences shared by professionals on how AIA helped them achieve their certification goals."
         />
         <div className="flex flex-col lg:flex-row items-center">
           <div className="w-full lg:w-1/2 mb-8 lg:mb-0">

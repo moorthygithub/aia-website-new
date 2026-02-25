@@ -147,7 +147,7 @@ const PassoutSuccess = () => {
   }
 
   return (
-    <section className="bg-white py-16 px-6 lg:px-12">
+    <section className="bg-white pt-16 px-6 lg:px-12">
       <div className="max-w-7xl mx-auto">
         <SectionHeading
           title="Know How Our Learners Turned Certification into Career Progress"

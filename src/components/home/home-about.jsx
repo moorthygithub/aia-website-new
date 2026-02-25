@@ -22,8 +22,12 @@ Guided by industry experts with hands-on experience, our practical training ensu
             show: "true",
           },
           { display: "99.6% Success", title: "Success Rate", show: "true" },
-          { display: "1,500+", title: "Success Stories", show: "true" },
-          { display: "32+ Countries", title: "Served", show: "true" },
+          {
+            display: "2000+ Professionals",
+            title: "Trained & Certified",
+            show: "true",
+          },
+          { display: "36+ Countries", title: "Served", show: "true" },
         ]}
       />
     </>

@@ -6,7 +6,7 @@ import SectionHeading from "../SectionHeading/SectionHeading";
 const CorporateWhyAia = () => {
   return (
     <section className="pt-0 my-16 py-8">
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-8">
         <div className="text-center max-w-5xl mx-auto mb-12">
           <SectionHeading
             title="Why Choose AIA For"

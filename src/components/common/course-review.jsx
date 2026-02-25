@@ -16,8 +16,8 @@ const ServiceCard = ({ testimonial, i, progress, total, imageUrl }) => {
     CAMS: "Certified Anti-Money Laundering Specialist",
     CFE: "Certified Fraud Examiner",
     CIA: "Certified Internal Auditor",
-  "CIA Part 1": "Certified Internal Auditor",
-    CIAC: "Certified Internal Audit Challenge",
+    "CIA Part 1": "Certified Internal Auditor",
+    CIAC: "Certified Internal Auditor",
   };
   const scale = useTransform(progress, [start, end], [1, 0.95]);
 

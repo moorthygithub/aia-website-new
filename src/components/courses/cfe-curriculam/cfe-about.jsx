@@ -16,7 +16,7 @@ Certified Fraud Examiner (CFE) is a globally respected credential awarded by the
             show: "true",
           },
           {
-            display: "Exam-Aligned Practice Ques.",
+            display: "Practice Questions",
             title: "(1,500+ expert curated questions)",
             show: "true",
           },

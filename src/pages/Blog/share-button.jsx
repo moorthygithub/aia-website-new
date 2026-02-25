@@ -4,18 +4,42 @@ import { useState } from "react";
 export function ShareButtons() {
   const [copied, setCopied] = useState(false);
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(window.location.href);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
+  const handleCopy = async () => {
+    const url = window.location.href;
 
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(url);
+      } else {
+        const textArea = document.createElement("textarea");
+        textArea.value = url;
+        textArea.style.position = "fixed";
+        textArea.style.left = "-9999px";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textArea);
+      }
+
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error("Copy failed", err);
+    }
+  };
   const handleShare = async () => {
+    const url = window.location.href;
+
     if (navigator.share) {
-      await navigator.share({
-        title: document.title,
-        url: window.location.href,
-      });
+      try {
+        await navigator.share({
+          title: document.title,
+          url: url,
+        });
+      } catch (error) {
+        handleCopy();
+      }
     } else {
       handleCopy();
     }

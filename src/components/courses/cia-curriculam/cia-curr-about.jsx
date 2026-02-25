@@ -18,7 +18,8 @@ The Certified Internal Auditor (CIA) is a globally recognized professional certi
           },
           {
             display: "Live-Doubt Sessions",
-            title: "(Doubt-solving sessions with faculty)",
+            // title: "(Doubt-solving sessions with faculty)",
+            title: "(With expert faculty)",
             show: "true",
           },
           {

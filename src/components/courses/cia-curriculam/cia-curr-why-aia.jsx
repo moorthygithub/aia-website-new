@@ -12,11 +12,11 @@ const CiaCurrWhyAia = () => {
         backgroundImage="https://christuniversity.in/images/bg_2.jpg"
         items={[
           {
-            img: `${IMAGE_PATH}/books-svgrepo-com.png`,
+            img: `${IMAGE_PATH}/teacher-svgrepo-com.png`,
             title: "CFE Qualified Instructor",
           },
           {
-            img: `${IMAGE_PATH}/books-svgrepo-com.png`,
+            img: `${IMAGE_PATH}/support-svgrepo-com.png`,
             title: "Training Support",
           },
           {
@@ -33,7 +33,7 @@ const CiaCurrWhyAia = () => {
           },
         ]}
       />
-     
+
       <div className="flex justify-center gap-2">
         <CfeJoinDialog
           title="Join AiA CIA LMS"

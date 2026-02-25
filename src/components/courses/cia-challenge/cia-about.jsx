@@ -28,7 +28,7 @@ The CIA Challenge Exam is a fast-track pathway, offered by The Institute of Inte
           },
           {
             display: "Flash Cards",
-            title: "(300+ Flash cards for quick revision)",
+            title: "(300+ Flash cards)",
             show: "true",
           },
         ]}

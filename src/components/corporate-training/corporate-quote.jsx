@@ -370,29 +370,29 @@ const CorporateQuoteDialog = ({
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="relative flex-1">
               {!topcontent && (
-                <div className="absolute -top-4 -left-2 text-[#F3831C] text-5xl font-serif select-none">
+                <div className="absolute -top-4 -left-2  text-5xl font-serif select-none">
                   "
                 </div>
               )}
               <div className="pl-8">
                 {topcontent && (
                   <div className="inline-flex items-center gap-2 px-3 rounded-full bg-white/10 mb-4">
-                    <div className="w-1.5 h-1.5 bg-[#F3831C] rounded-full"></div>
-                    <span className="text-[#F3831C] text-xs font-semibold uppercase tracking-wider">
+                    <div className="w-1.5 h-1.5  rounded-full bg-black"></div>
+                    <span className="text-xs font-semibold uppercase tracking-wider">
                       {topcontent}
                     </span>
                   </div>
                 )}
                 <h2 className="text-2xl md:text-3xl font-bold leading-relaxed mb-4">
-                  <span className="bg-gradient-to-r from-[#F3831C] to-[#F3831C]/80 bg-clip-text text-transparent">
+                  <span>
                     {quote}
                   </span>
                 </h2>
                 {bottomcontent && (
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-0.5 bg-[#F3831C]/50" />
-                    <div className="w-1 h-1 rounded-full bg-[#F3831C]" />
-                    <span className="text-[#F3831C]/80 text-sm italic">
+                    <div className="w-8 h-0.5 bg-black" />
+                    <div className="w-1 h-1 rounded-full bg-black" />
+                    <span className="text-sm italic">
                       — {bottomcontent}
                     </span>
                   </div>
