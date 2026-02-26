@@ -125,6 +125,7 @@ const CourseAchivers = ({ slug, title, description }) => {
           />
         );
       })}
+      
       <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2 mt-8">
         <button
           onClick={() => handleMove(-1)}
