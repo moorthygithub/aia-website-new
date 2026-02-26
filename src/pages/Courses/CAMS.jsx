@@ -20,12 +20,14 @@ import CourseTopStudent from "@/components/courses/common/course-top-student";
 import CourseYoutube from "@/components/courses/common/course-youtube";
 import CourseYoutubeLecture from "@/components/courses/common/course-youtube-lecture";
 import HomeAlumniWork from "@/components/home/home-alumini-work";
+import HomeHero from "@/components/home/home-hero";
 
 const CAMS = () => {
   return (
     <div>
       <PopUp slug="CAMS" />
-      <CourseHero path="cams_banner.webp" />
+      {/* <CourseHero path="cams_banner.webp" /> */}
+      <HomeHero slug="cams" />
       <CamsAbout />
       <CourseTopStudent
         courseSlug="cams"

@@ -7,11 +7,13 @@ import CfeCourseLms from "@/components/courses/cfe-curriculam/cfe-course-lms";
 import CourseHero from "@/components/courses/common/course-hero";
 import CourseYoutubeLecture from "@/components/courses/common/course-youtube-lecture";
 import HomeAlumniWork from "@/components/home/home-alumini-work";
+import HomeHero from "@/components/home/home-hero";
 
 const FreeResources = () => {
   return (
     <>
-      <CourseHero path="free-resource_banner.webp" />
+      {/* <CourseHero path="free-resource_banner.webp" /> */}
+      <HomeHero slug="cfe-free-resources" />
       {/* <FreeResourceBanner /> */}
       {/* <FreeResourceYoutube /> */}
       <CourseYoutubeLecture courseSlug="CFE-Free-Resources" />

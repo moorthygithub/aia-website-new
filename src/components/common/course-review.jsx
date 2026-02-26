@@ -11,7 +11,6 @@ import { Link } from "react-router-dom";
 const ServiceCard = ({ testimonial, i, progress, total, imageUrl }) => {
   const start = i / total;
   const end = (i + 1) / total;
-  console.log(testimonial);
   const courseFullForms = {
     CAMS: "Certified Anti-Money Laundering Specialist",
     CFE: "Certified Fraud Examiner",

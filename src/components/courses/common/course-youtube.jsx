@@ -15,7 +15,7 @@ const CourseYoutube = ({ courseSlug, title, description }) => {
     queryKey: ["youtube-testimonials"],
     queryFn: async () => {
       const res = await axios.get(
-        `${BASE_URL}/api/getYoutubebyCourse/${courseSlug}`
+        `${BASE_URL}/api/getYoutubebyCourse/${courseSlug}`,
       );
       return res.data;
     },
@@ -38,7 +38,6 @@ const CourseYoutube = ({ courseSlug, title, description }) => {
       course: item.student_course,
     }));
   }, [certificatesData]);
-  console.log(testimonials);
 
   if (isLoadingPassout) {
     return (
@@ -80,6 +79,7 @@ const CourseYoutube = ({ courseSlug, title, description }) => {
       testimonials={testimonials}
       sucessstory={true}
       description={description}
+      border={true}
     />
     // <TestimonialsSection
     //   title="Meet Recently Qualified on YouTube "

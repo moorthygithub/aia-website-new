@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const CiaCurrWhyAia = () => {
   return (
-    <>
+    <div className="md:mb-18">
       <CourseWhyAia
         heading="Why Academy of Internal Audit"
         backgroundImage="https://christuniversity.in/images/bg_2.jpg"
@@ -35,7 +35,7 @@ const CiaCurrWhyAia = () => {
         ]}
       />
 
-      <div className="flex justify-center gap-2">
+      <div className="flex justify-center gap-2 mt-8">
         <CfeJoinDialog
           title="Join AiA CIA LMS"
           subtitle="Online Training and Certification Course"
@@ -58,7 +58,7 @@ const CiaCurrWhyAia = () => {
           </Link>
         </Button>
       </div>
-    </>
+    </div>
   );
 };
 

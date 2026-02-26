@@ -8,7 +8,7 @@ const CourseAchiverCard = ({ position, testimonial, handleMove, cardSize }) => {
     <div
       onClick={() => handleMove(position)}
       className={cn(
-        "absolute left-1/2 top-1/2 cursor-pointer border-2 p-6 transition-all duration-500 ease-in-out ",
+        "absolute left-1/2 top-1/2 cursor-pointer border-2 p-6 transition-all duration-500 ease-in-out mt-16",
         isCenter
           ? "z-10 bg-[#0F3652] text-primary-foreholder border-[#0F3652]"
           : "z-0 bg-card text-card-foreholder border-border hover:border-primary/50",

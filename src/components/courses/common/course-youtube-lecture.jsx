@@ -19,21 +19,20 @@ const CourseYoutubeLecture = ({
   const scrollContainerRef = useRef(null);
 
   const { data, isLoading, isError } = useQuery({
-    queryKey: [courseSlug || "aia-youtube-home"],
+    queryKey: [`${courseSlug}-youtubeleture`],
     queryFn: async () => {
       const res = await axios.get(
-        `${BASE_URL}/api/getLectureYoutubebySlug/${courseSlug}`
+        `${BASE_URL}/api/getLectureYoutubebySlug/${courseSlug}`,
       );
       return res.data;
     },
   });
-
+  console.log(data, "data", courseSlug);
   const tabs = data?.data
-    ? Array.from(new Set(data.data.map((item) => item.youtube_language)))
-        .filter(Boolean)
-        
+    ? Array.from(
+        new Set(data.data.map((item) => item.youtube_language)),
+      ).filter(Boolean)
     : [];
-console.log(tabs,"tabs")
   useEffect(() => {
     if (tabs.length > 0 && !activeTab) {
       setActiveTab(tabs[0]);
@@ -57,14 +56,14 @@ console.log(tabs,"tabs")
     if (!data?.image_url || !imageName) return "";
 
     const lectureImage = data.image_url.find(
-      (item) => item.image_for === "Lecture Youtube"
+      (item) => item.image_for === "Lecture Youtube",
     );
     if (lectureImage) {
       return `${lectureImage.image_url}${imageName}`;
     }
 
     const noImage = data.image_url.find(
-      (item) => item.image_for === "No Image"
+      (item) => item.image_for === "No Image",
     );
     return noImage ? noImage.image_url : "";
   };
@@ -79,7 +78,7 @@ console.log(tabs,"tabs")
     );
   }
 
-  if (isError || !data) {
+  if (isError) {
     return (
       <div className="w-full bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-340 mx-auto text-center text-red-600">
@@ -88,7 +87,7 @@ console.log(tabs,"tabs")
       </div>
     );
   }
-
+  console.log(filteredVideos, "filteredVideos");
   if (filteredVideos.length === 0) return null;
 
   return (

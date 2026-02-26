@@ -59,7 +59,7 @@ const HomeAccredited = () => {
         <div className="md:hidden grid grid-cols-2 gap-8 px-6 place-items-center">
           <div className="bg-white rounded-full shadow-md flex items-center justify-center">
             <img
-              src={`${IMAGE_PATH}/IAO.jpeg`}
+              src={`${IMAGE_PATH}/IAO.png`}
               alt="IAO logo"
               className="w-full h-full object-contain"
             />
@@ -75,7 +75,7 @@ const HomeAccredited = () => {
 
           <div className="bg-white rounded-full shadow-md flex items-center justify-center">
             <img
-              src={`${IMAGE_PATH}/ISO.jpeg`}
+              src={`${IMAGE_PATH}/ISO.png`}
               alt="ISO logo"
               className="w-full h-full object-contain"
             />
@@ -83,7 +83,7 @@ const HomeAccredited = () => {
 
           <div className="bg-white rounded-full shadow-md flex items-center justify-center">
             <img
-              src={`${IMAGE_PATH}/Gleim.jpeg`}
+              src={`${IMAGE_PATH}/Gleim.png`}
               alt="Gleim logo"
               className="w-full h-full object-contain"
             />

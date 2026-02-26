@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const CamsWhyAia = () => {
   return (
-    <>
+    <div className="md:mb-18">
       <CourseWhyAia
         heading="What sets AIA Apart"
         items={[
@@ -34,7 +34,7 @@ const CamsWhyAia = () => {
         ]}
       />
 
-      <div className="flex justify-center gap-2">
+      <div className="flex justify-center gap-2 mt-8">
         <CfeJoinDialog
           title="Join AiA CAMS LMS"
           subtitle="Online Training and Certification Course"
@@ -57,7 +57,7 @@ const CamsWhyAia = () => {
           </Link>
         </Button>
       </div>
-    </>
+    </div>
   );
 };
 
