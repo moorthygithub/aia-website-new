@@ -54,7 +54,7 @@ const AboutPartner = () => {
                     <img
                       src={`${imageBaseUrl}${efforts[2]?.efforts_image}`}
                       alt={efforts[2]?.efforts_heading}
-                      className="w-full h-[380px] shadow-lg object-contain"
+                      className="w-full h-[340px]  object-contain"
                     />
                   </div>
                 </div>
@@ -87,7 +87,7 @@ const AboutPartner = () => {
                   <img
                     src={`${imageBaseUrl}${efforts[0]?.efforts_image}`}
                     alt={efforts[0]?.efforts_heading}
-                    className="w-full h-[380px] shadow-lg object-contain"
+                    className="w-full h-[340px] object-contain"
                   />
                 </div>
               </div>
@@ -102,7 +102,7 @@ const AboutPartner = () => {
                     <img
                       src={`${imageBaseUrl}${efforts[1]?.efforts_image}`}
                       alt={efforts[1]?.efforts_heading}
-                      className="w-full h-[380px] shadow-lg object-contain"
+                      className="w-full h-[340px]  object-contain"
                     />
                   </div>
                 </div>

@@ -14,7 +14,7 @@ const CourseAchivers = ({ slug, title, description }) => {
     queryKey: ["achivers-passout-students"],
     queryFn: async () => {
       const res = await axios.get(
-        `${BASE_URL}/api/getPassoutStudentbyCourse/${slug}`
+        `${BASE_URL}/api/getPassoutStudentbyCourse/${slug}`,
       );
       return res.data;
     },
@@ -103,7 +103,13 @@ const CourseAchivers = ({ slug, title, description }) => {
       className="relative w-full min-h-screen overflow-hidden bg-muted/30 my-18"
       style={{ height: 600 }}
     >
-      <SectionHeading title={title} description={description} align="center" />
+ 
+        <SectionHeading
+          title={title}
+          description={description}
+          align="center"
+        />
+    
       {testimonialsList.map((testimonial, index) => {
         const position =
           testimonialsList.length % 2
@@ -119,13 +125,13 @@ const CourseAchivers = ({ slug, title, description }) => {
           />
         );
       })}
-      <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2 mt-2">
+      <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2 mt-8">
         <button
           onClick={() => handleMove(-1)}
           className={cn(
             "flex h-14 w-14 items-center justify-center text-2xl transition-colors",
             "bg-background border-2 border-border hover:bg-primary hover:text-primary-foreground",
-            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
           )}
           aria-label="Previous testimonial"
         >
@@ -136,7 +142,7 @@ const CourseAchivers = ({ slug, title, description }) => {
           className={cn(
             "flex h-14 w-14 items-center justify-center text-2xl transition-colors",
             "bg-background border-2 border-border hover:bg-primary hover:text-primary-foreground",
-            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
           )}
           aria-label="Next testimonial"
         >

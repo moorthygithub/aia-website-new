@@ -9,9 +9,9 @@ import SectionHeading from "../SectionHeading/SectionHeading";
 
 const HomePassout = () => {
   const { data, isLoading, isError } = useQuery({
-    queryKey: ["passout-students"],
+    queryKey: ["home-passout-students"],
     queryFn: async () => {
-      const res = await axios.get(`${BASE_URL}/api/getAllPassoutStudents`);
+      const res = await axios.get(`${BASE_URL}/api/getAllPassoutStudentsNew`);
       return res.data;
     },
   });
@@ -41,9 +41,13 @@ const HomePassout = () => {
 
   usePreloadImages(testimonials.map((t) => t.image));
   const firstColumn = testimonials.filter((item) => item.course === "CFE");
-  const secondColumn = testimonials.filter((item) => item.course === "CIAC");
+  const secondColumn = testimonials.filter(
+    (item) => item.course != "CFE" && item.course != "CAMS",
+  );
   const thirdColumn = testimonials.filter((item) => item.course === "CAMS");
-
+  console.log(firstColumn.length, "firstColumn");
+  console.log(secondColumn.length, "secondColumn");
+  console.log(thirdColumn.length, "thirdColumn");
   return (
     <section className="bg-linear-to-b from-[#0F3652]/10 via-transparent to-transparent relative pb-10">
       <div className="mx-auto pt-10 max-w-340 z-10">
@@ -79,7 +83,7 @@ const HomePassout = () => {
           // </div>
           <div className="flex justify-center gap-2 sm:gap-4 md:gap-6 lg:gap-25 mt-10 mask-[linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-[300px] sm:max-h-[380px] md:max-h-[460px] lg:max-h-[540px] overflow-hidden px-2">
             <TestimonialsColumn testimonials={firstColumn} duration={20} />
-            <TestimonialsColumn testimonials={secondColumn} duration={20} />
+            <TestimonialsColumn testimonials={secondColumn} duration={20} className="mt-40"/>
             <TestimonialsColumn testimonials={thirdColumn} duration={20} />
           </div>
         )}

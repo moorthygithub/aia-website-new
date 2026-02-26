@@ -203,7 +203,7 @@ const PopUp = ({ slug = "home" }) => {
             />
           </div>
 
-          <div className="px-2 pb-3 pt-0">
+          {/* <div className="px-2 pb-3 pt-0">
             <div className="flex items-center space-x-3 border-t border-gray-200 pt-4">
               <Checkbox
                 id="dont-show-again-global"
@@ -218,7 +218,7 @@ const PopUp = ({ slug = "home" }) => {
                 Don't show this popup again
               </Label>
             </div>
-          </div>
+          </div> */}
         </div>
       </DialogContent>
     </Dialog>

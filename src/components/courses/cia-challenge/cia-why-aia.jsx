@@ -35,7 +35,7 @@ const CiaWhyAia = () => {
         ]}
       />
 
-      <div className="flex justify-center gap-2">
+      <div className="flex justify-center gap-2 mt-8">
         <CfeJoinDialog
           title="Join AiA CIA LMS"
           subtitle="Online Training and Certification Course"

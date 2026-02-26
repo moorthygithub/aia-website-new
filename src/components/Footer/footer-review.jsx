@@ -52,12 +52,9 @@ const FooterReviews = ({ footer = true }) => {
         {footer ? (
           <div className="flex flex-col justify-start">
             <div className="mb-8">
-              <h2 className="text-3xl md:text-4xl font-bold text-[#0c2340]">
-                Our Reviews
+              <h2 className="text-3xl  font-bold text-[#0c2340]">
+                Top Ratings Across Platforms{" "}
               </h2>
-              <p className="mt-2 text-sm md:text-base">
-                We love our Clients as much as they love us!
-              </p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 max-w-2xl w-full">
@@ -104,12 +101,9 @@ const FooterReviews = ({ footer = true }) => {
           <>
             <div className="flex flex-col items-center justify-center lg:hidden px-3">
               <div className="text-center mb-8">
-                <h2 className="text-3xl md:text-4xl font-bold text-white">
-                  Our Reviews
+                <h2 className="text-3xl font-bold text-white">
+                  Top Ratings Across Platforms{" "}
                 </h2>
-                <p className="text-gray-400 mt-2 text-sm md:text-base">
-                  We love our Clients as much as they love us!
-                </p>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 max-w-2xl w-full">
@@ -153,14 +147,14 @@ const FooterReviews = ({ footer = true }) => {
               </div>
             </div>
 
-            <div className="hidden lg:flex flex-row items-cener justify-between gap-8 px-8">
+            <div className="hidden lg:flex flex-row items-center justify-between gap-8 px-8">
               <div className="text-left">
-                <h2 className="text-3xl md:text-4xl font-bold text-white">
-                  Our Reviews
+                <h2 className="text-4xl  font-bold text-white">
+                  Top Ratings 
                 </h2>
-                <p className="text-gray-400 mt-2 text-sm md:text-base">
-                  We love our Clients as much as they love us!
-                </p>
+                <h2 className="text-4xl  font-bold text-white mt-2">
+                  Across Platforms{" "}
+                </h2>
               </div>
 
               {/* <div className="flex flex-wrap justify-end gap-3 md:gap-4"> */}

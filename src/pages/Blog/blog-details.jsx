@@ -488,7 +488,7 @@ const BlogDetails = () => {
               <div className="sticky top-28">
                 <nav
                   className="bg-[#0F3652]/5 rounded-md p-4 border border-[#0F3652]/20 overflow-y-auto"
-                  style={{ maxHeight: "calc(100vh - 30rem)" }}
+                  style={{ maxHeight: "calc(100vh - 25rem)" }}
                 >
                   <h3 className="font-semibold text-[#0F3652] mb-1 pb-1 border-b">
                     Table of Contents

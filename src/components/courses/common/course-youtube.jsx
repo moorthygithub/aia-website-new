@@ -38,7 +38,6 @@ const CourseYoutube = ({ courseSlug, title, description }) => {
       course: item.student_course,
     }));
   }, [certificatesData]);
-  console.log(testimonials);
 
   if (isLoadingPassout) {
     return (
