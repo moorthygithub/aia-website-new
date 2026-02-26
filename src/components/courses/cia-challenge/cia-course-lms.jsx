@@ -2,6 +2,8 @@ import React from "react";
 import CourseLms from "../common/course-lms";
 import CfeJoinDialog from "../cfe-curriculam/join-prep";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { ENROLL_URL } from "@/api/base-url";
 
 const CiaCourseLms = () => {
   const courseFeatures = [
@@ -61,7 +63,6 @@ const CiaCourseLms = () => {
           course="CIA"
           buttonlabel="Talk to Us"
         />
-
         <Button
           className="
               bg-[#F3831C] text-white
@@ -71,9 +72,10 @@ const CiaCourseLms = () => {
               transition-all
           cursor-pointer
             "
-          onClick={() => navigate("/enroll-now")}
         >
-          {"Enroll Now"}
+          <Link to={`${ENROLL_URL}`} target="_blank" rel="noopener noreferrer">
+            Enroll Now
+          </Link>
         </Button>
       </div>
     </>

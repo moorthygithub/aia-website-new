@@ -1,8 +1,9 @@
 import React from "react";
 import CourseWhyAia from "../common/course-why-aia";
-import { IMAGE_PATH } from "@/api/base-url";
+import { ENROLL_URL, IMAGE_PATH } from "@/api/base-url";
 import CfeJoinDialog from "../cfe-curriculam/join-prep";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const CiaCurrWhyAia = () => {
   return (
@@ -51,9 +52,10 @@ const CiaCurrWhyAia = () => {
               transition-all
           cursor-pointer
             "
-          onClick={() => navigate("/enroll-now")}
         >
-          {"Enroll Now"}
+          <Link to={`${ENROLL_URL}`} target="_blank" rel="noopener noreferrer">
+            Enroll Now
+          </Link>
         </Button>
       </div>
     </>

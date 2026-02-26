@@ -276,7 +276,7 @@ const Navbar = () => {
 
               <li>
                 <Link
-                  to="/enroll-now"
+                  to="https://pages.razorpay.com/stores/Enroll-Now"
                   className="
     bg-[#F3831C] text-white
     px-6 py-2.5 rounded-none

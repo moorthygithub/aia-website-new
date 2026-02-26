@@ -3,7 +3,7 @@ import React from "react";
 
 const CourseWhyAia = ({ heading, items }) => {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
       <div className="w-full py-8 md:py-10 bg-cover bg-center">
         <SectionHeading title={heading} align="center" />
         

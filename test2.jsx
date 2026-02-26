@@ -1,491 +1,345 @@
 import { BASE_URL } from "@/api/base-url";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { cn } from "@/lib/utils";
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { useState } from "react";
-const CorporateQuote = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [formData, setFormData] = useState({
-    userName: "",
-    userEmail: "",
-    userMobile: "",
-    userLocation: "",
-    userCourse: "",
-    userMessage: "",
-    userCourseMode: "",
-    userType: "Corporate-Quote",
-  });
-  const [errors, setErrors] = useState({});
-  const [loader, setLoader] = useState(false);
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+export const TestimonialSlider = ({
+  reviews,
+  className,
+  title,
+  description,
+}) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState("right");
+  const [loadedImages, setLoadedImages] = useState(new Set());
+  const timerRef = useRef(null);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    if (name === "userMobile" && value && !/^\d*$/.test(value)) return;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-    setErrors((prev) => ({
-      ...prev,
-      [name]: "",
-    }));
+  const activeReview = reviews[currentIndex];
+
+  const goTo = useCallback((newIndex, dir) => {
+    setDirection(dir);
+    setCurrentIndex(newIndex);
+  }, []);
+
+  const startTimer = useCallback(() => {
+    clearInterval(timerRef.current);
+    timerRef.current = setInterval(() => {
+      setDirection("right");
+      setCurrentIndex((prev) => (prev + 1) % reviews.length);
+    }, 4000);
+  }, [reviews.length]);
+  const total = reviews.length;
+
+  useEffect(() => {
+    startTimer();
+    return () => clearInterval(timerRef.current);
+  }, [startTimer]);
+
+  const handleNext = useCallback(() => {
+    goTo((currentIndex + 1) % reviews.length, "right");
+    startTimer();
+  }, [currentIndex, reviews.length, goTo, startTimer]);
+
+  const handlePrev = useCallback(() => {
+    goTo((currentIndex - 1 + reviews.length) % reviews.length, "left");
+    startTimer();
+  }, [currentIndex, reviews.length, goTo, startTimer]);
+
+  const handleThumbnailClick = useCallback(
+    (index) => {
+      goTo(index, index > currentIndex ? "right" : "left");
+      startTimer();
+    },
+    [currentIndex, goTo, startTimer],
+  );
+  const handleLeftThumb = useCallback(
+    (idx) => {
+      goTo(idx, "left");
+      startTimer();
+    },
+    [goTo, startTimer],
+  );
+
+  const handleRightThumb = useCallback(
+    (idx) => {
+      goTo(idx, "right");
+      startTimer();
+    },
+    [goTo, startTimer],
+  );
+
+  const handleImageLoad = useCallback((src) => {
+    setLoadedImages((prev) => new Set([...prev, src]));
+  }, []);
+  const leftThumbs = useMemo(() => {
+    const arr = [];
+    for (let i = 3; i >= 1; i--) {
+      const idx = (currentIndex - i + total) % total;
+      arr.push({ review: reviews[idx], originalIndex: idx, dist: i });
+    }
+    return arr;
+  }, [currentIndex, total, reviews]);
+
+  // 3 RIGHT thumbs: slides AFTER current (index current+1, current+2, current+3)
+  const rightThumbs = useMemo(() => {
+    const arr = [];
+    for (let i = 1; i <= 3; i++) {
+      const idx = (currentIndex + i) % total;
+      arr.push({ review: reviews[idx], originalIndex: idx, dist: i });
+    }
+    return arr;
+  }, [currentIndex, total, reviews]);
+  const preloadImages = useMemo(() => {
+    const set = new Set();
+    const prevIdx = (currentIndex - 1 + reviews.length) % reviews.length;
+    const nextIdx = (currentIndex + 1) % reviews.length;
+    if (reviews[prevIdx]?.image) set.add(reviews[prevIdx].image);
+    if (reviews[nextIdx]?.image) set.add(reviews[nextIdx].image);
+    return Array.from(set);
+  }, [currentIndex, reviews]);
+
+  const thumbnailReviews = useMemo(() => {
+    if (reviews.length <= 1) return [];
+    const thumbs = [];
+    for (let i = 1; i <= 3 && i < reviews.length; i++) {
+      const idx = (currentIndex + i) % reviews.length;
+      thumbs.push({ review: reviews[idx], originalIndex: idx });
+    }
+    return thumbs;
+  }, [reviews, currentIndex]);
+
+  const imageVariants = {
+    enter: (d) => ({ y: d === "right" ? "100%" : "-100%", opacity: 0 }),
+    center: { y: 0, opacity: 1 },
+    exit: (d) => ({ y: d === "right" ? "-100%" : "100%", opacity: 0 }),
   };
-
-  const validate = () => {
-    const newErrors = {};
-    if (!formData.userName.trim()) {
-      newErrors.userName = "Company Name is required";
-    }
-    if (!formData.userEmail.trim()) {
-      newErrors.userEmail = "Email is required";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.userEmail)) {
-      newErrors.userEmail = "Please enter a valid email";
-    }
-    if (!formData.userMobile.trim()) {
-      newErrors.userMobile = "Mobile number is required";
-    } else if (formData.userMobile.length < 10) {
-      newErrors.userMobile = "Please enter a valid mobile number";
-    }
-    if (!formData.userCourse) {
-      newErrors.userCourse = "Service selection is required";
-    }
-    if (!formData.userCourseMode) {
-      newErrors.userCourseMode = "Mode is required";
-    }
-    if (!formData.userLocation) {
-      newErrors.userLocation = "Location is required";
-    }
-    return newErrors;
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const validationErrors = validate();
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
-
-    setLoader(true);
-
-    try {
-      const { data } = await axios.post(
-        `${BASE_URL}/api/create-webenquiry`,
-        {
-          userName: formData.userName,
-          userEmail: formData.userEmail,
-          userMobile: formData.userMobile,
-          userCourse: formData.userCourse,
-          userLocation: formData.userLocation,
-          userMessage: formData.userMessage,
-          userType: formData.userType,
-          userCourseMode: formData.userCourseMode,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        },
-      );
-      alert("Demo booked successfully!");
-      setFormData({
-        userName: "",
-        userEmail: "",
-        userMobile: "",
-        userLocation: "",
-        userCourse: "",
-        userMessage: "",
-        userCourseMode: "",
-        userType: "Corporate-Quote",
-      });
-      setErrors({});
-      setIsModalOpen(false);
-    } catch (error) {
-      console.error("API error:", error.response?.data || error.message);
-      alert(
-        error.response?.data?.message ||
-          "Something went wrong. Please try again.",
-      );
-    } finally {
-      setLoader(false);
-    }
-  };
+  const ease = [0.4, 0, 0.2, 1];
 
   return (
-    <>
-      <div className="relative px-6 py-10 md:py-12 overflow-hidden">
-        <div
-          className="absolute inset-0 "
-          style={{
-            background:
-              "linear-gradient(90deg, rgba(230, 246, 251, 1) 0%, rgba(253, 242, 255, 1) 50%, rgba(254, 249, 233, 1) 100%)",
-          }}
-        ></div>
-        {/* <span className="bg-gradient-to-r from-[#0F3652] via-[#1E5A7A] to-[#4FA3C7] bg-clip-text text-transparent"> */}
+    <div
+      className={cn(
+        "relative w-full min-h-[650px] md:min-h-[600px] overflow-hidden bg-background text-foreground p-8 md:p-12",
+        className,
+      )}
+    >
+      {preloadImages.map((src) => (
+        <link
+          key={`preload-${src}`}
+          rel="preload"
+          as="image"
+          href={src}
+          fetchPriority="low"
+        />
+      ))}
 
-        <div className="absolute top-0 left-0 w-full h-full opacity-10">
-          <svg
-            className="w-full h-full"
-            viewBox="0 0 1200 200"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M0,100 Q150,50 300,100 T600,100 T900,100 T1200,100"
-              stroke="white"
-              strokeWidth="1"
-              strokeOpacity="0.3"
-            />
-            <path
-              d="M0,120 Q200,80 400,120 T800,120 T1200,120"
-              stroke="white"
-              strokeWidth="1"
-              strokeOpacity="0.2"
-            />
-            <circle cx="200" cy="100" r="4" fill="white" fillOpacity="0.5">
-              <animate
-                attributeName="cx"
-                values="200;1000;200"
-                dur="20s"
-                repeatCount="indefinite"
-              />
-            </circle>
-            <circle cx="800" cy="120" r="3" fill="white" fillOpacity="0.4">
-              <animate
-                attributeName="cx"
-                values="800;200;800"
-                dur="15s"
-                repeatCount="indefinite"
-                begin="2s"
-              />
-            </circle>
-          </svg>
-          {/* 0F3652 */}
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 h-full">
+        <div className="md:col-span-3 flex flex-col justify-between order-2 md:order-1">
+          <div className="flex flex-row md:flex-col justify-between md:justify-start space-x-4 md:space-x-0 md:space-y-4">
+            <span className="text-sm text-muted-foreground font-mono">
+              {String(currentIndex + 1).padStart(2, "0")} /{" "}
+              {String(reviews.length).padStart(2, "0")}
+            </span>
+          </div>
+
+          <div className="flex space-x-2 mt-8 md:mt-0">
+            {leftThumbs.map(({ review, originalIndex }) => (
+              <button
+                key={originalIndex}
+                onClick={() => handleLeftThumb(originalIndex)}
+                className="overflow-hidden rounded-md w-16 h-20 md:w-20 md:h-24 opacity-70 hover:opacity-100 transition-opacity duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
+                aria-label={`Go to slide ${originalIndex + 1}`}
+              >
+                <img
+                  src={review.image}
+                  alt={review.alt || `Slide ${originalIndex + 1}`}
+                  loading="lazy"
+                  width="80"
+                  height="96"
+                  className="w-full h-full object-cover"
+                  onLoad={() => handleImageLoad(review.image)}
+                />
+              </button>
+            ))}
+          </div>
         </div>
 
-        <div className="mx-auto relative z-10">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="relative flex-1">
-              <div className="absolute -top-4 -left-2 text-white/30 text-5xl font-serif">
-                "
-              </div>
+        <div className="md:col-span-4 relative h-80 min-h-[400px] md:min-h-[500px] order-1 md:order-2">
+          <AnimatePresence initial={false} custom={direction}>
+            <motion.img
+              key={currentIndex}
+              src={activeReview.image}
+              alt={activeReview.alt || `Slide ${currentIndex + 1}`}
+              custom={direction}
+              variants={imageVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              loading={currentIndex === 0 ? "eager" : "lazy"}
+              fetchPriority={currentIndex === 0 ? "high" : "auto"}
+              width="400"
+              height="500"
+              transition={{ duration: 0.6, ease }}
+              className="absolute inset-0 w-full h-full object-cover rounded-lg"
+              onLoad={() => handleImageLoad(activeReview.image)}
+            />
+          </AnimatePresence>
 
-              <div className="pl-8">
-                <h2 className="text-2xl md:text-3xl font-bold text-[#F3831C] leading-relaxed mb-4">
-                  <span className="bg-gradient-to-r from-[#F3831C] to-[#F3831C]/80 bg-clip-text text-transparent">
-                    Invest in people because untrained teams can't execute great
-                    strategies.
-                  </span>
-                </h2>
+          {!loadedImages.has(activeReview.image) && (
+            <div className="absolute inset-0 bg-muted animate-pulse rounded-lg" />
+          )}
 
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-0.5 bg-[#F3831C]/50"></div>
-                  <div className="w-1 h-1 rounded-full bg-[#F3831C]"></div>
-                  <div className="text-[#F3831C]/80 text-sm italic">
-                    — Leadership Insight
-                  </div>
-                </div>
-              </div>
-            </div>
+          {activeReview.youtubeLink && (
+            <a
+              href={activeReview.youtubeLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="absolute inset-0 z-10 flex items-center justify-center group"
+              aria-label="Watch video"
+            >
+              <span className="w-14 h-14 rounded-full bg-black/40 backdrop-blur-sm border border-white/30 flex items-center justify-center group-hover:bg-black/60 transition-all duration-300">
+                <svg className="w-6 h-6 fill-white ml-0.5" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </span>
+            </a>
+          )}
+        </div>
 
-            <div className="relative group ">
-              <div className="absolute -inset-1 bg-gradient-to-r from-white/20 to-transparent rounded-full blur opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div className="md:col-span-5 flex flex-col justify-between md:pl-8 order-3 md:order-3">
+          <div className="pt-4 min-h-[200px]">
+            <p className="text-3xl font-medium">{title || ""}</p>
+            <h3 className="text-sm font-semibold mt-1">{description}</h3>
+          </div>
 
+          <div className="flex space-x-2 mt-8 md:mt-0">
+            {rightThumbs.map(({ review, originalIndex }) => (
               <button
-                onClick={() => setIsModalOpen(true)}
-                className="cursor-pointer relative bg-[#0F3652] hover:bg-[#0F3652]/90 text-white font-medium px-8 py-3 rounded-full transition-all duration-300 whitespace-nowrap group-hover:scale-105 group-hover:shadow-xl border-2 border-transparent group-hover:border-white/20"
+                key={originalIndex}
+                onClick={() => handleRightThumb(originalIndex)}
+                className="overflow-hidden rounded-md w-16 h-20 md:w-20 md:h-24 opacity-70 hover:opacity-100 transition-opacity duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
+                aria-label={`Go to slide ${originalIndex + 1}`}
               >
-                <span className="flex items-center gap-2">
-                  Level Up Your Team
-                  <svg
-                    className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M13 7l5 5m0 0l-5 5m5-5H6"
-                    />
-                  </svg>
-                </span>
+                <img
+                  src={review.image}
+                  alt={review.alt || `Slide ${originalIndex + 1}`}
+                  loading="lazy"
+                  width="80"
+                  height="96"
+                  className="w-full h-full object-cover"
+                  onLoad={() => handleImageLoad(review.image)}
+                />
               </button>
-
-              <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-1 h-1 rounded-full bg-white/40 group-hover:bg-white/60 transition-colors duration-300"></div>
+            ))}
+            <div className="flex items-end ml-6 space-x-2 mt-8 md:mt-0">
+              <button
+                onClick={handlePrev}
+                aria-label="Previous"
+                className="inline-flex cursor-pointer items-center justify-center rounded-full w-12 h-12 border border-muted-foreground/50 bg-background hover:bg-muted transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+              >
+                <ArrowLeftIcon className="w-5 h-5" />
+              </button>
+              <button
+                onClick={handleNext}
+                aria-label="Next"
+                className="inline-flex   cursor-pointer items-center justify-center rounded-full w-12 h-12 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+              >
+                <ArrowRightIcon className="w-5 h-5" />
+              </button>
             </div>
           </div>
         </div>
       </div>
-
-      {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50">
-          <div
-            className="fixed inset-0 bg-black/30"
-            onClick={() => setIsModalOpen(false)}
-          />
-
-          <div className="relative bg-white rounded-md w-full max-w-2xl">
-            <button
-              onClick={() => setIsModalOpen(false)}
-              className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
-            >
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-
-            <div className="p-6">
-              <div className="mb-6">
-                <h3 className="text-xl font-bold text-gray-900">
-                  Level Up Your Team
-                </h3>
-                <p className="text-gray-600 text-sm mt-1">
-                  Fill in your details and our experts will contact you shortly
-                </p>
-              </div>
-
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <input
-                      type="text"
-                      name="userName"
-                      value={formData.userName}
-                      onChange={handleChange}
-                      placeholder="Company Name *"
-                      className={`w-full px-3 py-2 border rounded-md ${
-                        errors.userName ? "border-red-500" : "border-gray-300"
-                      }`}
-                    />
-                    {errors.userName && (
-                      <p className="text-red-500 text-xs mt-1">
-                        {errors.userName}
-                      </p>
-                    )}
-                  </div>
-
-                  <div>
-                    <input
-                      type="email"
-                      name="userEmail"
-                      value={formData.userEmail}
-                      onChange={handleChange}
-                      placeholder="Email *"
-                      className={`w-full px-3 py-2 border rounded-md ${
-                        errors.userEmail ? "border-red-500" : "border-gray-300"
-                      }`}
-                    />
-                    {errors.userEmail && (
-                      <p className="text-red-500 text-xs mt-1">
-                        {errors.userEmail}
-                      </p>
-                    )}
-                  </div>
-
-                  <div>
-                    <input
-                      type="tel"
-                      name="userMobile"
-                      value={formData.userMobile}
-                      onChange={handleChange}
-                      placeholder="Phone Number *"
-                      className={`w-full px-3 py-2 border rounded-md ${
-                        errors.userMobile ? "border-red-500" : "border-gray-300"
-                      }`}
-                    />
-                    {errors.userMobile && (
-                      <p className="text-red-500 text-xs mt-1">
-                        {errors.userMobile}
-                      </p>
-                    )}
-                  </div>
-
-                  <div>
-                    <input
-                      type="text"
-                      name="userLocation"
-                      value={formData.userLocation}
-                      onChange={handleChange}
-                      placeholder="Location *"
-                      className={`w-full px-3 py-2 border rounded-md ${
-                        errors.userLocation
-                          ? "border-red-500"
-                          : "border-gray-300"
-                      }`}
-                    />
-                    {errors.userLocation && (
-                      <p className="text-red-500 text-xs mt-1">
-                        {errors.userLocation}
-                      </p>
-                    )}
-                  </div>
-
-                  <div>
-                    <Select
-                      value={formData.userCourse}
-                      onValueChange={(value) => {
-                        setFormData((prev) => ({
-                          ...prev,
-                          userCourse: value,
-                        }));
-
-                        setErrors((prev) => ({
-                          ...prev,
-                          userCourse: "",
-                        }));
-                      }}
-                      className="w-full px-3 py-2 border rounded-md"
-                    >
-                      <SelectTrigger
-                        className={`w-full h-[42px] px-4 text-base shadow-none ${
-                          errors.userCourse
-                            ? "border-red-500 focus:ring-red-500"
-                            : ""
-                        }`}
-                      >
-                        <SelectValue placeholder="Service Interested In *" />
-                      </SelectTrigger>
-
-                      <SelectContent>
-                        <SelectItem value="Certified Fraud Examiner">
-                          Certified Fraud Examiner
-                        </SelectItem>
-                        <SelectItem value="Certified Internal Auditor">
-                          Certified Internal Auditor
-                        </SelectItem>
-                        <SelectItem value="Certified Anti Money Laundering Specialist">
-                          Certified Anti Money Laundering Specialist
-                        </SelectItem>
-                        <SelectItem value=" CIA Challenge Exam">
-                          CIA Challenge Exam
-                        </SelectItem>
-                      </SelectContent>
-                    </Select>
-
-                    {errors.userCourse && (
-                      <p className="text-red-500 text-xs mt-1">
-                        {errors.userCourse}
-                      </p>
-                    )}
-                  </div>
-                  <div>
-                    <Select
-                      value={formData.userCourseMode}
-                      onValueChange={(value) => {
-                        setFormData((prev) => ({
-                          ...prev,
-                          userCourseMode: value,
-                        }));
-
-                        setErrors((prev) => ({
-                          ...prev,
-                          userCourseMode: "",
-                        }));
-                      }}
-                      className="w-full px-3 py-2 border rounded-md"
-                    >
-                      <SelectTrigger
-                        className={`w-full h-[42px] px-4 text-base shadow-none ${
-                          errors.userCourseMode
-                            ? "border-red-500 focus:ring-red-500"
-                            : ""
-                        }`}
-                      >
-                        <SelectValue placeholder="Type of Traning *" />
-                      </SelectTrigger>
-
-                      <SelectContent>
-                        <SelectItem value="Onsite">Onsite</SelectItem>
-                        <SelectItem value="Virtual">Virtual</SelectItem>
-                        <SelectItem value="Hybrid">Hybrid</SelectItem>
-                        <SelectItem value="Not Yet Decided">
-                          Not Yet Decided
-                        </SelectItem>
-                      </SelectContent>
-                    </Select>
-
-                    {errors.userCourseMode && (
-                      <p className="text-red-500 text-xs mt-1">
-                        {errors.userCourseMode}
-                      </p>
-                    )}
-                  </div>
-                </div>
-
-                <div>
-                  <textarea
-                    name="userMessage"
-                    value={formData.userMessage}
-                    onChange={handleChange}
-                    placeholder="Tell us about your team's training needs..."
-                    rows="3"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md resize-none"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={loader}
-                  className="w-full bg-[#F3831C] hover:bg-[#E07410] text-white font-medium py-2.5 px-4 rounded-md transition-colors disabled:opacity-50"
-                >
-                  {loader ? (
-                    <div className="flex items-center justify-center">
-                      <svg
-                        className="animate-spin h-5 w-5 text-white mr-2"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                      >
-                        <circle
-                          className="opacity-25"
-                          cx="12"
-                          cy="12"
-                          r="10"
-                          stroke="currentColor"
-                          strokeWidth="4"
-                        ></circle>
-                        <path
-                          className="opacity-75"
-                          fill="currentColor"
-                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                        ></path>
-                      </svg>
-                      Processing...
-                    </div>
-                  ) : (
-                    "Submit"
-                  )}
-                </button>
-
-                <p className="text-xs text-gray-500 text-center">
-                  By submitting, you agree to our Terms of Service & Privacy
-                  Policy
-                </p>
-              </form>
-            </div>
-          </div>
-        </div>
-      )}
-    </>
+    </div>
   );
 };
 
-export default CorporateQuote;
+const WhatsappCarosal = ({ title, description, course }) => {
+  const {
+    data: certificatesData,
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ["screenshot-slider", course],
+    queryFn: async () => {
+      const res = await axios.get(
+        `${BASE_URL}/api/getScreenshotSlider/${course}`,
+      );
+      return res.data;
+    },
+    enabled: !!course,
+  });
+
+  const reviews = useMemo(() => {
+    if (!certificatesData?.data) return [];
+
+    const studentImageBaseUrl =
+      certificatesData.image_url?.find((item) => item.image_for === "Student")
+        ?.image_url || "";
+
+    return certificatesData.data.map((item, index) => ({
+      id: item.id ?? index,
+      image: `${studentImageBaseUrl}${item.student_screenshot_image}`,
+      imageSrc: `${studentImageBaseUrl}${item.student_screenshot_image}`,
+      thumbnailSrc: `${studentImageBaseUrl}${item.student_screenshot_image}`,
+      name: item.student_name || `Student ${index + 1}`,
+      affiliation: item.student_affiliation || "",
+      alt: item.student_screenshot_image_alt || "",
+      quote: item.student_screenshot_image_alt || "",
+      youtubeLink: item.student_youtube_link || null,
+    }));
+  }, [certificatesData]);
+
+  if (isLoading) {
+    return (
+      <div className="relative w-full py-12 sm:py-24 md:py-32">
+        <div className="mx-auto max-w-container flex flex-col items-center gap-4 text-center sm:gap-16">
+          <div className="flex flex-col items-center gap-4 px-4 sm:gap-8">
+            <Skeleton height={40} width={400} />
+            <Skeleton height={20} width={250} />
+          </div>
+          <div className="flex gap-4 overflow-hidden">
+            {[...Array(6)].map((_, i) => (
+              <div key={i} className="w-[290px] h-[165px]">
+                <Skeleton height={165} width={290} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div className="relative w-full py-12 sm:py-24 md:py-32">
+        <div className="mx-auto max-w-container text-center text-red-500">
+          Error loading certificates. Please try again later.
+        </div>
+      </div>
+    );
+  }
+
+  if (!reviews.length) return null;
+
+  return (
+    <div className="w-full px-4 sm:px-6 lg:px-8">
+      <TestimonialSlider
+        reviews={reviews}
+        title={title}
+        description={description}
+      />
+    </div>
+  );
+};
+
+export default WhatsappCarosal;

@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
 import CfeJoinDialog from "../cfe-curriculam/join-prep";
 import CourseCurriculum from "../common/course-curriculam";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { ENROLL_URL } from "@/api/base-url";
 
 const curriculumData = [
   {
@@ -64,9 +65,10 @@ const CiaCurrCourseCurriculum = () => {
               transition-all
           cursor-pointer
             "
-          onClick={() => navigate("/enroll-now")}
         >
-          {"Enroll Now"}
+          <Link to={`${ENROLL_URL}`} target="_blank" rel="noopener noreferrer">
+            Enroll Now
+          </Link>
         </Button>
       </div>
     </>

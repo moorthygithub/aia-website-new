@@ -13,7 +13,7 @@ export default function HomeHero() {
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["hero-banners"],
     queryFn: async () => {
-      const res = await axios.get(`${BASE_URL}/api/getBanner`, {
+      const res = await axios.get(`${BASE_URL}/api/getBanner/home`, {
         timeout: 10000,
         headers: {
           Accept: "application/json",
