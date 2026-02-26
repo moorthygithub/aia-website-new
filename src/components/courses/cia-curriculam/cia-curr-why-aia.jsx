@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const CiaCurrWhyAia = () => {
   return (
-    <>
+    <div className="md:mb-18">
       <CourseWhyAia
         heading="Why Academy of Internal Audit"
         backgroundImage="https://christuniversity.in/images/bg_2.jpg"
@@ -58,7 +58,7 @@ const CiaCurrWhyAia = () => {
           </Link>
         </Button>
       </div>
-    </>
+    </div>
   );
 };
 

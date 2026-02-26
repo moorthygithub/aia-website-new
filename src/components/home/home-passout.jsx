@@ -72,7 +72,12 @@ const HomePassout = () => {
         )}
 
         {!isLoading && !isError && testimonials.length > 0 && (
-          <div className="flex justify-center gap-5 md:gap-25 mt-10 mask-[linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-135 overflow-hidden">
+          // <div className="flex justify-center gap-5 md:gap-25 mt-10 mask-[linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-135 overflow-hidden">
+          //   <TestimonialsColumn testimonials={firstColumn} duration={20} />
+          //   <TestimonialsColumn testimonials={secondColumn} duration={20} />
+          //   <TestimonialsColumn testimonials={thirdColumn} duration={20} />
+          // </div>
+          <div className="flex justify-center gap-2 sm:gap-4 md:gap-6 lg:gap-25 mt-10 mask-[linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-[300px] sm:max-h-[380px] md:max-h-[460px] lg:max-h-[540px] overflow-hidden px-2">
             <TestimonialsColumn testimonials={firstColumn} duration={20} />
             <TestimonialsColumn testimonials={secondColumn} duration={20} />
             <TestimonialsColumn testimonials={thirdColumn} duration={20} />

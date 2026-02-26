@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const CfeWhyAia = () => {
   return (
-    <>
+    <div className="md:mb-18">
       <CourseWhyAia
         heading="What sets AIA Apart"
         items={[
@@ -52,7 +52,7 @@ const CfeWhyAia = () => {
           </Link>
         </Button>
       </div>
-    </>
+    </div>
   );
 };
 

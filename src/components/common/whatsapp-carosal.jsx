@@ -91,7 +91,6 @@ export const TestimonialSlider = ({
     return arr;
   }, [currentIndex, total, reviews]);
 
-  // 3 RIGHT thumbs: slides AFTER current (index current+1, current+2, current+3)
   const rightThumbs = useMemo(() => {
     const arr = [];
     for (let i = 1; i <= 4; i++) {

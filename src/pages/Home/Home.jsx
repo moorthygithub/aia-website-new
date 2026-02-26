@@ -23,7 +23,7 @@ export default function Home() {
   return (
     <div className="font-sans text-gray-800">
       <PopUp slug="home" />
-      <HomeHero />
+      <HomeHero slug="home" bottombar="true" />
       <HomeAbout />
       <HomeContact />
       <HomeCourses certificationCourses={certificationCourses} />

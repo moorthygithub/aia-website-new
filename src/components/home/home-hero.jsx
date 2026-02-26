@@ -4,16 +4,16 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { BASE_URL } from "@/api/base-url";
 
-export default function HomeHero() {
+export default function HomeHero({ slug, bottombar = false }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [carouselSlides, setCarouselSlides] = useState([]);
   const [announcements, setAnnouncements] = useState([]);
 
   const { data, isLoading, isError, error } = useQuery({
-    queryKey: ["hero-banners"],
+    queryKey: [slug],
     queryFn: async () => {
-      const res = await axios.get(`${BASE_URL}/api/getBanner/home`, {
+      const res = await axios.get(`${BASE_URL}/api/getBanner/${slug}`, {
         timeout: 10000,
         headers: {
           Accept: "application/json",
@@ -72,10 +72,41 @@ export default function HomeHero() {
 
   if (isLoading) {
     return (
-      <section className="relative h-[420px] bg-gray-100 animate-pulse flex items-center justify-center">
-        <span className="text-xs text-gray-400 tracking-[0.2em] uppercase font-medium">
-          Loading…
-        </span>
+      <section className="relative">
+        <div className="relative h-[640px] overflow-hidden bg-gray-200">
+          <div className="absolute inset-0 shimmer" />
+        </div>
+
+        {bottombar && (
+          <div className="lg:absolute lg:w-[500px] lg:bottom-0 lg:left-5 lg:z-20 lg:translate-y-1/2">
+            <div className="h-[3px] bg-gray-200 animate-pulse" />
+
+            <div className="shimmer">
+              <div className="px-4 pt-4 pb-3 flex items-start gap-3">
+                <div className="w-[3px] h-14 bg-gray-300 rounded-full" />
+                <div className="flex-1 space-y-2">
+                  <div className="h-4 bg-gray-300 rounded w-3/4" />
+                  <div className="h-3 bg-gray-300 rounded w-1/2" />
+                </div>
+                <div className="w-20 h-7 bg-gray-300 rounded" />
+              </div>
+
+              {/* Row 2 */}
+              <div className="px-4 pb-3 flex items-center justify-between pt-2">
+                <div className="w-16 h-3 bg-gray-300 rounded" />
+                <div className="flex gap-2">
+                  <div className="w-4 h-1 bg-gray-300 rounded" />
+                  <div className="w-4 h-1 bg-gray-300 rounded" />
+                  <div className="w-4 h-1 bg-gray-300 rounded" />
+                </div>
+                <div className="flex gap-1">
+                  <div className="w-6 h-6 bg-gray-300 rounded" />
+                  <div className="w-6 h-6 bg-gray-300 rounded" />
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </section>
     );
   }
@@ -137,37 +168,37 @@ export default function HomeHero() {
           ))}
         </div>
 
-        {/* Nav arrows */}
-        {[
-          {
-            dir: "prev",
-            Icon: ChevronLeft,
-            onClick: prevSlide,
-            side: "left-4",
-          },
-          {
-            dir: "next",
-            Icon: ChevronRight,
-            onClick: nextSlide,
-            side: "right-4",
-          },
-        ].map(({ dir, Icon, onClick, side }) => (
-          <button
-            key={dir}
-            onClick={onClick}
-            aria-label={`${dir === "prev" ? "Previous" : "Next"} slide`}
-            className={`absolute ${side} top-1/2 -translate-y-1/2 z-20
+        {carouselSlides.length > 1 &&
+          [
+            {
+              dir: "prev",
+              Icon: ChevronLeft,
+              onClick: prevSlide,
+              side: "left-4",
+            },
+            {
+              dir: "next",
+              Icon: ChevronRight,
+              onClick: nextSlide,
+              side: "right-4",
+            },
+          ].map(({ dir, Icon, onClick, side }) => (
+            <button
+              key={dir}
+              onClick={onClick}
+              aria-label={`${dir === "prev" ? "Previous" : "Next"} slide`}
+              className={`absolute ${side} top-1/2 -translate-y-1/2 z-20
               w-8 h-8 md:w-10 md:h-10 flex items-center justify-center
               rounded-full bg-black/25 hover:bg-black/55
               text-white backdrop-blur-sm border border-white/10
               transition-all duration-200 hover:scale-105 active:scale-95`}
-          >
-            <Icon className="w-4 h-4 md:w-5 md:h-5" />
-          </button>
-        ))}
+            >
+              <Icon className="w-4 h-4 md:w-5 md:h-5" />
+            </button>
+          ))}
       </div>
 
-      {current && (
+      {current !== null && current !== undefined && bottombar && (
         <div className="lg:absolute lg:w-[500px] lg:bottom-0 lg:left-5 lg:z-20 lg:translate-y-1/2">
           <div className="h-[3px] bg-gradient-to-r from-[#F3831C] via-[#F3831C]/70 to-transparent" />
 

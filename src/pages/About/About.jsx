@@ -15,12 +15,14 @@ import HomePrCarousel from "@/components/home/home-pr-carousel";
 import HomeReview from "@/components/home/home-review";
 import certificationCourses from "@/data/certificationCourses";
 import OfficeCeleberation from "@/components/common/celeberation";
+import HomeHero from "@/components/home/home-hero";
 
 const AboutPage = () => {
   return (
     <div className="min-h-screen bg-white">
       <PopUp slug="About-Us" />
-      <AboutHeroSection />
+      {/* <AboutHeroSection /> */}
+      <HomeHero slug="about-us" />
       <AboutSection />
       <AboutTrainerSection />
       <AboutTestimonial />

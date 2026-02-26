@@ -59,20 +59,32 @@ const CorporateReview = () => {
               {reviews.map((review, index) => (
                 <div
                   key={index}
-                  className="bg-[#F3831C] rounded-md py-2 px-4 shadow-lg shrink-0 "
+                  className="rounded-md py-2 px-4 shadow-lg shrink-0 text-balck"
+                  style={{
+                    background:
+                      "linear-gradient(90deg, rgba(230, 246, 251, 1) 0%, rgba(253, 242, 255, 1) 50%, rgba(254, 249, 233, 1) 100%)",
+                  }}
                 >
-                  <p className="text-white mb-1 leading-relaxed text-sm">
-                    {review.text}
-                  </p>
-                  <p className="text-white font-semibold text-md">
-                    - {review.author}
-                  </p>
+                  <p className="mb-1 leading-relaxed text-sm">{review.text}</p>
+                  <p className="font-semibold text-md">- {review.author}</p>
                 </div>
               ))}
             </div>
 
-            <div className="absolute top-0 left-0 right-0 h-8 bg-linear-to-b from-[#F3831C]/70 to-transparent pointer-events-none"></div>
-            <div className="absolute bottom-0 left-0 right-0 h-8 bg-linear-to-t from-[#F3831C]/70 to-transparent pointer-events-none"></div>
+            {/* <div
+              className="absolute top-0 left-0 right-0 h-8 pointer-events-none"
+              style={{
+                background:
+                  "linear-gradient(to bottom, rgba(230,246,251,1) 0%, rgba(253,242,255,0.9) 40%, rgba(254,249,233,0) 100%)",
+              }}
+            />
+            <div
+              className="absolute bottom-0 left-0 right-0 h-8 pointer-events-none"
+              style={{
+                background:
+                  "linear-gradient(to top, rgba(230,246,251,1) 0%, rgba(253,242,255,0.9) 40%, rgba(254,249,233,0) 100%)",
+              }}
+            /> */}
           </div>
         </div>
       </div>

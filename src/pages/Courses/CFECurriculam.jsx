@@ -24,12 +24,14 @@ import CourseTopStudent from "@/components/courses/common/course-top-student";
 import CourseYoutubeLecture from "@/components/courses/common/course-youtube-lecture";
 import CourseBlog from "@/components/courses/common/course-blog";
 import WhatsappCarosal from "@/components/common/whatsapp-carosal";
+import HomeHero from "@/components/home/home-hero";
 
 const CFECurriculam = () => {
   return (
     <div>
       <PopUp slug="CFE-Curriculum" />
-      <CourseHero path="cfe_banner.webp" />
+      {/* <CourseHero path="cfe_banner.webp" /> */}
+      <HomeHero slug="cfe-curriculum" />
       <CfeAbout />
       <CourseTopStudent
         courseSlug="cfe"

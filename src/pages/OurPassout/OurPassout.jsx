@@ -1,5 +1,6 @@
 import AllYoutube from "@/components/common/get-all-youtube";
 import PopUp from "@/components/common/pop-up";
+import WhatsappCarosal from "@/components/common/whatsapp-carosal";
 import CourseYoutube from "@/components/courses/common/course-youtube";
 import HomeAlumniWork from "@/components/home/home-alumini-work";
 import HomeReview from "@/components/home/home-review";
@@ -17,6 +18,11 @@ const OurPassout = () => {
       <AllYoutube
         title="Hear from Our Recently Qualified Professionals on YouTube"
         description="Watch AIA-trained professionals share their success stories, exam strategies, and career insights in exclusive interviews with Puneet Sir on YouTube."
+      />
+      <WhatsappCarosal
+        title="Unfiltered Reflections from AIA-Trained Professionals"
+        description=" Heartfelt messages shared by professionals after completing their journey with AIA"
+        course="all"
       />
       <HomeReview />
       <HomeAlumniWork />

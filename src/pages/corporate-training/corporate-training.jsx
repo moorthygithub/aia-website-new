@@ -10,16 +10,17 @@ import CorporateTrainer from "@/components/corporate-training/corporate-trainer"
 import CorporateWhy from "@/components/corporate-training/corporate-why";
 import CorporateWhyAia from "@/components/corporate-training/corporate-why-aia";
 import CamsConnection from "@/components/courses/cams/cams-connection";
-import CourseHero from "@/components/courses/common/course-hero";
 // import HomeCorporatePartner from "@/components/home/home-corporate-partner";
 import HomeCourses from "@/components/home/home-courses";
+import HomeHero from "@/components/home/home-hero";
 import { CorporatecertificationCourses } from "@/data/certificationCourses";
 
 const CorporateTraining = () => {
   return (
     <>
       {/* <CorporateBanner /> */}
-      <CourseHero path="corporate_training _banner.webp" />
+      {/* <CourseHero path="corporate_training _banner.webp" /> */}
+      <HomeHero slug="corporate-training" />
 
       <CorporateWhy />
       {/* <CorporateCourse /> */}

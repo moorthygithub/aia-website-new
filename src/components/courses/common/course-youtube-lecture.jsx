@@ -19,7 +19,7 @@ const CourseYoutubeLecture = ({
   const scrollContainerRef = useRef(null);
 
   const { data, isLoading, isError } = useQuery({
-    queryKey: [courseSlug || "aia-youtube-home"],
+    queryKey: [courseSlug],
     queryFn: async () => {
       const res = await axios.get(
         `${BASE_URL}/api/getLectureYoutubebySlug/${courseSlug}`
@@ -33,7 +33,6 @@ const CourseYoutubeLecture = ({
         .filter(Boolean)
         
     : [];
-console.log(tabs,"tabs")
   useEffect(() => {
     if (tabs.length > 0 && !activeTab) {
       setActiveTab(tabs[0]);

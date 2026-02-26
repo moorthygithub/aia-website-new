@@ -20,13 +20,16 @@ import CourseTopStudent from "@/components/courses/common/course-top-student";
 import CourseYoutube from "@/components/courses/common/course-youtube";
 import CourseYoutubeLecture from "@/components/courses/common/course-youtube-lecture";
 import HomeAlumniWork from "@/components/home/home-alumini-work";
+import HomeHero from "@/components/home/home-hero";
 
 const CIAChallenge = () => {
   return (
     <div>
       <PopUp slug="CIA-Challenge-Curriculum" />
 
-      <CourseHero path="cia_challenge_banner.webp" />
+      {/* <CourseHero path="cia_challenge_banner.webp" /> */}
+      <HomeHero slug="cia-challenge-curriculum" />
+
       <CiaAbout />
       <CourseTopStudent
         courseSlug="ciac"

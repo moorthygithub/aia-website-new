@@ -23,12 +23,12 @@ const PassoutBanner = () => {
 
     const studentBaseUrl =
       passOutCarouselData.image_url?.find(
-        (item) => item.image_for === "Student"
+        (item) => item.image_for === "Student",
       )?.image_url || "";
 
     const noImage =
       passOutCarouselData.image_url?.find(
-        (item) => item.image_for === "No Image"
+        (item) => item.image_for === "No Image",
       )?.image_url || "";
 
     return passOutCarouselData.data.map((item) => ({
@@ -78,11 +78,114 @@ const PassoutBanner = () => {
   }
 
   return (
-    <section className="bg-[#0F3652]/10 px-6 lg:px-12 overflow-hidden max-h-[450px]">
-      <div className="mx-auto flex flex-col lg:flex-row items-center gap-12 max-h-[450px]">
-        <div className="flex-1 max-w-5xl">
+    // <section className="bg-[#0F3652]/10 px-6 lg:px-12 overflow-hidden max-h-[450px]">
+    //   <div className="mx-auto flex flex-col lg:flex-row items-center gap-12 max-h-[450px]">
+    //     <div className="flex-1 max-w-5xl">
+    //       <h1 className="text-5xl font-bold text-[#0F3652] mb-2">
+    //         Guidance That Goes
+    //       </h1>
+    //       <h1 className="text-5xl font-bold text-[#F3831C] mb-4">
+    //         Beyond Training
+    //       </h1>
+    //       <p className="text-[#0F3652] text-lg leading-relaxed">
+    //         Genuine moments shared by professionals who completed their global
+    //         certification preparation with AIA and experienced guidance that
+    //         went beyond structured learning.
+    //       </p>
+    //     </div>
+
+    //     <div className="flex-1 relative h-160 w-full overflow-hidden max-w-2xl">
+    //       <div className="absolute left-30 w-[200px] pr-2">
+    //         <div className="animate-marquee-up">
+    //           {[...leftImages, ...leftImages].map((img, idx) => (
+    //             <div
+    //               key={idx}
+    //               className="mb-4 rounded-2xl overflow-hidden shadow-lg border border-[#F3831C]/20 w-[200px]"
+    //             >
+    //               <img
+    //                 src={img.src}
+    //                 alt={img.alt}
+    //                 className="w-[200px] h-auto object-cover"
+    //                 loading="lazy"
+    //                 onError={(e) => {
+    //                   e.currentTarget.src =
+    //                     passOutCarouselData.image_url?.find(
+    //                       (i) => i.image_for === "No Image"
+    //                     )?.image_url || "";
+    //                 }}
+    //               />
+    //             </div>
+    //           ))}
+    //         </div>
+    //       </div>
+
+    //       {/* RIGHT COLUMN */}
+    //       <div className="absolute right-30 w-[200px] pl-2 pt-24">
+    //         <div className="animate-marquee-up">
+    //           {[...rightImages, ...rightImages].map((img, idx) => (
+    //             <div
+    //               key={idx}
+    //               className="mb-4 rounded-2xl overflow-hidden shadow-lg border border-[#F3831C]/20 w-[200px]"
+    //             >
+    //               <img
+    //                 src={img.src}
+    //                 alt={img.alt}
+    //                 className="w-[200px] h-auto object-cover"
+    //                 loading="lazy"
+    //                 onError={(e) => {
+    //                   e.currentTarget.src =
+    //                     passOutCarouselData.image_url?.find(
+    //                       (i) => i.image_for === "No Image"
+    //                     )?.image_url || "";
+    //                 }}
+    //               />
+    //             </div>
+    //           ))}
+    //         </div>
+    //       </div>
+
+    //       <div className="absolute top-0 left-0 right-0 h-20 bg-linear-to-b from-yellow-50 to-transparent z-10 pointer-events-none" />
+    //       <div className="absolute bottom-0 left-0 right-0 h-20 bg-linear-to-t from-yellow-50 to-transparent z-10 pointer-events-none" />
+    //     </div>
+    //   </div>
+
+    //   <style jsx>{`
+    //     @keyframes marquee-up {
+    //       0% {
+    //         transform: translateY(0);
+    //       }
+    //       100% {
+    //         transform: translateY(-50%);
+    //       }
+    //     }
+    //     @keyframes marquee-down {
+    //       0% {
+    //         transform: translateY(-50%);
+    //       }
+    //       100% {
+    //         transform: translateY(0);
+    //       }
+    //     }
+    //     .animate-marquee-up {
+    //       animation: marquee-up 40s linear infinite;
+    //     }
+    //     .animate-marquee-down {
+    //       animation: marquee-down 40s linear infinite;
+    //     }
+    //   `}</style>
+    // </section>
+    <section
+      className="bg-[#0F3652]/10 px-6 lg:px-12 overflow-hidden"
+      style={{ maxHeight: "450px" }}
+    >
+      <div
+        className="mx-auto flex flex-col lg:flex-row items-center gap-12"
+        style={{ maxHeight: "450px" }}
+      >
+        {/* TEXT SIDE */}
+        <div className="flex-1 max-w-xl">
           <h1 className="text-5xl font-bold text-[#0F3652] mb-2">
-            Guidance That Goes 
+            Guidance That Goes
           </h1>
           <h1 className="text-5xl font-bold text-[#F3831C] mb-4">
             Beyond Training
@@ -94,23 +197,28 @@ const PassoutBanner = () => {
           </p>
         </div>
 
-        <div className="flex-1 relative h-160 w-full overflow-hidden max-w-2xl">
-          <div className="absolute left-30 w-[200px] pr-2">
-            <div className="animate-marquee-up">
+        {/* IMAGE COLUMNS SIDE */}
+        <div
+          className="flex-1 relative overflow-hidden flex justify-center gap-4 self-stretch"
+          style={{ minHeight: "450px" }}
+        >
+          {/* LEFT COLUMN */}
+          <div className="relative w-[200px] overflow-hidden">
+            <div className="animate-marquee-up flex flex-col">
               {[...leftImages, ...leftImages].map((img, idx) => (
                 <div
                   key={idx}
-                  className="mb-4 rounded-2xl overflow-hidden shadow-lg border border-[#F3831C]/20 w-[200px]"
+                  className="mb-4 rounded-2xl overflow-hidden shadow-lg border border-[#F3831C]/20 w-[200px] flex-shrink-0"
                 >
                   <img
                     src={img.src}
                     alt={img.alt}
-                    className="w-[200px] h-auto object-cover"
+                    className="w-full h-auto object-cover"
                     loading="lazy"
                     onError={(e) => {
                       e.currentTarget.src =
                         passOutCarouselData.image_url?.find(
-                          (i) => i.image_for === "No Image"
+                          (i) => i.image_for === "No Image",
                         )?.image_url || "";
                     }}
                   />
@@ -119,23 +227,26 @@ const PassoutBanner = () => {
             </div>
           </div>
 
-          {/* RIGHT COLUMN */}
-          <div className="absolute right-30 w-[200px] pl-2 pt-24">
-            <div className="animate-marquee-up">
+          {/* RIGHT COLUMN — offset down */}
+          <div
+            className="relative w-[200px] overflow-hidden"
+            style={{ paddingTop: "80px" }}
+          >
+            <div className="animate-marquee-up flex flex-col">
               {[...rightImages, ...rightImages].map((img, idx) => (
                 <div
                   key={idx}
-                  className="mb-4 rounded-2xl overflow-hidden shadow-lg border border-[#F3831C]/20 w-[200px]"
+                  className="mb-4 rounded-2xl overflow-hidden shadow-lg border border-[#F3831C]/20 w-[200px] flex-shrink-0"
                 >
                   <img
                     src={img.src}
                     alt={img.alt}
-                    className="w-[200px] h-auto object-cover"
+                    className="w-full h-auto object-cover"
                     loading="lazy"
                     onError={(e) => {
                       e.currentTarget.src =
                         passOutCarouselData.image_url?.find(
-                          (i) => i.image_for === "No Image"
+                          (i) => i.image_for === "No Image",
                         )?.image_url || "";
                     }}
                   />
@@ -144,8 +255,10 @@ const PassoutBanner = () => {
             </div>
           </div>
 
-          <div className="absolute top-0 left-0 right-0 h-20 bg-linear-to-b from-yellow-50 to-transparent z-10 pointer-events-none" />
-          <div className="absolute bottom-0 left-0 right-0 h-20 bg-linear-to-t from-yellow-50 to-transparent z-10 pointer-events-none" />
+          {/* Fade top */}
+          <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-[#eef2f5] to-transparent z-10 pointer-events-none" />
+          {/* Fade bottom */}
+          <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#eef2f5] to-transparent z-10 pointer-events-none" />
         </div>
       </div>
 
@@ -158,19 +271,8 @@ const PassoutBanner = () => {
             transform: translateY(-50%);
           }
         }
-        @keyframes marquee-down {
-          0% {
-            transform: translateY(-50%);
-          }
-          100% {
-            transform: translateY(0);
-          }
-        }
         .animate-marquee-up {
           animation: marquee-up 40s linear infinite;
-        }
-        .animate-marquee-down {
-          animation: marquee-down 40s linear infinite;
         }
       `}</style>
     </section>
