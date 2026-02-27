@@ -5,28 +5,28 @@ import { FaStar } from "react-icons/fa";
 const FooterReviews = ({ footer = true }) => {
   const reviews = [
     {
-      name: "Just dial",
-      rating: "4.9",
-      img: `${IMAGE_PATH}/footer-1.webp`,
-      alt: "IIA",
-      bgColor: "bg-[#2D3748]",
-      link: "https://www.justdial.com/Faridabad/Academy-Of-Internal-Audit-Bptp-Faridabad-Sector-81/011PXX11-XX11-240417200220-E3R9_BZDET?trkid=&term=&ncatid=10180006&area=&search=Showing%20Results%20for%20%22Academy%20Of%20Internal%20Audit%20Srs%20City%20Faridabad%20Sector%2081%22%20in%20Faridabad%20Nit,%20Faridabad&mncatname=Academy%20Of%20Internal%20Audit%20Srs%20City%20Faridabad%20Sector%2081&ftterm=Academy%20Of%20Internal%20Audit%20Srs%20City%20Faridabad%20Sector%2081&csell=&oncatid=10180006&abd_btn=&abd_heading=&isFreetxt=1&bd=2&cat_b2b_flag=&searchfrom=lst&thumbnail=",
-    },
-    {
-      name: "Trustpilot",
-      rating: "3.8",
-      img: `${IMAGE_PATH}/footer-2.webp`,
-      alt: "IIA",
-      bgColor: "bg-[#2D3748]",
-      link: "https://www.trustpilot.com/review/aia.in.net",
-    },
-    {
       name: "Google",
       rating: "5.0",
       img: `${IMAGE_PATH}/footer-3.webp`,
       alt: "IIA",
       bgColor: "bg-[#2D3748]",
       link: "https://share.google/oM14oVPaO0YbwCdzS",
+    },
+    {
+      name: "Ambition Box",
+      rating: "5.0",
+      img: `${IMAGE_PATH}/footer-5.webp`,
+      alt: "IIA",
+      bgColor: "bg-[#2D3748]",
+      link: "https://www.ambitionbox.com/reviews/academy-of-internal-audit-reviews",
+    },
+    {
+      name: "Just dial",
+      rating: "4.9",
+      img: `${IMAGE_PATH}/footer-1.webp`,
+      alt: "IIA",
+      bgColor: "bg-[#2D3748]",
+      link: "https://www.justdial.com/Faridabad/Academy-Of-Internal-Audit-Bptp-Faridabad-Sector-81/011PXX11-XX11-240417200220-E3R9_BZDET?trkid=&term=&ncatid=10180006&area=&search=Showing%20Results%20for%20%22Academy%20Of%20Internal%20Audit%20Srs%20City%20Faridabad%20Sector%2081%22%20in%20Faridabad%20Nit,%20Faridabad&mncatname=Academy%20Of%20Internal%20Audit%20Srs%20City%20Faridabad%20Sector%2081&ftterm=Academy%20Of%20Internal%20Audit%20Srs%20City%20Faridabad%20Sector%2081&csell=&oncatid=10180006&abd_btn=&abd_heading=&isFreetxt=1&bd=2&cat_b2b_flag=&searchfrom=lst&thumbnail=",
     },
     {
       name: "G2",
@@ -37,12 +37,12 @@ const FooterReviews = ({ footer = true }) => {
       link: "https://www.g2.com/products/academy-of-internal-audit/reviews",
     },
     {
-      name: "Ambition Box",
-      rating: "5.0",
-      img: `${IMAGE_PATH}/footer-5.webp`,
+      name: "Trustpilot",
+      rating: "3.8",
+      img: `${IMAGE_PATH}/footer-2.webp`,
       alt: "IIA",
       bgColor: "bg-[#2D3748]",
-      link: "https://www.ambitionbox.com/reviews/academy-of-internal-audit-reviews",
+      link: "https://www.trustpilot.com/review/aia.in.net",
     },
   ];
 
@@ -149,10 +149,8 @@ const FooterReviews = ({ footer = true }) => {
 
             <div className="hidden lg:flex flex-row items-center justify-between gap-8 px-8">
               <div className="text-left">
-                <h2 className="text-4xl  font-bold text-white">
-                  Top Ratings 
-                </h2>
-                <h2 className="text-4xl  font-bold text-white mt-2">
+                <h2 className="text-4xl  font-bold text-white">Top Ratings</h2>
+                <h2 className="text-3xl  font-bold text-white mt-2">
                   Across Platforms{" "}
                 </h2>
               </div>

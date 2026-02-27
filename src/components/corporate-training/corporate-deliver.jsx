@@ -197,7 +197,7 @@ const CorporateDeliver = () => {
 
           <div className="w-16 h-0.5 bg-gradient-to-r from-[#0F3652] via-[#F3831C] to-[#0F3652] mx-auto mb-4"></div>
 
-          <p className="text-[#0F3652]/80 text-sm md:text-base leading-relaxed max-w-2xl mx-auto">
+          <p className="text-[#0F3652]/80 text-sm md:text-base leading-relaxed max-w-4xl mx-auto wrap-break-word">
             Because real learning happens when content meets context,{" "}
             <span className="text-[#F3831C] font-semibold">
               and that's exactly what we deliver.

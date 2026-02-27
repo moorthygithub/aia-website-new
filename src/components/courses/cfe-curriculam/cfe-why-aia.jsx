@@ -35,7 +35,7 @@ const CfeWhyAia = () => {
       />
 
       <div className="flex justify-center gap-2 mt-8">
-        <CfeJoinDialog course="CFE" buttonlabel="Enquire Now" />
+        <CfeJoinDialog course="CFE" buttonlabel="Explore More" />
 
         <Button
           className="

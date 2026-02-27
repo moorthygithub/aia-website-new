@@ -3,8 +3,12 @@
     "title": "Home | Best Training Institute For Top Certification Courses- AIA",
     "description": "Explore our professional courses, resources, and success stories designed to help you grow your career."
   },
+  "/about-aia": {
+    "title": "About AIA | Who We Are",
+    "description": "Learn about our mission, vision, and how we help professionals succeed in their careers."
+  },
   "/about-us": {
-    "title": "About Us | Who We Are",
+    "title": "About AIA | Who We Are",
     "description": "Learn about our mission, vision, and how we help professionals succeed in their careers."
   },
   "/cfe-curriculum": {
@@ -36,7 +40,7 @@
     "description": "Stories of our successful students and their professional journeys."
   },
   "/contact": {
-    "title": "Contact Us",
+    "title": "Contact US",
     "description": "Get in touch with us for course details, support, or general inquiries."
   },
   "/passout-stories/:slug": {

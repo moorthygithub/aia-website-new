@@ -51,7 +51,7 @@ const FreeResourceFlashCard = () => {
       1: {
         id: 1,
         number: "01",
-        title: "Financial Transactions & Fraud Schemes",
+        title: "Financial Transactions \n & Fraud Schemes",
         icon: `${IMAGE_PATH}/flash_card_1.webp`,
       },
       2: {
@@ -69,7 +69,7 @@ const FreeResourceFlashCard = () => {
       4: {
         id: 4,
         number: "04",
-        title: "Fraud Prevention & Deterrence",
+        title: "Fraud Prevention \n & Deterrence",
         icon: `${IMAGE_PATH}/flash_card_4.webp`,
       },
     };
@@ -178,11 +178,15 @@ const FreeResourceFlashCard = () => {
               </div>
               <div className="flex flex-col flex-1 items-center w-full">
                 <p className="text-xs font-semibold sm:text-sm text-[#0F3652] min-h-[40px]">
-                  {module.title}
-                </p>
-
-                <p className="mt-1 text-xs font-bold sm:text-sm text-[#F3831C]">
-                  {module.number}
+                  <span className="mt-1 text-xs font-bold sm:text-sm text-[#F3831C]">
+                    {module.number}
+                  </span>{" "}
+                  {module.title.split("\n").map((line, i) => (
+                    <span key={i}>
+                      {line}
+                      <br />
+                    </span>
+                  ))}{" "}
                 </p>
 
                 <Button

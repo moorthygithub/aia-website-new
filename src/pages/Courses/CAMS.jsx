@@ -63,7 +63,7 @@ const CAMS = () => {
         title="Join AiA CAMS LMS"
         subtitle="Online Training and Certification Course"
         course="CAMS"
-        buttonlabel="Enquire Now"
+        buttonlabel="Talk to Us"
       />
 
       <CamsUnique />
@@ -78,7 +78,7 @@ const CAMS = () => {
 
       <CamsConnection
         title="The Right Certification Starts With the Right Choice"
-        description="Find the certification that aligns with your background and carrer stage"
+        description="Find the certification that aligns with your background and career stage"
         images={[
           { image: "hiw_cfe.webp", link: "/cfe-curriculum" },
           { image: "hiw_cia.webp", link: "/cia-curriculum" },

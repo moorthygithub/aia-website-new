@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Layout from "./layout/Layout";
 
 import CAMS from "./pages/Courses/CAMS";
@@ -38,7 +38,11 @@ export default function App() {
         <main className="grow">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/about-us" element={<AboutPage />} />
+            <Route path="/about-aia" element={<AboutPage />} />
+            <Route
+              path="/about-us"
+              element={<Navigate to="/about-aia" replace />}
+            />
             <Route path="/cfe-curriculum" element={<CFECurriculam />} />
             <Route path="/cia-curriculum" element={<CIACurriculam />} />
             <Route

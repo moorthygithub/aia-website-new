@@ -51,11 +51,7 @@ const HomePassout = () => {
   return (
     <section className="bg-linear-to-b from-[#0F3652]/10 via-transparent to-transparent relative pb-10">
       <div className="mx-auto pt-10 max-w-340 z-10">
-        <div className="flex flex-col items-center justify-center max-w-135 mx-auto">
-          <div className="border py-1 px-4 rounded-lg border-[#F3831C] text-[#F3831C]">
-            Testimonials
-          </div>
-
+        <div className="flex flex-col items-center justify-center  mx-auto">
           <SectionHeading
             title="AIA Certified Achievers"
             description="Professionals who turned global certifications into career milestones with AIA."
@@ -81,10 +77,24 @@ const HomePassout = () => {
           //   <TestimonialsColumn testimonials={secondColumn} duration={20} />
           //   <TestimonialsColumn testimonials={thirdColumn} duration={20} />
           // </div>
-          <div className="flex justify-center gap-2 sm:gap-4 md:gap-6 lg:gap-25 mt-10 mask-[linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-[300px] sm:max-h-[380px] md:max-h-[460px] lg:max-h-[540px] overflow-hidden px-2">
-            <TestimonialsColumn testimonials={firstColumn} duration={20} />
-            <TestimonialsColumn testimonials={secondColumn} duration={20} className="mt-40"/>
-            <TestimonialsColumn testimonials={thirdColumn} duration={20} />
+          <div
+            className="relative mt-10"
+            // style={{
+            //   WebkitMaskImage:
+            //     "linear-gradient(to bottom, transparent, black 25%, black 75%, transparent)",
+            //   maskImage:
+            //     "linear-gradient(to bottom, transparent, black 25%, black 75%, transparent)",
+            // }}
+          >
+            <div className="flex justify-center gap-2 sm:gap-4 md:gap-6 lg:gap-25 mt-10   max-h-[300px] sm:max-h-[380px] md:max-h-[460px] lg:max-h-[540px] overflow-hidden px-2">
+              <TestimonialsColumn testimonials={firstColumn} duration={20} />
+              <TestimonialsColumn
+                testimonials={secondColumn}
+                duration={20}
+                className="mt-40"
+              />
+              <TestimonialsColumn testimonials={thirdColumn} duration={20} />
+            </div>
           </div>
         )}
       </div>

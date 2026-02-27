@@ -80,7 +80,7 @@ const CFECurriculam = () => {
       />
       <CamsConnection
         title="The Right Certification Starts With the Right Choice"
-        description="Find the certification that aligns with your background and carrer stage"
+        description="Find the certification that aligns with your background and career stage"
         images={[
           { image: "hiw_cia.webp", link: "/cia-curriculum" },
           { image: "hiw_ciac.webp", link: "/cia-challenge-curriculum" },

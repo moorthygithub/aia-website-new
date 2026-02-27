@@ -21,7 +21,7 @@ const AccreditationBadges = () => {
     <div className="grid grid-cols-1 md:grid-cols-5 gap-2 items-center">
       {badges.map(({ img, alt, href }) => {
         const inner = (
-          <div className="bg-white border border-gray-700 rounded-lg p-2 w-full h-20 flex items-center justify-center transition-all duration-200 group-hover:border-[#fa8017] group-hover:bg-white/20 group-hover:scale-105">
+          <div className="bg-white border border-gray-700 rounded-lg p-2 w-full h-20 flex items-center justify-center transition-all duration-200 group-hover:border-[#fa8017]  group-hover:scale-105">
             <img src={img} alt={alt} className="w-full h-full object-contain" />
           </div>
         );

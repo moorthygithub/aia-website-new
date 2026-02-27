@@ -22,7 +22,7 @@ const AboutPage = () => {
     <div className="min-h-screen bg-white">
       <PopUp slug="About-Us" />
       {/* <AboutHeroSection /> */}
-      <HomeHero slug="about-us" />
+      <HomeHero slug="about-aia" />
       <AboutSection />
       <AboutTrainerSection />
       <AboutTestimonial />
@@ -33,7 +33,7 @@ const AboutPage = () => {
       <HomeCourses certificationCourses={certificationCourses} />
       <AboutPartner />
       {/* <HomeCorporatePartner /> */}
-      <CourseYoutubeLecture courseSlug="about-us" />
+      <CourseYoutubeLecture courseSlug="about-aia" />
       <HomeReview />
       <OfficeCeleberation
         title="Inside Life at AIA"

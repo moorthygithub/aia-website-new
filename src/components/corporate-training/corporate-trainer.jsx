@@ -92,12 +92,20 @@ const CorporateTrainer = () => {
                 ,contributing to the professional development of finance and
                 audit professionals across India
               </p>
-              <p className="text-justify">
+              <p className="text-justify mb-6">
                 In recognition of his impact on ethical leadership and
                 capability building in the profession,
-                <strong>CEO Insights India featured him </strong>
-                among the
-                <strong>Top 10 Impactful Business Leaders in India. </strong>
+                {/* <strong>CEO Insights India featured him </strong> */}
+                <a
+                  href="https://www.ceoinsightsindia.com/leader/puneet-garg-equipping-audit-compliance-professionals-to-lead-with-integrity-impact-cid-9846.html"
+                  target="_blank"
+                  className="font-bold text-[#F3831C]"
+                >
+                  {" "}
+                  CEO Insights India 
+                </a>{" "}
+               featured him among the
+                <strong> Top 10 Impactful Business Leaders in India. </strong>
               </p>
             </div>
           </div>

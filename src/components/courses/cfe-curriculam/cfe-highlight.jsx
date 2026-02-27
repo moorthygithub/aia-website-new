@@ -15,8 +15,12 @@ const CfeHighlight = () => {
           subtitle: "Expert Mentoring Sessions",
         },
         { value: 99.6, suffix: "%", subtitle: "Success Rate" },
-        { value: 1000, suffix: "+", subtitle: "Success Stories" },
-        { value: 32, suffix: "+ Countries", subtitle: "Served" },
+        {
+          value: 2000,
+          suffix: "+ Professionals",
+          subtitle: "Trained & Certified",
+        },
+        { value: 36, suffix: "+ Countries", subtitle: "Served" },
       ]}
       logos={[
         { img: `${IMAGE_PATH}/IAO.png` },

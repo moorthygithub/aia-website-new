@@ -18,7 +18,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {[
                 { name: "Home", href: "/" },
-                { name: "About Us", href: "/about-us" },
+                { name: "About AIA", href: "/about-aia" },
                 { name: "Blog", href: "/blogs" },
                 { name: "Our Passout", href: "/our-passouts" },
                 { name: "Contact Us", href: "/contact" },

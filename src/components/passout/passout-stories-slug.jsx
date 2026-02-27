@@ -41,7 +41,9 @@ const PassoutStoriesSlug = () => {
   if (isError || !storyData?.data) {
     return (
       <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="text-[#F3831C] text-sm sm:text-base">Error loading story</div>
+        <div className="text-[#F3831C] text-sm sm:text-base">
+          Error loading story
+        </div>
       </div>
     );
   }
@@ -76,7 +78,7 @@ const PassoutStoriesSlug = () => {
     student_story_box_details3,
     student_story_box_details4,
   } = storyData.data;
-  
+
   const companyImageUrl =
     storyData.image_url.find((img) => img.image_for === "Student Company")
       ?.image_url + company?.student_company_image;
@@ -264,7 +266,7 @@ const PassoutStoriesSlug = () => {
                   {/* Impact Stats Grid */}
                   <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
                     <div className="space-y-1 sm:space-y-2 border bg-[#0F3652] p-3 sm:p-4 rounded-xl sm:rounded-2xl">
-                      <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#F3831C] break-words">
+                      <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center break-words">
                         {student_story_box_title1}
                       </div>
                       <div className="text-sm sm:text-base lg:text-lg font-medium text-white break-words">
@@ -272,7 +274,7 @@ const PassoutStoriesSlug = () => {
                       </div>
                     </div>
                     <div className="space-y-1 sm:space-y-2 border bg-[#0F3652] p-3 sm:p-4 rounded-xl sm:rounded-2xl">
-                      <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#F3831C] break-words">
+                      <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center break-words">
                         {student_story_box_title2}
                       </div>
                       <div className="text-sm sm:text-base lg:text-lg font-medium text-white break-words">
@@ -280,7 +282,7 @@ const PassoutStoriesSlug = () => {
                       </div>
                     </div>
                     <div className="space-y-1 sm:space-y-2 border bg-[#0F3652] p-3 sm:p-4 rounded-xl sm:rounded-2xl">
-                      <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#F3831C] break-words">
+                      <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center break-words">
                         {student_story_box_title3}
                       </div>
                       <div className="text-sm sm:text-base lg:text-lg font-medium text-white break-words">
@@ -288,7 +290,7 @@ const PassoutStoriesSlug = () => {
                       </div>
                     </div>
                     <div className="space-y-1 sm:space-y-2 border bg-[#0F3652] p-3 sm:p-4 rounded-xl sm:rounded-2xl">
-                      <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#F3831C] break-words">
+                      <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center break-words">
                         {student_story_box_title4}
                       </div>
                       <div className="text-sm sm:text-base lg:text-lg font-medium text-white break-words">

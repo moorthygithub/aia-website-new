@@ -53,7 +53,7 @@ const HomeContact = () => {
     };
 
     const allRequiredFieldsFilled = Object.values(requiredFields).every(
-      (field) => field !== ""
+      (field) => field !== "",
     );
 
     if (!allRequiredFieldsFilled) {
@@ -87,7 +87,7 @@ const HomeContact = () => {
           headers: {
             "Content-Type": "application/json",
           },
-        }
+        },
       );
 
       if (response.status === 200 || response.status === 201) {
@@ -116,7 +116,7 @@ const HomeContact = () => {
       setSubmitError(
         error.response?.data?.message ||
           error.message ||
-          "Failed to submit form. Please try again."
+          "Failed to submit form. Please try again.",
       );
     } finally {
       setIsSubmitting(false);
@@ -173,7 +173,7 @@ const HomeContact = () => {
                 </div>
                 <div className="border-b-4 border-[#F3831C] pb-3 text-center">
                   <div className="text-lg font-bold text-[#0F3652]">
-                    2,000+ Students
+                    2,000+ Professionals
                   </div>
                   <div className="text-xs md:text-sm text-[#0F3652] mt-1">
                     Professional (Trained & Certified)

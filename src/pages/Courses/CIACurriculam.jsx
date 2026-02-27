@@ -28,7 +28,7 @@ const CIACurriculam = () => {
       {" "}
       <PopUp slug="CIA-Curriculum" />
       {/* <CourseHero path="cia_banner.webp" /> */}
-       <HomeHero slug="cia-curriculum" />
+      <HomeHero slug="cia-curriculum" />
       <CiaCurrAbout />
       <CourseTopStudent
         courseSlug="cia"
@@ -58,7 +58,11 @@ const CIACurriculam = () => {
       <CiaCurrHighlight />
       <CourseMap courseCode="CIA" />
       <CourseReview slug="CIA" />
-      <CourseYoutube courseSlug="CIA" />
+      <CourseYoutube
+        courseSlug="CIA"
+        title="Hear from Our Recently Qualified Professionals on YouTube"
+        description="Watch AIA-trained professionals share their CFE journey, exam strategies, and career insights in exclusive interviews with Puneet Sir on YouTube."
+      />
       <AboutTrainerSection path="faculty_cia.webp" />
       <CourseYoutubeLecture courseSlug="cia-curriculum" />
       <CiaCurrCourseLms />
@@ -73,7 +77,7 @@ const CIACurriculam = () => {
       />
       <CamsConnection
         title="The Right Certification Starts With the Right Choice"
-        description="Find the certification that aligns with your background and carrer stage"
+        description="Find the certification that aligns with your background and career stage"
         buttonColors={["#a8e6f3", "#e2ffdc", "#ffe38f"]}
         images={[
           { image: "hiw_cfe.webp", link: "/cfe-curriculum" },

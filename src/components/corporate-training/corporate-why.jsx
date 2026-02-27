@@ -187,7 +187,7 @@ const CorporateWhy = () => {
             title="Why Leading Organizations are Investing in Employee Development"
             align="center"
           />
-          <p className="text-lg text-[#0F3652]/80 leading-relaxed max-w-3xl mx-auto mb-12">
+          <p className="text-lg text-[#0F3652]/80 leading-relaxed max-w-4xl mx-auto mb-12 wrap-break-word">
             Because every smart business knows - when your people grow it leads
             to strong results. Here's the proof
           </p>

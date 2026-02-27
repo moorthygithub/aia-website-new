@@ -75,7 +75,7 @@ const CourseYoutube = ({ courseSlug, title, description }) => {
 
   return (
     <TestimonialsSectionCourse
-      title={title || "Meet Recently Qualified on YouTube "}
+      title={title || "Meet Recently Qualified on YouTube"}
       testimonials={testimonials}
       sucessstory={true}
       description={description}

@@ -14,7 +14,7 @@ Guided by industry experts with hands-on experience, our practical training ensu
 
 `}
         buttonText="Know more about AIA"
-        buttonLink="/about-us"
+        buttonLink="/about-aia"
         aboutStats={[
           {
             display: "50,000+ Hours",

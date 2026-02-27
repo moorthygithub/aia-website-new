@@ -40,7 +40,7 @@ const CiaWhyAia = () => {
           title="Join AiA CIA LMS"
           subtitle="Online Training and Certification Course"
           course="CIA"
-          buttonlabel="Enquire Now"
+          buttonlabel="Explore More"
         />
         <Button
           className="

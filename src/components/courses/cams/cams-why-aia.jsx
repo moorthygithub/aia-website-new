@@ -39,7 +39,7 @@ const CamsWhyAia = () => {
           title="Join AiA CAMS LMS"
           subtitle="Online Training and Certification Course"
           course="CAMS"
-          buttonlabel="Enquire Now"
+          buttonlabel="Explore More"
         />
 
         <Button

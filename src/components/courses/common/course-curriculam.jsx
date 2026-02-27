@@ -33,7 +33,7 @@ const CourseCurriculum = ({ title, curriculumData, description }) => {
                   border
                   ${
                     activeTab === item.id
-                      ? "bg-[#F3831C] text-white "
+                      ? "bg-[#F3831C] text-white"
                       : "bg-white text-[#0F3652] border-gray-200 hover:bg-[#0F3652]/5"
                   }
                 `}
@@ -57,7 +57,6 @@ const CourseCurriculum = ({ title, curriculumData, description }) => {
 
           <div className="w-full md:w-[70%]">
             <div className="bg-white rounded-br-3xl rounded-tl-3xl p-4 shadow-lg shadow-black/20 border border-[#F3831C]/20 h-full">
-              {/* <div className="bg-white rounded-br-3xl  rounded-tl-3xl p-4  shadow-lg shadow-black/20 border border-[#F3831C]/20 h-[350px]"> */}
               {activeContent?.content?.length ? (
                 <div className="space-y-1">
                   <div className="mb-3">
@@ -68,20 +67,7 @@ const CourseCurriculum = ({ title, curriculumData, description }) => {
                   </div>
 
                   <div className=" pr-2">
-                    {/* {activeContent.content.map((text, index) => (
-                      <div
-                        key={index}
-                        className="flex items-start mb-0.5 p-0.5 rounded hover:bg-[#0F3652]/5 transition-colors duration-150"
-                      >
-                        <div className="w-0.5 h-5 bg-[#F3831C] mr-2 shrink-0 rounded-full mt-0.5" />
-                        <div
-                          className="text-[#0F3652] leading-relaxed text-justify"
-                          dangerouslySetInnerHTML={{
-                            __html: text.replace(/\n/g, "<br />"),
-                          }}
-                        />
-                      </div>
-                    ))} */}
+                   
                     {activeContent.content.map((text, index) =>
                       text
                         .split(/\n+/)
@@ -91,7 +77,7 @@ const CourseCurriculum = ({ title, curriculumData, description }) => {
                             key={`${index}-${pIndex}`}
                             className="flex items-start mb-1 p-0.5 rounded hover:bg-[#0F3652]/5 transition-colors duration-150"
                           >
-                            <span className="w-0.5 h-5 bg-[#F3831C] mr-2 shrink-0 rounded-full mt-1" />
+                            {/* <span className="w-0.5 h-5 bg-[#F3831C] mr-2 shrink-0 rounded-full mt-1" /> */}
 
                             <div
                               className="text-[#0F3652] leading-relaxed text-justify"

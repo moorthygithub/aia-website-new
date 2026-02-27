@@ -9,7 +9,8 @@ import SectionHeading from "../SectionHeading/SectionHeading";
 
 const CourseTopStudent = ({
   title = "AIA in the News & Media Spotlight",
-  description = "AIA has been recognized by leading news and media platforms for its work in certification training, highlighting our role in building practical skills and supporting professionals across audit, fraud, and compliance",
+  description = "AIA has been recognized by leading news and media platforms for its work in certification training, highlighting our role in",
+  description1 = "building practical skills and supporting professionals across audit, fraud, and compliance profiles.",
   needPrefix,
 }) => {
   const {
@@ -29,7 +30,7 @@ const CourseTopStudent = ({
     if (!prdata?.data) return [];
 
     const studentImageUrlObj = prdata.image_url?.find(
-      (item) => item.image_for === "Pr"
+      (item) => item.image_for === "Pr",
     );
     const studentImageUrl = studentImageUrlObj?.image_url || "";
 
@@ -115,11 +116,14 @@ const CourseTopStudent = ({
         <div className="mb-8 text-center gap-4">
           <div className="relative z-30">
             <h2 className="text-3xl font-medium text-gray-900">
-              {needPrefix == "true" && <span>Recent Passout Students</span>}{" "}
+              {needPrefix == "true" && (
+                <span>Recent Passout Students</span>
+              )}{" "}
             </h2>
             <SectionHeading
               title={title}
               description={description}
+              description1={description1}
               align="center"
             />
           </div>
