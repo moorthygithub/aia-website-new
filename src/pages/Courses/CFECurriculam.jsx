@@ -45,6 +45,7 @@ const CFECurriculam = () => {
         queryKey="cfe-certificates"
         title="Verified CFE Exam Results Achieved by AIA Learners"
         description="Each certificate represents a real CFE exam achievement, verified by ACFE, highlighting their successful completion of the globally recognized certification."
+   
       />
       <CfeJourney />
       <CfeWhyAia />

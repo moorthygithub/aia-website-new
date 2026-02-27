@@ -10,18 +10,21 @@ export function TestimonialsSectionColor({
   testimonials,
   className,
   sucessstory,
+  customDuration,
+  image,
 }) {
   const marqueeRef = useRef(null);
   const [duration, setDuration] = useState(40);
 
   useEffect(() => {
+    if (customDuration) return;
     if (!marqueeRef.current) return;
 
     const marqueeWidth = marqueeRef.current.scrollWidth;
     const SPEED = 150;
     setDuration(marqueeWidth / SPEED);
   }, [testimonials]);
-
+  const finalDuration = customDuration || duration;
   if (!testimonials || testimonials.length === 0) return null;
 
   return (
@@ -42,7 +45,7 @@ export function TestimonialsSectionColor({
         <div className="relative flex w-full overflow-hidden">
           <div
             className="group flex gap-4"
-            style={{ ["--duration"]: `${duration}s` }}
+            style={{ ["--duration"]: `${finalDuration}s` }}
           >
             {/* FIRST SET */}
             <div
@@ -56,6 +59,8 @@ export function TestimonialsSectionColor({
                   href={testimonial.youtubeLink}
                   target="_blank"
                   course={testimonial.course}
+                  cardWidth={image?.width}
+                  cardHeight={image?.height}
                 />
               ))}
             </div>
@@ -72,6 +77,8 @@ export function TestimonialsSectionColor({
                   href={testimonial.youtubeLink}
                   target="_blank"
                   course={testimonial.course}
+                  cardWidth={image?.width}
+                  cardHeight={image?.height}
                 />
               ))}
             </div>

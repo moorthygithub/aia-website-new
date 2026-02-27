@@ -88,6 +88,11 @@ const HomeResults = ({ title, description }) => {
       }
       description={description}
       testimonials={testimonials}
+      customDuration={40}
+      image={{
+        width: "340px",
+        height: "220px",
+      }}
     />
   );
 };
