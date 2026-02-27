@@ -285,11 +285,10 @@ const BlogDetails = () => {
     }
   };
 
-
   const scrollToSection = (index, e) => {
     e.stopPropagation();
 
-    if (isScrollingProgrammatically.current) return; 
+    if (isScrollingProgrammatically.current) return;
 
     console.log("Clicked TOC index:", index);
     setActiveSection(index);
@@ -553,7 +552,7 @@ const BlogDetails = () => {
                     )}
                   </div>
 
-                  <ShareButtons/>
+                  <ShareButtons />
                 </div>
               </div>
             </aside>
@@ -569,35 +568,95 @@ const BlogDetails = () => {
             }
           `}
           >
+            {/* {blog.web_blog_subs?.length > 0 ? (
+              <div className="space-y-12">
+                {blog.web_blog_subs.map((sub, index) => {
+                  const allowedTags = ["h1", "h2", "h3", "h4", "h5", "h6", "p"];
+
+                  const HeadingTag = allowedTags.includes(
+                    sub.blog_sub_heading_tag?.toLowerCase(),
+                  )
+                    ? sub.blog_sub_heading_tag.toLowerCase()
+                    : "h2";
+
+                  return (
+                    <article
+                      key={sub.id}
+                      id={`section-${index}`}
+                      ref={(el) => (sectionRefs.current[index] = el)}
+                      className="scroll-mt-[120px]"
+                    >
+                      <HeadingTag className="text-2xl font-bold mb-6 text-[#0F3652] pb-3 border-b">
+                        {sub.blog_sub_heading || `Section ${index + 1}`}
+                      </HeadingTag>
+
+                      <div className="prose prose-gray max-w-none">
+                        <div
+                          className="ck-content"
+                          dangerouslySetInnerHTML={{
+                            __html: sub.blog_sub_description,
+                          }}
+                        />
+                      </div>
+                    </article>
+                  );
+                })}
+              </div>
+            ) : (
+              <div className="text-center py-12 text-[#0F3652]">
+                No content available for this blog.
+              </div>
+            )} */}
             {blog.web_blog_subs?.length > 0 ? (
               <div className="space-y-12">
-                {blog.web_blog_subs.map((sub, index) => (
-                  <article
-                    key={sub.id}
-                    id={`section-${index}`}
-                    ref={(el) => (sectionRefs.current[index] = el)}
-                    className="scroll-mt-[120px]"
-                  >
-                    <h2 className="text-2xl font-bold mb-6 text-[#0F3652] pb-3 border-b">
-                      {sub.blog_sub_heading || `Section ${index + 1}`}
-                    </h2>
-                    <div className="prose prose-gray max-w-none">
-                      <div
-                        className="ck-content"
-                        dangerouslySetInnerHTML={{
-                          __html: sub.blog_sub_description,
-                        }}
-                      />
-                    </div>
-                  </article>
-                ))}
+                {blog.web_blog_subs.map((sub, index) => {
+                  const allowedTags = ["h1", "h2", "h3", "h4", "h5", "h6", "p"];
+
+                  const tag = sub.blog_sub_heading_tag?.toLowerCase();
+                  const HeadingTag = allowedTags.includes(tag) ? tag : "h2";
+
+                  const sizeClasses = {
+                    h1: "text-3xl font-bold",
+                    h2: "text-2xl font-bold",
+                    h3: "text-xl font-bold",
+                    h4: "text-lg font-medium",
+                    h5: "text-base font-medium",
+                    h6: "text-sm font-medium",
+                    p: "text-base font-normal",
+                  };
+
+                  return (
+                    <article
+                      key={sub.id}
+                      id={`section-${index}`}
+                      ref={(el) => (sectionRefs.current[index] = el)}
+                      className="scroll-mt-[120px]"
+                    >
+                      <HeadingTag
+                        className={`${sizeClasses[HeadingTag]} mb-6 text-[#0F3652] ${
+                          HeadingTag !== "p" ? "pb-3 border-b" : ""
+                        }`}
+                      >
+                        {sub.blog_sub_heading || `Section ${index + 1}`}
+                      </HeadingTag>
+
+                      <div className="prose prose-gray max-w-none">
+                        <div
+                          className="ck-content"
+                          dangerouslySetInnerHTML={{
+                            __html: sub.blog_sub_description,
+                          }}
+                        />
+                      </div>
+                    </article>
+                  );
+                })}
               </div>
             ) : (
               <div className="text-center py-12 text-[#0F3652]">
                 No content available for this blog.
               </div>
             )}
-
             <BlogFaq title={faqHeading} faqs={faqItems} />
           </main>
 

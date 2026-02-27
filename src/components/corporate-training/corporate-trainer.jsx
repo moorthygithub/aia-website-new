@@ -99,12 +99,12 @@ const CorporateTrainer = () => {
                 <a
                   href="https://www.ceoinsightsindia.com/leader/puneet-garg-equipping-audit-compliance-professionals-to-lead-with-integrity-impact-cid-9846.html"
                   target="_blank"
-                  className="font-bold "
+                  className="font-bold text-[#F3831C]"
                 >
                   {" "}
-                  CEO Insights India featured him
+                  CEO Insights India 
                 </a>{" "}
-                among the
+               featured him among the
                 <strong> Top 10 Impactful Business Leaders in India. </strong>
               </p>
             </div>

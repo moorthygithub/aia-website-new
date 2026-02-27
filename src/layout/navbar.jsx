@@ -81,7 +81,7 @@ const Navbar = () => {
       ],
     },
     {
-      title: "Contact Us",
+      title: "Contact US",
       link: "/contact",
       submenu: null,
     },

@@ -40,7 +40,7 @@
     "description": "Stories of our successful students and their professional journeys."
   },
   "/contact": {
-    "title": "Contact Us",
+    "title": "Contact US",
     "description": "Get in touch with us for course details, support, or general inquiries."
   },
   "/passout-stories/:slug": {

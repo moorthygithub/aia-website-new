@@ -19,7 +19,7 @@ const ContactHighlight = () => {
     stats={[
       { value: 50000, suffix: "+ Hours", subtitle: "Expert Mentoring Sessions" },
       { value: 99.6, suffix: "%", subtitle: "Success Rate" },
-      { value: 1000, suffix: "+", subtitle: "Success Stories" },
+      { value: 2000, suffix: "+ Professionals", subtitle: "Trained & Certified" },
       { value: 36, suffix: "+ Countries", subtitle: "Served" },
     ]}
     

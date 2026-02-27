@@ -1,6 +1,7 @@
 import { IMAGE_PATH } from "@/api/base-url";
 import SectionHeading from "@/components/SectionHeading/SectionHeading";
 import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const CourseLms = ({ courseFeatures, cardTitle, image = "lms2.webp" }) => {
   const labels = [
@@ -12,7 +13,7 @@ const CourseLms = ({ courseFeatures, cardTitle, image = "lms2.webp" }) => {
     "100% Exam Registration Assistant",
     "Live Interactive Sessions with Faculty",
   ];
-
+  const navigate = useNavigate();
   const radius = 150;
   const center = 250;
   const centerX = 250;
@@ -43,7 +44,7 @@ const CourseLms = ({ courseFeatures, cardTitle, image = "lms2.webp" }) => {
 
   return (
     <>
-      <section className="mt-8">
+      <section className="mt-8 cursor-pointer" onClick={() => navigate("/contact")}>
         <img
           src={`${IMAGE_PATH}/${image}`}
           alt="LMS-Image"
