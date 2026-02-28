@@ -26,7 +26,21 @@ export const TestimonialSlider = ({
   const timerRef = useRef(null);
 
   const activeReview = reviews[currentIndex];
+  const [thumbCount, setThumbCount] = useState(4);
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setThumbCount(2);
+      } else {
+        setThumbCount(4);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   const goTo = useCallback((newIndex, dir) => {
     setDirection(dir);
     setCurrentIndex(newIndex);
@@ -61,14 +75,14 @@ export const TestimonialSlider = ({
       goTo(index, index > currentIndex ? "right" : "left");
       startTimer();
     },
-    [currentIndex, goTo, startTimer],
+    [currentIndex, goTo, startTimer]
   );
   const handleLeftThumb = useCallback(
     (idx) => {
       goTo(idx, "left");
       startTimer();
     },
-    [goTo, startTimer],
+    [goTo, startTimer]
   );
 
   const handleRightThumb = useCallback(
@@ -76,7 +90,7 @@ export const TestimonialSlider = ({
       goTo(idx, "right");
       startTimer();
     },
-    [goTo, startTimer],
+    [goTo, startTimer]
   );
 
   const handleImageLoad = useCallback((src) => {
@@ -93,12 +107,16 @@ export const TestimonialSlider = ({
 
   const rightThumbs = useMemo(() => {
     const arr = [];
-    for (let i = 1; i <= 4; i++) {
+    for (let i = 1; i <= thumbCount; i++) {
       const idx = (currentIndex + i) % total;
-      arr.push({ review: reviews[idx], originalIndex: idx, dist: i });
+      arr.push({
+        review: reviews[idx],
+        originalIndex: idx,
+        dist: i,
+      });
     }
     return arr;
-  }, [currentIndex, total, reviews]);
+  }, [currentIndex, total, reviews, thumbCount]);
   const preloadImages = useMemo(() => {
     const set = new Set();
     const prevIdx = (currentIndex - 1 + reviews.length) % reviews.length;
@@ -129,7 +147,7 @@ export const TestimonialSlider = ({
     <div
       className={cn(
         "relative w-full min-h-[650px] md:min-h-[600px] overflow-hidden bg-background text-foreground p-8 md:p-12",
-        className,
+        className
       )}
     >
       {preloadImages.map((src) => (
@@ -141,17 +159,20 @@ export const TestimonialSlider = ({
           fetchPriority="low"
         />
       ))}
-
+      <div className="pt-4 min-h-[200px]  md:hidden">
+        <SectionHeading title={title} description={description} />
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-12 gap-8 h-full">
-        <div className="md:col-span-2 flex flex-col justify-between order-2 md:order-1">
-          <div className="flex flex-row md:flex-col justify-between md:justify-start space-x-4 md:space-x-0 md:space-y-4">
+        <div className="md:col-span-2 flex flex-col justify-between  md:order-1">
+          <div className="hidden md:flex flex-row md:flex-col justify-between md:justify-start space-x-4 md:space-x-0 md:space-y-4">
             <span className="text-sm text-muted-foreground font-mono">
               {String(currentIndex + 1).padStart(2, "0")} /{" "}
               {String(reviews.length).padStart(2, "0")}
             </span>
           </div>
 
-          <div className="flex space-x-2 mt-8 md:mt-0">
+          <div className="hidden md:flex space-x-2 mt-8 md:mt-0">
+            {" "}
             {leftThumbs.map(({ review, originalIndex }) => (
               <button
                 key={originalIndex}
@@ -172,8 +193,7 @@ export const TestimonialSlider = ({
             ))}
           </div>
         </div>
-
-        <div className="md:col-span-4 relative h-80 min-h-[400px] md:min-h-[500px] order-1 md:order-2">
+        <div className="md:col-span-4 relative h-80 min-h-[400px] md:min-h-[500px] order-2 md:order-2">
           <AnimatePresence initial={false} custom={direction}>
             <motion.img
               key={currentIndex}
@@ -216,7 +236,7 @@ export const TestimonialSlider = ({
         </div>
 
         <div className="md:col-span-6 flex flex-col justify-between md:pl-8 order-3 md:order-3">
-          <div className="pt-4 min-h-[200px]">
+          <div className="pt-4 min-h-[200px] hidden md:block">
             <SectionHeading title={title} description={description} />
           </div>
 
@@ -271,7 +291,7 @@ const WhatsappCarosal = ({ title, description, course }) => {
     queryKey: ["screenshot-slider", course],
     queryFn: async () => {
       const res = await axios.get(
-        `${BASE_URL}/api/getScreenshotSlider/${course}`,
+        `${BASE_URL}/api/getScreenshotSlider/${course}`
       );
       return res.data;
     },

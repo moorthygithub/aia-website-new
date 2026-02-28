@@ -15,14 +15,13 @@ const CourseCurriculum = ({ title, curriculumData, description }) => {
         </div>
         {description && (
           <div
-            className="text-[#0F3652] leading-relaxed  mx-20 mb-8 text-justify"
+            className="text-[#0F3652] leading-relaxed mx-6 md:mx-20 mb-8 text-justify"
             dangerouslySetInnerHTML={{
               __html: description.replace(/\n/g, "<br />"),
             }}
           />
         )}
         <div className="flex flex-col md:flex-row max-w-5xl mx-auto justify-center gap-4 items-stretch">
-          {/* <div className="flex flex-col md:flex-row  max-w-5xl mx-auto justify-center gap-4"> */}
           <div className="w-full md:w-[30%] space-y-2">
             {curriculumData.map((item) => (
               <button
@@ -77,7 +76,6 @@ const CourseCurriculum = ({ title, curriculumData, description }) => {
                             key={`${index}-${pIndex}`}
                             className="flex items-start mb-1 p-0.5 rounded hover:bg-[#0F3652]/5 transition-colors duration-150"
                           >
-                            {/* <span className="w-0.5 h-5 bg-[#F3831C] mr-2 shrink-0 rounded-full mt-1" /> */}
 
                             <div
                               className="text-[#0F3652] leading-relaxed text-justify"

@@ -38,7 +38,7 @@ export const CircularTestimonials = ({
   const testimonialsLength = useMemo(() => testimonials.length, [testimonials]);
   const activeTestimonial = useMemo(
     () => testimonials[activeIndex],
-    [activeIndex, testimonials],
+    [activeIndex, testimonials]
   );
 
   // Notify parent when index changes
@@ -195,14 +195,14 @@ export const CircularTestimonials = ({
         </div> */}
         <div
           ref={imageContainerRef}
-          className="relative w-full min-w-[400px] h-96 perspective-[1000px] overflow-visible"
+          className="relative w-full w-[280px] min-w-[400px] h-60 md:h-96 perspective-[1000px] overflow-visible"
         >
           {testimonials.map((testimonial, index) => (
             <img
               key={testimonial.src}
               src={testimonial.src}
               alt={testimonial.name}
-              className="absolute left-1/2 w-[400px] h-full -translate-x-1/2 rounded-3xl object-contain transition-all duration-700"
+              className="absolute left-1/2 w-[280px] md:w-[400px] h-full -translate-x-1/2 rounded-3xl object-contain transition-all duration-700"
               style={getImageStyle(index)}
             />
           ))}
@@ -213,11 +213,12 @@ export const CircularTestimonials = ({
             aria-label="Previous testimonial"
             variant="ghost"
             className="
-      absolute left-[-22px] top-1/2 -translate-y-1/2
+      absolute left-[16px] top-1/2  -translate-y-1/2
       z-10
       h-11 w-11
       rounded-full
       bg-[#0F3652]/90
+       md:border md:border-[#F3831C]
       text-white
       flex items-center justify-center
       transition-all duration-300
@@ -236,11 +237,12 @@ export const CircularTestimonials = ({
             aria-label="Next testimonial"
             variant="ghost"
             className="
-      absolute right-[-22px] top-1/2 -translate-y-1/2
+      absolute right-[16px] top-1/2 -translate-y-1/2
       z-10
       h-11 w-11
       rounded-full
       bg-[#0F3652]/90
+      md:border md:border-[#F3831C]
       text-white
       flex items-center justify-center
       transition-all duration-300
@@ -253,51 +255,6 @@ export const CircularTestimonials = ({
             <ChevronRight size={22} />
           </Button>
         </div>
-
-        {/* Quote */}
-        {/* <div className="quote-wrapper ">
-          <AnimatePresence mode="wait">
-            <motion.p
-              key={activeIndex}
-              className="quote"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3 }}
-              style={{ color: "#000000" }}
-            >
-              {activeTestimonial.quote}
-            </motion.p>
-          </AnimatePresence>
-        </div> */}
-
-        {/* <div className="  w-full flex flex-row items-center justify-center gap-2">
-          <Button
-            className="mb-4  relative cursor-pointer overflow-hidden px-4 py-2  text-xs bg-[#F3831C] text-white rounded-none hover:bg-[#0F3652] transition-colors duration-300"
-            onClick={handlePrev}
-            variant="ghost"
-            onMouseEnter={() => setHoverPrev(true)}
-            onMouseLeave={() => setHoverPrev(false)}
-            aria-label="Previous testimonial"
-          >
-            <span className="relative z-10 flex flex-row items-center text-white ">
-              <ChevronLeft size={28} /> <span>Prev</span>
-            </span>
-          </Button>
-          <Button
-            className="mb-4  relative cursor-pointer overflow-hidden px-4 py-2  text-xs bg-[#F3831C] text-white rounded-none hover:bg-[#0F3652] transition-colors duration-300"
-            onClick={handleNext}
-            variant="ghost"
-            onMouseEnter={() => setHoverNext(true)}
-            onMouseLeave={() => setHoverNext(false)}
-            aria-label="Next testimonial"
-          >
-            <span className="relative z-10 flex flex-row items-center text-white ">
-              <span>Next</span>
-              <ChevronRight size={28} />
-            </span>
-          </Button>
-        </div> */}
       </div>
 
       <style>{`

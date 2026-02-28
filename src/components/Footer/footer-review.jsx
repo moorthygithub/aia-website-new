@@ -57,7 +57,7 @@ const FooterReviews = ({ footer = true }) => {
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 max-w-2xl w-full">
+            <div className="grid grid-cols-2 gap-3 md:gap-4 max-w-2xl w-full">
               {reviews.map((item, index) => {
                 const CardWrapper = item.link ? "a" : "div";
                 const isLast = index === reviews.length - 1;
@@ -74,7 +74,7 @@ const FooterReviews = ({ footer = true }) => {
         hover:scale-105 transition-transform duration-300 
         cursor-pointer shadow-lg
         ${
-          isLast && isOdd ? "sm:col-span-2 sm:justify-self-center sm:w-1/2" : ""
+          isLast && isOdd ? "col-span-2 justify-self-center sm:w-1/2" : ""
         }
         `}
                   >
@@ -106,7 +106,7 @@ const FooterReviews = ({ footer = true }) => {
                 </h2>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 max-w-2xl w-full">
+              <div className="grid grid-cols-2 gap-3 md:gap-4 max-w-2xl w-full">
                 {reviews.map((item, index) => {
                   const CardWrapper = item.link ? "a" : "div";
                   const isLast = index === reviews.length - 1;
@@ -123,14 +123,14 @@ const FooterReviews = ({ footer = true }) => {
         hover:scale-105 transition-transform duration-300 
         cursor-pointer shadow-lg
         ${
-          isLast && isOdd ? "md:col-span-2 md:justify-self-center md:w-1/2" : ""
+          isLast && isOdd ? "col-span-2 justify-self-center md:w-1/2" : ""
         }
         `}
                     >
                       <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center border-r border-white/10">
                         <img
                           src={item.img}
-                          className="w-14 h-14"
+                          className="w-10 h-10 md:w-14 md:h-14"
                           alt={item.alt}
                         />
                       </div>

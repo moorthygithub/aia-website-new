@@ -23,12 +23,12 @@ const PassoutBanner = () => {
 
     const studentBaseUrl =
       passOutCarouselData.image_url?.find(
-        (item) => item.image_for === "Student",
+        (item) => item.image_for === "Student"
       )?.image_url || "";
 
     const noImage =
       passOutCarouselData.image_url?.find(
-        (item) => item.image_for === "No Image",
+        (item) => item.image_for === "No Image"
       )?.image_url || "";
 
     return passOutCarouselData.data.map((item) => ({
@@ -174,23 +174,17 @@ const PassoutBanner = () => {
     //     }
     //   `}</style>
     // </section>
-    <section
-      className="bg-[#0F3652]/10 px-6 lg:px-12 overflow-hidden"
-      style={{ maxHeight: "450px" }}
-    >
-      <div
-        className="mx-auto flex flex-col lg:flex-row items-center gap-12"
-        style={{ maxHeight: "450px" }}
-      >
+    <section className="bg-[#0F3652]/10 px-6 lg:px-12 overflow-hidden max-h-[600px] md:max-h-[450px]">
+      <div className="mx-auto flex flex-col lg:flex-row items-center gap-12 mt-6 max-h-[600px] md:max-h-[450px]">
         {/* TEXT SIDE */}
         <div className="flex-1 max-w-xl">
-          <h1 className="text-5xl font-bold text-[#0F3652] mb-2">
+          <h1 className="text-3xl md:text-5xl font-bold text-[#0F3652] mb-2">
             Guidance That Goes
           </h1>
-          <h1 className="text-5xl font-bold text-[#F3831C] mb-4">
+          <h1 className="text-3xl md:text-5xl font-bold text-[#F3831C] mb-4">
             Beyond Training
           </h1>
-          <p className="text-[#0F3652] text-lg leading-relaxed">
+          <p className="text-[#0F3652] text-lg leading-relaxed text-justify">
             Genuine moments shared by professionals who completed their global
             certification preparation with AIA and experienced guidance that
             went beyond structured learning.
@@ -198,17 +192,14 @@ const PassoutBanner = () => {
         </div>
 
         {/* IMAGE COLUMNS SIDE */}
-        <div
-          className="flex-1 relative overflow-hidden flex justify-center gap-4 self-stretch"
-          style={{ minHeight: "450px" }}
-        >
+        <div className="flex-1 relative overflow-hidden flex justify-center gap-4 self-stretch md:min-h-[450px]">
           {/* LEFT COLUMN */}
           <div className="relative w-[200px] overflow-hidden">
             <div className="animate-marquee-up flex flex-col">
               {[...leftImages, ...leftImages].map((img, idx) => (
                 <div
                   key={idx}
-                  className="mb-4 rounded-2xl overflow-hidden shadow-lg border border-[#F3831C]/20 w-[200px] flex-shrink-0"
+                  className="mb-4 rounded-2xl overflow-hidden shadow-lg border border-[#F3831C]/20 md:w-[200px] flex-shrink-0"
                 >
                   <img
                     src={img.src}
@@ -218,7 +209,7 @@ const PassoutBanner = () => {
                     onError={(e) => {
                       e.currentTarget.src =
                         passOutCarouselData.image_url?.find(
-                          (i) => i.image_for === "No Image",
+                          (i) => i.image_for === "No Image"
                         )?.image_url || "";
                     }}
                   />
@@ -236,7 +227,7 @@ const PassoutBanner = () => {
               {[...rightImages, ...rightImages].map((img, idx) => (
                 <div
                   key={idx}
-                  className="mb-4 rounded-2xl overflow-hidden shadow-lg border border-[#F3831C]/20 w-[200px] flex-shrink-0"
+                  className="mb-4 rounded-2xl overflow-hidden shadow-lg border border-[#F3831C]/20 md:w-[200px] flex-shrink-0"
                 >
                   <img
                     src={img.src}
@@ -246,7 +237,7 @@ const PassoutBanner = () => {
                     onError={(e) => {
                       e.currentTarget.src =
                         passOutCarouselData.image_url?.find(
-                          (i) => i.image_for === "No Image",
+                          (i) => i.image_for === "No Image"
                         )?.image_url || "";
                     }}
                   />

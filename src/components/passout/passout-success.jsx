@@ -7,7 +7,6 @@ import SectionHeading from "../SectionHeading/SectionHeading";
 
 const PassoutSuccess = () => {
   const ITEMS_PER_LOAD = 3;
-  // const courseRefs = useRef({});
   const courseColors = {
     CFE: "#93c0e2",
     CIA: "#f2a966",
@@ -166,7 +165,7 @@ const PassoutSuccess = () => {
                       <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
                     </svg>
                   </div>
-                  <h2 className="text-2xl md:text-3xl font-medium text-[#0F3652]">
+                  <h2 className="text-xl  md:text-3xl font-medium text-[#0F3652]">
                     {courseFullForms[course]
                       ? `${courseFullForms[course]}`
                       : course}{" "}
@@ -185,7 +184,7 @@ const PassoutSuccess = () => {
                       key={story.id}
                       className="bg-white rounded-md overflow-hidden shadow-lg transition-shadow duration-300 flex flex-col"
                     >
-                      <div className="relative h-54">
+                      <div className="relative md:h-54">
                         <img
                           src={story.image}
                           alt={story.imageAlt}

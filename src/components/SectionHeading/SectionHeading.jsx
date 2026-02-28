@@ -24,15 +24,13 @@ const SectionHeading = ({
       )}
       <div className={`inline-block ${isCenter ? "mx-auto" : ""}`}>
         <h2
-          className={`text-3xl md:text-4xl font-bold ${
+          className={`text-2xl md:text-4xl font-bold ${
             className ? `text-${className}` : "text-[#0F3652]"
           } `}
         >
           {title} <span className="text-[#F3831C]">{highlight1}</span>
         </h2>
-        {/* <h2 className="text-3xl md:text-4xl font-bold text-[#F3831C]">
-          {highlight}
-        </h2> */}
+
         <h2
           className={`font-bold text-[#F3831C] mt-2 ${
             highlightclassName ? highlightclassName : "text-3xl md:text-4xl"

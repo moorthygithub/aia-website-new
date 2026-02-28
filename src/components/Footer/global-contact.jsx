@@ -104,9 +104,11 @@ export const ContactGrid = () => {
         Global Contact
         <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-[#fa8017] -mb-2"></span>
       </h4>
-      {regions.map((region) => (
-        <ContactCard key={region.country} {...region} />
-      ))}
+      <div className="grid grid-cols-1 gap-2">
+        {regions.map((region) => (
+          <ContactCard key={region.country} {...region} />
+        ))}
+      </div>
     </div>
   );
 };

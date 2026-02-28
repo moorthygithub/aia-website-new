@@ -131,7 +131,7 @@ const ContactHero = () => {
                 <span className="text-[#fa8017] font-semibold">Let's talk</span>
               </p>
 
-              <div className="absolute top-[20%] left-[68%]">
+              <div className="absolute top-[20%] left-[68%] hidden md:block">
                 <img
                   src={`${IMAGE_PATH}/arrow.png`}
                   alt="arrow"

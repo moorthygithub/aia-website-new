@@ -93,7 +93,7 @@ const HomeAccredited = () => {
             <img
               src={`${IMAGE_PATH}/GSAAA.png`}
               alt="GSAAA logo"
-              className="w-full h-full object-contain"
+              className="w-[180px] h-[180px] object-contain"
             />
           </div>
         </div>

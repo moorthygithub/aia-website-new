@@ -18,15 +18,13 @@ const CorporateCarouselSkeleton = ({ cards = 1 }) => {
         <div className="overflow-hidden">
           <div className="flex gap-2 sm:gap-3 md:gap-4">
             {Array.from({ length: cards }).map((_, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="flex-shrink-0"
                 style={{ width: `calc(${100 / cards}% - 12px)` }}
               >
-                <div className="bg-white rounded-lg sm:rounded-xl shadow-lg overflow-hidden border border-[#0F3652]/20">
-                  <div className="aspect-w-16 aspect-h-12 sm:aspect-h-10 md:aspect-h-9">
-                    <Skeleton className="w-full h-full" />
-                  </div>
+                <div className="bg-white rounded-xl shadow-md overflow-hidden border border-[#0F3652]/20">
+                  <Skeleton className="w-full aspect-square" />
                 </div>
               </div>
             ))}
@@ -40,26 +38,26 @@ const CorporateCarouselSkeleton = ({ cards = 1 }) => {
 const CorporateCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [cardsToShow, setCardsToShow] = useState(1);
+  const GAP = 16; // gap in px between cards
 
-  // Responsive cards to show based on screen size
   useEffect(() => {
     const updateCardsToShow = () => {
       if (window.innerWidth < 640) {
-        setCardsToShow(1); // Mobile
+        setCardsToShow(1);
       } else if (window.innerWidth < 768) {
-        setCardsToShow(2); // Small tablet
+        setCardsToShow(2);
       } else if (window.innerWidth < 1024) {
-        setCardsToShow(3); // Tablet
+        setCardsToShow(3);
       } else if (window.innerWidth < 1280) {
-        setCardsToShow(4); // Small desktop
+        setCardsToShow(4);
       } else {
-        setCardsToShow(5); // Large desktop
+        setCardsToShow(5);
       }
     };
 
     updateCardsToShow();
-    window.addEventListener('resize', updateCardsToShow);
-    return () => window.removeEventListener('resize', updateCardsToShow);
+    window.addEventListener("resize", updateCardsToShow);
+    return () => window.removeEventListener("resize", updateCardsToShow);
   }, []);
 
   const {
@@ -94,32 +92,34 @@ const CorporateCarousel = () => {
     }));
   }, [certificatesData]);
 
+  const totalSlides = Math.max(0, images.length - cardsToShow + 1);
+
+  // Reset slide if out of bounds after resize
+  useEffect(() => {
+    setCurrentSlide((prev) => Math.min(prev, Math.max(0, totalSlides - 1)));
+  }, [cardsToShow, totalSlides]);
+
   useEffect(() => {
     if (!images.length) return;
 
     const interval = setInterval(() => {
       setCurrentSlide((prev) => {
         const next = prev + 1;
-        const maxSlide = Math.max(0, Math.ceil(images.length / cardsToShow) - 1);
-        return next > maxSlide ? 0 : next;
+        return next >= totalSlides ? 0 : next;
       });
     }, 3000);
 
     return () => clearInterval(interval);
-  }, [images.length, cardsToShow]);
+  }, [images.length, totalSlides]);
 
-  const totalSlides = Math.ceil(images.length / cardsToShow);
-  const currentSlideIndex = currentSlide;
-
-  const handleDotClick = (index) => {
-    setCurrentSlide(index);
-  };
-
-  if (isLoading) {
-    return <CorporateCarouselSkeleton cards={cardsToShow} />;
-  }
-  
+  if (isLoading) return <CorporateCarouselSkeleton cards={cardsToShow} />;
   if (isError || !images.length) return null;
+
+  // Card width as percentage of container (accounting for gaps)
+  const cardWidthPercent = 100 / cardsToShow;
+  // Translate by one card width + gap per slide step
+  const translatePercent = currentSlide * cardWidthPercent;
+  const translateGapOffset = currentSlide * GAP;
 
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
@@ -128,31 +128,32 @@ const CorporateCarousel = () => {
         description="These moments capture AIA's hands-on corporate training engagement at SBI Card, marking professionals' successful participation in real-world learning sessions designed to strengthen audit, risk, and fraud capabilities through expert-led guidance."
         align="center"
       />
-      
+
       <div className="relative mt-4 md:mt-6 lg:mt-8">
         <div className="overflow-hidden">
           <div
-            className="flex gap-2 sm:gap-3 md:gap-4 transition-transform duration-500 ease-in-out"
+            className="flex transition-transform duration-500 ease-in-out"
             style={{
-              transform: `translateX(-${currentSlideIndex * 100}%)`,
+              gap: `${GAP}px`,
+              transform: `translateX(calc(-${translatePercent}% - ${translateGapOffset}px))`,
             }}
           >
             {images.map((img, index) => (
-              <div 
-                key={index} 
-                className="flex-shrink-0"
-                style={{ 
-                  width: `calc(${100 / cardsToShow}% - ${
-                    cardsToShow > 1 ? '8px' : '0px'
-                  })`,
+              <div
+                key={index}
+                className="flex-shrink-0 group"
+                style={{
+                  width: `calc(${cardWidthPercent}% - ${
+                    ((cardsToShow - 1) * GAP) / cardsToShow
+                  }px)`,
                 }}
               >
-                <div className="bg-white rounded-lg sm:rounded-xl shadow-lg overflow-hidden border border-[#0F3652] hover:border-[#F3831C] transition-colors duration-300 h-full">
-                  <div className="relative pt-[100%]">
+                <div className="bg-white overflow-hidden  transition-all duration-300 w-full flex items-center justify-center">
+                  <div className="relative w-60 h-60 border border-[#0F3652] hover:border-[#F3831C] rounded-xl shadow-md">
                     <img
                       src={img.src}
                       alt={img.alt}
-                      className="absolute inset-0 w-full h-full object-cover object-center"
+                      className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105 rounded-xl"
                       loading="lazy"
                       onError={(e) => {
                         const noImageUrl = certificatesData.image_url?.find(
@@ -175,9 +176,9 @@ const CorporateCarousel = () => {
             {Array.from({ length: totalSlides }).map((_, index) => (
               <button
                 key={index}
-                onClick={() => handleDotClick(index)}
+                onClick={() => setCurrentSlide(index)}
                 className={`h-1.5 sm:h-2 rounded-full transition-all duration-300 ${
-                  currentSlideIndex === index
+                  currentSlide === index
                     ? "bg-[#F3831C] w-6 sm:w-8"
                     : "bg-gray-300 hover:bg-gray-400 w-1.5 sm:w-2"
                 }`}

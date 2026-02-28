@@ -11,7 +11,7 @@ export function TestimonialsSectionColor({
   className,
   sucessstory,
   customDuration,
-  image,
+  imageclassName,
 }) {
   const marqueeRef = useRef(null);
   const [duration, setDuration] = useState(40);
@@ -31,10 +31,9 @@ export function TestimonialsSectionColor({
     <section
       className={cn(
         "py-12 sm:py-16 md:py-18 px-0 bg-[#0F3652] mt-10",
-        className,
+        className
       )}
     >
-      {/* <section className={cn("py-12 sm:py-16 md:py-18 px-0  mt-10", className)}> */}
       <div className="mx-auto flex max-w-340 flex-col items-center gap-4 text-center sm:gap-16">
         <SectionHeading
           title={title}
@@ -59,8 +58,9 @@ export function TestimonialsSectionColor({
                   href={testimonial.youtubeLink}
                   target="_blank"
                   course={testimonial.course}
-                  cardWidth={image?.width}
-                  cardHeight={image?.height}
+                  // cardWidth={image?.width}
+                  // cardHeight={image?.height}
+                  className={imageclassName}
                 />
               ))}
             </div>
@@ -77,8 +77,9 @@ export function TestimonialsSectionColor({
                   href={testimonial.youtubeLink}
                   target="_blank"
                   course={testimonial.course}
-                  cardWidth={image?.width}
-                  cardHeight={image?.height}
+                  // cardWidth={image?.width}
+                  // cardHeight={image?.height}
+                  className={imageclassName}
                 />
               ))}
             </div>

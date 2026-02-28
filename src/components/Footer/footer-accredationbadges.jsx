@@ -18,14 +18,16 @@ const AccreditationBadges = () => {
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-5 gap-2 items-center">
-      {badges.map(({ img, alt, href }) => {
+    <div className="grid grid-cols-2 md:grid-cols-5 gap-2 items-center">
+      {badges.map(({ img, alt, href }, index) => {
+        const isLast = index === badges.length - 1;
         const inner = (
-          <div className="bg-white border border-gray-700 rounded-lg p-2 w-full h-20 flex items-center justify-center transition-all duration-200 group-hover:border-[#fa8017]  group-hover:scale-105">
+          <div className="bg-white border border-gray-700 rounded-lg p-2 w-full h-20 flex items-center justify-center transition-all duration-200 group-hover:border-[#fa8017] group-hover:scale-105">
             <img src={img} alt={alt} className="w-full h-full object-contain" />
           </div>
         );
-        return href ? (
+
+        const wrapper = href ? (
           <a
             key={alt}
             href={href}
@@ -39,6 +41,19 @@ const AccreditationBadges = () => {
         ) : (
           <div key={alt} className="group" title={alt}>
             {inner}
+          </div>
+        );
+
+        return (
+          <div
+            key={alt}
+            className={
+              isLast ? "col-span-2 md:col-span-1 flex justify-center" : ""
+            }
+          >
+            <div className={isLast ? "w-1/2 md:w-full" : "w-full"}>
+              {wrapper}
+            </div>
           </div>
         );
       })}

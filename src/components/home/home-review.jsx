@@ -82,8 +82,8 @@ const HomeReview = () => {
             {!isLoading && !isError && testimonials.length > 0 && (
               <>
                 <div className="mb-6 flex gap-2">
-                  <img src={`${IMAGE_PATH}/g_logo.webp`} alt="Google Logo" className="w-12 h-12"/>
-                  <h2 className="text-3xl font-bold text-[#0F3652]">
+                  <img src={`${IMAGE_PATH}/g_logo.webp`} alt="Google Logo" className="h-10 w-10 md:w-12 md:h-12"/>
+                  <h2 className="text-2xl md:text-3xl font-bold text-[#0F3652]">
                     290+ Voices – All Rated{" "}
                     <span className="text-[#F3831C]">★★★★★</span>
                   </h2>

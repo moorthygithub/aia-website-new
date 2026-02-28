@@ -52,7 +52,7 @@ export function TestimonialCardColor({
         "overflow-hidden",
         className,
       )}
-      style={{ width: cardWidth, height: cardHeight }}
+      // style={{ width: cardWidth, height: cardHeight }}
     >
       <div
         className={`absolute top-0 right-0 z-30 backdrop-blur-sm px-3 py-1 rounded-md text-xs font-semibold ${getCourseStyles(course)}`}

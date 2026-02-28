@@ -16,7 +16,7 @@ const CourseResult = ({ course, queryKey, title, description }) => {
     queryKey: [queryKey ? queryKey : "course-results-common"],
     queryFn: async () => {
       const res = await axios.get(
-        `${BASE_URL}/api/getCertificatebyCourse/${course}`,
+        `${BASE_URL}/api/getCertificatebyCourse/${course}`
       );
       return res.data;
     },
@@ -26,11 +26,11 @@ const CourseResult = ({ course, queryKey, title, description }) => {
     if (!certificatesData?.data) return [];
 
     const certificateImageUrlObj = certificatesData.image_url?.find(
-      (item) => item.image_for === "Student",
+      (item) => item.image_for === "Student"
     );
 
     const certificateNoImageUrlObj = certificatesData.image_url?.find(
-      (item) => item.image_for === "No Image",
+      (item) => item.image_for === "No Image"
     );
 
     const certificateImageUrl = certificateImageUrlObj?.image_url || "";
@@ -104,10 +104,7 @@ const CourseResult = ({ course, queryKey, title, description }) => {
         description={description}
         testimonials={testimonials}
         customDuration={40}
-        image={{
-          width: "340px",
-          height: "220px",
-        }}
+        imageclassName="w-[280px] h-[180px] md:w-[340px] md:h-[220px]"
       />
     </div>
   );
