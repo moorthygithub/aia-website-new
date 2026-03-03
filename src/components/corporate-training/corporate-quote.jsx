@@ -14,6 +14,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import axios from "axios";
+import { X } from "lucide-react";
 import { useState } from "react";
 
 export const CorporateQuoteForm = ({
@@ -422,7 +423,15 @@ const CorporateQuoteDialog = ({
       </div>
 
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="w-full max-w-2xl rounded-md p-6">
+        <DialogContent className="w-full max-w-2xl rounded-md p-6 z-[10000]">
+          <button
+            onClick={() => setOpen(false)}
+            className="absolute top-4 right-4 md:hidden text-gray-500 hover:text-black transition-colors"
+            aria-label="Close"
+          >
+            <X size={22} />
+          </button>
+
           <DialogHeader className="mb-2">
             <DialogTitle className="text-xl font-bold text-gray-900">
               {title}

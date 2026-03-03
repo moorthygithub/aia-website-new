@@ -67,7 +67,7 @@ const FaqSection = ({ faqs = [] }) => {
                     onClick={() => setActiveHeading(heading)}
                   >
                     <h3
-                      className={`text-lg font-medium cursor-pointer transition-all duration-200 ${
+                      className={`text-md font-medium cursor-pointer transition-all duration-200 ${
                         activeHeading === heading
                           ? "text-[#F3831C] border-l-4 border-[#F3831C] pl-4"
                           : hoveredHeading === heading

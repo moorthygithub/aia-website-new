@@ -90,9 +90,9 @@ const PassoutResult = () => {
 
     const calculatedDuration = width / SPEED;
 
-    console.log("Certificates count:", testimonials.length);
-    console.log("Marquee width:", width);
-    console.log("Calculated Duration:", calculatedDuration);
+    // console.log("Certificates count:", testimonials.length);
+    // console.log("Marquee width:", width);
+    // console.log("Calculated Duration:", calculatedDuration);
 
     setDuration(calculatedDuration);
   }, [testimonials]);

@@ -93,27 +93,42 @@ const SectionHeading = ({
   `}</style>
         </div>
       </div>
-
-      {description && (
-        <div
-          className={`mt-4 ${
-            className ? `text-${className}` : "text-gray-600"
-          }  leading-relaxed  mx-auto ${
-            isCenter ? "text-center" : "text-left"
-          }`}
-        >
-          <p>{description}</p>
-        </div>
-      )}
-      {description1 && (
+      {/* //From Md SCreen */}
+      <div className="hidden md:block">
+        {description && (
+          <div
+            className={`mt-4  ${
+              className ? `text-${className}` : "text-gray-600"
+            }  leading-relaxed  mx-auto ${
+              isCenter ? "text-center" : "text-left"
+            }`}
+          >
+            <p>{description}</p>
+          </div>
+        )}
+        {description1 && (
+          <div
+            className={` text-gray-600 leading-relaxed  mx-auto ${
+              isCenter ? "text-center" : "text-left"
+            }`}
+          >
+            <p>{description1}</p>
+          </div>
+        )}
+      </div>
+      {/* //From xs SCreen */}
+      <div className="md:hidden ">
         <div
           className={` text-gray-600 leading-relaxed  mx-auto ${
             isCenter ? "text-center" : "text-left"
           }`}
         >
-          <p>{description1}</p>
+          <p>
+            {description}
+            {description1}
+          </p>
         </div>
-      )}
+      </div>
     </div>
   );
 };

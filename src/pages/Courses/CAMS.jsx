@@ -6,6 +6,7 @@ import WhatsappCarosal from "@/components/common/whatsapp-carosal";
 import CamsAbout from "@/components/courses/cams/cams-about";
 import CamsConnection from "@/components/courses/cams/cams-connection";
 import CamsCourseCurriculum from "@/components/courses/cams/cams-course-curriculum";
+import CamsCourseLms from "@/components/courses/cams/cams-course-lms";
 import CamsFaq from "@/components/courses/cams/cams-faq";
 import CamsHighlight from "@/components/courses/cams/cams-highlight";
 import CamsJourney from "@/components/courses/cams/cams-journey";
@@ -58,9 +59,12 @@ Each message reflects a different experience. These reflections provide a genuin
         title="Hear from Our Recently Qualified Professionals on YouTube"
         description="Watch AIA-trained professionals share their CAMS journey, exam strategies, and career insights in exclusive interviews with Puneet Sir on YouTube."
       />
-      <AboutTrainerSection path="faculty_cams.webp" />
+      <AboutTrainerSection
+        path="faculty_cams.webp"
+        messageimage="message_cams.webp"
+      />
       <CourseYoutubeLecture courseSlug="cams" />
-      <CfeCourseLms
+      <CamsCourseLms
         title="Join AiA CAMS LMS"
         subtitle="Online Training and Certification Course"
         course="CAMS"

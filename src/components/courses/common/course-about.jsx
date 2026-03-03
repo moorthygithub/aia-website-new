@@ -24,7 +24,7 @@ const CourseAbout = ({
 
         <div className="grid lg:grid-cols-2 gap-8 md:gap-10 lg:gap-12 xl:gap-16 items-center">
           {/* Left Content */}
-          <div className="order-2 lg:order-1">
+          <div >
             {badgeText && (
               <div className="flex items-center gap-3 mb-2 md:mb-3">
                 <span className="text-xs sm:text-sm font-medium text-[#F3831C] tracking-wider">
@@ -53,7 +53,7 @@ const CourseAbout = ({
           </div>
 
           {/* Right Content - Stats Grid */}
-          <div className="grid grid-cols-2 gap-3 sm:gap-4 order-1 lg:order-2">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4">
             {aboutStats?.map((stat, index) => (
               <div
                 key={index}

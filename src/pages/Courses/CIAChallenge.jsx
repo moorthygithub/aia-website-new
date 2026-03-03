@@ -48,8 +48,9 @@ const CIAChallenge = () => {
       <CiaWhyAia />
       <WhatsappCarosal
         title="Unfiltered Reflections from AIA-Trained Professionals"
- description="Heartfelt messages shared by professionals after completing their journey with AIA.
-Each message reflects a different experience. These reflections provide a genuine view of what preparation looks like in real situations, beyond structured testimonials"        course="CIAC"
+        description="Heartfelt messages shared by professionals after completing their journey with AIA.
+Each message reflects a different experience. These reflections provide a genuine view of what preparation looks like in real situations, beyond structured testimonials"
+        course="CIAC"
       />
       <CiaHighlight />
       <CourseMap courseCode="CIAC" />
@@ -59,7 +60,10 @@ Each message reflects a different experience. These reflections provide a genuin
         title="Hear from Our Recently Qualified Professionals on YouTube"
         description="Watch AIA-trained professionals share their CIA journey, exam strategies, and career insights in exclusive interviews with Puneet Sir on YouTube."
       />
-      <AboutTrainerSection path="faculty_cia_challenge.webp" />
+      <AboutTrainerSection
+        path="faculty_cia_challenge.webp"
+        messageimage="message_cia.webp"
+      />
       <CourseYoutubeLecture courseSlug="cia-challenge-curriculum" />
       <CiaCourseLms />
       <CiaUnique />

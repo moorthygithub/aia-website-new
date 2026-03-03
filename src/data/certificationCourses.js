@@ -90,7 +90,7 @@ export const CorporatecertificationCourses = [
       "Build organizational resilience by minimizing financial, operational, and reputational risks linked to fraud.",
       "Instill a culture of transparency, accountability, and ethical decision-making across departments.",
       "Strengthen compliance functions and reinforce trust with regulators, clients, and stakeholders.",
-      "Improve overall financial governance by equipping managers with tools to identify and mitigate risk in",
+      "Improve overall financial governance by equipping managers with tools to identify and mitigate risk in real time",
     ],
     cta: "Explore More About CFE",
     link: "cfe-curriculum",

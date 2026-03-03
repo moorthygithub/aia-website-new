@@ -1,6 +1,5 @@
-import React from "react";
+import { partnerLogos } from "@/utils/partnerLogos";
 import CourseHighLight from "../common/course-highlight";
-import { IMAGE_PATH } from "@/api/base-url";
 
 const CiaCurrHighlight = () => {
   return (
@@ -22,13 +21,7 @@ const CiaCurrHighlight = () => {
         },
         { value: 36, suffix: "+ Countries", subtitle: "Served" },
       ]}
-      logos={[
-        { img: `${IMAGE_PATH}/IAO.png` },
-        { img: `${IMAGE_PATH}/IIA.png` },
-        { img: `${IMAGE_PATH}/ISO.png` },
-        { img: `${IMAGE_PATH}/Gleim.png` },
-        { img: `${IMAGE_PATH}/GSAAA.png` },
-      ]}
+      logos={partnerLogos}
     />
   );
 };

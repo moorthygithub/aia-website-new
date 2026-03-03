@@ -57,7 +57,7 @@ const HomeAccredited = () => {
 
         {/* Mobile view  */}
         <div className="md:hidden grid grid-cols-2 gap-8 px-6 place-items-center">
-          <div className="bg-white rounded-full shadow-md flex items-center justify-center">
+          <div className=" flex items-center justify-center">
             <img
               src={`${IMAGE_PATH}/IAO.png`}
               alt="IAO logo"
@@ -65,7 +65,7 @@ const HomeAccredited = () => {
             />
           </div>
 
-          <div className="bg-white rounded-full shadow-md flex items-center justify-center">
+          <div className="flex items-center justify-center">
             <img
               src={`${IMAGE_PATH}/IIA.png`}
               alt="IIA logo"
@@ -73,7 +73,7 @@ const HomeAccredited = () => {
             />
           </div>
 
-          <div className="bg-white rounded-full shadow-md flex items-center justify-center">
+          <div className="flex items-center justify-center">
             <img
               src={`${IMAGE_PATH}/ISO.png`}
               alt="ISO logo"
@@ -81,7 +81,7 @@ const HomeAccredited = () => {
             />
           </div>
 
-          <div className="bg-white rounded-full shadow-md flex items-center justify-center">
+          <div className="flex items-center justify-center">
             <img
               src={`${IMAGE_PATH}/Gleim.png`}
               alt="Gleim logo"
@@ -89,7 +89,7 @@ const HomeAccredited = () => {
             />
           </div>
 
-          <div className="col-span-2 bg-white rounded-full shadow-md flex items-center justify-center">
+          <div className="col-span-2 flex items-center justify-center">
             <img
               src={`${IMAGE_PATH}/GSAAA.png`}
               alt="GSAAA logo"

@@ -27,19 +27,6 @@ const HomeResults = ({ title, description }) => {
       certificatesData.image_url?.find((item) => item.image_for === "Student")
         ?.image_url || "";
 
-    // const validCertificates = certificatesData.data.filter(
-    //   (item) => item.student_other_certificate_image,
-    // );
-
-    // const order = ["ACFE", "IIA", "ACAMS"];
-
-    // validCertificates.sort((a, b) => {
-    //   const aIndex = order.indexOf(a.student_certificate_issued_by);
-    //   const bIndex = order.indexOf(b.student_certificate_issued_by);
-
-    //   return (aIndex === -1 ? 99 : aIndex) - (bIndex === -1 ? 99 : bIndex);
-    // });
-
     return certificatesData?.data.map((certificate) => ({
       author: {
         avatar: `${studentImageBaseUrl}${certificate.student_other_certificate_image}`,
@@ -89,7 +76,6 @@ const HomeResults = ({ title, description }) => {
       description={description}
       testimonials={testimonials}
       customDuration={40}
- 
       imageclassName="w-[280px] h-[180px] md:w-[340px] md:h-[220px]"
     />
   );

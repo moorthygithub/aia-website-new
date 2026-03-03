@@ -29,13 +29,13 @@ export function TestimonialsSectionColor({
 
     const width = marqueeRef.current.scrollWidth;
 
-    const SPEED = 140; 
+    const SPEED = 140;
 
     const calculatedDuration = width / SPEED;
 
-    console.log("Testimonials count:", testimonials.length);
-    console.log("Marquee width:", width);
-    console.log("Calculated Duration:", calculatedDuration);
+    // console.log("Testimonials count:", testimonials.length);
+    // console.log("Marquee width:", width);
+    // console.log("Calculated Duration:", calculatedDuration);
 
     setDuration(calculatedDuration);
   }, [testimonials]);
@@ -102,8 +102,9 @@ export function TestimonialsSectionColor({
           </div>
 
           {/* Fade edges */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-background" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-background" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-background hidden md:block" />
+
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-background hidden md:block" />
         </div>
       </div>
       {sucessstory && (

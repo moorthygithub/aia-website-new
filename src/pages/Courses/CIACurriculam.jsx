@@ -64,7 +64,10 @@ Each message reflects a different experience. These reflections provide a genuin
         title="Hear from Our Recently Qualified Professionals on YouTube"
         description="Watch AIA-trained professionals share their CFE journey, exam strategies, and career insights in exclusive interviews with Puneet Sir on YouTube."
       />
-      <AboutTrainerSection path="faculty_cia.webp" />
+      <AboutTrainerSection
+        path="faculty_cia.webp"
+        messageimage="message_cia.webp"
+      />
       <CourseYoutubeLecture courseSlug="cia-curriculum" />
       <CiaCurrCourseLms />
       <CfeCurrUnique />
