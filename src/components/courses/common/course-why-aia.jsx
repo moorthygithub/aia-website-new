@@ -3,11 +3,13 @@ import React from "react";
 
 const CourseWhyAia = ({ heading, items }) => {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-14">
       <div className="w-full py-10">
-        <SectionHeading title={heading} align="center" />
+        <div className="pb-6">
+          <SectionHeading title={heading} align="center" />
+        </div>
 
-        <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 place-items-center">
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 place-items-center">
           {items.map((item, i) => (
             <DiamondCard key={i} img={item.img} title={item.title} />
           ))}

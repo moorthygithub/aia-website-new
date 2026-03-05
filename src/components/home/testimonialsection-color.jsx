@@ -51,12 +51,14 @@ export function TestimonialsSectionColor({
       )}
     >
       <div className="mx-auto flex max-w-340 flex-col items-center gap-4 text-center sm:gap-16">
-        <SectionHeading
-          title={title}
-          description={description}
-          align="center"
-          className="white"
-        />
+        <div className="px-4">
+          <SectionHeading
+            title={title}
+            description={description}
+            align="center"
+            className="white"
+          />
+        </div>
         <div className="relative flex w-full overflow-hidden">
           <div
             className="group flex gap-4"

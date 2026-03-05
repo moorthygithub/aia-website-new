@@ -68,12 +68,17 @@ Each message reflects a different experience. These reflections provide a genuin
         path="faculty_cia.webp"
         messageimage="message_cia.webp"
       />
-      <CourseYoutubeLecture courseSlug="cia-curriculum" />
+      <CourseYoutubeLecture
+        courseSlug="cia-curriculum"
+        title="Master CIA Concepts with AIA’s Video Learning Series"
+        description="Explore concise video sessions by Puneet Sir covering key CIA topics, simplified for practical clarity and exam-focused understanding."
+      />
       <CiaCurrCourseLms />
       <CfeCurrUnique />
       <CourseAchivers
         slug="CIA"
         title="From Aspirants to Certified Internal Auditors - Our Recent CIA Achievers"
+        description="Meet AIA proud achievers who advance their careers by achieving the global CIA credential with structured prep and real-world expertise."
       />
       <CourseBlog
         course="CIA"

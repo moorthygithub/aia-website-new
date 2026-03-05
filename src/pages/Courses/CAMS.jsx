@@ -63,7 +63,11 @@ Each message reflects a different experience. These reflections provide a genuin
         path="faculty_cams.webp"
         messageimage="message_cams.webp"
       />
-      <CourseYoutubeLecture courseSlug="cams" />
+      <CourseYoutubeLecture
+        courseSlug="cams"
+        title="Master CAMS Concepts with AIA’s Video Learning Series"
+        description="Explore concise video sessions by Puneet Sir covering key CAMS topics, simplified for practical clarity and exam-focused understanding."
+      />
       <CamsCourseLms
         title="Join AiA CAMS LMS"
         subtitle="Online Training and Certification Course"
@@ -75,6 +79,7 @@ Each message reflects a different experience. These reflections provide a genuin
       <CourseAchivers
         slug="CAMS"
         title="Meet the Professionals Who Successfully Cleared the CAMS with AIA"
+        description="Meet AIA proud achievers who advance their careers by achieving the global CAMS credential with structured prep and real-world expertise."
       />
       <CourseBlog
         course="CAMS"

@@ -12,19 +12,21 @@ const CompanyMarquee = ({ companies }) => {
             100% { transform: translateX(-100%); }
           }
           .marquee {
-            animation: marquee 50s linear infinite;
+            animation: marquee 80s linear infinite;
           }
         `}
       </style>
 
-      <div className="w-full bg-gradient-to-b from-[#0f365200]/5 via-[#0F3652]/30 to-[#0F3652]/60 py-20 overflow-hidden">
+      <div className="w-full bg-gradient-to-b from-[#0f365200]/5 via-[#0F3652]/30 to-[#0F3652]/60 py-10 md:py-20 overflow-hidden">
         <div className="p-2 md:pl-4 md:ml-12">
-          <SectionHeading
-            title="AIA Alumni Driving Impact in"
-            highlight="World’s Top Organizations"
-            description="AIA alumni contribute to high-impact roles across renowned organizations, reflecting the real-world value of our certification-led training"
-            highlightclassName="text-3xl  md:text-6xl"
-          />
+          <div className="px-4">
+            <SectionHeading
+              title="AIA Alumni Driving Impact in"
+              highlight="World’s Top Organizations"
+              description="AIA alumni contribute to high-impact roles across renowned organizations, reflecting the real-world value of our certification-led training"
+              highlightclassName="text-3xl  md:text-6xl"
+            />
+          </div>
 
           {/* <div className="max-w-340 mx-auto px-6 mb-6">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#0F3652] mb-4">

@@ -90,7 +90,6 @@ const HomeReview = () => {
                   <h2 className="text-2xl md:text-3xl font-bold text-[#0F3652]">
                     {/* 290+ Voices – All Rated{" "} */}
                     290+ Professional Experiences Shared
-                    <span className="text-[#F3831C]">★★★★★</span>
                   </h2>
                 </div>
                 <Swiper
@@ -149,7 +148,7 @@ const HomeReview = () => {
                           </svg>
                         </div>
 
-                        <p className="text-[#0F3652] pl-2 border-l-2 border-[#F3831C]/50">
+                        <p className="text-[#0F3652] pl-2 border-l-2 border-[#F3831C]/50 text-justify">
                           {truncateText(item.message)}
 
                           {item?.link && (

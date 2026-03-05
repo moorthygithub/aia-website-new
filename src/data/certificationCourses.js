@@ -16,7 +16,10 @@ const certificationCourses = [
     cta: "Explore More About CFE",
     link: "cfe-curriculum",
     bgColor: "#ffffff",
-    textColor: "#0F3652",
+    textColor: "#F3831C",
+    lefttextColor: "#F3831C",
+    buttonColor: "#0F3652",
+    smalllefttextColor: "#F3831C",
   },
   {
     id: 2,
@@ -36,6 +39,9 @@ const certificationCourses = [
     link: "cia-curriculum",
     bgColor: "#0F3652",
     textColor: "#ffffff",
+    lefttextColor: "#0F3652",
+    buttonColor: "#F3831C",
+    smalllefttextColor: "#ffffff",
   },
   {
     id: 3,
@@ -56,6 +62,9 @@ const certificationCourses = [
     link: "cia-challenge-curriculum",
     bgColor: "#ffffff",
     textColor: "#0F3652",
+    lefttextColor: "#F3831C",
+    smalllefttextColor: "#F3831C",
+    buttonColor: "#0F3652",
   },
   {
     id: 4,
@@ -75,6 +84,9 @@ const certificationCourses = [
     link: "cams",
     bgColor: "#0F3652",
     textColor: "#ffffff",
+    lefttextColor: "#0F3652",
+    smalllefttextColor: "#ffffff",
+    buttonColor: "#F3831C",
   },
 ];
 export default certificationCourses;
@@ -96,6 +108,9 @@ export const CorporatecertificationCourses = [
     link: "cfe-curriculum",
     bgColor: "#ffffff",
     textColor: "#0F3652",
+    lefttextColor: "#F3831C",
+    buttonColor: "#0F3652",
+    smalllefttextColor: "#F3831C",
   },
   {
     id: 2,
@@ -115,6 +130,9 @@ export const CorporatecertificationCourses = [
     link: "cia-curriculum",
     bgColor: "#0F3652",
     textColor: "#ffffff",
+    lefttextColor: "#0F3652",
+    buttonColor: "#F3831C",
+    smalllefttextColor: "#ffffff",
   },
   {
     id: 3,
@@ -134,5 +152,8 @@ export const CorporatecertificationCourses = [
     link: "cams",
     bgColor: "#ffffff",
     textColor: "#0F3652",
+    lefttextColor: "#F3831C",
+    smalllefttextColor: "#F3831C",
+    buttonColor: "#0F3652",
   },
 ];

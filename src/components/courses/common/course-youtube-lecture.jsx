@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useRef, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
@@ -89,7 +88,7 @@ const CourseYoutubeLecture = ({
   if (filteredVideos.length === 0) return null;
 
   return (
-    <div className="w-full  px-4 sm:px-6 lg:px-8 md:py-18">
+    <div className="w-full  px-4 py-8 sm:px-6 lg:px-8 md:py-18">
       <div className="max-w-340 mx-auto">
         <SectionHeading
           title={title || "Visit Our Youtube Channel"}

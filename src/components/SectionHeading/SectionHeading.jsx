@@ -52,46 +52,6 @@ const SectionHeading = ({
 
           <span className="absolute top-0 left-0 h-1 w-1/2 bg-[#F3831C] rounded animate-underline-slide" />
         </div> */}
-        <div
-          className={`mt-3 flex ${isCenter ? "justify-center" : "justify-start"}`}
-        >
-          <div
-            className="relative flex items-center justify-center"
-            style={{ width: "120px", height: "18px", overflow: "hidden" }}
-          >
-            <span
-              className="absolute block"
-              style={{
-                width: "60%",
-                height: "2.5px",
-                background: className ? undefined : "#0F3652",
-              }}
-              {...(className && {
-                className: `absolute block bg-${className}`,
-              })}
-            />
-
-            <span
-              className="absolute block"
-              style={{
-                width: "25%",
-                height: "6px",
-                background: "#F3831C",
-                top: "50%",
-                transform: "translateY(-50%)",
-                animation: "slideBackForth 2.8s ease-in-out infinite",
-              }}
-            />
-          </div>
-
-          <style>{`
-    @keyframes slideBackForth {
-      0%   { left: 15%; }
-      50%  { left: 60%; }
-      100% { left: 15%; }
-    }
-  `}</style>
-        </div>
       </div>
       {/* //From Md SCreen */}
       <div className="hidden md:block">
@@ -119,15 +79,57 @@ const SectionHeading = ({
       {/* //From xs SCreen */}
       <div className="md:hidden ">
         <div
-          className={` text-gray-600 leading-relaxed  mx-auto ${
+          className={` ${
+            className ? `text-${className}` : "text-gray-600"
+          }  leading-relaxed  mx-auto ${
             isCenter ? "text-center" : "text-left"
           }`}
         >
-          <p>
+          <p className="text-justify">
             {description}
             {description1}
           </p>
         </div>
+      </div>
+      <div
+        className={`mt-3 flex ${isCenter ? "justify-center" : "justify-start"}`}
+      >
+        <div
+          className="relative flex items-center justify-center"
+          style={{ width: "120px", height: "18px", overflow: "hidden" }}
+        >
+          <span
+            className="absolute block"
+            style={{
+              width: "60%",
+              height: "2.5px",
+              background: className ? undefined : "#0F3652",
+            }}
+            {...(className && {
+              className: `absolute block bg-${className}`,
+            })}
+          />
+
+          <span
+            className="absolute block"
+            style={{
+              width: "25%",
+              height: "6px",
+              background: "#F3831C",
+              top: "50%",
+              transform: "translateY(-50%)",
+              animation: "slideBackForth 2.8s ease-in-out infinite",
+            }}
+          />
+        </div>
+
+        <style>{`
+    @keyframes slideBackForth {
+      0%   { left: 15%; }
+      50%  { left: 60%; }
+      100% { left: 15%; }
+    }
+  `}</style>
       </div>
     </div>
   );

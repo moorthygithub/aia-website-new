@@ -1,70 +1,90 @@
 {
-    "data": [
-        {
-            "id": 1,
-            "side_popup_heading": "What's AIA CIA 3-Part USP?",
-            "side_popup_description": "Get 70+ hours of detailed video lectures.",
-            "side_popup_link": "https:\/\/webs.aia.in.net\/cia-curriculum"
-        },
-        {
-            "id": 2,
-            "side_popup_heading": "What is AIA's success track record?",
-            "side_popup_description": "We maintain a 99.6% proven track record of student success.",
-            "side_popup_link": "https:\/\/webs.aia.in.net\/about-aia"
-        },
-        {
-            "id": 3,
-            "side_popup_heading": "How is AIA CFE prep different?",
-            "side_popup_description": "We condensed 2000 pages into 200 pages.",
-            "side_popup_link": "https:\/\/webs.aia.in.net\/cfe-curriculum"
-        },
-        {
-            "id": 5,
-            "side_popup_heading": "What's the core benefit of the AIA CFE course?",
-            "side_popup_description": "With AIA, get 60+ hours of recorded video lectures.",
-            "side_popup_link": "https:\/\/webs.aia.in.net\/cfe-curriculum"
-        },
-        {
-            "id": 6,
-            "side_popup_heading": "How many professionals cleared recently?",
-            "side_popup_description": "Last week, 10+ learners cleared their exams with AIA.",
-            "side_popup_link": "https:\/\/webs.aia.in.net\/our-passouts"
-        },
-        {
-            "id": 7,
-            "side_popup_heading": "What's different in the AIA CIA 3-Part course?",
-            "side_popup_description": "AIA offers enrollment support from start to end.",
-            "side_popup_link": "https:\/\/webs.aia.in.net\/cia-curriculum"
-        },
-        {
-            "id": 8,
-            "side_popup_heading": "What's unique in the CIAC prep course?",
-            "side_popup_description": "Get exclusive 200-page notes that are most relevant and effective.",
-            "side_popup_link": "https:\/\/webs.aia.in.net\/cia-challenge-curriculum"
-        },
-        {
-            "id": 9,
-            "side_popup_heading": "Who are the recent CFE passouts from AIA?",
-            "side_popup_description": "Kannadas Babu, Sreeja, Sameer Ranade, Tav Sai Ankitha, and many more.",
-            "side_popup_link": "https:\/\/webs.aia.in.net\/cfe-curriculum"
-        },
-        {
-            "id": 10,
-            "side_popup_heading": "How can I enroll with AIA?",
-            "side_popup_description": "Simply click the + icon above to connect via mail, call, or message. We'll wait for you:)",
-            "side_popup_link": "https:\/\/webs.aia.in.net\/contact"
-        },
-        {
-            "id": 11,
-            "side_popup_heading": "What's the key offering in AIA CAMS prep?",
-            "side_popup_description": "AIA provides 100+ pages of concise notes.",
-            "side_popup_link": "https:\/\/webs.aia.in.net\/cams"
-        },
-        {
-            "id": 12,
-            "side_popup_heading": "What's AIA CIAC specialty?",
-            "side_popup_description": "Get 500+ exam distractors to identify exam traps.",
-            "side_popup_link": "https:\/\/webs.aia.in.net\/cia-challenge-curriculum"
-        }
-    ]
+  <div className="max-w-340 mx-auto">
+    <div className="mb-8">
+      <div className="bg-[#0F3652] text-white text-center py-3 px-4 rounded-lg">
+        <h1 className="text-lg sm:text-xl font-bold">{title}</h1>
+      </div>
+    </div>
+    {description && (
+      <div
+        className="text-[#0F3652] leading-relaxed mx-6 md:mx-20 mb-8 text-justify"
+        dangerouslySetInnerHTML={{
+          __html: description.replace(/\n/g, "<br />"),
+        }}
+      />
+    )}
+    <div className="flex flex-col md:flex-row max-w-5xl mx-auto justify-center gap-4 items-stretch">
+      <div className="w-full md:w-[30%] space-y-2">
+        {curriculumData.map((item) => (
+          <button
+            key={item.id}
+            onMouseEnter={() => setActiveTab(item.id)}
+            className={`
+                  w-full text-left p-6 shadow-lg shadow-black/20  rounded-br-3xl rounded-tl-3xl transition-all duration-200 cursor-pointer
+                  border
+                  ${
+                    activeTab === item.id
+                      ? "bg-[#F3831C] text-white"
+                      : "bg-white text-[#0F3652] border-gray-200 hover:bg-[#0F3652]/5"
+                  }
+                `}
+          >
+            <div className="flex items-center">
+              <div
+                className={`
+                      w-8 h-8 rounded-md flex items-center justify-center mr-3 font-bold text-lg
+                      
+                    `}
+              >
+                {item.id}
+              </div>
+              <span className="font-medium text-sm leading-tight">
+                {item.title}
+              </span>
+            </div>
+          </button>
+        ))}
+      </div>
+
+      <div className="w-full md:w-[70%]">
+        <div className="bg-white rounded-br-3xl rounded-tl-3xl p-4 shadow-lg shadow-black/20 border border-[#F3831C]/20 h-full">
+          {activeContent?.content?.length ? (
+            <div className="space-y-1">
+              <div className="mb-3">
+                <h3 className="text-lg font-bold text-[#0F3652] mb-1">
+                  Module {activeContent.id}: {activeContent.title}
+                </h3>
+                <div className="w-12 h-0.5 bg-[#0F3652] rounded-full" />
+              </div>
+
+              <div className=" pr-2">
+                {activeContent.content.map((text, index) =>
+                  text
+                    .split(/\n+/)
+                    .filter(Boolean)
+                    .map((paragraph, pIndex) => (
+                      <div
+                        key={`${index}-${pIndex}`}
+                        className="flex items-start mb-1 p-0.5 rounded hover:bg-[#0F3652]/5 transition-colors duration-150"
+                      >
+                        <div
+                          className="text-[#0F3652] leading-relaxed text-justify"
+                          dangerouslySetInnerHTML={{ __html: paragraph }}
+                        />
+                      </div>
+                    )),
+                )}
+              </div>
+            </div>
+          ) : (
+            <div className="flex items-center justify-center h-full py-8">
+              <p className="text-[#0F3652]/60 text-sm text-center">
+                Hover over a module to view content
+              </p>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </div>;
 }

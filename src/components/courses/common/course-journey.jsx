@@ -4,7 +4,7 @@ import React from "react";
 const CourseJourney = ({ heading, highlight, steps, connectorImage }) => {
   return (
     <section className="py-12 md:py-16 lg:py-20 px-4 md:px-8 lg:px-12 bg-white">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <div className="text-center max-w-4xl mx-auto mb-8 md:mb-10 lg:mb-14 px-2">
           <h3 className="text-2xl md:text-3xl lg:text-[36px] font-bold mb-3 md:mb-4 text-[#0F3652]">
             <SectionHeading

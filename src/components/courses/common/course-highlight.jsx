@@ -18,11 +18,18 @@ const CourseHighLight = ({ badgeText, title, description, stats, logos }) => {
               </div>
             )}
 
-            <SectionHeading
+            {/* <SectionHeading
               title={title}
               description={description}
               align="center"
-            />
+            /> */}
+            <div className="px-4">
+              <SectionHeading
+                title={title}
+                description={description}
+                align="center"
+              />
+            </div>
           </div>
         </div>
 
@@ -196,6 +203,7 @@ const CourseHighLight = ({ badgeText, title, description, stats, logos }) => {
           <div className="max-w-340 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-6 px-2 mx-auto">
             {logos.map((logo, index) => {
               const Wrapper = logo.link ? "a" : "div";
+              const isLast = index == logos.length - 1;
 
               return (
                 <Wrapper
@@ -205,7 +213,9 @@ const CourseHighLight = ({ badgeText, title, description, stats, logos }) => {
                     target: "_blank",
                     rel: "noopener noreferrer",
                   })}
-                  className="rounded-xl p-8 text-center transition-all duration-300 flex items-center justify-center hover:scale-125"
+                  className={`rounded-xl p-8 text-center transition-all duration-300 
+          flex items-center justify-center hover:scale-125 cursor-pointer
+          ${isLast ? "col-span-2 md:col-span-1" : "md:col-span-1"}`}
                 >
                   <img
                     src={logo.img}

@@ -103,26 +103,30 @@ const CourseAchivers = ({ slug, title, description }) => {
       className="relative w-full min-h-screen overflow-hidden bg-muted/30 my-18"
       style={{ height: 600 }}
     >
-        <SectionHeading
-          title={title}
-          description={description}
-          align="center"
-        />
-      {testimonialsList.map((testimonial, index) => {
-        const position =
-          testimonialsList.length % 2
-            ? index - (testimonialsList.length + 1) / 2
-            : index - testimonialsList.length / 2;
-        return (
-          <CourseAchiverCard
-            key={testimonial.tempId}
-            testimonial={testimonial}
-            handleMove={handleMove}
-            position={position}
-            cardSize={cardSize}
+      <div className="pt-8 px-4">
+        <div>
+          <SectionHeading
+            title={title}
+            description={description}
+            align="center"
           />
-        );
-      })}
+        </div>
+        {testimonialsList.map((testimonial, index) => {
+          const position =
+            testimonialsList.length % 2
+              ? index - (testimonialsList.length + 1) / 2
+              : index - testimonialsList.length / 2;
+          return (
+            <CourseAchiverCard
+              key={testimonial.tempId}
+              testimonial={testimonial}
+              handleMove={handleMove}
+              position={position}
+              cardSize={cardSize}
+            />
+          );
+        })}
+      </div>
 
       <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2 mt-8">
         <button

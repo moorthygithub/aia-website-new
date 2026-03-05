@@ -99,8 +99,81 @@ export const TestimonialSlider = ({ reviews, className }) => {
           fetchPriority="low"
         />
       ))}
+      {/* Mobile Layout */}
+      <div className="md:hidden flex flex-col space-y-6">
+        <div className="grid grid-cols-3 gap-4 items-center">
+          <div className="relative h-[280px] col-span-2">
+            <AnimatePresence initial={false}>
+              <motion.img
+                key={currentIndex}
+                src={activeReview.imageSrc}
+                alt={activeReview.name}
+                // initial={{ opacity: 0, y: 20 }}
+                // animate={{ opacity: 1, y: 0 }}
+                // exit={{ opacity: 0, y: -20 }}
+                // transition={{ duration: 0.4 }}
+                className="absolute inset-0 w-full h-full object-cover rounded-lg"
+                onLoad={() => handleImageLoad(activeReview.imageSrc)}
+              />
+            </AnimatePresence>
+          </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 h-full">
+          {/* Thumbnails */}
+          <div className="flex flex-col space-y-3">
+            {thumbnailReviews.map((review) => {
+              const originalIndex = reviews.findIndex(
+                (r) => r.id === review.id,
+              );
+
+              return (
+                <button
+                  key={review.id}
+                  onClick={() => handleThumbnailClick(originalIndex)}
+                  className="overflow-hidden rounded-md w-full h-20 opacity-70 hover:opacity-100"
+                >
+                  <img
+                    src={review.thumbnailSrc}
+                    alt={review.name}
+                    className="w-full h-full object-cover"
+                  />
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Navigation Buttons */}
+        <div className="flex justify-center space-x-4">
+          <Button
+            variant="outline"
+            size="icon"
+            className="rounded-full w-12 h-12"
+            onClick={handlePrev}
+          >
+            <ArrowLeftIcon className="w-5 h-5" />
+          </Button>
+
+          <Button
+            variant="default"
+            size="icon"
+            className="rounded-full w-12 h-12"
+            onClick={handleNext}
+          >
+            <ArrowRightIcon className="w-5 h-5" />
+          </Button>
+        </div>
+
+        <div>
+          <p className="text-sm font-medium text-muted-foreground">
+            {activeReview.affiliation}
+          </p>
+          <h3 className="text-2xl font-semibold mt-1">{activeReview.name}</h3>
+          <blockquote className="text-lg leading-snug text-justify">
+            "{activeReview.quote}"
+          </blockquote>
+        </div>
+      </div>
+      <div className="hidden md:grid grid-cols-1 md:grid-cols-12 gap-8 h-full">
         <div className="md:col-span-3 flex flex-col justify-between order-2 md:order-1">
           <div className="flex flex-row md:flex-col justify-between md:justify-start space-x-4 md:space-x-0 md:space-y-4">
             <span className="text-sm text-muted-foreground font-mono">
@@ -231,7 +304,7 @@ export const TestimonialSlider = ({ reviews, className }) => {
                 <h3 className="text-3xl font-semibold mt-1">
                   {activeReview.name}
                 </h3>
-                <blockquote className="mt-6 text-xl md:text-2xl  leading-snug">
+                <blockquote className="mt-6 text-xl md:text-2xl  leading-snug text-justify">
                   "{activeReview.quote}"
                 </blockquote>
               </motion.div>

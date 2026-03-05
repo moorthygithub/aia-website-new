@@ -136,11 +136,13 @@ const PassoutResult = () => {
     <div>
       <section className="py-12 px-0">
         <div className="mx-auto flex max-w-340 flex-col items-center gap-4 text-center sm:gap-16">
-          <SectionHeading
-            title="Meet the AIA-Certified Professionals Worldwide"
-            description="Tap on any certificate to learn about their certification journey, explore their LinkedIn profiles, and connect with professionals who advanced their careers through AIA’s global programs."
-            align="center"
-          />
+          <div className="px-4 ">
+            <SectionHeading
+              title="Meet the AIA-Certified Professionals Worldwide"
+              description="Tap on any certificate to learn about their certification journey, explore their LinkedIn profiles, and connect with professionals who advanced their careers through AIA’s global programs."
+              align="center"
+            />
+          </div>
           {/* <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
             <div
               className="group flex overflow-hidden p-2 [--gap:1rem] gap-(--gap) flex-row"

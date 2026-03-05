@@ -172,444 +172,260 @@ const FreeResourcePracticeQuestion = () => {
   const correctAnswerLetter = getCorrectAnswerLetter(currentQuestion);
 
   return (
-    // <div className="py-6 px-4 sm:px-6 lg:px-8">
-    //   <div className="max-w-340 mx-auto">
-    //     <div className="mb-8">
-    //       <div className="bg-[#0F3652] text-white text-center py-3 px-4 rounded-lg">
-    //         <h1 className="text-lg sm:text-xl font-bold">
-    //           Free Practice Questions
-    //         </h1>
-    //       </div>
-    //     </div>
-
-    //     <div className="flex flex-col md:flex-row gap-4">
-    //       <div className="w-full md:w-2/5 space-y-2">
-    //         {modules.map((module) => (
-    //           <button
-    //             key={module.id}
-    //             onMouseEnter={() => {
-    //               setActiveModule(module.id);
-    //               setCurrentQuestionIndex(0);
-    //               setShowAnswerFor(null);
-    //             }}
-    //             className={`
-    //               w-full text-left p-3 rounded-tr-3xl rounded-bl-3xl transition-all duration-200
-    //               border
-    //               ${
-    //                 activeModule === module.id
-    //                   ? "bg-[#F3831C] text-white border-[#F3831C]"
-    //                   : "bg-white text-[#0F3652] border-gray-200 hover:bg-[#0F3652]/5"
-    //               }
-    //             `}
-    //           >
-    //             <div className="flex items-center">
-    //               <div
-    //                 className={`
-    //                   w-8 h-8 rounded-full flex items-center justify-center mr-3 font-bold text-xs
-    //                   ${
-    //                     activeModule === module.id
-    //                       ? "bg-white text-[#F3831C]"
-    //                       : "bg-[#F3831C] text-white"
-    //                   }
-    //                 `}
-    //               >
-    //                 {module.id}
-    //               </div>
-    //               <span className="font-medium text-sm leading-tight">
-    //                 {module.title}
-    //               </span>
-    //             </div>
-    //           </button>
-    //         ))}
-    //       </div>
-
-    //       <div className="w-full md:w-3/5">
-    //         <div className="bg-white rounded-tr-3xl rounded-bl-3xl p-4 border border-[#F3831C]/20">
-    //           <div className="mb-4">
-    //             <div className="flex items-center gap-2 mb-2">
-    //               <div className="w-6 h-6 bg-[#F3831C] text-white rounded-full flex items-center justify-center text-xs font-bold">
-    //                 {currentModule.id}
-    //               </div>
-    //               <h3 className="text-lg font-bold text-[#0F3652]">
-    //                 {currentModule.title}
-    //               </h3>
-    //             </div>
-    //             <div className="w-12 h-0.5 bg-[#0F3652] rounded-full mb-4" />
-    //           </div>
-
-    //           <div className="pr-2">
-    //             <p className="text-[#0F3652] text-sm mb-4 font-medium">
-    //               {currentQuestion.questions}
-    //             </p>
-
-    //             <div className="space-y-2 mb-6">
-    //               {options.map((option) => {
-    //                 const isSelected =
-    //                   selectedAnswers[currentQuestion.id] === option.id;
-    //                 const isCorrect = option.id === correctAnswerLetter;
-    //                 const showCorrect = showAnswerFor === currentQuestion.id;
-
-    //                 return (
-    //                   <div key={option.id} className="relative pl-8">
-    //                     <label className="flex items-start cursor-pointer">
-    //                       <div className="absolute left-0 top-0.5">
-    //                         <input
-    //                           type="radio"
-    //                           name={`question-${currentQuestion.id}`}
-    //                           checked={isSelected}
-    //                           onChange={() =>
-    //                             handleOptionSelect(
-    //                               currentQuestion.id,
-    //                               option.id,
-    //                             )
-    //                           }
-    //                           className="sr-only"
-    //                         />
-
-    //                         <div
-    //                           className={`
-    //       w-5 h-5 rounded-full border-2 flex items-center justify-center
-    //       transition-colors duration-200
-    //       ${
-    //         showCorrect
-    //           ? isCorrect
-    //             ? "border-[#21bf73] bg-[#21bf73]" // correct green
-    //             : isSelected
-    //               ? "border-red-500 bg-red-500" // wrong red
-    //               : "border-gray-300 bg-white"
-    //           : isSelected
-    //             ? "border-[#0F3652] bg-white"
-    //             : "border-gray-300 bg-white"
-    //       }
-    //     `}
-    //                         >
-    //                           {/* Inner white circle for correct or wrong after answer reveal */}
-    //                           {showCorrect && (isCorrect || isSelected) && (
-    //                             <div className="w-2 h-2 bg-white rounded-full"></div>
-    //                           )}
-
-    //                           {/* Initial selected option before answer reveal */}
-    //                           {!showCorrect && isSelected && (
-    //                             <div className="w-2 h-2 bg-[#0F3652] rounded-full"></div>
-    //                           )}
-    //                         </div>
-    //                       </div>
-
-    //                       <span
-    //                         className={`
-    //     text-[#0F3652] text-sm transition-colors duration-200
-    //     ${
-    //       showCorrect && isCorrect
-    //         ? "text-[#21bf73] font-medium"
-    //         : showCorrect && isSelected && !isCorrect
-    //           ? "text-red-500 font-medium"
-    //           : ""
-    //     }
-    //   `}
-    //                       >
-    //                         {option.text}
-    //                       </span>
-    //                     </label>
-    //                   </div>
-    //                 );
-    //               })}
-    //             </div>
-
-    //             <div
-    //               className={`transition-all duration-300 ${
-    //                 showAnswerFor === currentQuestion.id
-    //                   ? "opacity-100"
-    //                   : "opacity-0 h-0 overflow-hidden"
-    //               }`}
-    //             >
-    //               {showAnswerFor === currentQuestion.id && (
-    //                 <div className="bg-[#0F3652]/5 p-4 rounded-lg">
-    //                   <div className="flex items-center gap-2 mb-2">
-    //                     <div className="w-4 h-4 bg-[#21bf73] rounded-full flex items-center justify-center">
-    //                       <svg
-    //                         className="w-3 h-3 text-white"
-    //                         fill="none"
-    //                         stroke="currentColor"
-    //                         viewBox="0 0 24 24"
-    //                       >
-    //                         <path
-    //                           strokeLinecap="round"
-    //                           strokeLinejoin="round"
-    //                           strokeWidth="3"
-    //                           d="M5 13l4 4L19 7"
-    //                         ></path>
-    //                       </svg>
-    //                     </div>
-    //                     <h5 className="text-sm font-bold text-[#0F3652]">
-    //                       Explanation:
-    //                     </h5>
-    //                   </div>
-    //                   <p className="text-[#0F3652] text-xs leading-relaxed">
-    //                     <span className="font-semibold">
-    //                       {currentQuestion.optionCorrect}
-    //                     </span>
-    //                     <br />
-    //                     {currentQuestion.explanation}
-    //                   </p>
-    //                 </div>
-    //               )}
-    //             </div>
-
-    //             <div className="flex flex-col sm:flex-row gap-2 justify-center mt-6">
-    //               <button
-    //                 onClick={() => handleShowAnswer(currentQuestion.id)}
-    //                 className="px-4 py-2 bg-[#F3831C] text-white text-xs font-semibold rounded-lg hover:bg-[#e57610] transition-colors duration-200 flex items-center justify-center gap-1"
-    //               >
-    //                 <span>
-    //                   {showAnswerFor === currentQuestion.id
-    //                     ? "Hide Answer"
-    //                     : "Show Answer"}
-    //                 </span>
-    //                 <svg
-    //                   className="w-4 h-4"
-    //                   fill="none"
-    //                   stroke="currentColor"
-    //                   viewBox="0 0 24 24"
-    //                 >
-    //                   <path
-    //                     strokeLinecap="round"
-    //                     strokeLinejoin="round"
-    //                     strokeWidth="2"
-    //                     d={
-    //                       showAnswerFor === currentQuestion.id
-    //                         ? "M19 9l-7 7-7-7"
-    //                         : "M9 5l7 7-7 7"
-    //                     }
-    //                   />
-    //                 </svg>
-    //               </button>
-    //               {currentQuestionIndex > 0 && (
-    //                 <button
-    //                   onClick={handlePreviousQuestion}
-    //                   className="px-4 py-2 bg-gray-300 text-[#0F3652] text-xs font-semibold rounded-lg hover:bg-gray-400 transition-colors duration-200 flex items-center justify-center gap-1"
-    //                 >
-    //                   <svg
-    //                     className="w-4 h-4 rotate-180"
-    //                     fill="none"
-    //                     stroke="currentColor"
-    //                     viewBox="0 0 24 24"
-    //                   >
-    //                     <path
-    //                       strokeLinecap="round"
-    //                       strokeLinejoin="round"
-    //                       strokeWidth="2"
-    //                       d="M9 5l7 7-7 7"
-    //                     />
-    //                   </svg>
-    //                   <span>Previous Question</span>
-    //                 </button>
-    //               )}
-    //               {!isLastQuestion && (
-    //                 <button
-    //                   onClick={handleNextQuestion}
-    //                   className="px-4 py-2 bg-[#0F3652] text-white text-xs font-semibold rounded-lg hover:bg-[#0d2d44] transition-colors duration-200 flex items-center justify-center gap-1"
-    //                 >
-    //                   <span>Next Question</span>
-    //                   <svg
-    //                     className="w-4 h-4"
-    //                     fill="none"
-    //                     stroke="currentColor"
-    //                     viewBox="0 0 24 24"
-    //                   >
-    //                     <path
-    //                       strokeLinecap="round"
-    //                       strokeLinejoin="round"
-    //                       strokeWidth="2"
-    //                       d="M9 5l7 7-7 7"
-    //                     />
-    //                   </svg>
-    //                 </button>
-    //               )}
-    //             </div>
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
     <div className="py-6 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
+      <div className="max-w-340 mx-auto">
         <div className="mb-8">
-          <div className="bg-[#0F3652] text-white text-center py-3 px-4 rounded-xl">
+          <div className="bg-[#0F3652] text-white text-center py-3 px-4 rounded-lg">
             <h1 className="text-lg sm:text-xl font-bold">
               Free Practice Questions
             </h1>
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row gap-6">
-          {/* ===================== MODULE SECTION ===================== */}
-
-          <div className="w-full md:w-2/5">
-            <div className="flex md:hidden overflow-x-auto gap-2 pb-3 no-scrollbar">
-              {modules.map((module) => (
-                <button
-                  key={module.id}
-                  onClick={() => {
-                    setActiveModule(module.id);
-                    setCurrentQuestionIndex(0);
-                    setShowAnswerFor(null);
-                  }}
-                  className={`flex items-center gap-2 whitespace-nowrap px-4 py-2 rounded-full text-xs font-semibold transition-all duration-200
-                ${
-                  activeModule === module.id
-                    ? "bg-[#F3831C] text-white"
-                    : "bg-white border border-gray-300 text-[#0F3652]"
-                }`}
-                >
-                  <span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-[10px] font-bold">
+        <div className="flex flex-col md:flex-row gap-4">
+          <div className="w-full md:w-2/5 space-y-2">
+            {modules.map((module) => (
+              <button
+                key={module.id}
+                onMouseEnter={() => {
+                  setActiveModule(module.id);
+                  setCurrentQuestionIndex(0);
+                  setShowAnswerFor(null);
+                }}
+                className={`
+                  w-full text-left p-3 rounded-tr-3xl rounded-bl-3xl transition-all duration-200
+                  border
+                  ${
+                    activeModule === module.id
+                      ? "bg-[#F3831C] text-white border-[#F3831C]"
+                      : "bg-white text-[#0F3652] border-gray-200 hover:bg-[#0F3652]/5"
+                  }
+                `}
+              >
+                <div className="flex items-center">
+                  <div
+                    className={`
+                      w-8 h-8 rounded-full flex items-center justify-center mr-3 font-bold text-xs
+                      ${
+                        activeModule === module.id
+                          ? "bg-white text-[#F3831C]"
+                          : "bg-[#F3831C] text-white"
+                      }
+                    `}
+                  >
                     {module.id}
-                  </span>
-                  {module.title}
-                </button>
-              ))}
-            </div>
-
-            <div className="hidden md:flex flex-col space-y-3">
-              {modules.map((module) => (
-                <button
-                  key={module.id}
-                  onMouseEnter={() => {
-                    setActiveModule(module.id);
-                    setCurrentQuestionIndex(0);
-                    setShowAnswerFor(null);
-                  }}
-                  className={`w-full text-left p-3 rounded-tr-3xl rounded-bl-3xl transition-all duration-200 border
-                ${
-                  activeModule === module.id
-                    ? "bg-[#F3831C] text-white border-[#F3831C]"
-                    : "bg-white text-[#0F3652] border-gray-200 hover:bg-[#0F3652]/5"
-                }`}
-                >
-                  <div className="flex items-center">
-                    <div
-                      className={`w-8 h-8 rounded-full flex items-center justify-center mr-3 font-bold text-xs
-                    ${
-                      activeModule === module.id
-                        ? "bg-white text-[#F3831C]"
-                        : "bg-[#F3831C] text-white"
-                    }`}
-                    >
-                      {module.id}
-                    </div>
-                    <span className="font-medium text-sm leading-tight">
-                      {module.title}
-                    </span>
                   </div>
-                </button>
-              ))}
-            </div>
+                  <span className="font-medium text-sm leading-tight">
+                    {module.title}
+                  </span>
+                </div>
+              </button>
+            ))}
           </div>
 
           <div className="w-full md:w-3/5">
-            <div className="bg-white  rounded-2xl md:rounded-tr-3xl md:rounded-bl-3xl p-4 sm:p-6 border border-[#F3831C]/20 shadow-sm">
-              {/* Module Header */}
+            <div className="bg-white rounded-tr-3xl rounded-bl-3xl p-4 border border-[#F3831C]/20">
               <div className="mb-4">
                 <div className="flex items-center gap-2 mb-2">
-                  <div className="w-10 h-6 md:w-6 md:h-6  bg-[#F3831C] text-white rounded-full flex items-center justify-center text-xs font-bold">
+                  <div className="w-6 h-6 bg-[#F3831C] text-white rounded-full flex items-center justify-center text-xs font-bold">
                     {currentModule.id}
                   </div>
-                  <h3 className="text-md md:text-lg font-bold text-[#0F3652]">
+                  <h3 className="text-lg font-bold text-[#0F3652]">
                     {currentModule.title}
                   </h3>
                 </div>
                 <div className="w-12 h-0.5 bg-[#0F3652] rounded-full mb-4" />
               </div>
 
-              <p className="text-[#0F3652] text-sm sm:text-base mb-4 font-medium leading-relaxed">
-                {currentQuestion.questions}
-              </p>
+              <div className="pr-2">
+                <p className="text-[#0F3652] text-sm mb-4 font-medium">
+                  {currentQuestion.questions}
+                </p>
 
-              {/* Options */}
-              <div className="space-y-3 mb-6">
-                {options.map((option) => {
-                  const isSelected =
-                    selectedAnswers[currentQuestion.id] === option.id;
-                  const isCorrect = option.id === correctAnswerLetter;
-                  const showCorrect = showAnswerFor === currentQuestion.id;
+                <div className="space-y-2 mb-6">
+                  {options.map((option) => {
+                    const isSelected =
+                      selectedAnswers[currentQuestion.id] === option.id;
+                    const isCorrect = option.id === correctAnswerLetter;
+                    const showCorrect = showAnswerFor === currentQuestion.id;
 
-                  return (
-                    <label
-                      key={option.id}
-                      className="flex items-start gap-3 cursor-pointer"
-                    >
-                      <input
-                        type="radio"
-                        name={`question-${currentQuestion.id}`}
-                        checked={isSelected}
-                        onChange={() =>
-                          handleOptionSelect(currentQuestion.id, option.id)
-                        }
-                        className="mt-1"
-                      />
+                    return (
+                      <div key={option.id} className="relative pl-8">
+                        <label className="flex items-start cursor-pointer">
+                          <div className="absolute left-0 top-0.5">
+                            <input
+                              type="radio"
+                              name={`question-${currentQuestion.id}`}
+                              checked={isSelected}
+                              onChange={() =>
+                                handleOptionSelect(
+                                  currentQuestion.id,
+                                  option.id,
+                                )
+                              }
+                              className="sr-only"
+                            />
 
-                      <span
-                        className={`text-sm sm:text-base transition-colors duration-200
-                      ${
-                        showCorrect && isCorrect
-                          ? "text-[#21bf73] font-medium"
-                          : showCorrect && isSelected && !isCorrect
-                            ? "text-red-500 font-medium"
-                            : "text-[#0F3652]"
-                      }`}
-                      >
-                        {option.text}
-                      </span>
-                    </label>
-                  );
-                })}
-              </div>
+                            <div
+                              className={`
+          w-5 h-5 rounded-full border-2 flex items-center justify-center
+          transition-colors duration-200
+          ${
+            showCorrect
+              ? isCorrect
+                ? "border-[#21bf73] bg-[#21bf73]" // correct green
+                : isSelected
+                  ? "border-red-500 bg-red-500" // wrong red
+                  : "border-gray-300 bg-white"
+              : isSelected
+                ? "border-[#0F3652] bg-white"
+                : "border-gray-300 bg-white"
+          }
+        `}
+                            >
+                              {/* Inner white circle for correct or wrong after answer reveal */}
+                              {showCorrect && (isCorrect || isSelected) && (
+                                <div className="w-2 h-2 bg-white rounded-full"></div>
+                              )}
 
-              {/* Explanation */}
-              {showAnswerFor === currentQuestion.id && (
-                <div className="bg-[#0F3652]/5 p-4 rounded-lg mb-4">
-                  <h5 className="text-sm font-bold text-[#0F3652] mb-2">
-                    Explanation:
-                  </h5>
-                  <p className="text-xs sm:text-sm text-[#0F3652] leading-relaxed">
-                    <span className="font-semibold">
-                      {currentQuestion.optionCorrect}
-                    </span>
-                    <br />
-                    {currentQuestion.explanation}
-                  </p>
+                              {/* Initial selected option before answer reveal */}
+                              {!showCorrect && isSelected && (
+                                <div className="w-2 h-2 bg-[#0F3652] rounded-full"></div>
+                              )}
+                            </div>
+                          </div>
+
+                          <span
+                            className={`
+        text-[#0F3652] text-sm transition-colors duration-200
+        ${
+          showCorrect && isCorrect
+            ? "text-[#21bf73] font-medium"
+            : showCorrect && isSelected && !isCorrect
+              ? "text-red-500 font-medium"
+              : ""
+        }
+      `}
+                          >
+                            {option.text}
+                          </span>
+                        </label>
+                      </div>
+                    );
+                  })}
                 </div>
-              )}
 
-              {/* Buttons */}
-              <div className="flex flex-col sm:flex-row gap-3 mt-6">
-                <button
-                  onClick={() => handleShowAnswer(currentQuestion.id)}
-                  className="w-full sm:w-auto px-4 py-2 bg-[#F3831C] text-white text-xs sm:text-sm font-semibold rounded-lg hover:bg-[#e57610] transition"
+                <div
+                  className={`transition-all duration-300 ${
+                    showAnswerFor === currentQuestion.id
+                      ? "opacity-100"
+                      : "opacity-0 h-0 overflow-hidden"
+                  }`}
                 >
-                  {showAnswerFor === currentQuestion.id
-                    ? "Hide Answer"
-                    : "Show Answer"}
-                </button>
+                  {showAnswerFor === currentQuestion.id && (
+                    <div className="bg-[#0F3652]/5 p-4 rounded-lg">
+                      <div className="flex items-center gap-2 mb-2">
+                        <div className="w-4 h-4 bg-[#21bf73] rounded-full flex items-center justify-center">
+                          <svg
+                            className="w-3 h-3 text-white"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="3"
+                              d="M5 13l4 4L19 7"
+                            ></path>
+                          </svg>
+                        </div>
+                        <h5 className="text-sm font-bold text-[#0F3652]">
+                          Explanation:
+                        </h5>
+                      </div>
+                      <p className="text-[#0F3652] text-xs leading-relaxed">
+                        <span className="font-semibold">
+                          {currentQuestion.optionCorrect}
+                        </span>
+                        <br />
+                        {currentQuestion.explanation}
+                      </p>
+                    </div>
+                  )}
+                </div>
 
-                {currentQuestionIndex > 0 && (
+                <div className="flex flex-col sm:flex-row gap-2 justify-center mt-6">
                   <button
-                    onClick={handlePreviousQuestion}
-                    className="w-full sm:w-auto px-4 py-2 bg-gray-300 text-[#0F3652] text-xs sm:text-sm font-semibold rounded-lg hover:bg-gray-400 transition"
+                    onClick={() => handleShowAnswer(currentQuestion.id)}
+                    className="px-4 py-2 bg-[#F3831C] text-white text-xs font-semibold rounded-lg hover:bg-[#e57610] transition-colors duration-200 flex items-center justify-center gap-1"
                   >
-                    Previous Question
+                    <span>
+                      {showAnswerFor === currentQuestion.id
+                        ? "Hide Answer"
+                        : "Show Answer"}
+                    </span>
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d={
+                          showAnswerFor === currentQuestion.id
+                            ? "M19 9l-7 7-7-7"
+                            : "M9 5l7 7-7 7"
+                        }
+                      />
+                    </svg>
                   </button>
-                )}
-
-                {!isLastQuestion && (
-                  <button
-                    onClick={handleNextQuestion}
-                    className="w-full sm:w-auto px-4 py-2 bg-[#0F3652] text-white text-xs sm:text-sm font-semibold rounded-lg hover:bg-[#0d2d44] transition"
-                  >
-                    Next Question
-                  </button>
-                )}
+                  {currentQuestionIndex > 0 && (
+                    <button
+                      onClick={handlePreviousQuestion}
+                      className="px-4 py-2 bg-gray-300 text-[#0F3652] text-xs font-semibold rounded-lg hover:bg-gray-400 transition-colors duration-200 flex items-center justify-center gap-1"
+                    >
+                      <svg
+                        className="w-4 h-4 rotate-180"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                      <span>Previous Question</span>
+                    </button>
+                  )}
+                  {!isLastQuestion && (
+                    <button
+                      onClick={handleNextQuestion}
+                      className="px-4 py-2 bg-[#0F3652] text-white text-xs font-semibold rounded-lg hover:bg-[#0d2d44] transition-colors duration-200 flex items-center justify-center gap-1"
+                    >
+                      <span>Next Question</span>
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
           </div>

@@ -83,7 +83,7 @@ Each message reflects a different experience. These reflections provide a genuin
         title="Expert articles, exam tips, and real-world insights for CFE aspirants."
       />
       <CamsConnection
-        title="The Right Certification Starts With the Right Choice"
+        title="The Right Certification Starts With The Right Choice"
         description="Find the certification that aligns with your background and career stage"
         images={[
           { image: "hiw_cia.webp", link: "/cia-curriculum" },

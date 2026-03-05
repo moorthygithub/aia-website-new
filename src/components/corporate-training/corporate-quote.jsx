@@ -265,7 +265,7 @@ export const CorporateQuoteForm = ({
       <button
         type="submit"
         disabled={loader}
-        className="w-full bg-[#F3831C] hover:bg-[#E07410] text-white font-medium py-2.5 px-4 rounded-md transition-colors disabled:opacity-50 text-sm"
+        className="cursor-pointer w-full bg-[#F3831C] hover:bg-[#E07410] text-white font-medium py-2.5 px-4 rounded-md transition-colors disabled:opacity-50 text-sm"
       >
         {loader ? (
           <span className="flex items-center justify-center gap-2">
@@ -426,7 +426,7 @@ const CorporateQuoteDialog = ({
         <DialogContent className="w-full max-w-2xl rounded-md p-6 z-[10000]">
           <button
             onClick={() => setOpen(false)}
-            className="absolute top-4 right-4 md:hidden text-gray-500 hover:text-black transition-colors"
+            className="absolute top-4 right-4  text-gray-500 hover:text-black transition-colors cursor-pointer"
             aria-label="Close"
           >
             <X size={22} />

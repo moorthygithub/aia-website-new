@@ -56,7 +56,6 @@ const ServiceCard = ({ testimonial, i, progress, total, imageUrl }) => {
                   className="text-sm"
                   style={{ color: i % 2 === 0 ? "#64748b" : "#d1d5db" }}
                 >
-                  {/* {testimonial.student_course} Student */}
                   {courseFullForms[testimonial.student_course]
                     ? `${courseFullForms[testimonial.student_course]}`
                     : testimonial.student_course}{" "}
@@ -66,7 +65,7 @@ const ServiceCard = ({ testimonial, i, progress, total, imageUrl }) => {
           </div>
 
           <div
-            className="text-lg italic mb-8"
+            className="text-lg italic mb-8 text-justify"
             style={{ color: i % 2 === 0 ? "#1e293b" : "#ffffff" }}
           >
             "{testimonial.student_testimonial}"
@@ -152,7 +151,7 @@ const CourseReview = ({ slug }) => {
       >
         <SectionHeading
           title="290+ Professional Experiences Shared"
-          highlight1="★★★★★"
+          // highlight1="★★★★★"
           align="center"
         />
       </div>

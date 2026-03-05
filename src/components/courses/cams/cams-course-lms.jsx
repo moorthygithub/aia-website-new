@@ -37,6 +37,16 @@ const CamsCourseLms = ({ title, subtitle, course, buttonlabel, image }) => {
       description:
         "All study materials are regularly reviewed and updated to match the latest CAMS Version 7 syllabus and regulatory guidelines, ensuring your preparation stays current and relevant.",
     },
+    {
+      title: "Course Fee",
+      description:
+        "The CAMS program is offered under a single, consolidated course fee. This includes comprehensive study notes, practice questions, recorded lectures, live doubt sessions, and full-length mock tests.",
+    },
+    {
+      title: "Study Timeframe",
+      description:
+        "The CAMS Exam typically requires 3-4 months of focused preparation, depending on professional background and time commitment. Faster completion is possible with disciplined study.",
+    },
   ];
   return (
     <>
