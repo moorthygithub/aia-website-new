@@ -19,7 +19,7 @@ const AboutTrainerSection = ({ path = "faculty_about.webp", messageimage="messag
               <h2 className="text-2xl md:text-5xl font-bold text-transparent bg-clip-text bg-linear-to-r from-white via-[#F3831C] to-[#F3831C] italic block mt-2">
                 Know Your Trainer
               </h2>
-              <p className="text-xl md:text-2xl mb-4 font-bold">
+              <p className="text-[1rem] md:text-2xl mb-4 font-bold">
                 Not Just a Trainer, But Your Success Coach
               </p>
             </div>

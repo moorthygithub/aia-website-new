@@ -37,9 +37,16 @@ const CorporateReview = () => {
     <div className="py-1">
       <div className="max-w-340 mx-auto">
         <div className="grid md:grid-cols-2">
-          <div className="p-2 rounded-lg">
-            <SectionHeading title="Real Experience Shared by Professionals" />
-
+          <div className="p-2 rounded-lg px-4">
+            <div className="md:hidden">
+              <SectionHeading
+                title="Real Experience Shared by Professionals"
+                align="center"
+              />
+            </div>
+            <div className="hidden md:block">
+              <SectionHeading title="Real Experience Shared by Professionals" />
+            </div>
             <div className="space-y-4 text-[#0F3652]">
               <p className="font-semibold text-justify">
                 AIA is a trusted partner for organizations seeking measurable

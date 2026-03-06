@@ -1,91 +1,99 @@
 const SectionHeading = ({
   title,
-  description,
-  description1,
-  align = "start",
   highlight,
   highlight1,
-  highlightclassName,
+  description,
+  description1,
   beforeheading,
-  className,
+
+  align = "start",
+
+  wrapperClass = "",
+  titleClass = "",
+  highlightClass = "",
+  descriptionClass = "",
+  beforeHeadingClass = "",
+  underlineColor = "#0F3652",
+
+  highlightclassName,
 }) => {
   const isCenter = align == "center";
 
   return (
-    <div className={`py-2 ${isCenter ? "text-center" : "text-left"}`}>
+    <div
+      className={`py-2 ${isCenter ? "text-center" : "text-left"} ${wrapperClass}`}
+    >
       {beforeheading && (
         <div
-          className={`mt-4 text-gray-600 leading-relaxed  mx-auto ${
+          className={`mt-4 text-gray-600 leading-relaxed mx-auto ${
             isCenter ? "text-center" : "text-left"
-          }`}
+          } ${beforeHeadingClass}`}
         >
           <p>{beforeheading}</p>
         </div>
       )}
-      <div className={`inline-block ${isCenter ? "mx-auto" : ""}`}>
+
+      {/* Title */}
+      <div className={`inline-block mb-3 ${isCenter ? "mx-auto" : ""}`}>
         <h2
-          className={`text-2xl md:text-4xl font-bold ${
-            className ? `text-${className}` : "text-[#0F3652]"
-          } `}
+          className={`text-xl md:text-4xl font-bold text-[#0F3652] ${titleClass}`}
         >
           {title} <span className="text-[#F3831C]">{highlight1}</span>
         </h2>
 
-        <h2
-          className={`font-bold text-[#F3831C] mt-2 ${
-            highlightclassName ? highlightclassName : "text-3xl md:text-4xl"
-          }`}
-        >
-          {highlight}
-        </h2>
-        {/* <div
-          className={`mt-3 relative overflow-hidden ${
-            isCenter ? "mx-auto" : ""
-          }`}
-          style={{ width: "120px" }}
-        >
-          <span
-            className={`block h-1 w-full ${
-              className ? `bg-${className}` : "bg-[#0F3652]"
-            } rounded`}
-          />
-
-          <span className="absolute top-0 left-0 h-1 w-1/2 bg-[#F3831C] rounded animate-underline-slide" />
-        </div> */}
+        {highlight && (
+          <h2
+            className={`font-bold text-[#F3831C] mt-2 ${
+              highlightclassName ? highlightclassName : "text-xl md:text-4xl"
+            } ${highlightClass}`}
+          >
+            {highlight}
+          </h2>
+        )}
       </div>
-      {/* //From Md SCreen */}
+
+      {/* Desktop Description */}
       <div className="hidden md:block">
         {description && (
           <div
-            className={`mt-4  ${
-              className ? `text-${className}` : "text-gray-600"
-            }  leading-relaxed  mx-auto ${
+            className={`mt-4 text-[16px] text-gray-600 leading-relaxed mx-auto ${
               isCenter ? "text-center" : "text-left"
-            }`}
+            } ${descriptionClass}`}
           >
             <p>{description}</p>
           </div>
         )}
+
         {description1 && (
           <div
-            className={` text-gray-600 leading-relaxed  mx-auto ${
+            className={`text-gray-600 text-[16px] leading-relaxed mx-auto ${
               isCenter ? "text-center" : "text-left"
-            }`}
+            } ${descriptionClass}`}
           >
             <p>{description1}</p>
           </div>
         )}
       </div>
-      {/* //From xs SCreen */}
-      <div className="md:hidden ">
+
+      {/* <div className="md:hidden">
         <div
-          className={` ${
-            className ? `text-${className}` : "text-gray-600"
-          }  leading-relaxed  mx-auto ${
+          className={`text-gray-600 text-[16px] leading-relaxed mx-auto ${
             isCenter ? "text-center" : "text-left"
-          }`}
+          } ${descriptionClass}`}
         >
           <p className="text-justify">
+            {description}
+            {description1}
+          </p>
+        </div>
+      </div> */}
+      <div className="md:hidden">
+        <div
+          className={`text-gray-600 text-[16px] leading-relaxed mx-auto ${
+            isCenter ? "text-center" : "text-left"
+          } ${descriptionClass}`}
+        >
+          <p className={isCenter ? "text-center" : "text-justify"}>
             {description}
             {description1}
           </p>
@@ -103,11 +111,8 @@ const SectionHeading = ({
             style={{
               width: "60%",
               height: "2.5px",
-              background: className ? undefined : "#0F3652",
+              background: underlineColor,
             }}
-            {...(className && {
-              className: `absolute block bg-${className}`,
-            })}
           />
 
           <span
@@ -124,15 +129,39 @@ const SectionHeading = ({
         </div>
 
         <style>{`
-    @keyframes slideBackForth {
-      0%   { left: 15%; }
-      50%  { left: 60%; }
-      100% { left: 15%; }
-    }
-  `}</style>
+          @keyframes slideBackForth {
+            0% { left: 15%; }
+            50% { left: 60%; }
+            100% { left: 15%; }
+          }
+        `}</style>
       </div>
     </div>
   );
 };
-
 export default SectionHeading;
+// -------------------------------EXAMPLE---------------------------------------
+{
+  /* <SectionHeading
+  align="center"
+  beforeheading="Our Global Learning Community"
+
+  title="Trusted by Learners"
+  highlight1="Across"
+  highlight="the Globe"
+
+  description="Real experiences shared by professionals on how AIA helped them achieve their certification goals."
+  description1="Thousands of professionals from audit, finance, compliance, and risk trust our structured learning approach."
+
+  wrapperClass="mb-10"
+
+  titleClass="text-3xl md:text-5xl font-bold"
+  highlightClass="text-2xl md:text-4xl font-semibold"
+
+  descriptionClass="max-w-3xl mx-auto text-gray-600"
+
+  beforeHeadingClass="text-sm tracking-widest text-[#F3831C] font-semibold"
+
+  underlineColor="#0F3652"
+/> */
+}

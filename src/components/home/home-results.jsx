@@ -1,10 +1,9 @@
 import { BASE_URL } from "@/api/base-url";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import { TestimonialsSectionCourse } from "../courses/common/testimonials-with-marquee-course";
 import { TestimonialsSectionColor } from "./testimonialsection-color";
 
 const HomeResults = ({ title, description }) => {

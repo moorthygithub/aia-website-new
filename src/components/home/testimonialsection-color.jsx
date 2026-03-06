@@ -56,7 +56,9 @@ export function TestimonialsSectionColor({
             title={title}
             description={description}
             align="center"
-            className="white"
+            titleClass="text-white text-[1rem] md:text-3xl"
+            descriptionClass="text-white"
+            underlineColor="#fff"
           />
         </div>
         <div className="relative flex w-full overflow-hidden">

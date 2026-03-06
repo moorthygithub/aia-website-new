@@ -263,42 +263,7 @@ const PassoutStoriesSlug = () => {
                     Our Impact
                   </h3>
 
-                  {/* Impact Stats Grid */}
-                  {/* <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
-                    <div className="space-y-1 sm:space-y-2 border bg-[#0F3652] p-3 sm:p-4 rounded-xl sm:rounded-2xl">
-                      <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center break-words">
-                        {student_story_box_title1}
-                      </div>
-                      <div className="text-sm sm:text-base lg:text-lg font-medium text-white break-words">
-                        {student_story_box_details1}
-                      </div>
-                    </div>
-                    <div className="space-y-1 sm:space-y-2 border bg-[#0F3652] p-3 sm:p-4 rounded-xl sm:rounded-2xl">
-                      <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center break-words">
-                        {student_story_box_title2}
-                      </div>
-                      <div className="text-sm sm:text-base lg:text-lg font-medium text-white break-words">
-                        {student_story_box_details2}
-                      </div>
-                    </div>
-                    <div className="space-y-1 sm:space-y-2 border bg-[#0F3652] p-3 sm:p-4 rounded-xl sm:rounded-2xl">
-                      <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center break-words">
-                        {student_story_box_title3}
-                      </div>
-                      <div className="text-sm sm:text-base lg:text-lg font-medium text-white break-words">
-                        {student_story_box_details3}
-                      </div>
-                    </div>
-                    <div className="space-y-1 sm:space-y-2 border bg-[#0F3652] p-3 sm:p-4 rounded-xl sm:rounded-2xl">
-                      <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center break-words">
-                        {student_story_box_title4}
-                      </div>
-                      <div className="text-sm sm:text-base lg:text-lg font-medium text-white break-words">
-                        {student_story_box_details4}
-                      </div>
-                    </div>
-                  </div> */}
-                  <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
+                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
                     {[
                       {
                         title: student_story_box_title1,

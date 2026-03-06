@@ -78,7 +78,7 @@ export const PaymentAccreditation = () => (
     <div>
       <SectionLabel>Payment</SectionLabel>
 
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
         <div className="p-3 flex items-center justify-center hover:border-[#fa8017]/40 transition-all duration-200">
           <img
             src={`${IMAGE_PATH}/payment.png`}

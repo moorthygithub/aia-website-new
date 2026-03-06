@@ -252,12 +252,11 @@ const CorporateWhy = () => {
                 {item.subtitle}
               </p>
 
-              {/* Source (visible on hover) */}
               <a
                 href={item.link}
                 target="_blank"
                 rel="nofollow noopener noreferrer"
-                className="mt-3 inline-block text-xs text-[#0F3652] underline opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                className="mt-3 inline-block text-xs text-[#0F3652] underline  transition-opacity duration-300"
               >
                 Source: {item.source}
               </a>

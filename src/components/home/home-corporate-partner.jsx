@@ -47,12 +47,14 @@ const HomeCorporatePartner = () => {
       <div className="bg-white md:hidden">
         <div className="max-w-full mx-auto">
           <div className="max-w-full mx-auto">
-            <section className="relative space-y-10 bg-[#0F3652] p-8 overflow-hidden mt-6">
+            <section className="relative space-y-10 bg-[#0F3652] p-4 overflow-hidden mt-6">
               <SectionHeading
                 title="AIA Empowers Organisations Through Audit & Fraud Risk Excellences"
                 description="Industry-aligned certification training designed to strengthen fraud prevention, detection, investigation, and audit capabilities across organisations."
                 align="center"
-                className="white"
+                titleClass="text-white text-[1.1rem] md:text-3xl"
+                descriptionClass="text-white text-[1.2rem] md:text-3xl"
+                underlineColor="#fff"
               />
               <div className="relative z-10 max-w-340 mx-auto">
                 <div className="grid max-w-340 mx-auto md:grid-cols-2 gap-8 items-center mt-10">
@@ -142,7 +144,9 @@ const HomeCorporatePartner = () => {
               title="AIA Empowers Organisations Through Audit & Fraud Risk Excellences"
               description="Industry-aligned certification training designed to strengthen fraud prevention, detection, investigation, and audit capabilities across organisations."
               align="center"
-              className="white"
+              titleClass="text-white text-[1.1rem] md:text-3xl"
+              descriptionClass="text-white"
+              underlineColor="#fff"
             />
           </div>
           <div className="relative z-10 w-full px-8 pb-4 grid grid-cols-1 md:grid-cols-2 items-center gap-8 max-w-340 mx-auto">

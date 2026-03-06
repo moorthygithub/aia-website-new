@@ -423,7 +423,7 @@ const ContactHero = () => {
         <div className="flex flex-col lg:grid lg:grid-cols-5 gap-6 lg:gap-0">
           <div className="relative order-1 lg:col-span-3 lg:flex lg:flex-col lg:justify-center">
             <div className="space-y-6">
-              <h1 className="text-3xl md:text-4xl font-bold text-[#0c2340] leading-tight">
+              <h1 className="text-2xl md:text-4xl font-bold text-[#0c2340] leading-tight">
                 Turn Experience into
                 <br />
                 <span className="text-[#fa8017]">

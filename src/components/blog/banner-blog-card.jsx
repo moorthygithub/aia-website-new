@@ -1,4 +1,5 @@
 import { IMAGE_PATH } from "@/api/base-url";
+import { getCourseColor } from "@/utils/courseColor";
 import { ArrowRight, Calendar, Clock } from "lucide-react";
 
 const BannerBlogCard = ({ blog, handleBlogClick, imageBaseUrl }) => {
@@ -28,7 +29,10 @@ const BannerBlogCard = ({ blog, handleBlogClick, imageBaseUrl }) => {
             />
           </div>
           <div className="absolute top-1 left-1 lg:top-2 lg:left-2">
-            <span className="bg-[#0F3652] text-white text-xs md:text-sm font-medium px-4 py-1 lg:px-4 lg:py-1 rounded border border-[#0F3652]">
+            <span
+              className="text-xs md:text-sm font-medium px-4 py-1 lg:px-4 lg:py-1 rounded "
+              style={{ backgroundColor: getCourseColor(blog.blog_course) }}
+            >
               {blog.blog_course}
             </span>
           </div>

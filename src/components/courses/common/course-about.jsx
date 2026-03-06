@@ -2,7 +2,16 @@ import SectionHeading from "@/components/SectionHeading/SectionHeading";
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import CfeJoinDialog from "../cfe-curriculam/join-prep";
-
+const getWhitespaceClass = (size) => {
+  switch (size) {
+    case "sm":
+      return "whitespace-pre-line";
+    case "lg":
+      return "lg:whitespace-pre-line whitespace-normal";
+    default:
+      return "whitespace-normal";
+  }
+};
 const CourseAbout = ({
   badgeText,
   heading,
@@ -14,17 +23,22 @@ const CourseAbout = ({
   formsubtitle,
   formcourse,
   formbuttonlabel,
+  lineBreak = "lg",
 }) => {
   const location = useLocation();
 
   return (
     <section className="py-12 md:py-16 lg:py-18 ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeading title={heading} align="center" />
+        <SectionHeading
+          title={heading}
+          align="center"
+          titleClass="!text-[1.1rem] md:!text-3xl"
+        />
 
         <div className="grid lg:grid-cols-2 gap-8 md:gap-10 lg:gap-12 xl:gap-16 items-center">
           {/* Left Content */}
-          <div >
+          <div>
             {badgeText && (
               <div className="flex items-center gap-3 mb-2 md:mb-3">
                 <span className="text-xs sm:text-sm font-medium text-[#F3831C] tracking-wider">
@@ -80,10 +94,17 @@ const CourseAbout = ({
                   cursor-pointer
                 "
               >
-                <div className="text-base sm:text-lg md:text-xl font-bold mb-1 text-[#0F3652]">
+                {/* <div className="text-base sm:text-lg md:text-xl font-bold mb-1 text-[#0F3652]">
+                  {stat.display}
+                </div> */}
+                <div
+                  className={`
+  text-base sm:text-lg md:text-xl font-bold mb-1 text-[#0F3652]
+  ${stat.lineBreak === "sm" ? "whitespace-pre-line md:whitespace-normal" : "whitespace-normal lg:whitespace-pre-line"}
+`}
+                >
                   {stat.display}
                 </div>
-
                 {stat.show == "true" && (
                   <h4 className="text-xs sm:text-sm md:text-base font-normal text-[#0F3652] leading-tight">
                     {stat.title}

@@ -26,11 +26,13 @@ import CfePracticeQuestion from "./pages/free-resources/cfe-practice-question";
 import Meta from "./components/seo/meta";
 import FloatingContact from "./components/common/floating-contact";
 import { Toaster } from "sonner";
+import CanonicalTag from "./components/common/canonical-tag";
 
 export default function App() {
   return (
     <div className="font-sans text-gray-800 min-h-screen flex flex-col">
       <ScrollToTop />
+      <CanonicalTag />
       <GoogleAnalytics />
       <NotificationPopup />
       <FloatingContact />

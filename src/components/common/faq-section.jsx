@@ -53,10 +53,19 @@ const FaqSection = ({ faqs = [] }) => {
       <div className="mx-auto max-w-340 px-4 sm:px-6 lg:px-8">
         <div className="grid gap-8 md:grid-cols-5 md:gap-12">
           <div className="md:col-span-2">
-            <SectionHeading
-              title="FAQ's"
-              description="Quick answers to know more about AIA programs, learning format, certification support and exam preparation."
-            />
+            <div className="md:hidden">
+              <SectionHeading
+                title="FAQ's"
+                align="center"
+                description="Quick answers to know more about AIA programs, learning format, certification support and exam preparation."
+              />
+            </div>
+            <div className="hidden md:block">
+              <SectionHeading
+                title="FAQ's"
+                description="Quick answers to know more about AIA programs, learning format, certification support and exam preparation."
+              />
+            </div>
             {headings.length > 0 && (
               <div className="mt-8 space-y-4">
                 {headings.map((heading) => (

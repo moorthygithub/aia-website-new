@@ -80,6 +80,7 @@ Each message reflects a different experience. These reflections provide a genuin
         slug="CAMS"
         title="Meet the Professionals Who Successfully Cleared the CAMS with AIA"
         description="Meet AIA proud achievers who advance their careers by achieving the global CAMS credential with structured prep and real-world expertise."
+        titleClass="!text-[1rem] md:!text-3xl"
       />
       <CourseBlog
         course="CAMS"
@@ -87,7 +88,7 @@ Each message reflects a different experience. These reflections provide a genuin
       />
 
       <CamsConnection
-        title="The Right Certification Starts With the Right Choice"
+        title="The Right Certification Starts With The Right Choice"
         description="Find the certification that aligns with your background and career stage"
         images={[
           { image: "hiw_cfe.webp", link: "/cfe-curriculum" },

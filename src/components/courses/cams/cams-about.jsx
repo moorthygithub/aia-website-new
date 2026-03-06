@@ -15,9 +15,10 @@ const CamsAbout = () => {
             show: "true",
           },
           {
-            display: "Live-Doubt Sessions",
+            display: "Live-Doubt \n Sessions",
             title: "(With expert faculty)",
             show: "true",
+            lineBreak: "sm",
           },
           {
             display: "CAMS V7 Study Material",

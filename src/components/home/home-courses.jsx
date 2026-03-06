@@ -108,7 +108,10 @@ const HomeCourses = ({ certificationCourses }) => {
     <div className="max-w-340 mx-auto px-4 sm:px-6 lg:px-8 mt-4 md:-mb-46">
       {" "}
       <div className="md:hidden">
-        <SectionHeading title="Global Certification Programs Offered by AIA" />
+        <SectionHeading
+          title="Global Certification Programs Offered by AIA"
+          align="center"
+        />
 
         {ALL_SERVICES.map((service) => (
           <div

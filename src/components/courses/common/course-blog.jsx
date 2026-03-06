@@ -65,7 +65,9 @@ const CourseBlog = ({ course, title }) => {
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
         <div className="flex flex-col items-center text-center lg:col-span-3 lg:items-start lg:text-left">
           <div className="flex flex-col h-full justify-center">
-            <h2 className="mt-4 text-2xl font-bold text-white">{title}</h2>
+            <h2 className="mt-4 text-xl md:text-2xl font-bold text-white">
+              {title}
+            </h2>
             <Button
               className="rounded-xl mt-6 px-5 text-base relative cursor-pointer overflow-hidden group"
               onClick={() => window.open(`/blogs`, "_blank")}

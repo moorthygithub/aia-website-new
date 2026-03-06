@@ -31,10 +31,10 @@ const CourseCurriculum = ({ title, curriculumData, description }) => {
                 onClick={() =>
                   setActiveTab(activeTab === item.id ? null : item.id)
                 }
-                className="w-full text-left p-4 flex items-center justify-between"
+                className="w-full text-left p-4 flex items-center justify-between text-sm"
               >
                 <span className="font-semibold text-[#0F3652]">
-                  Module {item.id}: {item.title}
+                  {item.title}
                 </span>
               </button>
 
@@ -64,20 +64,20 @@ const CourseCurriculum = ({ title, curriculumData, description }) => {
               <button
                 key={item.id}
                 onMouseEnter={() => setActiveTab(item.id)}
-                className={`w-full text-left p-6 shadow-lg shadow-black/20 rounded-br-3xl rounded-tl-3xl transition-all duration-200 cursor-pointer border ${
+                className={`w-full text-left  p-6 shadow-lg shadow-black/20 rounded-br-3xl rounded-tl-3xl transition-all duration-200 cursor-pointer border ${
                   activeTab === item.id
                     ? "bg-[#F3831C] text-white"
                     : "bg-white text-[#0F3652] border-gray-200 hover:bg-[#0F3652]/5"
                 }`}
               >
-                <span className="font-medium text-sm">{item.title}</span>
+                <span className="font-medium text-md">{item.title}</span>
               </button>
             ))}
           </div>
 
           {/* RIGHT SIDE CONTENT */}
           <div className="w-[70%]">
-            <div className="bg-white rounded-br-3xl rounded-tl-3xl p-4 shadow-lg shadow-black/20 border border-[#F3831C]/20 h-full">
+            <div className="bg-white rounded-br-3xl rounded-tl-3xl p-4 shadow-lg shadow-black/20 border border-[#F3831C]/20 h-full text-justify">
               {activeContent?.content?.length ? (
                 activeContent.content.map((text, index) =>
                   text

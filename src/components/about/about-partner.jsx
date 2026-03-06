@@ -37,7 +37,9 @@ const AboutPartner = () => {
               title="Corporate Training Delivered to Leading Organisations"
               description="Trusted by Corporations for Fraud & Risk Capability Building"
               align="center"
-              className="white"
+              titleClass="text-white"
+              descriptionClass="text-white"
+              underlineColor="#fff"
             />
             <div className="relative z-10 max-w-340 mx-auto">
               <div className="grid max-w-340 mx-auto md:grid-cols-2 gap-8 items-center mt-10">

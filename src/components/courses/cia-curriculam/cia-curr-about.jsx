@@ -16,10 +16,11 @@ const CiaCurrAbout = () => {
             show: "true",
           },
           {
-            display: "Live-Doubt Sessions",
+            display: "Live-Doubt \n Sessions",
             // title: "(Doubt-solving sessions with faculty)",
             title: "(With expert faculty)",
             show: "true",
+            lineBreak:"sm",
           },
           {
             display: "Updated Gliem Resources",

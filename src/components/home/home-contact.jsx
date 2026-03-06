@@ -196,7 +196,7 @@ const HomeContact = () => {
 
             <div>
               <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <input
                     type="text"
                     name="name"
@@ -236,7 +236,7 @@ const HomeContact = () => {
                     className="w-full px-4 py-3 border border-[#0F3652] rounded focus:outline-none focus:ring-2 focus:ring-[#F3831C] text-sm resize-none"
                     disabled={isSubmitting}
                   />
-                  <div className="col-span-2">
+                  <div className="col-span-1 md:col-span-2">
                     <select
                       name="userCourse"
                       value={formData.userCourse}

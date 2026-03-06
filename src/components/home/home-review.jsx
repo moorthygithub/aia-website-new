@@ -46,10 +46,19 @@ const HomeReview = () => {
   return (
     <section className="py-12 bg-white">
       <div className="max-w-340 mx-auto w-full px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          title="Trusted by Learners Across the Globe"
-          description="Real experiences shared by professionals on how AIA helped them achieve their certification goals."
-        />
+        <div className="md:hidden">
+          <SectionHeading
+            title="Trusted by Learners Across the Globe"
+            description="Real experiences shared by professionals on how AIA helped them achieve their certification goals."
+            align="center"
+          />
+        </div>
+        <div className="hidden md:block">
+          <SectionHeading
+            title="Trusted by Learners Across the Globe"
+            description="Real experiences shared by professionals on how AIA helped them achieve their certification goals."
+          />
+        </div>
         <div className="flex flex-col lg:flex-row items-center">
           <div className="w-full lg:w-1/2 mb-8 lg:mb-0">
             {/* <div className="flex justify-center">
@@ -88,35 +97,39 @@ const HomeReview = () => {
                     className="h-10 w-10 md:w-12 md:h-12"
                   />
                   <h2 className="text-2xl md:text-3xl font-bold text-[#0F3652]">
-                    {/* 290+ Voices – All Rated{" "} */}
                     290+ Professional Experiences Shared
                   </h2>
                 </div>
                 <Swiper
-                  modules={[Autoplay, Pagination]}
+                  // modules={[Autoplay, Pagination]}
                   spaceBetween={30}
                   slidesPerView={1}
-                  autoplay={{
-                    delay: 5000,
-                    disableOnInteraction: false,
-                  }}
+                  // autoplay={{
+                  //   delay: 5000,
+                  //   disableOnInteraction: false,
+                  // }}
                   pagination={{ clickable: true }}
-                  loop
+                  // loop
                   className="testimonial-swiper"
                 >
                   {testimonials.map((item, index) => (
                     <SwiperSlide key={index}>
-                      <div className="bg-white rounded-xl p-6 border border-[#F3831C]/20">
+                      <div className="bg-white rounded-xl p-4 md:p-6 border border-[#F3831C]/20">
                         <div className="flex items-start gap-4 mb-4">
-                          <LazyLoadImage
+                          {/* <LazyLoadImage
                             src={item.image}
                             alt={item.alt}
                             className="w-14 h-14 rounded-full object-cover border-2 border-[#0F3652]"
                             effect="blur"
                             width="56"
                             height="56"
+                          /> */}
+                          <LazyLoadImage
+                            src={item.image}
+                            alt={item.alt}
+                            className="w-14 h-14 min-w-14 min-h-14 rounded-full object-cover border-2 border-[#0F3652] flex-shrink-0"
+                            effect="blur"
                           />
-
                           <div>
                             <h4 className="text-lg font-semibold text-[#0F3652]">
                               {item.name}

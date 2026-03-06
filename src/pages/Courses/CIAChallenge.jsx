@@ -82,7 +82,7 @@ Each message reflects a different experience. These reflections provide a genuin
       />
 
       <CamsConnection
-        title="The Right Certification Starts With the Right Choice"
+        title="The Right Certification Starts With The Right Choice"
         description="Find the certification that aligns with your background and career stage"
         buttonColors={["#a8e6f3", "#fee1c6", "#ffe38f"]}
         images={[

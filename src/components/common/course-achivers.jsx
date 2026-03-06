@@ -6,7 +6,7 @@ import axios from "axios";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import CourseAchiverCard from "../courses/common/course-achiver-card";
-const CourseAchivers = ({ slug, title, description }) => {
+const CourseAchivers = ({ slug, title, description, titleClass }) => {
   const [cardSize, setCardSize] = useState(365);
   const [testimonialsList, setTestimonialsList] = useState([]);
 
@@ -107,6 +107,7 @@ const CourseAchivers = ({ slug, title, description }) => {
         <div>
           <SectionHeading
             title={title}
+            titleClass={titleClass}
             description={description}
             align="center"
           />
