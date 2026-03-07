@@ -1,9 +1,76 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="ACADEMY OF INTERNAL AUDIT" />
+
+    <!-- Google Site Verification (GSC Code) -->
+    <meta
+      name="google-site-verification"
+      content="rJlkOVXPnQNj8F3FD3_kwLVrqO0NydyxlvvWEtOReSo"
+    />
+
+    <!-- Google Tag Manager - Add this inside head tag for all pages -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-KJ7WJLKJ");
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Organization Schema (inside head) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Academy of Internal Audit",
+        "url": "https://aia.in.net/",
+        "logo": "https://aia.in.net/webapi/public/assets/images/web_images/new_logo.webp",
+        "sameAs": [
+          "https://www.facebook.com/@academyofinternalaudit",
+          "https://twitter.com/AcademyAudit",
+          "https://www.instagram.com/academyofia/",
+          "https://www.linkedin.com/company/academy-of-internal-audit",
+          "https://in.pinterest.com/academyofia/",
+          "https://www.youtube.com/@academyofia"
+        ]
+      }
+    </script>
+    <!-- End Organization Schema -->
+
+    <!-- Breadcrumb Schema (dynamic items & names can be updated via JS/React) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://aia.in.net/"
+          }
+          /* Add more items dynamically in React/JS */
+        ]
+      }
+    </script>
+    <!-- End Breadcrumb Schema -->
+
+    <!-- Google Ad Code Implement -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXX"
+      crossorigin="anonymous"
+    ></script>
+    <!-- End Google Ad Code -->
 
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
@@ -11,7 +78,19 @@
       rel="stylesheet"
     />
   </head>
+
   <body class="antialiased font-poppins">
+    <!-- Google Tag Manager (noscript) - Add this inside body tag for all pages -->
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-KJ7WJLKJ"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

@@ -10,6 +10,7 @@ import { Autoplay, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import HomeMap from "./home-map";
 import SectionHeading from "../SectionHeading/SectionHeading";
+import { Helmet } from "react-helmet-async";
 
 const HomeReview = () => {
   const { data, isLoading, isError, refetch } = useQuery({
@@ -90,6 +91,24 @@ const HomeReview = () => {
 
             {!isLoading && !isError && testimonials.length > 0 && (
               <>
+                <Helmet>
+                  {testimonials.length > 0 && (
+                    <script type="application/ld+json">
+                      {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "Organization",
+                        name: "Academy of Internal Audit",
+                        url: "https://aia.in.net/",
+                        review: testimonials.map((t) => ({
+                          "@type": "Review",
+                          author: { "@type": "Person", name: t.name },
+                          reviewBody: t.message,
+                          url: t.link,
+                        })),
+                      })}
+                    </script>
+                  )}
+                </Helmet>
                 <div className="mb-6 flex gap-2">
                   <img
                     src={`${IMAGE_PATH}/g_logo.webp`}
