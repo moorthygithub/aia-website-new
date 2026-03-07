@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "build": "node generate-sitemap.js && vite build",
+    "preview": "vite preview",
+    "generate-sitemap": "node generate-sitemap.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

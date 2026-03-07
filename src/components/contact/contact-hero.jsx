@@ -339,6 +339,7 @@ import { BASE_URL, IMAGE_PATH } from "@/api/base-url";
 import axios from "axios";
 import { useCallback, useState } from "react";
 import FooterReviews from "../Footer/footer-review";
+import { toast } from "sonner";
 
 const ContactHero = () => {
   const [formData, setFormData] = useState({
@@ -381,8 +382,8 @@ const ContactHero = () => {
     }
     setLoader(true);
     try {
-      const { data } = await axios.post(
-        `${BASE_URL}/api/create-webenquiry`,
+      const res = await axios.post(
+        `${BASE_URL}/api/create-webenquirys`,
         {
           userName: formData.userName,
           userEmail: formData.userEmail,
@@ -392,25 +393,31 @@ const ContactHero = () => {
           userMessage: formData.userMessage,
           userType: formData.userType,
         },
-        { headers: { "Content-Type": "application/json" } },
+        { headers: { "Content-Type": "application/json" } }
       );
-      console.log("API success:", data);
-      alert("Demo booked successfully!");
-      setFormData({
-        userName: "",
-        userEmail: "",
-        userMobile: "",
-        userLocation: "",
-        userCourse: "",
-        userMessage: "",
-        userType: "Contact-Page",
-      });
-      setErrors({});
+
+      if (res.data.code == 200) {
+        setFormData({
+          userName: "",
+          userEmail: "",
+          userMobile: "",
+          userLocation: "",
+          userCourse: "",
+          userMessage: "",
+          userType: "Contact-Page",
+        });
+        toast.success(res?.data?.msg || "Enquiry Successfully Created");
+        setErrors({});
+      } else {
+        toast.error(
+          res?.data?.msg || "Something went wrong. Please try again."
+        );
+      }
     } catch (error) {
       console.error("API error:", error.response?.data || error.message);
-      alert(
+      toast.error(
         error.response?.data?.message ||
-          "Something went wrong. Please try again.",
+          "Something went wrong. Please try again."
       );
     } finally {
       setLoader(false);
