@@ -13,10 +13,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SectionHeading from "../SectionHeading/SectionHeading";
 import HomeMap from "./home-map";
 
-const HomeReview = () => {
-  const location = useLocation();
+const AboutReview = () => {
   const { data, isLoading, isError, refetch } = useQuery({
-    queryKey: ["aia-testimonials"],
+    queryKey: ["aia-testimonials-about"],
     queryFn: async () => {
       const res = await axios.get(`${BASE_URL}/api/getAllTestimonials`);
       return res.data;
@@ -54,33 +53,44 @@ const HomeReview = () => {
           <script type="application/ld+json">
             {JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "Academy of Internal Audit",
-              url: "https://aia.in.net/",
-              aggregateRating: {
-                "@type": "AggregateRating",
-                ratingValue: "5",
-                bestRating: "5",
-                worstRating: "1",
-                reviewCount: testimonials.length.toString(),
-              },
-              review: testimonials.map((t) => ({
-                "@type": "Review",
-                author: { "@type": "Person", name: t.name },
-                reviewBody: t.message,
-                datePublished: new Date(t.update).toISOString().split("T")[0],
-                reviewRating: {
-                  "@type": "Rating",
+              "@type": "AboutPage",
+              name: "About Academy of Internal Audit",
+              url: "https://aia.in.net/about",
+              description:
+                "Learn about Academy of Internal Audit, a leading provider of professional certification training for CAMS, CFE, CIA and more.",
+              mainEntity: {
+                "@type": "Organization",
+                name: "Academy of Internal Audit",
+                url: "https://aia.in.net/",
+                description:
+                  "Academy of Internal Audit provides professional certification training for internal auditors and finance professionals.",
+                aggregateRating: {
+                  "@type": "AggregateRating",
                   ratingValue: "5",
                   bestRating: "5",
                   worstRating: "1",
+                  reviewCount: testimonials.length.toString(),
                 },
-              })),
+                review: testimonials.map((t) => ({
+                  "@type": "Review",
+                  author: {
+                    "@type": "Person",
+                    name: t.name,
+                  },
+                  reviewBody: t.message,
+                  datePublished: new Date(t.update).toISOString().split("T")[0],
+                  reviewRating: {
+                    "@type": "Rating",
+                    ratingValue: "5",
+                    bestRating: "5",
+                    worstRating: "1",
+                  },
+                })),
+              },
             })}
           </script>
         </Helmet>
       )}
-
       <div className="max-w-340 mx-auto w-full px-4 sm:px-6 lg:px-8">
         <div className="md:hidden">
           <SectionHeading
@@ -210,4 +220,4 @@ const HomeReview = () => {
   );
 };
 
-export default HomeReview;
+export default AboutReview;

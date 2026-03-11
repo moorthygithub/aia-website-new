@@ -1,4 +1,3 @@
-import AboutHeroSection from "@/components/about/about-hero-section";
 import AboutSection from "@/components/about/about-section";
 
 import AboutMissionSection from "@/components/about/about-mission-section";
@@ -8,14 +7,14 @@ import AboutTrainerSection from "@/components/about/about-trainer-section";
 import AboutHighlight from "@/components/about/about-highlight";
 import AboutJourney from "@/components/about/about-journey";
 import AboutPartner from "@/components/about/about-partner";
+import AboutReview from "@/components/about/about-review";
+import OfficeCeleberation from "@/components/common/celeberation";
 import PopUp from "@/components/common/pop-up";
 import CourseYoutubeLecture from "@/components/courses/common/course-youtube-lecture";
 import HomeCourses from "@/components/home/home-courses";
-import HomePrCarousel from "@/components/home/home-pr-carousel";
-import HomeReview from "@/components/home/home-review";
-import certificationCourses from "@/data/certificationCourses";
-import OfficeCeleberation from "@/components/common/celeberation";
 import HomeHero from "@/components/home/home-hero";
+import HomePrCarousel from "@/components/home/home-pr-carousel";
+import certificationCourses from "@/data/certificationCourses";
 
 const AboutPage = () => {
   return (
@@ -34,7 +33,7 @@ const AboutPage = () => {
       <AboutPartner />
       {/* <HomeCorporatePartner /> */}
       <CourseYoutubeLecture courseSlug="about-aia" />
-      <HomeReview />
+      <AboutReview />
       <OfficeCeleberation
         title="Inside Life at AIA"
         description="Snapshots from AIA’s workplace where teamwork, milestones, and shared wins come together - reflecting the culture behind everything we build."
