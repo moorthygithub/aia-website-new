@@ -95,6 +95,7 @@ const HomeReview = () => {
                       aggregateRating: {
                         "@type": "AggregateRating",
                         ratingValue: "5",
+                        bestRating: "5",
                         reviewCount: testimonials.length.toString(),
                       },
                       review: testimonials.map((t) => ({
@@ -106,13 +107,10 @@ const HomeReview = () => {
                         reviewBody: t.message,
                         url: t.link,
                         datePublished: new Date(t.update).toISOString(),
-                        itemReviewed: {
-                          "@type": "Course",
-                          name: t.course,
-                        },
                         reviewRating: {
                           "@type": "Rating",
                           ratingValue: "5",
+                          bestRating: "5",
                         },
                       })),
                     })}
