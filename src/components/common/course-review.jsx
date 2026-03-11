@@ -152,16 +152,12 @@ const CourseReview = ({ slug, title }) => {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Course",
-            name: title,
+            name: slug,
+            description: `Professional certification training for ${slug}`,
             provider: {
               "@type": "Organization",
               name: "Academy of Internal Audit",
               url: "https://aia.in.net/",
-            },
-            aggregateRating: {
-              "@type": "AggregateRating",
-              ratingValue: "5",
-              reviewCount: testimonials.length.toString(),
             },
             review: testimonials.map((t) => ({
               "@type": "Review",
@@ -172,13 +168,10 @@ const CourseReview = ({ slug, title }) => {
               reviewBody: t.student_testimonial,
               url: t.student_testimonial_link,
               datePublished: new Date(t.updated_at).toISOString(),
-              itemReviewed: {
-                "@type": "Course",
-                name: t.student_course,
-              },
               reviewRating: {
                 "@type": "Rating",
                 ratingValue: "5",
+                bestRating: "5",
               },
             })),
           })}
