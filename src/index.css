@@ -316,3 +316,10 @@ body {
 #nprogress .spinner {
   display: none !important;
 }
+.testimonial-swiper .swiper-slide {
+  height: auto;
+}
+
+.testimonial-swiper {
+  padding-bottom: 40px !important; 
+}
