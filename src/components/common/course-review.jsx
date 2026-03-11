@@ -1,14 +1,13 @@
-import React, { useRef, useEffect, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
 import { BASE_URL, IMAGE_PATH } from "@/api/base-url";
 import SectionHeading from "@/components/SectionHeading/SectionHeading";
-import { Button } from "../ui/button";
-import { Link } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+import { Link } from "react-router-dom";
 const ServiceCard = ({ testimonial, i, progress, total, imageUrl }) => {
   const start = i / total;
   const end = (i + 1) / total;
@@ -159,28 +158,46 @@ const CourseReview = ({ slug, title }) => {
               name: "Academy of Internal Audit",
               url: "https://aia.in.net/",
             },
-            review: testimonials.map((t) => ({
+            aggregateRating: {
+              "@type": "AggregateRating",
+              ratingValue: "5",
+              bestRating: "5",
+              worstRating: "1",
+              ratingCount: testimonials.length,
+            },
+          })}
+        </script>
+
+        {testimonials.map((t, index) => (
+          <script key={index} type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
               "@type": "Review",
+              itemReviewed: {
+                "@type": "Course",
+                name: slug,
+                description: `Professional certification training for ${slug}`,
+                provider: {
+                  "@type": "Organization",
+                  name: "Academy of Internal Audit",
+                  url: "https://aia.in.net/",
+                },
+              },
               author: {
                 "@type": "Person",
                 name: t.student_name,
               },
               reviewBody: t.student_testimonial,
-              url: t.student_testimonial_link,
-              datePublished: new Date(t.updated_at).toISOString(),
-              itemReviewed: {
-                "@type": "Course",
-                name: slug,
-              },
+              datePublished: new Date(t.updated_at).toISOString().split("T")[0],
               reviewRating: {
                 "@type": "Rating",
                 ratingValue: "5",
                 bestRating: "5",
                 worstRating: "1",
               },
-            })),
-          })}
-        </script>
+            })}
+          </script>
+        ))}
       </Helmet>
       <div
         className={`${
