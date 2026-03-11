@@ -173,16 +173,6 @@ const CourseReview = ({ slug, title }) => {
             {JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Review",
-              itemReviewed: {
-                "@type": "Course",
-                name: slug,
-                description: `Professional certification training for ${slug}`,
-                provider: {
-                  "@type": "Organization",
-                  name: "Academy of Internal Audit",
-                  url: "https://aia.in.net/",
-                },
-              },
               author: {
                 "@type": "Person",
                 name: t.student_name,
