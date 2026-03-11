@@ -13,7 +13,6 @@ const BlogCard = React.memo(({ blog, imageBaseUrl, onClick }) => {
       year: "numeric",
     });
   }, []);
-
   const handleImageError = useCallback((e) => {
     e.target.src = `${IMAGE_PATH}/no_image.jpg`;
   }, []);
@@ -128,13 +127,12 @@ const EmptyState = ({ searchQuery, categoryName, onClearSearch }) => (
 const BlogCourse = () => {
   const { courseName } = useParams();
   const course = courseName?.toUpperCase();
-  const navigate = useNavigate();
   const [blogs, setBlogs] = useState([]);
   const [filteredBlogs, setFilteredBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [imageBaseUrl, setImageBaseUrl] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
-
+  console.log(courseName, "courseName");
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
@@ -167,9 +165,16 @@ const BlogCourse = () => {
 
       if (!query) {
         const courseBlogs = blogs.filter(
-          (blog) => blog.blog_course == course,
+          (blog) =>
+            blog.blog_course?.toLowerCase() === courseName?.toLowerCase(),
         );
-        setFilteredBlogs(courseBlogs);
+
+        const formattedBlogs = courseBlogs.map((blog) => ({
+          ...blog,
+          blog_course: blog.blog_course?.toUpperCase(),
+        }));
+
+        setFilteredBlogs(formattedBlogs);
         return;
       }
       const filtered = blogs.filter(
