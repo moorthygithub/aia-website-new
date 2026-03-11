@@ -144,53 +144,53 @@ const CourseReview = ({ slug, title }) => {
   if (isError || testimonials.length === 0) {
     return null;
   }
+  console.log(testimonials, "testimonials");
   return (
     <div className="max-w-340 mx-auto px-4">
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Course",
+            name: title,
+            provider: {
+              "@type": "Organization",
+              name: "Academy of Internal Audit",
+              url: "https://aia.in.net/",
+            },
+            aggregateRating: {
+              "@type": "AggregateRating",
+              ratingValue: "5",
+              reviewCount: testimonials.length.toString(),
+            },
+            review: testimonials.map((t) => ({
+              "@type": "Review",
+              author: {
+                "@type": "Person",
+                name: t.student_name,
+              },
+              reviewBody: t.student_testimonial,
+              url: t.student_testimonial_link,
+              datePublished: new Date(t.updated_at).toISOString(),
+              itemReviewed: {
+                "@type": "Course",
+                name: t.student_course,
+              },
+              reviewRating: {
+                "@type": "Rating",
+                ratingValue: "5",
+              },
+            })),
+          })}
+        </script>
+      </Helmet>
       <div
         className={`${
           scrollFinished ? "relative" : "sticky top-20"
         } bg-white z-40 pb-2 pt-6`}
       >
-        <Helmet>
-          <script type="application/ld+json">
-            {JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Course",
-              name: title,
-              provider: {
-                "@type": "Organization",
-                name: "Academy of Internal Audit",
-                url: "https://aia.in.net/",
-              },
-              aggregateRating: {
-                "@type": "AggregateRating",
-                ratingValue: "5",
-                reviewCount: testimonials.length.toString(),
-              },
-              review: testimonials.map((t) => ({
-                "@type": "Review",
-                author: {
-                  "@type": "Person",
-                  name: t.student_name,
-                },
-                reviewBody: t.student_testimonial,
-                url: t.student_testimonial_link,
-                datePublished: new Date(t.updated_at).toISOString(),
-                itemReviewed: {
-                  "@type": "Course",
-                  name: t.student_course,
-                },
-                reviewRating: {
-                  "@type": "Rating",
-                  ratingValue: "5",
-                },
-              })),
-            })}
-          </script>
-        </Helmet>
         <SectionHeading
           title={title || "290+ Professional Experiences Shared"}
-          // highlight1="★★★★★"
           align="center"
         />
       </div>
