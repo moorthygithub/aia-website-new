@@ -1,44 +1,22 @@
-// import { defineConfig } from "vite";
-// import react from "@vitejs/plugin-react";
-// import tailwindcss from "@tailwindcss/vite";
-// import path from "path";
-// import { fileURLToPath } from "url";
-// // import { sitemapMiddleware } from "./generate-sitemap.js";
-
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = path.dirname(__filename);
-
-// export default defineConfig({
-//   plugins: [
-//     tailwindcss(),
-//     react(),
-//     // {
-//     //   name: "sitemap-middleware",
-//     //   configureServer(server) {
-//     //     server.middlewares.use(sitemapMiddleware());
-//     //   },
-//     // },
-//   ],
-//   resolve: {
-//     alias: {
-//       "@": path.resolve(__dirname, "src"),
-//     },
-//   },
-// });
-// vite.config.js
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import { sitemapMiddleware, sitemapBuildPlugin } from "./vite-sitemap.js";
+import tailwindcss from "@tailwindcss/vite";
+import path from "path";
+import { fileURLToPath } from "url";
+import { sitemapBuildPlugin, sitemapMiddleware } from "./generate-sitemap.js";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export default defineConfig({
   plugins: [
-    react(),
     tailwindcss(),
+    react(),
 
-    // ✅ Runs during `vite build` → writes dist/sitemap.xml
+    // Writes dist/sitemap.xml during `vite build`
     sitemapBuildPlugin(),
 
-    // ✅ Runs during `vite dev` → serves /sitemap.xml on localhost
+    // Serves /sitemap.xml on localhost during `vite dev`
     {
       name: "sitemap-dev-middleware",
       configureServer(server) {
@@ -46,4 +24,9 @@ export default defineConfig({
       },
     },
   ],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "src"),
+    },
+  },
 });
