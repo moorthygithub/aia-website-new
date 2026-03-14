@@ -26,6 +26,8 @@ const HomeAccredited = () => {
                 alt="IAO logo"
                 className="w-40 h-40 object-contain"
                 loading="lazy"
+                width={160}
+                height={160}
               />
             </a>
           </div>
@@ -40,6 +42,8 @@ const HomeAccredited = () => {
                 alt="IIA logo"
                 className="w-48 h-48 object-contain"
                 loading="lazy"
+                width={160}
+                height={160}
               />
             </a>
           </div>
@@ -50,6 +54,8 @@ const HomeAccredited = () => {
               alt="ISO logo"
               className="w-40 h-40 object-contain"
               loading="lazy"
+              width={160}
+              height={160}
             />
           </div>
 
@@ -59,6 +65,8 @@ const HomeAccredited = () => {
               alt="Gleim logo"
               className="w-40 h-40 object-contain"
               loading="lazy"
+              width={160}
+              height={160}
             />
           </div>
 
@@ -72,6 +80,8 @@ const HomeAccredited = () => {
                 alt="GSAAA logo"
                 className="w-40 h-40 object-contain"
                 loading="lazy"
+                width={160}
+                height={160}
               />
             </a>
           </div>

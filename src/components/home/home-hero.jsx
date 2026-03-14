@@ -28,7 +28,7 @@ export default function HomeHero({ slug, bottombar = false }) {
     if (!data?.data || !data?.image_url) return;
 
     const bannerImageUrlObj = data.image_url.find(
-      (item) => item.image_for === "Banner",
+      (item) => item.image_for === "Banner"
     );
     const baseImageUrl = bannerImageUrlObj?.image_url || "";
 
@@ -58,7 +58,7 @@ export default function HomeHero({ slug, bottombar = false }) {
   const prevSlide = () => {
     if (carouselSlides.length > 0)
       setCurrentSlide(
-        (prev) => (prev - 1 + carouselSlides.length) % carouselSlides.length,
+        (prev) => (prev - 1 + carouselSlides.length) % carouselSlides.length
       );
   };
 
@@ -163,7 +163,9 @@ export default function HomeHero({ slug, bottombar = false }) {
                   e.target.src =
                     "https://via.placeholder.com/1200x400?text=Banner";
                 }}
-                loading="lazy"
+                fetchpriority={index === 0 ? "high" : "low"}
+                loading={index === 0 ? "eager" : "lazy"}
+                decoding={index === 0 ? "sync" : "async"}
               />
             </a>
           ))}
