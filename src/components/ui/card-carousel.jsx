@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import OptimizedImage from "../common/optmized-image";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
@@ -233,11 +234,10 @@ export const CardCarousel = ({
                   <SwiperSlide key={index}>
                     <div className="relative bg-white shadow-lg shadow-gray-200/50 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-gray-300/50">
                       <div className="border !rounded-none border-[#0F3652]">
-                        <img
+                        <OptimizedImage
                           src={student.src}
                           className="w-full h-auto object-contain !rounded-none"
                           alt={student.alt}
-                          loading="lazy"
                         />
                       </div>
                     </div>

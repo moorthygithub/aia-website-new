@@ -12,6 +12,7 @@ import { Autoplay, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SectionHeading from "../SectionHeading/SectionHeading";
 import HomeMap from "./home-map";
+import { useMemo } from "react";
 
 const HomeReview = () => {
   const location = useLocation();
@@ -43,6 +44,9 @@ const HomeReview = () => {
         : noImageUrl,
       alt: item.student_image_alt || item.student_name,
     })) || [];
+
+  // Limit to 25 items to reduce DOM size (3300+ elements reported)
+  const displayedTestimonials = useMemo(() => testimonials.slice(0, 25), [testimonials]);
   const truncateText = (text, limit = 430) => {
     if (text.length <= limit) return text;
     return text.slice(0, limit) + "...";
@@ -142,7 +146,7 @@ const HomeReview = () => {
                   loop
                   className="testimonial-swiper"
                 >
-                  {testimonials.map((item, index) => (
+                  {displayedTestimonials.map((item, index) => (
                     <SwiperSlide key={index}>
                       <div className="bg-white rounded-xl p-4 md:p-6 border border-[#F3831C]/20">
                         <div className="flex items-start gap-4 mb-4">

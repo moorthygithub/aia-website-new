@@ -1,6 +1,7 @@
 import { IMAGE_PATH } from "@/api/base-url";
 import React from "react";
 import SectionHeading from "../SectionHeading/SectionHeading";
+import OptimizedImage from "../common/optmized-image";
 
 const HomeAccredited = () => {
   return (
@@ -21,11 +22,10 @@ const HomeAccredited = () => {
               href="https://www.iao.org/India-Haryana/Academy-of-Internal-Audit"
               target="_blank"
             >
-              <img
+              <OptimizedImage
                 src={`${IMAGE_PATH}/IAO.png`}
                 alt="IAO logo"
                 className="w-40 h-40 object-contain"
-                loading="lazy"
                 width={160}
                 height={160}
               />
@@ -37,11 +37,10 @@ const HomeAccredited = () => {
               href="https://iiaindia.co/GlobalCertification/LearningPartner"
               target="_blank"
             >
-              <img
+              <OptimizedImage
                 src={`${IMAGE_PATH}/IIA.png`}
                 alt="IIA logo"
                 className="w-48 h-48 object-contain"
-                loading="lazy"
                 width={160}
                 height={160}
               />
@@ -49,22 +48,20 @@ const HomeAccredited = () => {
           </div>
 
           <div className="grayscale hover:grayscale-0 flex items-center justify-center transition-transform duration-300 hover:scale-110">
-            <img
+            <OptimizedImage
               src={`${IMAGE_PATH}/ISO.png`}
               alt="ISO logo"
               className="w-40 h-40 object-contain"
-              loading="lazy"
               width={160}
               height={160}
             />
           </div>
 
           <div className="grayscale hover:grayscale-0 flex items-center justify-center transition-transform duration-300 hover:scale-110">
-            <img
+            <OptimizedImage
               src={`${IMAGE_PATH}/Gleim.png`}
               alt="Gleim logo"
               className="w-40 h-40 object-contain"
-              loading="lazy"
               width={160}
               height={160}
             />
@@ -75,11 +72,10 @@ const HomeAccredited = () => {
               href="https://www.gsaaa.org/india/academy-of-internal-audit"
               target="_blank"
             >
-              <img
+              <OptimizedImage
                 src={`${IMAGE_PATH}/GSAAA.png`}
                 alt="GSAAA logo"
                 className="w-40 h-40 object-contain"
-                loading="lazy"
                 width={160}
                 height={160}
               />
@@ -94,7 +90,7 @@ const HomeAccredited = () => {
               href="https://www.iao.org/India-Haryana/Academy-of-Internal-Audit"
               target="_blank"
             >
-              <img
+              <OptimizedImage
                 src={`${IMAGE_PATH}/IAO.png`}
                 alt="IAO logo"
                 className="w-full h-full object-contain"
@@ -107,30 +103,27 @@ const HomeAccredited = () => {
               href="https://iiaindia.co/GlobalCertification/LearningPartner"
               target="_blank"
             >
-              <img
+              <OptimizedImage
                 src={`${IMAGE_PATH}/IIA.png`}
                 alt="IIA logo"
                 className="w-full h-full object-contain"
-                loading="lazy"
               />
             </a>
           </div>
 
           <div className="flex items-center justify-center">
-            <img
+            <OptimizedImage
               src={`${IMAGE_PATH}/ISO.png`}
               alt="ISO logo"
               className="w-full h-full object-contain"
-              loading="lazy"
             />
           </div>
 
           <div className="flex items-center justify-center">
-            <img
+            <OptimizedImage
               src={`${IMAGE_PATH}/Gleim.png`}
               alt="Gleim logo"
               className="w-full h-full object-contain"
-              loading="lazy"
             />
           </div>
 
@@ -139,11 +132,10 @@ const HomeAccredited = () => {
               href="https://www.gsaaa.org/india/academy-of-internal-audit"
               target="_blank"
             >
-              <img
+              <OptimizedImage
                 src={`${IMAGE_PATH}/GSAAA.png`}
                 alt="GSAAA logo"
                 className="w-[180px] h-[180px] object-contain"
-                loading="lazy"
               />
             </a>
           </div>

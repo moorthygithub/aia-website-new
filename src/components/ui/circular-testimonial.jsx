@@ -1,6 +1,7 @@
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "./button";
+import OptimizedImage from "../common/optmized-image";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 function calculateGap(width) {
   const minWidth = 1024;
@@ -198,13 +199,12 @@ export const CircularTestimonials = ({
           className="relative w-full w-[280px] min-w-[400px] h-60 md:h-96 perspective-[1000px] overflow-visible"
         >
           {testimonials.map((testimonial, index) => (
-            <img
+            <OptimizedImage
               key={testimonial.src}
               src={testimonial.src}
               alt={testimonial.name || "Testimonial image"}
               className="absolute left-1/2 w-[280px] md:w-[400px] h-full -translate-x-1/2 rounded-3xl object-contain transition-all duration-700"
               style={getImageStyle(index)}
-              loading="lazy"
             />
           ))}
 

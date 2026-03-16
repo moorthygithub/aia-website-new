@@ -11,20 +11,28 @@
       content="rJlkOVXPnQNj8F3FD3_kwLVrqO0NydyxlvvWEtOReSo"
     />
 
-    <!-- Google Tag Manager - Add this inside head tag for all pages -->
+    <!-- Optimized Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://aia.in.net" />
+    
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
+    <!-- Delayed Third-Party Script Loading (Advanced) -->
     <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-KJ7WJLKJ");
+      window.addEventListener('load', function() {
+        // GTM Delay
+        setTimeout(function() {
+          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','GTM-KJ7WJLKJ');
+        }, 2000); // 2 second delay after load to clear main thread for React
+      });
     </script>
-    <!-- End Google Tag Manager -->
 
     <!-- Organization Schema (inside head) -->
     <script type="application/ld+json">
@@ -46,7 +54,7 @@
     </script>
     <!-- End Organization Schema -->
 
-    <!-- Breadcrumb Schema (dynamic items & names can be updated via JS/React) -->
+    <!-- Breadcrumb Schema -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -58,22 +66,24 @@
             "name": "Home",
             "item": "https://aia.in.net/"
           }
-          /* Add more items dynamically in React/JS */
         ]
       }
     </script>
     <!-- End Breadcrumb Schema -->
 
-    <!-- Google Ad Code Implement -->
-    <script
-      async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXX"
-      crossorigin="anonymous"
-    ></script>
+    <!-- Google Ad Code Implement - Async but also delayed slightly -->
+    <script>
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          var script = document.createElement('script');
+          script.async = true;
+          script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXX";
+          script.crossOrigin = "anonymous";
+          document.head.appendChild(script);
+        }, 3000); // 3 second delay
+      });
+    </script>
     <!-- End Google Ad Code -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://aia.in.net" />
 
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"

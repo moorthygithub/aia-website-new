@@ -343,7 +343,7 @@ const WhatsappCarosal = ({ title, description, course }) => {
       alt: item.student_screenshot_image_alt || "",
       quote: item.student_screenshot_image_alt || "",
       youtubeLink: item.student_youtube_link || null,
-    }));
+    })).slice(0, 25); // Limit to 25 items for DOM performance
   }, [certificatesData]);
 
   if (isLoading) {

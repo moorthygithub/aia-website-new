@@ -12,25 +12,12 @@ const PageSkeleton = () => {
 };
 
 const Layout = ({ children }) => {
-  const location = useLocation();
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setLoading(true);
-
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 300);
-
-    return () => clearTimeout(timer);
-  }, [location.pathname]);
-
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
 
       <main className="grow min-h-screen">
-        {loading ? <PageSkeleton /> : children}
+        {children}
       </main>
 
       <Footer />

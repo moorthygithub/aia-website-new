@@ -216,7 +216,7 @@ const PopUp = ({ slug = "home" }) => {
                 alt={popupData.popup_image_alt}
                 className={`${popupData.popup_heading ? "rounded-b-lg" : "rounded-lg"} w-full h-auto`}
                 loading="eager"
-                fetchpriority="high"
+                fetchPriority="high"
               />
             )}
           </div>
