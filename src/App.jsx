@@ -55,11 +55,11 @@ export default function App() {
 
   return (
     <div className="font-sans text-gray-800 min-h-screen flex flex-col">
-      <ScrollToTop />
+      {/* <ScrollToTop />
       <CanonicalTag />
       <GoogleAnalytics />
       <NotificationPopup />
-      <FloatingContact />
+      <FloatingContact /> */}
       <Toaster position="top-right" richColors />
 
       <Layout>

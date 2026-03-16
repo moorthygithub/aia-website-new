@@ -222,7 +222,8 @@ const Navbar = () => {
                   src={`${IMAGE_PATH}/new_logo.webp`}
                   alt="Academy of Internal Audit"
                   className="h-8 md:h-10 w-auto"
-                  loading="lazy"
+                  fetchPriority="high"
+                  decoding="async"
                 />
               </Link>
             </div>
@@ -342,7 +343,8 @@ const Navbar = () => {
                   src={`${IMAGE_PATH}/new_logo.webp`}
                   alt="Academy of Internal Audit"
                   className="h-8 md:h-10 w-auto"
-                  loading="lazy"
+                  fetchPriority="high"
+                  decoding="async"
                 />
               </div>
 

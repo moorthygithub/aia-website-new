@@ -67,20 +67,20 @@ const HomeCourses = lazy(() => import("@/components/home/home-courses"));
 const HomePassout = lazy(() => import("@/components/home/home-passout"));
 const HomeResults = lazy(() => import("@/components/home/home-results"));
 const HomeAccredited = lazy(() => import("@/components/home/home-accredited"));
-const WhatsappCarosal = lazy(() =>
-  import("@/components/common/whatsapp-carosal")
+const WhatsappCarosal = lazy(
+  () => import("@/components/common/whatsapp-carosal"),
 );
 const HomeReview = lazy(() => import("@/components/home/home-review"));
 const AllYoutube = lazy(() => import("@/components/common/get-all-youtube"));
-const HomeCorporatePartner = lazy(() =>
-  import("@/components/home/home-corporate-partner")
+const HomeCorporatePartner = lazy(
+  () => import("@/components/home/home-corporate-partner"),
 );
 const HomePrCarousel = lazy(() => import("@/components/home/home-pr-carousel"));
-const HomeAlumniWork = lazy(() =>
-  import("@/components/home/home-alumini-work")
+const HomeAlumniWork = lazy(
+  () => import("@/components/home/home-alumini-work"),
 );
-const CourseYoutubeLecture = lazy(() =>
-  import("@/components/courses/common/course-youtube-lecture")
+const CourseYoutubeLecture = lazy(
+  () => import("@/components/courses/common/course-youtube-lecture"),
 );
 const HomeBlogs = lazy(() => import("@/components/home/home-blogs"));
 const HomeFaq = lazy(() => import("@/components/home/home-faq"));
@@ -157,7 +157,7 @@ export default function Home() {
       {
         rootMargin: "150px",
         threshold: 0.1,
-      }
+      },
     );
 
     sections.forEach(([key, ref]) => {
@@ -172,8 +172,7 @@ export default function Home() {
 
   return (
     <div className="font-sans text-gray-800">
-      {/* Above the fold */}
-      <PopUp slug="home" />
+      {/* <PopUp slug="home" />
       <HomeHero slug="home" bottombar="true" />
 
       <div ref={aboutRef}>
@@ -297,7 +296,7 @@ export default function Home() {
             <HomeFaq />
           </Suspense>
         )}
-      </div>
+      </div> */}
     </div>
   );
 }
