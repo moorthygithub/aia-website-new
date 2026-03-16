@@ -1,7 +1,7 @@
 
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { lazy, Suspense } from "react";
-import SitemapPage from "./pages/SitemapPage";
+// import SitemapPage from "./pages/SitemapPage";
 import Layout from "./layout/Layout";
 
 const CAMS = lazy(() => import("./pages/Courses/CAMS"));
@@ -49,9 +49,9 @@ export default function App() {
   const location = useLocation();
 
   // Serve sitemap as raw XML — no Layout, no navbar, no footer
-  if (location.pathname === "/sitemap.xml") {
-    return <SitemapPage />;
-  }
+  // if (location.pathname === "/sitemap.xml") {
+  //   return <SitemapPage />;
+  // }
 
   return (
     <div className="font-sans text-gray-800 min-h-screen flex flex-col">
