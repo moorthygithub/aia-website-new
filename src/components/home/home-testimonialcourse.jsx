@@ -50,12 +50,14 @@ export function TestimonialCardColor({
         "flex flex-col rounded-lg relative group",
         "border-2 border-[#F3831C] bg-white",
         "overflow-hidden",
-        className,
+        className
       )}
       // style={{ width: cardWidth, height: cardHeight }}
     >
       <div
-        className={`absolute top-0 right-0 z-30 backdrop-blur-sm px-3 py-1 rounded-md text-xs font-semibold ${getCourseStyles(course)}`}
+        className={`absolute top-0 right-0 z-30 backdrop-blur-sm px-3 py-1 rounded-md text-xs font-semibold ${getCourseStyles(
+          course
+        )}`}
       >
         {getCourseName(course)}
       </div>
@@ -65,6 +67,7 @@ export function TestimonialCardColor({
             src={author?.avatar}
             alt={alt || "Certificate Image"}
             className="w-full h-full object-contain rounded-md"
+            loading="lazy"
           />
         </Avatar>
       </div>

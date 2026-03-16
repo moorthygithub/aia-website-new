@@ -1,32 +1,154 @@
-import AllYoutube from "@/components/common/get-all-youtube";
+// import AllYoutube from "@/components/common/get-all-youtube";
+// import PopUp from "@/components/common/pop-up";
+// import WhatsappCarosal from "@/components/common/whatsapp-carosal";
+// import CourseYoutube from "@/components/courses/common/course-youtube";
+// import HomeAlumniWork from "@/components/home/home-alumini-work";
+// import HomeReview from "@/components/home/home-review";
+// import PassoutBanner from "@/components/passout/passout-banner";
+// import PassoutResult from "@/components/passout/passout-result";
+// import PassoutSucess from "@/components/passout/passout-success";
+
+// const OurPassout = () => {
+//   return (
+//     <div>
+//       <PopUp slug="Passed-Out" />
+//       <PassoutBanner />
+//       <PassoutResult />
+//       <PassoutSucess />
+//       <AllYoutube
+//         title="Hear from Our Recently Qualified Professionals on YouTube"
+//         description="Watch AIA-trained professionals share their success stories, exam strategies, and career insights in exclusive interviews with Puneet Sir on YouTube."
+//       />
+//       <WhatsappCarosal
+//         title="Unfiltered Reflections from AIA-Trained Professionals"
+//         description="Heartfelt messages shared by professionals after completing their journey with AIA.
+// Each message reflects a different experience. These reflections provide a genuine view of what preparation looks like in real situations, beyond structured testimonials"
+//         course="all"
+//       />
+//       <HomeReview />
+//       <HomeAlumniWork />
+//     </div>
+//   );
+// };
+
+// export default OurPassout;
+import React, { lazy, Suspense, useEffect, useRef, useState } from "react";
+
 import PopUp from "@/components/common/pop-up";
-import WhatsappCarosal from "@/components/common/whatsapp-carosal";
-import CourseYoutube from "@/components/courses/common/course-youtube";
-import HomeAlumniWork from "@/components/home/home-alumini-work";
-import HomeReview from "@/components/home/home-review";
 import PassoutBanner from "@/components/passout/passout-banner";
 import PassoutResult from "@/components/passout/passout-result";
-import PassoutSucess from "@/components/passout/passout-success";
+
+const PassoutSucess = lazy(() =>
+  import("@/components/passout/passout-success")
+);
+const AllYoutube = lazy(() => import("@/components/common/get-all-youtube"));
+const WhatsappCarosal = lazy(() =>
+  import("@/components/common/whatsapp-carosal")
+);
+const HomeReview = lazy(() => import("@/components/home/home-review"));
+const HomeAlumniWork = lazy(() =>
+  import("@/components/home/home-alumini-work")
+);
 
 const OurPassout = () => {
+  const refs = {
+    success: useRef(null),
+    youtube: useRef(null),
+    whatsapp: useRef(null),
+    review: useRef(null),
+    alumni: useRef(null),
+  };
+
+  const [visible, setVisible] = useState({});
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const key = entry.target.dataset.section;
+
+            setVisible((prev) => ({
+              ...prev,
+              [key]: true,
+            }));
+
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        rootMargin: "150px",
+        threshold: 0.1,
+      }
+    );
+
+    Object.keys(refs).forEach((key) => {
+      const ref = refs[key];
+
+      if (ref.current) {
+        ref.current.dataset.section = key;
+        observer.observe(ref.current);
+      }
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div>
+      {/* Initial Render */}
       <PopUp slug="Passed-Out" />
       <PassoutBanner />
       <PassoutResult />
-      <PassoutSucess />
-      <AllYoutube
-        title="Hear from Our Recently Qualified Professionals on YouTube"
-        description="Watch AIA-trained professionals share their success stories, exam strategies, and career insights in exclusive interviews with Puneet Sir on YouTube."
-      />
-      <WhatsappCarosal
-        title="Unfiltered Reflections from AIA-Trained Professionals"
-        description="Heartfelt messages shared by professionals after completing their journey with AIA.
+
+      <div ref={refs.success}>
+        {visible.success && (
+          <Suspense fallback={null}>
+            <PassoutSucess />
+          </Suspense>
+        )}
+      </div>
+
+      <div ref={refs.youtube}>
+        {visible.youtube && (
+          <Suspense fallback={null}>
+            <AllYoutube
+              title="Hear from Our Recently Qualified Professionals on YouTube"
+              description="Watch AIA-trained professionals share their success stories, exam strategies, and career insights in exclusive interviews with Puneet Sir on YouTube."
+            />
+          </Suspense>
+        )}
+      </div>
+
+      <div ref={refs.whatsapp}>
+        {visible.whatsapp && (
+          <Suspense fallback={null}>
+            <WhatsappCarosal
+              title="Unfiltered Reflections from AIA-Trained Professionals"
+              description="Heartfelt messages shared by professionals after completing their journey with AIA.
 Each message reflects a different experience. These reflections provide a genuine view of what preparation looks like in real situations, beyond structured testimonials"
-        course="all"
-      />
-      <HomeReview />
-      <HomeAlumniWork />
+              course="all"
+            />
+          </Suspense>
+        )}
+      </div>
+
+      <div ref={refs.review}>
+        {visible.review && (
+          <Suspense fallback={null}>
+            <HomeReview />
+          </Suspense>
+        )}
+      </div>
+
+      <div ref={refs.alumni}>
+        {visible.alumni && (
+          <Suspense fallback={null}>
+            <HomeAlumniWork />
+          </Suspense>
+        )}
+      </div>
     </div>
   );
 };

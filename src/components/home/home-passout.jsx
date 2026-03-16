@@ -3,7 +3,7 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { TestimonialsColumn } from "@/components/ui/testimonials-columns-1";
 
-import usePreloadImages from "@/hooks/usePreloadImages";
+// import usePreloadImages from "@/hooks/usePreloadImages";
 import { BASE_URL } from "@/api/base-url";
 import SectionHeading from "../SectionHeading/SectionHeading";
 
@@ -39,7 +39,7 @@ const HomePassout = () => {
       company_alt: item.student_company_image_alt || "Student",
     })) || [];
 
-  usePreloadImages(testimonials.map((t) => t.image));
+  // usePreloadImages(testimonials.map((t) => t.image));
   const firstColumn = testimonials.filter((item) => item.course === "CFE");
   const secondColumn = testimonials.filter(
     (item) => item.course != "CFE" && item.course != "CAMS",
