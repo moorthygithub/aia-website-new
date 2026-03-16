@@ -66,13 +66,21 @@ const HomeCourses = lazy(() => import("@/components/home/home-courses"));
 const HomePassout = lazy(() => import("@/components/home/home-passout"));
 const HomeResults = lazy(() => import("@/components/home/home-results"));
 const HomeAccredited = lazy(() => import("@/components/home/home-accredited"));
-const WhatsappCarosal = lazy(() => import("@/components/common/whatsapp-carosal"));
+const WhatsappCarosal = lazy(
+  () => import("@/components/common/whatsapp-carosal"),
+);
 const HomeReview = lazy(() => import("@/components/home/home-review"));
 const AllYoutube = lazy(() => import("@/components/common/get-all-youtube"));
-const HomeCorporatePartner = lazy(() => import("@/components/home/home-corporate-partner"));
+const HomeCorporatePartner = lazy(
+  () => import("@/components/home/home-corporate-partner"),
+);
 const HomePrCarousel = lazy(() => import("@/components/home/home-pr-carousel"));
-const HomeAlumniWork = lazy(() => import("@/components/home/home-alumini-work"));
-const CourseYoutubeLecture = lazy(() => import("@/components/courses/common/course-youtube-lecture"));
+const HomeAlumniWork = lazy(
+  () => import("@/components/home/home-alumini-work"),
+);
+const CourseYoutubeLecture = lazy(
+  () => import("@/components/courses/common/course-youtube-lecture"),
+);
 const HomeBlogs = lazy(() => import("@/components/home/home-blogs"));
 const HomeFaq = lazy(() => import("@/components/home/home-faq"));
 
@@ -88,14 +96,22 @@ const LazySection = ({ children, threshold = 0.1, rootMargin = "150px" }) => {
           observer.unobserve(entry.target);
         }
       },
-      { threshold, rootMargin }
+      { threshold, rootMargin },
     );
 
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
   }, [threshold, rootMargin]);
 
-  return <div ref={ref}>{isVisible ? <Suspense fallback={null}>{children}</Suspense> : <div className="h-20" />}</div>;
+  return (
+    <div ref={ref}>
+      {isVisible ? (
+        <Suspense fallback={null}>{children}</Suspense>
+      ) : (
+        <div className="h-20" />
+      )}
+    </div>
+  );
 };
 
 export default function Home() {
@@ -160,7 +176,11 @@ export default function Home() {
       </LazySection>
 
       <LazySection>
-        <CourseYoutubeLecture courseSlug="home" />
+        <CourseYoutubeLecture
+          courseSlug="home"
+          title="Watch & Learn! Everything You Need to"
+          highlight1="Crack the CFE, CIA & CAMS"
+        />
       </LazySection>
 
       <LazySection>
