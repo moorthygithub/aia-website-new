@@ -55,12 +55,7 @@ const PopUp = ({ slug = "home" }) => {
   };
 
   useEffect(() => {
-    // Reduced initial delay for fetching popup data
-    const timer = setTimeout(() => {
-      fetchPopupData();
-    }, 1000);
-
-    return () => clearTimeout(timer);
+    fetchPopupData();
   }, [slug]);
   useEffect(() => {
     if (!popupData || popupData.popup_required !== "Yes") {
@@ -108,12 +103,7 @@ const PopUp = ({ slug = "home" }) => {
 
   useEffect(() => {
     if (showPopupAfterLoad) {
-      // Significantly reduced delay after image is loaded
-      const timer = setTimeout(() => {
-        setOpen(true);
-      }, 500);
-
-      return () => clearTimeout(timer);
+      setOpen(true);
     }
   }, [showPopupAfterLoad]);
 
@@ -200,13 +190,18 @@ const PopUp = ({ slug = "home" }) => {
               </div>
             </DialogHeader>
           ) : (
-            <button
-              onClick={handleClose}
-              className="absolute top-3 right-3 z-10 h-7 w-7 rounded-lg cursor-pointer bg-[#F3831C] shadow-lg flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-[#0F3652]/40"
-              aria-label="Close popup"
-            >
-              <X className="h-4 w-4 text-white" />
-            </button>
+            <>
+              <DialogTitle className="sr-only">
+                Notification Popup
+              </DialogTitle>
+              <button
+                onClick={handleClose}
+                className="absolute top-3 right-3 z-10 h-7 w-7 rounded-lg cursor-pointer bg-[#F3831C] shadow-lg flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-[#0F3652]/40"
+                aria-label="Close popup"
+              >
+                <X className="h-4 w-4 text-white" />
+              </button>
+            </>
           )}
 
           <div className="px-2 pb-2">
@@ -214,6 +209,8 @@ const PopUp = ({ slug = "home" }) => {
               <img
                 src={imageUrl}
                 alt={popupData.popup_image_alt}
+                width={1200}
+                height={400}
                 className={`${popupData.popup_heading ? "rounded-b-lg" : "rounded-lg"} w-full h-auto`}
                 loading="eager"
                 fetchPriority="high"

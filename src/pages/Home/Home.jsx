@@ -84,7 +84,7 @@ const CourseYoutubeLecture = lazy(
 const HomeBlogs = lazy(() => import("@/components/home/home-blogs"));
 const HomeFaq = lazy(() => import("@/components/home/home-faq"));
 
-const LazySection = ({ children, threshold = 0.1, rootMargin = "150px" }) => {
+const LazySection = ({ children, threshold = 0.1, rootMargin = "150px", minHeight = "200px" }) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef(null);
 
@@ -104,11 +104,11 @@ const LazySection = ({ children, threshold = 0.1, rootMargin = "150px" }) => {
   }, [threshold, rootMargin]);
 
   return (
-    <div ref={ref}>
+    <div ref={ref} style={{ minHeight: isVisible ? "auto" : minHeight }}>
       {isVisible ? (
         <Suspense fallback={null}>{children}</Suspense>
       ) : (
-        <div className="h-20" />
+        <div />
       )}
     </div>
   );
@@ -120,23 +120,23 @@ export default function Home() {
       <PopUp slug="home" />
       <HomeHero slug="home" bottombar="true" />
 
-      <LazySection>
+      <LazySection minHeight="400px">
         <HomeAbout />
       </LazySection>
 
-      <LazySection>
+      <LazySection minHeight="600px">
         <HomeContact />
       </LazySection>
 
-      <LazySection>
+      <LazySection minHeight="500px">
         <HomeCourses certificationCourses={certificationCourses} />
       </LazySection>
 
-      <LazySection>
+      <LazySection minHeight="400px">
         <HomePassout />
       </LazySection>
 
-      <LazySection>
+      <LazySection minHeight="500px">
         <HomeResults
           title="We Stand by Results - Actual Certificates Earned by AIA Learners"
           description="Actual certificates earned by professionals across CFE, CIA, and CAMS after structured preparation with AIA."

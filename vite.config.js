@@ -50,6 +50,7 @@ import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 import { fileURLToPath } from "url";
 import viteCompression from "vite-plugin-compression";
+import { VitePWA } from 'vite-plugin-pwa';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -60,6 +61,75 @@ export default defineConfig({
   plugins: [
     tailwindcss(),
     react(),
+    VitePWA({
+      registerType: 'autoUpdate',
+      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'android-chrome-192x192.png'],
+      manifest: {
+        name: 'AIA Website',
+        short_name: 'AIA',
+        description: 'AIA Website with offline capabilities',
+        start_url: '/',
+        display: 'standalone',
+        background_color: '#ffffff',
+        theme_color: '#ffffff',
+        icons: [
+          {
+            src: 'android-chrome-192x192.png',
+            sizes: '192x192',
+            type: 'image/png'
+          },
+          {
+            src: 'android-chrome-512x512.png',
+            sizes: '512x512',
+            type: 'image/png'
+          }
+        ]
+      },
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,webp}'],
+        runtimeCaching: [
+          {
+            urlPattern: /^https:\/\/aia\.in\.net\/webapi\/public\/assets\/images\/web_images\/banner_images\/.*\.webp$/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'remote-banner-images',
+              expiration: {
+                maxEntries: 50,
+                maxAgeSeconds: 60 * 60 * 24 * 30, // 30 Days
+              },
+              cacheableResponse: {
+                statuses: [0, 200],
+              },
+            },
+          },
+          {
+            urlPattern: /^https:\/\/aia\.in\.net\/webapi\/public\/api\/.*/,
+            handler: 'StaleWhileRevalidate',
+            options: {
+              cacheName: 'api-cache',
+              expiration: {
+                maxEntries: 100,
+                maxAgeSeconds: 60 * 60 * 24, // 24 Hours
+              },
+              cacheableResponse: {
+                statuses: [0, 200],
+              },
+            },
+          },
+          {
+            urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp)$/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'local-images',
+              expiration: {
+                maxEntries: 60,
+                maxAgeSeconds: 60 * 60 * 24 * 30, // 30 Days
+              },
+            },
+          },
+        ],
+      },
+    }),
 
     viteCompression({
       algorithm: "gzip",
@@ -96,9 +166,14 @@ export default defineConfig({
             ) {
               return "react-vendor";
             }
+
+            // Data Fetching
+            if (id.includes("axios") || id.includes("@tanstack/react-query")) {
+              return "data-vendor";
+            }
             
             // Group heavy UI/Animation libs
-            if (id.includes("framer-motion") || id.includes("lucide-react") || id.includes("react-icons")) {
+            if (id.includes("framer-motion") || id.includes("lucide-react") || id.includes("react-icons") || id.includes("vaul")) {
               return "ui-vendor";
             }
 

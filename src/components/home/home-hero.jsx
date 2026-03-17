@@ -150,11 +150,10 @@ export default function HomeHero({ slug, bottombar = false }) {
               href={slide.link}
               target="_blank"
               rel="noopener noreferrer"
-              className={`block transition-opacity duration-700 ease-in-out ${
-                index === currentSlide
-                  ? "opacity-100 relative z-10"
-                  : "opacity-0 absolute inset-0 z-0"
-              }`}
+              className={`block transition-opacity duration-700 ease-in-out ${index === currentSlide
+                ? "opacity-100 relative z-10"
+                : "opacity-0 absolute inset-0 z-0"
+                }`}
             >
               <OptimizedImage
                 src={slide.imageUrl}
