@@ -44,7 +44,7 @@ const CorporateWhyAia = () => {
                     <div className={styles["work-flow-oval-wrp"]}>
                       <div className={styles["work-flow-oval-item"]}>
                         <img
-                          src={`${IMAGE_PATH}/ovel-1.png`}
+                          src={`${IMAGE_PATH}/ovel-1.webp`}
                           className={styles["work-flow-oval"]}
                           alt="Web Design Company"
                           loading="lazy"
@@ -65,7 +65,7 @@ const CorporateWhyAia = () => {
                           className={styles["work-flow-oval-item"]}
                         >
                           <img
-                            src={`${IMAGE_PATH}/ovel-${num}.png`}
+                            src={`${IMAGE_PATH}/ovel-${num}.webp`}
                             className={styles["work-flow-oval"]}
                             alt="Web Design Company"
                             loading="lazy"
@@ -98,7 +98,7 @@ const CorporateWhyAia = () => {
                     >
                       <div className={styles["workflow-content-wrap"]}>
                         <img
-                          src={`${IMAGE_PATH}/ovel-lin${index + 1}.png`}
+                          src={`${IMAGE_PATH}/ovel-lin${index + 1}.webp`}
                           className={styles["workflow-icon"]}
                           alt="Workflow Icon"
                           loading="lazy"

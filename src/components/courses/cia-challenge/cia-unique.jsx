@@ -1,7 +1,3 @@
-
-
-
-
 import React from "react";
 import {
   Users,
@@ -15,7 +11,7 @@ import {
   Star,
 } from "lucide-react";
 import CourseUnique from "../common/course-unique";
-//demo 
+//demo
 const CiaUnique = () => {
   return (
     <CourseUnique
@@ -84,7 +80,6 @@ const CiaUnique = () => {
             "From registration to scheduling your exam, we assist you at every stage of your journey.",
           position: "right",
         },
-         
       ]}
       lastText="Join AIA and experience audit training that’s practical, personal, and proven."
     />

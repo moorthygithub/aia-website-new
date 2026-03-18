@@ -1,38 +1,15 @@
-// import CourseYoutubeLecture from "@/components/courses/common/course-youtube-lecture";
-// import EnrollFaq from "@/components/enroll/enroll-faq";
-// import EnrollHighlight from "@/components/enroll/enroll-highlight";
-// import EnroolTopStudent from "@/components/enroll/enrool-top-student";
-// import HomeAlumniWork from "@/components/home/home-alumini-work";
-// import HomeReview from "@/components/home/home-review";
-
-// const Enrool = () => {
-//   return (
-//     <div>
-//       <EnrollHighlight />
-
-//       <EnroolTopStudent />
-//       <HomeAlumniWork />
-
-//       <CourseYoutubeLecture courseSlug="enroll-now" />
-//       <HomeReview />
-//       <EnrollFaq />
-//     </div>
-//   );
-// };
-
-// export default Enrool;
 import React, { lazy, Suspense, useEffect, useRef, useState } from "react";
 
 import EnrollHighlight from "@/components/enroll/enroll-highlight";
 
-const EnroolTopStudent = lazy(() =>
-  import("@/components/enroll/enrool-top-student")
+const EnroolTopStudent = lazy(
+  () => import("@/components/enroll/enrool-top-student"),
 );
-const HomeAlumniWork = lazy(() =>
-  import("@/components/home/home-alumini-work")
+const HomeAlumniWork = lazy(
+  () => import("@/components/home/home-alumini-work"),
 );
-const CourseYoutubeLecture = lazy(() =>
-  import("@/components/courses/common/course-youtube-lecture")
+const CourseYoutubeLecture = lazy(
+  () => import("@/components/courses/common/course-youtube-lecture"),
 );
 const HomeReview = lazy(() => import("@/components/home/home-review"));
 const EnrollFaq = lazy(() => import("@/components/enroll/enroll-faq"));
@@ -67,7 +44,7 @@ const Enrool = () => {
       {
         rootMargin: "150px",
         threshold: 0.1,
-      }
+      },
     );
 
     Object.keys(refs).forEach((key) => {

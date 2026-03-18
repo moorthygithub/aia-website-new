@@ -1,57 +1,23 @@
-// import ContactHero from "@/components/contact/contact-hero";
-// import ContactHighlight from "@/components/contact/contact-highlight";
-// import ContactLocation from "@/components/contact/contact-location";
-// import ContactMap from "@/components/contact/contact-map";
-// import ContactReachOut from "@/components/contact/contact-reach-out";
-// import ContactUnique from "@/components/contact/contact-unique";
-// import CourseTopStudent from "@/components/courses/common/course-top-student";
-// import HomeAlumniWork from "@/components/home/home-alumini-work";
-// import HomeReview from "@/components/home/home-review";
-// import PopUp from "../../components/common/pop-up";
-
-// const Contact = () => {
-//   return (
-//     <div>
-//       <PopUp slug="Contact" />
-//       <ContactHero />
-//       <ContactReachOut />
-//       <ContactHighlight />
-//       <CourseTopStudent
-//         courseSlug="all"
-//         needPrefix="false"
-//         title="Recent Passout Students"
-//         subtitle="Our successful graduates making a difference in the industry"
-//       />
-//       <HomeAlumniWork />
-//       <ContactMap />
-//       <ContactUnique />
-//       <HomeReview />
-//       <ContactLocation />
-//     </div>
-//   );
-// };
-
-// export default Contact;
 import React, { lazy, Suspense, useEffect, useRef, useState } from "react";
 
 import PopUp from "../../components/common/pop-up";
 import ContactHero from "@/components/contact/contact-hero";
 import ContactReachOut from "@/components/contact/contact-reach-out";
 
-const ContactHighlight = lazy(() =>
-  import("@/components/contact/contact-highlight")
+const ContactHighlight = lazy(
+  () => import("@/components/contact/contact-highlight"),
 );
-const CourseTopStudent = lazy(() =>
-  import("@/components/courses/common/course-top-student")
+const CourseTopStudent = lazy(
+  () => import("@/components/courses/common/course-top-student"),
 );
-const HomeAlumniWork = lazy(() =>
-  import("@/components/home/home-alumini-work")
+const HomeAlumniWork = lazy(
+  () => import("@/components/home/home-alumini-work"),
 );
 const ContactMap = lazy(() => import("@/components/contact/contact-map"));
 const ContactUnique = lazy(() => import("@/components/contact/contact-unique"));
 const HomeReview = lazy(() => import("@/components/home/home-review"));
-const ContactLocation = lazy(() =>
-  import("@/components/contact/contact-location")
+const ContactLocation = lazy(
+  () => import("@/components/contact/contact-location"),
 );
 
 const Contact = () => {
@@ -86,7 +52,7 @@ const Contact = () => {
       {
         rootMargin: "150px",
         threshold: 0.1,
-      }
+      },
     );
 
     Object.keys(refs).forEach((key) => {

@@ -23,7 +23,7 @@ const HomeAccredited = () => {
               target="_blank" rel="noreferrer"
             >
               <OptimizedImage
-                src={`${IMAGE_PATH}/IAO.png`}
+                src={`${IMAGE_PATH}/IAO.webp`}
                 alt="IAO logo"
                 className="w-40 h-40 object-contain"
                 width={160}
@@ -38,7 +38,7 @@ const HomeAccredited = () => {
               target="_blank" rel="noreferrer"
             >
               <OptimizedImage
-                src={`${IMAGE_PATH}/IIA.png`}
+                src={`${IMAGE_PATH}/IIA.webp`}
                 alt="IIA logo"
                 className="w-48 h-48 object-contain"
                 width={160}
@@ -49,7 +49,7 @@ const HomeAccredited = () => {
 
           <div className="grayscale hover:grayscale-0 flex items-center justify-center transition-transform duration-300 hover:scale-110">
             <OptimizedImage
-              src={`${IMAGE_PATH}/ISO.png`}
+              src={`${IMAGE_PATH}/ISO.webp`}
               alt="ISO logo"
               className="w-40 h-40 object-contain"
               width={160}
@@ -59,7 +59,7 @@ const HomeAccredited = () => {
 
           <div className="grayscale hover:grayscale-0 flex items-center justify-center transition-transform duration-300 hover:scale-110">
             <OptimizedImage
-              src={`${IMAGE_PATH}/Gleim.png`}
+              src={`${IMAGE_PATH}/Gleim.webp`}
               alt="Gleim logo"
               className="w-40 h-40 object-contain"
               width={160}
@@ -73,7 +73,7 @@ const HomeAccredited = () => {
               target="_blank" rel="noreferrer"
             >
               <OptimizedImage
-                src={`${IMAGE_PATH}/GSAAA.png`}
+                src={`${IMAGE_PATH}/GSAAA.webp`}
                 alt="GSAAA logo"
                 className="w-40 h-40 object-contain"
                 width={160}
@@ -91,7 +91,7 @@ const HomeAccredited = () => {
               target="_blank" rel="noreferrer"
             >
               <OptimizedImage
-                src={`${IMAGE_PATH}/IAO.png`}
+                src={`${IMAGE_PATH}/IAO.webp`}
                 alt="IAO logo"
                 className="w-full h-full object-contain"
               />
@@ -104,7 +104,7 @@ const HomeAccredited = () => {
               target="_blank" rel="noreferrer"
             >
               <OptimizedImage
-                src={`${IMAGE_PATH}/IIA.png`}
+                src={`${IMAGE_PATH}/IIA.webp`}
                 alt="IIA logo"
                 className="w-full h-full object-contain"
               />
@@ -113,7 +113,7 @@ const HomeAccredited = () => {
 
           <div className="flex items-center justify-center">
             <OptimizedImage
-              src={`${IMAGE_PATH}/ISO.png`}
+              src={`${IMAGE_PATH}/ISO.webp`}
               alt="ISO logo"
               className="w-full h-full object-contain"
             />
@@ -121,7 +121,7 @@ const HomeAccredited = () => {
 
           <div className="flex items-center justify-center">
             <OptimizedImage
-              src={`${IMAGE_PATH}/Gleim.png`}
+              src={`${IMAGE_PATH}/Gleim.webp`}
               alt="Gleim logo"
               className="w-full h-full object-contain"
             />
@@ -133,7 +133,7 @@ const HomeAccredited = () => {
               target="_blank" rel="noreferrer"
             >
               <OptimizedImage
-                src={`${IMAGE_PATH}/GSAAA.png`}
+                src={`${IMAGE_PATH}/GSAAA.webp`}
                 alt="GSAAA logo"
                 className="w-[180px] h-[180px] object-contain"
               />

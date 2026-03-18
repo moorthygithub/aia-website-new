@@ -73,10 +73,6 @@ const OfficeCeleberation = ({ title, description }) => {
         }
         testimonials={testimonials}
         sucessstory={false}
-        // size={{
-        //   height: "225px",
-        //   width: "320px",
-        // }}
         border={false}
       />
     </div>

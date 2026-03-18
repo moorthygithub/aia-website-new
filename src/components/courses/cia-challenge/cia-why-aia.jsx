@@ -10,51 +10,28 @@ const CiaWhyAia = () => {
     <div className="md:mb-18">
       <CourseWhyAia
         heading="Key Advantages of AIA CIA Challenge Prep Course"
-        backgroundImage="https://christuniversity.in/images/bg_2.jpg"
         items={[
           {
-            img: `${IMAGE_PATH}/teacher-svgrepo-com.png`,
+            img: `${IMAGE_PATH}/teacher-svgrepo-com.webp`,
             title: "Gliem Software Access",
           },
           {
-            img: `${IMAGE_PATH}/flash_card.png`,
+            img: `${IMAGE_PATH}/flash_card.webp`,
             title: "Expert Curated Flash Cards",
           },
           {
-            img: `${IMAGE_PATH}/video-record-device-svgrepo-com.png`,
+            img: `${IMAGE_PATH}/video-record-device-svgrepo-com.webp`,
             title: "Exam Enrolment Support",
           },
           {
-            img: `${IMAGE_PATH}/exam_distractors.png`,
+            img: `${IMAGE_PATH}/exam_distractors.webp`,
             title: "Exclusive Exam Distractors ",
           },
           {
-            img: `${IMAGE_PATH}/books-svgrepo-com.png`,
+            img: `${IMAGE_PATH}/books-svgrepo-com.webp`,
             title: "IIA India Authorized Learning Partner",
           },
         ]}
-        // items={[
-        //   {
-        //     img: `${IMAGE_PATH}/teacher-svgrepo-com.png`,
-        //     title: "CIA Qualified Instructor",
-        //   },
-        //   {
-        //     img: `${IMAGE_PATH}/support-svgrepo-com.png`,
-        //     title: "Training Support",
-        //   },
-        //   {
-        //     img: `${IMAGE_PATH}/video-record-device-svgrepo-com.png`,
-        //     title: "Access to Recorded Sessions",
-        //   },
-        //   {
-        //     img: `${IMAGE_PATH}/Learning.png`,
-        //     title: "IIA India Authorized Learning Partner",
-        //   },
-        //   {
-        //     img: `${IMAGE_PATH}/books-svgrepo-com.png`,
-        //     title: "Expert Study Notes",
-        //   },
-        // ]}
       />
 
       <div className="flex justify-center gap-2 mt-8">

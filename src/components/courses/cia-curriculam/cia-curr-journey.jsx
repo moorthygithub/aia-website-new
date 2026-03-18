@@ -1,12 +1,13 @@
 import React from "react";
 import CourseJourney from "../common/course-journey";
+import { IMAGE_PATH } from "@/api/base-url";
 
 const CiaCurrJourney = () => {
   return (
     <CourseJourney
       heading="Your Complete Guide to CIA Mastery –"
       highlight="Value, Learning, Format"
-      connectorImage="https://i.postimg.cc/4dVWknz1/step-line.png"
+      connectorImage={`${IMAGE_PATH}/step-line.webp`}
       steps={[
         {
           number: 1,

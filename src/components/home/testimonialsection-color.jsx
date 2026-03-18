@@ -15,14 +15,7 @@ export function TestimonialsSectionColor({
   const marqueeRef = useRef(null);
   const [duration, setDuration] = useState(40);
 
-  // useEffect(() => {
-  //   if (customDuration) return;
-  //   if (!marqueeRef.current) return;
 
-  //   const marqueeWidth = marqueeRef.current.scrollWidth;
-  //   const SPEED = 150;
-  //   setDuration(marqueeWidth / SPEED);
-  // }, [testimonials]);
   useEffect(() => {
     if (!marqueeRef.current) return;
 
@@ -32,13 +25,9 @@ export function TestimonialsSectionColor({
 
     const calculatedDuration = width / SPEED;
 
-    // console.log("Testimonials count:", testimonials.length);
-    // console.log("Marquee width:", width);
-    // console.log("Calculated Duration:", calculatedDuration);
 
     setDuration(calculatedDuration);
   }, [testimonials]);
-  // const finalDuration = customDuration || duration;
   const finalDuration = duration;
   if (!testimonials || testimonials.length === 0) return null;
 

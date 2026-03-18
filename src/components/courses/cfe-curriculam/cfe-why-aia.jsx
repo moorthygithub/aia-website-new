@@ -12,23 +12,23 @@ const CfeWhyAia = () => {
         heading="Key Advantages of AIA CFE Prep Course"
         items={[
           {
-            img: `${IMAGE_PATH}/teacher-svgrepo-com.png`,
+            img: `${IMAGE_PATH}/teacher-svgrepo-com.webp`,
             title: "CFE Expert Faculty",
           },
           {
-            img: `${IMAGE_PATH}/support-svgrepo-com.png`,
+            img: `${IMAGE_PATH}/support-svgrepo-com.webp`,
             title: "Complete Prep Support",
           },
           {
-            img: `${IMAGE_PATH}/video-record-device-svgrepo-com.png`,
+            img: `${IMAGE_PATH}/video-record-device-svgrepo-com.webp`,
             title: "Recorded Detailed Video Sessions",
           },
           {
-            img: `${IMAGE_PATH}/calender-svgrepo-com.png`,
+            img: `${IMAGE_PATH}/calender-svgrepo-com.webp`,
             title: "Flexible Learning Schedule",
           },
           {
-            img: `${IMAGE_PATH}/books-svgrepo-com.png`,
+            img: `${IMAGE_PATH}/books-svgrepo-com.webp`,
             title: "2026 Updated CFE Material",
           },
         ]}

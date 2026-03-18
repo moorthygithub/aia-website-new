@@ -115,6 +115,7 @@ const SectionHeading = ({
           className="relative flex items-center justify-center"
           style={{ width: "120px", height: "18px", overflow: "hidden" }}
         >
+          {/* Static Line */}
           <span
             className="absolute block"
             style={{
@@ -124,6 +125,7 @@ const SectionHeading = ({
             }}
           />
 
+          {/* Moving Line (FIXED) */}
           <span
             className="absolute block"
             style={{
@@ -132,18 +134,18 @@ const SectionHeading = ({
               background: "#F3831C",
               top: "50%",
               transform: "translateY(-50%)",
-              animation: "slideBackForth 2.8s ease-in-out infinite",
+              animation: "slideBackForth 3.2s ease-in-out infinite",
             }}
           />
         </div>
 
         <style>{`
-          @keyframes slideBackForth {
-            0% { left: 15%; }
-            50% { left: 60%; }
-            100% { left: 15%; }
-          }
-        `}</style>
+  @keyframes slideBackForth {
+    0% { transform: translate(-40px, -50%); }
+    50% { transform: translate(40px, -50%); }
+    100% { transform: translate(-40px, -50%); }
+  }
+`}</style>
       </div>
     </div>
   );

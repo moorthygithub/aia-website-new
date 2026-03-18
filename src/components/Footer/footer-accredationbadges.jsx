@@ -4,19 +4,19 @@ import { href } from "react-router-dom";
 const AccreditationBadges = () => {
   const badges = [
     {
-      img: `${IMAGE_PATH}/iao-seal.png`,
+      img: `${IMAGE_PATH}/iao-seal.webp`,
       alt: "IAO",
       href: "https://www.iao.org/India-Haryana/Academy-of-Internal-Audit",
     },
     {
-      img: `${IMAGE_PATH}/IIA.png`,
+      img: `${IMAGE_PATH}/IIA.webp`,
       alt: "IIA",
       href: "https://iiaindia.co/GlobalCertification/LearningPartner",
     },
-    { img: `${IMAGE_PATH}/ISO.png`, alt: "ISO" },
-    { img: `${IMAGE_PATH}/Gleim.png`, alt: "Gleim" },
+    { img: `${IMAGE_PATH}/ISO.webp`, alt: "ISO" },
+    { img: `${IMAGE_PATH}/Gleim.webp`, alt: "Gleim" },
     {
-      img: `${IMAGE_PATH}/GSAAA.png`,
+      img: `${IMAGE_PATH}/GSAAA.webp`,
       alt: "GSAAA",
       href: "https://www.gsaaa.org/india/academy-of-internal-audit",
     },
@@ -86,7 +86,7 @@ export const PaymentAccreditation = () => (
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
         <div className="p-3 flex items-center justify-center hover:border-[#fa8017]/40 transition-all duration-200">
           <img
-            src={`${IMAGE_PATH}/payment.png`}
+            src={`${IMAGE_PATH}/payment.webp`}
             alt="Payment methods"
             className="w-full h-20 object-contain"
             loading="lazy"
@@ -98,7 +98,7 @@ export const PaymentAccreditation = () => (
           className="grouprounded-xl p-3 flex items-center justify-center hover:border-[#fa8017]/40 transition-all duration-200"
         >
           <img
-            src={`${IMAGE_PATH}/toll free.png`}
+            src={`${IMAGE_PATH}/toll free.webp`}
             alt="Toll Free"
             className="w-full h-20 object-contain group-hover:scale-105 transition-transform duration-200"
             loading="lazy"

@@ -17,7 +17,6 @@ const CamsUnique = () => {
     <CourseUnique
       badgeText="WHAT MAKES US UNIQUE"
       heading="Why AIA is the Preferred Choice for CAMS Aspirants"
-      // highlight="AIA"
       description=": At AIA, we go beyond just training we provide a complete support system to ensure your success"
       services={[
         {

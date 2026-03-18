@@ -80,7 +80,7 @@ const PopUp = ({ slug = "home" }) => {
         if (!loading && popupData?.popup_required === "Yes") {
           const popupHidden = sessionStorage.getItem(storageKey);
           if (popupHidden !== "true") {
-            setShowPopupAfterLoad(true);
+            setOpen(true);
           }
         }
       };
@@ -141,31 +141,10 @@ const PopUp = ({ slug = "home" }) => {
     return null;
   }
 
-  if (!imageLoaded) {
-    return (
-      <div className="hidden">
-        {imageUrl && (
-          <img
-            ref={imageRef}
-            src={imageUrl}
-            alt="preload"
-            style={{ display: "none" }}
-            onLoad={() => setImageLoaded(true)}
-            onError={() => {
-              setImageUrl(`${IMAGE_PATH}/no_image.jpg`);
-              setImageLoaded(true);
-            }}
-            loading="lazy"
-          />
-        )}
-      </div>
-    );
-  }
-
   return (
-    <Dialog open={open} onOpenChange={handleOpenChange} className="z-999">
+    <Dialog open={open} onOpenChange={handleOpenChange} className="z-[9999]">
       <DialogContent
-        className="p-0 overflow-hidden border-0 bg-transparent max-w-xl z-[9999]"
+        className="p-0 overflow-hidden border-0 bg-transparent max-w-xl z-[9999] animate-in fade-in zoom-in-95"
         aria-describedby={undefined}
       >
         <div className="relative rounded-lg overflow-hidden">
@@ -191,9 +170,7 @@ const PopUp = ({ slug = "home" }) => {
             </DialogHeader>
           ) : (
             <>
-              <DialogTitle className="sr-only">
-                Notification Popup
-              </DialogTitle>
+              <DialogTitle className="sr-only">Notification Popup</DialogTitle>
               <button
                 onClick={handleClose}
                 className="absolute top-3 right-3 z-10 h-7 w-7 rounded-lg cursor-pointer bg-[#F3831C] shadow-lg flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-[#0F3652]/40"

@@ -81,10 +81,6 @@ const CourseYoutube = ({ courseSlug, title, description }) => {
       description={description}
       border={true}
     />
-    // <TestimonialsSection
-    //   title="Meet Recently Qualified on YouTube "
-    //   testimonials={testimonials}
-    // />
   );
 };
 

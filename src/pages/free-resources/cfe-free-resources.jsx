@@ -1,60 +1,25 @@
-// import FreeResourceBanner from "@/components/cfe-free-resource/free-resource-banner";
-// import FreeResourceFlashCard from "@/components/cfe-free-resource/free-resource-flash-card";
-// import FreeResourcePracticeQuestion from "@/components/cfe-free-resource/free-resource-practice-question";
-// import FreeResourceReview from "@/components/cfe-free-resource/free-resource-review";
-// import CourseAchivers from "@/components/common/course-achivers";
-// import CfeCourseLms from "@/components/courses/cfe-curriculam/cfe-course-lms";
-// import CourseHero from "@/components/courses/common/course-hero";
-// import CourseYoutubeLecture from "@/components/courses/common/course-youtube-lecture";
-// import HomeAlumniWork from "@/components/home/home-alumini-work";
-// import HomeHero from "@/components/home/home-hero";
-
-// const FreeResources = () => {
-//   return (
-//     <>
-//       <HomeHero slug="cfe-free-resources" />
-
-//       <CourseYoutubeLecture
-//         courseSlug="CFE-Free-Resources"
-//         title="Master Exams Key Concepts with AIA’s Video Learning Series"
-//         description="Explore concise video sessions by Puneet Sir covering key topics, simplified for practical clarity and exam-focused understanding."
-//       />
-//       <FreeResourceFlashCard />
-//       <FreeResourcePracticeQuestion />
-
-//       <CourseAchivers
-//         slug="cfe"
-//         title="From Aspirants to Certified Fraud Examiners - Our Recent CFE Achievers"
-//         description="Meet AIA proud achievers who advance their careers by achieving the global CFE credential with structured prep and real-world expertise."
-//       />
-//       <HomeAlumniWork />
-//       <FreeResourceReview />
-//     </>
-//   );
-// };
-
-// export default FreeResources;
 import React, { lazy, Suspense, useEffect, useRef, useState } from "react";
 
 import HomeHero from "@/components/home/home-hero";
 
-const CourseYoutubeLecture = lazy(() =>
-  import("@/components/courses/common/course-youtube-lecture")
+const CourseYoutubeLecture = lazy(
+  () => import("@/components/courses/common/course-youtube-lecture"),
 );
-const FreeResourceFlashCard = lazy(() =>
-  import("@/components/cfe-free-resource/free-resource-flash-card")
+const FreeResourceFlashCard = lazy(
+  () => import("@/components/cfe-free-resource/free-resource-flash-card"),
 );
-const FreeResourcePracticeQuestion = lazy(() =>
-  import("@/components/cfe-free-resource/free-resource-practice-question")
+const FreeResourcePracticeQuestion = lazy(
+  () =>
+    import("@/components/cfe-free-resource/free-resource-practice-question"),
 );
-const CourseAchivers = lazy(() =>
-  import("@/components/common/course-achivers")
+const CourseAchivers = lazy(
+  () => import("@/components/common/course-achivers"),
 );
-const HomeAlumniWork = lazy(() =>
-  import("@/components/home/home-alumini-work")
+const HomeAlumniWork = lazy(
+  () => import("@/components/home/home-alumini-work"),
 );
-const FreeResourceReview = lazy(() =>
-  import("@/components/cfe-free-resource/free-resource-review")
+const FreeResourceReview = lazy(
+  () => import("@/components/cfe-free-resource/free-resource-review"),
 );
 
 const FreeResources = () => {
@@ -88,7 +53,7 @@ const FreeResources = () => {
       {
         rootMargin: "150px",
         threshold: 0.1,
-      }
+      },
     );
 
     Object.keys(refs).forEach((key) => {

@@ -1,46 +1,3 @@
-// import AboutSection from "@/components/about/about-section";
-
-// import AboutMissionSection from "@/components/about/about-mission-section";
-// import AboutTestimonial from "@/components/about/about-testimonial";
-// import AboutTrainerSection from "@/components/about/about-trainer-section";
-
-// import AboutHighlight from "@/components/about/about-highlight";
-// import AboutJourney from "@/components/about/about-journey";
-// import AboutPartner from "@/components/about/about-partner";
-// import AboutReview from "@/components/about/about-review";
-// import OfficeCeleberation from "@/components/common/celeberation";
-// import PopUp from "@/components/common/pop-up";
-// import CourseYoutubeLecture from "@/components/courses/common/course-youtube-lecture";
-// import HomeCourses from "@/components/home/home-courses";
-// import HomeHero from "@/components/home/home-hero";
-// import HomePrCarousel from "@/components/home/home-pr-carousel";
-// import certificationCourses from "@/data/certificationCourses";
-
-// const AboutPage = () => {
-//   return (
-//     <div className="min-h-screen bg-white">
-//       <PopUp slug="about-aia" />
-//       <HomeHero slug="about-aia" />
-//       <AboutSection />
-//       <AboutTrainerSection />
-//       <AboutTestimonial />
-//       <AboutMissionSection />
-//       <AboutHighlight />
-//       <HomePrCarousel />
-//       <AboutJourney />
-//       <HomeCourses certificationCourses={certificationCourses} />
-//       <AboutPartner />
-//       <CourseYoutubeLecture courseSlug="about-aia" />
-//       <AboutReview />
-//       <OfficeCeleberation
-//         title="Inside Life at AIA"
-//         description="Snapshots from AIA’s workplace where teamwork, milestones, and shared wins come together - reflecting the culture behind everything we build."
-//       />
-//     </div>
-//   );
-// };
-
-// export default AboutPage;
 import React, { lazy, Suspense, useEffect, useRef, useState } from "react";
 
 import PopUp from "@/components/common/pop-up";
@@ -48,29 +5,29 @@ import HomeHero from "@/components/home/home-hero";
 import certificationCourses from "@/data/certificationCourses";
 
 const AboutSection = lazy(() => import("@/components/about/about-section"));
-const AboutTrainerSection = lazy(() =>
-  import("@/components/about/about-trainer-section")
+const AboutTrainerSection = lazy(
+  () => import("@/components/about/about-trainer-section"),
 );
-const AboutTestimonial = lazy(() =>
-  import("@/components/about/about-testimonial")
+const AboutTestimonial = lazy(
+  () => import("@/components/about/about-testimonial"),
 );
-const AboutMissionSection = lazy(() =>
-  import("@/components/about/about-mission-section")
+const AboutMissionSection = lazy(
+  () => import("@/components/about/about-mission-section"),
 );
 const AboutHighlight = lazy(() => import("@/components/about/about-highlight"));
 const AboutJourney = lazy(() => import("@/components/about/about-journey"));
 const AboutPartner = lazy(() => import("@/components/about/about-partner"));
 const AboutReview = lazy(() => import("@/components/about/about-review"));
 
-const OfficeCeleberation = lazy(() =>
-  import("@/components/common/celeberation")
+const OfficeCeleberation = lazy(
+  () => import("@/components/common/celeberation"),
 );
 
 const HomeCourses = lazy(() => import("@/components/home/home-courses"));
 const HomePrCarousel = lazy(() => import("@/components/home/home-pr-carousel"));
 
-const CourseYoutubeLecture = lazy(() =>
-  import("@/components/courses/common/course-youtube-lecture")
+const CourseYoutubeLecture = lazy(
+  () => import("@/components/courses/common/course-youtube-lecture"),
 );
 
 const AboutPage = () => {
@@ -110,7 +67,7 @@ const AboutPage = () => {
       {
         rootMargin: "150px",
         threshold: 0.1,
-      }
+      },
     );
 
     Object.keys(sectionRefs).forEach((key) => {

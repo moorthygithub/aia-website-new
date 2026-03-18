@@ -172,7 +172,7 @@ const EnrollReview = () => {
       <div className="grid md:grid-cols-2 gap-12">
         <div className="md:sticky md:top-0 md:h-screen md:flex md:items-center md:justify-center">
           <img
-            src={`${IMAGE_PATH}/rated.jpg`}
+            src={`${IMAGE_PATH}/rated.webp`}
             alt="Rated testimonial"
             className="w-full h-auto max-w-full object-contain transform -scale-x-100"
             style={{ maxHeight: "90vh" }}

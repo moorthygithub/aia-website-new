@@ -13,27 +13,6 @@ export function TestimonialCardCourse({
   const Card = href ? "a" : "div";
 
   return (
-    // <Card
-    //   {...(href
-    //     ? {
-    //         href,
-    //         target: target || "_blank",
-    //         rel: "noopener noreferrer",
-    //       }
-    //     : {})}
-    // className={cn(
-    //   "flex flex-col  rounded-lg  relative group",
-
-    //   "text-start",
-    //   "hover:from-muted/60 hover:to-muted/20",
-    //   "max-w-[320px] sm:max-w-[320px]",
-    //   "transition-all duration-300",
-    //   "h-[182px] w-[320px]",
-    //   href ? "cursor-pointer" : "cursor-default",
-    //   className
-    // )}
-
-    // >
     <Card
       {...(href
         ? {

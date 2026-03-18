@@ -14,9 +14,6 @@ const FaqSection = ({ faqs = [] }) => {
     const grouped = {};
     let currentHeading = "";
 
-    // const sortedFaqs = [...faqs]?.sort((a, b) =>
-    //   a?.sort.localeCompare(b?.sort),
-    // );
     const sortedFaqs = [...faqs].sort((a, b) =>
       String(a?.sort ?? "").localeCompare(String(b?.sort ?? "")),
     );

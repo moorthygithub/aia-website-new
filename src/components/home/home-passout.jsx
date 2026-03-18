@@ -2,8 +2,6 @@ import React from "react";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { TestimonialsColumn } from "@/components/ui/testimonials-columns-1";
-
-// import usePreloadImages from "@/hooks/usePreloadImages";
 import { BASE_URL } from "@/api/base-url";
 import SectionHeading from "../SectionHeading/SectionHeading";
 
@@ -39,7 +37,6 @@ const HomePassout = () => {
       company_alt: item.student_company_image_alt || "Student",
     })) || [];
 
-  // usePreloadImages(testimonials.map((t) => t.image));
   const firstColumn = testimonials.filter((item) => item.course === "CFE");
   const secondColumn = testimonials.filter(
     (item) => item.course != "CFE" && item.course != "CAMS",
@@ -69,19 +66,10 @@ const HomePassout = () => {
         )}
 
         {!isLoading && !isError && testimonials.length > 0 && (
-          // <div className="flex justify-center gap-5 md:gap-25 mt-10 mask-[linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-135 overflow-hidden">
-          //   <TestimonialsColumn testimonials={firstColumn} duration={20} />
-          //   <TestimonialsColumn testimonials={secondColumn} duration={20} />
-          //   <TestimonialsColumn testimonials={thirdColumn} duration={20} />
-          // </div>
+
           <div
             className="relative mt-10"
-            // style={{
-            //   WebkitMaskImage:
-            //     "linear-gradient(to bottom, transparent, black 25%, black 75%, transparent)",
-            //   maskImage:
-            //     "linear-gradient(to bottom, transparent, black 25%, black 75%, transparent)",
-            // }}
+      
           >
             <div className="flex justify-center gap-2 sm:gap-4 md:gap-6 lg:gap-25 mt-10   max-h-[300px] sm:max-h-[380px] md:max-h-[460px] lg:max-h-[540px] overflow-hidden px-2">
               <TestimonialsColumn testimonials={firstColumn} duration={20} />

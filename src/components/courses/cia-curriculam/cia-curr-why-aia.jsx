@@ -10,26 +10,25 @@ const CiaCurrWhyAia = () => {
     <div className="md:mb-18">
       <CourseWhyAia
         heading="Key Advantages of AIA CIA 3-Part Prep Course"
-        backgroundImage="https://christuniversity.in/images/bg_2.jpg"
         items={[
           {
-            img: `${IMAGE_PATH}/teacher-svgrepo-com.png`,
+            img: `${IMAGE_PATH}/teacher-svgrepo-com.webp`,
             title: "CIA Qualified Instructor",
           },
           {
-            img: `${IMAGE_PATH}/support-svgrepo-com.png`,
+            img: `${IMAGE_PATH}/support-svgrepo-com.webp`,
             title: "Training Support",
           },
           {
-            img: `${IMAGE_PATH}/video-record-device-svgrepo-com.png`,
+            img: `${IMAGE_PATH}/video-record-device-svgrepo-com.webp`,
             title: "Access to Recorded Sessions",
           },
           {
-            img: `${IMAGE_PATH}/Learning.png`,
+            img: `${IMAGE_PATH}/Learning.webp`,
             title: "IIA India Authorized Learning Partner",
           },
           {
-            img: `${IMAGE_PATH}/books-svgrepo-com.png`,
+            img: `${IMAGE_PATH}/books-svgrepo-com.webp`,
             title: "2025 Gleim Study Material",
           },
         ]}

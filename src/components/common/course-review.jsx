@@ -199,7 +199,7 @@ const CourseReview = ({ slug, title }) => {
         <div className="md:sticky md:top-20 md:h-screen md:flex md:items-center md:justify-center">
           <div>
             <img
-              src={`${IMAGE_PATH}/rated.jpg`}
+              src={`${IMAGE_PATH}/rated.webp`}
               alt="Rated testimonial"
               className="w-full h-80 md:h-[62vh] object-contain transform -scale-x-100 mb-0"
               loading="lazy"

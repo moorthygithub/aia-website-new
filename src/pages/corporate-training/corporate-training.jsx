@@ -1,63 +1,3 @@
-// import AboutPartner from "@/components/about/about-partner";
-// import CorporateCarousel from "@/components/corporate-training/corporate-carousel";
-// // import CorporateCourse from "@/components/corporate-training/corporate-course";
-// import CorporateDeliver from "@/components/corporate-training/corporate-deliver";
-// import CorporateFaq from "@/components/corporate-training/corporate-faq";
-// import CorporateHighlight from "@/components/corporate-training/corporate-highlight";
-// import CorporateQuoteDialog from "@/components/corporate-training/corporate-quote";
-// import CorporateReview from "@/components/corporate-training/corporate-review";
-// import CorporateTrainer from "@/components/corporate-training/corporate-trainer";
-// import CorporateWhy from "@/components/corporate-training/corporate-why";
-// import CorporateWhyAia from "@/components/corporate-training/corporate-why-aia";
-// import CamsConnection from "@/components/courses/cams/cams-connection";
-// import HomeCourses from "@/components/home/home-courses";
-// import HomeHero from "@/components/home/home-hero";
-// import { CorporatecertificationCourses } from "@/data/certificationCourses";
-
-// const CorporateTraining = () => {
-//   return (
-//     <>
-//       <HomeHero slug="corporate-training" />
-
-//       <CorporateWhy />
-//       <HomeCourses certificationCourses={CorporatecertificationCourses} />
-//       <CorporateWhyAia />
-
-//       <AboutPartner />
-
-//       <CorporateQuoteDialog
-//         triggerText="Level Up Your Team"
-//         title="Level Up Your Team"
-//         description="Fill in your details and our experts will contact you shortly"
-//         userType="Corporate-Quote"
-//         quote="Invest in people because untrained teams can't execute great strategies."
-//         bottomcontent="Leadership Insight"
-//       />
-//       <CorporateDeliver />
-//       <CorporateCarousel />
-//       <CamsConnection
-//         path="how_it_works_corporate.webp"
-//         title="Here's Why Top Organizations Partner With Us"
-//       />
-//       <CorporateQuoteDialog
-//         triggerText="Talk to our Training Expert"
-//         title="Talk to our Training Expert"
-//         description="Fill in your details and our training experts will design a custom plan for your team"
-//         userType="Corporate-Training"
-//         quote="Let's Design Your Custom Training Plan Today!"
-//         topcontent={true}
-//       />
-
-//       <CorporateHighlight />
-//       <CorporateFaq />
-
-//       <CorporateTrainer />
-//       <CorporateReview />
-//     </>
-//   );
-// };
-
-// export default CorporateTraining;
 import React, { lazy, Suspense, useEffect, useRef, useState } from "react";
 
 import HomeHero from "@/components/home/home-hero";
@@ -65,33 +5,33 @@ import CorporateWhy from "@/components/corporate-training/corporate-why";
 import HomeCourses from "@/components/home/home-courses";
 import { CorporatecertificationCourses } from "@/data/certificationCourses";
 
-const CorporateWhyAia = lazy(() =>
-  import("@/components/corporate-training/corporate-why-aia")
+const CorporateWhyAia = lazy(
+  () => import("@/components/corporate-training/corporate-why-aia"),
 );
 const AboutPartner = lazy(() => import("@/components/about/about-partner"));
-const CorporateQuoteDialog = lazy(() =>
-  import("@/components/corporate-training/corporate-quote")
+const CorporateQuoteDialog = lazy(
+  () => import("@/components/corporate-training/corporate-quote"),
 );
-const CorporateDeliver = lazy(() =>
-  import("@/components/corporate-training/corporate-deliver")
+const CorporateDeliver = lazy(
+  () => import("@/components/corporate-training/corporate-deliver"),
 );
-const CorporateCarousel = lazy(() =>
-  import("@/components/corporate-training/corporate-carousel")
+const CorporateCarousel = lazy(
+  () => import("@/components/corporate-training/corporate-carousel"),
 );
-const CamsConnection = lazy(() =>
-  import("@/components/courses/cams/cams-connection")
+const CamsConnection = lazy(
+  () => import("@/components/courses/cams/cams-connection"),
 );
-const CorporateHighlight = lazy(() =>
-  import("@/components/corporate-training/corporate-highlight")
+const CorporateHighlight = lazy(
+  () => import("@/components/corporate-training/corporate-highlight"),
 );
-const CorporateFaq = lazy(() =>
-  import("@/components/corporate-training/corporate-faq")
+const CorporateFaq = lazy(
+  () => import("@/components/corporate-training/corporate-faq"),
 );
-const CorporateTrainer = lazy(() =>
-  import("@/components/corporate-training/corporate-trainer")
+const CorporateTrainer = lazy(
+  () => import("@/components/corporate-training/corporate-trainer"),
 );
-const CorporateReview = lazy(() =>
-  import("@/components/corporate-training/corporate-review")
+const CorporateReview = lazy(
+  () => import("@/components/corporate-training/corporate-review"),
 );
 
 const CorporateTraining = () => {
@@ -130,7 +70,7 @@ const CorporateTraining = () => {
       {
         rootMargin: "150px",
         threshold: 0.1,
-      }
+      },
     );
 
     Object.keys(refs).forEach((key) => {

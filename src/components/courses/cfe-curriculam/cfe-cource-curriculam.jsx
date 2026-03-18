@@ -29,14 +29,7 @@ const curriculumData = [
       The section also explains <strong> how to perform a structured fraud risk assessment, implement appropriate control measures, and design a proactive fraud prevention framework </strong> Ethical decision-making and professional responsibility are also emphasised as key elements in maintaining integrity within organisations.`,
     ],
   },
-  // {
-  //   id: 4,
-  //   title: "Fraud Prevention & Deterrence",
-  //   content: [
-  //     `This <strong>module focuses on preventing fraud before it occurs by strengthening governance, ethics, and risk management frameworks.</strong> .behavior, white-collar crime, corporate governance structures, management accountability, and the role of auditors and compliance functions in fraud prevention. 
-  //     The curriculum emphasizes fraud risk assessment, internal controls, ethical culture, and fraud risk management strategies. Learners <strong> gain the ability to design, evaluate, and improve systems that reduce exposure to fraud, enhance transparency, and build long-term organizational integrity across diverse business environments. </strong>`,
-  //   ],
-  // },
+
 ];
 
 const CfeCourseCurriculum = () => {

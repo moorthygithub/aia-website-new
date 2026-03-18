@@ -1,12 +1,7 @@
 import { BASE_URL, IMAGE_PATH } from "@/api/base-url";
 import BlogFaq from "@/components/blog/blog-faq";
 import axios from "axios";
-import {
-  ArrowLeft,
-  Calendar,
-  Clock,
-  Image as ImageIcon
-} from "lucide-react";
+import { ArrowLeft, Calendar, Clock, Image as ImageIcon } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ShareButtons } from "./share-button";
@@ -28,7 +23,7 @@ const BlogDetails = () => {
   const [email, setEmail] = useState("");
   const [subscriptionStatus, setSubscriptionStatus] = useState("");
   const [isSubscribing, setIsSubscribing] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   useEffect(() => {
     if (id) {
       fetchBlogDetails();
@@ -272,8 +267,8 @@ const BlogDetails = () => {
       if (error.response) {
         setSubscriptionStatus(
           error.response.data.message ||
-          error.response.data.error ||
-          "Subscription failed. Please try again.",
+            error.response.data.error ||
+            "Subscription failed. Please try again.",
         );
       } else if (error.request) {
         setSubscriptionStatus("Network error. Please check your connection.");
@@ -424,9 +419,9 @@ const BlogDetails = () => {
                 </span>
               )}
 
-              <h1 className="text-3xl md:text-4xl font-bold text-[#0F3652] mb-4">
+              <p className="text-3xl md:text-4xl font-bold text-[#0F3652] mb-4">
                 {blog.blog_heading}
-              </h1>
+              </p>
 
               {blog.blog_short_description && (
                 <p className="text-lg text-[#0F3652] mb-6">
@@ -498,10 +493,11 @@ const BlogDetails = () => {
                       <li key={sub.id}>
                         <button
                           onClick={(e) => scrollToSection(index, e)}
-                          className={`w-full text-left p-1 rounded text-sm transition-colors ${activeSection === index
-                            ? "bg-[#F3831C]/10 text-[#F3831C] border-l-4 border-[#F3831C]"
-                            : "text-[#0F3652] hover:bg-[#0F3652]/5"
-                            }`}
+                          className={`w-full text-left p-1 rounded text-sm transition-colors ${
+                            activeSection === index
+                              ? "bg-[#F3831C]/10 text-[#F3831C] border-l-4 border-[#F3831C]"
+                              : "text-[#0F3652] hover:bg-[#0F3652]/5"
+                          }`}
                         >
                           {sub.blog_sub_heading || `Section ${index + 1}`}
                         </button>
@@ -529,10 +525,11 @@ const BlogDetails = () => {
                       <button
                         type="submit"
                         disabled={isSubscribing}
-                        className={`w-full py-3 ${isSubscribing
-                          ? "bg-[#F3831C]/70"
-                          : "bg-[#F3831C] hover:bg-[#F3831C]/90"
-                          } text-white font-semibold rounded-2xl transition-colors disabled:cursor-not-allowed`}
+                        className={`w-full py-3 ${
+                          isSubscribing
+                            ? "bg-[#F3831C]/70"
+                            : "bg-[#F3831C] hover:bg-[#F3831C]/90"
+                        } text-white font-semibold rounded-2xl transition-colors disabled:cursor-not-allowed`}
                       >
                         {isSubscribing ? "Subscribing..." : "Subscribe"}
                       </button>
@@ -540,10 +537,11 @@ const BlogDetails = () => {
 
                     {subscriptionStatus && (
                       <div
-                        className={`text-sm ${subscriptionStatus.includes("Success")
-                          ? "text-[#F3831C]"
-                          : "text-[#F3831C]"
-                          } font-medium text-center`}
+                        className={`text-sm ${
+                          subscriptionStatus.includes("Success")
+                            ? "text-[#F3831C]"
+                            : "text-[#F3831C]"
+                        } font-medium text-center`}
                       >
                         {subscriptionStatus}
                       </div>
@@ -559,10 +557,11 @@ const BlogDetails = () => {
           <main
             className={`
             ${blog.web_blog_subs?.length > 0 ? "lg:w-3/4" : "w-full"} 
-            ${blog.web_blog_subs?.length > 0 && relatedBlogs.length > 0
+            ${
+              blog.web_blog_subs?.length > 0 && relatedBlogs.length > 0
                 ? "lg:w-2/4"
                 : ""
-              }
+            }
           `}
           >
             {/* {blog.web_blog_subs?.length > 0 ? (
@@ -630,8 +629,9 @@ const BlogDetails = () => {
                       className="scroll-mt-[120px]"
                     >
                       <HeadingTag
-                        className={`${sizeClasses[HeadingTag]} mb-6 text-[#0F3652] ${HeadingTag !== "p" ? "pb-3 border-b" : ""
-                          }`}
+                        className={`${sizeClasses[HeadingTag]} mb-6 text-[#0F3652] ${
+                          HeadingTag !== "p" ? "pb-3 border-b" : ""
+                        }`}
                       >
                         {sub.blog_sub_heading || `Section ${index + 1}`}
                       </HeadingTag>
@@ -729,8 +729,9 @@ const BlogDetails = () => {
                         <div
                           className="flex transition-transform duration-700 ease-out"
                           style={{
-                            transform: `translateX(-${currentStudentIndex * 100
-                              }%)`,
+                            transform: `translateX(-${
+                              currentStudentIndex * 100
+                            }%)`,
                           }}
                         >
                           {students.map((student, index) => (

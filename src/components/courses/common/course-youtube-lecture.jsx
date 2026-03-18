@@ -100,17 +100,6 @@ const CourseYoutubeLecture = ({
           <div className="mb-8 border-b border-gray-200">
             <div className="flex gap-1 overflow-x-auto scrollbar-hide">
               {tabs.map((tab) => (
-                // <button
-                //   key={tab}
-                //   onClick={() => setActiveTab(tab)}
-                //   className={`px-6 py-3 font-medium text-sm whitespace-nowrap cursor-pointer transition-all duration-200 border-b-2 ${
-                //     activeTab === tab
-                //       ? "border-blue-600 text-blue-600"
-                //       : "border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300"
-                //   }`}
-                // >
-                //   {tab}
-                // </button>
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
