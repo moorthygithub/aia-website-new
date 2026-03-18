@@ -36,7 +36,6 @@ const SectionHeading = ({
         </div>
       )}
 
-      {/* Title */}
       <div className={`inline-block mb-3 ${isCenter ? "mx-auto" : ""}`}>
         <h2
           className={`text-xl md:text-4xl font-bold text-[#0F3652] ${titleClass}`}

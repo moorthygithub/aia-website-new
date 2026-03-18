@@ -84,7 +84,12 @@ const CourseYoutubeLecture = lazy(
 const HomeBlogs = lazy(() => import("@/components/home/home-blogs"));
 const HomeFaq = lazy(() => import("@/components/home/home-faq"));
 
-const LazySection = ({ children, threshold = 0.1, rootMargin = "150px", minHeight = "200px" }) => {
+const LazySection = ({
+  children,
+  threshold = 0.1,
+  rootMargin = "150px",
+  minHeight = "200px",
+}) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef(null);
 
@@ -105,11 +110,7 @@ const LazySection = ({ children, threshold = 0.1, rootMargin = "150px", minHeigh
 
   return (
     <div ref={ref} style={{ minHeight: isVisible ? "auto" : minHeight }}>
-      {isVisible ? (
-        <Suspense fallback={null}>{children}</Suspense>
-      ) : (
-        <div />
-      )}
+      {isVisible ? <Suspense fallback={null}>{children}</Suspense> : <div />}
     </div>
   );
 };
