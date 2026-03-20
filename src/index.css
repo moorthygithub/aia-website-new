@@ -215,8 +215,6 @@ body {
   border-collapse: collapse;
   width: 100%;
   margin-bottom: 1em;
-  width: max-content; /* ✅ key fix */
-  min-width: 100%; /* ✅ keeps normal tables full width */
 }
 
 .ck-content table th,
@@ -224,7 +222,6 @@ body {
   border: 1px solid #d1d5db;
   padding: 8px 12px;
   text-align: left;
-  white-space: nowrap; /* ✅ prevents breaking */
 }
 
 .ck-content table th {
