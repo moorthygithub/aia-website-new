@@ -28,10 +28,15 @@ const CfeCourseLms = ({ title, subtitle, course, buttonlabel, image }) => {
         "Attend weekly live query sessions with experienced industry faculty to clarify doubts, interact with peers, and gain practical insights that strengthen conceptual clarity and real-world fraud understanding.",
     },
     {
-      title: "Time Frame",
+      title: "What's Included in the AIA CFE Prep Course ?",
       description:
-        "With a structured study plan and focused preparation, you can complete all four CFE modules in approximately 30 days by dedicating one week per module, subject to study time availability.",
+        "We’ve created 400+ easy-to-use flashcards to help learners revise key fraud concepts and definitions faster, making last-minute revision more focused, effective, and easier to retain.",
     },
+    // {
+    //   title: "Time Frame",
+    //   description:
+    //     "With a structured study plan and focused preparation, you can complete all four CFE modules in approximately 30 days by dedicating one week per module, subject to study time availability.",
+    // },
     {
       title: "6 Full-Length Mock Tests",
       description:
@@ -43,10 +48,15 @@ const CfeCourseLms = ({ title, subtitle, course, buttonlabel, image }) => {
         "We offer complete support throughout the CFE exam registration process, guiding you step by step from application review to final exam scheduling, ensuring a smooth and stress-free experience.",
     },
     {
-      title: "Updated Study Material",
+      title: "CFE Exam Distractors",
       description:
-        "All study content is regularly reviewed and updated to reflect the <strong> 2026 CFE exam structure and syllabus updates,</strong>  ensuring your preparation remains relevant and aligned with exam expectations.",
+        "Get access to exclusively designed exam distractors, which help you to identify and eliminate exam traps in CFE exam, improving accuracy, & train your mind for better decision-making.",
     },
+    // {
+    //   title: "Updated Study Material",
+    //   description:
+    //     "All study content is regularly reviewed and updated to reflect the <strong> 2026 CFE exam structure and syllabus updates,</strong>  ensuring your preparation remains relevant and aligned with exam expectations.",
+    // },
   ];
   return (
     <>

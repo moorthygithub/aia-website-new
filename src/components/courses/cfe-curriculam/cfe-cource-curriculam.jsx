@@ -29,9 +29,21 @@ const curriculumData = [
       The section also explains <strong> how to perform a structured fraud risk assessment, implement appropriate control measures, and design a proactive fraud prevention framework </strong> Ethical decision-making and professional responsibility are also emphasised as key elements in maintaining integrity within organisations.`,
     ],
   },
-
 ];
+const eligibilityContent = `
+<p class="text-[#F3831C] font-bold mb-2">
+  CFE Certification is the best career path for those who - :
+</p>
 
+<ul class="list-disc pl-5 mt-2 md:ml-10">
+  <li>Hold a bachelor’s degree (or equivalent)</li>
+  <li>Have at least 2 years of professional experience in fields like Accounting, Auditing, Fraud Investigation, Law, Compliance, or Risk</li>
+</ul>
+
+<p class="my-2">If you’re still building your experience, you can begin preparing early and complete the certification once you meet the requirements.</p>
+
+<p><em>Check your eligibility in minutes - speak with an expert.</em></p>
+`;
 const CfeCourseCurriculum = () => {
   return (
     <>
@@ -39,6 +51,7 @@ const CfeCourseCurriculum = () => {
         title="2026 Updated CFE Curriculum"
         description={`The Certified Fraud Examiner (CFE) credential is globally recognized as a benchmark for professionals in fraud detection, investigation, and prevention. The certification<strong> validates a professional’s ability to understand & identify fraud schemes, conduct </strong> structured investigations, and design effective fraud prevention frameworks across organizations. The<strong> CFE exam is divided into four core modules that</strong> cover financial fraud schemes, legal aspects, investigation techniques, and fraud prevention and deterrence. <br/> \nAt AIA, we design our <strong>CFE training program to ensure that aspirants develop a clear organizational understanding and an investigator mindset.</strong>The course structure helps learners view transactions through a fraud-risk framework, understand how controls fail, and analyze fraud from the perspective of how it occurs. `}
         curriculumData={curriculumData}
+        eligibilityContent={eligibilityContent}
       />
 
       <div className="flex justify-center gap-2">

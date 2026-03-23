@@ -13,7 +13,7 @@ const CfeWhyAia = () => {
         items={[
           {
             img: `${IMAGE_PATH}/teacher-svgrepo-com.webp`,
-            title: "CFE Expert Faculty",
+            title: "400+ Flash Cards",
           },
           {
             img: `${IMAGE_PATH}/support-svgrepo-com.webp`,
@@ -25,7 +25,7 @@ const CfeWhyAia = () => {
           },
           {
             img: `${IMAGE_PATH}/calender-svgrepo-com.webp`,
-            title: "Flexible Learning Schedule",
+            title: "Exclusive Exam Distractors",
           },
           {
             img: `${IMAGE_PATH}/books-svgrepo-com.webp`,

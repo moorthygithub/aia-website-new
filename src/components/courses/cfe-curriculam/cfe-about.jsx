@@ -17,11 +17,17 @@ Certified Fraud Examiner (CFE) is a globally respected credential awarded by the
             show: "true",
           },
           {
-            display: "Practice \n Questions",
-            title: "(1,500+ expert curated questions)",
+            display: "400+ Flash Cards",
+            title: "(Designed for quick revision)",
             show: "true",
             lineBreak: "sm",
           },
+          // {
+          //   display: "Practice \n Questions",
+          //   title: "(1,500+ expert curated questions)",
+          //   show: "true",
+          //   lineBreak: "sm",
+          // },
           {
             display: "Updated Study Material",
             title: "(250 pages of concise notes)",
@@ -29,10 +35,15 @@ Certified Fraud Examiner (CFE) is a globally respected credential awarded by the
             badge: "2026",
           },
           {
-            display: "CFE-Qualified Faculty",
-            title: "(22+ years of industry experience)",
+            display: "400+ Exam Distractors",
+            title: "(To identify traps in the CFE exam)",
             show: "true",
           },
+          // {
+          //   display: "CFE-Qualified Faculty",
+          //   title: "(22+ years of industry experience)",
+          //   show: "true",
+          // },
         ]}
         formtitle="Join AiA CFE Prep Course"
         formsubtitle="Certified Fraud Examiner Course"

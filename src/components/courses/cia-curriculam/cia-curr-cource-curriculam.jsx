@@ -38,7 +38,34 @@ const curriculumData = [
     ],
   },
 ];
+const eligibilityContent = `
+<p class="mb-2">
+  <span class="text-[#F3831C] font-bold">
+    Are you eligible for the CIA-3 parts?
+  </span>
+  This certification is the right path for you if you:
+</p>
 
+<ul class="list-disc pl-5 mt-2 md:ml-10">
+  <li>Hold a bachelor’s degree (or equivalent)</li>
+  <li>Are a final-year student planning to enter the audit profession</li>
+  <li>Have or are planning to gain relevant work experience in audit, risk, or compliance</li>
+</ul>
+
+<p class="mt-3">
+  Depending on your educational background, the required work experience may vary, but you can begin your journey even as a student.
+</p>
+
+<p class="mt-2">
+  <span class="font-bold">Note:</span>
+  If you're a beginner, this course may not be a good choice for you. But don't worry, you're still eligible for other courses.
+  <span class="text-blue-600 underline cursor-pointer">Explore other certifications.</span>
+</p>
+
+<p class="mt-2">
+  <em>Not sure if you’re eligible? Consult with experts now!</em>
+</p>
+`;
 const CiaCurrCourseCurriculum = () => {
   const navigate = useNavigate();
   return (
@@ -48,6 +75,7 @@ const CiaCurrCourseCurriculum = () => {
         description={`The Certified Internal Auditor (CIA) is a globally recognized professional certification across 170+ countries, awarded by IIA. This program covers key areas such as internal controls, risk assessment, fraud risks, information technology, and professional ethics, equipping candidates with the skills needed to operate in complex business environments.  <br/> \nWith its global standards-based approach, CIA prepares professionals to add value, strengthen governance, and support organizational integrity. AIA’s CIA preparation program supports candidates across all three parts of the CIA exam, aligned with the latest IIA syllabus updates for 2026, with a strong focus on concept clarity, practical application, and exam readiness.
 `}
         curriculumData={curriculumData}
+        eligibilityContent={eligibilityContent}
       />
       <div className="flex justify-center gap-2">
         <CfeJoinDialog

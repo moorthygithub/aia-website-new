@@ -41,7 +41,18 @@ const curriculumData = [
     ],
   },
 ];
+const eligibilityContent = `
+<p class="mb-2">
+<span class="text-[#F3831C] font-bold">Curious about who can apply for the CIA Challenge Exam ? </span>This pathway is designed for experienced professionals seeking to fast-track their CIA certification.</br> You are eligible if you:</p>
 
+<ul class="list-disc pl-5 mt-2 md:ml-10">
+  <li>Hold a recognized professional qualification such as: CA, CPA, ACCA, CMA, CISA, or other approved accounting bodies by the <span class="font-bold">IIA </span></li>
+  <li><span class="font-bold">OR</span> any individual having 10+ years of experience in internal audit or related fields</li>
+</ul>
+
+
+<p class="mt-2"><em>Not sure if this course fits your background? Don’t worry, we’ll guide you!</em></p>
+`;
 const CiaCourseCurriculum = () => {
   return (
     <>
@@ -50,6 +61,7 @@ const CiaCourseCurriculum = () => {
         description={` The CIA Challenge Exam is a fast-track pathway offered by The Institute of Internal Auditors (IIA) for qualified professionals to earn the Certified Internal Auditor (CIA) designation through a single comprehensive exam. It focuses on internal audit fundamentals, risk management, governance, internal controls, information technology, data analytics, ethics, and business acumen. <br/> \nThis program is designed for qualified professionals & for individuals seeking to advance their careers in internal auditing and related fields. The updated framework reflects current global practices and prepares candidates to address complex organisational risks and assurance responsibilities. Professionals holding this certification are recognised and respected worldwide.
 `}
         curriculumData={curriculumData}
+        eligibilityContent={eligibilityContent}
       />
 
       <div className="flex justify-center gap-2">

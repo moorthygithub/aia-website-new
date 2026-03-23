@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 
-const CourseCurriculum = ({ title, curriculumData, description }) => {
+const CourseCurriculum = ({
+  title,
+  curriculumData,
+  description,
+  eligibilityContent,
+}) => {
   const [activeTab, setActiveTab] = useState(curriculumData?.[0]?.id || null);
 
   const activeContent = curriculumData.find((item) => item.id === activeTab);
@@ -18,6 +23,13 @@ const CourseCurriculum = ({ title, curriculumData, description }) => {
           dangerouslySetInnerHTML={{
             __html: description.replace(/\n/g, "<br />"),
           }}
+        />
+      )}
+
+      {eligibilityContent && (
+        <div
+          className="text-[#0F3652] leading-relaxed mx-6 md:mx-20 mb-8 text-justify"
+          dangerouslySetInnerHTML={{ __html: eligibilityContent }}
         />
       )}
       <div className="max-w-5xl mx-auto">
@@ -50,7 +62,7 @@ const CourseCurriculum = ({ title, curriculumData, description }) => {
                           className="text-[#0F3652] text-sm leading-relaxed mb-2 text-justify"
                           dangerouslySetInnerHTML={{ __html: paragraph }}
                         />
-                      )),
+                      ))
                   )}
                 </div>
               )}
@@ -89,7 +101,7 @@ const CourseCurriculum = ({ title, curriculumData, description }) => {
                         className="text-[#0F3652] leading-relaxed mb-2"
                         dangerouslySetInnerHTML={{ __html: paragraph }}
                       />
-                    )),
+                    ))
                 )
               ) : (
                 <p className="text-[#0F3652]/60 text-sm text-center py-8">

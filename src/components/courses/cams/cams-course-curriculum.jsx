@@ -38,7 +38,24 @@ const curriculumData = [
     ],
   },
 ];
+const eligibilityContent = `
+<p class="mb-2">
+ <span class="text-[#F3831C] font-bold"> Eligible Candidates for CAMS - </span> <span>This certification is designed for professionals working in or aspiring to enter the anti-money laundering (AML) and compliance domain.</span>
+</p>
+<p>To apply for this certification, candidates must:</p>
+<ul class="list-disc pl-5 my-2 md:ml-10">
+  <li>Meet the minimum eligibility criteria set by ACAMS through a credit-based system</li>
+  <li>Have relevant education, work experience, or training in AML, compliance, or financial crime</li>
+</ul>
+<p class="mb-2">Credits can be earned through:</p>
+<ul class="list-disc pl-5 mt-2 md:ml-10">
+  <li>Education: 10 - 40 credits based on your degree level</li>
+  <li>Work Experience: 10 credits for each year of relevant experience</li>
+</ul>
 
+
+<p class="mt-2"><em>Confused about your eligibility? Get a quick profile check with us!</em><strong> Know more</strong></p>
+`;
 const CamsCourseCurriculum = () => {
   return (
     <>
@@ -46,6 +63,7 @@ const CamsCourseCurriculum = () => {
         title="CAMS Course Overview"
         description={`The Certified Anti-Money Laundering Specialist (CAMS) certification is the globally recognised benchmark for professionals working in Anti-Money Laundering (AML), Counter-Terrorist Financing (CTF), and financial crime compliance. It is widely recognised across banks, financial institutions, fintechs, consulting firms, and regulatory environments. CAMS curriculum is designed to equip professionals with a practical, risk-based understanding of AML frameworks, which helps them to evaluate control effectiveness and respond appropriately to suspicious activity within complex institutional environments.<br/> \n<strong> At AIA, we design a CAMS prep program aligning with the latest CAMS Version 7 exam framework,</strong> ensuring coverage of all key knowledge areas tested in the examination, while maintaining a strong focus on practical understanding relevant to today's evolving financial crime landscape.`}
         curriculumData={curriculumData}
+        eligibilityContent={eligibilityContent}
       />
 
       <div className="flex justify-center gap-2">
