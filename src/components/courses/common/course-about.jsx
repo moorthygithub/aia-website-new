@@ -49,7 +49,10 @@ const CourseAbout = ({
             )}
 
             {buttonText && (
-              <Link to={buttonLink} className="inline-block md:flex md:justify-center xl:justify-start">
+              <Link
+                to={buttonLink}
+                className="inline-block md:flex md:justify-center xl:justify-start"
+              >
                 <span className="text-xs sm:text-sm font-semibold cursor-pointer px-4 py-2.5 sm:px-5 sm:py-2.5 bg-[#F3831C] text-white rounded-none hover:bg-[#0F3652] transition-colors duration-300">
                   {buttonText}
                 </span>
@@ -94,10 +97,11 @@ const CourseAbout = ({
 
                 <div
                   className={`text-base sm:text-lg md:text-xl font-bold mb-1 text-[#0F3652]
-      ${stat.lineBreak === "sm"
-                      ? "whitespace-pre-line md:whitespace-normal"
-                      : "whitespace-normal lg:whitespace-pre-line"
-                    }`}
+      ${
+        stat.lineBreak === "sm"
+          ? "whitespace-pre-line md:whitespace-normal"
+          : "whitespace-normal lg:whitespace-pre-line"
+      }`}
                 >
                   {stat.display}
                 </div>

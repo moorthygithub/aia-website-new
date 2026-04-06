@@ -1,5 +1,5 @@
 import PopUp from "@/components/common/pop-up";
-import HomeHero from "@/components/home/home-hero";
+import HomeHeroWrapper from "@/components/home/home-hero-wrapper";
 import certificationCourses from "@/data/certificationCourses";
 import {
   lazy,
@@ -109,10 +109,11 @@ export default function Home() {
   return (
     <div className="font-sans text-gray-800">
       <Suspense fallback={null}>
-        <PopUp slug="home" />
+        {/* <PopUp slug="home" /> */}
       </Suspense>
 
-      <HomeHero slug="home" bottombar="true" />
+      <HomeHeroWrapper slug="home" bottombar="true" />
+
       <LazySection minHeight="400px" priority>
         <HomeAbout />
       </LazySection>
